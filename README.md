@@ -1,2 +1,15 @@
-# publ-a11y
-Accessibility related discussions on the Publishing WG
+
+![W3C Logo](https://www.w3.org/Icons/w3c_home)
+
+# Accessibility Discussions on the Publishing Working Group
+
+This is the repository for the Accessibility related discussions of the [Publishing Working Group](https://www.w3.org/publishing/groups/publ-wg/). 
+
+## Contributing to the Repository
+
+Use the standard fork, branch, and pull request workflow to propose changes to the specification. Please make branch names informative—by including the issue or bug number for example.
+
+Editorial changes that improve the readability of the spec or correct spelling or grammatical mistakes are welcome.
+
+Please read [CONTRIBUTING.md](CONTRIBUTING.md), about licensing contributions.
+
