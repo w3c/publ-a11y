@@ -1,0 +1,1147 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>User Experience Guide for Displaying Accessibility metadata for EPUB</title>
+		<script src="https://www.w3.org/Tools/respec/respec-w3c-common" class="remove" defer="defer"></script>
+		<script class="remove">
+			// <![CDATA[
+			var respecConfig = {
+				wg: "EPUB 3 Community Group",
+				wgURI: "https://www.w3.org/community/epub3/",
+				wgPublicList: "public-epub3",
+				specStatus: "CG-NOTE",
+				noRecTrack: true,
+				shortName: "ux-meta-principles",
+				// previousPublishDate: "2019-06-14",
+				// previousMaturity: "WD",
+				edDraftURI: "https://w3c.github.io/publ-a11y/UX-Guide-Metadata/principles",
+				editors: [
+					{
+						"name": "Charles LaPierre",
+						"company": "Benetech",
+						"companyURL": "http://www.benetech.org",
+						"w3cid": 72055
+					},
+					{
+						"name": "Gregorio Pellegrino",
+						"company": "Fondazione LIA",
+						"companyURL": "https://fondazionelia.org",
+						"w3cid": 97111
+					}
+				],
+				processVersion: 2018,
+				includePermalinks: false,
+				permalinkEdge:     true,
+				permalinkHide:     false,
+				diffTool:          "http://www.aptest.com/standards/htmldiff/htmldiff.pl",
+				wgURI:             "https://www.w3.org/publishing/groups/publ-wg/",
+				wgPublicList:      "public-publ-wg",
+				wgPatentURI:       "https://www.w3.org/2004/01/pp-impl/100074/status",
+				github:			 {
+					repoURL: "https://github.com/w3c/publ-a11y/",
+					branch: "master"
+				}
+			};
+			// ]]>
+	  </script>
+	</head>
+	<body>
+		<section id="abstract"></section>
+		<section id="sotd"></section>
+		<section id="general-overview">
+			<h2>General Overview</h2>
+			<p>This document will help those who wish to provide accessibility metadata directly to users understand how
+				to represent machine readable accessibility metadata in a user friendly User Interface / User Experience
+				(UI/UX).</p>
+			<p>Metadata found either inside an EPUB or in its corresponding ONIX file may have important accessibility
+				information that will help end users find and determine if this EPUB can meet their specific
+				accessibility needs.</p>
+			<p>Most metadata is meant to be machine readable so that it can be used to aid in user search queries such
+				as <q>Find all EPUB books that contain large print, or braille, or that has met a certain level of
+					accessibility conformance.</q> The exception to this is the accessibility summary which, if present,
+				describes in human-readable text all the accessibility features and any shortcomings present in this
+				book that can be directly presented to the end user.</p>
+			<p class="note">All images provided here may be protected under copyright and are only used as a
+				reference.</p>
+			<p>Here is an example of what a user-friendly accessibility metadata web page could look like:</p>
+			<aside class="example">
+				<p><strong>Screen Reader Friendly:</strong> Yes</p>
+				<p><strong>Accessibility Summary:</strong> This publication includes markup to enable accessibility and
+					compatibility with assistive technology. Images, audio, and video in the publication are
+					well-described in conformance with WCAG 2.0 AA.</p>
+				<p><strong>EPUB Accessibility Conformance:</strong>
+					<a href="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aa">WCAG-AA</a></p>
+				<p><strong>Certified By:</strong> ACME Certification</p>
+				<p><strong>Certifier Credential:</strong>
+					<img src="./media/image1.png" alt="ACME Inc. credential webpage" width="50" /></p>
+				<p><strong>All Accessibility Metadata:</strong></p>
+				<p><img src="./media/image5.png" alt="Toggle box with all accessibility information" width="300" /></p>
+			</aside>
+		</section>
+		<section id="discovering-accessible-content">
+			<h2>Discovering Accessible Content</h2>
+			<p>The guidelines for presentation of accessibility metadata in this document are intended to improve the
+				user experience when readers browse the catalog entry for a book. However, accessibility metadata also
+				has a vital role to play in helping readers discover books that are accessible for them. Book providers,
+				vendors, and libraries are encouraged to create searching and filtering tools that interpret
+				accessibility metadata to aid in discovery; a full discussion of this topic is out of scope for this
+				document, but these brief notes may be helpful until further research and development leads to more
+				specific guidance.</p>
+			<p>While every user has different accessibility needs, meeting the Web Content Accessibility Guidelines
+				(WCAG) 2.0 requirements, even at level A, is a baseline that ensures a book will be widely accessible.
+				Book providers may therefore wish to create specific search capabilities to permit users to find books
+				that have declared conformance to WCAG at any level. A search filter called <q>Accessible</q> that
+				retrieves all books with metadata of <code>&lt;link rel="dcterms:conformsTo"
+					href="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-a" /&gt;</code> or the
+				equivalent for wcag-aa and ultimately for wcag-aaa would fill this need.</p>
+			<p>Audiobooks created for mainstream use provide important access for many users with disabilities even
+				though they are not accessible to others. Book providers may already have search tools aimed at finding
+				audiobooks, since they are popular and fairly common, but if not, this would be a good addition to the
+				suite of tools for finding accessible books. Note that audiobooks may not pass WCAG requirements because
+				they are targeted at a specific audience rather than broadly accessible and so would not be found using
+				the <q>Accessible</q> search suggested above.</p>
+			<p>Any of the metadata fields discussed in detail below could also be used as a filter; a <q>Screen-reader
+					accessible</q> search would be valued by screen reader users, and a way to ensure no books with
+				hazards are downloaded would be valued by those with light-sensitive epilepsy or other hazard-related
+				conditions. But if a single additional search filter fits best in a site’s UI, a tool for finding
+				accessible materials that declare conformance to WCAG 2.0 is the most likely choice.</p>
+		</section>
+		<section id="ui-technical-details">
+			<h2>UI Technical Details</h2>
+			<p>When you have accessibility metadata about an EPUB it is important to share this information with the
+				user in a user friendly way. At a very high level when displaying information about an EPUB you may just
+				want to acknowledge that there is <q>Accessibility Features</q> or <q>Accessibility Information</q>
+				available and if the user would like to get at this information they can click a link or an image which
+				will then provide the information that is discussed below.</p>
+			<p>For Example:</p>
+			<aside class="example">
+				<p>Title: Huckleberry Finn</p>
+				<p>Author: Mark Twain</p>
+				<p>Copyright: 1999</p>
+				<p>ISBN: 9780486110035</p>
+				<p>Publisher: Dover Publications</p>
+				<p>Book Features: <u>Accessibility Information</u>
+					<em>(textual link to accessibility information below)</em></p>
+			</aside>
+			<p>Or</p>
+			<aside class="example">
+				<p>Book Features:</p>
+				<p><img src="./media/image3.png" alt="Accessibility Information" width="75" /></p>
+				<p><em>(clickable image to accessibility information below)</em></p>
+				<p><em>Suggested Alt-text for image <q>Accessibility Information</q></em></p>
+			</aside>
+		</section>
+		<section id="order-of-key-information">
+			<h2>Order of Key Information</h2>
+			<ol type="1">
+				<li><p><a href="#screen-reader-friendly">Screen Reader Friendly</a></p></li>
+				<li><p><a href="#audiobook">Audiobook</a> (if present)</p></li>
+				<li><p><a href="#accessibility-summary">Accessibility Summary</a></p></li>
+				<li><p><a href="#epub-accessibility-conformance">EPUB Accessibility Conformance</a></p></li>
+				<li><p><a href="#certified-by">Certified By</a></p></li>
+				<li><p><a href="#certifier-credential">Certifier’s Credential</a></p></li>
+				<li><p><a href="#certifier-report">Certifier’s Report</a> (if present)</p></li>
+				<li><p><a href="#hazards">Hazards</a></p></li>
+				<li><p><a href="#all-accessibility-metadata">All Accessibility Metadata</a></p></li>
+			</ol>
+			<p>This metadata as outlined in the <a href="http://www.idpf.org/epub/a11y/">1.0 Accessibility Specification
+					Conformance and Discoverability</a> can be found inside the EPUB’s opf file usually found in
+					<code>OEBPS/package.opf</code></p>
+			<p class="note">At the end of this document are the <a href="#onix-metadata">ONIX equivalent metadata</a>
+				for each of these, if defined. While the examples shown here are for EPUB 3.x, there are equivalents for
+				EPUB 2.x which can be found in the <a href="http://www.idpf.org/epub/a11y/">Accessibility 1.0
+					specification</a>.</p>
+			<section id="screen-reader-friendly">
+				<h3>Screen Reader Friendly</h3>
+				<p><strong>Value</strong>: <em>Yes</em> / <em>No</em> / <em>Unknown</em></p>
+				<p>This data is derived from the EPUB package metadata inside the OPF file:</p>
+				<aside class="example" id="cb1">
+					<pre><code>&lt;meta property="schema:accessModeSufficient"&gt;textual&lt;/meta&gt;</code></pre>
+				</aside>
+				<p>If this metadata exists (ie. <q><strong>textual</strong></q> within <code>accessModeSufficient</code>
+					by itself) then report <em><q>Screen Reader Friendly: Yes</q></em></p>
+				<p><strong>Important</strong>: This is not the same as <q><strong>visual</strong>,
+							<strong>textual</strong></q> or <q><strong>textual, visual</strong></q> because the
+					combination means that the book requires both visual and textual abilities to access the data, not
+					textual alone. Only having <code>accessModeSufficient</code> be
+						<q><strong><em>textual</em></strong></q> as a separate entry ensures the document is screen
+					reader friendly.</p>
+				<p class="note">As long as there is an entry that reads <code>&lt;meta
+						property="schema:accessModeSufficient"&gt;textual&lt;/meta&gt;</code> the book can claim
+							<em><q>Screen Reader Friendly: Yes</q></em>.</p>
+				<p>There may also be other <code>accessModeSufficient</code> entries with combinations of access modes
+					such as <q>textual, visual</q> which indicate other ways to read the book.</p>
+				<p>When <code>accessModeSufficient</code> exists but does not have <q>textual</q> by itself, report
+							<em><q>Screen Reader Friendly: No</q></em>.</p>
+				<p>When there is no <code>accessModeSufficient</code> metadata present, report <em><q>Screen Reader
+							Friendly: unknown or not provided</q></em>.</p>
+				<section id="example-1.1-metadata-present">
+					<h4>Example 1.1 (metadata present)</h4>
+					<section id="metadata">
+						<h5>Metadata</h5>
+						<aside class="example" id="cb2">
+							<pre><code>&lt;meta property="schema:accessModeSufficient"&gt;visual&lt;/meta&gt;</code></pre>
+						</aside>
+					</section>
+					<section id="ui">
+						<h5>UI</h5>
+						<p><q>Screen Reader Friendly: Yes</q></p>
+						<p>(because <strong><em>textual</em></strong> was present by itself in
+								<code>accessModeSufficient</code>)</p>
+					</section>
+				</section>
+				<section id="example-1.2-multiple-metadata-accessmodesufficient-fields-present">
+					<h4>Example 1.2 (multiple metadata <code>accessModeSufficient</code> fields present)</h4>
+					<section id="metadata-1">
+						<h5>Metadata</h5>
+						<aside class="example" id="cb3">
+							<pre><code>&lt;meta property="schema:accessModeSufficient"&gt;visual&lt;/meta&gt;
+&lt;meta property="schema:accessModeSufficient"&gt;textual&lt;/meta&gt;
+&lt;meta property="schema:accessModeSufficient"&gt;textual, visual&lt;/meta&gt;</code></pre>
+						</aside>
+					</section>
+					<section id="ui-1">
+						<h5>UI</h5>
+						<p><q>Screen Reader Friendly: Yes</q></p>
+						<p>(because <strong><em>textual</em></strong> was present by itself in
+								<code>accessModeSufficient</code>)</p>
+					</section>
+				</section>
+				<section id="example-1.3-metadata-present-but-not-screen-reader-friendly">
+					<h4>Example 1.3 (metadata present but not Screen Reader Friendly)</h4>
+					<section id="metadata-2">
+						<h5>Metadata</h5>
+						<aside class="example" id="cb4">
+							<pre><code>&lt;meta property="schema:accessModeSufficient"&gt;visual&lt;/meta&gt;
+&lt;meta property="schema:accessModeSufficient"&gt;textual, visual&lt;/meta&gt;</code></pre>
+						</aside>
+					</section>
+					<section id="ui-2">
+						<h5>UI</h5>
+						<p><q>Screen Reader Friendly: No</q></p>
+						<p>(because <strong><em>textual</em></strong> was not present by itself in
+								<code>accessModeSufficient</code>)</p>
+					</section>
+				</section>
+				<section id="example-1.4-metadata-missing">
+					<h4>Example 1.4 (metadata missing)</h4>
+					<section id="metadata-3">
+						<h5>Metadata</h5>
+						<p>""</p>
+					</section>
+					<section id="ui-3">
+						<h5>UI</h5>
+						<p><q>Screen Reader Friendly: Unknown</q></p>
+						<p>(because <code>accessModeSufficient</code> is not found at all in the metadata)</p>
+					</section>
+				</section>
+			</section>
+			<section id="audiobook">
+				<h3>Audiobook</h3>
+				<p><strong>Values</strong>: <em>Yes / (if No - Omit this section)</em></p>
+				<p>This data is derived from the EPUB package metadata inside the OPF file:</p>
+				<aside class="example" id="cb5">
+					<pre><code>&lt;meta property="schema:accessModeSufficient"&gt;auditory&lt;/meta&gt;</code></pre>
+				</aside>
+				<p>If this metadata exists (ie. <q><strong>auditory</strong></q> within
+						<code>accessModeSufficient</code> by itself) then report <em><q>Audiobook: Yes</q>.</em></p>
+				<p><strong>Important</strong>: This is not the same as <q><strong>textual</strong>,
+							<strong>auditory</strong></q> or <q><strong>auditory</strong>, <strong>textual</strong></q>
+					as this indicates that the book requires both textual and auditory abilities to access the data, not
+					auditory alone. Only having <code>accessModeSufficient</code> be <q><strong>auditory</strong></q> as
+					a separate entry ensures the document is an audiobook.</p>
+				<p class="note">As long as you find <code>&lt;meta
+						property="schema:accessModeSufficient"&gt;auditory&lt;/meta&gt;</code> the book can claim
+							<q><strong>Audiobook: Yes</strong></q>.</p>
+				<p>There may also be other <code>accessModeSufficient</code> entries with combinations of access modes
+					such as <q>textual, visual</q> which indicate other ways to read the book.</p>
+				<p class="note">If you can not report that this is an audiobook then do not present any information to
+					the user for this category, since 99% of EPUB books are not audiobooks. Simply omit this
+					section.</p>
+				<section id="example-2.1-metadata-present-auditory">
+					<h4>Example 2.1 (metadata present auditory)</h4>
+					<section id="metadata-4">
+						<h5>Metadata</h5>
+						<aside class="example" id="cb6">
+							<pre><code>&lt;meta property="schema:accessModeSufficient"&gt;auditory&lt;/meta&gt;
+&lt;meta property="schema:accessModeSufficient"&gt;visual&lt;/meta&gt;</code></pre>
+						</aside>
+					</section>
+					<section id="ui-4">
+						<h5>UI</h5>
+						<p><q>Audiobook: Yes</q></p>
+						<p>(because <q><strong>auditory</strong></q> was found alone in
+								<code>accessModeSufficient</code>)</p>
+					</section>
+				</section>
+				<section id="example-2.2-metadata-present-but-not-an-audiobook">
+					<h4>Example 2.2 (metadata present but not an Audiobook)</h4>
+					<section id="metadata-5">
+						<h5>Metadata</h5>
+						<aside class="example" id="cb7">
+							<pre><code>&lt;meta property="schema:accessModeSufficient"&gt;visual&lt;/meta&gt;
+&lt;meta property="schema:accessModeSufficient"&gt;auditory, visual&lt;/meta&gt;</code></pre>
+						</aside>
+					</section>
+					<section id="ui-5">
+						<h5>UI</h5>
+						<p>Omit this section</p>
+						<p>(Nothing presented to the user because <q><strong>auditory</strong></q> was not found alone
+							in <code>accessModeSufficient</code>)</p>
+					</section>
+				</section>
+				<section id="example-2.3-metadata-not-present">
+					<h4>Example 2.3 (metadata not present)</h4>
+					<section id="metadata-6">
+						<h5>Metadata</h5>
+						<p>""</p>
+					</section>
+					<section id="ui-6">
+						<h5>UI</h5>
+						<p>Omit this section</p>
+						<p>(Nothing presented to the user because <code>accessModeSufficient</code> is not present at
+							all in the metadata)</p>
+					</section>
+				</section>
+			</section>
+			<section id="accessibility-summary">
+				<h3>Accessibility Summary</h3>
+				<p><strong>Value</strong>: Textual Data from metadata</p>
+				<p>This data is pulled directly from the EPUB package metadata inside the OPF file:</p>
+				<aside class="example" id="cb8">
+					<pre><code>&lt;meta property="schema:accessibilitySummary"&gt;</code></pre>
+				</aside>
+				<p class="note">We will be creating additional guidance for publishers on how to best write these
+					summaries.</p>
+				<p class="note">If the metadata does not exist this should say <q>No Summary Available</q></p>
+				<p class="note">This data could be in a language other than English but would be tagged as such.</p>
+				<section id="example-3.1-metadata-present">
+					<h4>Example 3.1 (metadata present)</h4>
+					<section id="metadata-7">
+						<h5>Metadata</h5>
+						<aside class="example" id="cb9">
+							<pre><code>&lt;meta property="schema:accessibilitySummary"&gt;
+    This publication includes markup to enable accessibility and compatibility with assistive technology. Images, audio, and video in the publication are well-described in conformance with WCAG 2.0 AA. Structural navigation may be inconsistent.
+&lt;/meta&gt;</code></pre>
+						</aside>
+					</section>
+					<section id="ui-7">
+						<h5>UI</h5>
+						<p>Accessibility Summary:</p>
+						<p>This publication includes markup to enable accessibility and compatibility with assistive
+							technology. Images, audio, and video in the publication are well-described in conformance
+							with WCAG 2.0 A.</p>
+					</section>
+				</section>
+				<section id="example-3.2-metadata-missing">
+					<h4>Example 3.2 (metadata missing)</h4>
+					<section id="metadata-8">
+						<h5>Metadata</h5>
+						<p>""</p>
+					</section>
+					<section id="ui-8">
+						<h5>UI</h5>
+						<p><q>Accessibility Summary: None provided</q></p>
+					</section>
+				</section>
+			</section>
+			<section id="epub-accessibility-conformance">
+				<h3>EPUB Accessibility Conformance</h3>
+				<p><strong>Value</strong>: Textual Link based on Metadata (WCAG-A, WCAG-AA, WCAG-AAA) or raw URL found
+					in EPUB OPF file’s metadata field</p>
+				<aside class="example" id="cb10">
+					<pre><code>&lt;link rel="dcterms:conformsTo"&gt;</code></pre>
+				</aside>
+				<div class="note">
+					<p>Interpret this metadata to be as human friendly as possible. So if the URI is:</p>
+					<ul>
+						<li><q>http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-a</q> report it as <q><a
+									href="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-a"
+										><strong>WCAG-A</strong></a></q> which links to this URL.</li>
+						<li><q>http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aa</q> report it as <q><a
+									href="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aa"
+										><strong>WCAG-AA</strong></a></q> which links to this URL.</li>
+						<li><q>http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aaa</q> report it as <q><a
+									href="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-a"
+										><strong>WCAG-AAA</strong></a></q> which links to this URL.</li>
+					</ul>
+				</div>
+				<p>If the URL is anything other than the three listed above, then providing the raw URL which is also a
+					link is the only option, since this may be a link to a different conformance standard (i.e. some
+					audio conformance specification for an audio book).</p>
+				<p class="note">A case insensitive comparison should be done to replace the URI with human-readable text
+					for WCAG-AA, etc.</p>
+				<p class="note">If you do not wish to have clickable links here, you may omit them as long as you make
+					the links available in the section <a href="#all-accessibility-metadata">All Accessibility
+						Metadata</a>, described below.</p>
+				<p class="note">The above three URIs could change in the future since they point to an IDPF page; this
+					work has been moved to the W3C. If a change occurs, other URIs will be recommended.</p>
+				<section id="example-4.1-metadata-present">
+					<h4>Example 4.1 (metadata present)</h4>
+					<section id="metadata-9">
+						<h5>Metadata</h5>
+						<aside class="example" id="cb11">
+							<pre><code>&lt;link rel="dcterms:conformsTo" href="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aa" /&gt;</code></pre>
+						</aside>
+					</section>
+					<section id="ui-9">
+						<h5>UI</h5>
+						<p>EPUB Accessibility Conformance: <a
+								href="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aa">WCAG-AA</a></p>
+						<p>(Because this links to one of the three URIs outlined above)</p>
+					</section>
+				</section>
+				<section id="example-4.2-metadata-pointing-to-another-specification">
+					<h4>Example 4.2 (metadata pointing to another specification)</h4>
+					<section id="metadata-10">
+						<h5>Metadata</h5>
+						<aside class="example" id="cb12">
+							<pre><code>&lt;link rel="dcterms:conformsTo" href="http://www.daisy.org/guidelines/epub/navigable-audio-only-epub3-guidelines" /&gt;</code></pre>
+						</aside>
+					</section>
+					<section id="ui-10">
+						<h5>UI</h5>
+						<p><q>EPUB Accessibility Conformance: Custom specification</q></p>
+						<p>(Because this URI is different than what was outlined above. The book may qualify for
+							conformance as an optimized publication.)</p>
+					</section>
+				</section>
+				<section id="example-4.3-metadata-missing">
+					<h4>Example 4.3 (metadata missing)</h4>
+					<section id="metadata-11">
+						<h5>Metadata</h5>
+						<p>""</p>
+					</section>
+					<section id="ui-11">
+						<h5>UI</h5>
+						<p><q>EPUB Accessibility Conformance: None provided</q></p>
+					</section>
+				</section>
+			</section>
+			<section id="certified-by">
+				<h3>Certified By</h3>
+				<p><strong>Value</strong>: Textual Data from metadata</p>
+				<p>This data is pulled directly from the EPUB package metadata inside the OPF file:</p>
+				<aside class="example" id="cb13">
+					<pre><code>&lt;meta property="a11y:certifiedBy"&gt;</code></pre>
+				</aside>
+				<p class="note">If the metadata does not exist this should say <q>None provided</q></p>
+				<section id="example-5.1-metadata-present-3rd-party">
+					<h4>Example 5.1 (metadata present 3rd party)</h4>
+					<section id="metadata-12">
+						<h5>Metadata</h5>
+						<aside class="example" id="cb14">
+							<pre><code>&lt;meta property="a11y:certifiedBy"&gt;3rd Party Company Name&lt;/meta&gt;</code></pre>
+						</aside>
+					</section>
+					<section id="ui-12">
+						<h5>UI</h5>
+						<p><q>Certified By: 3rd Party Company Name</q></p>
+					</section>
+				</section>
+				<section id="example-5.2-metadata-present-self-certified">
+					<h4>Example 5.2 (metadata present self Certified)</h4>
+					<section id="metadata-13">
+						<h5>Metadata</h5>
+						<aside class="example" id="cb15">
+							<pre><code>&lt;dc:publisher&gt;Publisher Name&lt;/dc:publisher&gt;
+&lt;meta property="a11y:certifiedBy"&gt;Publisher Name&lt;/meta&gt;</code></pre>
+						</aside>
+					</section>
+					<section id="ui-13">
+						<h5>UI</h5>
+						<p><q>Self Certified By: Publisher Name</q></p>
+					</section>
+				</section>
+				<section id="example-5.3-metadata-missing">
+					<h4>Example 5.3 (metadata missing)</h4>
+					<section id="metadata-14">
+						<h5>Metadata</h5>
+						<p>""</p>
+					</section>
+					<section id="ui-14">
+						<h5>UI</h5>
+						<p><q>Certified By: None provided</q></p>
+					</section>
+				</section>
+			</section>
+			<section id="certifier-credential">
+				<h3>Certifier Credential</h3>
+				<p><strong>Value</strong>: Potentially linked textual data from metadata</p>
+				<p>This data is pulled directly from the EPUB package metadata inside the OPF file:</p>
+				<aside class="example" id="cb16">
+					<pre><code>&lt;meta property="a11y:certifierCredential"&gt;</code></pre>
+				</aside>
+				<p class="note">This metadata could be a simple text string in which case you would just display it, or
+					it could be a URI to the certifier’s credential web page.</p>
+				<p>If the metadata value is a URI, you could have some standard certification logo which would be
+					clickable and link to the certifier’s credential webpage.</p>
+				<p>If you do not wish to have clickable links here, you may omit them as long as you make the links
+					available in the section <a href="#all-accessibility-metadata">All Accessibility Metadata</a>,
+					described below.</p>
+				<p>If you are aware of a list of organizations who offer third-party certification, a short list of
+					certifier’s logos could be cached and displayed when appropriate. For example:</p>
+				<section id="example-6.1-text">
+					<h4>Example 6.1 (Text)</h4>
+					<section id="metadata-15">
+						<h5>Metadata</h5>
+						<aside class="example" id="cb17">
+							<pre><code>&lt;meta property="a11y:certifierCredential"&gt;XYZ Certified
+Accessible&lt;/meta&gt;</code></pre>
+						</aside>
+					</section>
+					<section id="ui-15">
+						<h5>UI</h5>
+						<p><q>Certifier Credential: XYZ Certified Accessible</q></p>
+					</section>
+				</section>
+				<section id="example-6.2-generic-3rd-party-url">
+					<h4>Example 6.2 (Generic 3rd party URL)</h4>
+					<section id="metadata-16">
+						<h5>Metadata</h5>
+						<aside class="example" id="cb18">
+							<pre><code>&lt;meta property="a11y:certifiedBy"&gt;ACME Inc.&lt;/meta&gt;
+&lt;meta property="a11y:certifierCredential"&gt;https://3rd-party-certifier-credential.com&lt;/meta&gt;</code></pre>
+						</aside>
+					</section>
+					<section id="metadata-17">
+						<h5>Metadata</h5>
+						<p>Certifier Credential</p>
+						<aside class="example">
+							<p><a href="https://3rd-party-certifier-credential.com"><img src="./media/image1.png"
+										alt="ACME Inc. credential webpage" width="50" /></a></p>
+							<p><em>(Clickable Image to the URI of the certifiers credential’s webpage from
+									metadata)</em></p>
+							<p><em>alt-text <q>ACME Inc. credential webpage</q></em></p>
+							<p><em>(Image here of a checkmark inside a shield is just for reference feel free to choose
+									your own image)</em></p>
+						</aside>
+						<p class="note">There may be an image that is associated with specific Certifier Credential
+							image (ie. Mark/Stamp/Seal) which could be used here. If you would like to display this
+							image, or any other, you would need to be coordinate this out of band with the certifier
+							agency as it is not part of the metadata delivered with the book.</p>
+						<p><strong>Or</strong></p>
+						<aside class="example">
+							<p>Certifier’s Credential: <a href="https://3rd-party-certifier-credential.com">ACME
+									Inc. credential webpage</a></p>
+							<p><em>(Clickable link to the URI to the certifiers credentials from metadata)</em></p>
+						</aside>
+					</section>
+				</section>
+				<section id="example-6.3-metadata-missing">
+					<h4>Example 6.3 (metadata missing)</h4>
+					<section id="metadata-18">
+						<h5>Metadata</h5>
+						<p>""</p>
+					</section>
+					<section id="ui-16">
+						<h5>UI</h5>
+						<p><q>Certifier Credential: None provided</q></p>
+					</section>
+				</section>
+			</section>
+			<section id="certifier-report">
+				<h3>Certifier Report</h3>
+				<p><strong>Value</strong>: Potentially linked textual data from metadata</p>
+				<p>This data is pulled directly from the EPUB package metadata inside the OPF file:</p>
+				<aside class="example" id="cb19">
+					<pre><code>&lt;link rel="a11y:certifierReport" href="http://www.example.com/a11y/report/9780000000001"/&gt;</code></pre>
+				</aside>
+				<p>Ideally you would have a clickable link to the certification accessibility report.</p>
+				<p>If you do not wish to have clickable links here, you may omit them as long as you make the links
+					available in the section <a href="#all-accessibility-metadata">All Accessibility Metadata</a>,
+					described below.</p>
+				<section id="example-7.1-url">
+					<h4>Example 7.1 (URL)</h4>
+					<section id="metadata-19">
+						<h5>Metadata</h5>
+						<aside class="example" id="cb20">
+							<pre><code>&lt;meta property="a11y:certifiedBy"&gt;ACME Inc.&lt;/meta&gt;
+&lt;link rel="a11y:certifierReport" href="http://www.example.com/a11y/report/9780000000001"/&gt;</code></pre>
+						</aside>
+					</section>
+					<section id="ui-17">
+						<h5>UI</h5>
+						<p>Certifier Report</p>
+						<p><a href="http://www.example.com/a11y/report/9780000000001"><img src="./media/image2.png"
+									alt="ACME Inc. Report webpage" width="50" /></a></p>
+						<aside class="example">
+							<p><em>(Clickable Image to the URI of the report from metadata)</em></p>
+							<p><em>alt-text <q>ACME Inc. Report webpage</q></em></p>
+							<p><em>(Image here of checkmark with clipboard is just for reference feel free to choose
+									your own image)</em></p>
+						</aside>
+						<p><strong>Or</strong></p>
+						<aside class="example">
+							<p>Certifier Report: <a href="http://www.example.com/a11y/report/9780000000001">ACME
+									Inc. Accessibility Report</a></p>
+							<p><em>(Clickable link to the URI of the report from metadata)</em></p>
+						</aside>
+					</section>
+				</section>
+				<section id="example-7.2-metadata-missing">
+					<h4>Example 7.2 (metadata missing)</h4>
+					<section id="metadata-20">
+						<h5>Metadata</h5>
+						<p>""</p>
+					</section>
+					<section id="ui-18">
+						<h5>UI</h5>
+						<p>Omit this section</p>
+						<p>(Omit this section if the metadata is missing, as most of the time there will be no report
+							available.)</p>
+					</section>
+				</section>
+			</section>
+			<section id="hazards">
+				<h3>Hazards</h3>
+				<p><strong>Values</strong>: flashing, motion simulation, sound, no flashing, no motion simulation, no
+					sound, none, or Unknown.</p>
+				<p>This data is found in the EPUB package metadata inside the OPF file:</p>
+				<aside class="example" id="cb21">
+					<pre><code>&lt;meta property="schema:accessibilityHazard"&gt;none&lt;/meta&gt;</code></pre>
+				</aside>
+				<p>Hazards are the only metadata which can be expressed as either positive or negative statements, so
+					metadata authors can confirm either the presence of the hazard, such as <q><em>flashing</em></q>, or
+					the absence of the hazard, <q><em>noFlashingHazard</em></q> and similarly for <q><em>sound</em> /
+							<em>noSoundHazard</em></q> and <q><em>motion</em> / <em>noMotionSimulationHazard</em></q>.
+					There is also the metadata value <q><em>none</em></q>, which covers all three categories and
+					corresponds to <q><em>noFlashingHazard</em></q>, <q><em>noSoundHazard</em></q> and
+							<q><em>noMotionSimulationHazard</em></q>.</p>
+				<p class="note">In the section <q><a href="#all-accessibility-metadata">All Accessibility
+						Metadata</a></q> Hazards will be displayed exactly how the publisher provided them so
+					simplifying here with using <q>none</q> can be an option instead of saying explicitly <q>no Sound,
+						no Flashing, no Motion Simulation</q></p>
+				<section id="example-8.1-metadata-present-flashing">
+					<h4>Example 8.1 (metadata present flashing)</h4>
+					<section id="metadata-21">
+						<h5>Metadata</h5>
+						<aside class="example" id="cb22">
+							<pre><code>&lt;meta property="schema:accessibilityHazard"&gt;flashing&lt;/meta&gt;</code></pre>
+						</aside>
+					</section>
+					<section id="ui-19">
+						<h5>UI</h5>
+						<p><q>Hazard: Flashing</q></p>
+						<p>(because <q><strong><em>flashing</em></strong></q> was found in
+								<code>accessibilityHazard</code>)</p>
+					</section>
+				</section>
+				<section id="example-8.2-metadata-present-motionsimulation">
+					<h4>Example 8.2 (metadata present motionSimulation)</h4>
+					<section id="metadata-22">
+						<h5>Metadata</h5>
+						<aside class="example" id="cb23">
+							<pre><code>&lt;meta property="schema:accessibilityHazard"&gt;motionSimulation&lt;/meta&gt;</code></pre>
+						</aside>
+					</section>
+					<section id="ui-20">
+						<h5>UI</h5>
+						<p><q>Hazard: Motion Simulation</q></p>
+						<p>(because <q><strong><em>motionSimulation</em></strong></q> was found in
+								<code>accessibilityHazard</code>)</p>
+					</section>
+				</section>
+				<section id="example-8.3-metadata-present-sound">
+					<h4>Example 8.3 (metadata present sound)</h4>
+					<section id="metadata-23">
+						<h5>Metadata</h5>
+						<aside class="example" id="cb24">
+							<pre><code>&lt;meta property="schema:accessibilityHazard"&gt;sound&lt;/meta&gt;</code></pre>
+						</aside>
+					</section>
+					<section id="ui-21">
+						<h5>UI</h5>
+						<p><q>Hazard: Sound</q></p>
+						<p>(because <q><strong><em>sound</em></strong></q> was found in
+							<code>accessibilityHazard</code>)</p>
+					</section>
+				</section>
+				<section id="example-8.4-multiple-hazards-present">
+					<h4>Example 8.4 (multiple hazards present)</h4>
+					<section id="metadata-24">
+						<h5>Metadata</h5>
+						<aside class="example" id="cb25">
+							<pre><code>&lt;meta property="schema:accessibilityHazard"&gt;sound&lt;/meta&gt;
+&lt;meta property="schema:accessibilityHazard"&gt;motionSimulation&lt;/meta&gt;
+&lt;meta property="schema:accessibilityHazard"&gt;flashing&lt;/meta&gt;</code></pre>
+						</aside>
+					</section>
+					<section id="ui-22">
+						<h5>UI</h5>
+						<p><q>Hazard: Sound, Motion Simulation, and Flashing</q></p>
+						<p>(because <q><strong><em>sound</em></strong></q>,
+									<q><strong><em>motionSimulation</em></strong></q> ,
+									<q><strong><em>flashing</em></strong></q> and were all found in
+								<code>accessibilityHazard</code>)</p>
+					</section>
+				</section>
+				<section id="example-8.5-metadata-present-none">
+					<h4>Example 8.5 (metadata present none)</h4>
+					<section id="metadata-25">
+						<h5>Metadata</h5>
+						<aside class="example" id="cb26">
+							<pre><code>&lt;meta property="schema:accessibilityHazard"&gt;none&lt;/meta&gt;</code></pre>
+						</aside>
+					</section>
+					<section id="ui-23">
+						<h5>UI</h5>
+						<p>Omit this section</p>
+						<p><strong>Or</strong></p>
+						<p><q>Hazards: none provided</q></p>
+						<p>Nothing presented to the user because there are no hazards; since 99.9% of EPUBs won’t have
+							any hazards, there is no need to report <q>Hazards: No</q> for every EPUB.</p>
+					</section>
+				</section>
+				<section id="example-8.6-metadata-present-noflashinghazard-nosoundhazard-and-nosimulation">
+					<h4>Example 8.6 (metadata present: <code>noFlashingHazard</code>, <code>noSoundHazard</code>, and
+							<code>noSimulation</code>)</h4>
+					<section id="metadata-26">
+						<h5>Metadata</h5>
+						<aside class="example" id="cb27">
+							<pre><code>&lt;meta property="schema:accessibilityHazard"&gt;noFlashingHazard&lt;/meta&gt;
+&lt;meta property="schema:accessibilityHazard"&gt;noSoundHazard&lt;/meta&gt;
+&lt;meta property="schema:accessibilityHazard"&gt;noMotionSimulationHazard&lt;/meta&gt;</code></pre>
+						</aside>
+					</section>
+					<section id="ui-24">
+						<h5>UI</h5>
+						<p>Omit this section</p>
+						<p><strong>Or</strong></p>
+						<p><q>Hazards: none</q></p>
+						<p><strong>Or</strong></p>
+						<p><q>Hazards: No Flashing, No Sound, No Motion Simulation</q></p>
+					</section>
+				</section>
+				<section id="example-8.7-metadata-not-present">
+					<h4>Example 8.7 (metadata not present)</h4>
+					<section id="metadata-27">
+						<h5>Metadata</h5>
+						<p>""</p>
+					</section>
+					<section id="ui-25">
+						<h5>UI</h5>
+						<p><q>Hazards: None provided</q></p>
+						<p>We want to make the distinction here between No Hazards and missing hazard metadata therefore
+							for the missing metadata case we need to inform the user we don’t know about any hazards
+							which may or maynot be present.</p>
+					</section>
+				</section>
+			</section>
+		</section>
+		<section id="all-accessibility-metadata">
+			<h2>All Accessibility Metadata</h2>
+			<p><strong>Value</strong>: Link to complete list of all metadata fields</p>
+			<p>Here are <a href="https://www.w3.org/wiki/WebSchemas/Accessibility">all the possible accessibility
+					metadata properties</a>.</p>
+			<p>This section can either be a separate page that is linked to or better yet an HTML Summary/Details
+				element that users can expand to get all the accessibility metadata field elements. Here you would
+				expose: <code>accessibilityFeature</code>, <code>accessibilityHazard</code>, <code>accessMode</code>,
+					<code>accessModeSufficient</code>, as well as all the accessibility metadata and conformance
+				metadata listed above.</p>
+			<section id="example-9.1-all-metadata-fields-present">
+				<h3>Example 9.1 (all metadata fields present)</h3>
+				<section id="metadata-28">
+					<h4>Metadata</h4>
+					<aside class="example" id="cb28">
+						<pre><code>&lt;meta property="schema:accessibilityFeature"&gt;alternativeText&lt;/meta&gt;
+&lt;meta property="schema:accessibilityFeature"&gt;longDescription&lt;/meta&gt;
+&lt;meta property="schema:accessibilityFeature"&gt;printPageNumbers&lt;/meta&gt;
+&lt;meta property="schema:accessibilityHazards"&gt;noSoundHazard&lt;/meta&gt;
+&lt;meta property="schema:accessibilityHazards"&gt;noMotionSimulationHazard&lt;/meta&gt;
+&lt;meta property="schema:accessibilityHazards"&gt;noFlashingHazard&lt;/meta&gt;
+&lt;meta property="schema:accessMode"&gt;visual&lt;/meta&gt;
+&lt;meta property="schema:accessMode"&gt;textual&lt;/meta&gt;
+&lt;meta property="schema:accessModeSufficient"&gt;visual&lt;/meta&gt;
+&lt;meta property="schema:accessModeSufficient"&gt;textual&lt;/meta&gt;
+&lt;meta property="schema:accessModeSufficient"&gt;visual,textual&lt;/meta&gt;
+&lt;meta property="a11y:certifiedBy"&gt;ACME Certification&lt;/meta&gt;
+&lt;meta property="a11y:certifierCredential"&gt;https://ACME-Certification.org/&lt;/meta&gt;
+&lt;link rel="dcterms:conformsTo" href="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-a/" /&gt;
+&lt;meta property="schema:accessibilitySummary"&gt;
+    This publication includes mark-up to enable accessibility and compatibility with assistive technology. Images, audio, and video in the publication are well-described in conformance with WCAG 2.0 A.
+&lt;/meta&gt;</code></pre>
+					</aside>
+				</section>
+				<section id="ui-26">
+					<h4>UI</h4>
+					<p><strong>Accessibility Features</strong>:</p>
+					<ul>
+						<li><p>alternativeText</p></li>
+						<li><p>longDescriptions</p></li>
+						<li><p>printPageNumbers</p></li>
+					</ul>
+					<p><strong>Accessibility Hazards</strong>:</p>
+					<ul>
+						<li><p>No Sound Hazard</p></li>
+						<li><p>No Motion Simulation Hazard</p></li>
+						<li><p>No Flashing Hazard</p></li>
+					</ul>
+					<p><strong>AccessMode</strong>:</p>
+					<ul>
+						<li><p>visual</p></li>
+						<li><p>textual</p></li>
+					</ul>
+					<p><strong>Access Mode Sufficient</strong>:</p>
+					<ul>
+						<li><p>visual</p></li>
+						<li><p>textual</p></li>
+						<li><p>visual, textual</p></li>
+					</ul>
+					<p><strong>Certified By</strong>:</p>
+					<p>ACME Certification</p>
+					<p><strong>Certifier’s Credential</strong>:</p>
+					<p><a href="https://acme-certification.org/">https://ACME-Certification.org/</a></p>
+					<p><strong>Conforms To</strong>:</p>
+					<p><a href="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-a"
+							>http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-a</a></p>
+					<p><strong>Accessibility Summary</strong>:</p>
+					<p>This publication includes markup to enable accessibility and compatibility with assistive
+						technology. Images, audio, and video in the publication are well-described in conformance with
+						WCAG 2.0 A.</p>
+				</section>
+			</section>
+			<section id="example-9.2-all-metadata-fields-missing">
+				<h3>Example 9.2 (all metadata fields missing)</h3>
+				<section id="metadata-29">
+					<h4>Metadata</h4>
+					<p>""</p>
+				</section>
+				<section id="ui-27">
+					<h4>UI</h4>
+					<p><strong>Accessibility Features</strong>:</p>
+					<p>None provided</p>
+					<p><strong>Accessibility Hazards</strong>:</p>
+					<p>None provided</p>
+					<p><strong>AccessMode</strong>:</p>
+					<p>None provided</p>
+					<p><strong>Access Mode Sufficient</strong>:</p>
+					<p>None provided</p>
+					<p><strong>Certified By</strong>:</p>
+					<p>None provided</p>
+					<p><strong>Certifier’s Credential</strong>:</p>
+					<p>None provided</p>
+					<p><strong>Conforms To</strong>:</p>
+					<p>None provided</p>
+					<p><strong>Accessibility Summary</strong>:</p>
+					<p>None provided</p>
+				</section>
+			</section>
+		</section>
+		<section id="onix-metadata">
+			<h2>ONIX Metadata</h2>
+			<p class="note">ONIX does not have an exact 1:1 mapping with EPUB accessibility metadata so unfortunately
+				not all of the accessibility metadata found in an EPUB exists in ONIX at the time of this publication.
+				There are plans to add this metadata to future versions of ONIX but no time frame has been announced.
+				This <a href="http://www.a11ymetadata.org/the-specification/metadata-crosswalk/">EPUB to ONIX
+					crosswalk</a> outlines the current overlap in metadata which will get updated as these two
+				specifications evolve. It is important to note that there were a number of new accessibility metadata
+				codes added to ONIX 3 to support the Accessibility 1.0 specification. Which means that ONIX 2 has a
+				limited number of accessibility metadata codes and is something not covered in this document.</p>
+			<section id="onix-feed-examples">
+				<h3>ONIX feed examples</h3>
+				<section id="onix-feed-describing-an-epub">
+					<h4>ONIX feed describing an EPUB</h4>
+					<p>Here is an example of an ONIX feed (version 3.0), which will be used as a reference point for the
+						following examples on EPUB accessibility metadata: the results of the XPath shown are based on
+						this example.</p>
+					<aside class="example" id="cb29">
+						<pre><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;ONIXMessage xmlns="http://ns.editeur.org/onix/3.0/reference" release="3.0"&gt;
+    &lt;Header&gt;...&lt;/Header&gt;
+    &lt;Product&gt;
+        &lt;RecordReference&gt;123456789&lt;/RecordReference&gt;
+        &lt;NotificationType&gt;01&lt;/NotificationType&gt;
+        &lt;ProductIdentifier&gt;
+            &lt;ProductIDType&gt;03&lt;/ProductIDType&gt;
+            &lt;IDValue&gt;9780000000000&lt;/IDValue&gt;
+        &lt;/ProductIdentifier&gt;
+        &lt;ProductIdentifier&gt;
+            &lt;ProductIDType&gt;15&lt;/ProductIDType&gt;
+            &lt;IDValue&gt;9780000000000&lt;/IDValue&gt;
+        &lt;/ProductIdentifier&gt;
+        &lt;DescriptiveDetail&gt;
+            &lt;ProductComposition&gt;00&lt;/ProductComposition&gt;
+            &lt;ProductForm&gt;ED&lt;/ProductForm&gt;
+            &lt;ProductFormDetail&gt;E101&lt;/ProductFormDetail&gt;
+            &lt;ProductFormFeature&gt;
+                &lt;ProductFormFeatureType&gt;09&lt;/ProductFormFeatureType&gt;
+                &lt;ProductFormFeatureValue&gt;00&lt;/ProductFormFeatureValue&gt;
+                &lt;ProductFormFeatureDescription&gt;
+                    This publication includes mark-up to enable accessibility and compatibility with assistive technology. Images, audio, and video in the publication are well-described in conformance with WCAG 2.0 A.
+                &lt;/ProductFormFeatureDescription&gt;
+            &lt;/ProductFormFeature&gt;
+            &lt;ProductFormFeature&gt;
+                &lt;ProductFormFeatureType&gt;09&lt;/ProductFormFeatureType&gt;
+                &lt;ProductFormFeatureValue&gt;03&lt;/ProductFormFeatureValue&gt;
+            &lt;/ProductFormFeature&gt;
+            &lt;ProductFormFeature&gt;
+                &lt;ProductFormFeatureType&gt;09&lt;/ProductFormFeatureType&gt;
+                &lt;ProductFormFeatureValue&gt;10&lt;/ProductFormFeatureValue&gt;
+            &lt;/ProductFormFeature&gt;
+            &lt;ProductFormFeature&gt;
+                &lt;ProductFormFeatureType&gt;09&lt;/ProductFormFeatureType&gt;
+                &lt;ProductFormFeatureValue&gt;11&lt;/ProductFormFeatureValue&gt;
+            &lt;/ProductFormFeature&gt;
+            &lt;ProductFormFeature&gt;
+                &lt;ProductFormFeatureType&gt;09&lt;/ProductFormFeatureType&gt;
+                &lt;ProductFormFeatureValue&gt;13&lt;/ProductFormFeatureValue&gt;
+            &lt;/ProductFormFeature&gt;
+            &lt;ProductFormFeature&gt;
+                &lt;ProductFormFeatureType&gt;09&lt;/ProductFormFeatureType&gt;
+                &lt;ProductFormFeatureValue&gt;14&lt;/ProductFormFeatureValue&gt;
+            &lt;/ProductFormFeature&gt;
+            &lt;ProductFormFeature&gt;
+                &lt;ProductFormFeatureType&gt;09&lt;/ProductFormFeatureType&gt;
+                &lt;ProductFormFeatureValue&gt;22&lt;/ProductFormFeatureValue&gt;
+            &lt;/ProductFormFeature&gt;
+            &lt;ProductFormFeature&gt;
+                &lt;ProductFormFeatureType&gt;09&lt;/ProductFormFeatureType&gt;
+                &lt;ProductFormFeatureValue&gt;94&lt;/ProductFormFeatureValue&gt;
+                &lt;ProductFormFeatureDescription&gt;http://www.example.com/a11y/report/9780000000001&lt;/ProductFormFeatureDescription&gt;
+            &lt;/ProductFormFeature&gt;
+            &lt;PrimaryContentType&gt;10&lt;/PrimaryContentType&gt;
+            &lt;EpubTechnicalProtection&gt;03&lt;/EpubTechnicalProtection&gt;
+            &lt;EpubUsageConstraint&gt;
+                &lt;EpubUsageType&gt;04&lt;/EpubUsageType&gt;
+                &lt;EpubUsageStatus&gt;02&lt;/EpubUsageStatus&gt;
+            &lt;/EpubUsageConstraint&gt;
+            &lt;TitleDetail&gt;...&lt;/TitleDetail&gt;
+            &lt;Contributor&gt;...&lt;/Contributor&gt;
+            &lt;Extent&gt;...&lt;/Extent&gt;
+            &lt;Subject&gt;...&lt;/Subject&gt;
+        &lt;/DescriptiveDetail&gt;
+        &lt;CollateralDetail&gt;...&lt;/CollateralDetail&gt;
+        &lt;PublishingDetail&gt;...&lt;/PublishingDetail&gt;
+        &lt;RelatedMaterial&gt;...&lt;/RelatedMaterial&gt;
+        &lt;ProductSupply&gt;...&lt;/ProductSupply&gt;
+    &lt;/Product&gt;
+&lt;/ONIXMessage&gt;</code></pre>
+					</aside>
+				</section>
+				<section>
+					<h4
+						id="onix-feed-describing-an-audiobook-here-is-an-example-of-an-onix-feed-version-3.0-for-describing-an-audiobook."
+						>ONIX feed describing an Audiobook Here is an example of an ONIX feed (version 3.0) for
+						describing an audiobook.</h4>
+					<aside class="example" id="cb30">
+						<pre><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;ONIXMessage xmlns="http://ns.editeur.org/onix/3.0/reference" release="3.0"&gt;
+    &lt;Header&gt;...&lt;/Header&gt;
+    &lt;Product&gt;
+        &lt;RecordReference&gt;123456789&lt;/RecordReference&gt;
+        &lt;NotificationType&gt;01&lt;/NotificationType&gt;
+        &lt;ProductIdentifier&gt;
+            &lt;ProductIDType&gt;03&lt;/ProductIDType&gt;
+            &lt;IDValue&gt;0000000000000&lt;/IDValue&gt;
+        &lt;/ProductIdentifier&gt;
+        &lt;DescriptiveDetail&gt;
+            &lt;ProductComposition&gt;00&lt;/ProductComposition&gt;
+            &lt;ProductForm&gt;AO&lt;/ProductForm&gt;
+            &lt;PrimaryContentType&gt;01&lt;/PrimaryContentType&gt;
+            ...
+            &lt;TitleDetail&gt;...&lt;/TitleDetail&gt;
+            &lt;Contributor&gt;...&lt;/Contributor&gt;
+            &lt;Extent&gt;...&lt;/Extent&gt;
+            &lt;Subject&gt;...&lt;/Subject&gt;
+        &lt;/DescriptiveDetail&gt;
+        &lt;CollateralDetail&gt;...&lt;/CollateralDetail&gt;
+        &lt;PublishingDetail&gt;...&lt;/PublishingDetail&gt;
+        &lt;RelatedMaterial&gt;...&lt;/RelatedMaterial&gt;
+        &lt;ProductSupply&gt;...&lt;/ProductSupply&gt;
+    &lt;/Product&gt;
+&lt;/ONIXMessage&gt;</code></pre>
+					</aside>
+				</section>
+			</section>
+			<section id="inaccessible">
+				<h3>Inaccessible</h3>
+				<p>The ONIX standard, unlike the Schema.org standard, provides a method to indicate that a given title
+					is inaccessible, which is described as <q>Known to lack significant features required for broad
+						accessibility.</q> This is indicated by using <a href="https://ns.editeur.org/onix/en/196">List:
+						196</a>; Code 09 within a ProductFormFeatureValue element.</p>
+				<p><em>Vendors may omit all other accessibility metadata fields.</em></p>
+				<section id="onix-example-10.1">
+					<h4>ONIX Example 10.1</h4>
+					<section id="metadata-30">
+						<h5>Metadata</h5>
+						<p>An excerpt of ONIX indicating an inaccessible product is:</p>
+						<aside class="example" id="cb31">
+							<pre><code>&lt;ProductFormFeature&gt;
+    &lt;ProductFormFeatureType&gt;09&lt;/ProductFormFeatureType&gt;
+    &lt;ProductFormFeatureValue&gt;09&lt;/ProductFormFeatureValue&gt;
+&lt;/ProductFormFeature&gt;</code></pre>
+						</aside>
+					</section>
+					<section id="ui-28">
+						<h5>UI</h5>
+						<p><q>Inaccessible</q></p>
+					</section>
+				</section>
+			</section>
+			<section id="screen-reader-friendly-1">
+				<h3>Screen Reader Friendly</h3>
+				<p>Not available in ONIX</p>
+			</section>
+			<section id="audio-book">
+				<h3>Audio Book</h3>
+				<p>This information can be retrieved from ONIX <a href="https://ns.editeur.org/onix/en/81">code list
+						81</a>; Code: 01: Audiobook.</p>
+				<section id="onix-example-11.1">
+					<h4>ONIX Example 11.1</h4>
+					<section id="xpath">
+						<h5>XPath</h5>
+						<p>This field is true if the XPath returns at least one element for:</p>
+						<aside class="example" id="cb32">
+							<pre><code>//Product/DescriptiveDetail/PrimaryContentType[text()="01"] or
+//Product/DescriptiveDetail/ProductContentType[text()="01"]</code></pre>
+						</aside>
+					</section>
+					<section id="ui-29">
+						<h5>UI</h5>
+						<p><q>Audiobook: Yes</q></p>
+					</section>
+				</section>
+			</section>
+			<section id="accessibility-summary-1">
+				<h3>Accessibility Summary</h3>
+				<p>This information can be retrieved from ONIX <a href="https://ns.editeur.org/onix/en/196">code list:
+						196</a>; Code: 00: Accessibility Summary.</p>
+				<section id="onix-example-12.1">
+					<h4>ONIX Example 12.1</h4>
+					<section id="xpath-1">
+						<h5>XPath</h5>
+						<p>The value can be retrieved using XPath:</p>
+						<aside class="example" id="cb33">
+							<pre><code>//Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType="09" and ProductFormFeatureValue="00"]/ProductFormFeatureDescription/text()</code></pre>
+						</aside>
+					</section>
+					<section id="ui-30">
+						<h5>UI</h5>
+						<p>Accessibility Summary:</p>
+						<p>This publication includes markup to enable accessibility and compatibility with assistive
+							technology. Images, audio, and video in the publication are well-described in conformance
+							with WCAG 2.0 A.</p>
+					</section>
+				</section>
+			</section>
+			<section id="epub-and-wcag-conformance-level-reached">
+				<h3>EPUB and WCAG Conformance Level Reached</h3>
+				<ul>
+					<li>For WCAG-A: <a href="https://ns.editeur.org/onix/en/196">List: 196</a>; Code: 02: Accessibility
+						Specification 1.0 A</li>
+					<li>For WCAG-AA: <a href="https://ns.editeur.org/onix/en/196">List: 196</a>; Code: 03: Accessibility
+						Specification 1.0 AA</li>
+					<li>For WCAG-AAA: Not available in ONIX.</li>
+				</ul>
+				<section id="onix-example-13.1">
+					<h4>ONIX Example 13.1</h4>
+					<section id="xpath-2">
+						<h5>XPath</h5>
+						<p>If the following XPath returns at least one result:</p>
+						<aside class="example" id="cb34">
+							<pre><code>//Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType="09"
+and ProductFormFeatureValue="02"]</code></pre>
+						</aside>
+					</section>
+					<section id="ui-31">
+						<h5>UI</h5>
+						<p><q>Accessibility Conformance: WCAG-A</q></p>
+					</section>
+				</section>
+				<section id="onix-example-13.2">
+					<h4>ONIX Example 13.2</h4>
+					<section id="xpath-3">
+						<h5>XPath</h5>
+						<p>If the following XPath returns at least one result:</p>
+						<aside class="example" id="cb35">
+							<pre><code>//Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType="09"
+and ProductFormFeatureValue="03"] returns at least one result</code></pre>
+						</aside>
+					</section>
+					<section id="ui-32">
+						<h5>UI</h5>
+						<p><q>Accessibility Conformance: WCAG-AA</q></p>
+					</section>
+				</section>
+			</section>
+			<section id="certified-by-1">
+				<h3>Certified By</h3>
+				<p>Not available in ONIX</p>
+			</section>
+			<section id="certifier-credential-1">
+				<h3>Certifier Credential</h3>
+				<p>Not available in ONIX</p>
+			</section>
+			<section id="certifier-report-1">
+				<h3>Certifier Report</h3>
+				<p><a href="https://ns.editeur.org/onix/en/196">List: 196</a>; Code: 94: Compliance web page for
+					detailed accessibility information</p>
+				<p><strong>Or</strong></p>
+				<p>If a publisher is self-certifying, Code: 96: Publisher’s web page for detailed accessibility
+					information</p>
+				<section id="onix-example-14.1">
+					<h4>ONIX Example 14.1</h4>
+					<section id="xpath-4">
+						<h5>XPath</h5>
+						<p>The value can be retrieve using XPath:</p>
+						<aside class="example" id="cb36">
+							<pre><code>//Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType="09" and ProductFormFeatureValue="94"]/ProductFormFeatureDescription/text()</code></pre>
+						</aside>
+						<aside class="example" id="cb37">
+							<pre><code>//Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType="09" and ProductFormFeatureValue="96"]/ProductFormFeatureDescription/text()</code></pre>
+						</aside>
+					</section>
+					<section id="ui-33">
+						<h5>UI</h5>
+						<p>Certifier Report</p>
+						<p><a href="http://www.example.com/a11y/report/9780000000001"><img src="./media/image2.png"
+									alt="Report webpage" width="50" /></a></p>
+						<aside class="example">
+							<p><em>(Clickable Image to the URI of the report from metadata)</em></p>
+							<p><em>alt-text <q>Report webpage</q></em></p>
+							<p><em>(Image here of checkmark with clipboard is just for reference feel free to choose
+									your own image)</em></p>
+						</aside>
+						<p><strong>Or</strong></p>
+						<aside class="example">
+							<p>Certifier Report: <em>Accessibility Report</em></p>
+							<p><em>(Clickable link to the URI of the report from metadata)</em></p>
+						</aside>
+					</section>
+				</section>
+			</section>
+			<section id="hazards-1">
+				<h3>Hazards</h3>
+				<p>Not available in ONIX</p>
+			</section>
+			<section id="all-accessibility-metadata-1">
+				<h3>All Accessibility Metadata</h3>
+				<p>For a complete list of <a href="http://www.a11ymetadata.org/the-specification/metadata-crosswalk/"
+						>ONIX accessibility metadata refer to the crosswalk.</a></p>
+			</section>
+		</section>
+		<section id="app-acknowledgements" class="appendix informative">
+			<h2 id="acknowledgements">Acknowledgements</h2>
+			<section id="contributors">
+				<h3>Contributors</h3>
+				<ul>
+					<li>Avneesh Singh</li>
+					<li>Dave Cramer</li>
+					<li>George Kerscher</li>
+					<li>Jason White</li>
+					<li>Madeleine Rothberg</li>
+					<li>Rachel Comerford</li>
+					<li>Rick Johnson</li>
+				</ul>
+			</section>
+			<section id="reviewers">
+				<h3>Reviewers</h3>
+				<ul>
+					<li>Erin Kirchner-Lucas</li>
+				</ul>
+			</section>
+		</section>
+	</body>
+</html>
