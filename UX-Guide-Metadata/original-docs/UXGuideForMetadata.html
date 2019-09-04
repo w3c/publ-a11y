@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>User Experience Guide for Displaying Accessibility metadata for EPUB</title>
+  <style>
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+      q { quotes: "“" "”" "‘" "’"; }
+  </style>
+  <style>
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">User Experience Guide for Displaying Accessibility metadata for EPUB</h1>
+</header>
+<h2 id="status-of-this-document">Status of This Document</h2>
+<p>Editors Draft - Version 0.9 (05/24/2019)</p>
+<p>This document was published by the DIAGRAM Center Standards Working Group and DAISY’s Transition to EPUB Working group as an Editor’s Draft.</p>
+<p>Comments regarding this document are welcome. Please <a href="https://github.com/benetech/UX-Guide-EPUB-A11y-Metadata/issues">file an issue using our GitHub repository issue tracker</a>.</p>
+<hr />
+<h2 id="table-of-contents">Table of Contents</h2>
+<ul>
+<li><a href="#status-of-this-document">Status of This Document</a></li>
+<li><a href="#table-of-contents">Table of Contents</a></li>
+<li><a href="#general-overview">General Overview</a></li>
+<li><a href="#discovering-accessible-content">Discovering Accessible Content</a>
+<ul>
+<li><a href="#exposing-epub-accessibility-metadata-to-search-engines">Exposing EPUB Accessibility Metadata to Search Engines</a></li>
+</ul></li>
+<li><a href="#ui-technical-details">UI Technical Details</a></li>
+<li><a href="#order-of-key-information">Order of Key Information</a>
+<ul>
+<li><a href="#screen-reader-friendly">Screen Reader Friendly</a></li>
+<li><a href="#audiobook">Audiobook</a></li>
+<li><a href="#accessibility-summary">Accessibility Summary</a></li>
+<li><a href="#epub-accessibility-conformance">EPUB Accessibility Conformance</a></li>
+<li><a href="#certified-by">Certified By</a></li>
+<li><a href="#certifier-credential">Certifier Credential</a></li>
+<li><a href="#certifier-report">Certifier Report</a></li>
+<li><a href="#hazards">Hazards</a></li>
+<li><a href="#all-accessibility-metadata">All Accessibility Metadata</a></li>
+</ul></li>
+<li><a href="#onix-metadata">ONIX Metadata</a>
+<ul>
+<li><a href="#onix-feed-examples">ONIX feed examples</a></li>
+<li><a href="#inaccessible">Inaccessible</a></li>
+<li><a href="#screen-reader-friendly-1">Screen Reader Friendly</a></li>
+<li><a href="#audio-book">Audio Book</a></li>
+<li><a href="#accessibility-summary-1">Accessibility Summary</a></li>
+<li><a href="#epub-and-wcag-conformance-level-reached">EPUB and WCAG Conformance Level Reached</a></li>
+<li><a href="#certified-by-1">Certified By</a></li>
+<li><a href="#certifier-credential-1">Certifier Credential</a></li>
+<li><a href="#certifier-report-1">Certifier Report</a></li>
+<li><a href="#hazards-1">Hazards</a></li>
+<li><a href="#all-accessibility-metadata-1">All Accessibility Metadata</a></li>
+</ul></li>
+<li><a href="#acknowledgements">Acknowledgements</a></li>
+</ul>
+<hr />
+<h2 id="general-overview">General Overview</h2>
+<p>This document will help those who wish to provide accessibility metadata directly to users understand how to represent machine readable accessibility metadata in a user friendly User Interface / User Experience (UI/UX).</p>
+<p>Metadata found either inside an EPUB or in its corresponding ONIX file may have important accessibility information that will help end users find and determine if this EPUB can meet their specific accessibility needs.</p>
+<p>Most metadata is meant to be machine readable so that it can be used to aid in user search queries such as <q>Find all EPUB books that contain large print, or braille, or that has met a certain level of accessibility conformance.</q> The exception to this is the accessibility summary which, if present, describes in human-readable text all the accessibility features and any shortcomings present in this book that can be directly presented to the end user.</p>
+<p><strong>NOTE: All images provided here may be protected under copyright and are only used as a reference.</strong></p>
+<p>Here is an example of what a user-friendly accessibility metadata web page could look like:</p>
+<blockquote>
+<p><strong>Screen Reader Friendly:</strong> Yes</p>
+</blockquote>
+<blockquote>
+<p><strong>Accessibility Summary:</strong> This publication includes markup to enable accessibility and compatibility with assistive technology. Images, audio, and video in the publication are well-described in conformance with WCAG 2.0 AA.</p>
+</blockquote>
+<blockquote>
+<p><strong>EPUB Accessibility Conformance:</strong> <a href="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aa">WCAG-AA</a></p>
+</blockquote>
+<blockquote>
+<p><strong>Certified By:</strong> ACME Certification</p>
+</blockquote>
+<blockquote>
+<p><strong>Certifier Credential:</strong> <img src="./media/image1.png" alt="ACME Inc. credential webpage" width="50"/></p>
+</blockquote>
+<blockquote>
+<p><strong>All Accessibility Metadata:</strong></p>
+</blockquote>
+<blockquote>
+<p><img src="./media/image5.png" alt="Toggle box with all accessibility information" width="300"/></p>
+</blockquote>
+<hr />
+<h2 id="discovering-accessible-content">Discovering Accessible Content</h2>
+<p>The guidelines for presentation of accessibility metadata in this document are intended to improve the user experience when readers browse the catalog entry for a book. However, accessibility metadata also has a vital role to play in helping readers discover books that are accessible for them. Book providers, vendors, and libraries are encouraged to create searching and filtering tools that interpret accessibility metadata to aid in discovery; a full discussion of this topic is out of scope for this document, but these brief notes may be helpful until further research and development leads to more specific guidance.</p>
+<p>While every user has different accessibility needs, meeting the Web Content Accessibility Guidelines (WCAG) 2.0 requirements, even at level A, is a baseline that ensures a book will be widely accessible. Book providers may therefore wish to create specific search capabilities to permit users to find books that have declared conformance to WCAG at any level. A search filter called <q>Accessible</q> that retrieves all books with metadata of <code>&lt;link rel="dcterms:conformsTo" href="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-a" /&gt;</code> or the equivalent for wcag-aa and ultimately for wcag-aaa would fill this need.</p>
+<p>Audiobooks created for mainstream use provide important access for many users with disabilities even though they are not accessible to others. Book providers may already have search tools aimed at finding audiobooks, since they are popular and fairly common, but if not, this would be a good addition to the suite of tools for finding accessible books. Note that audiobooks may not pass WCAG requirements because they are targeted at a specific audience rather than broadly accessible and so would not be found using the <q>Accessible</q> search suggested above.</p>
+<p>Any of the metadata fields discussed in detail below could also be used as a filter; a <q>Screen-reader accessible</q> search would be valued by screen reader users, and a way to ensure no books with hazards are downloaded would be valued by those with light-sensitive epilepsy or other hazard-related conditions. But if a single additional search filter fits best in a site’s UI, a tool for finding accessible materials that declare conformance to WCAG 2.0 is the most likely choice.</p>
+<hr />
+<h2 id="exposing-epub-accessibility-metadata-to-search-engines">Exposing EPUB Accessibility Metadata to Search Engines</h2>
+<p>If an ebook catalogue is publicly available, metadata related to the accessibility of the contents can be displayed to search engine crawlers. This type of metadata for search engines is not available to users, but can be easily interpreted by machines (browsers, spiders, crawlers, etc.) so that accessibility information is correctly passed from machine to machine; this operation improves the Search Engine Optimization of the entire website as it allows the search engine to get a clear idea of the contents presented (and their level of accessibility).</p>
+<h3 id="implementation">Implementation</h3>
+<p>From a technical point of view, this type of metadata can be presented in a machine-readable form using the Schema.org standard. Schema.org codes can be inserted into the HTML code of the web page in which the single title is presented.</p>
+<p>There are three ways to implement Schema.org in your web pages:</p>
+<ul>
+<li><p>Microdata</p></li>
+<li><p>RDFa</p></li>
+<li><p>JSON-LD</p></li>
+</ul>
+<p>The first two ways involve inserting metadata directly into the HTML code which could complicate the implementation, since programmers will need to touch the templates of the web pages, which may make maintenance complex.</p>
+<p>JSON-LD instead requires that all metadata are grouped into a single object (coded with JSON-LD standard) within a tag <code>&lt;script type="application/ld+json"&gt;</code> positioned anywhere in the web page code, so much easier to implement and maintain; this is also the <a href="https://developers.google.com/search/docs/guides/intro-structured-data">format recommended by Google</a>.</p>
+<p>Although it is not required by Schema.org, we suggest you avoid inserting the accessibility metadata out of context. Instead, insert accessibility metadata into the <a href="https://schema.org/Book">scheme Book</a> and accompany them with some bibliographic and technical data about the text so as to contextualize them. Most likely these data are already available in the website database (because they are shown in the online catalog), so they will not be extracted from the EPUB file, but retrieved directly from the backend.</p>
+<p>The minimum data that we recommend to add are:</p>
+<ul>
+<li><p><code>bookFormat</code> (EBook)</p></li>
+<li><p><code>ISBN</code></p></li>
+<li><p><code>Name</code> (ebook title)</p></li>
+</ul>
+<p>Metadata can also be enriched with all the features available at <a href="https://schema.org/Book">Schema.org/Book</a>. The more enriched the metadata presented to search engine crawlers is, the better the discoverability of the content presented.</p>
+<p>Not all of the accessibility metadata found in the EPUB has been adopted by Schema.org only the following accessibility metadata properties have been added so far: <code>accessibilityFeature</code>, <code>accessibilityHazard</code>, <code>accessMode</code>, <code>accessModeSufficient</code>, <code>accessibilitySummary</code>, <code>accessibilityControl</code>, and <code>accessibilityAPI</code>.</p>
+<h4 id="example">Example</h4>
+<div class="sourceCode" id="cb1"><pre class="sourceCode json"><code class="sourceCode json"><a class="sourceLine" id="cb1-1" title="1"><span class="er">&lt;script</span> <span class="er">type=&quot;application/ld+json&quot;&gt;</span></a>
+<a class="sourceLine" id="cb1-2" title="2">    <span class="fu">{</span></a>
+<a class="sourceLine" id="cb1-3" title="3">        <span class="dt">&quot;@context&quot;</span><span class="fu">:</span> <span class="st">&quot;http://schema.org&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb1-4" title="4">        <span class="dt">&quot;@type&quot;</span><span class="fu">:</span> <span class="st">&quot;Book&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb1-5" title="5">        <span class="dt">&quot;bookFormat&quot;</span><span class="fu">:</span> <span class="st">&quot;EBook&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb1-6" title="6">        <span class="dt">&quot;isbn&quot;</span><span class="fu">:</span> <span class="st">&quot;9780000000000&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb1-7" title="7">        <span class="dt">&quot;name&quot;</span><span class="fu">:</span> <span class="st">&quot;Moby Dick&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb1-8" title="8">        <span class="dt">&quot;accessMode&quot;</span><span class="fu">:</span> <span class="ot">[</span></a>
+<a class="sourceLine" id="cb1-9" title="9">            <span class="st">&quot;Visual&quot;</span><span class="ot">,</span></a>
+<a class="sourceLine" id="cb1-10" title="10">            <span class="st">&quot;Textual&quot;</span></a>
+<a class="sourceLine" id="cb1-11" title="11">        <span class="ot">]</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb1-12" title="12">        <span class="dt">&quot;accessModeSufficient&quot;</span><span class="fu">:</span> <span class="ot">[</span></a>
+<a class="sourceLine" id="cb1-13" title="13">            <span class="fu">{</span></a>
+<a class="sourceLine" id="cb1-14" title="14">                <span class="dt">&quot;@type&quot;</span><span class="fu">:</span> <span class="st">&quot;ItemList&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb1-15" title="15">                <span class="dt">&quot;itemListElement&quot;</span><span class="fu">:</span> <span class="ot">[</span></a>
+<a class="sourceLine" id="cb1-16" title="16">                    <span class="st">&quot;textual&quot;</span></a>
+<a class="sourceLine" id="cb1-17" title="17">                <span class="ot">]</span></a>
+<a class="sourceLine" id="cb1-18" title="18">            <span class="fu">}</span><span class="ot">,</span></a>
+<a class="sourceLine" id="cb1-19" title="19">            <span class="fu">{</span></a>
+<a class="sourceLine" id="cb1-20" title="20">                <span class="dt">&quot;@type&quot;</span><span class="fu">:</span> <span class="st">&quot;ItemList&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb1-21" title="21">                <span class="dt">&quot;itemListElement&quot;</span><span class="fu">:</span> <span class="ot">[</span></a>
+<a class="sourceLine" id="cb1-22" title="22">                    <span class="st">&quot;textual&quot;</span><span class="ot">,</span></a>
+<a class="sourceLine" id="cb1-23" title="23">                    <span class="st">&quot;visual&quot;</span></a>
+<a class="sourceLine" id="cb1-24" title="24">                <span class="ot">]</span></a>
+<a class="sourceLine" id="cb1-25" title="25">            <span class="fu">}</span><span class="ot">,</span></a>
+<a class="sourceLine" id="cb1-26" title="26">            <span class="fu">{</span></a>
+<a class="sourceLine" id="cb1-27" title="27">                <span class="dt">&quot;@type&quot;</span><span class="fu">:</span> <span class="st">&quot;ItemList&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb1-28" title="28">                <span class="dt">&quot;itemListElement&quot;</span><span class="fu">:</span> <span class="ot">[</span></a>
+<a class="sourceLine" id="cb1-29" title="29">                    <span class="st">&quot;visual&quot;</span></a>
+<a class="sourceLine" id="cb1-30" title="30">                <span class="ot">]</span></a>
+<a class="sourceLine" id="cb1-31" title="31">            <span class="fu">}</span></a>
+<a class="sourceLine" id="cb1-32" title="32">        <span class="ot">]</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb1-33" title="33">        <span class="dt">&quot;accessibilityFeature&quot;</span><span class="fu">:</span> <span class="ot">[</span></a>
+<a class="sourceLine" id="cb1-34" title="34">            <span class="st">&quot;alternativeText&quot;</span><span class="ot">,</span></a>
+<a class="sourceLine" id="cb1-35" title="35">            <span class="st">&quot;longDescription&quot;</span><span class="ot">,</span></a>
+<a class="sourceLine" id="cb1-36" title="36">            <span class="st">&quot;printPageNumbers&quot;</span></a>
+<a class="sourceLine" id="cb1-37" title="37">        <span class="ot">]</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb1-38" title="38">        <span class="dt">&quot;accessibilityHazard&quot;</span><span class="fu">:</span> <span class="st">&quot;none&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb1-39" title="39">        <span class="dt">&quot;accessibilitySummary&quot;</span><span class="fu">:</span> <span class="st">&quot;This publication includes markup to enable accessibility and compatibility with assistive technology. Images, audio, and video in the publication are well-described in conformance with WCAG 2.0 A. Structural navigation may be inconsistent.&quot;</span></a>
+<a class="sourceLine" id="cb1-40" title="40">    <span class="fu">}</span></a>
+<a class="sourceLine" id="cb1-41" title="41"><span class="er">&lt;/script&gt;</span></a></code></pre></div>
+<p>Once the metadata is implemented, it is important to check its validity and make sure that it is interpreted correctly by search engines; this is possible with a free tool provided by Google: the <a href="https://search.google.com/structured-data/testing-tool/u/0/">Structured Data Testing Tool</a>. Through the graphical interface you can enter the URL of a web page to be analyzed or a snippet of code with the metadata you want to check. After processing the data, the tool shows on the left side of the screen the code of the web page (or snippet) and on the right side the data interpreted by Google.</p>
+<hr />
+<h2 id="ui-technical-details">UI Technical Details</h2>
+<p>When you have accessibility metadata about an EPUB it is important to share this information with the user in a user friendly way. At a very high level when displaying information about an EPUB you may just want to acknowledge that there is <q>Accessibility Features</q> or <q>Accessibility Information</q> available and if the user would like to get at this information they can click a link or an image which will then provide the information that is discussed below.</p>
+<p>For Example:</p>
+<blockquote>
+<p>Title: Huckleberry Finn</p>
+<p>Author: Mark Twain</p>
+<p>Copyright: 1999</p>
+<p>ISBN: 9780486110035</p>
+<p>Publisher: Dover Publications</p>
+<p>Book Features: <u>Accessibility Information</u> <em>(textual link to accessibility information below)</em></p>
+</blockquote>
+<p>Or</p>
+<blockquote>
+<p>Book Features:</p>
+<p><img src="./media/image3.png" alt="Accessibility Information" width="75"/></p>
+<p><em>(clickable image to accessibility information below)</em></p>
+<p><em>Suggested Alt-text for image <q>Accessibility Information</q></em></p>
+</blockquote>
+<hr />
+<h2 id="order-of-key-information">Order of Key Information</h2>
+<ol type="1">
+<li><p><a href="#screen-reader-friendly">Screen Reader Friendly</a></p></li>
+<li><p><a href="#audiobook">Audiobook</a> (if present)</p></li>
+<li><p><a href="#accessibility-summary">Accessibility Summary</a></p></li>
+<li><p><a href="#epub-accessibility-conformance">EPUB Accessibility Conformance</a></p></li>
+<li><p><a href="#certified-by">Certified By</a></p></li>
+<li><p><a href="#certifier-credential">Certifier’s Credential</a></p></li>
+<li><p><a href="#certifier-report">Certifier’s Report</a> (if present)</p></li>
+<li><p><a href="#hazards">Hazards</a></p></li>
+<li><p><a href="#all-accessibility-metadata">All Accessibility Metadata</a></p></li>
+</ol>
+<p>This metadata as outlined in the <a href="http://www.idpf.org/epub/a11y/">1.0 Accessibility Specification Conformance and Discoverability</a> can be found inside the EPUB’s opf file usually found in <code>OEBPS/package.opf</code></p>
+<blockquote>
+<p><strong>Note</strong>: At the end of this document are the <a href="#onix-metadata">ONIX equivalent metadata</a> for each of these, if defined. While the examples shown here are for EPUB 3.x, there are equivalents for EPUB 2.x which can be found in the <a href="http://www.idpf.org/epub/a11y/">Accessibility 1.0 specification</a>.</p>
+</blockquote>
+<h3 id="screen-reader-friendly">Screen Reader Friendly</h3>
+<p><strong>Value</strong>: <em>Yes</em> / <em>No</em> / <em>Unknown</em></p>
+<p>This data is derived from the EPUB package metadata inside the OPF file:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode xml"><code class="sourceCode xml"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">&lt;meta</span><span class="ot"> property=</span><span class="st">&quot;schema:accessModeSufficient&quot;</span><span class="kw">&gt;</span>textual<span class="kw">&lt;/meta&gt;</span></a></code></pre></div>
+<p>If this metadata exists (ie. <q><strong>textual</strong></q> within <code>accessModeSufficient</code> by itself) then report <em><q>Screen Reader Friendly: Yes</q></em></p>
+<p><strong>Important</strong>: This is not the same as <q><strong>visual</strong>, <strong>textual</strong></q> or <q><strong>textual, visual</strong></q> because the combination means that the book requires both visual and textual abilities to access the data, not textual alone. Only having <code>accessModeSufficient</code> be <q><strong><em>textual</em></strong></q> as a separate entry ensures the document is screen reader friendly.</p>
+<blockquote>
+<p><strong>Note</strong>: As long as there is an entry that reads <code>&lt;meta property="schema:accessModeSufficient"&gt;textual&lt;/meta&gt;</code> the book can claim <em><q>Screen Reader Friendly: Yes</q></em>.</p>
+</blockquote>
+<p>There may also be other <code>accessModeSufficient</code> entries with combinations of access modes such as <q>textual, visual</q> which indicate other ways to read the book.</p>
+<p>When <code>accessModeSufficient</code> exists but does not have <q>textual</q> by itself, report <em><q>Screen Reader Friendly: No</q></em>.</p>
+<p>When there is no <code>accessModeSufficient</code> metadata present, report <em><q>Screen Reader Friendly: unknown or not provided</q></em>.</p>
+<h4 id="example-1.1-metadata-present">Example 1.1 (metadata present)</h4>
+<h5 id="metadata">Metadata</h5>
+<div class="sourceCode" id="cb3"><pre class="sourceCode xml"><code class="sourceCode xml"><a class="sourceLine" id="cb3-1" title="1"><span class="kw">&lt;meta</span><span class="ot"> property=</span><span class="st">&quot;schema:accessModeSufficient&quot;</span><span class="kw">&gt;</span>visual<span class="kw">&lt;/meta&gt;</span></a></code></pre></div>
+<h5 id="ui">UI</h5>
+<p><q>Screen Reader Friendly: Yes</q></p>
+<p>(because <strong><em>textual</em></strong> was present by itself in <code>accessModeSufficient</code>)</p>
+<h4 id="example-1.2-multiple-metadata-accessmodesufficient-fields-present">Example 1.2 (multiple metadata <code>accessModeSufficient</code> fields present)</h4>
+<h5 id="metadata-1">Metadata</h5>
+<div class="sourceCode" id="cb4"><pre class="sourceCode xml"><code class="sourceCode xml"><a class="sourceLine" id="cb4-1" title="1"><span class="kw">&lt;meta</span><span class="ot"> property=</span><span class="st">&quot;schema:accessModeSufficient&quot;</span><span class="kw">&gt;</span>visual<span class="kw">&lt;/meta&gt;</span></a>
+<a class="sourceLine" id="cb4-2" title="2"><span class="kw">&lt;meta</span><span class="ot"> property=</span><span class="st">&quot;schema:accessModeSufficient&quot;</span><span class="kw">&gt;</span>textual<span class="kw">&lt;/meta&gt;</span></a>
+<a class="sourceLine" id="cb4-3" title="3"><span class="kw">&lt;meta</span><span class="ot"> property=</span><span class="st">&quot;schema:accessModeSufficient&quot;</span><span class="kw">&gt;</span>textual, visual<span class="kw">&lt;/meta&gt;</span></a></code></pre></div>
+<h5 id="ui-1">UI</h5>
+<p><q>Screen Reader Friendly: Yes</q></p>
+<p>(because <strong><em>textual</em></strong> was present by itself in <code>accessModeSufficient</code>)</p>
+<h4 id="example-1.3-metadata-present-but-not-screen-reader-friendly">Example 1.3 (metadata present but not Screen Reader Friendly)</h4>
+<h5 id="metadata-2">Metadata</h5>
+<div class="sourceCode" id="cb5"><pre class="sourceCode xml"><code class="sourceCode xml"><a class="sourceLine" id="cb5-1" title="1"><span class="kw">&lt;meta</span><span class="ot"> property=</span><span class="st">&quot;schema:accessModeSufficient&quot;</span><span class="kw">&gt;</span>visual<span class="kw">&lt;/meta&gt;</span></a>
+<a class="sourceLine" id="cb5-2" title="2"><span class="kw">&lt;meta</span><span class="ot"> property=</span><span class="st">&quot;schema:accessModeSufficient&quot;</span><span class="kw">&gt;</span>textual, visual<span class="kw">&lt;/meta&gt;</span></a></code></pre></div>
+<h5 id="ui-2">UI</h5>
+<p><q>Screen Reader Friendly: No</q></p>
+<p>(because <strong><em>textual</em></strong> was not present by itself in <code>accessModeSufficient</code>)</p>
+<h4 id="example-1.4-metadata-missing">Example 1.4 (metadata missing)</h4>
+<h5 id="metadata-3">Metadata</h5>
+<p>""</p>
+<h5 id="ui-3">UI</h5>
+<p><q>Screen Reader Friendly: Unknown</q></p>
+<p>(because <code>accessModeSufficient</code> is not found at all in the metadata)</p>
+<!-- QUI -->
+<h3 id="audiobook">Audiobook</h3>
+<p><strong>Values</strong>: <em>Yes / (if No - Omit this section)</em></p>
+<p>This data is derived from the EPUB package metadata inside the OPF file:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode xml"><code class="sourceCode xml"><a class="sourceLine" id="cb6-1" title="1"><span class="kw">&lt;meta</span><span class="ot"> property=</span><span class="st">&quot;schema:accessModeSufficient&quot;</span><span class="kw">&gt;</span>auditory<span class="kw">&lt;/meta&gt;</span></a></code></pre></div>
+<p>If this metadata exists (ie. <q><strong>auditory</strong></q> within <code>accessModeSufficient</code> by itself) then report <em><q>Audiobook: Yes</q>.</em></p>
+<p><strong>Important</strong>: This is not the same as <q><strong>textual</strong>, <strong>auditory</strong></q> or <q><strong>auditory</strong>, <strong>textual</strong></q> as this indicates that the book requires both textual and auditory abilities to access the data, not auditory alone. Only having <code>accessModeSufficient</code> be <q><strong>auditory</strong></q> as a separate entry ensures the document is an audiobook.</p>
+<blockquote>
+<p><strong>Note</strong>: As long as you find <code>&lt;meta property="schema:accessModeSufficient"&gt;auditory&lt;/meta&gt;</code> the book can claim <q><strong>Audiobook: Yes</strong></q>.</p>
+</blockquote>
+<p>There may also be other <code>accessModeSufficient</code> entries with combinations of access modes such as <q>textual, visual</q> which indicate other ways to read the book.</p>
+<p>Note: If you can not report that this is an audiobook then do not present any information to the user for this category, since 99% of EPUB books are not audiobooks. Simply omit this section.</p>
+<h4 id="example-2.1-metadata-present-auditory">Example 2.1 (metadata present auditory)</h4>
+<h5 id="metadata-4">Metadata</h5>
+<div class="sourceCode" id="cb7"><pre class="sourceCode xml"><code class="sourceCode xml"><a class="sourceLine" id="cb7-1" title="1"><span class="kw">&lt;meta</span><span class="ot"> property=</span><span class="st">&quot;schema:accessModeSufficient&quot;</span><span class="kw">&gt;</span>auditory<span class="kw">&lt;/meta&gt;</span></a>
+<a class="sourceLine" id="cb7-2" title="2"><span class="kw">&lt;meta</span><span class="ot"> property=</span><span class="st">&quot;schema:accessModeSufficient&quot;</span><span class="kw">&gt;</span>visual<span class="kw">&lt;/meta&gt;</span></a></code></pre></div>
+<h5 id="ui-4">UI</h5>
+<p><q>Audiobook: Yes</q></p>
+<p>(because <q><strong>auditory</strong></q> was found alone in <code>accessModeSufficient</code>)</p>
+<h4 id="example-2.2-metadata-present-but-not-an-audiobook">Example 2.2 (metadata present but not an Audiobook)</h4>
+<h5 id="metadata-5">Metadata</h5>
+<div class="sourceCode" id="cb8"><pre class="sourceCode xml"><code class="sourceCode xml"><a class="sourceLine" id="cb8-1" title="1"><span class="kw">&lt;meta</span><span class="ot"> property=</span><span class="st">&quot;schema:accessModeSufficient&quot;</span><span class="kw">&gt;</span>visual<span class="kw">&lt;/meta&gt;</span></a>
+<a class="sourceLine" id="cb8-2" title="2"><span class="kw">&lt;meta</span><span class="ot"> property=</span><span class="st">&quot;schema:accessModeSufficient&quot;</span><span class="kw">&gt;</span>auditory, visual<span class="kw">&lt;/meta&gt;</span></a></code></pre></div>
+<h5 id="ui-5">UI</h5>
+<p>Omit this section</p>
+<p>(Nothing presented to the user because <q><strong>auditory</strong></q> was not found alone in <code>accessModeSufficient</code>)</p>
+<h4 id="example-2.3-metadata-not-present">Example 2.3 (metadata not present)</h4>
+<h5 id="metadata-6">Metadata</h5>
+<p>""</p>
+<h5 id="ui-6">UI</h5>
+<p>Omit this section</p>
+<p>(Nothing presented to the user because <code>accessModeSufficient</code> is not present at all in the metadata)</p>
+<h3 id="accessibility-summary">Accessibility Summary</h3>
+<p><strong>Value</strong>: Textual Data from metadata</p>
+<p>This data is pulled directly from the EPUB package metadata inside the OPF file:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode xml"><code class="sourceCode xml"><a class="sourceLine" id="cb9-1" title="1"><span class="kw">&lt;meta</span><span class="ot"> property=</span><span class="st">&quot;schema:accessibilitySummary&quot;</span><span class="kw">&gt;</span></a></code></pre></div>
+<blockquote>
+<p><strong>Note</strong>: We will be creating additional guidance for publishers on how to best write these summaries.</p>
+</blockquote>
+<blockquote>
+<p><strong>Note</strong>: If the metadata does not exist this should say <q>No Summary Available</q></p>
+</blockquote>
+<blockquote>
+<p><strong>Note</strong>: This data could be in a language other than English but would be tagged as such.</p>
+</blockquote>
+<h4 id="example-3.1-metadata-present">Example 3.1 (metadata present)</h4>
+<h5 id="metadata-7">Metadata</h5>
+<div class="sourceCode" id="cb10"><pre class="sourceCode xml"><code class="sourceCode xml"><a class="sourceLine" id="cb10-1" title="1"><span class="kw">&lt;meta</span><span class="ot"> property=</span><span class="st">&quot;schema:accessibilitySummary&quot;</span><span class="kw">&gt;</span></a>
+<a class="sourceLine" id="cb10-2" title="2">    This publication includes markup to enable accessibility and compatibility with assistive technology. Images, audio, and video in the publication are well-described in conformance with WCAG 2.0 AA. Structural navigation may be inconsistent.</a>
+<a class="sourceLine" id="cb10-3" title="3"><span class="kw">&lt;/meta&gt;</span></a></code></pre></div>
+<h5 id="ui-7">UI</h5>
+<p>Accessibility Summary:</p>
+<p>This publication includes markup to enable accessibility and compatibility with assistive technology. Images, audio, and video in the publication are well-described in conformance with WCAG 2.0 A.</p>
+<h4 id="example-3.2-metadata-missing">Example 3.2 (metadata missing)</h4>
+<h5 id="metadata-8">Metadata</h5>
+<p>""</p>
+<h5 id="ui-8">UI</h5>
+<p><q>Accessibility Summary: None provided</q></p>
+<h3 id="epub-accessibility-conformance">EPUB Accessibility Conformance</h3>
+<p><strong>Value</strong>: Textual Link based on Metadata (WCAG-A, WCAG-AA, WCAG-AAA) or raw URL found in EPUB OPF file’s metadata field</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode xml"><code class="sourceCode xml"><a class="sourceLine" id="cb11-1" title="1"><span class="kw">&lt;link</span><span class="ot"> rel=</span><span class="st">&quot;dcterms:conformsTo&quot;</span><span class="kw">&gt;</span></a></code></pre></div>
+<blockquote>
+<p><strong>Note</strong>: Interpret this metadata to be as human friendly as possible. So if the URI is:</p>
+</blockquote>
+<blockquote>
+<ul>
+<li><q>http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-a</q> report it as <q><a href="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-a"><strong>WCAG-A</strong></a></q> which links to this URL.</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li><q>http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aa</q> report it as <q><a href="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aa"><strong>WCAG-AA</strong></a></q> which links to this URL.</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li><q>http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aaa</q> report it as <q><a href="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-a"><strong>WCAG-AAA</strong></a></q> which links to this URL.</li>
+</ul>
+</blockquote>
+<p>If the URL is anything other than the three listed above, then providing the raw URL which is also a link is the only option, since this may be a link to a different conformance standard (i.e. some audio conformance specification for an audio book).</p>
+<blockquote>
+<p><strong>Note</strong>: A case insensitive comparison should be done to replace the URI with human-readable text for WCAG-AA, etc.</p>
+</blockquote>
+<blockquote>
+<p><strong>Note</strong>: If you do not wish to have clickable links here, you may omit them as long as you make the links available in the section <a href="#all-accessibility-metadata">All Accessibility Metadata</a>, described below.</p>
+</blockquote>
+<blockquote>
+<p><strong>Note</strong>: The above three URIs could change in the future since they point to an IDPF page; this work has been moved to the W3C. If a change occurs, other URIs will be recommended.</p>
+</blockquote>
+<h4 id="example-4.1-metadata-present">Example 4.1 (metadata present)</h4>
+<h5 id="metadata-9">Metadata</h5>
+<div class="sourceCode" id="cb12"><pre class="sourceCode xml"><code class="sourceCode xml"><a class="sourceLine" id="cb12-1" title="1"><span class="kw">&lt;link</span><span class="ot"> rel=</span><span class="st">&quot;dcterms:conformsTo&quot;</span><span class="ot"> href=</span><span class="st">&quot;http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aa&quot;</span> <span class="kw">/&gt;</span></a></code></pre></div>
+<h5 id="ui-9">UI</h5>
+<p>EPUB Accessibility Conformance: <a href="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aa">WCAG-AA</a></p>
+<p>(Because this links to one of the three URIs outlined above)</p>
+<h4 id="example-4.2-metadata-pointing-to-another-specification">Example 4.2 (metadata pointing to another specification)</h4>
+<h5 id="metadata-10">Metadata</h5>
+<div class="sourceCode" id="cb13"><pre class="sourceCode xml"><code class="sourceCode xml"><a class="sourceLine" id="cb13-1" title="1"><span class="kw">&lt;link</span><span class="ot"> rel=</span><span class="st">&quot;dcterms:conformsTo&quot;</span><span class="ot"> href=</span><span class="st">&quot;http://www.daisy.org/guidelines/epub/navigable-audio-only-epub3-guidelines&quot;</span> <span class="kw">/&gt;</span></a></code></pre></div>
+<h5 id="ui-10">UI</h5>
+<p><q>EPUB Accessibility Conformance: Custom specification</q></p>
+<p>(Because this URI is different than what was outlined above. The book may qualify for conformance as an optimized publication.)</p>
+<h4 id="example-4.3-metadata-missing">Example 4.3 (metadata missing)</h4>
+<h5 id="metadata-11">Metadata</h5>
+<p>""</p>
+<h5 id="ui-11">UI</h5>
+<p><q>EPUB Accessibility Conformance: None provided</q></p>
+<h3 id="certified-by">Certified By</h3>
+<p><strong>Value</strong>: Textual Data from metadata</p>
+<p>This data is pulled directly from the EPUB package metadata inside the OPF file:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode xml"><code class="sourceCode xml"><a class="sourceLine" id="cb14-1" title="1"><span class="kw">&lt;meta</span><span class="ot"> property=</span><span class="st">&quot;a11y:certifiedBy&quot;</span><span class="kw">&gt;</span></a></code></pre></div>
+<blockquote>
+<p><strong>Note</strong>: If the metadata does not exist this should say <q>None provided</q></p>
+</blockquote>
+<h4 id="example-5.1-metadata-present-3rd-party">Example 5.1 (metadata present 3rd party)</h4>
+<h5 id="metadata-12">Metadata</h5>
+<div class="sourceCode" id="cb15"><pre class="sourceCode xml"><code class="sourceCode xml"><a class="sourceLine" id="cb15-1" title="1"><span class="kw">&lt;meta</span><span class="ot"> property=</span><span class="st">&quot;a11y:certifiedBy&quot;</span><span class="kw">&gt;</span>3rd Party Company Name<span class="kw">&lt;/meta&gt;</span></a></code></pre></div>
+<h5 id="ui-12">UI</h5>
+<p><q>Certified By: 3rd Party Company Name</q></p>
+<h4 id="example-5.2-metadata-present-self-certified">Example 5.2 (metadata present self Certified)</h4>
+<h5 id="metadata-13">Metadata</h5>
+<div class="sourceCode" id="cb16"><pre class="sourceCode xml"><code class="sourceCode xml"><a class="sourceLine" id="cb16-1" title="1"><span class="kw">&lt;dc:publisher&gt;</span>Publisher Name<span class="kw">&lt;/dc:publisher&gt;</span></a>
+<a class="sourceLine" id="cb16-2" title="2"><span class="kw">&lt;meta</span><span class="ot"> property=</span><span class="st">&quot;a11y:certifiedBy&quot;</span><span class="kw">&gt;</span>Publisher Name<span class="kw">&lt;/meta&gt;</span></a></code></pre></div>
+<h5 id="ui-13">UI</h5>
+<p><q>Self Certified By: Publisher Name</q></p>
+<h4 id="example-5.3-metadata-missing">Example 5.3 (metadata missing)</h4>
+<h5 id="metadata-14">Metadata</h5>
+<p>""</p>
+<h5 id="ui-14">UI</h5>
+<p><q>Certified By: None provided</q></p>
+<h3 id="certifier-credential">Certifier Credential</h3>
+<p><strong>Value</strong>: Potentially linked textual data from metadata</p>
+<p>This data is pulled directly from the EPUB package metadata inside the OPF file:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode xml"><code class="sourceCode xml"><a class="sourceLine" id="cb17-1" title="1"><span class="kw">&lt;meta</span><span class="ot"> property=</span><span class="st">&quot;a11y:certifierCredential&quot;</span><span class="kw">&gt;</span></a></code></pre></div>
+<blockquote>
+<p><strong>Note</strong>: This metadata could be a simple text string in which case you would just display it, or it could be a URI to the certifier’s credential web page.</p>
+</blockquote>
+<p>If the metadata value is a URI, you could have some standard certification logo which would be clickable and link to the certifier’s credential webpage.</p>
+<p>If you do not wish to have clickable links here, you may omit them as long as you make the links available in the section <a href="#all-accessibility-metadata">All Accessibility Metadata</a>, described below.</p>
+<p>If you are aware of a list of organizations who offer third-party certification, a short list of certifier’s logos could be cached and displayed when appropriate. For example:</p>
+<h4 id="example-6.1-text">Example 6.1 (Text)</h4>
+<h5 id="metadata-15">Metadata</h5>
+<div class="sourceCode" id="cb18"><pre class="sourceCode xml"><code class="sourceCode xml"><a class="sourceLine" id="cb18-1" title="1"><span class="kw">&lt;meta</span><span class="ot"> property=</span><span class="st">&quot;a11y:certifierCredential&quot;</span><span class="kw">&gt;</span>XYZ Certified</a>
+<a class="sourceLine" id="cb18-2" title="2">Accessible<span class="kw">&lt;/meta&gt;</span></a></code></pre></div>
+<h5 id="ui-15">UI</h5>
+<p><q>Certifier Credential: XYZ Certified Accessible</q></p>
+<h4 id="example-6.2-generic-3rd-party-url">Example 6.2 (Generic 3rd party URL)</h4>
+<h5 id="metadata-16">Metadata</h5>
+<div class="sourceCode" id="cb19"><pre class="sourceCode xml"><code class="sourceCode xml"><a class="sourceLine" id="cb19-1" title="1"><span class="kw">&lt;meta</span><span class="ot"> property=</span><span class="st">&quot;a11y:certifiedBy&quot;</span><span class="kw">&gt;</span>ACME Inc.<span class="kw">&lt;/meta&gt;</span></a>
+<a class="sourceLine" id="cb19-2" title="2"><span class="kw">&lt;meta</span><span class="ot"> property=</span><span class="st">&quot;a11y:certifierCredential&quot;</span><span class="kw">&gt;</span>https://3rd-party-certifier-credential.com<span class="kw">&lt;/meta&gt;</span></a></code></pre></div>
+<h5 id="metadata-17">Metadata</h5>
+<p>Certifier Credential</p>
+<blockquote>
+<p><a href="https://3rd-party-certifier-credential.com"><img src="./media/image1.png" alt="ACME Inc. credential webpage" width="50"/></a></p>
+</blockquote>
+<blockquote>
+<p><em>(Clickable Image to the URI of the certifiers credential’s webpage from metadata)</em></p>
+<p><em>alt-text <q>ACME Inc. credential webpage</q></em></p>
+<p><em>(Image here of a checkmark inside a shield is just for reference feel free to choose your own image)</em></p>
+</blockquote>
+<blockquote>
+<p><strong>Note</strong>: There may be an image that is associated with specific Certifier Credential image (ie. Mark/Stamp/Seal) which could be used here. If you would like to display this image, or any other, you would need to be coordinate this out of band with the certifier agency as it is not part of the metadata delivered with the book.</p>
+</blockquote>
+<p><strong>Or</strong></p>
+<p>Certifier’s Credential: <a href="https://3rd-party-certifier-credential.com">ACME Inc. credential webpage</a></p>
+<blockquote>
+<p><em>(Clickable link to the URI to the certifiers credentials from metadata)</em></p>
+</blockquote>
+<h4 id="example-6.3-metadata-missing">Example 6.3 (metadata missing)</h4>
+<h5 id="metadata-18">Metadata</h5>
+<p>""</p>
+<h5 id="ui-16">UI</h5>
+<p><q>Certifier Credential: None provided</q></p>
+<h3 id="certifier-report">Certifier Report</h3>
+<p><strong>Value</strong>: Potentially linked textual data from metadata</p>
+<p>This data is pulled directly from the EPUB package metadata inside the OPF file:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode xml"><code class="sourceCode xml"><a class="sourceLine" id="cb20-1" title="1"><span class="kw">&lt;link</span><span class="ot"> rel=</span><span class="st">&quot;a11y:certifierReport&quot;</span><span class="ot"> href=</span><span class="st">&quot;http://www.example.com/a11y/report/9780000000001&quot;</span><span class="kw">/&gt;</span></a></code></pre></div>
+<p>Ideally you would have a clickable link to the certification accessibility report.</p>
+<p>If you do not wish to have clickable links here, you may omit them as long as you make the links available in the section <a href="#all-accessibility-metadata">All Accessibility Metadata</a>, described below.</p>
+<h4 id="example-7.1-url">Example 7.1 (URL)</h4>
+<h5 id="metadata-19">Metadata</h5>
+<div class="sourceCode" id="cb21"><pre class="sourceCode xml"><code class="sourceCode xml"><a class="sourceLine" id="cb21-1" title="1"><span class="kw">&lt;meta</span><span class="ot"> property=</span><span class="st">&quot;a11y:certifiedBy&quot;</span><span class="kw">&gt;</span>ACME Inc.<span class="kw">&lt;/meta&gt;</span></a>
+<a class="sourceLine" id="cb21-2" title="2"><span class="kw">&lt;link</span><span class="ot"> rel=</span><span class="st">&quot;a11y:certifierReport&quot;</span><span class="ot"> href=</span><span class="st">&quot;http://www.example.com/a11y/report/9780000000001&quot;</span><span class="kw">/&gt;</span></a></code></pre></div>
+<h5 id="ui-17">UI</h5>
+<p>Certifier Report</p>
+<p><a href="http://www.example.com/a11y/report/9780000000001"><img src="./media/image2.png" alt="ACME Inc. Report webpage" width="50"/></a></p>
+<blockquote>
+<p><em>(Clickable Image to the URI of the report from metadata)</em></p>
+<p><em>alt-text <q>ACME Inc. Report webpage</q></em></p>
+<p><em>(Image here of checkmark with clipboard is just for reference feel free to choose your own image)</em></p>
+</blockquote>
+<p><strong>Or</strong></p>
+<p>Certifier Report: <a href="http://www.example.com/a11y/report/9780000000001">ACME Inc. Accessibility Report</a></p>
+<blockquote>
+<p><em>(Clickable link to the URI of the report from metadata)</em></p>
+</blockquote>
+<h4 id="example-7.2-metadata-missing">Example 7.2 (metadata missing)</h4>
+<h5 id="metadata-20">Metadata</h5>
+<p>""</p>
+<h5 id="ui-18">UI</h5>
+<p>Omit this section</p>
+<p>(Omit this section if the metadata is missing, as most of the time there will be no report available.)</p>
+<h3 id="hazards">Hazards</h3>
+<p><strong>Values</strong>: flashing, motion simulation, sound, no flashing, no motion simulation, no sound, none, or Unknown.</p>
+<p>This data is found in the EPUB package metadata inside the OPF file:</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode xml"><code class="sourceCode xml"><a class="sourceLine" id="cb22-1" title="1"><span class="kw">&lt;meta</span><span class="ot"> property=</span><span class="st">&quot;schema:accessibilityHazard&quot;</span><span class="kw">&gt;</span>none<span class="kw">&lt;/meta&gt;</span></a></code></pre></div>
+<p>Hazards are the only metadata which can be expressed as either positive or negative statements, so metadata authors can confirm either the presence of the hazard, such as <q><em>flashing</em></q>, or the absence of the hazard, <q><em>noFlashingHazard</em></q> and similarly for <q><em>sound</em> / <em>noSoundHazard</em></q> and <q><em>motion</em> / <em>noMotionSimulationHazard</em></q>. There is also the metadata value <q><em>none</em></q>, which covers all three categories and corresponds to <q><em>noFlashingHazard</em></q>, <q><em>noSoundHazard</em></q> and <q><em>noMotionSimulationHazard</em></q>.</p>
+<blockquote>
+<p><strong>Note</strong>: In the section <q><a href="#all-accessibility-metadata">All Accessibility Metadata</a></q> Hazards will be displayed exactly how the publisher provided them so simplifying here with using <q>none</q> can be an option instead of saying explicitly <q>no Sound, no Flashing, no Motion Simulation</q></p>
+</blockquote>
+<h4 id="example-8.1-metadata-present-flashing">Example 8.1 (metadata present flashing)</h4>
+<h5 id="metadata-21">Metadata</h5>
+<div class="sourceCode" id="cb23"><pre class="sourceCode xml"><code class="sourceCode xml"><a class="sourceLine" id="cb23-1" title="1"><span class="kw">&lt;meta</span><span class="ot"> property=</span><span class="st">&quot;schema:accessibilityHazard&quot;</span><span class="kw">&gt;</span>flashing<span class="kw">&lt;/meta&gt;</span></a></code></pre></div>
+<h5 id="ui-19">UI</h5>
+<p><q>Hazard: Flashing</q></p>
+<p>(because <q><strong><em>flashing</em></strong></q> was found in <code>accessibilityHazard</code>)</p>
+<h4 id="example-8.2-metadata-present-motionsimulation">Example 8.2 (metadata present motionSimulation)</h4>
+<h5 id="metadata-22">Metadata</h5>
+<div class="sourceCode" id="cb24"><pre class="sourceCode xml"><code class="sourceCode xml"><a class="sourceLine" id="cb24-1" title="1"><span class="kw">&lt;meta</span><span class="ot"> property=</span><span class="st">&quot;schema:accessibilityHazard&quot;</span><span class="kw">&gt;</span>motionSimulation<span class="kw">&lt;/meta&gt;</span></a></code></pre></div>
+<h5 id="ui-20">UI</h5>
+<p><q>Hazard: Motion Simulation</q></p>
+<p>(because <q><strong><em>motionSimulation</em></strong></q> was found in <code>accessibilityHazard</code>)</p>
+<h4 id="example-8.3-metadata-present-sound">Example 8.3 (metadata present sound)</h4>
+<h5 id="metadata-23">Metadata</h5>
+<div class="sourceCode" id="cb25"><pre class="sourceCode xml"><code class="sourceCode xml"><a class="sourceLine" id="cb25-1" title="1"><span class="kw">&lt;meta</span><span class="ot"> property=</span><span class="st">&quot;schema:accessibilityHazard&quot;</span><span class="kw">&gt;</span>sound<span class="kw">&lt;/meta&gt;</span></a></code></pre></div>
+<h5 id="ui-21">UI</h5>
+<p><q>Hazard: Sound</q></p>
+<p>(because <q><strong><em>sound</em></strong></q> was found in <code>accessibilityHazard</code>)</p>
+<h4 id="example-8.4-multiple-hazards-present">Example 8.4 (multiple hazards present)</h4>
+<h5 id="metadata-24">Metadata</h5>
+<div class="sourceCode" id="cb26"><pre class="sourceCode xml"><code class="sourceCode xml"><a class="sourceLine" id="cb26-1" title="1"><span class="kw">&lt;meta</span><span class="ot"> property=</span><span class="st">&quot;schema:accessibilityHazard&quot;</span><span class="kw">&gt;</span>sound<span class="kw">&lt;/meta&gt;</span></a>
+<a class="sourceLine" id="cb26-2" title="2"><span class="kw">&lt;meta</span><span class="ot"> property=</span><span class="st">&quot;schema:accessibilityHazard&quot;</span><span class="kw">&gt;</span>motionSimulation<span class="kw">&lt;/meta&gt;</span></a>
+<a class="sourceLine" id="cb26-3" title="3"><span class="kw">&lt;meta</span><span class="ot"> property=</span><span class="st">&quot;schema:accessibilityHazard&quot;</span><span class="kw">&gt;</span>flashing<span class="kw">&lt;/meta&gt;</span></a></code></pre></div>
+<h5 id="ui-22">UI</h5>
+<p><q>Hazard: Sound, Motion Simulation, and Flashing</q></p>
+<p>(because <q><strong><em>sound</em></strong></q>, <q><strong><em>motionSimulation</em></strong></q> , <q><strong><em>flashing</em></strong></q> and were all found in <code>accessibilityHazard</code>)</p>
+<h4 id="example-8.5-metadata-present-none">Example 8.5 (metadata present none)</h4>
+<h5 id="metadata-25">Metadata</h5>
+<div class="sourceCode" id="cb27"><pre class="sourceCode xml"><code class="sourceCode xml"><a class="sourceLine" id="cb27-1" title="1"><span class="kw">&lt;meta</span><span class="ot"> property=</span><span class="st">&quot;schema:accessibilityHazard&quot;</span><span class="kw">&gt;</span>none<span class="kw">&lt;/meta&gt;</span></a></code></pre></div>
+<h5 id="ui-23">UI</h5>
+<p>Omit this section</p>
+<p><strong>Or</strong></p>
+<p><q>Hazards: none provided</q></p>
+<p>Nothing presented to the user because there are no hazards; since 99.9% of EPUBs won’t have any hazards, there is no need to report <q>Hazards: No</q> for every EPUB.</p>
+<h4 id="example-8.6-metadata-present-noflashinghazard-nosoundhazard-and-nosimulation">Example 8.6 (metadata present: <code>noFlashingHazard</code>, <code>noSoundHazard</code>, and <code>noSimulation</code>)</h4>
+<h5 id="metadata-26">Metadata</h5>
+<div class="sourceCode" id="cb28"><pre class="sourceCode xml"><code class="sourceCode xml"><a class="sourceLine" id="cb28-1" title="1"><span class="kw">&lt;meta</span><span class="ot"> property=</span><span class="st">&quot;schema:accessibilityHazard&quot;</span><span class="kw">&gt;</span>noFlashingHazard<span class="kw">&lt;/meta&gt;</span></a>
+<a class="sourceLine" id="cb28-2" title="2"><span class="kw">&lt;meta</span><span class="ot"> property=</span><span class="st">&quot;schema:accessibilityHazard&quot;</span><span class="kw">&gt;</span>noSoundHazard<span class="kw">&lt;/meta&gt;</span></a>
+<a class="sourceLine" id="cb28-3" title="3"><span class="kw">&lt;meta</span><span class="ot"> property=</span><span class="st">&quot;schema:accessibilityHazard&quot;</span><span class="kw">&gt;</span>noMotionSimulationHazard<span class="kw">&lt;/meta&gt;</span></a></code></pre></div>
+<h5 id="ui-24">UI</h5>
+<p>Omit this section</p>
+<p><strong>Or</strong></p>
+<p><q>Hazards: none</q></p>
+<p><strong>Or</strong></p>
+<p><q>Hazards: No Flashing, No Sound, No Motion Simulation</q></p>
+<h4 id="example-8.7-metadata-not-present">Example 8.7 (metadata not present)</h4>
+<h5 id="metadata-27">Metadata</h5>
+<p>""</p>
+<h5 id="ui-25">UI</h5>
+<p><q>Hazards: None provided</q></p>
+<p>We want to make the distinction here between No Hazards and missing hazard metadata therefore for the missing metadata case we need to inform the user we don’t know about any hazards which may or maynot be present.</p>
+<hr />
+<h2 id="all-accessibility-metadata"><a name="all-accessibility-metadata)">All Accessibility Metadata</a></h2>
+<p><strong>Value</strong>: Link to complete list of all metadata fields</p>
+<p>Here are <a href="https://www.w3.org/wiki/WebSchemas/Accessibility">all the possible accessibility metadata properties</a>.</p>
+<p>This section can either be a separate page that is linked to or better yet an HTML Summary/Details element that users can expand to get all the accessibility metadata field elements. Here you would expose: <code>accessibilityFeature</code>, <code>accessibilityHazard</code>, <code>accessMode</code>, <code>accessModeSufficient</code>, as well as all the accessibility metadata and conformance metadata listed above.</p>
+<h4 id="example-9.1-all-metadata-fields-present">Example 9.1 (all metadata fields present)</h4>
+<h5 id="metadata-28">Metadata</h5>
+<div class="sourceCode" id="cb29"><pre class="sourceCode xml"><code class="sourceCode xml"><a class="sourceLine" id="cb29-1" title="1"><span class="kw">&lt;meta</span><span class="ot"> property=</span><span class="st">&quot;schema:accessibilityFeature&quot;</span><span class="kw">&gt;</span>alternativeText<span class="kw">&lt;/meta&gt;</span></a>
+<a class="sourceLine" id="cb29-2" title="2"><span class="kw">&lt;meta</span><span class="ot"> property=</span><span class="st">&quot;schema:accessibilityFeature&quot;</span><span class="kw">&gt;</span>longDescription<span class="kw">&lt;/meta&gt;</span></a>
+<a class="sourceLine" id="cb29-3" title="3"><span class="kw">&lt;meta</span><span class="ot"> property=</span><span class="st">&quot;schema:accessibilityFeature&quot;</span><span class="kw">&gt;</span>printPageNumbers<span class="kw">&lt;/meta&gt;</span></a>
+<a class="sourceLine" id="cb29-4" title="4"><span class="kw">&lt;meta</span><span class="ot"> property=</span><span class="st">&quot;schema:accessibilityHazards&quot;</span><span class="kw">&gt;</span>noSoundHazard<span class="kw">&lt;/meta&gt;</span></a>
+<a class="sourceLine" id="cb29-5" title="5"><span class="kw">&lt;meta</span><span class="ot"> property=</span><span class="st">&quot;schema:accessibilityHazards&quot;</span><span class="kw">&gt;</span>noMotionSimulationHazard<span class="kw">&lt;/meta&gt;</span></a>
+<a class="sourceLine" id="cb29-6" title="6"><span class="kw">&lt;meta</span><span class="ot"> property=</span><span class="st">&quot;schema:accessibilityHazards&quot;</span><span class="kw">&gt;</span>noFlashingHazard<span class="kw">&lt;/meta&gt;</span></a>
+<a class="sourceLine" id="cb29-7" title="7"><span class="kw">&lt;meta</span><span class="ot"> property=</span><span class="st">&quot;schema:accessMode&quot;</span><span class="kw">&gt;</span>visual<span class="kw">&lt;/meta&gt;</span></a>
+<a class="sourceLine" id="cb29-8" title="8"><span class="kw">&lt;meta</span><span class="ot"> property=</span><span class="st">&quot;schema:accessMode&quot;</span><span class="kw">&gt;</span>textual<span class="kw">&lt;/meta&gt;</span></a>
+<a class="sourceLine" id="cb29-9" title="9"><span class="kw">&lt;meta</span><span class="ot"> property=</span><span class="st">&quot;schema:accessModeSufficient&quot;</span><span class="kw">&gt;</span>visual<span class="kw">&lt;/meta&gt;</span></a>
+<a class="sourceLine" id="cb29-10" title="10"><span class="kw">&lt;meta</span><span class="ot"> property=</span><span class="st">&quot;schema:accessModeSufficient&quot;</span><span class="kw">&gt;</span>textual<span class="kw">&lt;/meta&gt;</span></a>
+<a class="sourceLine" id="cb29-11" title="11"><span class="kw">&lt;meta</span><span class="ot"> property=</span><span class="st">&quot;schema:accessModeSufficient&quot;</span><span class="kw">&gt;</span>visual,textual<span class="kw">&lt;/meta&gt;</span></a>
+<a class="sourceLine" id="cb29-12" title="12"><span class="kw">&lt;meta</span><span class="ot"> property=</span><span class="st">&quot;a11y:certifiedBy&quot;</span><span class="kw">&gt;</span>ACME Certification<span class="kw">&lt;/meta&gt;</span></a>
+<a class="sourceLine" id="cb29-13" title="13"><span class="kw">&lt;meta</span><span class="ot"> property=</span><span class="st">&quot;a11y:certifierCredential&quot;</span><span class="kw">&gt;</span>https://ACME-Certification.org/<span class="kw">&lt;/meta&gt;</span></a>
+<a class="sourceLine" id="cb29-14" title="14"><span class="kw">&lt;link</span><span class="ot"> rel=</span><span class="st">&quot;dcterms:conformsTo&quot;</span><span class="ot"> href=</span><span class="st">&quot;http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-a/&quot;</span> <span class="kw">/&gt;</span></a>
+<a class="sourceLine" id="cb29-15" title="15"><span class="kw">&lt;meta</span><span class="ot"> property=</span><span class="st">&quot;schema:accessibilitySummary&quot;</span><span class="kw">&gt;</span></a>
+<a class="sourceLine" id="cb29-16" title="16">    This publication includes mark-up to enable accessibility and compatibility with assistive technology. Images, audio, and video in the publication are well-described in conformance with WCAG 2.0 A.</a>
+<a class="sourceLine" id="cb29-17" title="17"><span class="kw">&lt;/meta&gt;</span></a></code></pre></div>
+<h5 id="ui-26">UI</h5>
+<p><strong>Accessibility Features</strong>:</p>
+<ul>
+<li><p>alternativeText</p></li>
+<li><p>longDescriptions</p></li>
+<li><p>printPageNumbers</p></li>
+</ul>
+<p><strong>Accessibility Hazards</strong>:</p>
+<ul>
+<li><p>No Sound Hazard</p></li>
+<li><p>No Motion Simulation Hazard</p></li>
+<li><p>No Flashing Hazard</p></li>
+</ul>
+<p><strong>AccessMode</strong>:</p>
+<ul>
+<li><p>visual</p></li>
+<li><p>textual</p></li>
+</ul>
+<p><strong>Access Mode Sufficient</strong>:</p>
+<ul>
+<li><p>visual</p></li>
+<li><p>textual</p></li>
+<li><p>visual, textual</p></li>
+</ul>
+<p><strong>Certified By</strong>:</p>
+<p>ACME Certification</p>
+<p><strong>Certifier’s Credential</strong>:</p>
+<p><a href="https://acme-certification.org/">https://ACME-Certification.org/</a></p>
+<p><strong>Conforms To</strong>:</p>
+<p><a href="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-a">http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-a</a></p>
+<p><strong>Accessibility Summary</strong>:</p>
+<p>This publication includes markup to enable accessibility and compatibility with assistive technology. Images, audio, and video in the publication are well-described in conformance with WCAG 2.0 A.</p>
+<h4 id="example-9.2-all-metadata-fields-missing">Example 9.2 (all metadata fields missing)</h4>
+<h5 id="metadata-29">Metadata</h5>
+<p>""</p>
+<h5 id="ui-27">UI</h5>
+<p><strong>Accessibility Features</strong>:</p>
+<p>None provided</p>
+<p><strong>Accessibility Hazards</strong>:</p>
+<p>None provided</p>
+<p><strong>AccessMode</strong>:</p>
+<p>None provided</p>
+<p><strong>Access Mode Sufficient</strong>:</p>
+<p>None provided</p>
+<p><strong>Certified By</strong>:</p>
+<p>None provided</p>
+<p><strong>Certifier’s Credential</strong>:</p>
+<p>None provided</p>
+<p><strong>Conforms To</strong>:</p>
+<p>None provided</p>
+<p><strong>Accessibility Summary</strong>:</p>
+<p>None provided</p>
+<hr />
+<h2 id="onix-metadata">ONIX Metadata</h2>
+<blockquote>
+<p><strong>Note</strong>:<br />
+ONIX does not have an exact 1:1 mapping with EPUB accessibility metadata so unfortunately not all of the accessibility metadata found in an EPUB exists in ONIX at the time of this publication. There are plans to add this metadata to future versions of ONIX but no time frame has been announced. This <a href="http://www.a11ymetadata.org/the-specification/metadata-crosswalk/">EPUB to ONIX crosswalk</a> outlines the current overlap in metadata which will get updated as these two specifications evolve. It is important to note that there were a number of new accessibility metadata codes added to ONIX 3 to support the Accessibility 1.0 specification. Which means that ONIX 2 has a limited number of accessibility metadata codes and is something not covered in this document.</p>
+</blockquote>
+<h3 id="onix-feed-examples">ONIX feed examples</h3>
+<h4 id="onix-feed-describing-an-epub">ONIX feed describing an EPUB</h4>
+<p>Here is an example of an ONIX feed (version 3.0), which will be used as a reference point for the following examples on EPUB accessibility metadata: the results of the XPath shown are based on this example.</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode xml"><code class="sourceCode xml"><a class="sourceLine" id="cb30-1" title="1"><span class="kw">&lt;?xml</span> version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;<span class="kw">?&gt;</span></a>
+<a class="sourceLine" id="cb30-2" title="2"><span class="kw">&lt;ONIXMessage</span><span class="ot"> xmlns=</span><span class="st">&quot;http://ns.editeur.org/onix/3.0/reference&quot;</span><span class="ot"> release=</span><span class="st">&quot;3.0&quot;</span><span class="kw">&gt;</span></a>
+<a class="sourceLine" id="cb30-3" title="3">    <span class="kw">&lt;Header&gt;</span>...<span class="kw">&lt;/Header&gt;</span></a>
+<a class="sourceLine" id="cb30-4" title="4">    <span class="kw">&lt;Product&gt;</span></a>
+<a class="sourceLine" id="cb30-5" title="5">        <span class="kw">&lt;RecordReference&gt;</span>123456789<span class="kw">&lt;/RecordReference&gt;</span></a>
+<a class="sourceLine" id="cb30-6" title="6">        <span class="kw">&lt;NotificationType&gt;</span>01<span class="kw">&lt;/NotificationType&gt;</span></a>
+<a class="sourceLine" id="cb30-7" title="7">        <span class="kw">&lt;ProductIdentifier&gt;</span></a>
+<a class="sourceLine" id="cb30-8" title="8">            <span class="kw">&lt;ProductIDType&gt;</span>03<span class="kw">&lt;/ProductIDType&gt;</span></a>
+<a class="sourceLine" id="cb30-9" title="9">            <span class="kw">&lt;IDValue&gt;</span>9780000000000<span class="kw">&lt;/IDValue&gt;</span></a>
+<a class="sourceLine" id="cb30-10" title="10">        <span class="kw">&lt;/ProductIdentifier&gt;</span></a>
+<a class="sourceLine" id="cb30-11" title="11">        <span class="kw">&lt;ProductIdentifier&gt;</span></a>
+<a class="sourceLine" id="cb30-12" title="12">            <span class="kw">&lt;ProductIDType&gt;</span>15<span class="kw">&lt;/ProductIDType&gt;</span></a>
+<a class="sourceLine" id="cb30-13" title="13">            <span class="kw">&lt;IDValue&gt;</span>9780000000000<span class="kw">&lt;/IDValue&gt;</span></a>
+<a class="sourceLine" id="cb30-14" title="14">        <span class="kw">&lt;/ProductIdentifier&gt;</span></a>
+<a class="sourceLine" id="cb30-15" title="15">        <span class="kw">&lt;DescriptiveDetail&gt;</span></a>
+<a class="sourceLine" id="cb30-16" title="16">            <span class="kw">&lt;ProductComposition&gt;</span>00<span class="kw">&lt;/ProductComposition&gt;</span></a>
+<a class="sourceLine" id="cb30-17" title="17">            <span class="kw">&lt;ProductForm&gt;</span>ED<span class="kw">&lt;/ProductForm&gt;</span></a>
+<a class="sourceLine" id="cb30-18" title="18">            <span class="kw">&lt;ProductFormDetail&gt;</span>E101<span class="kw">&lt;/ProductFormDetail&gt;</span></a>
+<a class="sourceLine" id="cb30-19" title="19">            <span class="kw">&lt;ProductFormFeature&gt;</span></a>
+<a class="sourceLine" id="cb30-20" title="20">                <span class="kw">&lt;ProductFormFeatureType&gt;</span>09<span class="kw">&lt;/ProductFormFeatureType&gt;</span></a>
+<a class="sourceLine" id="cb30-21" title="21">                <span class="kw">&lt;ProductFormFeatureValue&gt;</span>00<span class="kw">&lt;/ProductFormFeatureValue&gt;</span></a>
+<a class="sourceLine" id="cb30-22" title="22">                <span class="kw">&lt;ProductFormFeatureDescription&gt;</span></a>
+<a class="sourceLine" id="cb30-23" title="23">                    This publication includes mark-up to enable accessibility and compatibility with assistive technology. Images, audio, and video in the publication are well-described in conformance with WCAG 2.0 A.</a>
+<a class="sourceLine" id="cb30-24" title="24">                <span class="kw">&lt;/ProductFormFeatureDescription&gt;</span></a>
+<a class="sourceLine" id="cb30-25" title="25">            <span class="kw">&lt;/ProductFormFeature&gt;</span></a>
+<a class="sourceLine" id="cb30-26" title="26">            <span class="kw">&lt;ProductFormFeature&gt;</span></a>
+<a class="sourceLine" id="cb30-27" title="27">                <span class="kw">&lt;ProductFormFeatureType&gt;</span>09<span class="kw">&lt;/ProductFormFeatureType&gt;</span></a>
+<a class="sourceLine" id="cb30-28" title="28">                <span class="kw">&lt;ProductFormFeatureValue&gt;</span>03<span class="kw">&lt;/ProductFormFeatureValue&gt;</span></a>
+<a class="sourceLine" id="cb30-29" title="29">            <span class="kw">&lt;/ProductFormFeature&gt;</span></a>
+<a class="sourceLine" id="cb30-30" title="30">            <span class="kw">&lt;ProductFormFeature&gt;</span></a>
+<a class="sourceLine" id="cb30-31" title="31">                <span class="kw">&lt;ProductFormFeatureType&gt;</span>09<span class="kw">&lt;/ProductFormFeatureType&gt;</span></a>
+<a class="sourceLine" id="cb30-32" title="32">                <span class="kw">&lt;ProductFormFeatureValue&gt;</span>10<span class="kw">&lt;/ProductFormFeatureValue&gt;</span></a>
+<a class="sourceLine" id="cb30-33" title="33">            <span class="kw">&lt;/ProductFormFeature&gt;</span></a>
+<a class="sourceLine" id="cb30-34" title="34">            <span class="kw">&lt;ProductFormFeature&gt;</span></a>
+<a class="sourceLine" id="cb30-35" title="35">                <span class="kw">&lt;ProductFormFeatureType&gt;</span>09<span class="kw">&lt;/ProductFormFeatureType&gt;</span></a>
+<a class="sourceLine" id="cb30-36" title="36">                <span class="kw">&lt;ProductFormFeatureValue&gt;</span>11<span class="kw">&lt;/ProductFormFeatureValue&gt;</span></a>
+<a class="sourceLine" id="cb30-37" title="37">            <span class="kw">&lt;/ProductFormFeature&gt;</span></a>
+<a class="sourceLine" id="cb30-38" title="38">            <span class="kw">&lt;ProductFormFeature&gt;</span></a>
+<a class="sourceLine" id="cb30-39" title="39">                <span class="kw">&lt;ProductFormFeatureType&gt;</span>09<span class="kw">&lt;/ProductFormFeatureType&gt;</span></a>
+<a class="sourceLine" id="cb30-40" title="40">                <span class="kw">&lt;ProductFormFeatureValue&gt;</span>13<span class="kw">&lt;/ProductFormFeatureValue&gt;</span></a>
+<a class="sourceLine" id="cb30-41" title="41">            <span class="kw">&lt;/ProductFormFeature&gt;</span></a>
+<a class="sourceLine" id="cb30-42" title="42">            <span class="kw">&lt;ProductFormFeature&gt;</span></a>
+<a class="sourceLine" id="cb30-43" title="43">                <span class="kw">&lt;ProductFormFeatureType&gt;</span>09<span class="kw">&lt;/ProductFormFeatureType&gt;</span></a>
+<a class="sourceLine" id="cb30-44" title="44">                <span class="kw">&lt;ProductFormFeatureValue&gt;</span>14<span class="kw">&lt;/ProductFormFeatureValue&gt;</span></a>
+<a class="sourceLine" id="cb30-45" title="45">            <span class="kw">&lt;/ProductFormFeature&gt;</span></a>
+<a class="sourceLine" id="cb30-46" title="46">            <span class="kw">&lt;ProductFormFeature&gt;</span></a>
+<a class="sourceLine" id="cb30-47" title="47">                <span class="kw">&lt;ProductFormFeatureType&gt;</span>09<span class="kw">&lt;/ProductFormFeatureType&gt;</span></a>
+<a class="sourceLine" id="cb30-48" title="48">                <span class="kw">&lt;ProductFormFeatureValue&gt;</span>22<span class="kw">&lt;/ProductFormFeatureValue&gt;</span></a>
+<a class="sourceLine" id="cb30-49" title="49">            <span class="kw">&lt;/ProductFormFeature&gt;</span></a>
+<a class="sourceLine" id="cb30-50" title="50">            <span class="kw">&lt;ProductFormFeature&gt;</span></a>
+<a class="sourceLine" id="cb30-51" title="51">                <span class="kw">&lt;ProductFormFeatureType&gt;</span>09<span class="kw">&lt;/ProductFormFeatureType&gt;</span></a>
+<a class="sourceLine" id="cb30-52" title="52">                <span class="kw">&lt;ProductFormFeatureValue&gt;</span>94<span class="kw">&lt;/ProductFormFeatureValue&gt;</span></a>
+<a class="sourceLine" id="cb30-53" title="53">                <span class="kw">&lt;ProductFormFeatureDescription&gt;</span>http://www.example.com/a11y/report/9780000000001<span class="kw">&lt;/ProductFormFeatureDescription&gt;</span></a>
+<a class="sourceLine" id="cb30-54" title="54">            <span class="kw">&lt;/ProductFormFeature&gt;</span></a>
+<a class="sourceLine" id="cb30-55" title="55">            <span class="kw">&lt;PrimaryContentType&gt;</span>10<span class="kw">&lt;/PrimaryContentType&gt;</span></a>
+<a class="sourceLine" id="cb30-56" title="56">            <span class="kw">&lt;EpubTechnicalProtection&gt;</span>03<span class="kw">&lt;/EpubTechnicalProtection&gt;</span></a>
+<a class="sourceLine" id="cb30-57" title="57">            <span class="kw">&lt;EpubUsageConstraint&gt;</span></a>
+<a class="sourceLine" id="cb30-58" title="58">                <span class="kw">&lt;EpubUsageType&gt;</span>04<span class="kw">&lt;/EpubUsageType&gt;</span></a>
+<a class="sourceLine" id="cb30-59" title="59">                <span class="kw">&lt;EpubUsageStatus&gt;</span>02<span class="kw">&lt;/EpubUsageStatus&gt;</span></a>
+<a class="sourceLine" id="cb30-60" title="60">            <span class="kw">&lt;/EpubUsageConstraint&gt;</span></a>
+<a class="sourceLine" id="cb30-61" title="61">            <span class="kw">&lt;TitleDetail&gt;</span>...<span class="kw">&lt;/TitleDetail&gt;</span></a>
+<a class="sourceLine" id="cb30-62" title="62">            <span class="kw">&lt;Contributor&gt;</span>...<span class="kw">&lt;/Contributor&gt;</span></a>
+<a class="sourceLine" id="cb30-63" title="63">            <span class="kw">&lt;Extent&gt;</span>...<span class="kw">&lt;/Extent&gt;</span></a>
+<a class="sourceLine" id="cb30-64" title="64">            <span class="kw">&lt;Subject&gt;</span>...<span class="kw">&lt;/Subject&gt;</span></a>
+<a class="sourceLine" id="cb30-65" title="65">        <span class="kw">&lt;/DescriptiveDetail&gt;</span></a>
+<a class="sourceLine" id="cb30-66" title="66">        <span class="kw">&lt;CollateralDetail&gt;</span>...<span class="kw">&lt;/CollateralDetail&gt;</span></a>
+<a class="sourceLine" id="cb30-67" title="67">        <span class="kw">&lt;PublishingDetail&gt;</span>...<span class="kw">&lt;/PublishingDetail&gt;</span></a>
+<a class="sourceLine" id="cb30-68" title="68">        <span class="kw">&lt;RelatedMaterial&gt;</span>...<span class="kw">&lt;/RelatedMaterial&gt;</span></a>
+<a class="sourceLine" id="cb30-69" title="69">        <span class="kw">&lt;ProductSupply&gt;</span>...<span class="kw">&lt;/ProductSupply&gt;</span></a>
+<a class="sourceLine" id="cb30-70" title="70">    <span class="kw">&lt;/Product&gt;</span></a>
+<a class="sourceLine" id="cb30-71" title="71"><span class="kw">&lt;/ONIXMessage&gt;</span></a></code></pre></div>
+<h4 id="onix-feed-describing-an-audiobook-here-is-an-example-of-an-onix-feed-version-3.0-for-describing-an-audiobook.">ONIX feed describing an Audiobook Here is an example of an ONIX feed (version 3.0) for describing an audiobook.</h4>
+<div class="sourceCode" id="cb31"><pre class="sourceCode xml"><code class="sourceCode xml"><a class="sourceLine" id="cb31-1" title="1"><span class="kw">&lt;?xml</span> version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;<span class="kw">?&gt;</span></a>
+<a class="sourceLine" id="cb31-2" title="2"><span class="kw">&lt;ONIXMessage</span><span class="ot"> xmlns=</span><span class="st">&quot;http://ns.editeur.org/onix/3.0/reference&quot;</span><span class="ot"> release=</span><span class="st">&quot;3.0&quot;</span><span class="kw">&gt;</span></a>
+<a class="sourceLine" id="cb31-3" title="3">    <span class="kw">&lt;Header&gt;</span>...<span class="kw">&lt;/Header&gt;</span></a>
+<a class="sourceLine" id="cb31-4" title="4">    <span class="kw">&lt;Product&gt;</span></a>
+<a class="sourceLine" id="cb31-5" title="5">        <span class="kw">&lt;RecordReference&gt;</span>123456789<span class="kw">&lt;/RecordReference&gt;</span></a>
+<a class="sourceLine" id="cb31-6" title="6">        <span class="kw">&lt;NotificationType&gt;</span>01<span class="kw">&lt;/NotificationType&gt;</span></a>
+<a class="sourceLine" id="cb31-7" title="7">        <span class="kw">&lt;ProductIdentifier&gt;</span></a>
+<a class="sourceLine" id="cb31-8" title="8">            <span class="kw">&lt;ProductIDType&gt;</span>03<span class="kw">&lt;/ProductIDType&gt;</span></a>
+<a class="sourceLine" id="cb31-9" title="9">            <span class="kw">&lt;IDValue&gt;</span>0000000000000<span class="kw">&lt;/IDValue&gt;</span></a>
+<a class="sourceLine" id="cb31-10" title="10">        <span class="kw">&lt;/ProductIdentifier&gt;</span></a>
+<a class="sourceLine" id="cb31-11" title="11">        <span class="kw">&lt;DescriptiveDetail&gt;</span></a>
+<a class="sourceLine" id="cb31-12" title="12">            <span class="kw">&lt;ProductComposition&gt;</span>00<span class="kw">&lt;/ProductComposition&gt;</span></a>
+<a class="sourceLine" id="cb31-13" title="13">            <span class="kw">&lt;ProductForm&gt;</span>AO<span class="kw">&lt;/ProductForm&gt;</span></a>
+<a class="sourceLine" id="cb31-14" title="14">            <span class="kw">&lt;PrimaryContentType&gt;</span>01<span class="kw">&lt;/PrimaryContentType&gt;</span></a>
+<a class="sourceLine" id="cb31-15" title="15">            ...</a>
+<a class="sourceLine" id="cb31-16" title="16">            <span class="kw">&lt;TitleDetail&gt;</span>...<span class="kw">&lt;/TitleDetail&gt;</span></a>
+<a class="sourceLine" id="cb31-17" title="17">            <span class="kw">&lt;Contributor&gt;</span>...<span class="kw">&lt;/Contributor&gt;</span></a>
+<a class="sourceLine" id="cb31-18" title="18">            <span class="kw">&lt;Extent&gt;</span>...<span class="kw">&lt;/Extent&gt;</span></a>
+<a class="sourceLine" id="cb31-19" title="19">            <span class="kw">&lt;Subject&gt;</span>...<span class="kw">&lt;/Subject&gt;</span></a>
+<a class="sourceLine" id="cb31-20" title="20">        <span class="kw">&lt;/DescriptiveDetail&gt;</span></a>
+<a class="sourceLine" id="cb31-21" title="21">        <span class="kw">&lt;CollateralDetail&gt;</span>...<span class="kw">&lt;/CollateralDetail&gt;</span></a>
+<a class="sourceLine" id="cb31-22" title="22">        <span class="kw">&lt;PublishingDetail&gt;</span>...<span class="kw">&lt;/PublishingDetail&gt;</span></a>
+<a class="sourceLine" id="cb31-23" title="23">        <span class="kw">&lt;RelatedMaterial&gt;</span>...<span class="kw">&lt;/RelatedMaterial&gt;</span></a>
+<a class="sourceLine" id="cb31-24" title="24">        <span class="kw">&lt;ProductSupply&gt;</span>...<span class="kw">&lt;/ProductSupply&gt;</span></a>
+<a class="sourceLine" id="cb31-25" title="25">    <span class="kw">&lt;/Product&gt;</span></a>
+<a class="sourceLine" id="cb31-26" title="26"><span class="kw">&lt;/ONIXMessage&gt;</span></a></code></pre></div>
+<h3 id="inaccessible">Inaccessible</h3>
+<p>The ONIX standard, unlike the Schema.org standard, provides a method to indicate that a given title is inaccessible, which is described as <q>Known to lack significant features required for broad accessibility.</q> This is indicated by using <a href="https://ns.editeur.org/onix/en/196">List: 196</a>; Code 09 within a ProductFormFeatureValue element.</p>
+<p><em>Vendors may omit all other accessibility metadata fields.</em></p>
+<h4 id="onix-example-10.1">ONIX Example 10.1</h4>
+<h5 id="metadata-30">Metadata</h5>
+<p>An excerpt of ONIX indicating an inaccessible product is:</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode xml"><code class="sourceCode xml"><a class="sourceLine" id="cb32-1" title="1"><span class="kw">&lt;ProductFormFeature&gt;</span></a>
+<a class="sourceLine" id="cb32-2" title="2">    <span class="kw">&lt;ProductFormFeatureType&gt;</span>09<span class="kw">&lt;/ProductFormFeatureType&gt;</span></a>
+<a class="sourceLine" id="cb32-3" title="3">    <span class="kw">&lt;ProductFormFeatureValue&gt;</span>09<span class="kw">&lt;/ProductFormFeatureValue&gt;</span></a>
+<a class="sourceLine" id="cb32-4" title="4"><span class="kw">&lt;/ProductFormFeature&gt;</span></a></code></pre></div>
+<h5 id="ui-28">UI</h5>
+<p><q>Inaccessible</q></p>
+<h3 id="screen-reader-friendly-1">Screen Reader Friendly</h3>
+<p>Not available in ONIX</p>
+<h3 id="audio-book">Audio Book</h3>
+<p>This information can be retrieved from ONIX <a href="https://ns.editeur.org/onix/en/81">code list 81</a>; Code: 01: Audiobook.</p>
+<h4 id="onix-example-11.1">ONIX Example 11.1</h4>
+<h5 id="xpath">XPath</h5>
+<p>This field is true if the XPath returns at least one element for:</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode xml"><code class="sourceCode xml"><a class="sourceLine" id="cb33-1" title="1">//Product/DescriptiveDetail/PrimaryContentType[text()=&quot;01&quot;] or</a>
+<a class="sourceLine" id="cb33-2" title="2">//Product/DescriptiveDetail/ProductContentType[text()=&quot;01&quot;]</a></code></pre></div>
+<h5 id="ui-29">UI</h5>
+<p><q>Audiobook: Yes</q></p>
+<h3 id="accessibility-summary-1">Accessibility Summary</h3>
+<p>This information can be retrieved from ONIX <a href="https://ns.editeur.org/onix/en/196">code list: 196</a>; Code: 00: Accessibility Summary.</p>
+<h4 id="onix-example-12.1">ONIX Example 12.1</h4>
+<h5 id="xpath-1">XPath</h5>
+<p>The value can be retrieved using XPath:</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode xml"><code class="sourceCode xml"><a class="sourceLine" id="cb34-1" title="1">//Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType=&quot;09&quot; and ProductFormFeatureValue=&quot;00&quot;]/ProductFormFeatureDescription/text()</a></code></pre></div>
+<h5 id="ui-30">UI</h5>
+<p>Accessibility Summary:</p>
+<p>This publication includes markup to enable accessibility and compatibility with assistive technology. Images, audio, and video in the publication are well-described in conformance with WCAG 2.0 A.</p>
+<h3 id="epub-and-wcag-conformance-level-reached">EPUB and WCAG Conformance Level Reached</h3>
+<ul>
+<li>For WCAG-A: <a href="https://ns.editeur.org/onix/en/196">List: 196</a>; Code: 02: Accessibility Specification 1.0 A</li>
+<li>For WCAG-AA: <a href="https://ns.editeur.org/onix/en/196">List: 196</a>; Code: 03: Accessibility Specification 1.0 AA</li>
+<li>For WCAG-AAA: Not available in ONIX.</li>
+</ul>
+<h4 id="onix-example-13.1">ONIX Example 13.1</h4>
+<h5 id="xpath-2">XPath</h5>
+<p>If the following XPath returns at least one result:</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode xml"><code class="sourceCode xml"><a class="sourceLine" id="cb35-1" title="1">//Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType=&quot;09&quot;</a>
+<a class="sourceLine" id="cb35-2" title="2">and ProductFormFeatureValue=&quot;02&quot;]</a></code></pre></div>
+<h5 id="ui-31">UI</h5>
+<p><q>Accessibility Conformance: WCAG-A</q></p>
+<h4 id="onix-example-13.2">ONIX Example 13.2</h4>
+<h5 id="xpath-3">XPath</h5>
+<p>If the following XPath returns at least one result:</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode xml"><code class="sourceCode xml"><a class="sourceLine" id="cb36-1" title="1">//Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType=&quot;09&quot;</a>
+<a class="sourceLine" id="cb36-2" title="2">and ProductFormFeatureValue=&quot;03&quot;] returns at least one result</a></code></pre></div>
+<h5 id="ui-32">UI</h5>
+<p><q>Accessibility Conformance: WCAG-AA</q></p>
+<h3 id="certified-by-1">Certified By</h3>
+<p>Not available in ONIX</p>
+<h3 id="certifier-credential-1">Certifier Credential</h3>
+<p>Not available in ONIX</p>
+<h3 id="certifier-report-1">Certifier Report</h3>
+<p><a href="https://ns.editeur.org/onix/en/196">List: 196</a>; Code: 94: Compliance web page for detailed accessibility information</p>
+<p><strong>Or</strong></p>
+<p>If a publisher is self-certifying, Code: 96: Publisher’s web page for detailed accessibility information</p>
+<h4 id="onix-example-14.1">ONIX Example 14.1</h4>
+<h5 id="xpath-4">XPath</h5>
+<p>The value can be retrieve using XPath:</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode xml"><code class="sourceCode xml"><a class="sourceLine" id="cb37-1" title="1">//Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType=&quot;09&quot; and ProductFormFeatureValue=&quot;94&quot;]/ProductFormFeatureDescription/text()</a></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode xml"><code class="sourceCode xml"><a class="sourceLine" id="cb38-1" title="1">//Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType=&quot;09&quot; and ProductFormFeatureValue=&quot;96&quot;]/ProductFormFeatureDescription/text()</a></code></pre></div>
+<h5 id="ui-33">UI</h5>
+<p>Certifier Report</p>
+<p><a href="http://www.example.com/a11y/report/9780000000001"><img src="./media/image2.png" alt="Report webpage" width="50"/></a></p>
+<blockquote>
+<p><em>(Clickable Image to the URI of the report from metadata)</em></p>
+<p><em>alt-text <q>Report webpage</q></em></p>
+<p><em>(Image here of checkmark with clipboard is just for reference feel free to choose your own image)</em></p>
+</blockquote>
+<p><strong>Or</strong></p>
+<p>Certifier Report: <em>Accessibility Report</em></p>
+<blockquote>
+<p><em>(Clickable link to the URI of the report from metadata)</em></p>
+</blockquote>
+<h3 id="hazards-1">Hazards</h3>
+<p>Not available in ONIX</p>
+<h3 id="all-accessibility-metadata-1"><a name="all-accessibility-metadata-1)">All Accessibility Metadata</a></h3>
+<p>For a complete list of <a href="http://www.a11ymetadata.org/the-specification/metadata-crosswalk/">ONIX accessibility metadata refer to the crosswalk.</a></p>
+<hr />
+<h2 id="acknowledgements">Acknowledgements</h2>
+<h3 id="editors">Editors</h3>
+<ul>
+<li>Charles LaPierre</li>
+<li>Gregorio Pellegrino</li>
+</ul>
+<h3 id="contributors">Contributors</h3>
+<ul>
+<li>Avneesh Singh</li>
+<li>Dave Cramer</li>
+<li>George Kerscher</li>
+<li>Jason White</li>
+<li>Madeleine Rothberg</li>
+<li>Rachel Comerford</li>
+<li>Rick Johnson</li>
+</ul>
+<h3 id="reviewers">Reviewers</h3>
+<ul>
+<li>Erin Kirchner-Lucas</li>
+</ul>
+</body>
+</html>
