@@ -1,9 +1,9 @@
 
 ![W3C Logo](https://www.w3.org/Icons/w3c_home)
 
-# Accessibility Discussions on the Publishing Working Group
+# Accessibility Discussions of the Publishing@W3C Groups
 
-This is the repository for the Accessibility related discussions of the [Publishing Working Group](https://www.w3.org/publishing/groups/publ-wg/). 
+This is the repository for the Accessibility related discussions of the [Publishing@W3C Groups](https://www.w3.org/publishing/). 
 
 ## Contributing to the Repository
 
