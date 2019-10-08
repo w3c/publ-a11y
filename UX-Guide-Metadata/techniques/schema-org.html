@@ -69,28 +69,28 @@
 					specification</a>.</p>
 			<section id="screen-reader-friendly">
 				<h3>Screen Reader Friendly</h3>
-				<p><strong>Value</strong>: <em>Yes</em> / <em>No</em> / <em>Unknown</em></p>
+				<p><b>Value</b>: <i>Yes</i> / <i>No</i> / <i>Unknown</i></p>
 				<p>This data is derived from the EPUB package metadata inside the OPF file:</p>
 				<aside class="example" id="cb1">
 					<pre><code>&lt;meta property="schema:accessModeSufficient"&gt;textual&lt;/meta&gt;</code></pre>
 				</aside>
-				<p>If this metadata exists (ie. <q><strong>textual</strong></q> within <code>accessModeSufficient</code>
-					by itself) then report <em><q>Screen Reader Friendly: Yes</q></em></p>
-				<p><strong>Important</strong>: This is not the same as <q><strong>visual</strong>,
-							<strong>textual</strong></q> or <q><strong>textual, visual</strong></q> because the
+				<p>If this metadata exists (ie. <q><b>textual</b></q> within <code>accessModeSufficient</code>
+					by itself) then report <i><q>Screen Reader Friendly: Yes</q></i></p>
+				<p><b>Important</b>: This is not the same as <q><b>visual</b>,
+							<b>textual</b></q> or <q><b>textual, visual</b></q> because the
 					combination means that the book requires both visual and textual abilities to access the data, not
 					textual alone. Only having <code>accessModeSufficient</code> be
-						<q><strong><em>textual</em></strong></q> as a separate entry ensures the document is screen
+						<q><b><i>textual</i></b></q> as a separate entry ensures the document is screen
 					reader friendly.</p>
 				<p class="note">As long as there is an entry that reads <code>&lt;meta
 						property="schema:accessModeSufficient"&gt;textual&lt;/meta&gt;</code> the book can claim
-							<em><q>Screen Reader Friendly: Yes</q></em>.</p>
+							<i><q>Screen Reader Friendly: Yes</q></i>.</p>
 				<p>There may also be other <code>accessModeSufficient</code> entries with combinations of access modes
 					such as <q>textual, visual</q> which indicate other ways to read the book.</p>
 				<p>When <code>accessModeSufficient</code> exists but does not have <q>textual</q> by itself, report
-							<em><q>Screen Reader Friendly: No</q></em>.</p>
-				<p>When there is no <code>accessModeSufficient</code> metadata present, report <em><q>Screen Reader
-							Friendly: unknown or not provided</q></em>.</p>
+							<i><q>Screen Reader Friendly: No</q></i>.</p>
+				<p>When there is no <code>accessModeSufficient</code> metadata present, report <i><q>Screen Reader
+							Friendly: unknown or not provided</q></i>.</p>
 				<section id="example-1.1-metadata-present">
 					<h4>Example 1.1 (metadata present)</h4>
 					<section id="metadata">
@@ -102,7 +102,7 @@
 					<section id="ui">
 						<h5>UI</h5>
 						<p><q>Screen Reader Friendly: Yes</q></p>
-						<p>(because <strong><em>textual</em></strong> was present by itself in
+						<p>(because <b><i>textual</i></b> was present by itself in
 								<code>accessModeSufficient</code>)</p>
 					</section>
 				</section>
@@ -119,7 +119,7 @@
 					<section id="ui-1">
 						<h5>UI</h5>
 						<p><q>Screen Reader Friendly: Yes</q></p>
-						<p>(because <strong><em>textual</em></strong> was present by itself in
+						<p>(because <b><i>textual</i></b> was present by itself in
 								<code>accessModeSufficient</code>)</p>
 					</section>
 				</section>
@@ -135,7 +135,7 @@
 					<section id="ui-2">
 						<h5>UI</h5>
 						<p><q>Screen Reader Friendly: No</q></p>
-						<p>(because <strong><em>textual</em></strong> was not present by itself in
+						<p>(because <b><i>textual</i></b> was not present by itself in
 								<code>accessModeSufficient</code>)</p>
 					</section>
 				</section>
@@ -154,21 +154,21 @@
 			</section>
 			<section id="audiobook">
 				<h3>Audiobook</h3>
-				<p><strong>Values</strong>: <em>Yes / (if No - Omit this section)</em></p>
+				<p><b>Values</b>: <i>Yes / (if No - Omit this section)</i></p>
 				<p>This data is derived from the EPUB package metadata inside the OPF file:</p>
 				<aside class="example" id="cb5">
 					<pre><code>&lt;meta property="schema:accessModeSufficient"&gt;auditory&lt;/meta&gt;</code></pre>
 				</aside>
-				<p>If this metadata exists (ie. <q><strong>auditory</strong></q> within
-						<code>accessModeSufficient</code> by itself) then report <em><q>Audiobook: Yes</q>.</em></p>
-				<p><strong>Important</strong>: This is not the same as <q><strong>textual</strong>,
-							<strong>auditory</strong></q> or <q><strong>auditory</strong>, <strong>textual</strong></q>
+				<p>If this metadata exists (ie. <q><b>auditory</b></q> within
+						<code>accessModeSufficient</code> by itself) then report <i><q>Audiobook: Yes</q>.</i></p>
+				<p><b>Important</b>: This is not the same as <q><b>textual</b>,
+							<b>auditory</b></q> or <q><b>auditory</b>, <b>textual</b></q>
 					as this indicates that the book requires both textual and auditory abilities to access the data, not
-					auditory alone. Only having <code>accessModeSufficient</code> be <q><strong>auditory</strong></q> as
+					auditory alone. Only having <code>accessModeSufficient</code> be <q><b>auditory</b></q> as
 					a separate entry ensures the document is an audiobook.</p>
 				<p class="note">As long as you find <code>&lt;meta
 						property="schema:accessModeSufficient"&gt;auditory&lt;/meta&gt;</code> the book can claim
-							<q><strong>Audiobook: Yes</strong></q>.</p>
+							<q><b>Audiobook: Yes</b></q>.</p>
 				<p>There may also be other <code>accessModeSufficient</code> entries with combinations of access modes
 					such as <q>textual, visual</q> which indicate other ways to read the book.</p>
 				<p class="note">If you can not report that this is an audiobook then do not present any information to
@@ -186,7 +186,7 @@
 					<section id="ui-4">
 						<h5>UI</h5>
 						<p><q>Audiobook: Yes</q></p>
-						<p>(because <q><strong>auditory</strong></q> was found alone in
+						<p>(because <q><b>auditory</b></q> was found alone in
 								<code>accessModeSufficient</code>)</p>
 					</section>
 				</section>
@@ -202,7 +202,7 @@
 					<section id="ui-5">
 						<h5>UI</h5>
 						<p>Omit this section</p>
-						<p>(Nothing presented to the user because <q><strong>auditory</strong></q> was not found alone
+						<p>(Nothing presented to the user because <q><b>auditory</b></q> was not found alone
 							in <code>accessModeSufficient</code>)</p>
 					</section>
 				</section>
@@ -222,7 +222,7 @@
 			</section>
 			<section id="accessibility-summary">
 				<h3>Accessibility Summary</h3>
-				<p><strong>Value</strong>: Textual Data from metadata</p>
+				<p><b>Value</b>: Textual Data from metadata</p>
 				<p>This data is pulled directly from the EPUB package metadata inside the OPF file:</p>
 				<aside class="example" id="cb8">
 					<pre><code>&lt;meta property="schema:accessibilitySummary"&gt;</code></pre>
@@ -263,7 +263,7 @@
 			</section>
 			<section id="epub-accessibility-conformance">
 				<h3>EPUB Accessibility Conformance</h3>
-				<p><strong>Value</strong>: Textual Link based on Metadata (WCAG-A, WCAG-AA, WCAG-AAA) or raw URL found
+				<p><b>Value</b>: Textual Link based on Metadata (WCAG-A, WCAG-AA, WCAG-AAA) or raw URL found
 					in EPUB OPF file’s metadata field</p>
 				<aside class="example" id="cb10">
 					<pre><code>&lt;link rel="dcterms:conformsTo"&gt;</code></pre>
@@ -273,13 +273,13 @@
 					<ul>
 						<li><q>http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-a</q> report it as <q><a
 									href="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-a"
-										><strong>WCAG-A</strong></a></q> which links to this URL.</li>
+										><b>WCAG-A</b></a></q> which links to this URL.</li>
 						<li><q>http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aa</q> report it as <q><a
 									href="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aa"
-										><strong>WCAG-AA</strong></a></q> which links to this URL.</li>
+										><b>WCAG-AA</b></a></q> which links to this URL.</li>
 						<li><q>http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aaa</q> report it as <q><a
 									href="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-a"
-										><strong>WCAG-AAA</strong></a></q> which links to this URL.</li>
+										><b>WCAG-AAA</b></a></q> which links to this URL.</li>
 					</ul>
 				</div>
 				<p>If the URL is anything other than the three listed above, then providing the raw URL which is also a
@@ -336,7 +336,7 @@
 			</section>
 			<section id="certified-by">
 				<h3>Certified By</h3>
-				<p><strong>Value</strong>: Textual Data from metadata</p>
+				<p><b>Value</b>: Textual Data from metadata</p>
 				<p>This data is pulled directly from the EPUB package metadata inside the OPF file:</p>
 				<aside class="example" id="cb13">
 					<pre><code>&lt;meta property="a11y:certifiedBy"&gt;</code></pre>
@@ -383,7 +383,7 @@
 			</section>
 			<section id="certifier-credential">
 				<h3>Certifier Credential</h3>
-				<p><strong>Value</strong>: Potentially linked textual data from metadata</p>
+				<p><b>Value</b>: Potentially linked textual data from metadata</p>
 				<p>This data is pulled directly from the EPUB package metadata inside the OPF file:</p>
 				<aside class="example" id="cb16">
 					<pre><code>&lt;meta property="a11y:certifierCredential"&gt;</code></pre>
@@ -426,21 +426,21 @@ Accessible&lt;/meta&gt;</code></pre>
 						<aside class="example">
 							<p><a href="https://3rd-party-certifier-credential.com"><img src="./media/image1.png"
 										alt="ACME Inc. credential webpage" width="50" /></a></p>
-							<p><em>(Clickable Image to the URI of the certifiers credential’s webpage from
-									metadata)</em></p>
-							<p><em>alt-text <q>ACME Inc. credential webpage</q></em></p>
-							<p><em>(Image here of a checkmark inside a shield is just for reference feel free to choose
-									your own image)</em></p>
+							<p><i>(Clickable Image to the URI of the certifiers credential’s webpage from
+									metadata)</i></p>
+							<p><i>alt-text <q>ACME Inc. credential webpage</q></i></p>
+							<p><i>(Image here of a checkmark inside a shield is just for reference feel free to choose
+									your own image)</i></p>
 						</aside>
 						<p class="note">There may be an image that is associated with specific Certifier Credential
 							image (ie. Mark/Stamp/Seal) which could be used here. If you would like to display this
 							image, or any other, you would need to be coordinate this out of band with the certifier
 							agency as it is not part of the metadata delivered with the book.</p>
-						<p><strong>Or</strong></p>
+						<p><b>Or</b></p>
 						<aside class="example">
 							<p>Certifier’s Credential: <a href="https://3rd-party-certifier-credential.com">ACME
 									Inc. credential webpage</a></p>
-							<p><em>(Clickable link to the URI to the certifiers credentials from metadata)</em></p>
+							<p><i>(Clickable link to the URI to the certifiers credentials from metadata)</i></p>
 						</aside>
 					</section>
 				</section>
@@ -458,7 +458,7 @@ Accessible&lt;/meta&gt;</code></pre>
 			</section>
 			<section id="certifier-report">
 				<h3>Certifier Report</h3>
-				<p><strong>Value</strong>: Potentially linked textual data from metadata</p>
+				<p><b>Value</b>: Potentially linked textual data from metadata</p>
 				<p>This data is pulled directly from the EPUB package metadata inside the OPF file:</p>
 				<aside class="example" id="cb19">
 					<pre><code>&lt;link rel="a11y:certifierReport" href="http://www.example.com/a11y/report/9780000000001"/&gt;</code></pre>
@@ -482,16 +482,16 @@ Accessible&lt;/meta&gt;</code></pre>
 						<p><a href="http://www.example.com/a11y/report/9780000000001"><img src="./media/image2.png"
 									alt="ACME Inc. Report webpage" width="50" /></a></p>
 						<aside class="example">
-							<p><em>(Clickable Image to the URI of the report from metadata)</em></p>
-							<p><em>alt-text <q>ACME Inc. Report webpage</q></em></p>
-							<p><em>(Image here of checkmark with clipboard is just for reference feel free to choose
-									your own image)</em></p>
+							<p><i>(Clickable Image to the URI of the report from metadata)</i></p>
+							<p><i>alt-text <q>ACME Inc. Report webpage</q></i></p>
+							<p><i>(Image here of checkmark with clipboard is just for reference feel free to choose
+									your own image)</i></p>
 						</aside>
-						<p><strong>Or</strong></p>
+						<p><b>Or</b></p>
 						<aside class="example">
 							<p>Certifier Report: <a href="http://www.example.com/a11y/report/9780000000001">ACME
 									Inc. Accessibility Report</a></p>
-							<p><em>(Clickable link to the URI of the report from metadata)</em></p>
+							<p><i>(Clickable link to the URI of the report from metadata)</i></p>
 						</aside>
 					</section>
 				</section>
@@ -511,19 +511,19 @@ Accessible&lt;/meta&gt;</code></pre>
 			</section>
 			<section id="hazards">
 				<h3>Hazards</h3>
-				<p><strong>Values</strong>: flashing, motion simulation, sound, no flashing, no motion simulation, no
+				<p><b>Values</b>: flashing, motion simulation, sound, no flashing, no motion simulation, no
 					sound, none, or Unknown.</p>
 				<p>This data is found in the EPUB package metadata inside the OPF file:</p>
 				<aside class="example" id="cb21">
 					<pre><code>&lt;meta property="schema:accessibilityHazard"&gt;none&lt;/meta&gt;</code></pre>
 				</aside>
 				<p>Hazards are the only metadata which can be expressed as either positive or negative statements, so
-					metadata authors can confirm either the presence of the hazard, such as <q><em>flashing</em></q>, or
-					the absence of the hazard, <q><em>noFlashingHazard</em></q> and similarly for <q><em>sound</em> /
-							<em>noSoundHazard</em></q> and <q><em>motion</em> / <em>noMotionSimulationHazard</em></q>.
-					There is also the metadata value <q><em>none</em></q>, which covers all three categories and
-					corresponds to <q><em>noFlashingHazard</em></q>, <q><em>noSoundHazard</em></q> and
-							<q><em>noMotionSimulationHazard</em></q>.</p>
+					metadata authors can confirm either the presence of the hazard, such as <q><i>flashing</i></q>, or
+					the absence of the hazard, <q><i>noFlashingHazard</i></q> and similarly for <q><i>sound</i> /
+							<i>noSoundHazard</i></q> and <q><i>motion</i> / <i>noMotionSimulationHazard</i></q>.
+					There is also the metadata value <q><i>none</i></q>, which covers all three categories and
+					corresponds to <q><i>noFlashingHazard</i></q>, <q><i>noSoundHazard</i></q> and
+							<q><i>noMotionSimulationHazard</i></q>.</p>
 				<p class="note">In the section <q><a href="#all-accessibility-metadata">All Accessibility
 						Metadata</a></q> Hazards will be displayed exactly how the publisher provided them so
 					simplifying here with using <q>none</q> can be an option instead of saying explicitly <q>no Sound,
@@ -539,7 +539,7 @@ Accessible&lt;/meta&gt;</code></pre>
 					<section id="ui-19">
 						<h5>UI</h5>
 						<p><q>Hazard: Flashing</q></p>
-						<p>(because <q><strong><em>flashing</em></strong></q> was found in
+						<p>(because <q><b><i>flashing</i></b></q> was found in
 								<code>accessibilityHazard</code>)</p>
 					</section>
 				</section>
@@ -554,7 +554,7 @@ Accessible&lt;/meta&gt;</code></pre>
 					<section id="ui-20">
 						<h5>UI</h5>
 						<p><q>Hazard: Motion Simulation</q></p>
-						<p>(because <q><strong><em>motionSimulation</em></strong></q> was found in
+						<p>(because <q><b><i>motionSimulation</i></b></q> was found in
 								<code>accessibilityHazard</code>)</p>
 					</section>
 				</section>
@@ -569,7 +569,7 @@ Accessible&lt;/meta&gt;</code></pre>
 					<section id="ui-21">
 						<h5>UI</h5>
 						<p><q>Hazard: Sound</q></p>
-						<p>(because <q><strong><em>sound</em></strong></q> was found in
+						<p>(because <q><b><i>sound</i></b></q> was found in
 							<code>accessibilityHazard</code>)</p>
 					</section>
 				</section>
@@ -586,9 +586,9 @@ Accessible&lt;/meta&gt;</code></pre>
 					<section id="ui-22">
 						<h5>UI</h5>
 						<p><q>Hazard: Sound, Motion Simulation, and Flashing</q></p>
-						<p>(because <q><strong><em>sound</em></strong></q>,
-									<q><strong><em>motionSimulation</em></strong></q> ,
-									<q><strong><em>flashing</em></strong></q> and were all found in
+						<p>(because <q><b><i>sound</i></b></q>,
+									<q><b><i>motionSimulation</i></b></q> ,
+									<q><b><i>flashing</i></b></q> and were all found in
 								<code>accessibilityHazard</code>)</p>
 					</section>
 				</section>
@@ -603,7 +603,7 @@ Accessible&lt;/meta&gt;</code></pre>
 					<section id="ui-23">
 						<h5>UI</h5>
 						<p>Omit this section</p>
-						<p><strong>Or</strong></p>
+						<p><b>Or</b></p>
 						<p><q>Hazards: none provided</q></p>
 						<p>Nothing presented to the user because there are no hazards; since 99.9% of EPUBs won’t have
 							any hazards, there is no need to report <q>Hazards: No</q> for every EPUB.</p>
@@ -623,9 +623,9 @@ Accessible&lt;/meta&gt;</code></pre>
 					<section id="ui-24">
 						<h5>UI</h5>
 						<p>Omit this section</p>
-						<p><strong>Or</strong></p>
+						<p><b>Or</b></p>
 						<p><q>Hazards: none</q></p>
-						<p><strong>Or</strong></p>
+						<p><b>Or</b></p>
 						<p><q>Hazards: No Flashing, No Sound, No Motion Simulation</q></p>
 					</section>
 				</section>
@@ -647,7 +647,7 @@ Accessible&lt;/meta&gt;</code></pre>
 		</section>
 		<section id="all-accessibility-metadata">
 			<h2>All Accessibility Metadata</h2>
-			<p><strong>Value</strong>: Link to complete list of all metadata fields</p>
+			<p><b>Value</b>: Link to complete list of all metadata fields</p>
 			<p>Here are <a href="https://www.w3.org/wiki/WebSchemas/Accessibility">all the possible accessibility
 					metadata properties</a>.</p>
 			<p>This section can either be a separate page that is linked to or better yet an HTML Summary/Details
@@ -681,37 +681,37 @@ Accessible&lt;/meta&gt;</code></pre>
 				</section>
 				<section id="ui-26">
 					<h4>UI</h4>
-					<p><strong>Accessibility Features</strong>:</p>
+					<p><b>Accessibility Features</b>:</p>
 					<ul>
 						<li><p>Alternative Text</p></li>
 						<li><p>Long Descriptions</p></li>
 						<li><p>Print Page Numbers</p></li>
 					</ul>
-					<p><strong>Accessibility Hazards</strong>:</p>
+					<p><b>Accessibility Hazards</b>:</p>
 					<ul>
 						<li><p>No Sound Hazard</p></li>
 						<li><p>No Motion Simulation Hazard</p></li>
 						<li><p>No Flashing Hazard</p></li>
 					</ul>
-					<p><strong>AccessMode</strong>:</p>
+					<p><b>AccessMode</b>:</p>
 					<ul>
 						<li><p>Visual</p></li>
 						<li><p>Textual</p></li>
 					</ul>
-					<p><strong>Access Mode Sufficient</strong>:</p>
+					<p><b>Access Mode Sufficient</b>:</p>
 					<ul>
 						<li><p>Visual</p></li>
 						<li><p>Textual</p></li>
 						<li><p>Both Visual and Textual</p></li>
 					</ul>
-					<p><strong>Certified By</strong>:</p>
+					<p><b>Certified By</b>:</p>
 					<p>ACME Certification</p>
-					<p><strong>Certifier’s Credential</strong>:</p>
+					<p><b>Certifier’s Credential</b>:</p>
 					<p><a href="https://acme-certification.org/">https://ACME-Certification.org/</a></p>
-					<p><strong>Conforms To</strong>:</p>
+					<p><b>Conforms To</b>:</p>
 					<p><a href="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-a"
 							>http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-a</a></p>
-					<p><strong>Accessibility Summary</strong>:</p>
+					<p><b>Accessibility Summary</b>:</p>
 					<p>This publication includes markup to enable accessibility and compatibility with assistive
 						technology. Images, audio, and video in the publication are well-described in conformance with
 						WCAG 2.0 A.</p>
@@ -725,21 +725,21 @@ Accessible&lt;/meta&gt;</code></pre>
 				</section>
 				<section id="ui-27">
 					<h4>UI</h4>
-					<p><strong>Accessibility Features</strong>:</p>
+					<p><b>Accessibility Features</b>:</p>
 					<p>None provided</p>
-					<p><strong>Accessibility Hazards</strong>:</p>
+					<p><b>Accessibility Hazards</b>:</p>
 					<p>None provided</p>
-					<p><strong>AccessMode</strong>:</p>
+					<p><b>AccessMode</b>:</p>
 					<p>None provided</p>
-					<p><strong>Access Mode Sufficient</strong>:</p>
+					<p><b>Access Mode Sufficient</b>:</p>
 					<p>None provided</p>
-					<p><strong>Certified By</strong>:</p>
+					<p><b>Certified By</b>:</p>
 					<p>None provided</p>
-					<p><strong>Certifier’s Credential</strong>:</p>
+					<p><b>Certifier’s Credential</b>:</p>
 					<p>None provided</p>
-					<p><strong>Conforms To</strong>:</p>
+					<p><b>Conforms To</b>:</p>
 					<p>None provided</p>
-					<p><strong>Accessibility Summary</strong>:</p>
+					<p><b>Accessibility Summary</b>:</p>
 					<p>None provided</p>
 				</section>
 			</section>
