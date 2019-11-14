@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<title>Schema.Org Techniques</title>
+		<title>Schema.org Techniques for Displaying Accessibility metadata for EPUB</title>
 		<script src="https://www.w3.org/Tools/respec/respec-w3c-common" class="remove" defer="defer"></script>
 		<script class="remove">
 			// <![CDATA[
@@ -46,30 +46,22 @@
         <section id="schema.org-metadata">
             <h2>Schema.org Metadata (Contained within EPUB's OPF file)</h2>
             
-        </section>
-		<section id="order-of-key-information">
-			<h2>Order of Key Information</h2>
-			<ol type="1">
-				<li><p><a href="#screen-reader-friendly">Screen Reader Friendly</a></p></li>
-				<li><p><a href="#audiobook">Audiobook</a> (if present)</p></li>
-				<li><p><a href="#accessibility-summary">Accessibility Summary</a></p></li>
-				<li><p><a href="#epub-accessibility-conformance">EPUB Accessibility Conformance</a></p></li>
-				<li><p><a href="#certified-by">Certified By</a></p></li>
-				<li><p><a href="#certifier-credential">Certifier’s Credential</a></p></li>
-				<li><p><a href="#certifier-report">Certifier’s Report</a> (if present)</p></li>
-				<li><p><a href="#hazards">Hazards</a></p></li>
-				<li><p><a href="#all-accessibility-metadata">All Accessibility Metadata</a></p></li>
-			</ol>
-			<p>This metadata as outlined in the <a href="http://www.idpf.org/epub/a11y/">1.0 Accessibility Specification
+            <p>This metadata as outlined in the <a href="http://www.idpf.org/epub/a11y/">1.0 Accessibility Specification
 					Conformance and Discoverability</a> can be found inside the EPUB’s opf file usually found in
 					<code>OEBPS/package.opf</code></p>
-			<p class="note">At the end of this document are the <a href="../techniques/onix.html#onix-metadata">ONIX equivalent metadata</a>
-				for each of these, if defined. While the examples shown here are for EPUB 3.x, there are equivalents for
-				EPUB 2.x which can be found in the <a href="http://www.idpf.org/epub/a11y/">Accessibility 1.0
-					specification</a>.</p>
+			
+			<p class="note">
+				Other techniques for implementing EPUB accessibility metadata are available: <a href="index.html">Metadata standard Techniques for Displaying Accessibility metadata for EPUB</a>
+			</p>
+            
+        </section>
+		<section id="techniques">
+			<h2>Techniques</h2>
 			<section id="screen-reader-friendly">
 				<h3>Screen Reader Friendly</h3>
 				<p><b>Value</b>: <i>Yes</i> / <i>No</i> / <i>Unknown</i></p>
+				<p>This technique relates to <a href="../principles/index.html#screen-reader-friendly">Screen Reader Friendly principle</a>.</p>
+				
 				<p>This data is derived from the EPUB package metadata inside the OPF file:</p>
 				<aside class="example" id="cb1">
 					<pre><code>&lt;meta property="schema:accessModeSufficient"&gt;textual&lt;/meta&gt;</code></pre>
@@ -155,6 +147,8 @@
 			<section id="audiobook">
 				<h3>Audiobook</h3>
 				<p><b>Values</b>: <i>Yes / (if No - Omit this section)</i></p>
+				<p>This technique relates to <a href="../principles/index.html#audiobook">Audiobook principle</a>.</p>
+				
 				<p>This data is derived from the EPUB package metadata inside the OPF file:</p>
 				<aside class="example" id="cb5">
 					<pre><code>&lt;meta property="schema:accessModeSufficient"&gt;auditory&lt;/meta&gt;</code></pre>
@@ -223,6 +217,8 @@
 			<section id="accessibility-summary">
 				<h3>Accessibility Summary</h3>
 				<p><b>Value</b>: Textual Data from metadata</p>
+				<p>This technique relates to <a href="../principles/index.html#accessibility-summary">Accessibility Summary principle</a>.</p>
+				
 				<p>This data is pulled directly from the EPUB package metadata inside the OPF file:</p>
 				<aside class="example" id="cb8">
 					<pre><code>&lt;meta property="schema:accessibilitySummary"&gt;</code></pre>
@@ -263,8 +259,9 @@
 			</section>
 			<section id="epub-accessibility-conformance">
 				<h3>EPUB Accessibility Conformance</h3>
-				<p><b>Value</b>: Textual Link based on Metadata (WCAG-A, WCAG-AA, WCAG-AAA) or raw URL found
-					in EPUB OPF file’s metadata field</p>
+				<p><b>Value</b>: Textual Link based on Metadata (WCAG-A, WCAG-AA, WCAG-AAA) or raw URL found in EPUB OPF file’s metadata field</p>
+				<p>This technique relates to <a href="../principles/index.html#epub-accessibility-conformance">EPUB Accessibility Conformance principle</a>.</p>
+					
 				<aside class="example" id="cb10">
 					<pre><code>&lt;link rel="dcterms:conformsTo"&gt;</code></pre>
 				</aside>
@@ -337,6 +334,8 @@
 			<section id="certified-by">
 				<h3>Certified By</h3>
 				<p><b>Value</b>: Textual Data from metadata</p>
+				<p>This technique relates to <a href="../principles/index.html#certified-by">Certified By principle</a>.</p>
+				
 				<p>This data is pulled directly from the EPUB package metadata inside the OPF file:</p>
 				<aside class="example" id="cb13">
 					<pre><code>&lt;meta property="a11y:certifiedBy"&gt;</code></pre>
@@ -384,6 +383,8 @@
 			<section id="certifier-credential">
 				<h3>Certifier Credential</h3>
 				<p><b>Value</b>: Potentially linked textual data from metadata</p>
+				<p>This technique relates to <a href="../principles/index.html#certifier-credential">Certifier Credential principle</a>.</p>
+				
 				<p>This data is pulled directly from the EPUB package metadata inside the OPF file:</p>
 				<aside class="example" id="cb16">
 					<pre><code>&lt;meta property="a11y:certifierCredential"&gt;</code></pre>
@@ -459,6 +460,9 @@ Accessible&lt;/meta&gt;</code></pre>
 			<section id="certifier-report">
 				<h3>Certifier Report</h3>
 				<p><b>Value</b>: Potentially linked textual data from metadata</p>
+				<p>This technique relates to <a href="../principles/index.html#certifier-report">Certifier Report principle</a>.</p>
+
+				
 				<p>This data is pulled directly from the EPUB package metadata inside the OPF file:</p>
 				<aside class="example" id="cb19">
 					<pre><code>&lt;link rel="a11y:certifierReport" href="http://www.example.com/a11y/report/9780000000001"/&gt;</code></pre>
@@ -511,8 +515,9 @@ Accessible&lt;/meta&gt;</code></pre>
 			</section>
 			<section id="hazards">
 				<h3>Hazards</h3>
-				<p><b>Values</b>: flashing, motion simulation, sound, no flashing, no motion simulation, no
-					sound, none, or Unknown.</p>
+				<p><b>Values</b>: flashing, motion simulation, sound, no flashing, no motion simulation, no sound, none, or Unknown.</p>
+				<p>This technique relates to <a href="../principles/index.html#hazards">Hazards principle</a>.</p>
+				
 				<p>This data is found in the EPUB package metadata inside the OPF file:</p>
 				<aside class="example" id="cb21">
 					<pre><code>&lt;meta property="schema:accessibilityHazard"&gt;none&lt;/meta&gt;</code></pre>
@@ -644,106 +649,114 @@ Accessible&lt;/meta&gt;</code></pre>
 					</section>
 				</section>
 			</section>
-		</section>
-		<section id="all-accessibility-metadata">
-			<h2>All Accessibility Metadata</h2>
-			<p><b>Value</b>: Link to complete list of all metadata fields</p>
-			<p>Here are <a href="https://www.w3.org/wiki/WebSchemas/Accessibility">all the possible accessibility
-					metadata properties</a>.</p>
-			<p>This section can either be a separate page that is linked to or better yet an HTML Summary/Details
-				element that users can expand to get all the accessibility metadata field elements. Here you would
-				expose: <code>accessibilityFeature</code>, <code>accessibilityHazard</code>, <code>accessMode</code>,
-					<code>accessModeSufficient</code>, as well as all the accessibility metadata and conformance
-				metadata listed above.</p>
-			<section id="example-9.1-all-metadata-fields-present">
-				<h3>Example 9.1 (all metadata fields present)</h3>
-				<section id="metadata-28">
-					<h4>Metadata</h4>
-					<aside class="example" id="cb28">
-						<pre><code>&lt;meta property="schema:accessibilityFeature"&gt;alternativeText&lt;/meta&gt;
-&lt;meta property="schema:accessibilityFeature"&gt;longDescription&lt;/meta&gt;
-&lt;meta property="schema:accessibilityFeature"&gt;printPageNumbers&lt;/meta&gt;
-&lt;meta property="schema:accessibilityHazards"&gt;noSoundHazard&lt;/meta&gt;
-&lt;meta property="schema:accessibilityHazards"&gt;noMotionSimulationHazard&lt;/meta&gt;
-&lt;meta property="schema:accessibilityHazards"&gt;noFlashingHazard&lt;/meta&gt;
-&lt;meta property="schema:accessMode"&gt;visual&lt;/meta&gt;
-&lt;meta property="schema:accessMode"&gt;textual&lt;/meta&gt;
-&lt;meta property="schema:accessModeSufficient"&gt;visual&lt;/meta&gt;
-&lt;meta property="schema:accessModeSufficient"&gt;textual&lt;/meta&gt;
-&lt;meta property="schema:accessModeSufficient"&gt;visual,textual&lt;/meta&gt;
-&lt;meta property="a11y:certifiedBy"&gt;ACME Certification&lt;/meta&gt;
-&lt;meta property="a11y:certifierCredential"&gt;https://ACME-Certification.org/&lt;/meta&gt;
-&lt;link rel="dcterms:conformsTo" href="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-a/" /&gt;
-&lt;meta property="schema:accessibilitySummary"&gt;
-    This publication includes mark-up to enable accessibility and compatibility with assistive technology. Images, audio, and video in the publication are well-described in conformance with WCAG 2.0 A.
-&lt;/meta&gt;</code></pre>
-					</aside>
+			<section id="inaccessible">
+				<h3>Inaccessible</h3>
+				<p>This technique relates to <a href="../principles/index.html#inaccessible">Inaccessible principle</a>.</p>
+				
+				<p>Not available in Schema.org</p>
+			</section>
+			<section id="all-accessibility-metadata">
+				<h3>All Accessibility Metadata</h3>
+				<p><b>Value</b>: Link to complete list of all metadata fields</p>
+				<p>This technique relates to <a href="../principles/index.html#all-accessibility-metadata">All Accessibility Metadata principle</a>.</p>
+				
+				<p>Here are <a href="https://www.w3.org/wiki/WebSchemas/Accessibility">all the possible accessibility
+						metadata properties</a>.</p>
+				<p>This section can either be a separate page that is linked to or better yet an HTML Summary/Details
+					element that users can expand to get all the accessibility metadata field elements. Here you would
+					expose: <code>accessibilityFeature</code>, <code>accessibilityHazard</code>, <code>accessMode</code>,
+						<code>accessModeSufficient</code>, as well as all the accessibility metadata and conformance
+					metadata listed above.</p>
+				<section id="example-9.1-all-metadata-fields-present">
+					<h4>Example 9.1 (all metadata fields present)</h4>
+					<section id="metadata-28">
+						<h5>Metadata</h5>
+						<aside class="example" id="cb28">
+							<pre><code>&lt;meta property="schema:accessibilityFeature"&gt;alternativeText&lt;/meta&gt;
+	&lt;meta property="schema:accessibilityFeature"&gt;longDescription&lt;/meta&gt;
+	&lt;meta property="schema:accessibilityFeature"&gt;printPageNumbers&lt;/meta&gt;
+	&lt;meta property="schema:accessibilityHazards"&gt;noSoundHazard&lt;/meta&gt;
+	&lt;meta property="schema:accessibilityHazards"&gt;noMotionSimulationHazard&lt;/meta&gt;
+	&lt;meta property="schema:accessibilityHazards"&gt;noFlashingHazard&lt;/meta&gt;
+	&lt;meta property="schema:accessMode"&gt;visual&lt;/meta&gt;
+	&lt;meta property="schema:accessMode"&gt;textual&lt;/meta&gt;
+	&lt;meta property="schema:accessModeSufficient"&gt;visual&lt;/meta&gt;
+	&lt;meta property="schema:accessModeSufficient"&gt;textual&lt;/meta&gt;
+	&lt;meta property="schema:accessModeSufficient"&gt;visual,textual&lt;/meta&gt;
+	&lt;meta property="a11y:certifiedBy"&gt;ACME Certification&lt;/meta&gt;
+	&lt;meta property="a11y:certifierCredential"&gt;https://ACME-Certification.org/&lt;/meta&gt;
+	&lt;link rel="dcterms:conformsTo" href="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-a/" /&gt;
+	&lt;meta property="schema:accessibilitySummary"&gt;
+		This publication includes mark-up to enable accessibility and compatibility with assistive technology. Images, audio, and video in the publication are well-described in conformance with WCAG 2.0 A.
+	&lt;/meta&gt;</code></pre>
+						</aside>
+					</section>
+					<section id="ui-26">
+						<h5>UI</h5>
+						<p><b>Accessibility Features</b>:</p>
+						<ul>
+							<li><p>Alternative Text</p></li>
+							<li><p>Long Descriptions</p></li>
+							<li><p>Print Page Numbers</p></li>
+						</ul>
+						<p><b>Accessibility Hazards</b>:</p>
+						<ul>
+							<li><p>No Sound Hazard</p></li>
+							<li><p>No Motion Simulation Hazard</p></li>
+							<li><p>No Flashing Hazard</p></li>
+						</ul>
+						<p><b>AccessMode</b>:</p>
+						<ul>
+							<li><p>Visual</p></li>
+							<li><p>Textual</p></li>
+						</ul>
+						<p><b>Access Mode Sufficient</b>:</p>
+						<ul>
+							<li><p>Visual</p></li>
+							<li><p>Textual</p></li>
+							<li><p>Both Visual and Textual</p></li>
+						</ul>
+						<p><b>Certified By</b>:</p>
+						<p>ACME Certification</p>
+						<p><b>Certifier’s Credential</b>:</p>
+						<p><a href="https://acme-certification.org/">https://ACME-Certification.org/</a></p>
+						<p><b>Conforms To</b>:</p>
+						<p><a href="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-a"
+								>http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-a</a></p>
+						<p><b>Accessibility Summary</b>:</p>
+						<p>This publication includes markup to enable accessibility and compatibility with assistive
+							technology. Images, audio, and video in the publication are well-described in conformance with
+							WCAG 2.0 A.</p>
+					</section>
 				</section>
-				<section id="ui-26">
-					<h4>UI</h4>
-					<p><b>Accessibility Features</b>:</p>
-					<ul>
-						<li><p>Alternative Text</p></li>
-						<li><p>Long Descriptions</p></li>
-						<li><p>Print Page Numbers</p></li>
-					</ul>
-					<p><b>Accessibility Hazards</b>:</p>
-					<ul>
-						<li><p>No Sound Hazard</p></li>
-						<li><p>No Motion Simulation Hazard</p></li>
-						<li><p>No Flashing Hazard</p></li>
-					</ul>
-					<p><b>AccessMode</b>:</p>
-					<ul>
-						<li><p>Visual</p></li>
-						<li><p>Textual</p></li>
-					</ul>
-					<p><b>Access Mode Sufficient</b>:</p>
-					<ul>
-						<li><p>Visual</p></li>
-						<li><p>Textual</p></li>
-						<li><p>Both Visual and Textual</p></li>
-					</ul>
-					<p><b>Certified By</b>:</p>
-					<p>ACME Certification</p>
-					<p><b>Certifier’s Credential</b>:</p>
-					<p><a href="https://acme-certification.org/">https://ACME-Certification.org/</a></p>
-					<p><b>Conforms To</b>:</p>
-					<p><a href="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-a"
-							>http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-a</a></p>
-					<p><b>Accessibility Summary</b>:</p>
-					<p>This publication includes markup to enable accessibility and compatibility with assistive
-						technology. Images, audio, and video in the publication are well-described in conformance with
-						WCAG 2.0 A.</p>
+				<section id="example-9.2-all-metadata-fields-missing">
+					<h4>Example 9.2 (all metadata fields missing)</h4>
+					<section id="metadata-29">
+						<h5>Metadata</h5>
+						   <p><i>{No Data}</i></p>
+					</section>
+					<section id="ui-27">
+						<h5>UI</h5>
+						<p><b>Accessibility Features</b>:</p>
+						<p>None provided</p>
+						<p><b>Accessibility Hazards</b>:</p>
+						<p>None provided</p>
+						<p><b>AccessMode</b>:</p>
+						<p>None provided</p>
+						<p><b>Access Mode Sufficient</b>:</p>
+						<p>None provided</p>
+						<p><b>Certified By</b>:</p>
+						<p>None provided</p>
+						<p><b>Certifier’s Credential</b>:</p>
+						<p>None provided</p>
+						<p><b>Conforms To</b>:</p>
+						<p>None provided</p>
+						<p><b>Accessibility Summary</b>:</p>
+						<p>None provided</p>
+					</section>
 				</section>
 			</section>
-			<section id="example-9.2-all-metadata-fields-missing">
-				<h3>Example 9.2 (all metadata fields missing)</h3>
-				<section id="metadata-29">
-					<h4>Metadata</h4>
-					   <p><i>{No Data}</i></p>
-				</section>
-				<section id="ui-27">
-					<h4>UI</h4>
-					<p><b>Accessibility Features</b>:</p>
-					<p>None provided</p>
-					<p><b>Accessibility Hazards</b>:</p>
-					<p>None provided</p>
-					<p><b>AccessMode</b>:</p>
-					<p>None provided</p>
-					<p><b>Access Mode Sufficient</b>:</p>
-					<p>None provided</p>
-					<p><b>Certified By</b>:</p>
-					<p>None provided</p>
-					<p><b>Certifier’s Credential</b>:</p>
-					<p>None provided</p>
-					<p><b>Conforms To</b>:</p>
-					<p>None provided</p>
-					<p><b>Accessibility Summary</b>:</p>
-					<p>None provided</p>
-				</section>
-			</section>
-		</section>        
+		</section>     
 		<section id="app-acknowledgements" class="appendix informative">
 			<h2 id="acknowledgements">Acknowledgements</h2>
 			<section id="contributors">

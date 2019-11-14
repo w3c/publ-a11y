@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<title>ONIX Techniques</title>
+		<title>ONIX Techniques for Displaying Accessibility metadata for EPUB</title>
 		<script src="https://www.w3.org/Tools/respec/respec-w3c-common" class="remove" defer="defer"></script>
 		<script class="remove">
 			// <![CDATA[
@@ -45,14 +45,22 @@
 		<section id="sotd"></section>
 		<section id="onix-metadata">
 			<h2>ONIX Metadata</h2>
-			<p class="note">ONIX does not have an exact 1:1 mapping with EPUB accessibility metadata so unfortunately
+			
+			<p class="note">
+				Other techniques for implementing EPUB accessibility metadata are available: <a href="index.html">Metadata standard Techniques for Displaying Accessibility metadata for EPUB</a>
+			</p>
+			
+			<p class="note">
+				ONIX does not have an exact 1:1 mapping with EPUB accessibility metadata so unfortunately
 				not all of the accessibility metadata found in an EPUB exists in ONIX at the time of this publication.
 				There are plans to add this metadata to future versions of ONIX but no time frame has been announced.
 				This <a href="http://www.a11ymetadata.org/the-specification/metadata-crosswalk/">EPUB to ONIX
 					crosswalk</a> outlines the current overlap in metadata which will get updated as these two
 				specifications evolve. It is important to note that there were a number of new accessibility metadata
 				codes added to ONIX 3 to support the Accessibility 1.0 specification. Which means that ONIX 2 has a
-				limited number of accessibility metadata codes and is something not covered in this document.</p>
+				limited number of accessibility metadata codes and is something not covered in this document.
+			</p>
+				
 			<section id="onix-feed-examples">
 				<h3>ONIX feed examples</h3>
 				<section id="onix-feed-describing-an-epub">
@@ -169,41 +177,25 @@
 					</aside>
 				</section>
 			</section>
-			<section id="inaccessible">
-				<h3>Inaccessible</h3>
-				<p>The ONIX standard, unlike the Schema.org standard, provides a method to indicate that a given title
-					is inaccessible, which is described as <q>Known to lack significant features required for broad
-						accessibility.</q> This is indicated by using <a href="https://ns.editeur.org/onix/en/196">List:
-						196</a>; Code 09 within a ProductFormFeatureValue element.</p>
-				<p><em>Vendors may omit all other accessibility metadata fields.</em></p>
-				<section id="onix-example-10.1">
-					<h4>ONIX Example 10.1</h4>
-					<section id="metadata-30">
-						<h5>Metadata</h5>
-						<p>An excerpt of ONIX indicating an inaccessible product is:</p>
-						<aside class="example" id="cb31">
-							<pre><code>&lt;ProductFormFeature&gt;
-    &lt;ProductFormFeatureType&gt;09&lt;/ProductFormFeatureType&gt;
-    &lt;ProductFormFeatureValue&gt;09&lt;/ProductFormFeatureValue&gt;
-&lt;/ProductFormFeature&gt;</code></pre>
-						</aside>
-					</section>
-					<section id="ui-28">
-						<h5>UI</h5>
-						<p><q>Inaccessible</q></p>
-					</section>
-				</section>
-			</section>
-			<section id="screen-reader-friendly-1">
+		</section>
+		<section id="techniques">
+			<h2>Techniques</h2>
+			
+			<section id="screen-reader-friendly">
 				<h3>Screen Reader Friendly</h3>
+				<p><b>Value</b>: <i>Yes</i> / <i>No</i> / <i>Unknown</i></p>
+				<p>This technique relates to <a href="../principles/index.html#screen-reader-friendly">Screen Reader Friendly principle</a>.</p>
+
 				<p>Not available in ONIX</p>
 			</section>
-			<section id="audio-book">
-				<h3>Audio Book</h3>
-				<p>This information can be retrieved from ONIX <a href="https://ns.editeur.org/onix/en/81">code list
-						81</a>; Code: 01: Audiobook.</p>
-				<section id="onix-example-11.1">
-					<h4>ONIX Example 11.1</h4>
+			<section id="audiobook">
+				<h3>Audiobook</h3>
+				<p><b>Values</b>: <i>Yes / (if No - Omit this section)</i></p>
+				<p>This technique relates to <a href="../principles/index.html#audiobook">Audiobook principle</a>.</p>
+				
+				<p>This information can be retrieved from ONIX <a href="https://ns.editeur.org/onix/en/81">code list 81</a>; Code: 01: Audiobook.</p>
+				<section id="example-1.1">
+					<h4>Example 1.1</h4>
 					<section id="xpath">
 						<h5>XPath</h5>
 						<p>This field is true if the XPath returns at least one element for:</p>
@@ -218,12 +210,15 @@
 					</section>
 				</section>
 			</section>
-			<section id="accessibility-summary-1">
+			<section id="accessibility-summary">
 				<h3>Accessibility Summary</h3>
+				<p><b>Value</b>: Textual Data from metadata</p>
+				<p>This technique relates to <a href="../principles/index.html#accessibility-summary">Accessibility Summary principle</a>.</p>
+				
 				<p>This information can be retrieved from ONIX <a href="https://ns.editeur.org/onix/en/196">code list:
 						196</a>; Code: 00: Accessibility Summary.</p>
-				<section id="onix-example-12.1">
-					<h4>ONIX Example 12.1</h4>
+				<section id="example-2.1">
+					<h4>Example 2.1</h4>
 					<section id="xpath-1">
 						<h5>XPath</h5>
 						<p>The value can be retrieved using XPath:</p>
@@ -240,8 +235,11 @@
 					</section>
 				</section>
 			</section>
-			<section id="epub-and-wcag-conformance-level-reached">
-				<h3>EPUB and WCAG Conformance Level Reached</h3>
+			<section id="epub-accessibility-conformance">
+				<h3>EPUB Accessibility Conformance</h3>
+				<p><b>Value</b>: Textual Link based on Metadata (WCAG-A, WCAG-AA, WCAG-AAA) or raw URL found in EPUB OPF file’s metadata field</p>
+				<p>This technique relates to <a href="../principles/index.html#epub-accessibility-conformance">EPUB Accessibility Conformance principle</a>.</p>
+					
 				<ul>
 					<li>For WCAG-A: <a href="https://ns.editeur.org/onix/en/196">List: 196</a>; Code: 02: Accessibility
 						Specification 1.0 A</li>
@@ -249,14 +247,13 @@
 						Specification 1.0 AA</li>
 					<li>For WCAG-AAA: Not available in ONIX.</li>
 				</ul>
-				<section id="onix-example-13.1">
-					<h4>ONIX Example 13.1</h4>
+				<section id="example-3.1">
+					<h4>Example 3.1</h4>
 					<section id="xpath-2">
 						<h5>XPath</h5>
 						<p>If the following XPath returns at least one result:</p>
 						<aside class="example" id="cb34">
-							<pre><code>//Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType="09"
-and ProductFormFeatureValue="02"]</code></pre>
+							<pre><code>//Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType="09" and ProductFormFeatureValue="02"]</code></pre>
 						</aside>
 					</section>
 					<section id="ui-31">
@@ -264,14 +261,13 @@ and ProductFormFeatureValue="02"]</code></pre>
 						<p><q>Accessibility Conformance: WCAG-A</q></p>
 					</section>
 				</section>
-				<section id="onix-example-13.2">
-					<h4>ONIX Example 13.2</h4>
+				<section id="example-3.2">
+					<h4>Example 3.2</h4>
 					<section id="xpath-3">
 						<h5>XPath</h5>
 						<p>If the following XPath returns at least one result:</p>
 						<aside class="example" id="cb35">
-							<pre><code>//Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType="09"
-and ProductFormFeatureValue="03"] returns at least one result</code></pre>
+							<pre><code>//Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType="09" and ProductFormFeatureValue="03"] returns at least one result</code></pre>
 						</aside>
 					</section>
 					<section id="ui-32">
@@ -280,23 +276,32 @@ and ProductFormFeatureValue="03"] returns at least one result</code></pre>
 					</section>
 				</section>
 			</section>
-			<section id="certified-by-1">
+			<section id="certified-by">
 				<h3>Certified By</h3>
+				<p><b>Value</b>: Textual Data from metadata</p>
+				<p>This technique relates to <a href="../principles/index.html#certified-by">Certified By principle</a>.</p>
+				
 				<p>Not available in ONIX</p>
 			</section>
-			<section id="certifier-credential-1">
+			<section id="certifier-credential">
 				<h3>Certifier Credential</h3>
+				<p><b>Value</b>: Potentially linked textual data from metadata</p>
+				<p>This technique relates to <a href="../principles/index.html#certifier-credential">Certifier Credential principle</a>.</p>
+				
 				<p>Not available in ONIX</p>
 			</section>
-			<section id="certifier-report-1">
+			<section id="certifier-report">
 				<h3>Certifier Report</h3>
+				<p><b>Value</b>: Potentially linked textual data from metadata</p>
+				<p>This technique relates to <a href="../principles/index.html#certifier-report">Certifier Report principle</a>.</p>
+
 				<p><a href="https://ns.editeur.org/onix/en/196">List: 196</a>; Code: 94: Compliance web page for
 					detailed accessibility information</p>
 				<p><strong>Or</strong></p>
 				<p>If a publisher is self-certifying, Code: 96: Publisher’s web page for detailed accessibility
 					information</p>
-				<section id="onix-example-14.1">
-					<h4>ONIX Example 14.1</h4>
+				<section id="example-4.1">
+					<h4>Example 4.1</h4>
 					<section id="xpath-4">
 						<h5>XPath</h5>
 						<p>The value can be retrieve using XPath:</p>
@@ -326,12 +331,43 @@ and ProductFormFeatureValue="03"] returns at least one result</code></pre>
 					</section>
 				</section>
 			</section>
-			<section id="hazards-1">
+			<section id="hazards">
 				<h3>Hazards</h3>
-				<p>Not available in ONIX</p>
+				<p><b>Values</b>: flashing, motion simulation, sound, no flashing, no motion simulation, no sound, none, or Unknown.</p>
+				<p>This technique relates to <a href="../principles/index.html#hazards">Hazards principle</a>.</p>
 			</section>
-			<section id="all-accessibility-metadata-1">
+			<section id="inaccessible">
+				<h3>Inaccessible</h3>
+				<p>This technique relates to <a href="../principles/index.html#inaccessible">Inaccessible principle</a>.</p>
+				
+				<p>The ONIX standard, unlike the Schema.org standard, provides a method to indicate that a given title
+					is inaccessible, which is described as <q>Known to lack significant features required for broad
+						accessibility.</q> This is indicated by using <a href="https://ns.editeur.org/onix/en/196">List:
+						196</a>; Code 09 within a ProductFormFeatureValue element.</p>
+				<p><em>Vendors may omit all other accessibility metadata fields.</em></p>
+				<section id="example-0.1">
+					<h4>Example 5.1</h4>
+					<section id="metadata-30">
+						<h5>Metadata</h5>
+						<p>An excerpt of ONIX indicating an inaccessible product is:</p>
+						<aside class="example" id="cb31">
+							<pre><code>&lt;ProductFormFeature&gt;
+    &lt;ProductFormFeatureType&gt;09&lt;/ProductFormFeatureType&gt;
+    &lt;ProductFormFeatureValue&gt;09&lt;/ProductFormFeatureValue&gt;
+&lt;/ProductFormFeature&gt;</code></pre>
+						</aside>
+					</section>
+					<section id="ui-28">
+						<h5>UI</h5>
+						<p><q>Inaccessible</q></p>
+					</section>
+				</section>
+			</section>
+			<section id="all-accessibility-metadata">
 				<h3>All Accessibility Metadata</h3>
+				<p><b>Value</b>: Link to complete list of all metadata fields</p>
+				<p>This technique relates to <a href="../principles/index.html#all-accessibility-metadata">All Accessibility Metadata principle</a>.</p>
+				
 				<p>For a complete list of <a href="http://www.a11ymetadata.org/the-specification/metadata-crosswalk/"
 						>ONIX accessibility metadata refer to the crosswalk.</a></p>
 			</section>
