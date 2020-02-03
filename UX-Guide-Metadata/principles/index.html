@@ -164,42 +164,82 @@
 			<section id="screen-reader-friendly">
 				<h3>Screen Reader Friendly</h3>
 				<p><b>Value</b>: <i>Yes</i> / <i>No</i> / <i>Unknown</i></p>
+				<h4>Definition</h4>
+				<p>A Yes/No/Unknown answer to the question "Can a screen-reader user read this publication?". This can be based on a combination of metadata fields, if needed, that establish that the primary content of the publication is available in true text and is not an image of text.</p>
+				<h4>Rationale</h4>
+				<p>Most available digital publications include their content in true text and can report that they are screen reader friendly. Exceptions would include publications where critical content is included only in images, such as graphs, charts, or equations presented as images, and publications with a fixed appearance created by having an image of each page instead of true text.</p>
 			</section>
 			
 			<section id="audiobook">
 				<h3>Audiobook</h3>
 				<p><b>Values</b>: <i>Yes / (if No - Omit this section)</i></p>
+				<h4>Definition</h4>
+				<p>An indication that this publication is an audiobook which is designed to be used by listening. This designation can be applied if text will also appear on a display as long as it is not required to use the publication.</p>
+				<h4>Rationale</h4>
+				<p>Audiobooks are considered optimized publications. They may not meet all accessibility requirements if they lack visible text, but they provide access to the publication for specific users who require audio, including users with dyslexia or visual impairments. Providing a way for users to search a collection for audiobooks will support these users, and including this information in the metadata displayed will also alert users for whom audio is inaccessible. This piece of metadata should be included only if the value is "Yes". Since most digital publications available are not audiobooks, it is only important to include this metadata in the user interface for those that are.</p>
 			</section>
 			
 			<section id="accessibility-summary">
 				<h3>Accessibility Summary</h3>
 				<p><b>Value</b>: Textual Data from metadata</p>
+				<h4>Definition</h4>
+				<p>A plain language explanation of the overall accessibility of the publication. The accessibility summary should contain information that would make it easy for an end user to determine if the publication is accessible to them. Educators would also be able to determine if the publication was accessible for use in a classroom or an online course.</p>
+				<h4>Rationale</h4>
+				<p>A human readable description is needed to be available for an end user or an educational professional to determine if the title will be accessible to them personally, or to the students. It should be easy to read and understand if it will be suitable for use by persons with disabilities. This determination must be made before the end user purchases or selects the title, and must be determined before a title is selected for a course.</p>
 			</section>
 			
 			<section id="epub-accessibility-conformance">
 				<h3>EPUB Accessibility Conformance</h3>
 				<p><b>Value</b>: Textual Link based on Metadata (WCAG-A, WCAG-AA, WCAG-AAA)</p>
+				<h4>Definition</h4>
+				<p>To report the accessibility conformance of a publication, the metadata term <i>conformsTo</i> must be provided. The <i>conformsTo</i> term requires a specific URL that identifies the level of conformance of the publication. The values for an EPUB publication are:</p>
+				<ul>
+					<li><a href="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-a">http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-a</a></li>
+					<li><a href="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aa">http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aa</a></li>
+					<li><a href="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aaa">http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aaa</a></li>
+				</ul>
+				<p>The above URLs indicate that the publication meets the EPUB accessibility requirements and the corresponding WCAG levels of A, AA, and AAA.</p>
+				<p class="note">If a publication is optimized for a particular user group, e.g. an audiobook, it would not conform to WCAG guidelines, but it may be perfectly useable by a particular group, e.g. persons who are blind. In this case, the conformsTo term must point to a URL that identifies the specification used to create the optimized publication.</p>
+				<h4>Rationale</h4>
+				<p>Discovery metadata enables publications to have their accessibility exposed regardless of the overall accessibility of the publication. A publication optimized for a particular group, such as an audiobook, would not meet WCAG 2.0, but it would be fully accessible to many people. The conformance metadata details the accessibility of the publication, which allows end users and educators to evaluate the suitability of the publication for individuals.</p>
+
 			</section>
 			
 			<section id="certified-by">
 				<h3>Certified By</h3>
 				<p><b>Value</b>: Textual Data from metadata</p>
+				<h4>Definition</h4>
+				<p>The <i>Certified By</i> property specifies the name of the party that certified the content. The certifier of the content could be the same party that created or published the publication, but can also be a third-party accessibility certifier.</p>
+				<h4>Rationale</h4>
+				<p>When the metadata about a publication declares that it conforms to an accessibility specification reaching a certain level of WCAG conformance, the party making this assertion must be identified.</p>
 			</section>
 			
 			<section id="certifier-credential">
 				<h3>Certifier Credential</h3>
 				<p><b>Value</b>: Potentially linked textual data from metadata</p>
+				<h4>Definition</h4>
+				<p>The <i>Certifier Credential</i> indicates the name of the credential or badge that establishes the authority of the certifying party.</p>
+				<h4>Rationale</h4>
+				<p>Stating that the organization certifying this content has a credential recognized by the community gives a higher level of trust as to the accuracy of the conformance level reached.</p>
 			</section>
 			
 			<section id="certifier-report">
 				<h3>Certifier Report</h3>
 				<p><b>Value</b>: Potentially linked textual data from metadata</p>
+				<h4>Definition</h4>
+				<p>The <i>Certifier Report</i> is an URL pointing to a web page where the certifier publishes a report detailing the accessibility of the publication.</p>
+				<h4>Rationale</h4>
+				<p>Providing a link to the complete report allows end users and organizations to review it. The user interface should display a link to the report.</p>
 			</section>
 			
 			<section id="hazards">
 				<h3>Hazards</h3>
 				<p><b>Values</b>: flashing, motion simulation, sound, no flashing, no motion simulation, no
 					sound, none, or unknown.</p>
+				<h4>Definition</h4>
+				<p>Hazards are a list of possible ways in which this publication could be physiologically dangerous for some users (e.g. flashing elements, background sounds, motion simulation, etc.).</p>
+				<h4>Rationale</h4>
+				<p>Unlike other accessibility properties, the presence of hazards can be expressed either positively or negatively. This is because users are more often looking for content that is safe for them. This section should always be displayed; indicate that no metadata was provided if that is the case.</p>
 			</section>
 			
 			<section id="inaccessible">
@@ -209,7 +249,10 @@
 			<section id="all-accessibility-metadata">
 				<h3>All Accessibility Metadata</h3>
 				<p><b>Value</b>: Link to complete list of all metadata fields</p>
-				<p>Here are <a href="https://www.w3.org/wiki/WebSchemas/Accessibility">all the possible accessibility metadata properties</a>.</p>
+				<h4>Definition</h4>
+				<p>It is a pointer to show the listing of all the accessibility metadata of the publication. It can be a hyperlink to another page or can be listed in HTML summary/details element. It should include metadata for <i>accessibilityFeature</i>, <i>accessibilityHazard</i>, <i>accessMode</i>, <i>accessModeSufficient</i> and all the accessibility metadata and conformance metadata listed above.</p>
+				<h4>Rationale</h4>
+				<p>A complete list of accessibility metadata is important for advanced users who would like to know about the presence of specific accessibility features in the publication. This listing is also important for verification of the interpretation of the accessibility metadata provided according to this user experience guide.</p>
 			</section>
 			
 		</section>
