@@ -1,91 +1,418 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
 	<head>
-		<meta charset="utf-8" />
+		<meta charset="utf-8">
+		<meta name="generator" content="ReSpec 24.21.1">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<style>/* --- ISSUES/NOTES --- */
+			.issue-label {
+			text-transform: initial;
+			}
+			.warning > p:first-child { margin-top: 0 }
+			.warning {
+			padding: .5em;
+			border-left-width: .5em;
+			border-left-style: solid;
+			}
+			span.warning { padding: .1em .5em .15em; }
+			.issue.closed span.issue-number {
+			text-decoration: line-through;
+			}
+			.warning {
+			border-color: #f11;
+			border-width: .2em;
+			border-style: solid;
+			background: #fbe9e9;
+			}
+			.warning-title:before{
+			content: "⚠"; /*U+26A0 WARNING SIGN*/
+			font-size: 3em;
+			float: left;
+			height: 100%;
+			padding-right: .3em;
+			vertical-align: top;
+			margin-top: -0.5em;
+			}
+			li.task-list-item {
+			list-style: none;
+			}
+			input.task-list-item-checkbox {
+			margin: 0 0.35em 0.25em -1.6em;
+			vertical-align: middle;
+			}
+			.issue a.respec-gh-label {
+			padding: 5px;
+			margin: 0 2px 0 2px;
+			font-size: 10px;
+			text-transform: none;
+			text-decoration: none;
+			font-weight: bold;
+			border-radius: 4px;
+			position: relative;
+			bottom: 2px;
+			border: none;
+			}
+			.issue a.respec-label-dark {
+			color: #fff;
+			background-color: #000;
+			}
+			.issue a.respec-label-light {
+			color: #000;
+			background-color: #fff;
+			}
+		</style>
 		<title>Metadata Standard Techniques for Displaying Accessibility Metadata for EPUB</title>
-		<script src="https://www.w3.org/Tools/respec/respec-w3c-common" class="remove" defer="defer"></script>
-		<script class="remove">
-			// <![CDATA[
-			var respecConfig = {
-				wg: "EPUB 3 Community Group",
-				wgURI: "https://www.w3.org/community/epub3/",
-				wgPublicList: "public-epub3",
-				specStatus: "CG-DRAFT",
-				noRecTrack: true,
-				shortName: "ux-meta-principles",
-				// previousPublishDate: "2019-06-14",
-				// previousMaturity: "WD",
-				edDraftURI: "https://w3c.github.io/publ-a11y/UX-Guide-Metadata/principles",
-				editors: [
-					{
-						"name": "Charles LaPierre",
-						"company": "Benetech",
-						"companyURL": "http://www.benetech.org",
-						"w3cid": 72055
-					},
-					{
-						"name": "Gregorio Pellegrino",
-						"company": "Fondazione LIA",
-						"companyURL": "https://fondazionelia.org",
-						"w3cid": 97111
-					}
-				],
-				processVersion: 2018,
-				includePermalinks: false,
-				permalinkEdge:     true,
-				permalinkHide:     false,
-				diffTool:          "http://www.aptest.com/standards/htmldiff/htmldiff.pl",
-				wgURI:             "https://www.w3.org/community/epub3/",
-				wgPublicList:      "public-epub3",
-				github:			 {
-					repoURL: "https://github.com/w3c/publ-a11y/",
-					branch: "master"
-				}
+		<style id="respec-mainstyle">/*****************************************************************
+			* ReSpec 3 CSS
+			* Robin Berjon - http://berjon.com/
+			*****************************************************************/
+			@keyframes pop {
+			0% {
+			transform: scale(1, 1);
+			}
+			25% {
+			transform: scale(1.25, 1.25);
+			opacity: 0.75;
+			}
+			100% {
+			transform: scale(1, 1);
+			}
+			}
+			/* Override code highlighter background */
+			.hljs {
+			background: transparent !important;
+			}
+			/* --- INLINES --- */
+			h1 abbr,
+			h2 abbr,
+			h3 abbr,
+			h4 abbr,
+			h5 abbr,
+			h6 abbr,
+			a abbr {
+			border: none;
+			}
+			dfn {
+			font-weight: bold;
+			}
+			a.internalDFN {
+			color: inherit;
+			border-bottom: 1px solid #99c;
+			text-decoration: none;
+			}
+			a.externalDFN {
+			color: inherit;
+			border-bottom: 1px dotted #ccc;
+			text-decoration: none;
+			}
+			a.bibref {
+			text-decoration: none;
+			}
+			.respec-offending-element:target {
+			animation: pop 0.25s ease-in-out 0s 1;
+			}
+			/* TODO: Remove once https://github.com/w3c/tr-design/pull/176 is merged. */
+			.respec-offending-element a[href] {
+			margin: 0;
+			}
+			.respec-offending-element {
+			display: inline-block;
+			position: relative;
+			/* Red squiggly line */
+			background: url(data:image/gif;base64,R0lGODdhBAADAPEAANv///8AAP///wAAACwAAAAABAADAEACBZQjmIAFADs=)
+			bottom repeat-x;
+			}
+			@supports (text-decoration-style: wavy) {
+			.respec-offending-element {
+			background: none;
+			text-decoration-line: underline;
+			text-decoration-style: wavy;
+			text-decoration-color: red;
+			}
+			}
+			#references :target {
+			background: #eaf3ff;
+			animation: pop 0.4s ease-in-out 0s 1;
+			}
+			cite .bibref {
+			font-style: normal;
+			}
+			code {
+			color: #c83500;
+			}
+			th code {
+			color: inherit;
+			}
+			a[href].orcid {
+			padding-left: 4px;
+			padding-right: 4px;
+			}
+			a[href].orcid > svg {
+			margin-bottom: -2px;
+			}
+			/* --- TOC --- */
+			.toc a,
+			.tof a {
+			text-decoration: none;
+			}
+			a .secno,
+			a .figno {
+			color: #000;
+			}
+			ul.tof,
+			ol.tof {
+			list-style: none outside none;
+			}
+			.caption {
+			margin-top: 0.5em;
+			font-style: italic;
+			}
+			/* --- TABLE --- */
+			table.simple {
+			border-spacing: 0;
+			border-collapse: collapse;
+			border-bottom: 3px solid #005a9c;
+			}
+			.simple th {
+			background: #005a9c;
+			color: #fff;
+			padding: 3px 5px;
+			text-align: left;
+			}
+			.simple th[scope="row"] {
+			background: inherit;
+			color: inherit;
+			border-top: 1px solid #ddd;
+			}
+			.simple td {
+			padding: 3px 10px;
+			border-top: 1px solid #ddd;
+			}
+			.simple tr:nth-child(even) {
+			background: #f0f6ff;
+			}
+			/* --- DL --- */
+			.section dd > p:first-child {
+			margin-top: 0;
+			}
+			.section dd > p:last-child {
+			margin-bottom: 0;
+			}
+			.section dd {
+			margin-bottom: 1em;
+			}
+			.section dl.attrs dd,
+			.section dl.eldef dd {
+			margin-bottom: 0;
+			}
+			#issue-summary > ul,
+			.respec-dfn-list {
+			column-count: 2;
+			}
+			#issue-summary li,
+			.respec-dfn-list li {
+			list-style: none;
+			}
+			details.respec-tests-details {
+			margin-left: 1em;
+			display: inline-block;
+			vertical-align: top;
+			}
+			details.respec-tests-details > * {
+			padding-right: 2em;
+			}
+			details.respec-tests-details[open] {
+			z-index: 999999;
+			position: absolute;
+			border: thin solid #cad3e2;
+			border-radius: 0.3em;
+			background-color: white;
+			padding-bottom: 0.5em;
+			}
+			details.respec-tests-details[open] > summary {
+			border-bottom: thin solid #cad3e2;
+			padding-left: 1em;
+			margin-bottom: 1em;
+			line-height: 2em;
+			}
+			details.respec-tests-details > ul {
+			width: 100%;
+			margin-top: -0.3em;
+			}
+			details.respec-tests-details > li {
+			padding-left: 1em;
+			}
+			a[href].self-link:hover {
+			opacity: 1;
+			text-decoration: none;
+			background-color: transparent;
+			}
+			h2,
+			h3,
+			h4,
+			h5,
+			h6 {
+			position: relative;
+			}
+			aside.example .marker > a.self-link {
+			color: inherit;
+			}
+			h2 > a.self-link,
+			h3 > a.self-link,
+			h4 > a.self-link,
+			h5 > a.self-link,
+			h6 > a.self-link {
+			border: none;
+			color: inherit;
+			font-size: 83%;
+			height: 2em;
+			left: -1.6em;
+			opacity: 0.5;
+			position: absolute;
+			text-align: center;
+			text-decoration: none;
+			top: 0;
+			transition: opacity 0.2s;
+			width: 2em;
+			}
+			h2 > a.self-link::before,
+			h3 > a.self-link::before,
+			h4 > a.self-link::before,
+			h5 > a.self-link::before,
+			h6 > a.self-link::before {
+			content: "§";
+			display: block;
+			}
+			@media (max-width: 767px) {
+			dd {
+			margin-left: 0;
+			}
+			/* Don't position self-link in headings off-screen */
+			h2 > a.self-link,
+			h3 > a.self-link,
+			h4 > a.self-link,
+			h5 > a.self-link,
+			h6 > a.self-link {
+			left: auto;
+			top: auto;
+			}
+			}
+			@media print {
+			.removeOnSave {
+			display: none;
+			}
+			}
+		</style>
+		<link href="common/css/common.css" rel="stylesheet" type="text/css">
+		<style>var {
+			position: relative;
+			cursor: pointer;
+			display: inline-block;
+			}
+			var[data-type]::before,
+			var[data-type]::after {
+			position: absolute;
+			left: 50%;
+			top: -6px;
+			opacity: 0;
+			transition: opacity 0.4s;
+			pointer-events: none;
+			}
+			/* the triangle or arrow or caret or whatever */
+			var[data-type]::before {
+			content: "";
+			transform: translateX(-50%);
+			border-width: 4px 6px 0 6px;
+			border-style: solid;
+			border-color: transparent;
+			border-top-color: #000;
+			}
+			/* actual text */
+			var[data-type]::after {
+			content: attr(data-type);
+			transform: translateX(-50%) translateY(-100%);
+			background: #000;
+			text-align: center;
+			/* additional styling */
+			font-family: "Dank Mono", "Fira Code", monospace;
+			font-style: normal;
+			padding: 6px;
+			border-radius: 3px;
+			color: #daca88;
+			}
+			var[data-type]:hover::after,
+			var[data-type]:hover::before {
+			opacity: 1;
+			}
+			body {
+			background-image: url('https://www.w3.org/StyleSheets/TR/2016/logos/back-cg-draft.png') !important;
+			}
+			@media screen {
+			body.toc-sidebar #toc {
+			padding-top: 160px !important;
 			};
-			// ]]>
-	  </script>
+			}
+		</style>
+		<meta name="description" content="This is an entry page to the EPUB 3.2 specification documents">
+		<link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2016/cg-final">
 	</head>
-	<body>
-		<section id="abstract"></section>
-		<section id="sotd"></section>
-		<section id="general-overview">
-			<h2>General Overview</h2>
-			General principles on how to display accessibility metadata for EPUB are in the <a href="../principles/">User Experience Guide for Displaying Accessibility metadata for EPUB</a>
-			
-			<section id="available-techniques">
-				<h3>Available Techniques for different standards</h3>
-				<ul>
-					<li><p><a href="schema-org.html">Schema.org</a></p></li>
-					<li><p><a href="onix.html">ONIX</a></p></li>
-				</ul>
-			</section>
-		
-		</section>
+	<body class="h-entry informative toc-inline">
+		<div class="head">
+			<a class="logo" href="https://www.w3.org/"><img alt="W3C" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" width="72" height="48"></a>
+			<h1 class="title p-name" id="title">Metadata Standard Techniques for Displaying Accessibility Metadata for EPUB</h1>
+			<hr title="Separator for header">
+		</div>
+		<nav id="toc">
+			<h2 class="introductory" id="table-of-contents">Specification Links</h2>
 
-		<section id="app-acknowledgements" class="appendix informative">
-			<h2 id="acknowledgements">Acknowledgements</h2>
-			<section id="contributors">
-				<h3>Contributors</h3>
-				<ul>
-					<li>Avneesh Singh</li>
-                    <li>Charles LaPierre</li>
-					<li>Dave Cramer</li>
-                    <li>George Kerscher</li>
-                    <li>Gregorio Pellegrino</li>
-					<li>Jason White</li>
-					<li>Madeleine Rothberg</li>
-                    <li>Matt Garrish</li>
-					<li>Rachel Comerford</li>
-					<li>Rick Johnson</li>
-				</ul>
-			</section>
-			<section id="reviewers">
-				<h3>Reviewers</h3>
-				<ul>
-					<li>Erin Kirchner-Lucas</li>
-					<li>Luc Audrain</li>
-				</ul>
-			</section>
+			<ol class="toc">
+				<li><a href="../principles/">User Experience Guide for Displaying Accessibility metadata for EPUB</a></li>
+				<li>
+					Techniques for Displaying Accessibility Metadata for EPUB
+					<ol>
+						<li><a href="../schema-org.html">Schema.org</a></li>
+						<li><a href="../onix.html">ONIX</a></li>
+					</ol>
+				</li>
+			</ol>
+		</nav>
+		<section id="abstract" class="introductory">
+			<h2>What is this document?</h2>
+			<p>
+				This document will help those who wish to provide accessibility metadata directly to users understand how to represent machine readable accessibility metadata in a user friendly User Interface / User Experience (UI/UX).
+			</p>
 		</section>
+		<section id="structure" class="introductory">
+			<h2>Structure</h2>
+			<p>
+				We decided to divide the theoretical principles from the techniques to extrapolate and display metadata according to different standards.
+			</p>
+			<p>
+				The documents currently available are:
+			</p>
+			<ul>
+				<li><a href="../principles/">User Experience Guide for Displaying Accessibility metadata for EPUB</a></li>
+				<li>
+					Techniques for Displaying Accessibility Metadata for EPUB
+					<ul>
+						<li><a href="../schema-org.html">Schema.org</a></li>
+						<li><a href="../onix.html">ONIX</a></li>
+					</ul>
+				</li>
+			</ul>
+		</section>
+		<section id="status" class="introductory">
+			<h2>
+				Status of This Document
+			</h2>
+			<p>
+				This specification was published by the<a href="https://www.w3.org/community/epub3/">EPUB 3 Community Group</a>. It is not a W3C Standard nor is it on the W3C Standards Track. Please note that under the <a href="https://www.w3.org/community/about/agreements/cla/">W3C Community Contributor License Agreement (CLA)</a> there is a limited opt-out and other conditions apply. Learn more about <a href="https://www.w3.org/community/">W3C Community and Business Groups</a>.
+			</p>
+			<p>
+				If you wish to make comments regarding this document, please send them to <a href="mailto:public-epub3@w3.org">public-epub3@w3.org</a> (<a href="mailto:public-epub3-request@w3.org?subject=subscribe">subscribe</a>,<a href="https://lists.w3.org/Archives/Public/public-epub3/">archives</a>).
+			</p>
+		</section>
+		<p role="navigation" id="back-to-top"><a href="#title"><abbr title="Back to Top">↑</abbr></a></p>
+		<script src="https://www.w3.org/scripts/TR/2016/fixup.js"></script>
 	</body>
 </html>
