@@ -56,6 +56,15 @@
 			<p class="note">
 			 General principles on how to display accessibility metadata for EPUB are in the <a href="../principles/index.html">User Experience Guide for Displaying Accessibility metadata for EPUB</a>
 			</p>
+			
+			<p class="note">
+				Some Schema.org accessibility metadata properties are descriptions of reading systems and not individual publications;
+				this means they will not be appropriate for use inside the EPUB package.
+				This includes the property "bookmarks," which indicates the ability of a reading system to allow users to set and navigate to bookmarks.
+				In addition, some kinds of transformations described in Schema.org accessibility metadata are disallowed if a book is constructed to prevent transformations,
+				but can only be provided if the reading system offers users control of that feature.
+				Those features therefore cannot be declared present in the publication's metadata because not all reading systems that support the publication file will provide that feature.
+			</p>
             
         </section>
 		<section id="techniques">
