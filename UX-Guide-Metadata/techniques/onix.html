@@ -204,9 +204,9 @@
 				<p><b>Value</b>: <i>Yes</i> / <i>No</i> / <i>Unknown</i></p>
 				<p>This technique relates to <a href="../principles/#screen-reader-friendly">Screen Reader Friendly principle</a>.</p>
 
-				<p>This information can be retrieved from ONIX <a href="https://ns.editeur.org/onix/en/81">code list 81</a>; Code: 10 combined with <a href="https://ns.editeur.org/onix/en/196">code list 196</a>; Code: 10 means all text is actual text.</p>
+				<p>This information can be retrieved from ONIX <a href="https://ns.editeur.org/onix/en/81">List 81</a>; Code: 10 combined with <a href="https://ns.editeur.org/onix/en/196">code list 196</a>; Code: 10 means all text is actual text.</p>
 				<p class="note">
-					<a href="https://ns.editeur.org/onix/en/81">Code list 81</a>; Code: 10 on its own (without <a href="https://ns.editeur.org/onix/en/196">code list 196</a>; Code: 10) admits the possibility that the ‘text’ is inaccessible because it is an image of text.
+					<a href="https://ns.editeur.org/onix/en/81">List 81</a>; Code: 10 on its own (without <a href="https://ns.editeur.org/onix/en/196">List 196</a>; Code: 10) admits the possibility that the ‘text’ is inaccessible because it is an image of text.
 				</p>
 				
 				<section id="example-1.1">
@@ -353,7 +353,9 @@
 				<p><a href="https://ns.editeur.org/onix/en/196">List: 196</a>; Code: 94: Compliance web page for
 					detailed accessibility information</p>
 				<p><strong>Or</strong></p>
-				<p>If a publisher is self-certifying, Code: 96: Publisher’s web page for detailed accessibility
+				<p>If it is certified by a trusted intermediary, <a href="https://ns.editeur.org/onix/en/196">List: 196</a>; Code: 95: Trusted intermediary’s web page for detailed accessibility information</p>
+					<p><strong>Or</strong></p>
+				<p>If a publisher is self-certifying, <a href="https://ns.editeur.org/onix/en/196">List: 196</a>; Code: 96: Publisher’s web page for detailed accessibility
 					information</p>
 				<section id="example-6.1">
 					<h4>Example 6.1</h4>
@@ -362,6 +364,9 @@
 						<p>The value can be retrieve using XPath:</p>
 						<aside class="example" id="cb36">
 							<pre><code>//Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType="09" and ProductFormFeatureValue="94"]/ProductFormFeatureDescription/text()</code></pre>
+						</aside>
+						<aside class="example" id="cb36">
+							<pre><code>//Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType="09" and ProductFormFeatureValue="95"]/ProductFormFeatureDescription/text()</code></pre>
 						</aside>
 						<aside class="example" id="cb37">
 							<pre><code>//Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType="09" and ProductFormFeatureValue="96"]/ProductFormFeatureDescription/text()</code></pre>
