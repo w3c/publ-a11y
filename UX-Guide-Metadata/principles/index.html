@@ -190,14 +190,9 @@
 				<h3>Accessibility Conformance</h3>
 				<p><b>Value</b>: Textual Link based on Metadata</p>
 				<h4>Definition</h4>
-				<p>To report the accessibility conformance of a publication, the metadata term <i>conformsTo</i> must be provided. The <i>conformsTo</i> term requires a specific URL that identifies the level of conformance of the publication. The values for an EPUB publication are:</p>
-				<ul>
-					<li><a href="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-a">http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-a</a></li>
-					<li><a href="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aa">http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aa</a></li>
-					<li><a href="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aaa">http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aaa</a></li>
-				</ul>
-				<p>The above URLs indicate that the publication meets the EPUB accessibility requirements and the corresponding WCAG levels of A, AA, and AAA.</p>
-				<p class="note">If a publication is optimized for a particular user group, e.g. an audiobook, it would not conform to WCAG guidelines, but it may be perfectly useable by a particular group, e.g. persons who are blind. In this case, the conformsTo term must point to a URL that identifies the specification used to create the optimized publication.</p>
+				<p>To report the accessibility conformance of a publication, metadata for accessibility conformance should be provided. It declares the accessibility standard or accessibility specifications to which the publication conforms. The value can be a URL or a code which identifies the accessibility standard or accessibility specifications.</p>
+				<p class="note">In case of EPUB publications, it will usually point to the EPUB Accessibility specifications or WCAG.</p>
+				<p class="note">If a publication is optimized for a particular user group, e.g. an audiobook, it would not conform to WCAG guidelines, but it may be perfectly useable by a particular group, e.g. persons who are blind. In this case, the accessibility conformance metadata should identify the specification used to create the optimized publication.</p>
 				<h4>Rationale</h4>
 				<p>Discovery metadata enables publications to have their accessibility exposed regardless of the overall accessibility of the publication. A publication optimized for a particular group, such as an audiobook, would not meet WCAG 2.0, but it would be fully accessible to many people. The conformance metadata details the accessibility of the publication, which allows end users and educators to evaluate the suitability of the publication for individuals.</p>
 
