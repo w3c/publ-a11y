@@ -134,6 +134,11 @@
             &lt;ProductFormFeature&gt;
                 &lt;ProductFormFeatureType&gt;09&lt;/ProductFormFeatureType&gt;
                 &lt;ProductFormFeatureValue&gt;94&lt;/ProductFormFeatureValue&gt;
+                &lt;ProductFormFeatureDescription&gt;http://www.certifier.com/&lt;/ProductFormFeatureDescription&gt;
+            &lt;/ProductFormFeature&gt;
+            &lt;ProductFormFeature&gt;
+                &lt;ProductFormFeatureType&gt;09&lt;/ProductFormFeatureType&gt;
+                &lt;ProductFormFeatureValue&gt;94&lt;/ProductFormFeatureValue&gt;
                 &lt;ProductFormFeatureDescription&gt;http://www.example.com/a11y/report/9780000000001&lt;/ProductFormFeatureDescription&gt;
             &lt;/ProductFormFeature&gt;
             &lt;PrimaryContentType&gt;10&lt;/PrimaryContentType&gt;
@@ -294,7 +299,24 @@
 				<p><b>Value</b>: Textual Data from metadata</p>
 				<p>This technique relates to <a href="../principles/#certified-by">Certified By principle</a>.</p>
 				
-				<p>Not available in ONIX</p>
+				<p><a href="https://ns.editeur.org/onix/en/196">List: 196</a>; Code: 93: Compliance certification by</p>
+				<section id="example-4.1">
+					<h4>Example 4.1</h4>
+					<section id="xpath-4">
+						<h5>XPath</h5>
+						<p>The value can be retrieve using XPath:</p>
+						<aside class="example" id="cb36">
+							<pre><code>//Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType="09" and ProductFormFeatureValue="93"]/ProductFormFeatureDescription/text()</code></pre>
+						</aside>
+					</section>
+					<section id="ui-4">
+						<h5>UI</h5>
+						<p>Certified By: <a href="http://www.certifier.com/">http://www.certifier.com/</a></p>
+						<aside class="example">
+							<p><em>(Clickable URI to web page belonging to the organisation responsible for compliance testing and certification of the product)</em></p>
+						</aside>
+					</section>
+				</section>
 			</section>
 			<section id="certifier-credential">
 				<h3>Certifier Credential</h3>
@@ -313,8 +335,8 @@
 				<p><strong>Or</strong></p>
 				<p>If a publisher is self-certifying, Code: 96: Publisher’s web page for detailed accessibility
 					information</p>
-				<section id="example-4.1">
-					<h4>Example 4.1</h4>
+				<section id="example-5.1">
+					<h4>Example 5.1</h4>
 					<section id="xpath-4">
 						<h5>XPath</h5>
 						<p>The value can be retrieve using XPath:</p>
@@ -325,7 +347,7 @@
 							<pre><code>//Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType="09" and ProductFormFeatureValue="96"]/ProductFormFeatureDescription/text()</code></pre>
 						</aside>
 					</section>
-					<section id="ui-33">
+					<section id="ui-5">
 						<h5>UI</h5>
 						<p>Certifier Report</p>
 						<p><a href="http://www.example.com/a11y/report/9780000000001"><img src="../principles/media/image2.png"
@@ -353,15 +375,15 @@
 				<p>To list the presence or absence of hazards it is used the <em>ProductFormFeature</em> element, with <em>ProductFormFeatureType</em> equal to 12 (<em>"US CPSIA or other international hazard warning"</em>, from <a href="https://ns.editeur.org/onix/en/79">code list 79</a>) and <em>ProductFormFeatureValue</em> from <a href="https://ns.editeur.org/onix/en/143">code list 143</a>.</p>
 			
 				<section id="example-5.1">
-					<h4>Example 5.1</h4>
-					<section id="xpath-5">
+					<h4>Example 6.1</h4>
+					<section id="xpath-6">
 						<h5>XPath</h5>
 						<p>The value can be retrieve using XPath:</p>
 						<aside class="example" id="cb37">
 							<pre><code>//Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType="12"]/ProductFormFeatureValue</code></pre>
 						</aside>
 					</section>
-					<section id="ui-34">
+					<section id="ui-6">
 						<h5>UI</h5>
 						<p><q>Hazard: no Flashing, no Sound, no Motion Simulation</q></p>
 						<p>(because <em>ProductFormFeature</em> with <em>ProductFormFeatureType</em> equal to 12 and <em>ProductFormFeatureValue</em>s equal to: 14, 16, 18)</p>
