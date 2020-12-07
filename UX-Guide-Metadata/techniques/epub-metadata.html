@@ -47,8 +47,7 @@
             <h2>EPUB Accessibility Metadata</h2>
             
             <p>This metadata as outlined in the <a href="http://www.idpf.org/epub/a11y/">1.0 Accessibility Specification
-					Conformance and Discoverability</a> can be found inside the EPUB’s opf file usually found in
-					<code>OEBPS/package.opf</code></p>
+					Conformance and Discoverability</a> can be found in the <a href="https://www.w3.org/publishing/epub3/epub-packages.html#sec-package-doc">EPUB Package Document</a></p>
 			
 			<p class="note">
 				Other techniques for implementing EPUB accessibility metadata are available: <a href="../principles/index.html#techniques">Metadata standard Techniques for Displaying Accessibility metadata for EPUB</a>
@@ -74,7 +73,7 @@
 				<p><b>Value</b>: <i>Yes</i> / <i>No</i> / <i>Unknown</i></p>
 				<p>This technique relates to <a href="../principles/#screen-reader-friendly">Screen Reader Friendly principle</a>.</p>
 				
-				<p>This data is derived from the EPUB package metadata inside the OPF file:</p>
+				<p>This data is derived from the EPUB package metadata inside the Package Document:</p>
 				<aside class="example" id="cb1">
 					<pre><code>&lt;meta property="schema:accessModeSufficient"&gt;textual&lt;/meta&gt;</code></pre>
 				</aside>
@@ -161,7 +160,7 @@
 				<p><b>Values</b>: <i>Yes / (if No - Omit this section)</i></p>
 				<p>This technique relates to <a href="../principles/#audiobook">Audiobook principle</a>.</p>
 				
-				<p>This data is derived from the EPUB package metadata inside the OPF file:</p>
+				<p>This data is derived from the EPUB package metadata inside the Package Document:</p>
 				<aside class="example" id="cb5">
 					<pre><code>&lt;meta property="schema:accessModeSufficient"&gt;auditory&lt;/meta&gt;</code></pre>
 				</aside>
@@ -231,7 +230,7 @@
 				<p><b>Value</b>: Textual Data from metadata</p>
 				<p>This technique relates to <a href="../principles/#accessibility-summary">Accessibility Summary principle</a>.</p>
 				
-				<p>This data is pulled directly from the EPUB package metadata inside the OPF file:</p>
+				<p>This data is pulled directly from the EPUB package metadata inside the Package Document:</p>
 				<aside class="example" id="cb8">
 					<pre><code>&lt;meta property="schema:accessibilitySummary"&gt;</code></pre>
 				</aside>
@@ -271,7 +270,7 @@
 			</section>
 			<section id="accessibility-conformance">
 				<h3>Accessibility Conformance</h3>
-				<p><b>Value</b>: Textual Link based on Metadata or raw URL found in EPUB OPF file’s metadata field</p>
+				<p><b>Value</b>: Textual Link based on Metadata or raw URL found in EPUB Package Document</p>
 				<p>This technique relates to <a href="../principles/#accessibility-conformance">Accessibility Conformance principle</a>.</p>
 					
 				<aside class="example" id="cb10">
@@ -348,7 +347,7 @@
 				<p><b>Value</b>: Textual Data from metadata</p>
 				<p>This technique relates to <a href="../principles/#certified-by">Certified By principle</a>.</p>
 				
-				<p>This data is pulled directly from the EPUB package metadata inside the OPF file:</p>
+				<p>This data is pulled directly from the EPUB package metadata inside the Package Document:</p>
 				<aside class="example" id="cb13">
 					<pre><code>&lt;meta property="a11y:certifiedBy"&gt;</code></pre>
 				</aside>
@@ -397,7 +396,7 @@
 				<p><b>Value</b>: Potentially linked textual data from metadata</p>
 				<p>This technique relates to <a href="../principles/#certifier-credential">Certifier Credential principle</a>.</p>
 				
-				<p>This data is pulled directly from the EPUB package metadata inside the OPF file:</p>
+				<p>This data is pulled directly from the EPUB package metadata inside the Package Document:</p>
 				<aside class="example" id="cb16">
 					<pre><code>&lt;meta property="a11y:certifierCredential"&gt;</code></pre>
 				</aside>
@@ -475,7 +474,7 @@ Accessible&lt;/meta&gt;</code></pre>
 				<p>This technique relates to <a href="../principles/#certifier-report">Certifier Report principle</a>.</p>
 
 				
-				<p>This data is pulled directly from the EPUB package metadata inside the OPF file:</p>
+				<p>This data is pulled directly from the EPUB package metadata inside the Package Document:</p>
 				<aside class="example" id="cb19">
 					<pre><code>&lt;link rel="a11y:certifierReport" href="http://www.example.com/a11y/report/9780000000001"/&gt;</code></pre>
 				</aside>
@@ -530,7 +529,7 @@ Accessible&lt;/meta&gt;</code></pre>
 				<p><b>Values</b>: flashing, motion simulation, sound, no flashing, no motion simulation, no sound, none, or unknown.</p>
 				<p>This technique relates to <a href="../principles/#hazards">Hazards principle</a>.</p>
 				
-				<p>This data is found in the EPUB package metadata inside the OPF file:</p>
+				<p>This data is found in the EPUB package metadata inside the Package Document:</p>
 				<aside class="example" id="cb21">
 					<pre><code>&lt;meta property="schema:accessibilityHazard"&gt;none&lt;/meta&gt;</code></pre>
 				</aside>
