@@ -95,7 +95,7 @@
 				retrieves all books with metadata of <code>&lt;link rel="dcterms:conformsTo"
 					href="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-a" /&gt;</code> or the
 				equivalent for wcag-aa and ultimately for wcag-aaa would fill this need.</p>
-			<p>Audiobooks created for mainstream use provide important access for many users with disabilities even
+			<p>Full audio books created for mainstream use provide important access for many users with disabilities even
 				though they are not accessible to others. Book providers may already have search tools aimed at finding
 				audiobooks, since they are popular and fairly common, but if not, this would be a good addition to the
 				suite of tools for finding accessible books. Note that audiobooks may not pass WCAG requirements because
@@ -149,7 +149,7 @@
 			<h2>Order of Key Information</h2>
 			<ol type="1">
 				<li><p><a href="#screen-reader-friendly">Screen Reader Friendly</a></p></li>
-				<li><p><a href="#audiobook">Audiobook</a> (if present)</p></li>
+				<li><p><a href="#full-audio">Full Audio</a> (if present)</p></li>
 				<li><p><a href="#accessibility-summary">Accessibility Summary</a></p></li>
 				<li><p><a href="#accessibility-conformance">Accessibility Conformance</a></p></li>
 				<li><p><a href="#certified-by">Certified By</a></p></li>
@@ -168,13 +168,14 @@
 				<p>Most available digital publications include their content in true text and can report that they are screen reader friendly. Exceptions would include publications where critical content is included only in images, such as graphs, charts, or equations presented as images, and publications with a fixed appearance created by having an image of each page instead of true text.</p>
 			</section>
 			
-			<section id="audiobook">
-				<h3>Audiobook</h3>
+			<section id="full-audio">
+				<h3>Full Audio</h3>
 				<p><b>Values</b>: <i>Yes / (if No - Omit this section)</i></p>
 				<h4>Definition</h4>
-				<p>An indication that this publication is an audiobook which is designed to be used by listening. This designation can be applied if text will also appear on a display as long as it is not required to use the publication.</p>
+				<p>An indication that this publication can be used by listening. This designation can be applied if text will also appear on a display as long as the text is not required to use the publication.</p>
 				<h4>Rationale</h4>
-				<p>Audiobooks are considered optimized publications. They may not meet all accessibility requirements if they lack visible text, but they provide access to the publication for specific users who require audio, including users with dyslexia or visual impairments. Providing a way for users to search a collection for audiobooks will support these users, and including this information in the metadata displayed will also alert users for whom audio is inaccessible. This piece of metadata should be included only if the value is "Yes". Since most digital publications available are not audiobooks, it is only important to include this metadata in the user interface for those that are.</p>
+				<p>Some users, including users with dyslexia or visual impairments, seek books they can use entirely by listening. Full audio metadata is important to the discovery process for these users. Book providers, vendors, and libraries may already be designating "audiobooks" as a separately searchable set based on the popular definition of an audiobook as an audio-only experience. Publications that include full text and full audio may not currently be grouped with audiobooks, so exposing this metadata adds additional publications to the list of titles audio users might be interested in.</p>
+                <p>Audiobooks presented without text are considered optimized publications. They do not meet all accessibility requirements, and therefore will not be discovered when filtering for "accessible" books, but they provide access to the publication for specific users who require audio. Providing a way for users to search a collection for all books with full audio will support these users, and including this information in the metadata displayed will also alert users for whom audio is inaccessible. This piece of metadata should be included only if the value is "Yes". Since most digital publications available do not include audio, it is only important to include this metadata in the user interface for those that do.</p>
 			</section>
 			
 			<section id="accessibility-summary">
