@@ -141,6 +141,10 @@
                 &lt;ProductFormFeatureValue&gt;18&lt;/ProductFormFeatureValue&gt;
             &lt;/ProductFormFeature&gt;
             &lt;ProductFormFeature&gt;
+                &lt;ProductFormFeatureType&gt;12&lt;/ProductFormFeatureType&gt;
+                &lt;ProductFormFeatureValue&gt;20&lt;/ProductFormFeatureValue&gt;
+            &lt;/ProductFormFeature&gt;
+            &lt;ProductFormFeature&gt;
                 &lt;ProductFormFeatureType&gt;09&lt;/ProductFormFeatureType&gt;
                 &lt;ProductFormFeatureValue&gt;94&lt;/ProductFormFeatureValue&gt;
                 &lt;ProductFormFeatureDescription&gt;http://www.certifier.com/&lt;/ProductFormFeatureDescription&gt;
@@ -172,8 +176,10 @@
 				<section>
 					<h4
 						id="onix-record-describing-an-full-audio-book-here-is-an-example-of-an-onix-record-version-3.0-for-describing-a-full-audio-book"
-						>ONIX record describing a book with Full Audio. Here is an example of an ONIX record (version 3.0) for
-						describing a book with full audio.</h4>
+						>ONIX record describing an audiobook</h4>
+						<p>Here is an example of an ONIX record (version 3.0) for describing an audiobook, which will be used as a reference point for the
+						some of the following examples on EPUB accessibility metadata: the results of the XPath shown are based on
+						this example.</p>
 					<aside class="example" id="cb30">
 						<pre><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;ONIXMessage xmlns="http://ns.editeur.org/onix/3.0/reference" release="3.0"&gt;
@@ -240,20 +246,40 @@
 				<p><b>Values</b>: <i>Yes / (if No - Omit this section)</i></p>
 				<p>This technique relates to <a href="../principles/#full-audio">Full Audio principle</a>.</p>
 				
-				<p>This information can be retrieved from ONIX <a href="https://ns.editeur.org/onix/en/81">code list 81</a>; Code: 01: Audiobook.</p>
+				<p>This information can be retrieved from ONIX <a href="https://ns.editeur.org/onix/en/196">code list: 196</a>; Code: 20: Synchronised pre-recorded audio.</p>
 				<section id="example-2.1">
 					<h4>Example 2.1</h4>
 					<section id="xpath">
 						<h5>XPath</h5>
-						<p>This field is true if the XPath returns at least one element for:</p>
+						<p>If the following XPath returns at least one result:</p>
 						<aside class="example" id="cb32">
-							<pre><code>//Product/DescriptiveDetail/PrimaryContentType[text()="01"] or
-//Product/DescriptiveDetail/ProductContentType[text()="01"]</code></pre>
+							<pre><code>//Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType="09" and ProductFormFeatureValue="20"]</code></pre>
 						</aside>
 					</section>
 					<section id="ui-2">
 						<h5>UI</h5>
 						<p><q>Full Audio: Yes</q></p>
+					</section>
+				</section>
+			</section>
+			<section id="audiobook">
+                <h3>Audiobook</h3>
+				<p><b>Values</b>: <i>Yes / (if No - Omit this section)</i></p>
+				<!--<p>This technique relates to <a href="../principles/#full-audio">Full Audio principle</a>.</p>-->
+				
+				<p>This information can be retrieved from ONIX <a href="https://ns.editeur.org/onix/en/81">code list 81</a>; Code: 01: Audiobook.</p>
+				<section id="example-2.1">
+					<h4>Example 2.1</h4>
+					<section id="xpath">
+						<h5>XPath</h5>
+						<p>This field is true if the XPath returns one element for:</p>
+						<aside class="example" id="cb32">
+							<pre><code>//Product/DescriptiveDetail/ProductForm[text()="AO"]</code></pre>
+						</aside>
+					</section>
+					<section id="ui-2">
+						<h5>UI</h5>
+						<p><q>Audiobook: Yes</q></p>
 					</section>
 				</section>
 			</section>
@@ -265,7 +291,7 @@
 				<p>This information can be retrieved from ONIX <a href="https://ns.editeur.org/onix/en/196">code list:
 						196</a>; Code: 00: Accessibility Summary.</p>
 				<section id="example-3.1">
-					<h4>Example 2.1</h4>
+					<h4>Example 3.1</h4>
 					<section id="xpath-1">
 						<h5>XPath</h5>
 						<p>The value can be retrieved using XPath:</p>
