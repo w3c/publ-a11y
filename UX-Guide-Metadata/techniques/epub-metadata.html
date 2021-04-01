@@ -155,29 +155,29 @@
 					</section>
 				</section>
 			</section>
-			<section id="audiobook">
-				<h3>Audiobook</h3>
+			<section id="full-audio">
+				<h3>Full Audio</h3>
 				<p><b>Values</b>: <i>Yes / (if No - Omit this section)</i></p>
-				<p>This technique relates to <a href="../principles/#audiobook">Audiobook principle</a>.</p>
+				<p>This technique relates to <a href="../principles/#full-audio">Full Audio principle</a>.</p>
 				
 				<p>This data is derived from the EPUB package metadata inside the Package Document:</p>
 				<aside class="example" id="cb5">
 					<pre><code>&lt;meta property="schema:accessModeSufficient"&gt;auditory&lt;/meta&gt;</code></pre>
 				</aside>
 				<p>If this metadata exists (ie. <q><b>auditory</b></q> within
-						<code>accessModeSufficient</code> by itself) then report <i><q>Audiobook: Yes</q>.</i></p>
+						<code>accessModeSufficient</code> by itself) then report <i><q>Full Audio: Yes</q>.</i></p>
 				<p><b>Important</b>: This is not the same as <q><b>textual</b>,
 							<b>auditory</b></q> or <q><b>auditory</b>, <b>textual</b></q>
 					as this indicates that the book requires both textual and auditory abilities to access the data, not
 					auditory alone. Only having <code>accessModeSufficient</code> be <q><b>auditory</b></q> as
-					a separate entry ensures the document is an audiobook.</p>
+					a separate entry ensures the document contains full audio.</p>
 				<p class="note">As long as you find <code>&lt;meta
 						property="schema:accessModeSufficient"&gt;auditory&lt;/meta&gt;</code> the book can claim
-							<q><b>Audiobook: Yes</b></q>.</p>
+							<q><b>Full Audio: Yes</b></q>.</p>
 				<p>There may also be other <code>accessModeSufficient</code> entries with combinations of access modes
 					such as <q>textual, visual</q> which indicate other ways to read the book.</p>
-				<p class="note">If you can not report that this is an audiobook then do not present any information to
-					the user for this category, since 99% of EPUB books are not audiobooks. Simply omit this
+				<p class="note">If you can not report that this is a book with full audio then do not present any information to
+					the user for this category. Simply omit this
 					section.</p>
 				<section id="example-2.1-metadata-present-auditory">
 					<h4>Example 2.1 (metadata present auditory)</h4>
@@ -190,13 +190,13 @@
 					</section>
 					<section id="ui-4">
 						<h5>UI</h5>
-						<p><q>Audiobook: Yes</q></p>
+						<p><q>Full Audio: Yes</q></p>
 						<p>(because <q><b>auditory</b></q> was found alone in
 								<code>accessModeSufficient</code>)</p>
 					</section>
 				</section>
-				<section id="example-2.2-metadata-present-but-not-an-audiobook">
-					<h4>Example 2.2 (metadata present but not an Audiobook)</h4>
+				<section id="example-2.2-metadata-present-but-not-a-full-audio-book">
+					<h4>Example 2.2 (metadata present but not a Full Audio ebook)</h4>
 					<section id="metadata-5">
 						<h5>Metadata</h5>
 						<aside class="example" id="cb7">
