@@ -269,12 +269,75 @@
 				</section>
 			</section>
 
+            <section id="accessibility-conformance-string">
+				<h3>Accessibility Conformance (Strings)</h3>
+                <p><b>Predefined Token Values</b>: </p>
+                <ul>
+                    <li>EPUB-A11Y-11_WCAG-20-A</li>
+                    <li>EPUB-A11Y-11_WCAG-20-AA</li>
+                    <li>EPUB-A11Y-11_WCAG-20-AAA</li>
+                    <li>EPUB-A11Y-11_WCAG-21-A</li>
+                    <li>EPUB-A11Y-11_WCAG-21-AA</li>
+                    <li>EPUB-A11Y-11_WCAG-21-AAA</li>    
+                </ul>
+               
+				<p>This technique relates to <a href="../principles/#accessibility-conformance">Accessibility Conformance principle</a>.</p>
+				
+  				<aside class="example" id="cp-property">
+					<pre><code>&lt;meta property="dcterms:conformsTo"&gt;</code></pre>
+				</aside>
+				<div class="note">
+					<p>If the String is one of our predefined token values:</p>
+					<ul>
+						<li><q>EPUB-A11Y-11_WCAG-20-A</q> report it as <q><b>EPUB Accessibility, WCAG2.0-A</b></q></li>
+						<li><q>EPUB-A11Y-11_WCAG-20-AA</q> report it as <q><b>EPUB Accessibility, WCAG2.0-AA</b></q></li>
+						<li><q>EPUB-A11Y-11_WCAG-20-AAA</q> report it as <q><b>EPUB Accessibility, WCAG2.0-AAA</b></q></li>
+						<li><q>EPUB-A11Y-11_WCAG-21-A</q> report it as <q><b>EPUB Accessibility, WCAG2.1-A</b></q></li>
+						<li><q>EPUB-A11Y-11_WCAG-21-AA</q> report it as <q><b>EPUB Accessibility, WCAG2.1-AA</b></q></li>
+						<li><q>EPUB-A11Y-11_WCAG-21-AAA</q> report it as <q><b>EPUB Accessibility, WCAG2.1-AAA</b></q></li>
+					</ul>
+				</div>
+				<div class="note">
+				<p>If the value is anything other than the six tokens listed above, then providing the raw string value as is.</p>
+                </div>				
+				<section id="example-conformance-metadata-present-token">
+					<h4>Example Conformance (metadata present token)</h4>
+					<section id="metadata-9">
+						<h5>Metadata</h5>
+						<aside class="example" id="cb11">
+							<pre><code>&lt;meta property="dcterms:conformsTo"&gt;EPUB-A11Y-11_WCAG-21-AA&lt;/meta&gt;</code></pre>
+						</aside>
+					</section>
+					<section id="ui-9">
+						<h5>UI</h5>
+						<p>Accessibility Conformance: EPUB Accessibility, WCAG 2.1 AA</p>
+						
+					</section>
+				</section>
+			
+ 				<section id="example-conformance-metadata-present-string">
+					<h4>Example 4.1 (metadata present non-token string)</h4>
+					<section id="metadata-9a">
+						<h5>Metadata</h5>
+						<aside class="example" id="cb11">
+							<pre><code>&lt;meta property="dcterms:conformsTo"&gt;WCAG AA&lt;/meta&gt;</code></pre>
+						</aside>
+					</section>
+					<section id="ui-9">
+						<h5>UI</h5>
+						<p>Accessibility Conformance: WCAG AA</p>
+						
+					</section>
+				</section>
+          
+            </section>
+
             <section id="accessibility-conformance-links">
-				<h3>Accessibility Conformance Links</h3>
+				<h3>Accessibility Conformance (Links)</h3>
 				<p><b>Value</b>: Textual Link based on Metadata or raw URL found in EPUB Package Document</p>
 				<p>This technique relates to <a href="../principles/#accessibility-conformance">Accessibility Conformance principle</a>.</p>
 					
-				<aside class="example" id="cb10">
+				<aside class="example" id="cp-link">
 					<pre><code>&lt;link rel="dcterms:conformsTo"&gt;</code></pre>
 				</aside>
 				<div class="note">
@@ -300,7 +363,7 @@
 					the links available in the section <a href="#all-accessibility-metadata">All Accessibility
 						Metadata</a>, described below.</p>
 				<p class="note">The above three URLs could change in the future since they reference the IDPF domain. Updates to the EPUB Accessibility standard are now being conducted in the W3C, so when a new revision is released a new referencing scheme will likely be recommended.</p>
-				<section id="example-4.1-metadata-present">
+				<section id="example-conformance-metadata-present-link">
 					<h4>Example 4.1 (metadata present)</h4>
 					<section id="metadata-9">
 						<h5>Metadata</h5>
@@ -315,7 +378,7 @@
 						<p>(Because this links to one of the three URIs outlined above)</p>
 					</section>
 				</section>
-				<section id="example-4.2-metadata-pointing-to-another-specification">
+				<section id="example-conformance-metadata-pointing-to-another-specification">
 					<h4>Example 4.2 (metadata pointing to another specification)</h4>
 					<section id="metadata-10">
 						<h5>Metadata</h5>
@@ -330,11 +393,15 @@
 							conformance as an optimized publication.)</p>
 					</section>
 				</section>
-				<section id="example-4.3-metadata-missing">
+				<section id="example-conformance-metadata-missing">
 					<h4>Example 4.3 (metadata missing)</h4>
 					<section id="metadata-11">
 						<h5>Metadata</h5>
-						<p><i>{No Data}</i></p>
+						<p><i>{No Data}</i> in either</p>
+                        <pre><code>&lt;meta property="dcterms:conformsTo"&gt;</code></pre>
+                        <p>and</p>
+                        <pre><code>&lt;link rel="dcterms:conformsTo"&gt;</code></pre>
+                        
 					</section>
 					<section id="ui-11">
 						<h5>UI</h5>
