@@ -110,7 +110,7 @@
 					</section>
 				</section>
 				<section id="example-1.2-multiple-metadata-accessmodesufficient-fields-present">
-					<h4>Example 1.2 (multiple metadata <code>accessModeSufficient</code> fields present)</h4>
+					<h4>Example 1.2 (multiple metadata accessModeSufficient fields present)</h4>
 					<section id="metadata-1">
 						<h5>Metadata</h5>
 						<aside class="example" id="cb3">
@@ -679,8 +679,8 @@ Accessible&lt;/meta&gt;</code></pre>
 						<h5>UI</h5>
 						<p><q>Hazard: Sound, Motion Simulation, and Flashing</q></p>
 						<p>(because <q><b><i>sound</i></b></q>,
-									<q><b><i>motionSimulation</i></b></q> ,
-									<q><b><i>flashing</i></b></q> and were all found in
+									<q><b><i>motionSimulation</i></b></q>, and
+									<q><b><i>flashing</i></b></q> were all found in
 								<code>accessibilityHazard</code>)</p>
 					</section>
 				</section>
@@ -694,16 +694,14 @@ Accessible&lt;/meta&gt;</code></pre>
 					</section>
 					<section id="ui-23">
 						<h5>UI</h5>
-						<p>Omit this section</p>
-						<p><b>Or</b></p>
-						<p><q>Hazards: none provided</q></p>
-						<p>Nothing presented to the user because there are no hazards; since 99.9% of EPUBs won’t have
-							any hazards, there is no need to report <q>Hazards: No</q> for every EPUB.</p>
+						<p><q>Hazards: none</q></p>
+						<p>(because <q><b><i>none</i></b></q> was found in
+								<code>accessibilityHazard</code>)</p>
 					</section>
 				</section>
 				<section id="example-8.6-metadata-present-noflashinghazard-nosoundhazard-and-nosimulation">
-					<h4>Example 8.6 (metadata present: <code>noFlashingHazard</code>, <code>noSoundHazard</code>, and
-							<code>noSimulation</code>)</h4>
+					<h4>Example 8.6 (metadata present: noFlashingHazard, noSoundHazard, and
+							noMotionSimulationHazard)</h4>
 					<section id="metadata-26">
 						<h5>Metadata</h5>
 						<aside class="example" id="cb27">
@@ -714,23 +712,31 @@ Accessible&lt;/meta&gt;</code></pre>
 					</section>
 					<section id="ui-24">
 						<h5>UI</h5>
-						<p>Omit this section</p>
+						<p><q>Hazards: No Flashing, No Sound, No Motion Simulation</q></p>
 						<p><b>Or</b></p>
 						<p><q>Hazards: none</q></p>
-						<p><b>Or</b></p>
-						<p><q>Hazards: No Flashing, No Sound, No Motion Simulation</q></p>
+ 						<p>(because <q><b><i>none</i></b></q> is equivalent to all three <q><b><i>noSoundHazard</i></b></q>,
+									<q><b><i>noMotionSimulationHazard</i></b></q>, and
+									<q><b><i>noFlashingHazard</i></b></q> combined.) 
+				</p>
+                       
 					</section>
 				</section>
 				<section id="example-8.7-metadata-not-present">
-					<h4>Example 8.7 (metadata not present)</h4>
+					<h4>Example 8.7 (metadata not present) or (metadata present unknown)</h4>
 					<section id="metadata-27">
 						<h5>Metadata</h5>
 						<p><i>{No Data}</i></p>
+                        <p>or</p>
+				        <aside class="example" id="cb24">
+							<pre><code>&lt;meta property="schema:accessibilityHazard"&gt;unknown&lt;/meta&gt;</code></pre>
+						</aside>
+                        
 					</section>
 					<section id="ui-25">
 						<h5>UI</h5>
-						<p><q>Hazards: None provided</q></p>
-						<p>We want to make the distinction here between No Hazards and missing hazard metadata therefore
+						<p><q>Hazards: unknown</q></p>
+						<p>We want to make the distinction here between No Hazards and missing or <code>unknown</code> hazard metadata therefore
 							for the missing metadata case we need to inform the user we don’t know about any hazards
 							which may or maynot be present.</p>
 					</section>
