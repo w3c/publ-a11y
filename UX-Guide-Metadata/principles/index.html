@@ -3,13 +3,11 @@
 	<head>
 		<meta charset="utf-8" />
 		<title>User Experience Guide for Displaying Accessibility Metadata</title>
-		<script src="https://www.w3.org/Tools/respec/respec-w3c-common" class="remove" defer="defer"></script>
+		<script src="https://www.w3.org/Tools/respec/respec-w3c" class="remove" defer="defer"></script>
 		<script class="remove">
 			// <![CDATA[
 			var respecConfig = {
-				wg: "W3C Publishing Community Group",
-				wgURI: "https://www.w3.org/community/publishingcg/",
-				wgPublicList: "public-publishingcg",
+				group: "publishingcg",
 				specStatus: "CG-DRAFT",
 				noRecTrack: true,
 				shortName: "ux-meta-principles",
@@ -30,13 +28,11 @@
 						"w3cid": 97111
 					}
 				],
-				processVersion: 2018,
+				processVersion: 2020,
 				includePermalinks: false,
 				permalinkEdge:     true,
 				permalinkHide:     false,
 				diffTool:          "http://www.aptest.com/standards/htmldiff/htmldiff.pl",
-				wgURI:             "https://www.w3.org/community/epub3/",
-				wgPublicList:      "public-epub3",
 				github:			 {
 					repoURL: "https://github.com/w3c/publ-a11y/",
 					branch: "master"
@@ -53,7 +49,10 @@
 			<p>This document will help those who wish to provide accessibility metadata directly to users understand how
 				to represent machine readable accessibility metadata in a user friendly User Interface / User Experience
 				(UI/UX).</p>
-			<p class="note">This document presents high-level principles, without going into technical issues related to the different metadata standards in the publishing industry.<br>Therefore, <a href="#techniques">techniques are available</a>, illustrating to developers how to retrieve data to show the information outlined in this document.</p>
+			<div class="note">
+				<p>This document presents high-level principles, without going into technical issues related to the different metadata standards in the publishing industry.</p>
+				<p>Therefore, <a href="#techniques">techniques are available</a>, illustrating to developers how to retrieve data to show the information outlined in this document.</p>
+			</div>
 			<p>Metadata found either inside a digital publication or in the corresponding external record may have important accessibility information that will help end users find and determine if this publication can meet their specific accessibility needs.</p>
 			<p>Most metadata is meant to be machine readable so that it can be used to aid in user search queries such
 				as <q>Find all digital publications that contain large print, or braille, or that has met a certain level of
