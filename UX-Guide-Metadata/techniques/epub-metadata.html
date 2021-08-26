@@ -89,61 +89,61 @@
 							<i><q>Screen Reader Friendly: No</q></i>.</p>
 				<p>When there is no <code>accessModeSufficient</code> metadata present, report <i><q>Screen Reader
 							Friendly: Unknown or not provided</q></i>.</p>
-				<section id="example-1.1-metadata-present">
+				<section id="example-1.1">
 					<h4>Example 1.1 (metadata present)</h4>
-					<section id="metadata">
+					<section id="metadata-1.1">
 						<h5>Metadata</h5>
-						<aside class="example" id="cb2">
+						<aside class="example" id="code-example-1.1">
 							<pre><code>&lt;meta property="schema:accessModeSufficient"&gt;textual&lt;/meta&gt;</code></pre>
 						</aside>
 					</section>
-					<section id="ui">
+					<section id="ui-1.1">
 						<h5>UI</h5>
 						<p><q>Screen Reader Friendly: Yes</q></p>
 						<p>(because <b><i>textual</i></b> was present by itself in
 								<code>accessModeSufficient</code>)</p>
 					</section>
 				</section>
-				<section id="example-1.2-multiple-metadata-accessmodesufficient-fields-present">
+				<section id="example-1.2">
 					<h4>Example 1.2 (multiple metadata accessModeSufficient fields present)</h4>
-					<section id="metadata-1">
+					<section id="metadata-1.2">
 						<h5>Metadata</h5>
-						<aside class="example" id="cb3">
+						<aside class="example" id="code-example-1.2">
 							<pre><code>&lt;meta property="schema:accessModeSufficient"&gt;visual&lt;/meta&gt;
 &lt;meta property="schema:accessModeSufficient"&gt;textual&lt;/meta&gt;
 &lt;meta property="schema:accessModeSufficient"&gt;textual, visual&lt;/meta&gt;</code></pre>
 						</aside>
 					</section>
-					<section id="ui-1">
+					<section id="ui-1.2">
 						<h5>UI</h5>
 						<p><q>Screen Reader Friendly: Yes</q></p>
 						<p>(because <b><i>textual</i></b> was present by itself in
 								<code>accessModeSufficient</code>)</p>
 					</section>
 				</section>
-				<section id="example-1.3-metadata-present-but-not-screen-reader-friendly">
+				<section id="example-1.3">
 					<h4>Example 1.3 (metadata present but not Screen Reader Friendly)</h4>
-					<section id="metadata-2">
+					<section id="metadata-1.3">
 						<h5>Metadata</h5>
-						<aside class="example" id="cb4">
+						<aside class="example" id="code-example-1.3">
 							<pre><code>&lt;meta property="schema:accessModeSufficient"&gt;visual&lt;/meta&gt;
 &lt;meta property="schema:accessModeSufficient"&gt;textual, visual&lt;/meta&gt;</code></pre>
 						</aside>
 					</section>
-					<section id="ui-2">
+					<section id="ui-1.3">
 						<h5>UI</h5>
 						<p><q>Screen Reader Friendly: No</q></p>
 						<p>(because <b><i>textual</i></b> was not present by itself in
 								<code>accessModeSufficient</code>)</p>
 					</section>
 				</section>
-				<section id="example-1.4-metadata-missing">
+				<section id="example-1.4">
 					<h4>Example 1.4 (metadata missing)</h4>
-					<section id="metadata-3">
+					<section id="metadata-1.4">
 						<h5>Metadata</h5>
 						<p><i>{No Data}</i></p>
 					</section>
-					<section id="ui-3">
+					<section id="ui-1.4">
 						<h5>UI</h5>
 						<p><q>Screen Reader Friendly: Unknown</q></p>
 						<p>(because <code>accessModeSufficient</code> is not found at all in the metadata)</p>
@@ -174,45 +174,45 @@
 				<p class="note">If you can not report that this is a book with full audio then do not present any information to
 					the user for this category. Simply omit this
 					section.</p>
-				<section id="example-2.1-metadata-present-auditory">
+				<section id="example-2.1">
 					<h4>Example 2.1 (metadata present auditory)</h4>
-					<section id="metadata-4">
+					<section id="metadata-2.1">
 						<h5>Metadata</h5>
-						<aside class="example" id="cb6">
+						<aside class="example" id="code-example-2.1">
 							<pre><code>&lt;meta property="schema:accessModeSufficient"&gt;auditory&lt;/meta&gt;
 &lt;meta property="schema:accessModeSufficient"&gt;visual&lt;/meta&gt;</code></pre>
 						</aside>
 					</section>
-					<section id="ui-4">
+					<section id="ui-2.1">
 						<h5>UI</h5>
 						<p><q>Full Audio: Yes</q></p>
 						<p>(because <q><b>auditory</b></q> was found alone in
 								<code>accessModeSufficient</code>)</p>
 					</section>
 				</section>
-				<section id="example-2.2-metadata-present-but-not-a-full-audio-book">
+				<section id="example-2.2">
 					<h4>Example 2.2 (metadata present but not a Full Audio ebook)</h4>
-					<section id="metadata-5">
+					<section id="metadata-2.2">
 						<h5>Metadata</h5>
-						<aside class="example" id="cb7">
+						<aside class="example" id="code-example-2.2">
 							<pre><code>&lt;meta property="schema:accessModeSufficient"&gt;visual&lt;/meta&gt;
 &lt;meta property="schema:accessModeSufficient"&gt;auditory, visual&lt;/meta&gt;</code></pre>
 						</aside>
 					</section>
-					<section id="ui-5">
+					<section id="ui-2.2">
 						<h5>UI</h5>
 						<p>Omit this section</p>
 						<p>(Nothing presented to the user because <q><b>auditory</b></q> was not found alone
 							in <code>accessModeSufficient</code>)</p>
 					</section>
 				</section>
-				<section id="example-2.3-metadata-not-present">
+				<section id="example-2.3">
 					<h4>Example 2.3 (metadata not present)</h4>
-					<section id="metadata-6">
+					<section id="metadata-2.3">
 						<h5>Metadata</h5>
 						<p><i>{No Data}</i></p>
 					</section>
-					<section id="ui-6">
+					<section id="ui-2.3">
 						<h5>UI</h5>
 						<p>Omit this section</p>
 						<p>(Nothing presented to the user because <code>accessModeSufficient</code> is not present at
@@ -233,17 +233,17 @@
 					summaries.</p>
 				<p class="note">If the metadata does not exist this should say <q>No Summary Available</q></p>
 				<p class="note">This data could be in a language other than English but would be tagged as such.</p>
-				<section id="example-3.1-metadata-present">
+				<section id="example-3.1">
 					<h4>Example 3.1 (metadata present)</h4>
-					<section id="metadata-7">
+					<section id="metadata-3.1">
 						<h5>Metadata</h5>
-						<aside class="example" id="cb9">
+						<aside class="example" id="code-example-3.1">
 							<pre><code>&lt;meta property="schema:accessibilitySummary"&gt;
     This publication includes markup to enable accessibility and compatibility with assistive technology. Images, audio, and video in the publication are well-described in conformance with WCAG 2.0 AA. Structural navigation may be inconsistent.
 &lt;/meta&gt;</code></pre>
 						</aside>
 					</section>
-					<section id="ui-7">
+					<section id="ui-3.1">
 						<h5>UI</h5>
 						<p>Accessibility Summary:</p>
 						<p>This publication includes markup to enable accessibility and compatibility with assistive
@@ -251,13 +251,13 @@
 							with WCAG 2.0 A.</p>
 					</section>
 				</section>
-				<section id="example-3.2-metadata-missing">
+				<section id="example-3.2">
 					<h4>Example 3.2 (metadata missing)</h4>
-					<section id="metadata-8">
+					<section id="metadata-3.2">
 						<h5>Metadata</h5>
 						<p><i>{No Data}</i></p>
 					</section>
-					<section id="ui-8">
+					<section id="ui-3.2">
 						<h5>UI</h5>
 						<p><q>Accessibility Summary: None provided</q></p>
 					</section>
@@ -296,47 +296,46 @@
 					the links available in the section <a href="#all-accessibility-metadata">All Accessibility
 						Metadata</a>, described below.</p>
 				<p class="note">The above three URLs could change in the future since they reference the IDPF domain. Updates to the EPUB Accessibility standard are now being conducted in the W3C, so when a new revision is released a new referencing scheme will likely be recommended.</p>
-				<section id="example-conformance-metadata-present-link">
+				<section id="example-4.1">
 					<h4>Example 4.1 (metadata present)</h4>
-					<section id="metadata-9">
+					<section id="metadata-4.1">
 						<h5>Metadata</h5>
-						<aside class="example" id="cb11">
+						<aside class="example" id="code-example-4.1">
 							<pre><code>&lt;link rel="dcterms:conformsTo" href="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aa" /&gt;</code></pre>
 						</aside>
 					</section>
-					<section id="ui-9">
+					<section id="ui-4.1">
 						<h5>UI</h5>
 						<p>Accessibility Conformance: <a
 								href="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aa">EPUB Accessibility, WCAG2.0-AA</a></p>
 						<p>(Because this links to one of the three URIs outlined above)</p>
 					</section>
 				</section>
-				<section id="example-conformance-metadata-pointing-to-another-specification">
+				<section id="example-4.2">
 					<h4>Example 4.2 (metadata pointing to another specification)</h4>
-					<section id="metadata-10">
+					<section id="metadata-4.2">
 						<h5>Metadata</h5>
-						<aside class="example" id="cb12">
+						<aside class="example" id="code-example-4.2">
 							<pre><code>&lt;link rel="dcterms:conformsTo" href="http://www.daisy.org/guidelines/epub/navigable-audio-only-epub3-guidelines" /&gt;</code></pre>
 						</aside>
 					</section>
-					<section id="ui-10">
+					<section id="ui-4.2">
 						<h5>UI</h5>
 						<p><q>Accessibility Conformance: Custom specification</q></p>
 						<p>(Because this URI is different than what was outlined above. The book may qualify for
 							conformance as an optimized publication.)</p>
 					</section>
 				</section>
-				<section id="example-conformance-metadata-missing">
+				<section id="example-4.3">
 					<h4>Example 4.3 (metadata missing)</h4>
-					<section id="metadata-11">
+					<section id="metadata-4.3">
 						<h5>Metadata</h5>
 						<p><i>{No Data}</i> in either</p>
                         <pre><code>&lt;meta property="dcterms:conformsTo"&gt;</code></pre>
                         <p>and</p>
                         <pre><code>&lt;link rel="dcterms:conformsTo"&gt;</code></pre>
-                        
 					</section>
-					<section id="ui-11">
+					<section id="ui-4.3">
 						<h5>UI</h5>
 						<p><q>Accessibility Conformance: None provided</q></p>
 					</section>
@@ -380,30 +379,30 @@
 				<div class="note">
 				<p>If the value is anything other than the six tokens listed above, then providing the raw string value as is.</p>
                 </div>				
-				<section id="example-conformance-metadata-present-token">
-					<h4>Example Conformance (metadata present token)</h4>
-					<section id="metadata-9">
+				<section id="example-5.1">
+					<h4>Example 5.1 (metadata present token)</h4>
+					<section id="metadata-5.1">
 						<h5>Metadata</h5>
-						<aside class="example" id="cb11">
+						<aside class="example" id="code-example-5.1">
 							<pre><code>&lt;meta property="dcterms:conformsTo"&gt;EPUB-A11Y-11_WCAG-21-AA&lt;/meta&gt;</code></pre>
 						</aside>
 					</section>
-					<section id="ui-9">
+					<section id="ui-5.1">
 						<h5>UI</h5>
 						<p>Accessibility Conformance: EPUB Accessibility, WCAG 2.1 AA</p>
 						
 					</section>
 				</section>
 			
- 				<section id="example-conformance-metadata-present-string">
-					<h4>Example 4.1 (metadata present non-token string)</h4>
-					<section id="metadata-9a">
+ 				<section id="example-5.2">
+					<h4>Example 5.2 (metadata present non-token string)</h4>
+					<section id="metadata-5.2">
 						<h5>Metadata</h5>
-						<aside class="example" id="cb11">
+						<aside class="example" id="code-example-5.2">
 							<pre><code>&lt;meta property="dcterms:conformsTo"&gt;WCAG AA&lt;/meta&gt;</code></pre>
 						</aside>
 					</section>
-					<section id="ui-9">
+					<section id="ui-5.2">
 						<h5>UI</h5>
 						<p>Accessibility Conformance: WCAG AA</p>
 						
@@ -423,40 +422,40 @@
 					<pre><code>&lt;meta property="a11y:certifiedBy"&gt;</code></pre>
 				</aside>
 				<p class="note">If the metadata does not exist this should say <q>None provided</q></p>
-				<section id="example-5.1-metadata-present-3rd-party">
-					<h4>Example 5.1 (metadata present 3rd party)</h4>
-					<section id="metadata-12">
+				<section id="example-6.1">
+					<h4>Example 6.1 (metadata present 3rd party)</h4>
+					<section id="metadata-6.1">
 						<h5>Metadata</h5>
-						<aside class="example" id="cb14">
+						<aside class="example" id="code-example-6.1">
 							<pre><code>&lt;meta property="a11y:certifiedBy"&gt;3rd Party Company Name&lt;/meta&gt;</code></pre>
 						</aside>
 					</section>
-					<section id="ui-12">
+					<section id="ui-6.1">
 						<h5>UI</h5>
 						<p><q>Certified By: 3rd Party Company Name</q></p>
 					</section>
 				</section>
-				<section id="example-5.2-metadata-present-self-certified">
-					<h4>Example 5.2 (metadata present self Certified)</h4>
-					<section id="metadata-13">
+				<section id="example-6.2">
+					<h4>Example 6.2 (metadata present self Certified)</h4>
+					<section id="metadata-6.2">
 						<h5>Metadata</h5>
-						<aside class="example" id="cb15">
+						<aside class="example" id="code-example-6.2">
 							<pre><code>&lt;dc:publisher&gt;Publisher Name&lt;/dc:publisher&gt;
 &lt;meta property="a11y:certifiedBy"&gt;Publisher Name&lt;/meta&gt;</code></pre>
 						</aside>
 					</section>
-					<section id="ui-13">
+					<section id="ui-6.2">
 						<h5>UI</h5>
 						<p><q>Self Certified By: Publisher Name</q></p>
 					</section>
 				</section>
-				<section id="example-5.3-metadata-missing">
-					<h4>Example 5.3 (metadata missing)</h4>
-					<section id="metadata-14">
+				<section id="example-6.3">
+					<h4>Example 6.3 (metadata missing)</h4>
+					<section id="metadata-6.3">
 						<h5>Metadata</h5>
 						<p></p>
 					</section>
-					<section id="ui-14">
+					<section id="ui-6.3">
 						<h5>UI</h5>
 						<p><q>Certified By: None provided</q></p>
 					</section>
@@ -480,34 +479,34 @@
 					described below.</p>
 				<p>If you are aware of a list of organizations who offer third-party certification, a short list of
 					certifier’s logos could be cached and displayed when appropriate. For example:</p>
-				<section id="example-6.1-text">
-					<h4>Example 6.1 (Text)</h4>
-					<section id="metadata-15">
+				<section id="example-7.1">
+					<h4>Example 7.1 (Text)</h4>
+					<section id="metadata-7.1">
 						<h5>Metadata</h5>
-						<aside class="example" id="cb17">
+						<aside class="example" id="code-example-7.1">
 							<pre><code>&lt;meta property="a11y:certifierCredential"&gt;XYZ Certified
 Accessible&lt;/meta&gt;</code></pre>
 						</aside>
 					</section>
-					<section id="ui-15">
+					<section id="ui-7.1">
 						<h5>UI</h5>
 						<p><q>Certifier Credential: XYZ Certified Accessible</q></p>
 					</section>
 				</section>
-				<section id="example-6.2-generic-3rd-party-url">
-					<h4>Example 6.2 (Generic 3rd party URL)</h4>
-					<section id="metadata-16">
+				<section id="example-7.2">
+					<h4>Example 7.2 (Generic 3rd party URL)</h4>
+					<section id="metadata-7.2">
 						<h5>Metadata</h5>
-						<aside class="example" id="cb18">
+						<aside class="example" id="code-example-7.2">
 							<pre><code>&lt;meta property="a11y:certifiedBy"&gt;ACME Inc.&lt;/meta&gt;
 &lt;meta property="a11y:certifierCredential"&gt;https://3rd-party-certifier-credential.com&lt;/meta&gt;</code></pre>
 						</aside>
 					</section>
-					<section id="metadata-17">
-						<h5>Metadata</h5>
+					<section id="ui-7.2">
+						<h5>UI</h5>
 						<p>Certifier Credential</p>
 						<aside class="example">
-							<p><a href="https://3rd-party-certifier-credential.com"><img src="./media/image1.png"
+							<p><a href="https://3rd-party-certifier-credential.com"><img src="../principles/media/image1.png"
 										alt="ACME Inc. credential webpage" width="50" /></a></p>
 							<p><i>(Clickable Image to the URI of the certifiers credential’s webpage from
 									metadata)</i></p>
@@ -527,13 +526,13 @@ Accessible&lt;/meta&gt;</code></pre>
 						</aside>
 					</section>
 				</section>
-				<section id="example-6.3-metadata-missing">
-					<h4>Example 6.3 (metadata missing)</h4>
-					<section id="metadata-18">
+				<section id="example-7.3">
+					<h4>Example 7.3 (metadata missing)</h4>
+					<section id="metadata-7.3">
 						<h5>Metadata</h5>
 						<p><i>{No Data}</i></p>
 					</section>
-					<section id="ui-16">
+					<section id="ui-7.3">
 						<h5>UI</h5>
 						<p><q>Certifier Credential: None provided</q></p>
 					</section>
@@ -553,16 +552,16 @@ Accessible&lt;/meta&gt;</code></pre>
 				<p>If you do not wish to have clickable links here, you may omit them as long as you make the links
 					available in the section <a href="#all-accessibility-metadata">All Accessibility Metadata</a>,
 					described below.</p>
-				<section id="example-7.1-url">
-					<h4>Example 7.1 (URL)</h4>
-					<section id="metadata-19">
+				<section id="example-8.1">
+					<h4>Example 8.1 (URL)</h4>
+					<section id="metadata-8.1">
 						<h5>Metadata</h5>
-						<aside class="example" id="cb20">
+						<aside class="example" id="code-example-8.1">
 							<pre><code>&lt;meta property="a11y:certifiedBy"&gt;ACME Inc.&lt;/meta&gt;
 &lt;link rel="a11y:certifierReport" href="http://www.example.com/a11y/report/9780000000001"/&gt;</code></pre>
 						</aside>
 					</section>
-					<section id="ui-17">
+					<section id="ui-8.1">
 						<h5>UI</h5>
 						<p>Certifier Report</p>
 						<p><a href="http://www.example.com/a11y/report/9780000000001"><img src="../principles/media/image2.svg"
@@ -581,13 +580,13 @@ Accessible&lt;/meta&gt;</code></pre>
 						</aside>
 					</section>
 				</section>
-				<section id="example-7.2-metadata-missing">
-					<h4>Example 7.2 (metadata missing)</h4>
-					<section id="metadata-20">
+				<section id="example-8.2">
+					<h4>Example 8.2 (metadata missing)</h4>
+					<section id="metadata-8.2">
 						<h5>Metadata</h5>
 						<p><i>{No Data}</i></p>
 					</section>
-					<section id="ui-18">
+					<section id="ui-8.2">
 						<h5>UI</h5>
 						<p>Omit this section</p>
 						<p>(Omit this section if the metadata is missing, as most of the time there will be no report
@@ -615,62 +614,62 @@ Accessible&lt;/meta&gt;</code></pre>
 						Metadata</a></q> Hazards will be displayed exactly how the publisher provided them so
 					simplifying here with using <q>none</q> can be an option instead of saying explicitly <q>no Sound,
 						no Flashing, no Motion Simulation</q></p>
-				<section id="example-8.1-metadata-present-flashing">
-					<h4>Example 8.1 (metadata present flashing)</h4>
-					<section id="metadata-21">
+				<section id="example-9.1">
+					<h4>Example 9.1 (metadata present flashing)</h4>
+					<section id="metadata-9.1">
 						<h5>Metadata</h5>
-						<aside class="example" id="cb22">
+						<aside class="example" id="code-example-9.1">
 							<pre><code>&lt;meta property="schema:accessibilityHazard"&gt;flashing&lt;/meta&gt;</code></pre>
 						</aside>
 					</section>
-					<section id="ui-19">
+					<section id="ui-9.1">
 						<h5>UI</h5>
 						<p><q>Hazard: Flashing</q></p>
 						<p>(because <q><b><i>flashing</i></b></q> was found in
 								<code>accessibilityHazard</code>)</p>
 					</section>
 				</section>
-				<section id="example-8.2-metadata-present-motionsimulation">
-					<h4>Example 8.2 (metadata present motionSimulation)</h4>
-					<section id="metadata-22">
+				<section id="example-9.2">
+					<h4>Example 9.2 (metadata present motionSimulation)</h4>
+					<section id="metadata-9.2">
 						<h5>Metadata</h5>
-						<aside class="example" id="cb23">
+						<aside class="example" id="code-example-9.2">
 							<pre><code>&lt;meta property="schema:accessibilityHazard"&gt;motionSimulation&lt;/meta&gt;</code></pre>
 						</aside>
 					</section>
-					<section id="ui-20">
+					<section id="ui-9.2">
 						<h5>UI</h5>
 						<p><q>Hazard: Motion Simulation</q></p>
 						<p>(because <q><b><i>motionSimulation</i></b></q> was found in
 								<code>accessibilityHazard</code>)</p>
 					</section>
 				</section>
-				<section id="example-8.3-metadata-present-sound">
-					<h4>Example 8.3 (metadata present sound)</h4>
-					<section id="metadata-23">
+				<section id="example-9.3">
+					<h4>Example 9.3 (metadata present sound)</h4>
+					<section id="metadata-9.3">
 						<h5>Metadata</h5>
-						<aside class="example" id="cb24">
+						<aside class="example" id="code-example-9.3">
 							<pre><code>&lt;meta property="schema:accessibilityHazard"&gt;sound&lt;/meta&gt;</code></pre>
 						</aside>
 					</section>
-					<section id="ui-21">
+					<section id="ui-9.3">
 						<h5>UI</h5>
 						<p><q>Hazard: Sound</q></p>
 						<p>(because <q><b><i>sound</i></b></q> was found in
 							<code>accessibilityHazard</code>)</p>
 					</section>
 				</section>
-				<section id="example-8.4-multiple-hazards-present">
-					<h4>Example 8.4 (multiple hazards present)</h4>
-					<section id="metadata-24">
+				<section id="example-9.4">
+					<h4>Example 9.4 (multiple hazards present)</h4>
+					<section id="metadata-9.4">
 						<h5>Metadata</h5>
-						<aside class="example" id="cb25">
+						<aside class="example" id="code-example-9.4">
 							<pre><code>&lt;meta property="schema:accessibilityHazard"&gt;sound&lt;/meta&gt;
 &lt;meta property="schema:accessibilityHazard"&gt;motionSimulation&lt;/meta&gt;
 &lt;meta property="schema:accessibilityHazard"&gt;flashing&lt;/meta&gt;</code></pre>
 						</aside>
 					</section>
-					<section id="ui-22">
+					<section id="ui-9.4">
 						<h5>UI</h5>
 						<p><q>Hazard: Sound, Motion Simulation, and Flashing</q></p>
 						<p>(because <q><b><i>sound</i></b></q>,
@@ -679,33 +678,33 @@ Accessible&lt;/meta&gt;</code></pre>
 								<code>accessibilityHazard</code>)</p>
 					</section>
 				</section>
-				<section id="example-8.5-metadata-present-none">
-					<h4>Example 8.5 (metadata present none)</h4>
-					<section id="metadata-25">
+				<section id="example-9.5">
+					<h4>Example 9.5 (metadata present none)</h4>
+					<section id="metadata-9.5">
 						<h5>Metadata</h5>
-						<aside class="example" id="cb26">
+						<aside class="example" id="code-example-9.5">
 							<pre><code>&lt;meta property="schema:accessibilityHazard"&gt;none&lt;/meta&gt;</code></pre>
 						</aside>
 					</section>
-					<section id="ui-23">
+					<section id="ui-9.5">
 						<h5>UI</h5>
 						<p><q>Hazards: none</q></p>
 						<p>(because <q><b><i>none</i></b></q> was found in
 								<code>accessibilityHazard</code>)</p>
 					</section>
 				</section>
-				<section id="example-8.6-metadata-present-noflashinghazard-nosoundhazard-and-nosimulation">
-					<h4>Example 8.6 (metadata present: noFlashingHazard, noSoundHazard, and
+				<section id="example-9.6">
+					<h4>Example 9.6 (metadata present: noFlashingHazard, noSoundHazard, and
 							noMotionSimulationHazard)</h4>
-					<section id="metadata-26">
+					<section id="metadata-9.6">
 						<h5>Metadata</h5>
-						<aside class="example" id="cb27">
+						<aside class="example" id="code-example-9.6">
 							<pre><code>&lt;meta property="schema:accessibilityHazard"&gt;noFlashingHazard&lt;/meta&gt;
 &lt;meta property="schema:accessibilityHazard"&gt;noSoundHazard&lt;/meta&gt;
 &lt;meta property="schema:accessibilityHazard"&gt;noMotionSimulationHazard&lt;/meta&gt;</code></pre>
 						</aside>
 					</section>
-					<section id="ui-24">
+					<section id="ui-9.6">
 						<h5>UI</h5>
 						<p><q>Hazards: No Flashing, No Sound, No Motion Simulation</q></p>
 						<p><b>Or</b></p>
@@ -717,18 +716,18 @@ Accessible&lt;/meta&gt;</code></pre>
                        
 					</section>
 				</section>
-				<section id="example-8.7-metadata-not-present">
-					<h4>Example 8.7 (metadata not present) or (metadata present unknown)</h4>
-					<section id="metadata-27">
+				<section id="example-9.7">
+					<h4>Example 9.7 (metadata not present) or (metadata present unknown)</h4>
+					<section id="metadata-9.7">
 						<h5>Metadata</h5>
 						<p><i>{No Data}</i></p>
                         <p>or</p>
-				        <aside class="example" id="cb24">
+				        <aside class="example" id="code-example-9.7">
 							<pre><code>&lt;meta property="schema:accessibilityHazard"&gt;unknown&lt;/meta&gt;</code></pre>
 						</aside>
                         
 					</section>
-					<section id="ui-25">
+					<section id="ui-9.7">
 						<h5>UI</h5>
 						<p><q>Hazards: unknown</q></p>
 						<p>We want to make the distinction here between No Hazards and missing or <code>unknown</code> hazard metadata therefore
@@ -749,11 +748,11 @@ Accessible&lt;/meta&gt;</code></pre>
 					expose: <code>accessibilityFeature</code>, <code>accessibilityHazard</code>, <code>accessMode</code>,
 						<code>accessModeSufficient</code>, as well as all the accessibility metadata and conformance
 					metadata listed above.</p>
-				<section id="example-9.1-all-metadata-fields-present">
-					<h4>Example 9.1 (all metadata fields present)</h4>
-					<section id="metadata-28">
+				<section id="example-10.1">
+					<h4>Example 10.1 (all metadata fields present)</h4>
+					<section id="metadata-10.1">
 						<h5>Metadata</h5>
-						<aside class="example" id="cb28">
+						<aside class="example" id="code-metadata-10.1">
 							<pre><code>&lt;meta property="schema:accessibilityFeature"&gt;alternativeText&lt;/meta&gt;
 	&lt;meta property="schema:accessibilityFeature"&gt;longDescription&lt;/meta&gt;
 	&lt;meta property="schema:accessibilityFeature"&gt;printPageNumbers&lt;/meta&gt;
@@ -773,7 +772,7 @@ Accessible&lt;/meta&gt;</code></pre>
 	&lt;/meta&gt;</code></pre>
 						</aside>
 					</section>
-					<section id="ui-26">
+					<section id="ui-10.1">
 						<h5>UI</h5>
 						<p><b>Accessibility Features</b>:</p>
 						<ul>
@@ -811,13 +810,13 @@ Accessible&lt;/meta&gt;</code></pre>
 							WCAG 2.0 A.</p>
 					</section>
 				</section>
-				<section id="example-9.2-all-metadata-fields-missing">
-					<h4>Example 9.2 (all metadata fields missing)</h4>
-					<section id="metadata-29">
+				<section id="example-10.2">
+					<h4>Example 10.2 (all metadata fields missing)</h4>
+					<section id="metadata-10.2">
 						<h5>Metadata</h5>
 						   <p><i>{No Data}</i></p>
 					</section>
-					<section id="ui-27">
+					<section id="ui-10.2">
 						<h5>UI</h5>
 						<p><b>Accessibility Features</b>:</p>
 						<p>None provided</p>
