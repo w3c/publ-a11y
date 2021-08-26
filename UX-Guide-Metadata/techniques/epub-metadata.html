@@ -34,6 +34,50 @@
 			};
 			// ]]>
 	  </script>
+	  <style>
+			.fake-issue {
+				padding: .5em;
+				border: .5em;
+				border-left-style: solid;
+				page-break-inside: avoid;
+				margin: 1em auto;
+			}
+
+			.fake-issue {
+				border-color: #e05252;
+				border-color: var(--issue-border);
+				background: #fbe9e9;
+				background: var(--issue-bg);
+				color: black;
+				color: var(--issue-text);
+				counter-increment: issue;
+				overflow: auto;
+			}
+
+			.fake-issue::before, .fake-issue > .marker {
+				color: #831616;
+				color: var(--issueheading-text);
+			}
+
+			.fake-issue::before, .fake-issue > .marker {
+				text-transform: uppercase;
+				padding-right: 1em;
+			}
+
+			.fake-issue a.respec-gh-label {
+				padding: 5px;
+				margin: 0 2px 0 2px;
+				font-size: 10px;
+				text-transform: none;
+				text-decoration: none;
+				font-weight: 700;
+				border-radius: 4px;
+				position: relative;
+				bottom: 2px;
+				border: none;
+				display: inline-block;
+			}
+		</style>
 	</head>
 	<body>
 		<section id="abstract"></section>
@@ -296,6 +340,13 @@
 					the links available in the section <a href="#all-accessibility-metadata">All Accessibility
 						Metadata</a>, described below.</p>
 				<p class="note">The above three URLs could change in the future since they reference the IDPF domain. Updates to the EPUB Accessibility standard are now being conducted in the W3C, so when a new revision is released a new referencing scheme will likely be recommended.</p>
+				<div class="fake-issue" id="issue-container-number-1767">
+                	<div role="heading" class="issue-title marker" id="h-issue-1" aria-level="6">
+                		<a href="https://github.com/w3c/epub-specs/issues/1767"><span class="issue-number">Issue 1767</span></a><span class="issue-label">: Is 0 tolerance for accessibility conformance practical? <a class="respec-gh-label" href="https://github.com/w3c/epub-specs/issues/?q=is%3Aissue+is%3Aopen+label%3A%22Cat-Accessibility%22" style="background-color: rgb(229, 220, 251); color: rgb(0, 0, 0);" aria-label="GitHub label: Cat-Accessibility">Cat-Accessibility</a></span></div>
+                	<div class="">
+						<p>At the time of publication of this document there is an open issue regarding the tolerance level for accessibility conformance. Resolution of the issue could change the values that can be expressed for the Accessibility Conformance metadata.</p>
+					</div>
+				</div>
 				<section id="example-4.1">
 					<h4>Example 4.1 (metadata present)</h4>
 					<section id="metadata-4.1">
@@ -378,7 +429,14 @@
 				</div>
 				<div class="note">
 				<p>If the value is anything other than the six tokens listed above, then providing the raw string value as is.</p>
-                </div>				
+                </div>
+                <div class="fake-issue" id="issue-container-number-1767a">
+                	<div role="heading" class="issue-title marker" id="h-issue-1a" aria-level="6">
+                		<a href="https://github.com/w3c/epub-specs/issues/1767"><span class="issue-number">Issue 1767</span></a><span class="issue-label">: Is 0 tolerance for accessibility conformance practical? <a class="respec-gh-label" href="https://github.com/w3c/epub-specs/issues/?q=is%3Aissue+is%3Aopen+label%3A%22Cat-Accessibility%22" style="background-color: rgb(229, 220, 251); color: rgb(0, 0, 0);" aria-label="GitHub label: Cat-Accessibility">Cat-Accessibility</a></span></div>
+                	<div class="">
+						<p>At the time of publication of this document there is an open issue regarding the tolerance level for accessibility conformance. Resolution of the issue could change the values that can be expressed for the Accessibility Conformance metadata.</p>
+					</div>
+				</div>			
 				<section id="example-5.1">
 					<h4>Example 5.1 (metadata present token)</h4>
 					<section id="metadata-5.1">
