@@ -96,14 +96,14 @@
 		<section id="general-overview">
 			<h2>General Overview</h2>
 			<p>This document will help those who wish to provide accessibility metadata directly to users understand how
-				to represent machine readable accessibility metadata in a user friendly User Interface / User Experience
+				to represent machine-readable accessibility metadata in a user-friendly User Interface / User Experience
 				(UI/UX).</p>
 			<div class="note">
 				<p>This document presents high-level principles, without going into technical issues related to the different metadata standards in the publishing industry.</p>
 				<p>Therefore, <a href="#techniques">techniques are available</a>, illustrating to developers how to retrieve data to show the information outlined in this document.</p>
 			</div>
 			<p>Metadata found either inside a digital publication or in the corresponding external record may have important accessibility information that will help end users find and determine if this publication can meet their specific accessibility needs.</p>
-			<p>Most metadata is meant to be machine readable so that it can be used to aid in user search queries such
+			<p>Most metadata is meant to be machine-readable so that it can be used to aid in user search queries such
 				as <q>Find all digital publications that contain large print, or braille, or that has met a certain level of
 					accessibility conformance.</q> The exception to this is the accessibility summary which, if present,
 				describes in human-readable text all the accessibility features and any shortcomings present in this
@@ -111,16 +111,16 @@
 
 			<p>Here is an example of what a user-friendly accessibility metadata web page could look like:</p>
 			<aside class="example">
-				<p><strong>Screen Reader Friendly:</strong> Yes</p>
-				<p><strong>Accessibility Summary:</strong> This publication includes markup to enable accessibility and
+				<p><b>Screen Reader Friendly:</b> Yes</p>
+				<p><b>Accessibility Summary:</b> This publication includes markup to enable accessibility and
 					compatibility with assistive technology. Images, audio, and video in the publication are
 					well-described in conformance with WCAG 2.0 AA.</p>
-				<p><strong>Accessibility Conformance:</strong>
+				<p><b>Accessibility Conformance:</b>
 					<a href="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aa">EPUB Accessibility, WCAG2.0-AA</a></p>
-				<p><strong>Certified By:</strong> ACME Certification</p>
-				<p><strong>Certifier Credential:</strong>
+				<p><b>Certified By:</b> ACME Certification</p>
+				<p><b>Certifier Credential:</b>
 					<img src="./media/image1.png" alt="ACME Inc. credential webpage" width="50" /></p>
-				<p><strong>All Accessibility Metadata:</strong></p>
+				<p><b>All Accessibility Metadata:</b></p>
 				<p><img src="./media/image5.png" alt="Toggle box with all accessibility information" width="300" /></p>
 			</aside>
 		</section>
@@ -136,7 +136,7 @@
 			<p>While every user has different accessibility needs, meeting the Web Content Accessibility Guidelines
 				(WCAG) 2.0 requirements, even at level A, is a baseline that ensures a book will be widely accessible.
 				Book providers may therefore wish to create specific search capabilities to permit users to find books
-				that have declared conformance to WCAG at any level. A search filter called Accessible that retrieves all books with metadata that indicates conformance to WCAG Level A, AA and/or AAA.</p>
+				that have declared conformance to WCAG at any level. A search filter called "Accessible" that retrieves all books with metadata that indicates conformance to WCAG Level A, AA or AAA.</p>
 			<p>Books with full audio created for mainstream use provide important access for many users with disabilities even
 				though they are not accessible to others. Book providers may already have search tools aimed at finding
 				audiobooks, since they are popular and fairly common, but if not, this would be a good addition to the
@@ -152,10 +152,15 @@
 		<section id="ui-technical-details">
 			<h2>UI Technical Details</h2>
 			<p>When you have accessibility metadata about a digital publication it is important to share this information with the
-				user in a user friendly way. At a very high level when displaying information about a digital publication you may just
+				user in a user-friendly way. At a very high level when displaying information about a digital publication you may just
 				want to acknowledge that there is <q>Accessibility Features</q> or <q>Accessibility Information</q>
 				available and if the user would like to get at this information they can click a text or image link which
 				will then provide the information that is discussed below.</p>
+            
+			<div class="note">
+				<p>When there is no accessibility metadata for this EPUB a statement should be displayed informing that there was no accessibility information provided.</p>
+			</div>
+            
 			<p>In this example, a link to the accessibility information is provided with a traditional textual link.</p>
 			<aside class="example">
 				<p>Title: Huckleberry Finn</p>
@@ -164,14 +169,14 @@
 				<p>ISBN: 9780486110035</p>
 				<p>Publisher: Dover Publications</p>
 				<p>Book Features: <u>Accessibility Information</u>
-					<em>(textual link to accessibility information below)</em></p>
+					<i>(textual link to accessibility information below)</i></p>
 			</aside>
 			<p>Alternatively this link to the accessibility information could be provided with a clickable image.</p>
 			<aside id="ex-bookFeatures" class="example">
 				<p>Book Features:</p>
 				<p><img  src="./media/accessibility.svg" alt="Accessibility Information" width="75" /></p>
-				<p><em>(clickable image to accessibility information below)</em></p>
-				<p><em>Suggested Alt-text for image <q>Accessibility Information</q></em></p>
+				<p><i>(clickable image to accessibility information below)</i></p>
+				<p><i>Suggested Alt-text for image <q>Accessibility Information</q></i></p>
 			</aside>
             
             <section>

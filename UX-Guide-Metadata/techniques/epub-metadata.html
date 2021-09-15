@@ -94,15 +94,6 @@
 			<p class="note">
 				This document provides techniques for meeting the guidelines of the <a href="../principles/index.html">User Experience Guide for Displaying Accessibility Metadata</a>. It provides practical examples for extracting information from EPUB Package Document for showing it to the end users.
 			</p>
-			
-			<p class="note">
-				Some Schema.org accessibility metadata properties are descriptions of reading systems and not individual publications;
-				this means they will not be appropriate for use inside the EPUB package.
-				This includes the property "bookmarks," which indicates the ability of a reading system to allow users to set and navigate to bookmarks.
-				In addition, some kinds of transformations described in Schema.org accessibility metadata are disallowed if a book is constructed to prevent transformations,
-				but can only be provided if the reading system offers users control of that feature.
-				Those features therefore cannot be declared present in the publication's metadata because not all reading systems that support the publication file will provide that feature.
-			</p>
             
         </section>
 		<section id="techniques">
@@ -372,7 +363,7 @@
 					</section>
 					<section id="ui-4.2">
 						<h5>UI</h5>
-						<p><q>Accessibility Conformance: Custom specification</q></p>
+						<p>Accessibility Conformance: <a href="http://www.daisy.org/guidelines/epub/navigable-audio-only-epub3-guidelines">Custom specification</a></p>
 						<p>(Because this URI is different than what was outlined above. The book may qualify for
 							conformance as an optimized publication.)</p>
 					</section>
@@ -388,7 +379,7 @@
 					</section>
 					<section id="ui-4.3">
 						<h5>UI</h5>
-						<p><q>Accessibility Conformance: None provided</q></p>
+						<p>Accessibility Conformance: None provided</p>
 					</section>
 				</section>
 			</section>
