@@ -73,7 +73,7 @@
 					<p>Here is an example of an ONIX record (version 3.0), which will be used as a reference point for the
 						following examples on EPUB accessibility metadata: the results of the XPath shown are based on
 						this example.</p>
-					<aside class="example" id="cb29">
+					<aside class="example" id="onix-example-1">
 						<pre><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;ONIXMessage xmlns="http://ns.editeur.org/onix/3.0/reference" release="3.0"&gt;
     &lt;Header&gt;...&lt;/Header&gt;
@@ -118,6 +118,10 @@
             &lt;ProductFormFeature&gt;
                 &lt;ProductFormFeatureType&gt;09&lt;/ProductFormFeatureType&gt;
                 &lt;ProductFormFeatureValue&gt;14&lt;/ProductFormFeatureValue&gt;
+            &lt;/ProductFormFeature&gt;
+            &lt;ProductFormFeature&gt;
+                &lt;ProductFormFeatureType&gt;09&lt;/ProductFormFeatureType&gt;
+                &lt;ProductFormFeatureValue&gt;20&lt;/ProductFormFeatureValue&gt;
             &lt;/ProductFormFeature&gt;
             &lt;ProductFormFeature&gt;
                 &lt;ProductFormFeatureType&gt;09&lt;/ProductFormFeatureType&gt;
@@ -175,7 +179,7 @@
 						<p>Here is an example of an ONIX record (version 3.0) for describing an audiobook, which will be used as a reference point for the
 						some of the following examples on EPUB accessibility metadata: the results of the XPath shown are based on
 						this example.</p>
-					<aside class="example" id="cb30">
+					<aside class="example" id="onix-example-2">
 						<pre><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;ONIXMessage xmlns="http://ns.editeur.org/onix/3.0/reference" release="3.0"&gt;
     &lt;Header&gt;...&lt;/Header&gt;
@@ -229,9 +233,10 @@
 //Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType="09" and ProductFormFeatureValue="10"]</code></pre>
 						</aside>
 					</section>
+					<p>For this example, this XPath was evaluated on the ONIX record presented in <a href="#onix-example-1">EXAMPLE 1</a>.</p>
 					<section id="ui-1">
 						<h5>UI</h5>
-						<p><q>Screen Reader Friendly: Yes</q></p>
+						<p>Screen Reader Friendly: Yes</p>
 					</section>
 				</section>
 				
@@ -251,10 +256,11 @@
 						<aside class="example" id="code-example-2.1">
 							<pre><code>//Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType="09" and ProductFormFeatureValue="20"]</code></pre>
 						</aside>
+						<p>For this example, this XPath was evaluated on the ONIX record presented in <a href="#onix-example-1">EXAMPLE 1</a>.</p>
 					</section>
 					<section id="ui-2.1">
 						<h5>UI</h5>
-						<p><q>Full Audio: Yes</q></p>
+						<p>Full Audio: Yes</p>
 					</section>
 				</section>
 				<section id="example-2.2">
@@ -263,12 +269,13 @@
 						<h5>XPath</h5>
 						<p>This field is true if the XPath returns one element for:</p>
 						<aside class="example" id="code-example-2.2">
-							<pre><code>//Product/DescriptiveDetail/ProductForm[text()="AO"]</code></pre>
+							<pre><code>//Product/DescriptiveDetail/PrimaryContentType[text()="01"]</code></pre>
 						</aside>
+						<p>For this example, this XPath was evaluated on the ONIX record presented in <a href="#onix-example-2">EXAMPLE 2</a>.</p>
 					</section>
 					<section id="ui-2.2">
 						<h5>UI</h5>
-						<p><q>Full Audio: Yes</q></p>
+						<p>Full Audio: Yes</p>
 					</section>
 				</section>
 			</section>
@@ -287,6 +294,7 @@
 						<aside class="example" id="code-example-3.1">
 							<pre><code>//Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType="09" and ProductFormFeatureValue="00"]/ProductFormFeatureDescription/text()</code></pre>
 						</aside>
+						<p>For this example, this XPath was evaluated on the ONIX record presented in <a href="#onix-example-1">EXAMPLE 1</a>.</p>
 					</section>
 					<section id="ui-3">
 						<h5>UI</h5>
@@ -315,10 +323,11 @@
 						<aside class="example" id="code-example-4.1">
 							<pre><code>//Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType="09" and ProductFormFeatureValue="02"]</code></pre>
 						</aside>
+						<p>For this example, this XPath was evaluated on the ONIX record presented in <a href="#onix-example-1">EXAMPLE 1</a>.</p>
 					</section>
 					<section id="ui-4.1">
 						<h5>UI</h5>
-						<p><q>Accessibility Conformance: EPUB Accessibility, WCAG-A</q></p>
+						<p>Accessibility Conformance: EPUB Accessibility, WCAG-A</p>
 					</section>
 				</section>
 				<section id="example-4.2">
@@ -329,10 +338,11 @@
 						<aside class="example" id="code-example-4.2">
 							<pre><code>//Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType="09" and ProductFormFeatureValue="03"] returns at least one result</code></pre>
 						</aside>
+						<p>For this example, this XPath was evaluated on the ONIX record presented in <a href="#onix-example-1">EXAMPLE 1</a>.</p>
 					</section>
 					<section id="ui-4.2">
 						<h5>UI</h5>
-						<p><q>Accessibility Conformance: EPUB Accessibility, WCAG-AA</q></p>
+						<p>Accessibility Conformance: EPUB Accessibility, WCAG-AA</p>
 					</section>
 				</section>
 			</section>
@@ -350,6 +360,7 @@
 						<aside class="example" id="code-example-5.1">
 							<pre><code>//Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType="09" and ProductFormFeatureValue="93"]/ProductFormFeatureDescription/text()</code></pre>
 						</aside>
+						<p>For this example, this XPath was evaluated on the ONIX record presented in <a href="#onix-example-1">EXAMPLE 1</a>.</p>
 					</section>
 					<section id="ui-5.1">
 						<h5>UI</h5>
@@ -393,6 +404,7 @@
 						<aside class="example" id="code-example-6.1.3">
 							<pre><code>//Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType="09" and ProductFormFeatureValue="96"]/ProductFormFeatureDescription/text()</code></pre>
 						</aside>
+						<p>For this example, this XPath was evaluated on the ONIX record presented in <a href="#onix-example-1">EXAMPLE 1</a>.</p>
 					</section>
 					<section id="ui-6.1">
 						<h5>UI</h5>
@@ -401,7 +413,7 @@
 									alt="Report webpage" width="50" /></a></p>
 						<aside class="example">
 							<p><em>(Clickable Image to the URI of the report from metadata)</em></p>
-							<p><em>alt-text <q>Report webpage</q></em></p>
+							<p><em>alt-text Report webpage</em></p>
 							<p><em>(Image here of checkmark with clipboard is just for reference feel free to choose
 									your own image)</em></p>
 						</aside>
@@ -429,10 +441,11 @@
 						<aside class="example" id="code-example-7.1">
 							<pre><code>//Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType="12"]/ProductFormFeatureValue</code></pre>
 						</aside>
+						<p>For this example, this XPath was evaluated on the ONIX record presented in <a href="#onix-example-1">EXAMPLE 1</a>.</p>
 					</section>
 					<section id="ui-7.1">
 						<h5>UI</h5>
-						<p><q>Hazard: no Flashing, no Sound, no Motion Simulation</q></p>
+						<p>Hazard: no Flashing, no Sound, no Motion Simulation</p>
 						<p>(because <em>ProductFormFeature</em> with <em>ProductFormFeatureType</em> equal to 12 and <em>ProductFormFeatureValue</em>s equal to: 14, 16, 18)</p>
 					</section>
 				</section>
@@ -443,8 +456,7 @@
 				<p><b>Value</b>: Link to complete list of all metadata fields</p>
 				<p>This technique relates to <a href="../principles/#all-accessibility-metadata">All Accessibility Metadata principle</a>.</p>
 				
-				<p>For a complete list of <a href="http://www.a11ymetadata.org/the-specification/metadata-crosswalk/"
-						>ONIX accessibility metadata refer to the crosswalk.</a></p>
+				<p>For a complete list of <a href="http://www.a11ymetadata.org/the-specification/metadata-crosswalk/">ONIX accessibility metadata refer to the crosswalk.</a></p>
 			</section>
 		</section>
 		<section id="app-acknowledgements" class="appendix informative">
