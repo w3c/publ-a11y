@@ -88,7 +88,7 @@
 	<body>
 		<section id="abstract">
 			<p>Finding, buying, and finally reading a book is a very personal experience. For most of us this is routine where we go to a bookstore search for the title we are interested in or perhaps browse the best sellers list, then purchase and start reading the book.</p>
-			<p>Now consider you are blind and rely on assistive technology to read this book. Will my screen reader work with this title? Are there image descriptions that will be spoken to describe these images, are there page numbers which are accessible, is the reading order correct so I don't hear chapter 4 before chapter 3? These are just a few of the accessibility concerns consumers have when trying to purchase and ultimately read electronic publication.</p>
+			<p>Now consider you are blind and rely on assistive technology to read this book. Will my screen reader work with this title? Are there image descriptions that will be spoken to describe these images, are there page numbers which are accessible, is the reading order correct so I don't hear a <q>caution</q> after reading a paragraph which could be dangerous.? These are just a few of the accessibility concerns consumers have when trying to purchase and ultimately read an electronic publication.</p>
 			<p>The good news is more and more publishers are creating Born Accessible publications and also getting the accessibility validation or audit done by independent organizations.</p>
 			<p>This document proposes a shared framework for presenting publication accessibility metadata in a user-friendly manner.</p>
 		</section>
@@ -136,7 +136,7 @@
 			<p>While every user has different accessibility needs, meeting the Web Content Accessibility Guidelines
 				(WCAG) 2.0 requirements, even at level A, is a baseline that ensures a book will be widely accessible.
 				Book providers may therefore wish to create specific search capabilities to permit users to find books
-				that have declared conformance to WCAG at any level. A search filter called "Accessible" that retrieves all books with metadata that indicates conformance to WCAG Level A, AA or AAA.</p>
+				that have declared conformance to WCAG at any level. We suggest the creation of a search filter called "Accessible" that retrieves all books with metadata that indicates conformance to WCAG Level A, AA or AAA.</p>
 			<p>Books with full audio created for mainstream use provide important access for many users with disabilities even
 				though they are not accessible to others. Book providers may already have search tools aimed at finding
 				audiobooks, since they are popular and fairly common, but if not, this would be a good addition to the
@@ -151,11 +151,8 @@
 		</section>
 		<section id="ui-technical-details">
 			<h2>UI Technical Details</h2>
-			<p>When you have accessibility metadata about a digital publication it is important to share this information with the
-				user in a user-friendly way. At a very high level when displaying information about a digital publication you may just
-				want to acknowledge that there is <q>Accessibility Features</q> or <q>Accessibility Information</q>
-				available and if the user would like to get at this information they can click a text or image link which
-				will then provide the information that is discussed below.</p>
+			<p>When you have accessibility metadata about a digital publication, it is important to share this information with the
+				user in a user-friendly way. At a very high level when displaying information about a digital publication, you may just want to acknowledge that there is <q>Accessibility Features</q> or <q>Accessibility Information</q> available. If the user would like to get at this information, they can click a text or image link which will then provide the information that is discussed below.</p>
             
 			<div class="note">
 				<p>When there is no accessibility metadata for this publication a statement should be displayed informing that there was no accessibility information provided.</p>
@@ -182,7 +179,7 @@
             <section>
                 <h3>Techniques</h3>
                 <p>To assist developers in implementing these guidelines, in-depth notes are available to explain how to extract information from publishing industry metadata standards.</p>
-                <p>At the time of this document the available techniques for metadata standards are:</p>
+                <p>At the time of publishing this document the available techniques for metadata standards are:</p>
 				<ul>
 					<li><p><a href="../techniques/epub-metadata.html">EPUB Accessibility Metadata</a></p></li>
 					<li><p><a href="../techniques/onix.html">ONIX Accessibility Metadata</a></p></li>
@@ -197,7 +194,7 @@
             <p>
                 Ordering this information in a meaningful and consistent way is key so the most important information appears first to help the user quickly determine if this publication will meet their specific needs.</p>
             <p>
-                The two most important accessibility accommodations are if the publication is "Screen Reader Friendly" which implies all text in the book is accessible and any images if present are described. Secondly, if the publication has "Full Audio". 
+                The two most important accessibility accommodations are if the publication is "Screen Reader Friendly" which implies all text in the book is accessible and any images if present are described. Secondly, if the publication has <q>Full Audio</q>, the user will know the entire publication can be read through audio playback. 
             </p>
             <p>
                 The next important piece is the Accessibility Summary which is metadata describing all the accessibility accommodations provided by this publication.
