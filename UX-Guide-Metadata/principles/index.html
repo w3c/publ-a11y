@@ -89,7 +89,7 @@
 		<section id="abstract">
 			<p>Finding, buying, and finally reading a publication is a very personal experience. For most of us this is routine. We go to a bookstore, search for the title we are interested in or perhaps browse the best sellers list, then purchase and start reading the publication.</p>
 			<p>Now consider you are blind and rely on an assistive technology to read the publication. You wonder: will my screen reader work with this title; are there image descriptions that will be spoken to describe these images; are there page numbers which are accessible; is the reading order correct so I don't hear a <q>caution</q> after reading a paragraph which could be dangerous? These are just a few of the accessibility concerns consumers have when trying to purchase and ultimately read a digital publication.</p>
-			<p>The good news is more and more publishers are creating publications that are <a>Born Accessible</a> (i.e., accessible from the outset, not fixed later) and getting the accessibility validation or audit done by independent organizations.</p>
+			<p>The good news is more and more publishers are creating publications that are <q>Born Accessible</q> (i.e., accessible from the outset, not fixed later) and getting the accessibility validation or audit done by independent organizations.</p>
 			<p>This document proposes a shared framework for presenting publication accessibility metadata in a user-friendly manner.</p>
 		</section>
 		<section id="sotd"></section>
@@ -137,7 +137,7 @@
 			<p>While every user has different accessibility needs, meeting the Web Content Accessibility Guidelines
 				(WCAG) 2.0 requirements, even at level A, is a baseline that ensures a publication will be widely accessible.
 				Publication providers may therefore wish to create specific search capabilities to permit users to find publications
-				that have declared conformance to WCAG at any level. We suggest the creation of an "Accessible" search filter that only returns publications with metadata that indicates conformance to the user-selected WCAG Level &#8212; A, AA or AAA.</p>
+				that have declared conformance to WCAG at any level. We suggest the creation of an "Accessible" search filter that only returns publications with metadata that indicates conformance to the user-selected WCAG Level &#8212; A, AA, or AAA.</p>
 			<p>Publications with full audio created for mainstream use provide important access for many users with disabilities even
 				though they are not accessible to all. (Note that these publications differ from traditional audiobooks in that the audio
 				accompanies the full or partial text of the publication.) Publication providers may already have search tools aimed at finding
@@ -243,7 +243,7 @@
 				<p>An indication that this publication can be read in full auditorily. This designation applies even if the text is also available with the audio.</p>
 				<h4>Rationale</h4>
 				<p>Some users, including users with dyslexia or visual impairments, seek publications they can use entirely by listening. Full Audio metadata is important to the discovery process for these users. Publication providers may already be designating "audiobooks" as a separately searchable set based on the popular definition of an audiobook as an audio-only experience. Publications that include full text and full audio may not currently be grouped with audiobooks, so exposing this metadata adds additional publications to the list of titles audio users might be interested in.</p>
-                <p>Audiobooks presented without text are considered optimized publications. They do not meet all accessibility requirements, and therefore will not be discovered when filtering for "accessible" publications, but they provide access to the publication for specific users who require audio. Providing a way for users to search a collection for all publications with full audio will support these users, and including this information in the metadata displayed will also alert users for whom audio is inaccessible. This piece of metadata should be included only if the value is "Yes". Since most digital publications available do not include audio, it is only important to include this metadata in the user interface for those that do.</p>
+                <p>Audiobooks presented without text are considered optimized publications. They do not meet all accessibility requirements, and therefore will not be discovered when filtering for "accessible" publications, but they provide access to the publication for specific users who require audio. Providing a way for users to search a collection for all publications with full audio will support these users and including this information in the metadata displayed will also alert users for whom audio is inaccessible. This piece of metadata should be included only if the value is "Yes". Since most digital publications available do not include audio, it is only important to include this metadata in the user interface for those that do.</p>
                 <h4>Implementation</h4>
                 <ul>
                     <li><a href="../techniques/epub-metadata.html#full-audio">EPUB Accessibility: Full Audio</a></li>
@@ -273,7 +273,7 @@
 				<h4>Definition</h4>
 				<p>To report the accessibility conformance of a publication, metadata for accessibility conformance should be provided. It declares the accessibility standard or accessibility specifications to which the publication conforms. The value can be a URL or a code which identifies the accessibility standard or accessibility specifications.</p>
 				<p class="note">In case of EPUB publications, it will usually point to the EPUB Accessibility specifications or WCAG.</p>
-				<p class="note">If a publication is optimized for a particular user group, e.g. an audiobook, it would not conform to WCAG guidelines, but it may be perfectly useable by a particular group (e.g. persons who are blind). In this case, the accessibility conformance metadata should identify the specification used to create the optimized publication.</p>
+				<p class="note">If a publication is optimized for a particular user group (e.g., an audiobook), it would not conform to WCAG guidelines, but it may be perfectly useable by a particular group (e.g., persons who are blind). In this case, the accessibility conformance metadata should identify the specification used to create the optimized publication.</p>
 				<h4>Rationale</h4>
 				<p>Discovery metadata enables publications to have their accessibility exposed regardless of the overall accessibility of the publication. A publication optimized for a particular group, such as an audiobook, would not meet WCAG 2.0, but it would be fully accessible to many people. The conformance metadata details the accessibility of the publication, which allows end users and educators to evaluate the suitability of the publication for individuals.</p>
                 
@@ -297,7 +297,7 @@
 				<h3>Certified By</h3>
 				<p><b>Value</b>: Textual Data from metadata</p>
 				<h4>Definition</h4>
-				<p>The <i>Certified By</i> property specifies the name of the party that certified the content. The certifier of the content could be the same party that created or published the publication, but can also be a third-party accessibility certifier.</p>
+				<p>The <i>Certified By</i> property specifies the name of the party that certified the content. The certifier of the content could be the same party that created or published the publication, or a third-party accessibility certifier.</p>
 				<h4>Rationale</h4>
 				<p>When the metadata about a publication declares that it conforms to an accessibility specification reaching a certain level of WCAG conformance, the party making this assertion must be identified.</p>
                 <h4>Implementation</h4>
@@ -343,7 +343,7 @@
 				<p><b>Values</b>: flashing, motion simulation, sound, no flashing, no motion simulation, no
 					sound, none, or unknown.</p>
 				<h4>Definition</h4>
-				<p>Hazards are a list of possible ways in which this publication could be physiologically dangerous for some users (e.g. flashing elements, background sounds, motion simulation, etc.).</p>
+				<p>Hazards are a list of possible ways in which this publication could be physiologically dangerous for some users (e.g., flashing elements, background sounds, and motion simulation).</p>
 				<h4>Rationale</h4>
 				<p>Unlike other accessibility properties, the presence of hazards can be expressed either positively or negatively. This is because users are more often looking for content that is safe for them. This section should always be displayed; indicate that no metadata was provided if that is the case.</p>
                 <h4>Implementation</h4>
