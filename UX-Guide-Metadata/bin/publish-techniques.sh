@@ -36,14 +36,11 @@ do
 		-o $BASEDIR/../techniques/$technique-metadata/index.html
 
 	# generates the static version
+	# generates the static version
 	printf "\nReplacing URLs..."
-	sed 's#https://w3c.github.io/publ-a11y/UX-Guide-Metadata/draft/#https://www.w3.org/publishing/a11y/UX-Guide-metadata/#g' $BASEDIR/../techniques/$technique-metadata/index.html > $BASEDIR/../techniques/$technique-metadata/index-mod.html
-
-	if [ $? -gt 0 ] 
-	then 
-		exit 1
-	fi
-
+	sed 's#\.\./\.\./#https://www.w3.org/publishing/a11y/UX-Guide-metadata/#g' $BASEDIR/../techniques/$technique-metadata/index.html > $BASEDIR/../techniques/$technique-metadata/index-mod.html
+	sed 's#\.\./#https://www.w3.org/publishing/a11y/UX-Guide-metadata/techniques/#g' $BASEDIR/../techniques/$technique-metadata/index-mod.html > $BASEDIR/../techniques/$technique-metadata/index.html
+	sed 's#\./#https://www.w3.org/publishing/a11y/UX-Guide-metadata/techniques/$technique-metadata/#g' $BASEDIR/../techniques/$technique-metadata/index.html > $BASEDIR/../techniques/$technique-metadata/index-mod.html
 	mv $BASEDIR/../techniques/$technique-metadata/index-mod.html $BASEDIR/../techniques/$technique-metadata/index.html
 
 	# runs nuchecker

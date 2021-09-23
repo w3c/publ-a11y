@@ -30,14 +30,9 @@ curl \
 
 # generates the static version
 printf "\nReplacing URLs..."
-sed 's#https://w3c.github.io/publ-a11y/UX-Guide-Metadata/draft/#https://www.w3.org/publishing/a11y/UX-Guide-metadata/#g' $BASEDIR/_tmp/index.html > $BASEDIR/_tmp/index-mod.html
-
-if [ $? -gt 0 ] 
-then 
-	exit 1
-fi
-
-mv $BASEDIR/_tmp/index-mod.html $BASEDIR/_tmp/index.html
+sed 's#\.\./#https://www.w3.org/publishing/a11y/UX-Guide-metadata/#g' $BASEDIR/_tmp/index.html > $BASEDIR/_tmp/index-mod.html
+sed 's#\./#https://www.w3.org/publishing/a11y/UX-Guide-metadata/principles/#g' $BASEDIR/_tmp/index-mod.html > $BASEDIR/_tmp/index.html
+rm -f $BASEDIR/_tmp/index-mod.html
 
 # runs nuchecker
 nuVersion=$(java -jar libs/vnu/vnu.jar --version)
