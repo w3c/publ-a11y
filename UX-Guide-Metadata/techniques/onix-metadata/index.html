@@ -1,0 +1,933 @@
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<meta charset="utf-8">
+<meta name="generator" content="ReSpec 26.13.4">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<style>
+span.example-title{text-transform:none}
+aside.example,div.example,div.illegal-example{padding:.5em;margin:1em 0;position:relative;clear:both}
+div.illegal-example{color:red}
+div.illegal-example p{color:#000}
+aside.example,div.example{padding:.5em;border-left-width:.5em;border-left-style:solid;border-color:#e0cb52;background:#fcfaee}
+aside.example div.example{border-left-width:.1em;border-color:#999;background:#fff}
+aside.example div.example span.example-title{color:#999}
+.example pre{background-color:rgba(0,0,0,.03)}
+</style>
+<style>
+.issue-label{text-transform:initial}
+.warning>p:first-child{margin-top:0}
+.warning{padding:.5em;border-left-width:.5em;border-left-style:solid}
+span.warning{padding:.1em .5em .15em}
+.issue.closed span.issue-number{text-decoration:line-through}
+.warning{border-color:#f11;border-width:.2em;border-style:solid;background:#fbe9e9}
+.warning-title:before{content:"⚠";font-size:1.3em;float:left;padding-right:.3em;margin-top:-.3em}
+li.task-list-item{list-style:none}
+input.task-list-item-checkbox{margin:0 .35em .25em -1.6em;vertical-align:middle}
+.issue a.respec-gh-label{padding:5px;margin:0 2px 0 2px;font-size:10px;text-transform:none;text-decoration:none;font-weight:700;border-radius:4px;position:relative;bottom:2px;border:none;display:inline-block}
+</style>
+<style>
+dfn{cursor:pointer}
+.dfn-panel{position:absolute;z-index:35;min-width:300px;max-width:500px;padding:.5em .75em;margin-top:.6em;font:small Helvetica Neue,sans-serif,Droid Sans Fallback;background:#fff;color:#000;box-shadow:0 1em 3em -.4em rgba(0,0,0,.3),0 0 1px 1px rgba(0,0,0,.05);border-radius:2px}
+.dfn-panel:not(.docked)>.caret{position:absolute;top:-9px}
+.dfn-panel:not(.docked)>.caret::after,.dfn-panel:not(.docked)>.caret::before{content:"";position:absolute;border:10px solid transparent;border-top:0;border-bottom:10px solid #fff;top:0}
+.dfn-panel:not(.docked)>.caret::before{border-bottom:9px solid #a2a9b1}
+.dfn-panel *{margin:0}
+.dfn-panel b{display:block;color:#000;margin-top:.25em}
+.dfn-panel ul a[href]{color:#333}
+.dfn-panel>div{display:flex}
+.dfn-panel a.self-link{font-weight:700;margin-right:auto}
+.dfn-panel .marker{padding:.1em;margin-left:.5em;border-radius:.2em;text-align:center;white-space:nowrap;font-size:90%;color:#040b1c}
+.dfn-panel .marker.dfn-exported{background:#d1edfd;box-shadow:0 0 0 .125em #1ca5f940}
+.dfn-panel .marker.idl-block{background:#8ccbf2;box-shadow:0 0 0 .125em #0670b161}
+.dfn-panel a:not(:hover){text-decoration:none!important;border-bottom:none!important}
+.dfn-panel a[href]:hover{border-bottom-width:1px}
+.dfn-panel ul{padding:0}
+.dfn-panel li{margin-left:1em}
+.dfn-panel.docked{position:fixed;left:.5em;top:unset;bottom:2em;margin:0 auto;max-width:calc(100vw - .75em * 2 - .5em - .2em * 2);max-height:30vh;overflow:auto}
+</style>
+		
+		
+<title>Display Techniques for ONIX Accessibility Metadata 1.0</title>
+		
+		
+	
+<style id="respec-mainstyle">
+@keyframes pop{
+0%{transform:scale(1,1)}
+25%{transform:scale(1.25,1.25);opacity:.75}
+100%{transform:scale(1,1)}
+}
+.hljs{background:0 0!important}
+a abbr,h1 abbr,h2 abbr,h3 abbr,h4 abbr,h5 abbr,h6 abbr{border:none}
+dfn{font-weight:700}
+a.internalDFN{color:inherit;border-bottom:1px solid #99c;text-decoration:none}
+a.externalDFN{color:inherit;border-bottom:1px dotted #ccc;text-decoration:none}
+a.bibref{text-decoration:none}
+.respec-offending-element:target{animation:pop .25s ease-in-out 0s 1}
+.respec-offending-element,a[href].respec-offending-element{text-decoration:red wavy underline}
+@supports not (text-decoration:red wavy underline){
+.respec-offending-element:not(pre){display:inline-block}
+.respec-offending-element{background:url(data:image/gif;base64,R0lGODdhBAADAPEAANv///8AAP///wAAACwAAAAABAADAEACBZQjmIAFADs=) bottom repeat-x}
+}
+#references :target{background:#eaf3ff;animation:pop .4s ease-in-out 0s 1}
+cite .bibref{font-style:normal}
+code{color:#c63501}
+th code{color:inherit}
+a[href].orcid{padding-left:4px;padding-right:4px}
+a[href].orcid>svg{margin-bottom:-2px}
+.toc a,.tof a{text-decoration:none}
+a .figno,a .secno{color:#000}
+ol.tof,ul.tof{list-style:none outside none}
+.caption{margin-top:.5em;font-style:italic}
+table.simple{border-spacing:0;border-collapse:collapse;border-bottom:3px solid #005a9c}
+.simple th{background:#005a9c;color:#fff;padding:3px 5px;text-align:left}
+.simple th a{color:#fff;padding:3px 5px;text-align:left}
+.simple th[scope=row]{background:inherit;color:inherit;border-top:1px solid #ddd}
+.simple td{padding:3px 10px;border-top:1px solid #ddd}
+.simple tr:nth-child(even){background:#f0f6ff}
+.section dd>p:first-child{margin-top:0}
+.section dd>p:last-child{margin-bottom:0}
+.section dd{margin-bottom:1em}
+.section dl.attrs dd,.section dl.eldef dd{margin-bottom:0}
+#issue-summary>ul{column-count:2}
+#issue-summary li{list-style:none;display:inline-block}
+details.respec-tests-details{margin-left:1em;display:inline-block;vertical-align:top}
+details.respec-tests-details>*{padding-right:2em}
+details.respec-tests-details[open]{z-index:999999;position:absolute;border:thin solid #cad3e2;border-radius:.3em;background-color:#fff;padding-bottom:.5em}
+details.respec-tests-details[open]>summary{border-bottom:thin solid #cad3e2;padding-left:1em;margin-bottom:1em;line-height:2em}
+details.respec-tests-details>ul{width:100%;margin-top:-.3em}
+details.respec-tests-details>li{padding-left:1em}
+a[href].self-link:hover{opacity:1;text-decoration:none;background-color:transparent}
+h2,h3,h4,h5,h6{position:relative}
+aside.example .marker>a.self-link{color:inherit}
+h2>a.self-link,h3>a.self-link,h4>a.self-link,h5>a.self-link,h6>a.self-link{border:none;color:inherit;font-size:83%;height:2em;left:-1.6em;opacity:.5;position:absolute;text-align:center;text-decoration:none;top:0;transition:opacity .2s;width:2em}
+h2>a.self-link::before,h3>a.self-link::before,h4>a.self-link::before,h5>a.self-link::before,h6>a.self-link::before{content:"§";display:block}
+@media (max-width:767px){
+dd{margin-left:0}
+h2>a.self-link,h3>a.self-link,h4>a.self-link,h5>a.self-link,h6>a.self-link{left:auto;top:auto}
+}
+@media print{
+.removeOnSave{display:none}
+}
+</style>
+<link rel="canonical" href="https://www.w3.org/TR/publ-a11y/">
+<style>
+.hljs{display:block;overflow-x:auto;padding:.5em;color:#383a42;background:#fafafa}
+.hljs-comment,.hljs-quote{color:#717277;font-style:italic}
+.hljs-doctag,.hljs-formula,.hljs-keyword{color:#a626a4}
+.hljs-deletion,.hljs-name,.hljs-section,.hljs-selector-tag,.hljs-subst{color:#ca4706;font-weight:700}
+.hljs-literal{color:#0b76c5}
+.hljs-addition,.hljs-attribute,.hljs-meta-string,.hljs-regexp,.hljs-string{color:#42803c}
+.hljs-built_in,.hljs-class .hljs-title{color:#9a6a01}
+.hljs-attr,.hljs-number,.hljs-selector-attr,.hljs-selector-class,.hljs-selector-pseudo,.hljs-template-variable,.hljs-type,.hljs-variable{color:#986801}
+.hljs-bullet,.hljs-link,.hljs-meta,.hljs-selector-id,.hljs-symbol,.hljs-title{color:#336ae3}
+.hljs-emphasis{font-style:italic}
+.hljs-strong{font-weight:700}
+.hljs-link{text-decoration:underline}
+</style>
+<style>
+var{position:relative;cursor:pointer}
+var[data-type]::after,var[data-type]::before{position:absolute;left:50%;top:-6px;opacity:0;transition:opacity .4s;pointer-events:none}
+var[data-type]::before{content:"";transform:translateX(-50%);border-width:4px 6px 0 6px;border-style:solid;border-color:transparent;border-top-color:#000}
+var[data-type]::after{content:attr(data-type);transform:translateX(-50%) translateY(-100%);background:#000;text-align:center;font-family:"Dank Mono","Fira Code",monospace;font-style:normal;padding:6px;border-radius:3px;color:#daca88;text-indent:0;font-weight:400}
+var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
+</style>
+<script id="initialUserConfig" type="application/json">{
+  "group": "publishingcg",
+  "specStatus": "CG-FINAL",
+  "noRecTrack": true,
+  "latestVersion": "https://www.w3.org/publishing/a11y/UX-Guide-metadata/techniques/onix-metadata/",
+  "edDraftURI": "https://w3c.github.io/publ-a11y/UX-Guide-Metadata/draft/techniques/onix-metadata/",
+  "editors": [
+    {
+      "name": "Gregorio Pellegrino",
+      "company": "Fondazione LIA",
+      "companyURL": "https://fondazionelia.org",
+      "w3cid": 97111
+    }
+  ],
+  "processVersion": 2020,
+  "includePermalinks": false,
+  "permalinkEdge": true,
+  "permalinkHide": false,
+  "diffTool": "http://www.aptest.com/standards/htmldiff/htmldiff.pl",
+  "github": {
+    "repoURL": "https://github.com/w3c/publ-a11y/",
+    "branch": "master"
+  },
+  "publishDate": "2021-09-27",
+  "publishISODate": "2021-09-27T00:00:00.000Z",
+  "generatedSubtitle": "Final Community Group Report 27 September 2021"
+}</script>
+<link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2016/cg-final"></head>
+	<body class="h-entry informative"><div class="head">
+     <h1 id="title" class="title">Display Techniques for ONIX Accessibility Metadata 1.0</h1>
+    
+    <h2>
+      Final Community Group Report
+      <time class="dt-published" datetime="2021-09-27">27 September 2021</time>
+    </h2>
+    <dl>
+      
+      <dt>Latest published version:</dt><dd>
+              <a href="https://www.w3.org/publishing/a11y/UX-Guide-metadata/techniques/onix-metadata/">https://www.w3.org/publishing/a11y/UX-Guide-metadata/techniques/onix-metadata/</a>
+            </dd>
+      <dt>Latest editor's draft:</dt><dd><a href="https://w3c.github.io/publ-a11y/UX-Guide-Metadata/draft/techniques/onix-metadata/">https://w3c.github.io/publ-a11y/UX-Guide-Metadata/draft/techniques/onix-metadata/</a></dd>
+      
+      
+      
+      
+      <dt>Editor:</dt>
+      <dd class="editor p-author h-card vcard" data-editor-id="97111">
+    <span class="p-name fn">Gregorio Pellegrino</span> (<a class="p-org org h-org" href="https://fondazionelia.org">Fondazione LIA</a>)
+  </dd>
+      
+      
+      <dt>Participate:</dt><dd>
+    <a href="https://github.com/w3c/publ-a11y/">GitHub w3c/publ-a11y</a>
+  </dd><dd>
+    <a href="https://github.com/w3c/publ-a11y/issues/">File an issue</a>
+  </dd><dd>
+    <a href="https://github.com/w3c/publ-a11y/commits/master">Commit history</a>
+  </dd><dd>
+    <a href="https://github.com/w3c/publ-a11y/pulls/">Pull requests</a>
+  </dd>
+    </dl>
+    
+    <p class="copyright">
+          <a href="https://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>
+          ©
+          2021
+          
+          the Contributors to the Display Techniques for ONIX Accessibility Metadata 1.0
+          Specification, published by the
+          <a href="https://www.w3.org/community/publishingcg/">Publishing Community Group</a> under the
+          <a href="https://www.w3.org/community/about/agreements/fsa/">W3C Community Final Specification Agreement (FSA)</a>. A human-readable
+                <a href="https://www.w3.org/community/about/agreements/fsa-deed/">summary</a>
+                is available.
+              
+        </p>
+    <hr title="Separator for header">
+  </div>
+		<section id="abstract" class="introductory"><h2>Abstract</h2></section>
+		<section id="sotd" class="introductory"><h2>Status of This Document</h2><p>
+      This specification was published by the
+      <a href="https://www.w3.org/community/publishingcg/">Publishing Community Group</a>. It is not a W3C Standard nor is it
+      on the W3C Standards Track.
+      
+            Please note that under the
+            <a href="https://www.w3.org/community/about/agreements/final/">W3C Community Final Specification Agreement (FSA)</a>
+            other conditions apply.
+          
+      Learn more about
+      <a href="https://www.w3.org/community/">W3C Community and Business Groups</a>.
+    </p><p>
+    <a href="https://github.com/w3c/publ-a11y/issues/">GitHub Issues</a> are preferred for
+          discussion of this specification.
+        
+    
+  </p></section><nav id="toc"><h2 class="introductory" id="table-of-contents">Table of Contents</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#abstract">Abstract</a></li><li class="tocline"><a class="tocxref" href="#sotd">Status of This Document</a></li><li class="tocline"><a class="tocxref" href="#onix-metadata"><bdi class="secno">1. </bdi>ONIX Metadata</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#onix-record-examples"><bdi class="secno">1.1 </bdi>ONIX record examples</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#onix-record-describing-an-epub"><bdi class="secno">1.1.1 </bdi>ONIX record describing an EPUB</a></li><li class="tocline"><a class="tocxref" href="#onix-record-describing-an-full-audio-book-here-is-an-example-of-an-onix-record-version-3.0-for-describing-a-full-audio-book"><bdi class="secno">1.1.2 </bdi>ONIX record describing an audiobook</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#techniques"><bdi class="secno">2. </bdi>Techniques</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#screen-reader-friendly"><bdi class="secno">2.1 </bdi>Screen Reader Friendly</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#example-1.1"><bdi class="secno">2.1.1 </bdi>Example 1.1</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#xpath-1.1"><bdi class="secno">2.1.1.1 </bdi>XPath</a></li><li class="tocline"><a class="tocxref" href="#ui-1"><bdi class="secno">2.1.1.2 </bdi>UI</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#full-audio"><bdi class="secno">2.2 </bdi>Full Audio</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#example-2.1"><bdi class="secno">2.2.1 </bdi>Example 2.1</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#xpath-2.1"><bdi class="secno">2.2.1.1 </bdi>XPath</a></li><li class="tocline"><a class="tocxref" href="#ui-2.1"><bdi class="secno">2.2.1.2 </bdi>UI</a></li></ol></li><li class="tocline"><a class="tocxref" href="#example-2.2"><bdi class="secno">2.2.2 </bdi>Example 2.2</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#xpath-2.2"><bdi class="secno">2.2.2.1 </bdi>XPath</a></li><li class="tocline"><a class="tocxref" href="#ui-2.2"><bdi class="secno">2.2.2.2 </bdi>UI</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#accessibility-summary"><bdi class="secno">2.3 </bdi>Accessibility Summary</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#example-3.1"><bdi class="secno">2.3.1 </bdi>Example 3.1</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#xpath-3.1"><bdi class="secno">2.3.1.1 </bdi>XPath</a></li><li class="tocline"><a class="tocxref" href="#ui-3"><bdi class="secno">2.3.1.2 </bdi>UI</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#accessibility-conformance"><bdi class="secno">2.4 </bdi>Accessibility Conformance</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#example-4.1"><bdi class="secno">2.4.1 </bdi>Example 4.1</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#xpath-4.1"><bdi class="secno">2.4.1.1 </bdi>XPath</a></li><li class="tocline"><a class="tocxref" href="#ui-4.1"><bdi class="secno">2.4.1.2 </bdi>UI</a></li></ol></li><li class="tocline"><a class="tocxref" href="#example-4.2"><bdi class="secno">2.4.2 </bdi>Example 4.2</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#xpath-4.2"><bdi class="secno">2.4.2.1 </bdi>XPath</a></li><li class="tocline"><a class="tocxref" href="#ui-4.2"><bdi class="secno">2.4.2.2 </bdi>UI</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#certified-by"><bdi class="secno">2.5 </bdi>Certified By</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#example-5.1"><bdi class="secno">2.5.1 </bdi>Example 5.1</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#xpath-5.1"><bdi class="secno">2.5.1.1 </bdi>XPath</a></li><li class="tocline"><a class="tocxref" href="#ui-5.1"><bdi class="secno">2.5.1.2 </bdi>UI</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#certifier-credential"><bdi class="secno">2.6 </bdi>Certifier Credential</a></li><li class="tocline"><a class="tocxref" href="#certifier-report"><bdi class="secno">2.7 </bdi>Certifier Report</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#example-6.1"><bdi class="secno">2.7.1 </bdi>Example 6.1</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#xpath-6.1"><bdi class="secno">2.7.1.1 </bdi>XPath</a></li><li class="tocline"><a class="tocxref" href="#ui-6.1"><bdi class="secno">2.7.1.2 </bdi>UI</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#hazards"><bdi class="secno">2.8 </bdi>Hazards</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#example-7.1"><bdi class="secno">2.8.1 </bdi>Example 7.1</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#xpath-7.1"><bdi class="secno">2.8.1.1 </bdi>XPath</a></li><li class="tocline"><a class="tocxref" href="#ui-7.1"><bdi class="secno">2.8.1.2 </bdi>UI</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#all-accessibility-metadata"><bdi class="secno">2.9 </bdi>All Accessibility Metadata</a></li></ol></li><li class="tocline"><a class="tocxref" href="#acknowledgements"><bdi class="secno">A. </bdi>Acknowledgements</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#contributors"><bdi class="secno">A.1 </bdi>Contributors</a></li><li class="tocline"><a class="tocxref" href="#reviewers"><bdi class="secno">A.2 </bdi>Reviewers</a></li><li class="tocline"><a class="tocxref" href="#ipr"><bdi class="secno">A.3 </bdi>Intellectual Property Rights</a></li></ol></li></ol></nav>
+		<section id="onix-metadata">
+			<h2 id="x1-onix-metadata"><bdi class="secno">1. </bdi>ONIX Metadata<a class="self-link" aria-label="§" href="#onix-metadata"></a></h2>
+			
+			<div class="note" role="note" id="issue-container-generatedID"><div role="heading" class="note-title marker" id="h-note" aria-level="3"><span>Note</span></div><p class="">
+				Other techniques for implementing EPUB accessibility metadata are available: <a href="https://www.w3.org/publishing/a11y/UX-Guide-metadata/principles/index.html#techniques">Display Techniques for Displaying Accessibility Metadata</a>
+			</p></div>
+            
+ 			<div class="note" role="note" id="issue-container-generatedID-0"><div role="heading" class="note-title marker" id="h-note-0" aria-level="3"><span>Note</span></div><p class="">
+ 				This document provides techniques for meeting the guidelines of the <a href="https://www.w3.org/publishing/a11y/UX-Guide-metadata/principles/index.html">User Experience Guide for Displaying Accessibility Metadata</a>. It provides practical examples for extracting information from the ONIX metadata for showing it to the end users.
+			</p></div>
+			
+			<div class="note" role="note" id="issue-container-generatedID-1"><div role="heading" class="note-title marker" id="h-note-1" aria-level="3"><span>Note</span></div><p class="">
+				ONIX messages describe products for the global book supply chain and will be sent from publisher or creator of the epub or digital books with full audio to those who will make the products available for sale, lending or subscription.
+				These platforms may not yet have the actual files, as they may not yet be ready, or may only choose to list them for sale if they have certain accessibility features.
+				ONIX also only describes a product, it cannot describe the features of the reading systems on which a product may be accessed.
+				It is important to use ONIX metadata as a complement to the accessibility data embedded within the publication itself, if describing accessible books, books with full audio and related products for the global book supply chain.
+				An ONIX file can be used to display accessibility information in advance of publication or when you do not have access to the metadata in the digital file itself.
+				Some accessibility information may only be available when you have access to the file itself.
+				If you are unfamiliar with ONIX, then there is more documentation available from <a href="https://www.editeur.org/83/Overview/">EDItEUR.org</a>.
+			</p></div>
+			
+			<div class="note" role="note" id="issue-container-generatedID-2"><div role="heading" class="note-title marker" id="h-note-2" aria-level="3"><span>Note</span></div><p class="">
+				ONIX does not have a 1:1 mapping with EPUB accessibility metadata.
+				As some accessibility assertions are posed differently between the two mechanisms, direct mapping between the two may not always be possible.
+				The <a href="http://www.a11ymetadata.org/the-specification/metadata-crosswalk/">EPUB to ONIX crosswalk</a> outlines the current high degree of overlap in metadata and will be updated as these two specifications evolve.
+				It is important to note that ONIX 3.0 includes a number of new accessibility metadata codes, some of which may not be expressible in earlier versions of ONIX.
+			</p></div>
+				
+			<section id="onix-record-examples">
+				<h3 id="x1-1-onix-record-examples"><bdi class="secno">1.1 </bdi>ONIX record examples<a class="self-link" aria-label="§" href="#onix-record-examples"></a></h3>
+				<section id="onix-record-describing-an-epub">
+					<h4 id="x1-1-1-onix-record-describing-an-epub"><bdi class="secno">1.1.1 </bdi>ONIX record describing an EPUB<a class="self-link" aria-label="§" href="#onix-record-describing-an-epub"></a></h4>
+					<p>Here is an example of an ONIX record (version 3.0), which will be used as a reference point for the
+						following examples on EPUB accessibility metadata: the results of the XPath shown are based on
+						this example.</p>
+					<aside class="example" id="onix-example-1"><div class="marker">
+    <a class="self-link" href="#onix-example-1">Example<bdi> 1</bdi></a>
+  </div>
+						<pre><code aria-busy="false" class="hljs xml"><span class="hljs-meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">ONIXMessage</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">"http://ns.editeur.org/onix/3.0/reference"</span> <span class="hljs-attr">release</span>=<span class="hljs-string">"3.0"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">Header</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">Header</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">Product</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">RecordReference</span>&gt;</span>123456789<span class="hljs-tag">&lt;/<span class="hljs-name">RecordReference</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">NotificationType</span>&gt;</span>01<span class="hljs-tag">&lt;/<span class="hljs-name">NotificationType</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">ProductIdentifier</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">ProductIDType</span>&gt;</span>03<span class="hljs-tag">&lt;/<span class="hljs-name">ProductIDType</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">IDValue</span>&gt;</span>9780000000000<span class="hljs-tag">&lt;/<span class="hljs-name">IDValue</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">ProductIdentifier</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">ProductIdentifier</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">ProductIDType</span>&gt;</span>15<span class="hljs-tag">&lt;/<span class="hljs-name">ProductIDType</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">IDValue</span>&gt;</span>9780000000000<span class="hljs-tag">&lt;/<span class="hljs-name">IDValue</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">ProductIdentifier</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">DescriptiveDetail</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">ProductComposition</span>&gt;</span>00<span class="hljs-tag">&lt;/<span class="hljs-name">ProductComposition</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">ProductForm</span>&gt;</span>ED<span class="hljs-tag">&lt;/<span class="hljs-name">ProductForm</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">ProductFormDetail</span>&gt;</span>E101<span class="hljs-tag">&lt;/<span class="hljs-name">ProductFormDetail</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">ProductFormFeature</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">ProductFormFeatureType</span>&gt;</span>09<span class="hljs-tag">&lt;/<span class="hljs-name">ProductFormFeatureType</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">ProductFormFeatureValue</span>&gt;</span>00<span class="hljs-tag">&lt;/<span class="hljs-name">ProductFormFeatureValue</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">ProductFormFeatureDescription</span>&gt;</span>
+                    This publication includes mark-up to enable accessibility and compatibility with assistive technology. Images, audio, and video in the publication are well-described in conformance with WCAG 2.0 A.
+                <span class="hljs-tag">&lt;/<span class="hljs-name">ProductFormFeatureDescription</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">ProductFormFeature</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">ProductFormFeature</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">ProductFormFeatureType</span>&gt;</span>09<span class="hljs-tag">&lt;/<span class="hljs-name">ProductFormFeatureType</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">ProductFormFeatureValue</span>&gt;</span>03<span class="hljs-tag">&lt;/<span class="hljs-name">ProductFormFeatureValue</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">ProductFormFeature</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">ProductFormFeature</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">ProductFormFeatureType</span>&gt;</span>09<span class="hljs-tag">&lt;/<span class="hljs-name">ProductFormFeatureType</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">ProductFormFeatureValue</span>&gt;</span>10<span class="hljs-tag">&lt;/<span class="hljs-name">ProductFormFeatureValue</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">ProductFormFeature</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">ProductFormFeature</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">ProductFormFeatureType</span>&gt;</span>09<span class="hljs-tag">&lt;/<span class="hljs-name">ProductFormFeatureType</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">ProductFormFeatureValue</span>&gt;</span>11<span class="hljs-tag">&lt;/<span class="hljs-name">ProductFormFeatureValue</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">ProductFormFeature</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">ProductFormFeature</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">ProductFormFeatureType</span>&gt;</span>09<span class="hljs-tag">&lt;/<span class="hljs-name">ProductFormFeatureType</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">ProductFormFeatureValue</span>&gt;</span>13<span class="hljs-tag">&lt;/<span class="hljs-name">ProductFormFeatureValue</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">ProductFormFeature</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">ProductFormFeature</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">ProductFormFeatureType</span>&gt;</span>09<span class="hljs-tag">&lt;/<span class="hljs-name">ProductFormFeatureType</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">ProductFormFeatureValue</span>&gt;</span>14<span class="hljs-tag">&lt;/<span class="hljs-name">ProductFormFeatureValue</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">ProductFormFeature</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">ProductFormFeature</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">ProductFormFeatureType</span>&gt;</span>09<span class="hljs-tag">&lt;/<span class="hljs-name">ProductFormFeatureType</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">ProductFormFeatureValue</span>&gt;</span>20<span class="hljs-tag">&lt;/<span class="hljs-name">ProductFormFeatureValue</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">ProductFormFeature</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">ProductFormFeature</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">ProductFormFeatureType</span>&gt;</span>09<span class="hljs-tag">&lt;/<span class="hljs-name">ProductFormFeatureType</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">ProductFormFeatureValue</span>&gt;</span>22<span class="hljs-tag">&lt;/<span class="hljs-name">ProductFormFeatureValue</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">ProductFormFeature</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">ProductFormFeature</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">ProductFormFeatureType</span>&gt;</span>12<span class="hljs-tag">&lt;/<span class="hljs-name">ProductFormFeatureType</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">ProductFormFeatureValue</span>&gt;</span>14<span class="hljs-tag">&lt;/<span class="hljs-name">ProductFormFeatureValue</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">ProductFormFeature</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">ProductFormFeature</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">ProductFormFeatureType</span>&gt;</span>12<span class="hljs-tag">&lt;/<span class="hljs-name">ProductFormFeatureType</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">ProductFormFeatureValue</span>&gt;</span>16<span class="hljs-tag">&lt;/<span class="hljs-name">ProductFormFeatureValue</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">ProductFormFeature</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">ProductFormFeature</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">ProductFormFeatureType</span>&gt;</span>12<span class="hljs-tag">&lt;/<span class="hljs-name">ProductFormFeatureType</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">ProductFormFeatureValue</span>&gt;</span>18<span class="hljs-tag">&lt;/<span class="hljs-name">ProductFormFeatureValue</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">ProductFormFeature</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">ProductFormFeature</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">ProductFormFeatureType</span>&gt;</span>12<span class="hljs-tag">&lt;/<span class="hljs-name">ProductFormFeatureType</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">ProductFormFeatureValue</span>&gt;</span>20<span class="hljs-tag">&lt;/<span class="hljs-name">ProductFormFeatureValue</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">ProductFormFeature</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">ProductFormFeature</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">ProductFormFeatureType</span>&gt;</span>09<span class="hljs-tag">&lt;/<span class="hljs-name">ProductFormFeatureType</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">ProductFormFeatureValue</span>&gt;</span>94<span class="hljs-tag">&lt;/<span class="hljs-name">ProductFormFeatureValue</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">ProductFormFeatureDescription</span>&gt;</span>http://www.certifier.com/<span class="hljs-tag">&lt;/<span class="hljs-name">ProductFormFeatureDescription</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">ProductFormFeature</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">ProductFormFeature</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">ProductFormFeatureType</span>&gt;</span>09<span class="hljs-tag">&lt;/<span class="hljs-name">ProductFormFeatureType</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">ProductFormFeatureValue</span>&gt;</span>94<span class="hljs-tag">&lt;/<span class="hljs-name">ProductFormFeatureValue</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">ProductFormFeatureDescription</span>&gt;</span>http://www.example.com/a11y/report/9780000000001<span class="hljs-tag">&lt;/<span class="hljs-name">ProductFormFeatureDescription</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">ProductFormFeature</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">PrimaryContentType</span>&gt;</span>10<span class="hljs-tag">&lt;/<span class="hljs-name">PrimaryContentType</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">EpubTechnicalProtection</span>&gt;</span>03<span class="hljs-tag">&lt;/<span class="hljs-name">EpubTechnicalProtection</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">EpubUsageConstraint</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">EpubUsageType</span>&gt;</span>04<span class="hljs-tag">&lt;/<span class="hljs-name">EpubUsageType</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">EpubUsageStatus</span>&gt;</span>02<span class="hljs-tag">&lt;/<span class="hljs-name">EpubUsageStatus</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">EpubUsageConstraint</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">TitleDetail</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">TitleDetail</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">Contributor</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">Contributor</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">Extent</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">Extent</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">Subject</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">Subject</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">DescriptiveDetail</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">CollateralDetail</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">CollateralDetail</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">PublishingDetail</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">PublishingDetail</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">RelatedMaterial</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">RelatedMaterial</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">ProductSupply</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">ProductSupply</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">Product</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">ONIXMessage</span>&gt;</span></code></pre>
+					</aside>
+				</section>
+				<section id="onix-record-describing-an-audiobook">
+					<h4 id="onix-record-describing-an-full-audio-book-here-is-an-example-of-an-onix-record-version-3.0-for-describing-a-full-audio-book"><bdi class="secno">1.1.2 </bdi>ONIX record describing an audiobook<a class="self-link" aria-label="§" href="#onix-record-describing-an-full-audio-book-here-is-an-example-of-an-onix-record-version-3.0-for-describing-a-full-audio-book"></a></h4>
+						<p>Here is an example of an ONIX record (version 3.0) for describing an audiobook, which will be used as a reference point for the
+						some of the following examples on EPUB accessibility metadata: the results of the XPath shown are based on
+						this example.</p>
+					<aside class="example" id="onix-example-2"><div class="marker">
+    <a class="self-link" href="#onix-example-2">Example<bdi> 2</bdi></a>
+  </div>
+						<pre><code aria-busy="false" class="hljs xml"><span class="hljs-meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">ONIXMessage</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">"http://ns.editeur.org/onix/3.0/reference"</span> <span class="hljs-attr">release</span>=<span class="hljs-string">"3.0"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">Header</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">Header</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">Product</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">RecordReference</span>&gt;</span>123456789<span class="hljs-tag">&lt;/<span class="hljs-name">RecordReference</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">NotificationType</span>&gt;</span>01<span class="hljs-tag">&lt;/<span class="hljs-name">NotificationType</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">ProductIdentifier</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">ProductIDType</span>&gt;</span>03<span class="hljs-tag">&lt;/<span class="hljs-name">ProductIDType</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">IDValue</span>&gt;</span>0000000000000<span class="hljs-tag">&lt;/<span class="hljs-name">IDValue</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">ProductIdentifier</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">DescriptiveDetail</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">ProductComposition</span>&gt;</span>00<span class="hljs-tag">&lt;/<span class="hljs-name">ProductComposition</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">ProductForm</span>&gt;</span>AO<span class="hljs-tag">&lt;/<span class="hljs-name">ProductForm</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">PrimaryContentType</span>&gt;</span>01<span class="hljs-tag">&lt;/<span class="hljs-name">PrimaryContentType</span>&gt;</span>
+            ...
+            <span class="hljs-tag">&lt;<span class="hljs-name">TitleDetail</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">TitleDetail</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">Contributor</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">Contributor</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">Extent</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">Extent</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">Subject</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">Subject</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">DescriptiveDetail</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">CollateralDetail</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">CollateralDetail</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">PublishingDetail</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">PublishingDetail</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">RelatedMaterial</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">RelatedMaterial</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">ProductSupply</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">ProductSupply</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">Product</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">ONIXMessage</span>&gt;</span></code></pre>
+					</aside>
+				</section>
+			</section>
+		</section>
+		<section id="techniques">
+			<h2 id="x2-techniques"><bdi class="secno">2. </bdi>Techniques<a class="self-link" aria-label="§" href="#techniques"></a></h2>
+			
+			<section id="screen-reader-friendly">
+				<h3 id="x2-1-screen-reader-friendly"><bdi class="secno">2.1 </bdi>Screen Reader Friendly<a class="self-link" aria-label="§" href="#screen-reader-friendly"></a></h3>
+				<p><b>Value</b>: <i>Yes</i> / <i>No</i> / <i>Unknown</i></p>
+				<p>This technique relates to <a href="https://www.w3.org/publishing/a11y/UX-Guide-metadata/principles/index.html#screen-reader-friendly">Screen Reader Friendly principle</a>.</p>
+
+				<p>This information can be retrieved from ONIX <a href="https://ns.editeur.org/onix/en/81">List 81</a>; Code: 10 combined with <a href="https://ns.editeur.org/onix/en/196">code list 196</a>; Code: 10 means all text is actual text.</p>
+				<div class="note" role="note" id="issue-container-generatedID-3"><div role="heading" class="note-title marker" id="h-note-3" aria-level="4"><span>Note</span></div><p class="">
+					<a href="https://ns.editeur.org/onix/en/81">List 81</a>; Code: 10 on its own (without <a href="https://ns.editeur.org/onix/en/196">List 196</a>; Code: 10) admits the possibility that the ‘text’ is inaccessible because it is an image of text.
+				</p></div>
+				
+				<section id="example-1.1">
+					<h4 id="x2-1-1-example-1-1"><bdi class="secno">2.1.1 </bdi>Example 1.1<a class="self-link" aria-label="§" href="#example-1.1"></a></h4>
+					<section id="xpath-1.1">
+						<h5 id="x2-1-1-1-xpath"><bdi class="secno">2.1.1.1 </bdi>XPath<a class="self-link" aria-label="§" href="#xpath-1.1"></a></h5>
+						<p>This field is true if the both XPath elements exist:</p>
+						<aside class="example" id="code-example-1.1"><div class="marker">
+    <a class="self-link" href="#code-example-1.1">Example<bdi> 3</bdi></a>
+  </div>
+							<pre><code aria-busy="false" class="hljs css">//Product/DescriptiveDetail/PrimaryContentType<span class="hljs-selector-attr">[text()=<span class="hljs-string">"10"</span>]</span> and
+//Product/DescriptiveDetail/ProductFormFeature<span class="hljs-selector-attr">[ProductFormFeatureType=<span class="hljs-string">"09"</span> and ProductFormFeatureValue=<span class="hljs-string">"10"</span>]</span></code></pre>
+						</aside>
+					</section>
+					<p>For this example, this XPath was evaluated on the ONIX record presented in <a href="#onix-example-1">EXAMPLE 1</a>.</p>
+					<section id="ui-1">
+						<h5 id="x2-1-1-2-ui"><bdi class="secno">2.1.1.2 </bdi>UI<a class="self-link" aria-label="§" href="#ui-1"></a></h5>
+						<p>Screen Reader Friendly: Yes</p>
+					</section>
+				</section>
+				
+			</section>
+			<section id="full-audio">
+                <h3 id="x2-2-full-audio"><bdi class="secno">2.2 </bdi>Full Audio<a class="self-link" aria-label="§" href="#full-audio"></a></h3>
+				<p><b>Values</b>: <i>Yes / (if No - Omit this section)</i></p>
+				<p>This technique relates to <a href="https://www.w3.org/publishing/a11y/UX-Guide-metadata/principles/index.html#full-audio">Full Audio principle</a>.</p>
+				
+				<p>If the publication is based on text with synchronized audio, this information can be retrieved from ONIX <a href="https://ns.editeur.org/onix/en/196">code list: 196</a>; Code: 20: Synchronised pre-recorded audio.</p>
+				<p>If the publication is audio-only (e.g. audiobook), this information can be retrieved from ONIX <a href="https://ns.editeur.org/onix/en/81">code list 81</a>; Code: 01: Audiobook.</p>
+				<section id="example-2.1">
+					<h4 id="x2-2-1-example-2-1"><bdi class="secno">2.2.1 </bdi>Example 2.1<a class="self-link" aria-label="§" href="#example-2.1"></a></h4>
+					<section id="xpath-2.1">
+						<h5 id="x2-2-1-1-xpath"><bdi class="secno">2.2.1.1 </bdi>XPath<a class="self-link" aria-label="§" href="#xpath-2.1"></a></h5>
+						<p>If the following XPath returns at least one result:</p>
+						<aside class="example" id="code-example-2.1"><div class="marker">
+    <a class="self-link" href="#code-example-2.1">Example<bdi> 4</bdi></a>
+  </div>
+							<pre><code aria-busy="false" class="hljs css">//Product/DescriptiveDetail/ProductFormFeature<span class="hljs-selector-attr">[ProductFormFeatureType=<span class="hljs-string">"09"</span> and ProductFormFeatureValue=<span class="hljs-string">"20"</span>]</span></code></pre>
+						</aside>
+						<p>For this example, this XPath was evaluated on the ONIX record presented in <a href="#onix-example-1">EXAMPLE 1</a>.</p>
+					</section>
+					<section id="ui-2.1">
+						<h5 id="x2-2-1-2-ui"><bdi class="secno">2.2.1.2 </bdi>UI<a class="self-link" aria-label="§" href="#ui-2.1"></a></h5>
+						<p>Full Audio: Yes</p>
+					</section>
+				</section>
+				<section id="example-2.2">
+					<h4 id="x2-2-2-example-2-2"><bdi class="secno">2.2.2 </bdi>Example 2.2<a class="self-link" aria-label="§" href="#example-2.2"></a></h4>
+					<section id="xpath-2.2">
+						<h5 id="x2-2-2-1-xpath"><bdi class="secno">2.2.2.1 </bdi>XPath<a class="self-link" aria-label="§" href="#xpath-2.2"></a></h5>
+						<p>This field is true if the XPath returns one element for:</p>
+						<aside class="example" id="code-example-2.2"><div class="marker">
+    <a class="self-link" href="#code-example-2.2">Example<bdi> 5</bdi></a>
+  </div>
+							<pre><code aria-busy="false" class="hljs css">//Product/DescriptiveDetail/PrimaryContentType<span class="hljs-selector-attr">[text()=<span class="hljs-string">"01"</span>]</span></code></pre>
+						</aside>
+						<p>For this example, this XPath was evaluated on the ONIX record presented in <a href="#onix-example-2">EXAMPLE 2</a>.</p>
+					</section>
+					<section id="ui-2.2">
+						<h5 id="x2-2-2-2-ui"><bdi class="secno">2.2.2.2 </bdi>UI<a class="self-link" aria-label="§" href="#ui-2.2"></a></h5>
+						<p>Full Audio: Yes</p>
+					</section>
+				</section>
+			</section>
+			<section id="accessibility-summary">
+				<h3 id="x2-3-accessibility-summary"><bdi class="secno">2.3 </bdi>Accessibility Summary<a class="self-link" aria-label="§" href="#accessibility-summary"></a></h3>
+				<p><b>Value</b>: Textual Data from metadata</p>
+				<p>This technique relates to <a href="https://www.w3.org/publishing/a11y/UX-Guide-metadata/principles/index.html#accessibility-summary">Accessibility Summary principle</a>.</p>
+				
+				<p>This information can be retrieved from ONIX <a href="https://ns.editeur.org/onix/en/196">code list:
+						196</a>; Code: 00: Accessibility Summary.</p>
+				<section id="example-3.1">
+					<h4 id="x2-3-1-example-3-1"><bdi class="secno">2.3.1 </bdi>Example 3.1<a class="self-link" aria-label="§" href="#example-3.1"></a></h4>
+					<section id="xpath-3.1">
+						<h5 id="x2-3-1-1-xpath"><bdi class="secno">2.3.1.1 </bdi>XPath<a class="self-link" aria-label="§" href="#xpath-3.1"></a></h5>
+						<p>The value can be retrieved using XPath:</p>
+						<aside class="example" id="code-example-3.1"><div class="marker">
+    <a class="self-link" href="#code-example-3.1">Example<bdi> 6</bdi></a>
+  </div>
+							<pre><code aria-busy="false" class="hljs css">//Product/DescriptiveDetail/ProductFormFeature<span class="hljs-selector-attr">[ProductFormFeatureType=<span class="hljs-string">"09"</span> and ProductFormFeatureValue=<span class="hljs-string">"00"</span>]</span>/ProductFormFeatureDescription/text()</code></pre>
+						</aside>
+						<p>For this example, this XPath was evaluated on the ONIX record presented in <a href="#onix-example-1">EXAMPLE 1</a>.</p>
+					</section>
+					<section id="ui-3">
+						<h5 id="x2-3-1-2-ui"><bdi class="secno">2.3.1.2 </bdi>UI<a class="self-link" aria-label="§" href="#ui-3"></a></h5>
+						<p>Accessibility Summary:</p>
+						<p>This publication includes markup to enable accessibility and compatibility with assistive
+							technology. Images, audio, and video in the publication are well-described in conformance
+							with WCAG 2.0 A.</p>
+					</section>
+				</section>
+			</section>
+			<section id="accessibility-conformance">
+				<h3 id="x2-4-accessibility-conformance"><bdi class="secno">2.4 </bdi>Accessibility Conformance<a class="self-link" aria-label="§" href="#accessibility-conformance"></a></h3>
+				<p><b>Value</b>: Textual Link based on Metadata</p>
+				<p>This technique relates to <a href="https://www.w3.org/publishing/a11y/UX-Guide-metadata/principles/index.html#accessibility-conformance">Accessibility Conformance principle</a>.</p>
+					
+				<ul>
+					<li>For EPUB Accessibility, WCAG-A: <a href="https://ns.editeur.org/onix/en/196">List: 196</a>; Code: 02: EPUB Accessibility Specification 1.0 A</li>
+					<li>For EPUB Accessibility, WCAG-AA: <a href="https://ns.editeur.org/onix/en/196">List: 196</a>; Code: 03: EPUB Accessibility Specification 1.0 AA</li>
+					<li>For EPUB Accessibility, WCAG-AAA: Not available in ONIX.</li>
+				</ul>
+				<section id="example-4.1">
+					<h4 id="x2-4-1-example-4-1"><bdi class="secno">2.4.1 </bdi>Example 4.1<a class="self-link" aria-label="§" href="#example-4.1"></a></h4>
+					<section id="xpath-4.1">
+						<h5 id="x2-4-1-1-xpath"><bdi class="secno">2.4.1.1 </bdi>XPath<a class="self-link" aria-label="§" href="#xpath-4.1"></a></h5>
+						<p>If the following XPath returns at least one result:</p>
+						<aside class="example" id="code-example-4.1"><div class="marker">
+    <a class="self-link" href="#code-example-4.1">Example<bdi> 7</bdi></a>
+  </div>
+							<pre><code aria-busy="false" class="hljs css">//Product/DescriptiveDetail/ProductFormFeature<span class="hljs-selector-attr">[ProductFormFeatureType=<span class="hljs-string">"09"</span> and ProductFormFeatureValue=<span class="hljs-string">"02"</span>]</span></code></pre>
+						</aside>
+						<p>For this example, this XPath was evaluated on the ONIX record presented in <a href="#onix-example-1">EXAMPLE 1</a>.</p>
+					</section>
+					<section id="ui-4.1">
+						<h5 id="x2-4-1-2-ui"><bdi class="secno">2.4.1.2 </bdi>UI<a class="self-link" aria-label="§" href="#ui-4.1"></a></h5>
+						<p>Accessibility Conformance: EPUB Accessibility, WCAG-A</p>
+					</section>
+				</section>
+				<section id="example-4.2">
+					<h4 id="x2-4-2-example-4-2"><bdi class="secno">2.4.2 </bdi>Example 4.2<a class="self-link" aria-label="§" href="#example-4.2"></a></h4>
+					<section id="xpath-4.2">
+						<h5 id="x2-4-2-1-xpath"><bdi class="secno">2.4.2.1 </bdi>XPath<a class="self-link" aria-label="§" href="#xpath-4.2"></a></h5>
+						<p>If the following XPath returns at least one result:</p>
+						<aside class="example" id="code-example-4.2"><div class="marker">
+    <a class="self-link" href="#code-example-4.2">Example<bdi> 8</bdi></a>
+  </div>
+							<pre><code aria-busy="false" class="hljs css">//Product/DescriptiveDetail/ProductFormFeature<span class="hljs-selector-attr">[ProductFormFeatureType=<span class="hljs-string">"09"</span> and ProductFormFeatureValue=<span class="hljs-string">"03"</span>]</span> returns at least one result</code></pre>
+						</aside>
+						<p>For this example, this XPath was evaluated on the ONIX record presented in <a href="#onix-example-1">EXAMPLE 1</a>.</p>
+					</section>
+					<section id="ui-4.2">
+						<h5 id="x2-4-2-2-ui"><bdi class="secno">2.4.2.2 </bdi>UI<a class="self-link" aria-label="§" href="#ui-4.2"></a></h5>
+						<p>Accessibility Conformance: EPUB Accessibility, WCAG-AA</p>
+					</section>
+				</section>
+			</section>
+			<section id="certified-by">
+				<h3 id="x2-5-certified-by"><bdi class="secno">2.5 </bdi>Certified By<a class="self-link" aria-label="§" href="#certified-by"></a></h3>
+				<p><b>Value</b>: Textual Data from metadata</p>
+				<p>This technique relates to <a href="https://www.w3.org/publishing/a11y/UX-Guide-metadata/principles/index.html#certified-by">Certified By principle</a>.</p>
+				
+				<p><a href="https://ns.editeur.org/onix/en/196">List: 196</a>; Code: 93: Compliance certification by</p>
+				<section id="example-5.1">
+					<h4 id="x2-5-1-example-5-1"><bdi class="secno">2.5.1 </bdi>Example 5.1<a class="self-link" aria-label="§" href="#example-5.1"></a></h4>
+					<section id="xpath-5.1">
+						<h5 id="x2-5-1-1-xpath"><bdi class="secno">2.5.1.1 </bdi>XPath<a class="self-link" aria-label="§" href="#xpath-5.1"></a></h5>
+						<p>The value can be retrieve using XPath:</p>
+						<aside class="example" id="code-example-5.1"><div class="marker">
+    <a class="self-link" href="#code-example-5.1">Example<bdi> 9</bdi></a>
+  </div>
+							<pre><code aria-busy="false" class="hljs css">//Product/DescriptiveDetail/ProductFormFeature<span class="hljs-selector-attr">[ProductFormFeatureType=<span class="hljs-string">"09"</span> and ProductFormFeatureValue=<span class="hljs-string">"93"</span>]</span>/ProductFormFeatureDescription/text()</code></pre>
+						</aside>
+						<p>For this example, this XPath was evaluated on the ONIX record presented in <a href="#onix-example-1">EXAMPLE 1</a>.</p>
+					</section>
+					<section id="ui-5.1">
+						<h5 id="x2-5-1-2-ui"><bdi class="secno">2.5.1.2 </bdi>UI<a class="self-link" aria-label="§" href="#ui-5.1"></a></h5>
+						<p>Certified By: <a href="http://www.certifier.com/">http://www.certifier.com/</a></p>
+						<div class="note" role="note" id="issue-container-generatedID-4"><div role="heading" class="note-title marker" id="h-note-4" aria-level="6"><span>Note</span></div><aside class="">
+							<p><em>(Clickable URI to web page belonging to the organisation responsible for compliance testing and certification of the product)</em></p>
+						</aside></div>
+					</section>
+				</section>
+			</section>
+			<section id="certifier-credential">
+				<h3 id="x2-6-certifier-credential"><bdi class="secno">2.6 </bdi>Certifier Credential<a class="self-link" aria-label="§" href="#certifier-credential"></a></h3>
+				<p><b>Value</b>: Potentially linked textual data from metadata</p>
+				<p>This technique relates to <a href="https://www.w3.org/publishing/a11y/UX-Guide-metadata/principles/index.html#certifier-credential">Certifier Credential principle</a>.</p>
+				
+				<p>Not available in ONIX</p>
+			</section>
+			<section id="certifier-report">
+				<h3 id="x2-7-certifier-report"><bdi class="secno">2.7 </bdi>Certifier Report<a class="self-link" aria-label="§" href="#certifier-report"></a></h3>
+				<p><b>Value</b>: Potentially linked textual data from metadata</p>
+				<p>This technique relates to <a href="https://www.w3.org/publishing/a11y/UX-Guide-metadata/principles/index.html#certifier-report">Certifier Report principle</a>.</p>
+
+				<p><a href="https://ns.editeur.org/onix/en/196">List: 196</a>; Code: 94: Compliance web page for
+					detailed accessibility information</p>
+				<p><strong>Or</strong></p>
+				<p>If it is certified by a trusted intermediary, <a href="https://ns.editeur.org/onix/en/196">List: 196</a>; Code: 95: Trusted intermediary’s web page for detailed accessibility information</p>
+					<p><strong>Or</strong></p>
+				<p>If a publisher is self-certifying, <a href="https://ns.editeur.org/onix/en/196">List: 196</a>; Code: 96: Publisher’s web page for detailed accessibility
+					information</p>
+				<section id="example-6.1">
+					<h4 id="x2-7-1-example-6-1"><bdi class="secno">2.7.1 </bdi>Example 6.1<a class="self-link" aria-label="§" href="#example-6.1"></a></h4>
+					<section id="xpath-6.1">
+						<h5 id="x2-7-1-1-xpath"><bdi class="secno">2.7.1.1 </bdi>XPath<a class="self-link" aria-label="§" href="#xpath-6.1"></a></h5>
+						<p>The value can be retrieve using XPath:</p>
+						<aside class="example" id="code-example-6.1.1"><div class="marker">
+    <a class="self-link" href="#code-example-6.1.1">Example<bdi> 10</bdi></a>
+  </div>
+							<pre><code aria-busy="false" class="hljs css">//Product/DescriptiveDetail/ProductFormFeature<span class="hljs-selector-attr">[ProductFormFeatureType=<span class="hljs-string">"09"</span> and ProductFormFeatureValue=<span class="hljs-string">"94"</span>]</span>/ProductFormFeatureDescription/text()</code></pre>
+						</aside>
+						<aside class="example" id="code-example-6.1.2"><div class="marker">
+    <a class="self-link" href="#code-example-6.1.2">Example<bdi> 11</bdi></a>
+  </div>
+							<pre><code aria-busy="false" class="hljs css">//Product/DescriptiveDetail/ProductFormFeature<span class="hljs-selector-attr">[ProductFormFeatureType=<span class="hljs-string">"09"</span> and ProductFormFeatureValue=<span class="hljs-string">"95"</span>]</span>/ProductFormFeatureDescription/text()</code></pre>
+						</aside>
+						<aside class="example" id="code-example-6.1.3"><div class="marker">
+    <a class="self-link" href="#code-example-6.1.3">Example<bdi> 12</bdi></a>
+  </div>
+							<pre><code aria-busy="false" class="hljs css">//Product/DescriptiveDetail/ProductFormFeature<span class="hljs-selector-attr">[ProductFormFeatureType=<span class="hljs-string">"09"</span> and ProductFormFeatureValue=<span class="hljs-string">"96"</span>]</span>/ProductFormFeatureDescription/text()</code></pre>
+						</aside>
+						<p>For this example, this XPath was evaluated on the ONIX record presented in <a href="#onix-example-1">EXAMPLE 1</a>.</p>
+					</section>
+					<section id="ui-6.1">
+						<h5 id="x2-7-1-2-ui"><bdi class="secno">2.7.1.2 </bdi>UI<a class="self-link" aria-label="§" href="#ui-6.1"></a></h5>
+						<p>Certifier Report</p>
+						<p><a href="http://www.example.com/a11y/report/9780000000001"><img src="https://www.w3.org/publishing/a11y/UX-Guide-metadata/techniques/media/image2.svg" alt="Report webpage" width="50"></a></p>
+						<aside class="example" id="example-13"><div class="marker">
+    <a class="self-link" href="#example-13">Example<bdi> 13</bdi></a>
+  </div>
+							<p><em>(Clickable Image to the URI of the report from metadata)</em></p>
+							<p><em>alt-text Report webpage</em></p>
+							<p><em>(Image here of checkmark with clipboard is just for reference feel free to choose
+									your own image)</em></p>
+						</aside>
+						<p><strong>Or</strong></p>
+						<aside class="example" id="example-14"><div class="marker">
+    <a class="self-link" href="#example-14">Example<bdi> 14</bdi></a>
+  </div>
+							<p>Certifier Report: <em>Accessibility Report</em></p>
+							<p><em>(Clickable link to the URI of the report from metadata)</em></p>
+						</aside>
+					</section>
+				</section>
+			</section>
+			<section id="hazards">
+				<h3 id="x2-8-hazards"><bdi class="secno">2.8 </bdi>Hazards<a class="self-link" aria-label="§" href="#hazards"></a></h3>
+				<p><b>Values</b>: flashing, motion simulation, sound, no flashing, no motion simulation, no sound, none, or Unknown.</p>
+				<p>This technique relates to <a href="https://www.w3.org/publishing/a11y/UX-Guide-metadata/principles/index.html#hazards">Hazards principle</a>.</p>
+				
+				<p>ONIX uses a composite to indicate different hazards.</p>
+				<p>To list the presence or absence of hazards it is used the <em>ProductFormFeature</em> element, with <em>ProductFormFeatureType</em> equal to 12 (<em>"US CPSIA or other international hazard warning"</em>, from <a href="https://ns.editeur.org/onix/en/79">code list 79</a>) and <em>ProductFormFeatureValue</em> from <a href="https://ns.editeur.org/onix/en/143">code list 143</a>.</p>
+			
+				<section id="example-7.1">
+					<h4 id="x2-8-1-example-7-1"><bdi class="secno">2.8.1 </bdi>Example 7.1<a class="self-link" aria-label="§" href="#example-7.1"></a></h4>
+					<section id="xpath-7.1">
+						<h5 id="x2-8-1-1-xpath"><bdi class="secno">2.8.1.1 </bdi>XPath<a class="self-link" aria-label="§" href="#xpath-7.1"></a></h5>
+						<p>The value can be retrieve using XPath:</p>
+						<aside class="example" id="code-example-7.1"><div class="marker">
+    <a class="self-link" href="#code-example-7.1">Example<bdi> 15</bdi></a>
+  </div>
+							<pre><code aria-busy="false" class="hljs css">//Product/DescriptiveDetail/ProductFormFeature<span class="hljs-selector-attr">[ProductFormFeatureType=<span class="hljs-string">"12"</span>]</span>/ProductFormFeatureValue</code></pre>
+						</aside>
+						<p>For this example, this XPath was evaluated on the ONIX record presented in <a href="#onix-example-1">EXAMPLE 1</a>.</p>
+					</section>
+					<section id="ui-7.1">
+						<h5 id="x2-8-1-2-ui"><bdi class="secno">2.8.1.2 </bdi>UI<a class="self-link" aria-label="§" href="#ui-7.1"></a></h5>
+						<p>Hazard: no Flashing, no Sound, no Motion Simulation</p>
+						<p>(because <em>ProductFormFeature</em> with <em>ProductFormFeatureType</em> equal to 12 and <em>ProductFormFeatureValue</em>s equal to: 14, 16, 18)</p>
+					</section>
+				</section>
+			
+			</section>
+			<section id="all-accessibility-metadata">
+				<h3 id="x2-9-all-accessibility-metadata"><bdi class="secno">2.9 </bdi>All Accessibility Metadata<a class="self-link" aria-label="§" href="#all-accessibility-metadata"></a></h3>
+				<p><b>Value</b>: Link to complete list of all metadata fields</p>
+				<p>This technique relates to <a href="https://www.w3.org/publishing/a11y/UX-Guide-metadata/principles/index.html#all-accessibility-metadata">All Accessibility Metadata principle</a>.</p>
+				
+				<p>For a complete list of <a href="http://www.a11ymetadata.org/the-specification/metadata-crosswalk/">ONIX accessibility metadata refer to the crosswalk.</a></p>
+			</section>
+		</section>
+		<section id="app-acknowledgements" class="appendix informative">
+			<h2 id="acknowledgements"><bdi class="secno">A. </bdi>Acknowledgements<a class="self-link" aria-label="§" href="#acknowledgements"></a></h2><p><em>This section is non-normative.</em></p>
+			<section id="contributors">
+				<h3 id="a-1-contributors"><bdi class="secno">A.1 </bdi>Contributors<a class="self-link" aria-label="§" href="#contributors"></a></h3>
+				<ul>
+					<li>Avneesh Singh</li>
+                    <li>Charles LaPierre</li>
+					<li>Dave Cramer</li>
+                    <li>George Kerscher</li>
+                    <li>Gregorio Pellegrino</li>
+					<li>Jason White</li>
+					<li>Madeleine Rothberg</li>
+                    <li>Matt Garrish</li>
+					<li>Rachel Comerford</li>
+					<li>Rick Johnson</li>
+				</ul>
+			</section>
+			<section id="reviewers">
+				<h3 id="a-2-reviewers"><bdi class="secno">A.2 </bdi>Reviewers<a class="self-link" aria-label="§" href="#reviewers"></a></h3>
+				<ul>
+					<li>Erin Kirchner-Lucas</li>
+					<li>Luc Audrain</li>
+				</ul>
+			</section>
+			<section id="ipr">
+				<h3 id="a-3-intellectual-property-rights"><bdi class="secno">A.3 </bdi>Intellectual Property Rights<a class="self-link" aria-label="§" href="#ipr"></a></h3>
+				<ul>
+					<li>The report icon used in <a href="#ui-6.1">Example 6.1 UI</a> is <a href="https://thenounproject.com/search/?q=report&amp;i=231003">report by Bastian König</a> from the <a href="https://thenounproject.com/">Noun Project</a></li>
+				</ul>
+			</section>
+		</section>
+	
+<p role="navigation" id="back-to-top">
+    <a href="#title"><abbr title="Back to Top">↑</abbr></a>
+  </p><script id="respec-dfn-panel">(() => {
+// @ts-check
+if (document.respec) {
+  document.respec.ready.then(setupPanel);
+} else {
+  setupPanel();
+}
+
+function setupPanel() {
+  const listener = panelListener();
+  document.body.addEventListener("keydown", listener);
+  document.body.addEventListener("click", listener);
+}
+
+function panelListener() {
+  /** @type {HTMLElement} */
+  let panel = null;
+  return event => {
+    const { target, type } = event;
+
+    if (!(target instanceof HTMLElement)) return;
+
+    // For keys, we only care about Enter key to activate the panel
+    // otherwise it's activated via a click.
+    if (type === "keydown" && event.key !== "Enter") return;
+
+    const action = deriveAction(event);
+
+    switch (action) {
+      case "show": {
+        hidePanel(panel);
+        /** @type {HTMLElement} */
+        const dfn = target.closest("dfn, .index-term");
+        panel = document.getElementById(`dfn-panel-for-${dfn.id}`);
+        const coords = deriveCoordinates(event);
+        displayPanel(dfn, panel, coords);
+        break;
+      }
+      case "dock": {
+        panel.style.left = null;
+        panel.style.top = null;
+        panel.classList.add("docked");
+        break;
+      }
+      case "hide": {
+        hidePanel(panel);
+        panel = null;
+        break;
+      }
+    }
+  };
+}
+
+/**
+ * @param {MouseEvent|KeyboardEvent} event
+ */
+function deriveCoordinates(event) {
+  const target = /** @type HTMLElement */ (event.target);
+
+  // We prevent synthetic AT clicks from putting
+  // the dialog in a weird place. The AT events sometimes
+  // lack coordinates, so they have clientX/Y = 0
+  const rect = target.getBoundingClientRect();
+  if (
+    event instanceof MouseEvent &&
+    event.clientX >= rect.left &&
+    event.clientY >= rect.top
+  ) {
+    // The event probably happened inside the bounding rect...
+    return { x: event.clientX, y: event.clientY };
+  }
+
+  // Offset to the middle of the element
+  const x = rect.x + rect.width / 2;
+  // Placed at the bottom of the element
+  const y = rect.y + rect.height;
+  return { x, y };
+}
+
+/**
+ * @param {Event} event
+ */
+function deriveAction(event) {
+  const target = /** @type {HTMLElement} */ (event.target);
+  const hitALink = !!target.closest("a");
+  if (target.closest("dfn:not([data-cite]), .index-term")) {
+    return hitALink ? "none" : "show";
+  }
+  if (target.closest(".dfn-panel")) {
+    if (hitALink) {
+      return target.classList.contains("self-link") ? "hide" : "dock";
+    }
+    const panel = target.closest(".dfn-panel");
+    return panel.classList.contains("docked") ? "hide" : "none";
+  }
+  if (document.querySelector(".dfn-panel:not([hidden])")) {
+    return "hide";
+  }
+  return "none";
+}
+
+/**
+ * @param {HTMLElement} dfn
+ * @param {HTMLElement} panel
+ * @param {{ x: number, y: number }} clickPosition
+ */
+function displayPanel(dfn, panel, { x, y }) {
+  panel.hidden = false;
+  // distance (px) between edge of panel and the pointing triangle (caret)
+  const MARGIN = 20;
+
+  const dfnRects = dfn.getClientRects();
+  // Find the `top` offset when the `dfn` can be spread across multiple lines
+  let closestTop = 0;
+  let minDiff = Infinity;
+  for (const rect of dfnRects) {
+    const { top, bottom } = rect;
+    const diffFromClickY = Math.abs((top + bottom) / 2 - y);
+    if (diffFromClickY < minDiff) {
+      minDiff = diffFromClickY;
+      closestTop = top;
+    }
+  }
+
+  const top = window.scrollY + closestTop + dfnRects[0].height;
+  const left = x - MARGIN;
+  panel.style.left = `${left}px`;
+  panel.style.top = `${top}px`;
+
+  // Find if the panel is flowing out of the window
+  const panelRect = panel.getBoundingClientRect();
+  const SCREEN_WIDTH = Math.min(window.innerWidth, window.screen.width);
+  if (panelRect.right > SCREEN_WIDTH) {
+    const newLeft = Math.max(MARGIN, x + MARGIN - panelRect.width);
+    const newCaretOffset = left - newLeft;
+    panel.style.left = `${newLeft}px`;
+    /** @type {HTMLElement} */
+    const caret = panel.querySelector(".caret");
+    caret.style.left = `${newCaretOffset}px`;
+  }
+
+  // As it's a dialog, we trap focus.
+  // TODO: when <dialog> becomes a implemented, we should really
+  // use that.
+  trapFocus(panel, dfn);
+}
+
+/**
+ * @param {HTMLElement} panel
+ * @param {HTMLElement} dfn
+ * @returns
+ */
+function trapFocus(panel, dfn) {
+  /** @type NodeListOf<HTMLAnchorElement> elements */
+  const anchors = panel.querySelectorAll("a[href]");
+  // No need to trap focus
+  if (!anchors.length) return;
+
+  // Move focus to first anchor element
+  const first = anchors.item(0);
+  first.focus();
+
+  const trapListener = createTrapListener(anchors, panel, dfn);
+  panel.addEventListener("keydown", trapListener);
+
+  // Hiding the panel releases the trap
+  const mo = new MutationObserver(records => {
+    const [record] = records;
+    const target = /** @type HTMLElement */ (record.target);
+    if (target.hidden) {
+      panel.removeEventListener("keydown", trapListener);
+      mo.disconnect();
+    }
+  });
+  mo.observe(panel, { attributes: true, attributeFilter: ["hidden"] });
+}
+
+/**
+ *
+ * @param {NodeListOf<HTMLAnchorElement>} anchors
+ * @param {HTMLElement} panel
+ * @param {HTMLElement} dfn
+ * @returns
+ */
+function createTrapListener(anchors, panel, dfn) {
+  const lastIndex = anchors.length - 1;
+  let currentIndex = 0;
+  return event => {
+    switch (event.key) {
+      // Hitting "Tab" traps us in a nice loop around elements.
+      case "Tab": {
+        event.preventDefault();
+        currentIndex += event.shiftKey ? -1 : +1;
+        if (currentIndex < 0) {
+          currentIndex = lastIndex;
+        } else if (currentIndex > lastIndex) {
+          currentIndex = 0;
+        }
+        anchors.item(currentIndex).focus();
+        break;
+      }
+
+      // Hitting "Enter" on an anchor releases the trap.
+      case "Enter":
+        hidePanel(panel);
+        break;
+
+      // Hitting "Escape" returns focus to dfn.
+      case "Escape":
+        hidePanel(panel);
+        dfn.focus();
+        return;
+    }
+  };
+}
+
+/** @param {HTMLElement} panel */
+function hidePanel(panel) {
+  if (!panel) return;
+  panel.hidden = true;
+  panel.classList.remove("docked");
+}
+})()</script><script src="https://www.w3.org/scripts/TR/2016/fixup.js"></script></body></html>

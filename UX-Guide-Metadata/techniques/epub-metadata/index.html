@@ -1,0 +1,1400 @@
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<meta charset="utf-8">
+<meta name="generator" content="ReSpec 26.13.4">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<style>
+span.example-title{text-transform:none}
+aside.example,div.example,div.illegal-example{padding:.5em;margin:1em 0;position:relative;clear:both}
+div.illegal-example{color:red}
+div.illegal-example p{color:#000}
+aside.example,div.example{padding:.5em;border-left-width:.5em;border-left-style:solid;border-color:#e0cb52;background:#fcfaee}
+aside.example div.example{border-left-width:.1em;border-color:#999;background:#fff}
+aside.example div.example span.example-title{color:#999}
+.example pre{background-color:rgba(0,0,0,.03)}
+</style>
+<style>
+.issue-label{text-transform:initial}
+.warning>p:first-child{margin-top:0}
+.warning{padding:.5em;border-left-width:.5em;border-left-style:solid}
+span.warning{padding:.1em .5em .15em}
+.issue.closed span.issue-number{text-decoration:line-through}
+.warning{border-color:#f11;border-width:.2em;border-style:solid;background:#fbe9e9}
+.warning-title:before{content:"⚠";font-size:1.3em;float:left;padding-right:.3em;margin-top:-.3em}
+li.task-list-item{list-style:none}
+input.task-list-item-checkbox{margin:0 .35em .25em -1.6em;vertical-align:middle}
+.issue a.respec-gh-label{padding:5px;margin:0 2px 0 2px;font-size:10px;text-transform:none;text-decoration:none;font-weight:700;border-radius:4px;position:relative;bottom:2px;border:none;display:inline-block}
+</style>
+<style>
+dfn{cursor:pointer}
+.dfn-panel{position:absolute;z-index:35;min-width:300px;max-width:500px;padding:.5em .75em;margin-top:.6em;font:small Helvetica Neue,sans-serif,Droid Sans Fallback;background:#fff;color:#000;box-shadow:0 1em 3em -.4em rgba(0,0,0,.3),0 0 1px 1px rgba(0,0,0,.05);border-radius:2px}
+.dfn-panel:not(.docked)>.caret{position:absolute;top:-9px}
+.dfn-panel:not(.docked)>.caret::after,.dfn-panel:not(.docked)>.caret::before{content:"";position:absolute;border:10px solid transparent;border-top:0;border-bottom:10px solid #fff;top:0}
+.dfn-panel:not(.docked)>.caret::before{border-bottom:9px solid #a2a9b1}
+.dfn-panel *{margin:0}
+.dfn-panel b{display:block;color:#000;margin-top:.25em}
+.dfn-panel ul a[href]{color:#333}
+.dfn-panel>div{display:flex}
+.dfn-panel a.self-link{font-weight:700;margin-right:auto}
+.dfn-panel .marker{padding:.1em;margin-left:.5em;border-radius:.2em;text-align:center;white-space:nowrap;font-size:90%;color:#040b1c}
+.dfn-panel .marker.dfn-exported{background:#d1edfd;box-shadow:0 0 0 .125em #1ca5f940}
+.dfn-panel .marker.idl-block{background:#8ccbf2;box-shadow:0 0 0 .125em #0670b161}
+.dfn-panel a:not(:hover){text-decoration:none!important;border-bottom:none!important}
+.dfn-panel a[href]:hover{border-bottom-width:1px}
+.dfn-panel ul{padding:0}
+.dfn-panel li{margin-left:1em}
+.dfn-panel.docked{position:fixed;left:.5em;top:unset;bottom:2em;margin:0 auto;max-width:calc(100vw - .75em * 2 - .5em - .2em * 2);max-height:30vh;overflow:auto}
+</style>
+		
+		
+<title>Display Techniques for EPUB Accessibility Metadata 1.0</title>
+		
+		
+	  
+<style>
+
+			.fake-issue {
+				padding: .5em;
+				border: .5em;
+				border-left-style: solid;
+				page-break-inside: avoid;
+				margin: 1em auto;
+			}
+
+			.fake-issue {
+				border-color: #e05252;
+				border-color: var(--issue-border);
+				background: #fbe9e9;
+				background: var(--issue-bg);
+				color: black;
+				color: var(--issue-text);
+				counter-increment: issue;
+				overflow: auto;
+			}
+
+			.fake-issue::before, .fake-issue > .marker {
+				color: #831616;
+				color: var(--issueheading-text);
+			}
+
+			.fake-issue::before, .fake-issue > .marker {
+				text-transform: uppercase;
+				padding-right: 1em;
+			}
+
+			.fake-issue a.respec-gh-label {
+				padding: 5px;
+				margin: 0 2px 0 2px;
+				font-size: 10px;
+				text-transform: none;
+				text-decoration: none;
+				font-weight: 700;
+				border-radius: 4px;
+				position: relative;
+				bottom: 2px;
+				border: none;
+				display: inline-block;
+			}
+		
+</style>
+	
+<style id="respec-mainstyle">
+@keyframes pop{
+0%{transform:scale(1,1)}
+25%{transform:scale(1.25,1.25);opacity:.75}
+100%{transform:scale(1,1)}
+}
+.hljs{background:0 0!important}
+a abbr,h1 abbr,h2 abbr,h3 abbr,h4 abbr,h5 abbr,h6 abbr{border:none}
+dfn{font-weight:700}
+a.internalDFN{color:inherit;border-bottom:1px solid #99c;text-decoration:none}
+a.externalDFN{color:inherit;border-bottom:1px dotted #ccc;text-decoration:none}
+a.bibref{text-decoration:none}
+.respec-offending-element:target{animation:pop .25s ease-in-out 0s 1}
+.respec-offending-element,a[href].respec-offending-element{text-decoration:red wavy underline}
+@supports not (text-decoration:red wavy underline){
+.respec-offending-element:not(pre){display:inline-block}
+.respec-offending-element{background:url(data:image/gif;base64,R0lGODdhBAADAPEAANv///8AAP///wAAACwAAAAABAADAEACBZQjmIAFADs=) bottom repeat-x}
+}
+#references :target{background:#eaf3ff;animation:pop .4s ease-in-out 0s 1}
+cite .bibref{font-style:normal}
+code{color:#c63501}
+th code{color:inherit}
+a[href].orcid{padding-left:4px;padding-right:4px}
+a[href].orcid>svg{margin-bottom:-2px}
+.toc a,.tof a{text-decoration:none}
+a .figno,a .secno{color:#000}
+ol.tof,ul.tof{list-style:none outside none}
+.caption{margin-top:.5em;font-style:italic}
+table.simple{border-spacing:0;border-collapse:collapse;border-bottom:3px solid #005a9c}
+.simple th{background:#005a9c;color:#fff;padding:3px 5px;text-align:left}
+.simple th a{color:#fff;padding:3px 5px;text-align:left}
+.simple th[scope=row]{background:inherit;color:inherit;border-top:1px solid #ddd}
+.simple td{padding:3px 10px;border-top:1px solid #ddd}
+.simple tr:nth-child(even){background:#f0f6ff}
+.section dd>p:first-child{margin-top:0}
+.section dd>p:last-child{margin-bottom:0}
+.section dd{margin-bottom:1em}
+.section dl.attrs dd,.section dl.eldef dd{margin-bottom:0}
+#issue-summary>ul{column-count:2}
+#issue-summary li{list-style:none;display:inline-block}
+details.respec-tests-details{margin-left:1em;display:inline-block;vertical-align:top}
+details.respec-tests-details>*{padding-right:2em}
+details.respec-tests-details[open]{z-index:999999;position:absolute;border:thin solid #cad3e2;border-radius:.3em;background-color:#fff;padding-bottom:.5em}
+details.respec-tests-details[open]>summary{border-bottom:thin solid #cad3e2;padding-left:1em;margin-bottom:1em;line-height:2em}
+details.respec-tests-details>ul{width:100%;margin-top:-.3em}
+details.respec-tests-details>li{padding-left:1em}
+a[href].self-link:hover{opacity:1;text-decoration:none;background-color:transparent}
+h2,h3,h4,h5,h6{position:relative}
+aside.example .marker>a.self-link{color:inherit}
+h2>a.self-link,h3>a.self-link,h4>a.self-link,h5>a.self-link,h6>a.self-link{border:none;color:inherit;font-size:83%;height:2em;left:-1.6em;opacity:.5;position:absolute;text-align:center;text-decoration:none;top:0;transition:opacity .2s;width:2em}
+h2>a.self-link::before,h3>a.self-link::before,h4>a.self-link::before,h5>a.self-link::before,h6>a.self-link::before{content:"§";display:block}
+@media (max-width:767px){
+dd{margin-left:0}
+h2>a.self-link,h3>a.self-link,h4>a.self-link,h5>a.self-link,h6>a.self-link{left:auto;top:auto}
+}
+@media print{
+.removeOnSave{display:none}
+}
+</style>
+<link rel="canonical" href="https://www.w3.org/TR/publ-a11y/">
+<style>
+.hljs{display:block;overflow-x:auto;padding:.5em;color:#383a42;background:#fafafa}
+.hljs-comment,.hljs-quote{color:#717277;font-style:italic}
+.hljs-doctag,.hljs-formula,.hljs-keyword{color:#a626a4}
+.hljs-deletion,.hljs-name,.hljs-section,.hljs-selector-tag,.hljs-subst{color:#ca4706;font-weight:700}
+.hljs-literal{color:#0b76c5}
+.hljs-addition,.hljs-attribute,.hljs-meta-string,.hljs-regexp,.hljs-string{color:#42803c}
+.hljs-built_in,.hljs-class .hljs-title{color:#9a6a01}
+.hljs-attr,.hljs-number,.hljs-selector-attr,.hljs-selector-class,.hljs-selector-pseudo,.hljs-template-variable,.hljs-type,.hljs-variable{color:#986801}
+.hljs-bullet,.hljs-link,.hljs-meta,.hljs-selector-id,.hljs-symbol,.hljs-title{color:#336ae3}
+.hljs-emphasis{font-style:italic}
+.hljs-strong{font-weight:700}
+.hljs-link{text-decoration:underline}
+</style>
+<style>
+var{position:relative;cursor:pointer}
+var[data-type]::after,var[data-type]::before{position:absolute;left:50%;top:-6px;opacity:0;transition:opacity .4s;pointer-events:none}
+var[data-type]::before{content:"";transform:translateX(-50%);border-width:4px 6px 0 6px;border-style:solid;border-color:transparent;border-top-color:#000}
+var[data-type]::after{content:attr(data-type);transform:translateX(-50%) translateY(-100%);background:#000;text-align:center;font-family:"Dank Mono","Fira Code",monospace;font-style:normal;padding:6px;border-radius:3px;color:#daca88;text-indent:0;font-weight:400}
+var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
+</style>
+<script id="initialUserConfig" type="application/json">{
+  "group": "publishingcg",
+  "specStatus": "CG-FINAL",
+  "noRecTrack": true,
+  "latestVersion": "https://www.w3.org/publishing/a11y/UX-Guide-metadata/techniques/epub-metadata/",
+  "edDraftURI": "https://w3c.github.io/publ-a11y/UX-Guide-Metadata/draft/techniques/epub-metadata/",
+  "editors": [
+    {
+      "name": "Charles LaPierre",
+      "company": "Benetech",
+      "companyURL": "http://www.benetech.org",
+      "w3cid": 72055
+    }
+  ],
+  "processVersion": 2020,
+  "includePermalinks": false,
+  "permalinkEdge": true,
+  "permalinkHide": false,
+  "diffTool": "http://www.aptest.com/standards/htmldiff/htmldiff.pl",
+  "github": {
+    "repoURL": "https://github.com/w3c/publ-a11y/",
+    "branch": "master"
+  },
+  "publishDate": "2021-09-27",
+  "publishISODate": "2021-09-27T00:00:00.000Z",
+  "generatedSubtitle": "Final Community Group Report 27 September 2021"
+}</script>
+<link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2016/cg-final"></head>
+	<body class="h-entry informative"><div class="head">
+     <h1 id="title" class="title">Display Techniques for EPUB Accessibility Metadata 1.0</h1>
+    
+    <h2>
+      Final Community Group Report
+      <time class="dt-published" datetime="2021-09-27">27 September 2021</time>
+    </h2>
+    <dl>
+      
+      <dt>Latest published version:</dt><dd>
+              <a href="https://www.w3.org/publishing/a11y/UX-Guide-metadata/techniques/epub-metadata/">https://www.w3.org/publishing/a11y/UX-Guide-metadata/techniques/epub-metadata/</a>
+            </dd>
+      <dt>Latest editor's draft:</dt><dd><a href="https://w3c.github.io/publ-a11y/UX-Guide-Metadata/draft/techniques/epub-metadata/">https://w3c.github.io/publ-a11y/UX-Guide-Metadata/draft/techniques/epub-metadata/</a></dd>
+      
+      
+      
+      
+      <dt>Editor:</dt>
+      <dd class="editor p-author h-card vcard" data-editor-id="72055">
+    <span class="p-name fn">Charles LaPierre</span> (<a class="p-org org h-org" href="http://www.benetech.org">Benetech</a>)
+  </dd>
+      
+      
+      <dt>Participate:</dt><dd>
+    <a href="https://github.com/w3c/publ-a11y/">GitHub w3c/publ-a11y</a>
+  </dd><dd>
+    <a href="https://github.com/w3c/publ-a11y/issues/">File an issue</a>
+  </dd><dd>
+    <a href="https://github.com/w3c/publ-a11y/commits/master">Commit history</a>
+  </dd><dd>
+    <a href="https://github.com/w3c/publ-a11y/pulls/">Pull requests</a>
+  </dd>
+    </dl>
+    
+    <p class="copyright">
+          <a href="https://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>
+          ©
+          2021
+          
+          the Contributors to the Display Techniques for EPUB Accessibility Metadata 1.0
+          Specification, published by the
+          <a href="https://www.w3.org/community/publishingcg/">Publishing Community Group</a> under the
+          <a href="https://www.w3.org/community/about/agreements/fsa/">W3C Community Final Specification Agreement (FSA)</a>. A human-readable
+                <a href="https://www.w3.org/community/about/agreements/fsa-deed/">summary</a>
+                is available.
+              
+        </p>
+    <hr title="Separator for header">
+  </div>
+		<section id="abstract" class="introductory"><h2>Abstract</h2></section>
+		<section id="sotd" class="introductory"><h2>Status of This Document</h2><p>
+      This specification was published by the
+      <a href="https://www.w3.org/community/publishingcg/">Publishing Community Group</a>. It is not a W3C Standard nor is it
+      on the W3C Standards Track.
+      
+            Please note that under the
+            <a href="https://www.w3.org/community/about/agreements/final/">W3C Community Final Specification Agreement (FSA)</a>
+            other conditions apply.
+          
+      Learn more about
+      <a href="https://www.w3.org/community/">W3C Community and Business Groups</a>.
+    </p><p>
+    <a href="https://github.com/w3c/publ-a11y/issues/">GitHub Issues</a> are preferred for
+          discussion of this specification.
+        
+    
+  </p></section><nav id="toc"><h2 class="introductory" id="table-of-contents">Table of Contents</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#abstract">Abstract</a></li><li class="tocline"><a class="tocxref" href="#sotd">Status of This Document</a></li><li class="tocline"><a class="tocxref" href="#schema.org-metadata"><bdi class="secno">1. </bdi>EPUB Accessibility Metadata</a></li><li class="tocline"><a class="tocxref" href="#techniques"><bdi class="secno">2. </bdi>Techniques</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#screen-reader-friendly"><bdi class="secno">2.1 </bdi>Screen Reader Friendly</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#example-1.1"><bdi class="secno">2.1.1 </bdi>Example 1.1 (metadata present)</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#metadata-1.1"><bdi class="secno">2.1.1.1 </bdi>Metadata</a></li><li class="tocline"><a class="tocxref" href="#ui-1.1"><bdi class="secno">2.1.1.2 </bdi>UI</a></li></ol></li><li class="tocline"><a class="tocxref" href="#example-1.2"><bdi class="secno">2.1.2 </bdi>Example 1.2 (multiple metadata accessModeSufficient fields present)</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#metadata-1.2"><bdi class="secno">2.1.2.1 </bdi>Metadata</a></li><li class="tocline"><a class="tocxref" href="#ui-1.2"><bdi class="secno">2.1.2.2 </bdi>UI</a></li></ol></li><li class="tocline"><a class="tocxref" href="#example-1.3"><bdi class="secno">2.1.3 </bdi>Example 1.3 (metadata present but not Screen Reader Friendly)</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#metadata-1.3"><bdi class="secno">2.1.3.1 </bdi>Metadata</a></li><li class="tocline"><a class="tocxref" href="#ui-1.3"><bdi class="secno">2.1.3.2 </bdi>UI</a></li></ol></li><li class="tocline"><a class="tocxref" href="#example-1.4"><bdi class="secno">2.1.4 </bdi>Example 1.4 (metadata missing)</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#metadata-1.4"><bdi class="secno">2.1.4.1 </bdi>Metadata</a></li><li class="tocline"><a class="tocxref" href="#ui-1.4"><bdi class="secno">2.1.4.2 </bdi>UI</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#full-audio"><bdi class="secno">2.2 </bdi>Full Audio</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#example-2.1"><bdi class="secno">2.2.1 </bdi>Example 2.1 (metadata present auditory)</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#metadata-2.1"><bdi class="secno">2.2.1.1 </bdi>Metadata</a></li><li class="tocline"><a class="tocxref" href="#ui-2.1"><bdi class="secno">2.2.1.2 </bdi>UI</a></li></ol></li><li class="tocline"><a class="tocxref" href="#example-2.2"><bdi class="secno">2.2.2 </bdi>Example 2.2 (metadata present but not a Full Audio ebook)</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#metadata-2.2"><bdi class="secno">2.2.2.1 </bdi>Metadata</a></li><li class="tocline"><a class="tocxref" href="#ui-2.2"><bdi class="secno">2.2.2.2 </bdi>UI</a></li></ol></li><li class="tocline"><a class="tocxref" href="#example-2.3"><bdi class="secno">2.2.3 </bdi>Example 2.3 (metadata not present)</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#metadata-2.3"><bdi class="secno">2.2.3.1 </bdi>Metadata</a></li><li class="tocline"><a class="tocxref" href="#ui-2.3"><bdi class="secno">2.2.3.2 </bdi>UI</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#accessibility-summary"><bdi class="secno">2.3 </bdi>Accessibility Summary</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#example-3.1"><bdi class="secno">2.3.1 </bdi>Example 3.1 (metadata present)</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#metadata-3.1"><bdi class="secno">2.3.1.1 </bdi>Metadata</a></li><li class="tocline"><a class="tocxref" href="#ui-3.1"><bdi class="secno">2.3.1.2 </bdi>UI</a></li></ol></li><li class="tocline"><a class="tocxref" href="#example-3.2"><bdi class="secno">2.3.2 </bdi>Example 3.2 (metadata missing)</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#metadata-3.2"><bdi class="secno">2.3.2.1 </bdi>Metadata</a></li><li class="tocline"><a class="tocxref" href="#ui-3.2"><bdi class="secno">2.3.2.2 </bdi>UI</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#accessibility-conformance-links"><bdi class="secno">2.4 </bdi>Accessibility Conformance (Links)</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#example-4.1"><bdi class="secno">2.4.1 </bdi>Example 4.1 (metadata present)</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#metadata-4.1"><bdi class="secno">2.4.1.1 </bdi>Metadata</a></li><li class="tocline"><a class="tocxref" href="#ui-4.1"><bdi class="secno">2.4.1.2 </bdi>UI</a></li></ol></li><li class="tocline"><a class="tocxref" href="#example-4.2"><bdi class="secno">2.4.2 </bdi>Example 4.2 (metadata pointing to another specification)</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#metadata-4.2"><bdi class="secno">2.4.2.1 </bdi>Metadata</a></li><li class="tocline"><a class="tocxref" href="#ui-4.2"><bdi class="secno">2.4.2.2 </bdi>UI</a></li></ol></li><li class="tocline"><a class="tocxref" href="#example-4.3"><bdi class="secno">2.4.3 </bdi>Example 4.3 (metadata missing)</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#metadata-4.3"><bdi class="secno">2.4.3.1 </bdi>Metadata</a></li><li class="tocline"><a class="tocxref" href="#ui-4.3"><bdi class="secno">2.4.3.2 </bdi>UI</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#accessibility-conformance-string"><bdi class="secno">2.5 </bdi>Accessibility Conformance (Strings)</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#example-5.1"><bdi class="secno">2.5.1 </bdi>Example 5.1 (metadata present token)</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#metadata-5.1"><bdi class="secno">2.5.1.1 </bdi>Metadata</a></li><li class="tocline"><a class="tocxref" href="#ui-5.1"><bdi class="secno">2.5.1.2 </bdi>UI</a></li></ol></li><li class="tocline"><a class="tocxref" href="#example-5.2"><bdi class="secno">2.5.2 </bdi>Example 5.2 (metadata present non-token string)</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#metadata-5.2"><bdi class="secno">2.5.2.1 </bdi>Metadata</a></li><li class="tocline"><a class="tocxref" href="#ui-5.2"><bdi class="secno">2.5.2.2 </bdi>UI</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#certified-by"><bdi class="secno">2.6 </bdi>Certified By</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#example-6.1"><bdi class="secno">2.6.1 </bdi>Example 6.1 (metadata present 3rd party)</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#metadata-6.1"><bdi class="secno">2.6.1.1 </bdi>Metadata</a></li><li class="tocline"><a class="tocxref" href="#ui-6.1"><bdi class="secno">2.6.1.2 </bdi>UI</a></li></ol></li><li class="tocline"><a class="tocxref" href="#example-6.2"><bdi class="secno">2.6.2 </bdi>Example 6.2 (metadata present self Certified)</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#metadata-6.2"><bdi class="secno">2.6.2.1 </bdi>Metadata</a></li><li class="tocline"><a class="tocxref" href="#ui-6.2"><bdi class="secno">2.6.2.2 </bdi>UI</a></li></ol></li><li class="tocline"><a class="tocxref" href="#example-6.3"><bdi class="secno">2.6.3 </bdi>Example 6.3 (metadata missing)</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#metadata-6.3"><bdi class="secno">2.6.3.1 </bdi>Metadata</a></li><li class="tocline"><a class="tocxref" href="#ui-6.3"><bdi class="secno">2.6.3.2 </bdi>UI</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#certifier-credential"><bdi class="secno">2.7 </bdi>Certifier Credential</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#example-7.1"><bdi class="secno">2.7.1 </bdi>Example 7.1 (Text)</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#metadata-7.1"><bdi class="secno">2.7.1.1 </bdi>Metadata</a></li><li class="tocline"><a class="tocxref" href="#ui-7.1"><bdi class="secno">2.7.1.2 </bdi>UI</a></li></ol></li><li class="tocline"><a class="tocxref" href="#example-7.2"><bdi class="secno">2.7.2 </bdi>Example 7.2 (Generic 3rd party URL)</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#metadata-7.2"><bdi class="secno">2.7.2.1 </bdi>Metadata</a></li><li class="tocline"><a class="tocxref" href="#ui-7.2"><bdi class="secno">2.7.2.2 </bdi>UI</a></li></ol></li><li class="tocline"><a class="tocxref" href="#example-7.3"><bdi class="secno">2.7.3 </bdi>Example 7.3 (metadata missing)</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#metadata-7.3"><bdi class="secno">2.7.3.1 </bdi>Metadata</a></li><li class="tocline"><a class="tocxref" href="#ui-7.3"><bdi class="secno">2.7.3.2 </bdi>UI</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#certifier-report"><bdi class="secno">2.8 </bdi>Certifier Report</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#example-8.1"><bdi class="secno">2.8.1 </bdi>Example 8.1 (URL)</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#metadata-8.1"><bdi class="secno">2.8.1.1 </bdi>Metadata</a></li><li class="tocline"><a class="tocxref" href="#ui-8.1"><bdi class="secno">2.8.1.2 </bdi>UI</a></li></ol></li><li class="tocline"><a class="tocxref" href="#example-8.2"><bdi class="secno">2.8.2 </bdi>Example 8.2 (metadata missing)</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#metadata-8.2"><bdi class="secno">2.8.2.1 </bdi>Metadata</a></li><li class="tocline"><a class="tocxref" href="#ui-8.2"><bdi class="secno">2.8.2.2 </bdi>UI</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#hazards"><bdi class="secno">2.9 </bdi>Hazards</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#example-9.1"><bdi class="secno">2.9.1 </bdi>Example 9.1 (metadata present flashing)</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#metadata-9.1"><bdi class="secno">2.9.1.1 </bdi>Metadata</a></li><li class="tocline"><a class="tocxref" href="#ui-9.1"><bdi class="secno">2.9.1.2 </bdi>UI</a></li></ol></li><li class="tocline"><a class="tocxref" href="#example-9.2"><bdi class="secno">2.9.2 </bdi>Example 9.2 (metadata present motionSimulation)</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#metadata-9.2"><bdi class="secno">2.9.2.1 </bdi>Metadata</a></li><li class="tocline"><a class="tocxref" href="#ui-9.2"><bdi class="secno">2.9.2.2 </bdi>UI</a></li></ol></li><li class="tocline"><a class="tocxref" href="#example-9.3"><bdi class="secno">2.9.3 </bdi>Example 9.3 (metadata present sound)</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#metadata-9.3"><bdi class="secno">2.9.3.1 </bdi>Metadata</a></li><li class="tocline"><a class="tocxref" href="#ui-9.3"><bdi class="secno">2.9.3.2 </bdi>UI</a></li></ol></li><li class="tocline"><a class="tocxref" href="#example-9.4"><bdi class="secno">2.9.4 </bdi>Example 9.4 (multiple hazards present)</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#metadata-9.4"><bdi class="secno">2.9.4.1 </bdi>Metadata</a></li><li class="tocline"><a class="tocxref" href="#ui-9.4"><bdi class="secno">2.9.4.2 </bdi>UI</a></li></ol></li><li class="tocline"><a class="tocxref" href="#example-9.5"><bdi class="secno">2.9.5 </bdi>Example 9.5 (metadata present none)</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#metadata-9.5"><bdi class="secno">2.9.5.1 </bdi>Metadata</a></li><li class="tocline"><a class="tocxref" href="#ui-9.5"><bdi class="secno">2.9.5.2 </bdi>UI</a></li></ol></li><li class="tocline"><a class="tocxref" href="#example-9.6"><bdi class="secno">2.9.6 </bdi>Example 9.6 (metadata present: noFlashingHazard, noSoundHazard, and
+							noMotionSimulationHazard)</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#metadata-9.6"><bdi class="secno">2.9.6.1 </bdi>Metadata</a></li><li class="tocline"><a class="tocxref" href="#ui-9.6"><bdi class="secno">2.9.6.2 </bdi>UI</a></li></ol></li><li class="tocline"><a class="tocxref" href="#example-9.7"><bdi class="secno">2.9.7 </bdi>Example 9.7 (metadata not present) or (metadata present unknown)</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#metadata-9.7"><bdi class="secno">2.9.7.1 </bdi>Metadata</a></li><li class="tocline"><a class="tocxref" href="#ui-9.7"><bdi class="secno">2.9.7.2 </bdi>UI</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#all-accessibility-metadata"><bdi class="secno">2.10 </bdi>All Accessibility Metadata</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#example-10.1"><bdi class="secno">2.10.1 </bdi>Example 10.1 (all metadata fields present)</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#metadata-10.1"><bdi class="secno">2.10.1.1 </bdi>Metadata</a></li><li class="tocline"><a class="tocxref" href="#ui-10.1"><bdi class="secno">2.10.1.2 </bdi>UI</a></li></ol></li><li class="tocline"><a class="tocxref" href="#example-10.2"><bdi class="secno">2.10.2 </bdi>Example 10.2 (all metadata fields missing)</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#metadata-10.2"><bdi class="secno">2.10.2.1 </bdi>Metadata</a></li><li class="tocline"><a class="tocxref" href="#ui-10.2"><bdi class="secno">2.10.2.2 </bdi>UI</a></li></ol></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#acknowledgements"><bdi class="secno">A. </bdi>Acknowledgements</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#contributors"><bdi class="secno">A.1 </bdi>Contributors</a></li><li class="tocline"><a class="tocxref" href="#reviewers"><bdi class="secno">A.2 </bdi>Reviewers</a></li><li class="tocline"><a class="tocxref" href="#ipr"><bdi class="secno">A.3 </bdi>Intellectual Property Rights</a></li></ol></li></ol></nav>
+        <section id="schema.org-metadata">
+            <h2 id="x1-epub-accessibility-metadata"><bdi class="secno">1. </bdi>EPUB Accessibility Metadata<a class="self-link" aria-label="§" href="#schema.org-metadata"></a></h2>
+            
+            <p>This metadata as outlined in the <a href="http://www.idpf.org/epub/a11y/">1.0 Accessibility Specification
+					Conformance and Discoverability</a> can be found in the <a href="https://www.w3.org/publishing/epub3/epub-packages.html#sec-package-doc">EPUB Package Document</a></p>
+			
+			<div class="note" role="note" id="issue-container-generatedID"><div role="heading" class="note-title marker" id="h-note" aria-level="3"><span>Note</span></div><p class="">
+				Other techniques for implementing EPUB accessibility metadata are available: <a href="https://www.w3.org/publishing/a11y/UX-Guide-metadata/principles/index.html#techniques">Display Techniques for Displaying Accessibility Metadata</a>
+			</p></div>
+			<div class="note" role="note" id="issue-container-generatedID-0"><div role="heading" class="note-title marker" id="h-note-0" aria-level="3"><span>Note</span></div><p class="">
+				This document provides techniques for meeting the guidelines of the <a href="https://www.w3.org/publishing/a11y/UX-Guide-metadata/principles/index.html">User Experience Guide for Displaying Accessibility Metadata</a>. It provides practical examples for extracting information from EPUB Package Document for showing it to the end users.
+			</p></div>
+            
+        </section>
+		<section id="techniques">
+			<h2 id="x2-techniques"><bdi class="secno">2. </bdi>Techniques<a class="self-link" aria-label="§" href="#techniques"></a></h2>
+			<section id="screen-reader-friendly">
+				<h3 id="x2-1-screen-reader-friendly"><bdi class="secno">2.1 </bdi>Screen Reader Friendly<a class="self-link" aria-label="§" href="#screen-reader-friendly"></a></h3>
+				<p><b>Value</b>: <i>Yes</i> / <i>No</i> / <i>Unknown</i></p>
+				<p>This technique relates to <a href="https://www.w3.org/publishing/a11y/UX-Guide-metadata/principles/index.html#screen-reader-friendly">Screen Reader Friendly principle</a>.</p>
+				
+				<p>This data is derived from the EPUB package metadata inside the Package Document:</p>
+				<aside class="example" id="cb1"><div class="marker">
+    <a class="self-link" href="#cb1">Example<bdi> 1</bdi></a>
+  </div>
+					<pre><code aria-busy="false" class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">property</span>=<span class="hljs-string">"schema:accessModeSufficient"</span>&gt;</span>textual<span class="hljs-tag">&lt;/<span class="hljs-name">meta</span>&gt;</span></code></pre>
+				</aside>
+				<p>If this metadata exists (ie. <q><b>textual</b></q> within <code>accessModeSufficient</code>
+					by itself) then report <i><q>Screen Reader Friendly: Yes</q></i></p>
+				<p><b>Important</b>: This is not the same as <q><b>visual</b>,
+							<b>textual</b></q> or <q><b>textual, visual</b></q> because the
+					combination means that the book requires both visual and textual abilities to access the data, not
+					textual alone. Only having <code>accessModeSufficient</code> be
+						<q><b><i>textual</i></b></q> as a separate entry ensures the document is screen
+					reader friendly.</p>
+				<div class="note" role="note" id="issue-container-generatedID-1"><div role="heading" class="note-title marker" id="h-note-1" aria-level="4"><span>Note</span></div><p class="">As long as there is an entry that reads <code>&lt;meta
+						property="schema:accessModeSufficient"&gt;textual&lt;/meta&gt;</code> the book can claim
+							<i><q>Screen Reader Friendly: Yes</q></i>.</p></div>
+				<p>There may also be other <code>accessModeSufficient</code> entries with combinations of access modes
+					such as <q>textual, visual</q> which indicate other ways to read the book.</p>
+				<p>When <code>accessModeSufficient</code> exists but does not have <q>textual</q> by itself, report
+							<i><q>Screen Reader Friendly: No</q></i>.</p>
+				<p>When there is no <code>accessModeSufficient</code> metadata present, report <i><q>Screen Reader
+							Friendly: Unknown or not provided</q></i>.</p>
+				<section id="example-1.1">
+					<h4 id="x2-1-1-example-1-1-metadata-present"><bdi class="secno">2.1.1 </bdi>Example 1.1 (metadata present)<a class="self-link" aria-label="§" href="#example-1.1"></a></h4>
+					<section id="metadata-1.1">
+						<h5 id="x2-1-1-1-metadata"><bdi class="secno">2.1.1.1 </bdi>Metadata<a class="self-link" aria-label="§" href="#metadata-1.1"></a></h5>
+						<aside class="example" id="code-example-1.1"><div class="marker">
+    <a class="self-link" href="#code-example-1.1">Example<bdi> 2</bdi></a>
+  </div>
+							<pre><code aria-busy="false" class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">property</span>=<span class="hljs-string">"schema:accessModeSufficient"</span>&gt;</span>textual<span class="hljs-tag">&lt;/<span class="hljs-name">meta</span>&gt;</span></code></pre>
+						</aside>
+					</section>
+					<section id="ui-1.1">
+						<h5 id="x2-1-1-2-ui"><bdi class="secno">2.1.1.2 </bdi>UI<a class="self-link" aria-label="§" href="#ui-1.1"></a></h5>
+						<p><q>Screen Reader Friendly: Yes</q></p>
+						<p>(because <b><i>textual</i></b> was present by itself in
+								<code>accessModeSufficient</code>)</p>
+					</section>
+				</section>
+				<section id="example-1.2">
+					<h4 id="x2-1-2-example-1-2-multiple-metadata-accessmodesufficient-fields-present"><bdi class="secno">2.1.2 </bdi>Example 1.2 (multiple metadata accessModeSufficient fields present)<a class="self-link" aria-label="§" href="#example-1.2"></a></h4>
+					<section id="metadata-1.2">
+						<h5 id="x2-1-2-1-metadata"><bdi class="secno">2.1.2.1 </bdi>Metadata<a class="self-link" aria-label="§" href="#metadata-1.2"></a></h5>
+						<aside class="example" id="code-example-1.2"><div class="marker">
+    <a class="self-link" href="#code-example-1.2">Example<bdi> 3</bdi></a>
+  </div>
+							<pre><code aria-busy="false" class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">property</span>=<span class="hljs-string">"schema:accessModeSufficient"</span>&gt;</span>visual<span class="hljs-tag">&lt;/<span class="hljs-name">meta</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">property</span>=<span class="hljs-string">"schema:accessModeSufficient"</span>&gt;</span>textual<span class="hljs-tag">&lt;/<span class="hljs-name">meta</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">property</span>=<span class="hljs-string">"schema:accessModeSufficient"</span>&gt;</span>textual, visual<span class="hljs-tag">&lt;/<span class="hljs-name">meta</span>&gt;</span></code></pre>
+						</aside>
+					</section>
+					<section id="ui-1.2">
+						<h5 id="x2-1-2-2-ui"><bdi class="secno">2.1.2.2 </bdi>UI<a class="self-link" aria-label="§" href="#ui-1.2"></a></h5>
+						<p><q>Screen Reader Friendly: Yes</q></p>
+						<p>(because <b><i>textual</i></b> was present by itself in
+								<code>accessModeSufficient</code>)</p>
+					</section>
+				</section>
+				<section id="example-1.3">
+					<h4 id="x2-1-3-example-1-3-metadata-present-but-not-screen-reader-friendly"><bdi class="secno">2.1.3 </bdi>Example 1.3 (metadata present but not Screen Reader Friendly)<a class="self-link" aria-label="§" href="#example-1.3"></a></h4>
+					<section id="metadata-1.3">
+						<h5 id="x2-1-3-1-metadata"><bdi class="secno">2.1.3.1 </bdi>Metadata<a class="self-link" aria-label="§" href="#metadata-1.3"></a></h5>
+						<aside class="example" id="code-example-1.3"><div class="marker">
+    <a class="self-link" href="#code-example-1.3">Example<bdi> 4</bdi></a>
+  </div>
+							<pre><code aria-busy="false" class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">property</span>=<span class="hljs-string">"schema:accessModeSufficient"</span>&gt;</span>visual<span class="hljs-tag">&lt;/<span class="hljs-name">meta</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">property</span>=<span class="hljs-string">"schema:accessModeSufficient"</span>&gt;</span>textual, visual<span class="hljs-tag">&lt;/<span class="hljs-name">meta</span>&gt;</span></code></pre>
+						</aside>
+					</section>
+					<section id="ui-1.3">
+						<h5 id="x2-1-3-2-ui"><bdi class="secno">2.1.3.2 </bdi>UI<a class="self-link" aria-label="§" href="#ui-1.3"></a></h5>
+						<p><q>Screen Reader Friendly: No</q></p>
+						<p>(because <b><i>textual</i></b> was not present by itself in
+								<code>accessModeSufficient</code>)</p>
+					</section>
+				</section>
+				<section id="example-1.4">
+					<h4 id="x2-1-4-example-1-4-metadata-missing"><bdi class="secno">2.1.4 </bdi>Example 1.4 (metadata missing)<a class="self-link" aria-label="§" href="#example-1.4"></a></h4>
+					<section id="metadata-1.4">
+						<h5 id="x2-1-4-1-metadata"><bdi class="secno">2.1.4.1 </bdi>Metadata<a class="self-link" aria-label="§" href="#metadata-1.4"></a></h5>
+						<p><i>{No Data}</i></p>
+					</section>
+					<section id="ui-1.4">
+						<h5 id="x2-1-4-2-ui"><bdi class="secno">2.1.4.2 </bdi>UI<a class="self-link" aria-label="§" href="#ui-1.4"></a></h5>
+						<p><q>Screen Reader Friendly: Unknown</q></p>
+						<p>(because <code>accessModeSufficient</code> is not found at all in the metadata)</p>
+					</section>
+				</section>
+			</section>
+			<section id="full-audio">
+				<h3 id="x2-2-full-audio"><bdi class="secno">2.2 </bdi>Full Audio<a class="self-link" aria-label="§" href="#full-audio"></a></h3>
+				<p><b>Values</b>: <i>Yes / (if No - Omit this section)</i></p>
+				<p>This technique relates to <a href="https://www.w3.org/publishing/a11y/UX-Guide-metadata/principles/index.html#full-audio">Full Audio principle</a>.</p>
+				
+				<p>This data is derived from the EPUB package metadata inside the Package Document:</p>
+				<aside class="example" id="cb5"><div class="marker">
+    <a class="self-link" href="#cb5">Example<bdi> 5</bdi></a>
+  </div>
+					<pre><code aria-busy="false" class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">property</span>=<span class="hljs-string">"schema:accessModeSufficient"</span>&gt;</span>auditory<span class="hljs-tag">&lt;/<span class="hljs-name">meta</span>&gt;</span></code></pre>
+				</aside>
+				<p>If this metadata exists (ie. <q><b>auditory</b></q> within
+						<code>accessModeSufficient</code> by itself) then report <i><q>Full Audio: Yes</q>.</i></p>
+				<p><b>Important</b>: This is not the same as <q><b>textual</b>,
+							<b>auditory</b></q> or <q><b>auditory</b>, <b>textual</b></q>
+					as this indicates that the book requires both textual and auditory abilities to access the data, not
+					auditory alone. Only having <code>accessModeSufficient</code> be <q><b>auditory</b></q> as
+					a separate entry ensures the document contains full audio.</p>
+				<div class="note" role="note" id="issue-container-generatedID-2"><div role="heading" class="note-title marker" id="h-note-2" aria-level="4"><span>Note</span></div><p class="">As long as you find <code>&lt;meta
+						property="schema:accessModeSufficient"&gt;auditory&lt;/meta&gt;</code> the book can claim
+							<q><b>Full Audio: Yes</b></q>.</p></div>
+				<p>There may also be other <code>accessModeSufficient</code> entries with combinations of access modes
+					such as <q>textual, visual</q> which indicate other ways to read the book.</p>
+				<div class="note" role="note" id="issue-container-generatedID-3"><div role="heading" class="note-title marker" id="h-note-3" aria-level="4"><span>Note</span></div><p class="">If you can not report that this is a book with full audio then do not present any information to
+					the user for this category. Simply omit this
+					section.</p></div>
+				<section id="example-2.1">
+					<h4 id="x2-2-1-example-2-1-metadata-present-auditory"><bdi class="secno">2.2.1 </bdi>Example 2.1 (metadata present auditory)<a class="self-link" aria-label="§" href="#example-2.1"></a></h4>
+					<section id="metadata-2.1">
+						<h5 id="x2-2-1-1-metadata"><bdi class="secno">2.2.1.1 </bdi>Metadata<a class="self-link" aria-label="§" href="#metadata-2.1"></a></h5>
+						<aside class="example" id="code-example-2.1"><div class="marker">
+    <a class="self-link" href="#code-example-2.1">Example<bdi> 6</bdi></a>
+  </div>
+							<pre><code aria-busy="false" class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">property</span>=<span class="hljs-string">"schema:accessModeSufficient"</span>&gt;</span>auditory<span class="hljs-tag">&lt;/<span class="hljs-name">meta</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">property</span>=<span class="hljs-string">"schema:accessModeSufficient"</span>&gt;</span>visual<span class="hljs-tag">&lt;/<span class="hljs-name">meta</span>&gt;</span></code></pre>
+						</aside>
+					</section>
+					<section id="ui-2.1">
+						<h5 id="x2-2-1-2-ui"><bdi class="secno">2.2.1.2 </bdi>UI<a class="self-link" aria-label="§" href="#ui-2.1"></a></h5>
+						<p><q>Full Audio: Yes</q></p>
+						<p>(because <q><b>auditory</b></q> was found alone in
+								<code>accessModeSufficient</code>)</p>
+					</section>
+				</section>
+				<section id="example-2.2">
+					<h4 id="x2-2-2-example-2-2-metadata-present-but-not-a-full-audio-ebook"><bdi class="secno">2.2.2 </bdi>Example 2.2 (metadata present but not a Full Audio ebook)<a class="self-link" aria-label="§" href="#example-2.2"></a></h4>
+					<section id="metadata-2.2">
+						<h5 id="x2-2-2-1-metadata"><bdi class="secno">2.2.2.1 </bdi>Metadata<a class="self-link" aria-label="§" href="#metadata-2.2"></a></h5>
+						<aside class="example" id="code-example-2.2"><div class="marker">
+    <a class="self-link" href="#code-example-2.2">Example<bdi> 7</bdi></a>
+  </div>
+							<pre><code aria-busy="false" class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">property</span>=<span class="hljs-string">"schema:accessModeSufficient"</span>&gt;</span>visual<span class="hljs-tag">&lt;/<span class="hljs-name">meta</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">property</span>=<span class="hljs-string">"schema:accessModeSufficient"</span>&gt;</span>auditory, visual<span class="hljs-tag">&lt;/<span class="hljs-name">meta</span>&gt;</span></code></pre>
+						</aside>
+					</section>
+					<section id="ui-2.2">
+						<h5 id="x2-2-2-2-ui"><bdi class="secno">2.2.2.2 </bdi>UI<a class="self-link" aria-label="§" href="#ui-2.2"></a></h5>
+						<p>Omit this section</p>
+						<p>(Nothing presented to the user because <q><b>auditory</b></q> was not found alone
+							in <code>accessModeSufficient</code>)</p>
+					</section>
+				</section>
+				<section id="example-2.3">
+					<h4 id="x2-2-3-example-2-3-metadata-not-present"><bdi class="secno">2.2.3 </bdi>Example 2.3 (metadata not present)<a class="self-link" aria-label="§" href="#example-2.3"></a></h4>
+					<section id="metadata-2.3">
+						<h5 id="x2-2-3-1-metadata"><bdi class="secno">2.2.3.1 </bdi>Metadata<a class="self-link" aria-label="§" href="#metadata-2.3"></a></h5>
+						<p><i>{No Data}</i></p>
+					</section>
+					<section id="ui-2.3">
+						<h5 id="x2-2-3-2-ui"><bdi class="secno">2.2.3.2 </bdi>UI<a class="self-link" aria-label="§" href="#ui-2.3"></a></h5>
+						<p>Omit this section</p>
+						<p>(Nothing presented to the user because <code>accessModeSufficient</code> is not present at
+							all in the metadata)</p>
+					</section>
+				</section>
+			</section>
+			<section id="accessibility-summary">
+				<h3 id="x2-3-accessibility-summary"><bdi class="secno">2.3 </bdi>Accessibility Summary<a class="self-link" aria-label="§" href="#accessibility-summary"></a></h3>
+				<p><b>Value</b>: Textual Data from metadata</p>
+				<p>This technique relates to <a href="https://www.w3.org/publishing/a11y/UX-Guide-metadata/principles/index.html#accessibility-summary">Accessibility Summary principle</a>.</p>
+				
+				<p>This data is pulled directly from the EPUB package metadata inside the Package Document:</p>
+				<aside class="example" id="cb8"><div class="marker">
+    <a class="self-link" href="#cb8">Example<bdi> 8</bdi></a>
+  </div>
+					<pre><code aria-busy="false" class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">property</span>=<span class="hljs-string">"schema:accessibilitySummary"</span>&gt;</span></code></pre>
+				</aside>
+				<div class="note" role="note" id="issue-container-generatedID-4"><div role="heading" class="note-title marker" id="h-note-4" aria-level="4"><span>Note</span></div><p class="">We will be creating additional guidance for publishers on how to best write these
+					summaries.</p></div>
+				<div class="note" role="note" id="issue-container-generatedID-5"><div role="heading" class="note-title marker" id="h-note-5" aria-level="4"><span>Note</span></div><p class="">If the metadata does not exist this should say <q>No Summary Available</q></p></div>
+				<div class="note" role="note" id="issue-container-generatedID-6"><div role="heading" class="note-title marker" id="h-note-6" aria-level="4"><span>Note</span></div><p class="">This data could be in a language other than English but would be tagged as such.</p></div>
+				<section id="example-3.1">
+					<h4 id="x2-3-1-example-3-1-metadata-present"><bdi class="secno">2.3.1 </bdi>Example 3.1 (metadata present)<a class="self-link" aria-label="§" href="#example-3.1"></a></h4>
+					<section id="metadata-3.1">
+						<h5 id="x2-3-1-1-metadata"><bdi class="secno">2.3.1.1 </bdi>Metadata<a class="self-link" aria-label="§" href="#metadata-3.1"></a></h5>
+						<aside class="example" id="code-example-3.1"><div class="marker">
+    <a class="self-link" href="#code-example-3.1">Example<bdi> 9</bdi></a>
+  </div>
+							<pre><code aria-busy="false" class="hljs javascript">&lt;meta property=<span class="hljs-string">"schema:accessibilitySummary"</span>&gt;
+    This publication includes markup to enable accessibility and compatibility <span class="hljs-keyword">with</span> assistive technology. Images, audio, and video <span class="hljs-keyword">in</span> the publication are well-described <span class="hljs-keyword">in</span> conformance <span class="hljs-keyword">with</span> WCAG <span class="hljs-number">2.0</span> AA. Structural navigation may be inconsistent.
+&lt;/meta&gt;</code></pre>
+						</aside>
+					</section>
+					<section id="ui-3.1">
+						<h5 id="x2-3-1-2-ui"><bdi class="secno">2.3.1.2 </bdi>UI<a class="self-link" aria-label="§" href="#ui-3.1"></a></h5>
+						<p>Accessibility Summary:</p>
+						<p>This publication includes markup to enable accessibility and compatibility with assistive
+							technology. Images, audio, and video in the publication are well-described in conformance
+							with WCAG 2.0 A.</p>
+					</section>
+				</section>
+				<section id="example-3.2">
+					<h4 id="x2-3-2-example-3-2-metadata-missing"><bdi class="secno">2.3.2 </bdi>Example 3.2 (metadata missing)<a class="self-link" aria-label="§" href="#example-3.2"></a></h4>
+					<section id="metadata-3.2">
+						<h5 id="x2-3-2-1-metadata"><bdi class="secno">2.3.2.1 </bdi>Metadata<a class="self-link" aria-label="§" href="#metadata-3.2"></a></h5>
+						<p><i>{No Data}</i></p>
+					</section>
+					<section id="ui-3.2">
+						<h5 id="x2-3-2-2-ui"><bdi class="secno">2.3.2.2 </bdi>UI<a class="self-link" aria-label="§" href="#ui-3.2"></a></h5>
+						<p><q>Accessibility Summary: None provided</q></p>
+					</section>
+				</section>
+			</section>
+
+
+            <section id="accessibility-conformance-links">
+				<h3 id="x2-4-accessibility-conformance-links"><bdi class="secno">2.4 </bdi>Accessibility Conformance (Links)<a class="self-link" aria-label="§" href="#accessibility-conformance-links"></a></h3>
+				<p><b>Value</b>: Textual Link based on Metadata or raw URL found in EPUB Package Document</p>
+				<p>This technique relates to <a href="https://www.w3.org/publishing/a11y/UX-Guide-metadata/principles/index.html#accessibility-conformance">Accessibility Conformance principle</a>.</p>
+					
+				<aside class="example" id="cp-link"><div class="marker">
+    <a class="self-link" href="#cp-link">Example<bdi> 10</bdi></a>
+  </div>
+					<pre><code aria-busy="false" class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"dcterms:conformsTo"</span>&gt;</span></code></pre>
+				</aside>
+				<div class="note" role="note" id="issue-container-generatedID-7"><div role="heading" class="note-title marker" id="h-note-7" aria-level="4"><span>Note</span></div><div class="">
+					<p>Interpret this metadata to be as human friendly as possible. So if the URI is:</p>
+					<ul>
+						<li><q>http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-a</q> report it as <q><a href="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-a"><b>EPUB Accessibility, WCAG2.0-A</b></a></q> which links to this URL.</li>
+						<li><q>http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aa</q> report it as <q><a href="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aa"><b>EPUB Accessibility, WCAG2.0-AA</b></a></q> which links to this URL.</li>
+						<li><q>http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aaa</q> report it as <q><a href="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-a"><b>EPUB Accessibility, WCAG2.0-AAA</b></a></q> which links to this URL.</li>
+					</ul>
+				</div></div>
+				<p>If the URL is anything other than the three listed above, then providing the raw URL which is also a
+					link is the only option, since this may be a link to a different conformance standard (i.e.&nbsp;some
+					audio conformance specification for an audio book).</p>
+				<div class="note" role="note" id="issue-container-generatedID-8"><div role="heading" class="note-title marker" id="h-note-8" aria-level="4"><span>Note</span></div><p class="">A case insensitive comparison should be done to replace the URI with human-readable text
+					for WCAG-AA, etc.</p></div>
+				<div class="note" role="note" id="issue-container-generatedID-9"><div role="heading" class="note-title marker" id="h-note-9" aria-level="4"><span>Note</span></div><p class="">If you do not wish to have clickable links here, you may omit them as long as you make
+					the links available in the section <a href="#all-accessibility-metadata">All Accessibility
+						Metadata</a>, described below.</p></div>
+				<div class="note" role="note" id="issue-container-generatedID-10"><div role="heading" class="note-title marker" id="h-note-10" aria-level="4"><span>Note</span></div><p class="">The above three URLs could change in the future since they reference the IDPF domain. Updates to the EPUB Accessibility standard are now being conducted in the W3C, so when a new revision is released a new referencing scheme will likely be recommended.</p></div>
+				<div class="fake-issue" id="issue-container-number-1767">
+                	<div role="heading" class="issue-title marker" id="h-issue-1" aria-level="6">
+                		<a href="https://github.com/w3c/epub-specs/issues/1767"><span class="issue-number">Issue 1767</span></a><span class="issue-label">: Is 0 tolerance for accessibility conformance practical? <a class="respec-gh-label" href="https://github.com/w3c/epub-specs/issues/?q=is%3Aissue+is%3Aopen+label%3A%22Cat-Accessibility%22" style="background-color: rgb(229, 220, 251); color: rgb(0, 0, 0);" aria-label="GitHub label: Cat-Accessibility">Cat-Accessibility</a></span></div>
+                	<div class="">
+						<p>At the time of publication of this document there is an open issue <a href="https://github.com/w3c/epub-specs/issues/1767">#1767</a> (Is zero tolerance for accessibility conformance practical?) in the working draft of EPUB Accessibility 1.1. It may change the values for the Accessibility Conformance metadata in the future revision of these guidelines.</p>
+					</div>
+				</div>
+				<section id="example-4.1">
+					<h4 id="x2-4-1-example-4-1-metadata-present"><bdi class="secno">2.4.1 </bdi>Example 4.1 (metadata present)<a class="self-link" aria-label="§" href="#example-4.1"></a></h4>
+					<section id="metadata-4.1">
+						<h5 id="x2-4-1-1-metadata"><bdi class="secno">2.4.1.1 </bdi>Metadata<a class="self-link" aria-label="§" href="#metadata-4.1"></a></h5>
+						<aside class="example" id="code-example-4.1"><div class="marker">
+    <a class="self-link" href="#code-example-4.1">Example<bdi> 11</bdi></a>
+  </div>
+							<pre><code aria-busy="false" class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"dcterms:conformsTo"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aa"</span> /&gt;</span></code></pre>
+						</aside>
+					</section>
+					<section id="ui-4.1">
+						<h5 id="x2-4-1-2-ui"><bdi class="secno">2.4.1.2 </bdi>UI<a class="self-link" aria-label="§" href="#ui-4.1"></a></h5>
+						<p>Accessibility Conformance: <a href="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aa">EPUB Accessibility, WCAG2.0-AA</a></p>
+						<p>(Because this links to one of the three URIs outlined above)</p>
+					</section>
+				</section>
+				<section id="example-4.2">
+					<h4 id="x2-4-2-example-4-2-metadata-pointing-to-another-specification"><bdi class="secno">2.4.2 </bdi>Example 4.2 (metadata pointing to another specification)<a class="self-link" aria-label="§" href="#example-4.2"></a></h4>
+					<section id="metadata-4.2">
+						<h5 id="x2-4-2-1-metadata"><bdi class="secno">2.4.2.1 </bdi>Metadata<a class="self-link" aria-label="§" href="#metadata-4.2"></a></h5>
+						<aside class="example" id="code-example-4.2"><div class="marker">
+    <a class="self-link" href="#code-example-4.2">Example<bdi> 12</bdi></a>
+  </div>
+							<pre><code aria-busy="false" class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"dcterms:conformsTo"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"http://www.daisy.org/guidelines/epub/navigable-audio-only-epub3-guidelines"</span> /&gt;</span></code></pre>
+						</aside>
+					</section>
+					<section id="ui-4.2">
+						<h5 id="x2-4-2-2-ui"><bdi class="secno">2.4.2.2 </bdi>UI<a class="self-link" aria-label="§" href="#ui-4.2"></a></h5>
+						<p>Accessibility Conformance: <a href="http://www.daisy.org/guidelines/epub/navigable-audio-only-epub3-guidelines">Custom specification</a></p>
+						<p>(Because this URI is different than what was outlined above. The book may qualify for
+							conformance as an optimized publication.)</p>
+					</section>
+				</section>
+				<section id="example-4.3">
+					<h4 id="x2-4-3-example-4-3-metadata-missing"><bdi class="secno">2.4.3 </bdi>Example 4.3 (metadata missing)<a class="self-link" aria-label="§" href="#example-4.3"></a></h4>
+					<section id="metadata-4.3">
+						<h5 id="x2-4-3-1-metadata"><bdi class="secno">2.4.3.1 </bdi>Metadata<a class="self-link" aria-label="§" href="#metadata-4.3"></a></h5>
+						<p><i>{No Data}</i> in either</p>
+                        <pre><code aria-busy="false" class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">property</span>=<span class="hljs-string">"dcterms:conformsTo"</span>&gt;</span></code></pre>
+                        <p>and</p>
+                        <pre><code aria-busy="false" class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"dcterms:conformsTo"</span>&gt;</span></code></pre>
+					</section>
+					<section id="ui-4.3">
+						<h5 id="x2-4-3-2-ui"><bdi class="secno">2.4.3.2 </bdi>UI<a class="self-link" aria-label="§" href="#ui-4.3"></a></h5>
+						<p>Accessibility Conformance: None provided</p>
+					</section>
+				</section>
+			</section>
+            
+            
+            <section id="accessibility-conformance-string">
+ 				<h3 id="x2-5-accessibility-conformance-strings"><bdi class="secno">2.5 </bdi>Accessibility Conformance (Strings)<a class="self-link" aria-label="§" href="#accessibility-conformance-string"></a></h3>
+
+               <div class="note" role="note" id="issue-container-generatedID-11"><div role="heading" class="note-title marker" id="h-note-11" aria-level="4"><span>Note</span></div><div class="">
+                    <p>These techniques are for public draft of EPUB Accessibility 1.1, and the pre defined strings may change</p>
+                </div></div>                
+                
+                <p>Predefined Token Values:</p>
+                <ul>
+                    <li>EPUB-A11Y-11_WCAG-20-A</li>
+                    <li>EPUB-A11Y-11_WCAG-20-AA</li>
+                    <li>EPUB-A11Y-11_WCAG-20-AAA</li>
+                    <li>EPUB-A11Y-11_WCAG-21-A</li>
+                    <li>EPUB-A11Y-11_WCAG-21-AA</li>
+                    <li>EPUB-A11Y-11_WCAG-21-AAA</li>    
+                </ul>
+               
+				<p>This technique relates to <a href="https://www.w3.org/publishing/a11y/UX-Guide-metadata/principles/index.html#accessibility-conformance">Accessibility Conformance principle</a>.</p>
+				
+  				<aside class="example" id="cp-property"><div class="marker">
+    <a class="self-link" href="#cp-property">Example<bdi> 13</bdi></a>
+  </div>
+					<pre><code aria-busy="false" class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">property</span>=<span class="hljs-string">"dcterms:conformsTo"</span>&gt;</span></code></pre>
+				</aside>
+				<div class="note" role="note" id="issue-container-generatedID-12"><div role="heading" class="note-title marker" id="h-note-12" aria-level="4"><span>Note</span></div><div class="">
+					<p>If the string is one of our predefined token values defined in EPUB Accessibility 1.1:</p>
+					<ul>
+						<li><q>EPUB-A11Y-11_WCAG-20-A</q> report it as <q><b>EPUB Accessibility, WCAG2.0-A</b></q></li>
+						<li><q>EPUB-A11Y-11_WCAG-20-AA</q> report it as <q><b>EPUB Accessibility, WCAG2.0-AA</b></q></li>
+						<li><q>EPUB-A11Y-11_WCAG-20-AAA</q> report it as <q><b>EPUB Accessibility, WCAG2.0-AAA</b></q></li>
+						<li><q>EPUB-A11Y-11_WCAG-21-A</q> report it as <q><b>EPUB Accessibility, WCAG2.1-A</b></q></li>
+						<li><q>EPUB-A11Y-11_WCAG-21-AA</q> report it as <q><b>EPUB Accessibility, WCAG2.1-AA</b></q></li>
+						<li><q>EPUB-A11Y-11_WCAG-21-AAA</q> report it as <q><b>EPUB Accessibility, WCAG2.1-AAA</b></q></li>
+					</ul>
+				</div></div>
+				<div class="note" role="note" id="issue-container-generatedID-13"><div role="heading" class="note-title marker" id="h-note-13" aria-level="4"><span>Note</span></div><div class="">
+				<p>If the value is anything other than the six tokens listed above, then providing the raw string value as is.</p>
+                </div></div>
+                <div class="fake-issue" id="issue-container-number-1767a">
+                	<div role="heading" class="issue-title marker" id="h-issue-1a" aria-level="6">
+                		<a href="https://github.com/w3c/epub-specs/issues/1767"><span class="issue-number">Issue 1767</span></a><span class="issue-label">: Is 0 tolerance for accessibility conformance practical? <a class="respec-gh-label" href="https://github.com/w3c/epub-specs/issues/?q=is%3Aissue+is%3Aopen+label%3A%22Cat-Accessibility%22" style="background-color: rgb(229, 220, 251); color: rgb(0, 0, 0);" aria-label="GitHub label: Cat-Accessibility">Cat-Accessibility</a></span></div>
+                	<div class="">
+						<p>At the time of publication of this document there is an open issue <a href="https://github.com/w3c/epub-specs/issues/1767">#1767</a> (Is zero tolerance for accessibility conformance practical?) in the working draft of EPUB Accessibility 1.1. It may change the values for the Accessibility Conformance metadata in the future revision of these guidelines.</p>
+					</div>
+				</div>			
+				<section id="example-5.1">
+					<h4 id="x2-5-1-example-5-1-metadata-present-token"><bdi class="secno">2.5.1 </bdi>Example 5.1 (metadata present token)<a class="self-link" aria-label="§" href="#example-5.1"></a></h4>
+					<section id="metadata-5.1">
+						<h5 id="x2-5-1-1-metadata"><bdi class="secno">2.5.1.1 </bdi>Metadata<a class="self-link" aria-label="§" href="#metadata-5.1"></a></h5>
+						<aside class="example" id="code-example-5.1"><div class="marker">
+    <a class="self-link" href="#code-example-5.1">Example<bdi> 14</bdi></a>
+  </div>
+							<pre><code aria-busy="false" class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">property</span>=<span class="hljs-string">"dcterms:conformsTo"</span>&gt;</span>EPUB-A11Y-11_WCAG-21-AA<span class="hljs-tag">&lt;/<span class="hljs-name">meta</span>&gt;</span></code></pre>
+						</aside>
+					</section>
+					<section id="ui-5.1">
+						<h5 id="x2-5-1-2-ui"><bdi class="secno">2.5.1.2 </bdi>UI<a class="self-link" aria-label="§" href="#ui-5.1"></a></h5>
+						<p>Accessibility Conformance: EPUB Accessibility, WCAG 2.1 AA</p>
+						
+					</section>
+				</section>
+			
+ 				<section id="example-5.2">
+					<h4 id="x2-5-2-example-5-2-metadata-present-non-token-string"><bdi class="secno">2.5.2 </bdi>Example 5.2 (metadata present non-token string)<a class="self-link" aria-label="§" href="#example-5.2"></a></h4>
+					<section id="metadata-5.2">
+						<h5 id="x2-5-2-1-metadata"><bdi class="secno">2.5.2.1 </bdi>Metadata<a class="self-link" aria-label="§" href="#metadata-5.2"></a></h5>
+						<aside class="example" id="code-example-5.2"><div class="marker">
+    <a class="self-link" href="#code-example-5.2">Example<bdi> 15</bdi></a>
+  </div>
+							<pre><code aria-busy="false" class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">property</span>=<span class="hljs-string">"dcterms:conformsTo"</span>&gt;</span>WCAG AA<span class="hljs-tag">&lt;/<span class="hljs-name">meta</span>&gt;</span></code></pre>
+						</aside>
+					</section>
+					<section id="ui-5.2">
+						<h5 id="x2-5-2-2-ui"><bdi class="secno">2.5.2.2 </bdi>UI<a class="self-link" aria-label="§" href="#ui-5.2"></a></h5>
+						<p>Accessibility Conformance: WCAG AA</p>
+						
+					</section>
+				</section>
+          
+            </section>
+            
+            
+			<section id="certified-by">
+				<h3 id="x2-6-certified-by"><bdi class="secno">2.6 </bdi>Certified By<a class="self-link" aria-label="§" href="#certified-by"></a></h3>
+				<p><b>Value</b>: Textual Data from metadata</p>
+				<p>This technique relates to <a href="https://www.w3.org/publishing/a11y/UX-Guide-metadata/principles/index.html#certified-by">Certified By principle</a>.</p>
+				
+				<p>This data is pulled directly from the EPUB package metadata inside the Package Document:</p>
+				<aside class="example" id="cb13"><div class="marker">
+    <a class="self-link" href="#cb13">Example<bdi> 16</bdi></a>
+  </div>
+					<pre><code aria-busy="false" class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">property</span>=<span class="hljs-string">"a11y:certifiedBy"</span>&gt;</span></code></pre>
+				</aside>
+				<div class="note" role="note" id="issue-container-generatedID-14"><div role="heading" class="note-title marker" id="h-note-14" aria-level="4"><span>Note</span></div><p class="">If the metadata does not exist this should say <q>None provided</q></p></div>
+				<section id="example-6.1">
+					<h4 id="x2-6-1-example-6-1-metadata-present-3rd-party"><bdi class="secno">2.6.1 </bdi>Example 6.1 (metadata present 3rd party)<a class="self-link" aria-label="§" href="#example-6.1"></a></h4>
+					<section id="metadata-6.1">
+						<h5 id="x2-6-1-1-metadata"><bdi class="secno">2.6.1.1 </bdi>Metadata<a class="self-link" aria-label="§" href="#metadata-6.1"></a></h5>
+						<aside class="example" id="code-example-6.1"><div class="marker">
+    <a class="self-link" href="#code-example-6.1">Example<bdi> 17</bdi></a>
+  </div>
+							<pre><code aria-busy="false" class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">property</span>=<span class="hljs-string">"a11y:certifiedBy"</span>&gt;</span>3rd Party Company Name<span class="hljs-tag">&lt;/<span class="hljs-name">meta</span>&gt;</span></code></pre>
+						</aside>
+					</section>
+					<section id="ui-6.1">
+						<h5 id="x2-6-1-2-ui"><bdi class="secno">2.6.1.2 </bdi>UI<a class="self-link" aria-label="§" href="#ui-6.1"></a></h5>
+						<p><q>Certified By: 3rd Party Company Name</q></p>
+					</section>
+				</section>
+				<section id="example-6.2">
+					<h4 id="x2-6-2-example-6-2-metadata-present-self-certified"><bdi class="secno">2.6.2 </bdi>Example 6.2 (metadata present self Certified)<a class="self-link" aria-label="§" href="#example-6.2"></a></h4>
+					<section id="metadata-6.2">
+						<h5 id="x2-6-2-1-metadata"><bdi class="secno">2.6.2.1 </bdi>Metadata<a class="self-link" aria-label="§" href="#metadata-6.2"></a></h5>
+						<aside class="example" id="code-example-6.2"><div class="marker">
+    <a class="self-link" href="#code-example-6.2">Example<bdi> 18</bdi></a>
+  </div>
+							<pre><code aria-busy="false" class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">dc:publisher</span>&gt;</span>Publisher Name<span class="hljs-tag">&lt;/<span class="hljs-name">dc:publisher</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">property</span>=<span class="hljs-string">"a11y:certifiedBy"</span>&gt;</span>Publisher Name<span class="hljs-tag">&lt;/<span class="hljs-name">meta</span>&gt;</span></code></pre>
+						</aside>
+					</section>
+					<section id="ui-6.2">
+						<h5 id="x2-6-2-2-ui"><bdi class="secno">2.6.2.2 </bdi>UI<a class="self-link" aria-label="§" href="#ui-6.2"></a></h5>
+						<p><q>Self Certified By: Publisher Name</q></p>
+					</section>
+				</section>
+				<section id="example-6.3">
+					<h4 id="x2-6-3-example-6-3-metadata-missing"><bdi class="secno">2.6.3 </bdi>Example 6.3 (metadata missing)<a class="self-link" aria-label="§" href="#example-6.3"></a></h4>
+					<section id="metadata-6.3">
+						<h5 id="x2-6-3-1-metadata"><bdi class="secno">2.6.3.1 </bdi>Metadata<a class="self-link" aria-label="§" href="#metadata-6.3"></a></h5>
+						<p></p>
+					</section>
+					<section id="ui-6.3">
+						<h5 id="x2-6-3-2-ui"><bdi class="secno">2.6.3.2 </bdi>UI<a class="self-link" aria-label="§" href="#ui-6.3"></a></h5>
+						<p><q>Certified By: None provided</q></p>
+					</section>
+				</section>
+			</section>
+			<section id="certifier-credential">
+				<h3 id="x2-7-certifier-credential"><bdi class="secno">2.7 </bdi>Certifier Credential<a class="self-link" aria-label="§" href="#certifier-credential"></a></h3>
+				<p><b>Value</b>: Potentially linked textual data from metadata</p>
+				<p>This technique relates to <a href="https://www.w3.org/publishing/a11y/UX-Guide-metadata/principles/index.html#certifier-credential">Certifier Credential principle</a>.</p>
+				
+				<p>This data is pulled directly from the EPUB package metadata inside the Package Document:</p>
+				<aside class="example" id="cb16"><div class="marker">
+    <a class="self-link" href="#cb16">Example<bdi> 19</bdi></a>
+  </div>
+					<pre><code aria-busy="false" class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">property</span>=<span class="hljs-string">"a11y:certifierCredential"</span>&gt;</span></code></pre>
+				</aside>
+				<div class="note" role="note" id="issue-container-generatedID-15"><div role="heading" class="note-title marker" id="h-note-15" aria-level="4"><span>Note</span></div><p class="">This metadata could be a simple text string in which case you would just display it, or
+					it could be a URI to the certifier’s credential web page.</p></div>
+				<p>If the metadata value is a URI, you could have some standard certification logo which would be
+					clickable and link to the certifier’s credential webpage.</p>
+				<p>If you do not wish to have clickable links here, you may omit them as long as you make the links
+					available in the section <a href="#all-accessibility-metadata">All Accessibility Metadata</a>,
+					described below.</p>
+				<p>If you are aware of a list of organizations who offer third-party certification, a short list of
+					certifier’s logos could be cached and displayed when appropriate. For example:</p>
+				<section id="example-7.1">
+					<h4 id="x2-7-1-example-7-1-text"><bdi class="secno">2.7.1 </bdi>Example 7.1 (Text)<a class="self-link" aria-label="§" href="#example-7.1"></a></h4>
+					<section id="metadata-7.1">
+						<h5 id="x2-7-1-1-metadata"><bdi class="secno">2.7.1.1 </bdi>Metadata<a class="self-link" aria-label="§" href="#metadata-7.1"></a></h5>
+						<aside class="example" id="code-example-7.1"><div class="marker">
+    <a class="self-link" href="#code-example-7.1">Example<bdi> 20</bdi></a>
+  </div>
+							<pre><code aria-busy="false" class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">property</span>=<span class="hljs-string">"a11y:certifierCredential"</span>&gt;</span>XYZ Certified
+Accessible<span class="hljs-tag">&lt;/<span class="hljs-name">meta</span>&gt;</span></code></pre>
+						</aside>
+					</section>
+					<section id="ui-7.1">
+						<h5 id="x2-7-1-2-ui"><bdi class="secno">2.7.1.2 </bdi>UI<a class="self-link" aria-label="§" href="#ui-7.1"></a></h5>
+						<p><q>Certifier Credential: XYZ Certified Accessible</q></p>
+					</section>
+				</section>
+				<section id="example-7.2">
+					<h4 id="x2-7-2-example-7-2-generic-3rd-party-url"><bdi class="secno">2.7.2 </bdi>Example 7.2 (Generic 3rd party URL)<a class="self-link" aria-label="§" href="#example-7.2"></a></h4>
+					<section id="metadata-7.2">
+						<h5 id="x2-7-2-1-metadata"><bdi class="secno">2.7.2.1 </bdi>Metadata<a class="self-link" aria-label="§" href="#metadata-7.2"></a></h5>
+						<aside class="example" id="code-example-7.2"><div class="marker">
+    <a class="self-link" href="#code-example-7.2">Example<bdi> 21</bdi></a>
+  </div>
+							<pre><code aria-busy="false" class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">property</span>=<span class="hljs-string">"a11y:certifiedBy"</span>&gt;</span>ACME Inc.<span class="hljs-tag">&lt;/<span class="hljs-name">meta</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">property</span>=<span class="hljs-string">"a11y:certifierCredential"</span>&gt;</span>https://3rd-party-certifier-credential.com<span class="hljs-tag">&lt;/<span class="hljs-name">meta</span>&gt;</span></code></pre>
+						</aside>
+					</section>
+					<section id="ui-7.2">
+						<h5 id="x2-7-2-2-ui"><bdi class="secno">2.7.2.2 </bdi>UI<a class="self-link" aria-label="§" href="#ui-7.2"></a></h5>
+						<p>Certifier Credential</p>
+						<aside class="example" id="example-22"><div class="marker">
+    <a class="self-link" href="#example-22">Example<bdi> 22</bdi></a>
+  </div>
+							<p><a href="https://3rd-party-certifier-credential.com"><img src="https://www.w3.org/publishing/a11y/UX-Guide-metadata/techniques/media/image1.png" alt="ACME Inc. credential webpage" width="50"></a></p>
+							<p><i>(Clickable Image to the URI of the certifiers credential’s webpage from
+									metadata)</i></p>
+							<p><i>alt-text <q>ACME Inc.&nbsp;credential webpage</q></i></p>
+							<p><i>(Image here of a checkmark inside a shield is just for reference feel free to choose
+									your own image)</i></p>
+						</aside>
+						<div class="note" role="note" id="issue-container-generatedID-16"><div role="heading" class="note-title marker" id="h-note-16" aria-level="6"><span>Note</span></div><p class="">There may be an image that is associated with specific Certifier Credential
+							image (ie. Mark/Stamp/Seal) which could be used here. If you would like to display this
+							image, or any other, you would need to be coordinate this out of band with the certifier
+							agency as it is not part of the metadata delivered with the book.</p></div>
+						<p><b>Or</b></p>
+						<aside class="example" id="example-23"><div class="marker">
+    <a class="self-link" href="#example-23">Example<bdi> 23</bdi></a>
+  </div>
+							<p>Certifier’s Credential: <a href="https://3rd-party-certifier-credential.com">ACME
+									Inc.&nbsp;credential webpage</a></p>
+							<p><i>(Clickable link to the URI to the certifiers credentials from metadata)</i></p>
+						</aside>
+					</section>
+				</section>
+				<section id="example-7.3">
+					<h4 id="x2-7-3-example-7-3-metadata-missing"><bdi class="secno">2.7.3 </bdi>Example 7.3 (metadata missing)<a class="self-link" aria-label="§" href="#example-7.3"></a></h4>
+					<section id="metadata-7.3">
+						<h5 id="x2-7-3-1-metadata"><bdi class="secno">2.7.3.1 </bdi>Metadata<a class="self-link" aria-label="§" href="#metadata-7.3"></a></h5>
+						<p><i>{No Data}</i></p>
+					</section>
+					<section id="ui-7.3">
+						<h5 id="x2-7-3-2-ui"><bdi class="secno">2.7.3.2 </bdi>UI<a class="self-link" aria-label="§" href="#ui-7.3"></a></h5>
+						<p><q>Certifier Credential: None provided</q></p>
+					</section>
+				</section>
+			</section>
+			<section id="certifier-report">
+				<h3 id="x2-8-certifier-report"><bdi class="secno">2.8 </bdi>Certifier Report<a class="self-link" aria-label="§" href="#certifier-report"></a></h3>
+				<p><b>Value</b>: Potentially linked textual data from metadata</p>
+				<p>This technique relates to <a href="https://www.w3.org/publishing/a11y/UX-Guide-metadata/principles/index.html#certifier-report">Certifier Report principle</a>.</p>
+
+				
+				<p>This data is pulled directly from the EPUB package metadata inside the Package Document:</p>
+				<aside class="example" id="cb19"><div class="marker">
+    <a class="self-link" href="#cb19">Example<bdi> 24</bdi></a>
+  </div>
+					<pre><code aria-busy="false" class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"a11y:certifierReport"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"http://www.example.com/a11y/report/9780000000001"</span>/&gt;</span></code></pre>
+				</aside>
+				<p>Ideally you would have a clickable link to the certification accessibility report.</p>
+				<p>If you do not wish to have clickable links here, you may omit them as long as you make the links
+					available in the section <a href="#all-accessibility-metadata">All Accessibility Metadata</a>,
+					described below.</p>
+				<section id="example-8.1">
+					<h4 id="x2-8-1-example-8-1-url"><bdi class="secno">2.8.1 </bdi>Example 8.1 (URL)<a class="self-link" aria-label="§" href="#example-8.1"></a></h4>
+					<section id="metadata-8.1">
+						<h5 id="x2-8-1-1-metadata"><bdi class="secno">2.8.1.1 </bdi>Metadata<a class="self-link" aria-label="§" href="#metadata-8.1"></a></h5>
+						<aside class="example" id="code-example-8.1"><div class="marker">
+    <a class="self-link" href="#code-example-8.1">Example<bdi> 25</bdi></a>
+  </div>
+							<pre><code aria-busy="false" class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">property</span>=<span class="hljs-string">"a11y:certifiedBy"</span>&gt;</span>ACME Inc.<span class="hljs-tag">&lt;/<span class="hljs-name">meta</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"a11y:certifierReport"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"http://www.example.com/a11y/report/9780000000001"</span>/&gt;</span></code></pre>
+						</aside>
+					</section>
+					<section id="ui-8.1">
+						<h5 id="x2-8-1-2-ui"><bdi class="secno">2.8.1.2 </bdi>UI<a class="self-link" aria-label="§" href="#ui-8.1"></a></h5>
+						<p>Certifier Report</p>
+						<p><a href="http://www.example.com/a11y/report/9780000000001"><img src="https://www.w3.org/publishing/a11y/UX-Guide-metadata/techniques/media/image2.svg" alt="ACME Inc. Report webpage" width="50"></a></p>
+						<aside class="example" id="example-26"><div class="marker">
+    <a class="self-link" href="#example-26">Example<bdi> 26</bdi></a>
+  </div>
+							<p><i>(Clickable Image to the URI of the report from metadata)</i></p>
+							<p><i>alt-text <q>ACME Inc.&nbsp;Report webpage</q></i></p>
+							<p><i>(Image here of checkmark with clipboard is just for reference feel free to choose
+									your own image)</i></p>
+						</aside>
+						<p><b>Or</b></p>
+						<aside class="example" id="example-27"><div class="marker">
+    <a class="self-link" href="#example-27">Example<bdi> 27</bdi></a>
+  </div>
+							<p>Certifier Report: <a href="http://www.example.com/a11y/report/9780000000001">ACME
+									Inc.&nbsp;Accessibility Report</a></p>
+							<p><i>(Clickable link to the URI of the report from metadata)</i></p>
+						</aside>
+					</section>
+				</section>
+				<section id="example-8.2">
+					<h4 id="x2-8-2-example-8-2-metadata-missing"><bdi class="secno">2.8.2 </bdi>Example 8.2 (metadata missing)<a class="self-link" aria-label="§" href="#example-8.2"></a></h4>
+					<section id="metadata-8.2">
+						<h5 id="x2-8-2-1-metadata"><bdi class="secno">2.8.2.1 </bdi>Metadata<a class="self-link" aria-label="§" href="#metadata-8.2"></a></h5>
+						<p><i>{No Data}</i></p>
+					</section>
+					<section id="ui-8.2">
+						<h5 id="x2-8-2-2-ui"><bdi class="secno">2.8.2.2 </bdi>UI<a class="self-link" aria-label="§" href="#ui-8.2"></a></h5>
+						<p>Omit this section</p>
+						<p>(Omit this section if the metadata is missing, as most of the time there will be no report
+							available.)</p>
+					</section>
+				</section>
+			</section>
+			<section id="hazards">
+				<h3 id="x2-9-hazards"><bdi class="secno">2.9 </bdi>Hazards<a class="self-link" aria-label="§" href="#hazards"></a></h3>
+				<p><b>Values</b>: flashing, motion simulation, sound, no flashing, no motion simulation, no sound, none, or unknown.</p>
+				<p>This technique relates to <a href="https://www.w3.org/publishing/a11y/UX-Guide-metadata/principles/index.html#hazards">Hazards principle</a>.</p>
+				
+				<p>This data is found in the EPUB package metadata inside the Package Document:</p>
+				<aside class="example" id="cb21"><div class="marker">
+    <a class="self-link" href="#cb21">Example<bdi> 28</bdi></a>
+  </div>
+					<pre><code aria-busy="false" class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">property</span>=<span class="hljs-string">"schema:accessibilityHazard"</span>&gt;</span>none<span class="hljs-tag">&lt;/<span class="hljs-name">meta</span>&gt;</span></code></pre>
+				</aside>
+				<p>Hazards are the only metadata which can be expressed as either positive or negative statements, so
+					metadata authors can confirm either the presence of the hazard, such as <q><i>flashing</i></q>, or
+					the absence of the hazard, <q><i>noFlashingHazard</i></q> and similarly for <q><i>sound</i> /
+							<i>noSoundHazard</i></q> and <q><i>motion</i> / <i>noMotionSimulationHazard</i></q>.
+					There is also the metadata value <q><i>none</i></q>, which covers all three categories and
+					corresponds to <q><i>noFlashingHazard</i></q>, <q><i>noSoundHazard</i></q> and
+							<q><i>noMotionSimulationHazard</i></q>.</p>
+				<div class="note" role="note" id="issue-container-generatedID-17"><div role="heading" class="note-title marker" id="h-note-17" aria-level="4"><span>Note</span></div><p class="">In the section <q><a href="#all-accessibility-metadata">All Accessibility
+						Metadata</a></q> Hazards will be displayed exactly how the publisher provided them so
+					simplifying here with using <q>none</q> can be an option instead of saying explicitly <q>no Sound,
+						no Flashing, no Motion Simulation</q></p></div>
+				<section id="example-9.1">
+					<h4 id="x2-9-1-example-9-1-metadata-present-flashing"><bdi class="secno">2.9.1 </bdi>Example 9.1 (metadata present flashing)<a class="self-link" aria-label="§" href="#example-9.1"></a></h4>
+					<section id="metadata-9.1">
+						<h5 id="x2-9-1-1-metadata"><bdi class="secno">2.9.1.1 </bdi>Metadata<a class="self-link" aria-label="§" href="#metadata-9.1"></a></h5>
+						<aside class="example" id="code-example-9.1"><div class="marker">
+    <a class="self-link" href="#code-example-9.1">Example<bdi> 29</bdi></a>
+  </div>
+							<pre><code aria-busy="false" class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">property</span>=<span class="hljs-string">"schema:accessibilityHazard"</span>&gt;</span>flashing<span class="hljs-tag">&lt;/<span class="hljs-name">meta</span>&gt;</span></code></pre>
+						</aside>
+					</section>
+					<section id="ui-9.1">
+						<h5 id="x2-9-1-2-ui"><bdi class="secno">2.9.1.2 </bdi>UI<a class="self-link" aria-label="§" href="#ui-9.1"></a></h5>
+						<p><q>Hazard: Flashing</q></p>
+						<p>(because <q><b><i>flashing</i></b></q> was found in
+								<code>accessibilityHazard</code>)</p>
+					</section>
+				</section>
+				<section id="example-9.2">
+					<h4 id="x2-9-2-example-9-2-metadata-present-motionsimulation"><bdi class="secno">2.9.2 </bdi>Example 9.2 (metadata present motionSimulation)<a class="self-link" aria-label="§" href="#example-9.2"></a></h4>
+					<section id="metadata-9.2">
+						<h5 id="x2-9-2-1-metadata"><bdi class="secno">2.9.2.1 </bdi>Metadata<a class="self-link" aria-label="§" href="#metadata-9.2"></a></h5>
+						<aside class="example" id="code-example-9.2"><div class="marker">
+    <a class="self-link" href="#code-example-9.2">Example<bdi> 30</bdi></a>
+  </div>
+							<pre><code aria-busy="false" class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">property</span>=<span class="hljs-string">"schema:accessibilityHazard"</span>&gt;</span>motionSimulation<span class="hljs-tag">&lt;/<span class="hljs-name">meta</span>&gt;</span></code></pre>
+						</aside>
+					</section>
+					<section id="ui-9.2">
+						<h5 id="x2-9-2-2-ui"><bdi class="secno">2.9.2.2 </bdi>UI<a class="self-link" aria-label="§" href="#ui-9.2"></a></h5>
+						<p><q>Hazard: Motion Simulation</q></p>
+						<p>(because <q><b><i>motionSimulation</i></b></q> was found in
+								<code>accessibilityHazard</code>)</p>
+					</section>
+				</section>
+				<section id="example-9.3">
+					<h4 id="x2-9-3-example-9-3-metadata-present-sound"><bdi class="secno">2.9.3 </bdi>Example 9.3 (metadata present sound)<a class="self-link" aria-label="§" href="#example-9.3"></a></h4>
+					<section id="metadata-9.3">
+						<h5 id="x2-9-3-1-metadata"><bdi class="secno">2.9.3.1 </bdi>Metadata<a class="self-link" aria-label="§" href="#metadata-9.3"></a></h5>
+						<aside class="example" id="code-example-9.3"><div class="marker">
+    <a class="self-link" href="#code-example-9.3">Example<bdi> 31</bdi></a>
+  </div>
+							<pre><code aria-busy="false" class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">property</span>=<span class="hljs-string">"schema:accessibilityHazard"</span>&gt;</span>sound<span class="hljs-tag">&lt;/<span class="hljs-name">meta</span>&gt;</span></code></pre>
+						</aside>
+					</section>
+					<section id="ui-9.3">
+						<h5 id="x2-9-3-2-ui"><bdi class="secno">2.9.3.2 </bdi>UI<a class="self-link" aria-label="§" href="#ui-9.3"></a></h5>
+						<p><q>Hazard: Sound</q></p>
+						<p>(because <q><b><i>sound</i></b></q> was found in
+							<code>accessibilityHazard</code>)</p>
+					</section>
+				</section>
+				<section id="example-9.4">
+					<h4 id="x2-9-4-example-9-4-multiple-hazards-present"><bdi class="secno">2.9.4 </bdi>Example 9.4 (multiple hazards present)<a class="self-link" aria-label="§" href="#example-9.4"></a></h4>
+					<section id="metadata-9.4">
+						<h5 id="x2-9-4-1-metadata"><bdi class="secno">2.9.4.1 </bdi>Metadata<a class="self-link" aria-label="§" href="#metadata-9.4"></a></h5>
+						<aside class="example" id="code-example-9.4"><div class="marker">
+    <a class="self-link" href="#code-example-9.4">Example<bdi> 32</bdi></a>
+  </div>
+							<pre><code aria-busy="false" class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">property</span>=<span class="hljs-string">"schema:accessibilityHazard"</span>&gt;</span>sound<span class="hljs-tag">&lt;/<span class="hljs-name">meta</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">property</span>=<span class="hljs-string">"schema:accessibilityHazard"</span>&gt;</span>motionSimulation<span class="hljs-tag">&lt;/<span class="hljs-name">meta</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">property</span>=<span class="hljs-string">"schema:accessibilityHazard"</span>&gt;</span>flashing<span class="hljs-tag">&lt;/<span class="hljs-name">meta</span>&gt;</span></code></pre>
+						</aside>
+					</section>
+					<section id="ui-9.4">
+						<h5 id="x2-9-4-2-ui"><bdi class="secno">2.9.4.2 </bdi>UI<a class="self-link" aria-label="§" href="#ui-9.4"></a></h5>
+						<p><q>Hazard: Sound, Motion Simulation, and Flashing</q></p>
+						<p>(because <q><b><i>sound</i></b></q>,
+									<q><b><i>motionSimulation</i></b></q>, and
+									<q><b><i>flashing</i></b></q> were all found in
+								<code>accessibilityHazard</code>)</p>
+					</section>
+				</section>
+				<section id="example-9.5">
+					<h4 id="x2-9-5-example-9-5-metadata-present-none"><bdi class="secno">2.9.5 </bdi>Example 9.5 (metadata present none)<a class="self-link" aria-label="§" href="#example-9.5"></a></h4>
+					<section id="metadata-9.5">
+						<h5 id="x2-9-5-1-metadata"><bdi class="secno">2.9.5.1 </bdi>Metadata<a class="self-link" aria-label="§" href="#metadata-9.5"></a></h5>
+						<aside class="example" id="code-example-9.5"><div class="marker">
+    <a class="self-link" href="#code-example-9.5">Example<bdi> 33</bdi></a>
+  </div>
+							<pre><code aria-busy="false" class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">property</span>=<span class="hljs-string">"schema:accessibilityHazard"</span>&gt;</span>none<span class="hljs-tag">&lt;/<span class="hljs-name">meta</span>&gt;</span></code></pre>
+						</aside>
+					</section>
+					<section id="ui-9.5">
+						<h5 id="x2-9-5-2-ui"><bdi class="secno">2.9.5.2 </bdi>UI<a class="self-link" aria-label="§" href="#ui-9.5"></a></h5>
+						<p><q>Hazards: none</q></p>
+						<p>(because <q><b><i>none</i></b></q> was found in
+								<code>accessibilityHazard</code>)</p>
+					</section>
+				</section>
+				<section id="example-9.6">
+					<h4 id="x2-9-6-example-9-6-metadata-present-noflashinghazard-nosoundhazard-and-nomotionsimulationhazard"><bdi class="secno">2.9.6 </bdi>Example 9.6 (metadata present: noFlashingHazard, noSoundHazard, and
+							noMotionSimulationHazard)<a class="self-link" aria-label="§" href="#example-9.6"></a></h4>
+					<section id="metadata-9.6">
+						<h5 id="x2-9-6-1-metadata"><bdi class="secno">2.9.6.1 </bdi>Metadata<a class="self-link" aria-label="§" href="#metadata-9.6"></a></h5>
+						<aside class="example" id="code-example-9.6"><div class="marker">
+    <a class="self-link" href="#code-example-9.6">Example<bdi> 34</bdi></a>
+  </div>
+							<pre><code aria-busy="false" class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">property</span>=<span class="hljs-string">"schema:accessibilityHazard"</span>&gt;</span>noFlashingHazard<span class="hljs-tag">&lt;/<span class="hljs-name">meta</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">property</span>=<span class="hljs-string">"schema:accessibilityHazard"</span>&gt;</span>noSoundHazard<span class="hljs-tag">&lt;/<span class="hljs-name">meta</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">property</span>=<span class="hljs-string">"schema:accessibilityHazard"</span>&gt;</span>noMotionSimulationHazard<span class="hljs-tag">&lt;/<span class="hljs-name">meta</span>&gt;</span></code></pre>
+						</aside>
+					</section>
+					<section id="ui-9.6">
+						<h5 id="x2-9-6-2-ui"><bdi class="secno">2.9.6.2 </bdi>UI<a class="self-link" aria-label="§" href="#ui-9.6"></a></h5>
+						<p><q>Hazards: No Flashing, No Sound, No Motion Simulation</q></p>
+						<p><b>Or</b></p>
+						<p><q>Hazards: none</q></p>
+ 						<p>(because <q><b><i>none</i></b></q> is equivalent to all three <q><b><i>noSoundHazard</i></b></q>,
+									<q><b><i>noMotionSimulationHazard</i></b></q>, and
+									<q><b><i>noFlashingHazard</i></b></q> combined.) 
+				</p>
+                       
+					</section>
+				</section>
+				<section id="example-9.7">
+					<h4 id="x2-9-7-example-9-7-metadata-not-present-or-metadata-present-unknown"><bdi class="secno">2.9.7 </bdi>Example 9.7 (metadata not present) or (metadata present unknown)<a class="self-link" aria-label="§" href="#example-9.7"></a></h4>
+					<section id="metadata-9.7">
+						<h5 id="x2-9-7-1-metadata"><bdi class="secno">2.9.7.1 </bdi>Metadata<a class="self-link" aria-label="§" href="#metadata-9.7"></a></h5>
+						<p><i>{No Data}</i></p>
+                        <p>or</p>
+				        <aside class="example" id="code-example-9.7"><div class="marker">
+    <a class="self-link" href="#code-example-9.7">Example<bdi> 35</bdi></a>
+  </div>
+							<pre><code aria-busy="false" class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">property</span>=<span class="hljs-string">"schema:accessibilityHazard"</span>&gt;</span>unknown<span class="hljs-tag">&lt;/<span class="hljs-name">meta</span>&gt;</span></code></pre>
+						</aside>
+                        
+					</section>
+					<section id="ui-9.7">
+						<h5 id="x2-9-7-2-ui"><bdi class="secno">2.9.7.2 </bdi>UI<a class="self-link" aria-label="§" href="#ui-9.7"></a></h5>
+						<p><q>Hazards: unknown</q></p>
+						<p>We want to make the distinction here between No Hazards and missing or <code>unknown</code> hazard metadata therefore
+							for the missing metadata case we need to inform the user we don’t know about any hazards
+							which may or maynot be present.</p>
+					</section>
+				</section>
+			</section>
+			<section id="all-accessibility-metadata">
+				<h3 id="x2-10-all-accessibility-metadata"><bdi class="secno">2.10 </bdi>All Accessibility Metadata<a class="self-link" aria-label="§" href="#all-accessibility-metadata"></a></h3>
+				<p><b>Value</b>: Link to complete list of all metadata fields</p>
+				<p>This technique relates to <a href="https://www.w3.org/publishing/a11y/UX-Guide-metadata/principles/index.html#all-accessibility-metadata">All Accessibility Metadata principle</a>.</p>
+				
+				<p>Here are <a href="https://www.w3.org/wiki/WebSchemas/Accessibility">all the possible accessibility
+						metadata properties</a>.</p>
+				<p>This section can either be a separate page that is linked to or better yet an HTML Summary/Details
+					element that users can expand to get all the accessibility metadata field elements. Here you would
+					expose: <code>accessibilityFeature</code>, <code>accessibilityHazard</code>, <code>accessMode</code>,
+						<code>accessModeSufficient</code>, as well as all the accessibility metadata and conformance
+					metadata listed above.</p>
+				<section id="example-10.1">
+					<h4 id="x2-10-1-example-10-1-all-metadata-fields-present"><bdi class="secno">2.10.1 </bdi>Example 10.1 (all metadata fields present)<a class="self-link" aria-label="§" href="#example-10.1"></a></h4>
+					<section id="metadata-10.1">
+						<h5 id="x2-10-1-1-metadata"><bdi class="secno">2.10.1.1 </bdi>Metadata<a class="self-link" aria-label="§" href="#metadata-10.1"></a></h5>
+						<aside class="example" id="code-metadata-10.1"><div class="marker">
+    <a class="self-link" href="#code-metadata-10.1">Example<bdi> 36</bdi></a>
+  </div>
+							<pre><code aria-busy="false" class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">property</span>=<span class="hljs-string">"schema:accessibilityFeature"</span>&gt;</span>alternativeText<span class="hljs-tag">&lt;/<span class="hljs-name">meta</span>&gt;</span>
+	<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">property</span>=<span class="hljs-string">"schema:accessibilityFeature"</span>&gt;</span>longDescription<span class="hljs-tag">&lt;/<span class="hljs-name">meta</span>&gt;</span>
+	<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">property</span>=<span class="hljs-string">"schema:accessibilityFeature"</span>&gt;</span>printPageNumbers<span class="hljs-tag">&lt;/<span class="hljs-name">meta</span>&gt;</span>
+	<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">property</span>=<span class="hljs-string">"schema:accessibilityHazards"</span>&gt;</span>noSoundHazard<span class="hljs-tag">&lt;/<span class="hljs-name">meta</span>&gt;</span>
+	<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">property</span>=<span class="hljs-string">"schema:accessibilityHazards"</span>&gt;</span>noMotionSimulationHazard<span class="hljs-tag">&lt;/<span class="hljs-name">meta</span>&gt;</span>
+	<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">property</span>=<span class="hljs-string">"schema:accessibilityHazards"</span>&gt;</span>noFlashingHazard<span class="hljs-tag">&lt;/<span class="hljs-name">meta</span>&gt;</span>
+	<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">property</span>=<span class="hljs-string">"schema:accessMode"</span>&gt;</span>visual<span class="hljs-tag">&lt;/<span class="hljs-name">meta</span>&gt;</span>
+	<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">property</span>=<span class="hljs-string">"schema:accessMode"</span>&gt;</span>textual<span class="hljs-tag">&lt;/<span class="hljs-name">meta</span>&gt;</span>
+	<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">property</span>=<span class="hljs-string">"schema:accessModeSufficient"</span>&gt;</span>visual<span class="hljs-tag">&lt;/<span class="hljs-name">meta</span>&gt;</span>
+	<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">property</span>=<span class="hljs-string">"schema:accessModeSufficient"</span>&gt;</span>textual<span class="hljs-tag">&lt;/<span class="hljs-name">meta</span>&gt;</span>
+	<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">property</span>=<span class="hljs-string">"schema:accessModeSufficient"</span>&gt;</span>visual,textual<span class="hljs-tag">&lt;/<span class="hljs-name">meta</span>&gt;</span>
+	<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">property</span>=<span class="hljs-string">"a11y:certifiedBy"</span>&gt;</span>ACME Certification<span class="hljs-tag">&lt;/<span class="hljs-name">meta</span>&gt;</span>
+	<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">property</span>=<span class="hljs-string">"a11y:certifierCredential"</span>&gt;</span>https://ACME-Certification.org/<span class="hljs-tag">&lt;/<span class="hljs-name">meta</span>&gt;</span>
+	<span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"dcterms:conformsTo"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-a/"</span> /&gt;</span>
+	<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">property</span>=<span class="hljs-string">"schema:accessibilitySummary"</span>&gt;</span>
+		This publication includes mark-up to enable accessibility and compatibility with assistive technology. Images, audio, and video in the publication are well-described in conformance with WCAG 2.0 A.
+	<span class="hljs-tag">&lt;/<span class="hljs-name">meta</span>&gt;</span></code></pre>
+						</aside>
+					</section>
+					<section id="ui-10.1">
+						<h5 id="x2-10-1-2-ui"><bdi class="secno">2.10.1.2 </bdi>UI<a class="self-link" aria-label="§" href="#ui-10.1"></a></h5>
+						<p><b>Accessibility Features</b>:</p>
+						<ul>
+							<li><p>Alternative Text</p></li>
+							<li><p>Long Descriptions</p></li>
+							<li><p>Print Page Numbers</p></li>
+						</ul>
+						<p><b>Accessibility Hazards</b>:</p>
+						<ul>
+							<li><p>No Sound Hazard</p></li>
+							<li><p>No Motion Simulation Hazard</p></li>
+							<li><p>No Flashing Hazard</p></li>
+						</ul>
+						<p><b>AccessMode</b>:</p>
+						<ul>
+							<li><p>Visual</p></li>
+							<li><p>Textual</p></li>
+						</ul>
+						<p><b>Access Mode Sufficient</b>:</p>
+						<ul>
+							<li><p>Visual</p></li>
+							<li><p>Textual</p></li>
+							<li><p>Both Visual and Textual</p></li>
+						</ul>
+						<p><b>Certified By</b>:</p>
+						<p>ACME Certification</p>
+						<p><b>Certifier’s Credential</b>:</p>
+						<p><a href="https://acme-certification.org/">https://ACME-Certification.org/</a></p>
+						<p><b>Conforms To</b>:</p>
+						<p><a href="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-a">http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-a</a></p>
+						<p><b>Accessibility Summary</b>:</p>
+						<p>This publication includes markup to enable accessibility and compatibility with assistive
+							technology. Images, audio, and video in the publication are well-described in conformance with
+							WCAG 2.0 A.</p>
+					</section>
+				</section>
+				<section id="example-10.2">
+					<h4 id="x2-10-2-example-10-2-all-metadata-fields-missing"><bdi class="secno">2.10.2 </bdi>Example 10.2 (all metadata fields missing)<a class="self-link" aria-label="§" href="#example-10.2"></a></h4>
+					<section id="metadata-10.2">
+						<h5 id="x2-10-2-1-metadata"><bdi class="secno">2.10.2.1 </bdi>Metadata<a class="self-link" aria-label="§" href="#metadata-10.2"></a></h5>
+						   <p><i>{No Data}</i></p>
+					</section>
+					<section id="ui-10.2">
+						<h5 id="x2-10-2-2-ui"><bdi class="secno">2.10.2.2 </bdi>UI<a class="self-link" aria-label="§" href="#ui-10.2"></a></h5>
+						<p><b>Accessibility Features</b>:</p>
+						<p>None provided</p>
+						<p><b>Accessibility Hazards</b>:</p>
+						<p>None provided</p>
+						<p><b>AccessMode</b>:</p>
+						<p>None provided</p>
+						<p><b>Access Mode Sufficient</b>:</p>
+						<p>None provided</p>
+						<p><b>Certified By</b>:</p>
+						<p>None provided</p>
+						<p><b>Certifier’s Credential</b>:</p>
+						<p>None provided</p>
+						<p><b>Conforms To</b>:</p>
+						<p>None provided</p>
+						<p><b>Accessibility Summary</b>:</p>
+						<p>None provided</p>
+					</section>
+				</section>
+			</section>
+		</section>     
+		<section id="app-acknowledgements" class="appendix informative">
+			<h2 id="acknowledgements"><bdi class="secno">A. </bdi>Acknowledgements<a class="self-link" aria-label="§" href="#acknowledgements"></a></h2><p><em>This section is non-normative.</em></p>
+			<section id="contributors">
+				<h3 id="a-1-contributors"><bdi class="secno">A.1 </bdi>Contributors<a class="self-link" aria-label="§" href="#contributors"></a></h3>
+				<ul>
+					<li>Avneesh Singh</li>
+                    <li>Charles LaPierre</li>
+					<li>Dave Cramer</li>
+                    <li>George Kerscher</li>
+                    <li>Gregorio Pellegrino</li>
+					<li>Jason White</li>
+					<li>Madeleine Rothberg</li>
+                    <li>Matt Garrish</li>
+					<li>Rachel Comerford</li>
+					<li>Rick Johnson</li>
+				</ul>
+			</section>
+			<section id="reviewers">
+				<h3 id="a-2-reviewers"><bdi class="secno">A.2 </bdi>Reviewers<a class="self-link" aria-label="§" href="#reviewers"></a></h3>
+				<ul>
+					<li>Erin Kirchner-Lucas</li>
+					<li>Luc Audrain</li>
+				</ul>
+			</section>
+			<section id="ipr">
+				<h3 id="a-3-intellectual-property-rights"><bdi class="secno">A.3 </bdi>Intellectual Property Rights<a class="self-link" aria-label="§" href="#ipr"></a></h3>
+				<ul>
+					<li>The report icon used in <a href="#example-7.1">Example 7.1 (URL) UI</a> is <a href="https://thenounproject.com/search/?q=report&amp;i=231003">report by Bastian König</a> from the <a href="https://thenounproject.com/">Noun Project</a></li>
+				</ul>
+			</section>
+		</section>
+	
+<p role="navigation" id="back-to-top">
+    <a href="#title"><abbr title="Back to Top">↑</abbr></a>
+  </p><script id="respec-dfn-panel">(() => {
+// @ts-check
+if (document.respec) {
+  document.respec.ready.then(setupPanel);
+} else {
+  setupPanel();
+}
+
+function setupPanel() {
+  const listener = panelListener();
+  document.body.addEventListener("keydown", listener);
+  document.body.addEventListener("click", listener);
+}
+
+function panelListener() {
+  /** @type {HTMLElement} */
+  let panel = null;
+  return event => {
+    const { target, type } = event;
+
+    if (!(target instanceof HTMLElement)) return;
+
+    // For keys, we only care about Enter key to activate the panel
+    // otherwise it's activated via a click.
+    if (type === "keydown" && event.key !== "Enter") return;
+
+    const action = deriveAction(event);
+
+    switch (action) {
+      case "show": {
+        hidePanel(panel);
+        /** @type {HTMLElement} */
+        const dfn = target.closest("dfn, .index-term");
+        panel = document.getElementById(`dfn-panel-for-${dfn.id}`);
+        const coords = deriveCoordinates(event);
+        displayPanel(dfn, panel, coords);
+        break;
+      }
+      case "dock": {
+        panel.style.left = null;
+        panel.style.top = null;
+        panel.classList.add("docked");
+        break;
+      }
+      case "hide": {
+        hidePanel(panel);
+        panel = null;
+        break;
+      }
+    }
+  };
+}
+
+/**
+ * @param {MouseEvent|KeyboardEvent} event
+ */
+function deriveCoordinates(event) {
+  const target = /** @type HTMLElement */ (event.target);
+
+  // We prevent synthetic AT clicks from putting
+  // the dialog in a weird place. The AT events sometimes
+  // lack coordinates, so they have clientX/Y = 0
+  const rect = target.getBoundingClientRect();
+  if (
+    event instanceof MouseEvent &&
+    event.clientX >= rect.left &&
+    event.clientY >= rect.top
+  ) {
+    // The event probably happened inside the bounding rect...
+    return { x: event.clientX, y: event.clientY };
+  }
+
+  // Offset to the middle of the element
+  const x = rect.x + rect.width / 2;
+  // Placed at the bottom of the element
+  const y = rect.y + rect.height;
+  return { x, y };
+}
+
+/**
+ * @param {Event} event
+ */
+function deriveAction(event) {
+  const target = /** @type {HTMLElement} */ (event.target);
+  const hitALink = !!target.closest("a");
+  if (target.closest("dfn:not([data-cite]), .index-term")) {
+    return hitALink ? "none" : "show";
+  }
+  if (target.closest(".dfn-panel")) {
+    if (hitALink) {
+      return target.classList.contains("self-link") ? "hide" : "dock";
+    }
+    const panel = target.closest(".dfn-panel");
+    return panel.classList.contains("docked") ? "hide" : "none";
+  }
+  if (document.querySelector(".dfn-panel:not([hidden])")) {
+    return "hide";
+  }
+  return "none";
+}
+
+/**
+ * @param {HTMLElement} dfn
+ * @param {HTMLElement} panel
+ * @param {{ x: number, y: number }} clickPosition
+ */
+function displayPanel(dfn, panel, { x, y }) {
+  panel.hidden = false;
+  // distance (px) between edge of panel and the pointing triangle (caret)
+  const MARGIN = 20;
+
+  const dfnRects = dfn.getClientRects();
+  // Find the `top` offset when the `dfn` can be spread across multiple lines
+  let closestTop = 0;
+  let minDiff = Infinity;
+  for (const rect of dfnRects) {
+    const { top, bottom } = rect;
+    const diffFromClickY = Math.abs((top + bottom) / 2 - y);
+    if (diffFromClickY < minDiff) {
+      minDiff = diffFromClickY;
+      closestTop = top;
+    }
+  }
+
+  const top = window.scrollY + closestTop + dfnRects[0].height;
+  const left = x - MARGIN;
+  panel.style.left = `${left}px`;
+  panel.style.top = `${top}px`;
+
+  // Find if the panel is flowing out of the window
+  const panelRect = panel.getBoundingClientRect();
+  const SCREEN_WIDTH = Math.min(window.innerWidth, window.screen.width);
+  if (panelRect.right > SCREEN_WIDTH) {
+    const newLeft = Math.max(MARGIN, x + MARGIN - panelRect.width);
+    const newCaretOffset = left - newLeft;
+    panel.style.left = `${newLeft}px`;
+    /** @type {HTMLElement} */
+    const caret = panel.querySelector(".caret");
+    caret.style.left = `${newCaretOffset}px`;
+  }
+
+  // As it's a dialog, we trap focus.
+  // TODO: when <dialog> becomes a implemented, we should really
+  // use that.
+  trapFocus(panel, dfn);
+}
+
+/**
+ * @param {HTMLElement} panel
+ * @param {HTMLElement} dfn
+ * @returns
+ */
+function trapFocus(panel, dfn) {
+  /** @type NodeListOf<HTMLAnchorElement> elements */
+  const anchors = panel.querySelectorAll("a[href]");
+  // No need to trap focus
+  if (!anchors.length) return;
+
+  // Move focus to first anchor element
+  const first = anchors.item(0);
+  first.focus();
+
+  const trapListener = createTrapListener(anchors, panel, dfn);
+  panel.addEventListener("keydown", trapListener);
+
+  // Hiding the panel releases the trap
+  const mo = new MutationObserver(records => {
+    const [record] = records;
+    const target = /** @type HTMLElement */ (record.target);
+    if (target.hidden) {
+      panel.removeEventListener("keydown", trapListener);
+      mo.disconnect();
+    }
+  });
+  mo.observe(panel, { attributes: true, attributeFilter: ["hidden"] });
+}
+
+/**
+ *
+ * @param {NodeListOf<HTMLAnchorElement>} anchors
+ * @param {HTMLElement} panel
+ * @param {HTMLElement} dfn
+ * @returns
+ */
+function createTrapListener(anchors, panel, dfn) {
+  const lastIndex = anchors.length - 1;
+  let currentIndex = 0;
+  return event => {
+    switch (event.key) {
+      // Hitting "Tab" traps us in a nice loop around elements.
+      case "Tab": {
+        event.preventDefault();
+        currentIndex += event.shiftKey ? -1 : +1;
+        if (currentIndex < 0) {
+          currentIndex = lastIndex;
+        } else if (currentIndex > lastIndex) {
+          currentIndex = 0;
+        }
+        anchors.item(currentIndex).focus();
+        break;
+      }
+
+      // Hitting "Enter" on an anchor releases the trap.
+      case "Enter":
+        hidePanel(panel);
+        break;
+
+      // Hitting "Escape" returns focus to dfn.
+      case "Escape":
+        hidePanel(panel);
+        dfn.focus();
+        return;
+    }
+  };
+}
+
+/** @param {HTMLElement} panel */
+function hidePanel(panel) {
+  if (!panel) return;
+  panel.hidden = true;
+  panel.classList.remove("docked");
+}
+})()</script><script src="https://www.w3.org/scripts/TR/2016/fixup.js"></script></body></html>
