@@ -74,3 +74,8 @@ do
   
 done
 exit
+
+# copies the content to the temporary directory
+printf "\nFixing readme links..."
+sed 's#https://w3c.github.io/publ-a11y/UX-Guide-Metadata/draft/#https://www.w3.org/publishing/a11y/UX-Guide-metadata/#g' $BASEDIR/../techniques/README.md > $BASEDIR/../techniques/README-mod.md
+mv $BASEDIR/../techniques/README-mod.md $BASEDIR/../techniques/README.md
