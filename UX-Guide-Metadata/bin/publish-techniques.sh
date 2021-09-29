@@ -73,7 +73,6 @@ do
 	fi
   
 done
-exit
 
 # copies the content to the temporary directory
 printf "\nFixing readme links..."
