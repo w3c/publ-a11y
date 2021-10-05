@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
+	<head>
+		<meta charset="utf-8" />
+		<title>Zero-Tolerance Accessibility Conformance Approaches for Publishing</title>
+		<script src="https://www.w3.org/Tools/respec/respec-w3c" class="remove" defer="defer"></script>
+		<script class="remove">
+			var respecConfig = {
+				group: "publishingcg",
+				edDraftURI: "https://w3c.github.io/publ-a11y/editorial-drafts/zero-tolerance-conformance/",
+				specStatus: "CG-DRAFT",
+				noRecTrack: true,
+				// shortName: "",
+				// prevRecURI: "",
+				copyrightStart: "2021",
+				editors:[ {
+					name: "Matt Garrish",
+					company: "DAISY Consortium",
+					companyURL: "http://daisy.org",
+					w3cid: 51655
+				}, {
+					name: "George Kerscher",
+					company: "DAISY Consortium",
+					companyURL: "http://daisy.org",
+					w3cid: 1460
+				}, {
+					name: "Charles LaPierre",
+					company: "Benetech",
+					companyURL: "http://benetech.org",
+					w3cid: 72055
+				}, {
+					name: "Gregorio Pellegrino",
+					company: "Fondazione LIA",
+					companyURL: "https://www.fondazionelia.org",
+					w3cid: 97111
+				}, {
+					name: "Avneesh Singh",
+					company: "DAISY Consortium",
+					companyURL: "http://daisy.org",
+					w3cid: 75336
+				}],
+				processVersion: 2020,
+				includePermalinks: true,
+				permalinkEdge:     true,
+				permalinkHide:     false,
+				diffTool:          "http://www.aptest.com/standards/htmldiff/htmldiff.pl",
+				github:			 {
+					repoURL: "https://github.com/w3c/publ-a11y",
+					branch: "main"
+				},
+				localBiblio: {
+					"WCAG2": {
+						"title": "Web Content Accessibility Guidelines (WCAG) 2",
+						"href": "https://www.w3.org/TR/WCAG2/",
+						"publisher": "W3C"
+					}
+				}
+			};
+		</script>
+		<style>
+			/****************************************************/
+			/*  property tables                                 */
+			/****************************************************/
+			
+			/* ensure confomity of width for property tables */
+			section.vocab table {
+				border-spacing: 0px;
+				border: none;
+				font-size: 1em;
+				width: 100%
+			}
+			
+			section.vocab table td,
+			table th {
+				border: none;
+				background-color: rgb(236, 246, 255);
+				color: rgb(0, 0, 0);
+				padding: 0.3em;
+				vertical-align: top;
+			}
+			
+			section.vocab table th {
+				text-align: left;
+				vertical-align: top;
+				width: 8em;
+				border-right: 1px solid rgb(145, 200, 255);
+			}
+			
+			section.vocab table th {
+				border-left: 5px solid rgb(145, 200, 255);
+			}
+			
+			section.vocab td {
+				padding: 3px 3px 3px 10px;
+			}
+			
+			section.vocab td > p:first-child {
+				padding: 0em;
+				margin: 0em
+			}
+			pre,
+			code {
+				white-space: break-spaces !important;
+			}</style>
+	</head>
+	<body>
+		<section id="abstract">
+			<p>This document examines the impact of WCAG 2's zero-tolerance approach to accessibility, specifically as
+				it affects the ability of publishers to certify that their EPUB Publications definitively contain no
+				violations. The goal is to solicit feedback from the broader publishing community on the proposed
+				approaches.</p>
+		</section>
+		<section id="sotd"></section>
+		<section id="overview">
+			<h2>Overview</h2>
+
+			<p>Although the W3C Web Content Accessibility Guidelines [[WCAG2]] represent the most comprehensive and
+				effective means of evaluating the accessibility of EPUB Publications, they do not allow any latitude for
+				passing content that has even a single minor issue.</p>
+
+			<p>While this all-or-nothing approach was designed to ensure content meets the highest possible standards,
+				it also leaves publishers with the complex problem of certifying content fully meets WCAG requirements
+				when any missed issue, no matter how severe, negates their claim.</p>
+
+			<p>Given the size of most publications, and the workflows through which they are produced, it is often
+				difficult to certify that not a single transgression has been missed. The complex mix of machine and
+				human evaluation required to check any publication also leaves open the chance of errors slipping
+				through.</p>
+
+			<p>Despite this reality, publishers are often required to fully conform to [[WCAG2]]. If remediation of
+				content may be necessary in some cases, making formal claims of complete conformance raises concerns
+				about the possibility of legal action. The problem, then, is how to indicate that content conforms to
+				the best of the publisher's knowledge and abilities.</p>
+
+			<p>The purpose of this document is not to make a case that publishers should be given slack to willfully
+				produce content with accessibility flaws, but to examine what options are available to address this more
+				nuanced case of issues slipping through evaluation.</p>
+		</section>
+		<section id="approaches">
+			<h2>Approaches</h2>
+
+			<p class="note">This section summarizes the primary approaches to the zero-tolerance problem discussed by
+				the Accessibility Task Force of the Publishing Community Group. To comment on these approaches, or
+				propose an alternative, please add to the discussion in <a
+					href="https://github.com/w3c/publishingcg/issues/22">issue 22</a> of the Community Group's
+				tracker.</p>
+
+			<section id="disclaimers">
+				<h2>Add a Disclaimer</h2>
+
+				<p>One option to address the possibility that a publisher might have missed some minor issues during an
+					accessibility evaluation is to include a disclaimer in the EPUB Package Document metadata.</p>
+
+				<p>To enable the embedding of these types of disclaimers, this document proposes a new
+						<code>disclaimer</code> property in the <a
+						href="https://www.w3.org/TR/epub-a11y-11/#app-vocab-ref">EPUB accessibility properties
+						namespace</a> [[EPUB-A11Y-11]]. The full definition of this property is provided in <a
+						href="disclaimer"></a>.</p>
+
+				<aside class="example">
+					<p>The following example shows a disclaimer indicating how to report any issues.</p>
+					<pre>&lt;meta
+    property="dcterms:conformsTo"
+    id="conf">
+   EPUB-A11Y-11_WCAG-21-AA
+&lt;/meta>
+&lt;meta
+    property="a11y:disclaimer"
+    refines="#conf">
+   Acme Publishing has checked this EPUB Publication for conformance to
+   WCAG 2.1 Level AA to the best of our abilities. If you believe you have
+   found a conformance issue we missed, please send a detailed message of
+   the problem to accessibility@example.org
+&lt;/meta></pre>
+				</aside>
+
+				<p class="note">No changes are necessary to the EPUB specifications or epubcheck to use this property.
+					Publishers interested in this approach are encouraged to experiment with its use and report on its
+					utility to the Task Force.</p>
+
+				<p>This property would be optional to include in the metadata but would allow the publisher to provide a
+					clarifying statement that they have checked the EPUB Publication for conformance to the best of
+					their abilities. The Accessibility Task Force is not proposing a boilerplate statement for all
+					publishers to use with this property. Rather, publishers who want to make disclaimers are expected
+					to craft the statements in consultation with their legal departments.</p>
+
+				<p>Although the exact wording of the statement is at the publisher's discretion, the Task Force
+					recommends publishers provide contact information for reporting failures to make it easier for users
+					to provide feedback. The objective of a disclaimer is not to absolve the publisher of responsibility
+					for issues that do slip through.</p>
+
+				<p>The potential drawbacks of this approach are: 1) it may give the appearance that all publications
+					that claim conformance contain errors; and 2) it may be abused by unscrupulous actors to claim
+					conformance while not performing any detailed analysis of their content.</p>
+
+				<p>The Task Force expects publishers to only use this property after performing thorough evaluation of
+					their content or going through a thorough process of certifying the production processes, but there
+					is no way to control how the metadata gets used. In environments where there are contractual and/or
+					legal obligations to provide WCAG-conformant content, abuse of disclaimers will not provide cover
+					for those misusing the property, so market forces will help curb some excesses.</p>
+			</section>
+
+			<section id="no-claim">
+				<h2>Avoid Conformance Claims</h2>
+
+				<p>Another potential approach to the problem is to not make a claim of conformance to the EPUB
+					Accessibility specification [[EPUB-A11Y-11]] in an EPUB Publication. This would avoid the publisher
+					having to state a specific level of WCAG conformance.</p>
+
+				<p>Since that specification would no longer be followed, the author can omit adding a
+						<code>dcterms:conformsTo</code> property. In its place, authors are recommended use the
+						<code>a11y:certifierReport</code> property to link to a detailed report such as a VPAT. That
+					report could detail the conformance, or lack thereof, with more context than would be possible in
+					the EPUB Publication.</p>
+
+				<aside class="example">
+					<p>The following example shows a link to the certifier's report.</p>
+					<pre>&lt;meta
+    property="a11y:certifiedBy"
+    id="cert">
+   Acme Certifiers Inc.
+&lt;/meta>
+&lt;link
+    rel="a11y:certifierReport"
+    refines="#cert"
+    href="reports/vpat.html"/></pre>
+				</aside>
+
+				<p>This approach offers no more certainty that errors have not have slipped through, but the author
+					could make unofficial claims such as "substantively" conforming to [[WCAG2]] in their reports.</p>
+
+				<p>Some potential drawbacks to this approach include:</p>
+
+				<ol>
+					<li>Without a conformance claim, the publication may not register as accessible in vendor ingestion
+						systems or in reading system processing. Users, in turn, would not be able to easily search for
+						the publication.</li>
+					<li>Users may not be able to access the information in a linked report, especially if the
+						publication does not register as having been accessibility checked. Links to external web sites
+						are not generally trustworthy, so vendors and reading systems may not provide access. Similarly
+						displaying an embedded report is a potential security risk.</li>
+				</ol>
+			</section>
+
+			<section id="discoverability-only">
+				<h2>Add a New Discoverability Conformance Level</h2>
+
+				<p>This option is similar to the <a href="#no-claim">preceding approach</a>, but adds a new conformance
+					identifier to the EPUB Accessibility specification [[EPUB-A11Y-11]] that indicates the publisher has
+					only met the discovery metadata requirements.</p>
+
+				<aside class="example">
+					<p>The following example shows a possible claim of discoverability.</p>
+					<pre>&lt;meta
+    property="dcterms:conformsTo"
+    id="conf">
+   EPUB-A11Y-11_DISCOVERABILITY
+&lt;/meta></pre>
+				</aside>
+
+				<p>This approach would also rely on the publisher providing a link to a report to explain their actual
+					conformance, or lack of, so has the same drawbacks as above. Its only advantage relative to that
+					approach is that it disambiguates publications publishers have checked against the EPUB
+					Accessibility specification from those they have not.</p>
+			</section>
+
+			<section id="wcag3">
+				<h2>Wait for WCAG 3</h2>
+
+				<p>The final option is to not try to solve this problem for [[WCAG2]] and wait on the development of
+					WCAG 3, the next major version. It is expected that WCAG 3 will provide a scoring model for
+					publications that will allow for some tolerance of minor issues. In this model, if issues are found
+					after the fact, they would not necessarily invalidate the conformance claim if they are minor in
+					nature.</p>
+
+				<p>The obvious drawback of this approach is that relies on the current status quo being palatable to
+					publishers until development of WCAG 3 is complete and its adoption widespread. The assumption here
+					is that there is already a level of tolerance in the market for minor issues in content that claims
+					conformance to [[WCAG2]] so publishers should not be overly concerned about their content being
+					perfect.</p>
+			</section>
+		</section>
+		<section id="disclaimer" class="appendix vocab">
+			<h2>The <code>disclaimer</code> property</h2>
+
+			<table>
+				<caption>Definition of <code>disclaimer</code> property</caption>
+				<tr>
+					<th>Name:</th>
+					<td>
+						<code>disclaimer</code>
+					</td>
+				</tr>
+				<tr>
+					<th>Namespace:</th>
+					<td>
+						<code>http://www.idpf.org/epub/vocab/package/a11y/#</code>
+					</td>
+				</tr>
+				<tr>
+					<th>Description:</th>
+					<td>Describes any potential limits on the claim made in the <a
+							href="https://www.w3.org/TR/epub-a11y-11/#sec-conf-reporting-pub"
+								><code>dcterms:conformsTo</code> property</a> [[EPUB-A11Y-11]].</td>
+				</tr>
+				<tr>
+					<th>Allowed value(s):</th>
+					<td>
+						<code>xsd:string</code>
+					</td>
+				</tr>
+				<tr>
+					<th>Cardinality:</th>
+					<td>Zero or one</td>
+				</tr>
+				<tr>
+					<th>Extends:</th>
+					<td>
+						<code>dcterms:conformsTo</code>
+					</td>
+				</tr>
+				<tr>
+					<th>Example:</th>
+					<td>
+						<pre>&lt;meta property="dcterms:conformsTo" id="conf">EPUB-A11Y-11_WCAG-21-AA&lt;/meta>
+&lt;meta property="a11y:disclaimer" refines="#conf">This publication has been
+   checked to conform to WCAG 2.1 AA to the best of the publisher's
+   abilities &#8230; &lt;/meta></pre>
+					</td>
+				</tr>
+			</table>
+		</section>
+	</body>
+</html>
