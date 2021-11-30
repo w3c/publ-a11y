@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
+	<head>
+		<meta charset="utf-8" />
+		<title>Accessibility Summary Authoring Guidelines</title>
+		<script src="https://www.w3.org/Tools/respec/respec-w3c" class="remove" defer="defer"></script>
+		<script class="remove">
+			var respecConfig = {
+				group: "publishingcg",
+				edDraftURI: "https://w3c.github.io/publ-a11y/drafts/schema-a11y-summary/",
+				latestVersion: "https://w3c.github.io/publ-a11y/schema-a11y-summary/",
+				specStatus: "CG-DRAFT",
+				noRecTrack: true,
+				copyrightStart: "2020",
+				editors: [{
+					name: "George Kerscher",
+					company: "DAISY Consortium",
+					companyURL: "http://daisy.org",
+					w3cid: 1460
+				}, {
+					name: "Charles LaPierre",
+					company: "Benetech",
+					companyURL: "http://benetech.org",
+					w3cid: 72055
+				}, {
+					name: "Gregorio Pellegrino",
+					company: "Fondazione LIA",
+					companyURL: "https://www.fondazionelia.org",
+					w3cid: 97111
+				}],
+				processVersion: 2020,
+				includePermalinks: true,
+				permalinkEdge:     true,
+				permalinkHide:     false,
+				diffTool:          "http://www.aptest.com/standards/htmldiff/htmldiff.pl",
+				github:			 {
+					repoURL: "https://github.com/w3c/publ-a11y",
+					branch: "main"
+				}
+			};
+		</script>
+	</head>
+	<body>
+		<section id="abstract">
+			<p></p>
+		</section>
+		<section id="sotd"></section>
+		<section id="introduction">
+			<h2>Introduction</h2>
+
+			<p>The <a href="http://www.idpf.org/epub/a11y/#sec-disc-package">EPUB Accessibility Conformance and
+					Discovery Specification defines a schema.org metadata term called "accessibilitySummary."</a> This
+				piece of metadata is extraordinarily unique and important in that it provides a human readable
+				description of the accessibility of the publication. It is expected that people who do not have formal
+				training in HTML, EPUB, or who are not experts in accessibility will be reading the
+				accessibilitySummary. Online Library and retail catalogues should present the accessibilitySummary to
+				assist in making the decision to purchase or recommend the title. Individuals, professors, schools and
+				universities should be basing their decisions to purchase on the accessibility of products.</p>
+
+			<p>The metadata accessibilitySummary can be found in either of two places, inside the EPUB in the OPF file,
+				or this information can be retrieved from ONIX <a href="https://ns.editeur.org/onix/en/196">code list:
+					196</a>; Code: 00: Accessibility Summary.</p>
+
+			<p class="note">Refer to the <a
+					href="https://benetech.github.io/UX-Guide-EPUB-A11y-Metadata/UXGuideForMetadata.html">Guidelines for
+					discovery and presentation of EPUB Accessibility metadata</a> for libraries and retailers.</p>
+		</section>
+		<section id="before-writing">
+			<h2>Before you start writing</h2>
+
+			<p>The <a href="https://daisy.github.io/ace/">Accessibility Checker for EPUB (Ace by DAISY)</a> is a tool
+				which can be used to help you determine some of the accessibility features within the publication. This
+				information can be found when looking at the report.html file Ace creates. This will help you determine
+				what should be included in the accessibilitySummary that will be put into the OPF file and/or ONIX
+				metadata feed.</p>
+
+			<p>Next read the accessibility metadata in the EPUB package.opf file before you begin to write. Make note of
+				the features listed in the metadata as you prepare to write. One should always truthfully represent the
+				accessibility of the publication and point out shortcomings of the publication; students may be able to
+				get assistance from their school or university if some aspects of the publication are not accessible.
+				For example, if complex graphics that convey information do not have an extended description, let people
+				know that extended descriptions are not available.</p>
+		</section>
+		<section id="high-level-considerations">
+			<h2>Some High-Level Considerations</h2>
+
+			<ul>
+				<li>Use simple language that communicates effectively to a non-technical and a non-accessibility aware
+					community.</li>
+				<li>Avoid terms that are only known in a specific knowledge domain, or explain the term in a simple
+					way.</li>
+				<li>Write out the words of the acronym before using the abbreviation, e.g. Web Content Accessibility
+					Guidelines (WCAG).</li>
+				<li>Include all accessibility features, even those detailed in another schema.org metadata item;
+					remember that the AccessibilitySummary may be the only piece of metadata that some users read.</li>
+				<li>Templates may be a useful approach for creating accessibility summaries in your organization,
+					especially if all the content of a similar type goes through the same workflow and quality assurance
+					process. However, make sure that the <code>accessibilitySummary</code> metadata that ships with the
+					publication is accurate and applies to this particular publication.</li>
+			</ul>
+		</section>
+		<section id="what-to-include">
+			<h2>What to Include in the <code>AccessibilitySummary</code></h2>
+
+			<p>Here is a list of areas that the summary should address :</p>
+
+			<section id="accessibility-conformance">
+				<h3>Accessibility Conformance Statement</h3>
+
+				<table>
+					<thead>
+						<tr>
+							<th>Metadata Value(s) Present</th>
+							<th>Suggested summary</th>
+							<th>Information</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><em>conformsTo</em> = <em>'<a
+										href="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-a"
+										>http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-a</a>'</em></td>
+							<td>This publication meets accepted accessibility guidelines (WCAG-A)</td>
+							<td>WCAG-A Compliance</td>
+						</tr>
+						<tr>
+							<td><em>conformsTo</em> = <em>'<a
+										href="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aa"
+										>http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aa</a>'</em></td>
+							<td>This publication meets accepted accessibility guidelines (WCAG-AA)</td>
+							<td>WCAG-AA Compliance</td>
+						</tr>
+					</tbody>
+				</table>
+			</section>
+
+			<section id="screen-reader-friendly">
+				<h3>Screen Reader Friendly</h3>
+
+				<table>
+					<thead>
+						<tr>
+							<th>Metadata Value(s) Present</th>
+							<th>Suggested summary</th>
+							<th>Information</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><em>accessModeSufficient</em> = <em>'textual'</em> and <em>conformsTo</em> of
+									<em>WCAG-A</em> or greater</td>
+							<td>This title is screen reader friendly and it will be accessible to a person using
+								text-to-speech or refreshable braille.</td>
+							<td>Can this EPUB be entirely read by a Screen Reader, i.e. all visual only information has
+								a meaningful text equivalent.</td>
+						</tr>
+					</tbody>
+				</table>
+			</section>
+
+			<section id="audio-book">
+				<h3>Audio Book</h3>
+
+				<table>
+					<thead>
+						<tr>
+							<th>Metadata Value(s) Present</th>
+							<th>Suggested summary</th>
+							<th>Information</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><em>accessModeSufficient</em> = <em>'auditory'</em></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td><em>accessModeSufficient</em> = <em>'auditory'</em> and <em>accessModeSufficient</em> =
+								*'textual'</td>
+							<td></td>
+							<td></td>
+						</tr>
+					</tbody>
+				</table>
+			</section>
+
+			<section id="accessibility-features">
+				<h3>Accessibility Features</h3>
+
+				<table>
+					<thead>
+						<tr>
+							<th>Metadata Value(s) Present</th>
+							<th>Suggested summary</th>
+							<th>Information</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><em>accessibilityFeature</em> = <em>'alternativeText'</em></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td><em>accessibilityFeature</em> = <em>'annotations'</em></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td><em>accessibilityFeature</em> = <em>'audioDescription'</em></td>
+							<td>Video has descriptive audio.</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td><em>accessibilityFeature</em> = <em>'bookmarks'</em></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td><em>accessibilityFeature</em> = <em>'braille'</em></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td><em>accessibilityFeature</em> = <em>'captions'</em></td>
+							<td>Video has text captions.</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td><em>accessibilityFeature</em> = <em>'ChemML'</em></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td><em>accessibilityFeature</em> = <em>'describedMath'</em></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td><em>accessibilityFeature</em> = <em>'displayTransformability'</em></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td><em>accessibilityFeature</em> = <em>'highContrastAudio'</em></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td><em>accessibilityFeature</em> = <em>'highContrastDisplay'</em></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td><em>accessibilityFeature</em> = <em>'index'</em></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td><em>accessibilityFeature</em> = <em>'largePrint'</em></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td><em>accessibilityFeature</em> = <em>'latex'</em></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td><em>accessibilityFeature</em> = <em>'longDescription'</em></td>
+							<td>Extended descriptions are provided for complex graphical content that conveys important
+								information for understanding of the content.</td>
+							<td>Extended descriptions: Extended (or long) descriptions are used when complex graphics or
+								other highly visual components convey information. The extended description communicates
+								the equivalent information through text, tables, etc.</td>
+						</tr>
+						<tr>
+							<td><em>accessibilityFeature</em> of <em>'longDescription'</em> is missing</td>
+							<td>This publication contains graphical content that conveys significant information. This
+								graphical material is not explained and the reader who cannot interpret the graphics
+								should seek assistance.</td>
+							<td>Extended Descriptions are not provided when needed, for example if there is a complex
+								image that needs a longer description to understand what the image is protraying.</td>
+						</tr>
+						<tr>
+							<td><em>accessibilityFeature</em> = <em>'MathML'</em></td>
+							<td>Math represented by MathML</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td><em>accessibilityFeature</em> = <em>'none'</em></td>
+							<td>@@ - Include this? I don't see how this could be possible.</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td><em>accessibilityFeature</em> = <em>'printPageNumbers'</em> and <em>dc:source</em> is
+								present</td>
+							<td>Page numbers are present and navigation to pages is supported.</td>
+							<td>Page navigation provided and matches the print book</td>
+						</tr>
+						<tr>
+							<td><em>accessibilityFeature</em> = <em>'printPageNumbers'</em> and <em>dc:source</em> is
+								not present or refers to this EPUB</td>
+							<td>There is no print version of this publication, but digital page numbers are provided for
+								ease of use.</td>
+							<td>Page navigation provided but no equivalent print book. Since there is no print
+								equivalent book these page breaks are set by the publisher to aid in navigating to a
+								specific digital or "virtual" page within the EPUB.</td>
+						</tr>
+						<tr>
+							<td><em>accessibilityFeature</em> of <em>'printPageNumbers'</em> is missing</td>
+							<td>This publication does not contain page numbers that can be navigated.</td>
+							<td>No page navigation provided</td>
+						</tr>
+						<tr>
+							<td><em>accessibilityFeature</em> = <em>'readingOrder'</em></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td><em>accessibilityFeature</em> = <em>'rubyAnnotations'</em></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td><em>accessibilityFeature</em> = <em>'signLanguage'</em></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td><em>accessibilityFeature</em> = <em>'structuralNavigation'</em> and
+									<em>'tableOfContents'</em></td>
+							<td>This publication contains a table of contents for navigation through the various
+								chapters and sections.</td>
+							<td>Table of Content Navigation</td>
+						</tr>
+						<tr>
+							<td><em>accessibilityFeature</em> = <em>'synchronizedAudioText'</em></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td><em>accessibilityFeature</em> = <em>'tactileGraphic'</em></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td><em>accessibilityFeature</em> = <em>'tactileObject'</em></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td><em>accessibilityFeature</em> = <em>'timingControl'</em></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td><em>accessibilityFeature</em> = <em>'transcript'</em></td>
+							<td>Video has a transcript.</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td><em>accessibilityFeature</em> = <em>'ttsMarkup'</em></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td><em>accessibilityFeature</em> = <em>'unlocked'</em></td>
+							<td>@@ - Include this? This may not be under Publisher control</td>
+							<td></td>
+						</tr>
+					</tbody>
+				</table>
+			</section>
+
+			<section id="accessibility-hazards">
+				<h3>Accessibility Hazards</h3>
+
+				<p>Accessibility hazards: Some content, especially videos, may contain elements that have been found to
+					be problematic. Most common items are motion effects that make some people motion sick, flashing
+					that can cause severe distractions or even seizures, or loud sharp noises like a gunshot which can
+					cause hearing issues. It is only necessary to include this information if it is present.</p>
+
+				<table>
+					<thead>
+						<tr>
+							<th>Metadata Value(s) Present</th>
+							<th>Suggested summary</th>
+							<th>Information</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><em>accessibilityHazard</em> = <em>'flashing'</em></td>
+							<td>Caution: the video contains flashing lights.</td>
+							<td>Flashing Hazard</td>
+						</tr>
+						<tr>
+							<td><em>accessibilityHazard</em> = <em>'sound'</em></td>
+							<td>Caution: the audio contains loud noises.</td>
+							<td>Sound Hazard</td>
+						</tr>
+						<tr>
+							<td><em>accessibilityHazard</em> = <em>'motionSimulation'</em></td>
+							<td>Caution: the video has motion, which may affect some people.</td>
+							<td>Motion Simulation Hazard</td>
+						</tr>
+					</tbody>
+				</table>
+			</section>
+		</section>
+		<section id="examples">
+			<h2>Examples</h2>
+
+			<aside class="example">
+				<pre><code>&lt;meta property="schema:accessibilitySummary">
+	The publication contains structural and page navigation. All non-decorative images have alt text or captions, or are described in the surrounding text. The publication meets WCAG 2.0 Level AA.
+&lt;/meta></code></pre>
+			</aside>
+
+			<aside class="example">
+				<pre><code>&lt;meta property="schema:accessibilitySummary">
+	This publication is screen reader friendly and is accessible to persons with disabilities. The publication was designed to be as accessible as possible to all persons with disabilities. It is compatible with the wide range of Assistive Technology on the market today. The built in features of most EPUB Reading Applications have accessibility features that may be used, e.g. read aloud is available in many Reading Apps. The publication meets the EPUB Accessibility requirements and it also meets the Web AccessibilityContent Guidelines (WCAG) at the double "AA" level.
+
+	Extensive navigation is provided to make it easy to use. The logos provided have alt text to identify what the logo represents. there are no other images. There are no accessibility hazards.
+
+	There are no video or audio recordings.
+&lt;/meta></code></pre>
+			</aside>
+		</section>
+		<section id="acknowledgments">
+			<h2>Acknowledgments</h2>
+
+			<p>The editors would like to thank the following individuals for their contributions to this document:</p>
+
+			<ul>
+				<li>Avneesh Singh</li>
+				<li>Jason White</li>
+				<li>Madeleine Rothberg</li>
+				<li>Sarah Runcie</li>
+			</ul>
+		</section>
+	</body>
+</html>
