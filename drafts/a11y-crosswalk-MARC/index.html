@@ -89,6 +89,8 @@
 		<section id="abstract">
 			<p>This document is a work in progress to extends the existing crosswalk for accessibility metadata for Schema.org, EPUB, and ONIX to MARC21 and UNIMARC. </p>
 			<p>It also adds a definition column.</p>
+			<p>Note : <a href="https://cdn.ifla.org/wp-content/uploads/U_B_231_update2021_ONLINE_FINAL-1.pdf
+				">UNIMARC 231i (pdf file)</a> offers a easy mapping to ONIX 196. Some references may be best described by other UNIMARC codes.</p>
 		</section>
 		
 		<section id="sotd"></section>
@@ -120,17 +122,17 @@
 						<td>certifiedBy</td>
 						<td><a href="https://ns.editeur.org/onix/en/196/93">List 196: Code 93</a>: Compliance certification by
 							<code>ProductFormFeatureDescription</code> carries the URL of a web page belonging to the organisation responsible for compliance testing and certification of the product – typically a ‘home page’ or a page describing the certification scheme itself. For use in ONIX 3.0 only</td>
-<td></td>
-<td></td>
+<td>341 $8$0#$aAuthority record control number or standard number</td>
+<td>231 ##$i93$2onix196</td>
 					</tr>
 					<tr>
 <td></td>
 						<td>certifierReport</td>
 						<td><a href="https://ns.editeur.org/onix/en/196/94">List: 196; Code: 94</a>: Compliance web page
-							for detailed accessibility information or, if a publisher is self-certifying, Code: 96:
+							for detailed accessibility information or, if a publisher is self-certifying, <a href="https://ns.editeur.org/onix/en/196/94">Code: 96</a>:
 							Publisher's web page for detailed accessibility information</td>
 <td></td>
-<td></td>
+<td>231 ##$i94$2onix196 and/or 231 ##$i96$2onix196</td>
 					</tr>
 					<tr>
 <td></td>
@@ -148,7 +150,7 @@
 						<td><a href="https://ns.editeur.org/onix/en/196/02">List: 196; Code: 02</a>: EPUB Accessibility
 							Specification 1.0 A</td>
 <td></td>
-<td></td>
+<td>231 ##$i02$2onix196</td>
 					</tr>
 					<tr>
 <td></td>
@@ -159,7 +161,7 @@
 						<td><a href="https://ns.editeur.org/onix/en/196/03">List: 196; Code: 03</a>: EPUB Accessibility
 							Specification 1.0 AA</td>
 <td></td>
-<td></td>
+<td>231 ##$i03$2onix196</td>
 					</tr>
 				</tbody>
 			</table>
@@ -186,7 +188,7 @@
 						<td>accessibilityFeature (vocabulary list follows)</td>
 						<td><a href="https://ns.editeur.org/onix/en/196">List 196</a> (specific codes follow)</td>
 <td></td>
-<td></td>
+<td>Easy mapping thru list 231 allowing reference to any ONIX list and code.</td>
 					</tr>
 					<tr>
 <td></td>
@@ -194,7 +196,7 @@
 						<td><a href="https://ns.editeur.org/onix/en/196/14">List: 196; Code: 14</a>: Short alternative
 							descriptions</td>
 <td></td>
-<td></td>
+<td>231 ##$i14$2onix196</td>
 					</tr>
 					<tr>
 <td></td>
@@ -237,7 +239,7 @@
 						<td><a href="https://ns.editeur.org/onix/en/196/18">List: 196; Code: 18</a>: Accessible chem
 							content</td>
 <td></td>
-<td></td>
+<td>231 ##$i18$2onix196</td>
 					</tr>
 					<tr>
 <td></td>
@@ -251,7 +253,7 @@
 						<td>displayTransformability</td>
 						<td><a href="https://ns.editeur.org/onix/en/175/E200">List: 175 ; Code: E200</a>: Reflowable.</td>
 <td></td>
-<td></td>
+<td>231 ## $iE200$2onix175</td>
 					</tr>
 					<tr>
 <td></td>
@@ -272,7 +274,7 @@
 						<td>index</td>
 						<td><a href="https://ns.editeur.org/onix/en/196/12">List: 196; Code: 12</a>: Index navigation</td>
 <td></td>
-<td></td>
+<td>231 $i12$2onix196</td>
 					</tr>
 					<tr>
 <td></td>
@@ -294,7 +296,7 @@
 						<td><a href="https://ns.editeur.org/onix/en/196/15">List: 196; Code: 15</a>: Full alternative
 							descriptions; 16: Visualised data also available as non-graphical data</td>
 <td></td>
-<td></td>
+<td>231 $i15$2onix196</td>
 					</tr>
 					<tr>
 <td></td>
@@ -302,7 +304,7 @@
 						<td><a href="https://ns.editeur.org/onix/en/196/17">List: 196; Code: 17</a>: Accessible math
 							content</td>
 <td></td>
-<td></td>
+<td>231 $i17$2onix196</td>
 					</tr>
 					<tr>
 <td></td>
@@ -317,14 +319,14 @@
 						<td><a href="https://ns.editeur.org/onix/en/196/19">List: 196; Code: 19</a>: Print-equivalent page
 							numbering</td>
 <td></td>
-<td></td>
+<td>231 $i19$2onix196</td>
 					</tr>
 					<tr>
 <td></td>
 						<td>readingOrder</td>
 						<td><a href="https://ns.editeur.org/onix/en/196/13">List: 196; Code: 13</a>: Reading order</td>
 <td></td>
-<td></td>
+<td>231 $i13$2onix196</td>
 					</tr>
 					<tr>
 <td></td>
@@ -353,7 +355,7 @@
 						<td><a href="https://ns.editeur.org/onix/en/196/20">List: 196; Code: 20</a>: Synchronised
 							pre-recorded audio</td>
 <td></td>
-<td></td>
+<td>231 $i20$2onix196</td>
 					</tr>
 					<tr>
 <td></td>
@@ -361,7 +363,7 @@
 						<td><a href="https://ns.editeur.org/onix/en/196/11">List: 196; Code: 11</a>: Table of contents
 							navigation</td>
 <td></td>
-<td></td>
+<td>231 $i11$2onix196</td>
 					</tr>
 					<tr>
 <td></td>
@@ -402,9 +404,9 @@
 <td></td>
 						<td>ttsMarkup</td>
 						<td><a href="https://ns.editeur.org/onix/en/196/21">List: 196; Code: 21</a>: Text-to-speech
-							hinting provided; <a href="https://ns.editeur.org/onix/en/196/21">Code 22</a>: Language tagging provided</td>
+							hinting provided; <a href="https://ns.editeur.org/onix/en/196/22">Code 22</a>: Language tagging provided</td>
 <td></td>
-<td></td>
+<td>231 $i21$2onix196 and/or 231 $i22$2onix196</td>
 					</tr>
 					<tr>
 <td></td>
@@ -419,7 +421,7 @@
 						<td><a href="https://ns.editeur.org/onix/en/196/22">List: 196; Code 22</a>: Language tagging
 							provided – helps with TTS in multi-lingual content</td>
 <td></td>
-<td></td>
+<td>231 $i22$2onix196</td>
 					</tr>
 					<tr>
 <td></td>
@@ -434,7 +436,7 @@
 						<td>–</td>
 						<td><a href="https://ns.editeur.org/onix/en/196/09">List: 196; Code 09</a>: Inaccessible</td>
 <td></td>
-<td></td>
+<td>231 $i09$2onix196</td>
 					</tr>
 					<tr>
 <td></td>
@@ -442,7 +444,7 @@
 						<td><a href="https://ns.editeur.org/onix/en/196/10">List: 196; Code 10</a>: No reading system
 							accessibility options disabled</td>
 <td></td>
-<td></td>
+<td>231 $i10$2onix196</td>
 					</tr>
 					<tr>
 <td></td>
@@ -471,7 +473,7 @@
 						<td><a href="https://ns.editeur.org/onix/en/143/17">List: 143; Code: 17</a> WARNING – Motion simulation hazard
 							Products simulates (via visual effects) the experience of motion, which may cause nausea in sensitive people</td>
 <td></td>
-<td></td>
+<td>231 $i17$2onix143</td>
 					</tr>
 					<tr>
 <td></td>
@@ -484,9 +486,9 @@
 <td></td>
 						<td>sound</td>
 						<td><a href="https://ns.editeur.org/onix/en/175/A310">List: 175; Code: A310</a>: Sound effects
-							Incidental sounds added to the audiobook narration (eg background environmental sounds).</td>
+							Incidental sounds added to the audiobook narration (eg background environmental sounds). (may not correspond to a hazard)</td>
 <td></td>
-<td></td>
+<td>231 $iA310$2onix175</td>
 					</tr>
 					<tr>
 <td></td>
@@ -655,7 +657,7 @@
 						<td><a href="https://ns.editeur.org/onix/en/81/19">List: 81; Code 19</a>: Figures, Diagrams,
 							Charts</td>
 <td></td>
-<td></td>
+<td>231 $i19$2onix81</td>
 					</tr>
 					<tr>
 <td></td>
@@ -677,7 +679,7 @@
 						<td><a href="https://ns.editeur.org/onix/en/81/19">List: 81; Code 19</a>: Figures, Diagrams,
 							Charts</td>
 <td></td>
-<td></td>
+<td>231 $i19$2onix81</td>
 					</tr>
 					<tr>
 <td></td>
@@ -714,10 +716,13 @@
 								href="https://ns.editeur.org/onix/en/196/10">List: 196; Code: 10</a> means all text is
 							actual text. Note that List: 81; Code: 10 on its own (without List: 196; Code: 10) admits
 							the possibility that the "text" is inaccessible because it is an image of text.
-						<br/>Note : on this point ONIX is unclear. <a
-						href="https://ns.editeur.org/onix/en/196/09">List: 196; Code: 09</a> Inaccessible
-						Known to lack significant features required for broad accessibility. Would give a better indication for "Screen reader friendly" (if code 09 is not found so the publication is textual). In both cases it's hard for a publisher to figure out how to describe "all content is accesible thru true text", he must adopt a reasoning by absence.</td>
-<td></td>
+						<br/>Note : on this point ONIX is unclear. Codes <a
+						href="https://ns.editeur.org/onix/en/196/09">16</a> and <a
+						href="https://ns.editeur.org/onix/en/196/09">14</a> or <a
+						href="https://ns.editeur.org/onix/en/196/09">15</a> should also be mobilised<a
+						href="https://ns.editeur.org/onix/en/196/09">List: 196; Code: 09</a> <em>Inaccessible
+						Known to lack significant features required for broad accessibility.</em> Would give a better indication for "Screen reader friendly" (if code 09 is not found so the publication is textual). In both cases it's hard for a publisher to figure out how to describe "all content is accessible thru true text", he must adopt a reasoning by absence.</td>
+<td>341 0#$atextual</td>
 <td></td>
 					</tr>
 					<tr>
@@ -727,7 +732,7 @@
 							or Code: 18: Photographs or Code: 19: Figures, diagrams, charts, graphs or Code: 12: Maps
 							and/or other cartographic content</td>
 <td></td>
-<td></td>
+<td>231 $i07$2onix81</td>
 					</tr>
 					<tr>
 <td></td>
@@ -741,8 +746,8 @@
 <td></td>
 						<td>auditory</td>
 						<td><a href="https://ns.editeur.org/onix/en/81/01">List: 81; Code:01</a></td>
-<td></td>
-<td></td>
+<td> 341 0#$aauditory / 336 0#$bspw (?)</td>
+<td> 181 #0 $cspw$2rdacontent (may correspond only to human narration)</td>
 					</tr>
 					<tr>
 <td></td>
@@ -777,7 +782,7 @@
 						<td><a href="https://ns.editeur.org/onix/en/196/00">List: 196; Code: 00</a>: Accessibility
 							Summary</td>
 <td></td>
-<td></td>
+<td> 231 $i00$2onix196</td>
 					</tr>
 					<tr>
 <td></td>
