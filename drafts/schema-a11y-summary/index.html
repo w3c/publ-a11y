@@ -61,9 +61,11 @@
 				or this information can be retrieved from ONIX <a href="https://ns.editeur.org/onix/en/196">code list:
 					196</a>; Code: 00: Accessibility Summary.</p>
 
-			<p class="note">Refer to the <a
-					href="https://www.w3.org/2021/09/UX-Guide-metadata-1.0/principles/">User Experience Guide for Displaying Accessibility Metadata 1.0</a> for libraries and retailers.</p>
-					<p class="note">Please note that the accessibility summary is written from the perspective of the supplier creating these files and some features and functions will vary depending on the reading system or distributor the end user is operating within.</p>
+			<p class="note">Refer to the <a href="https://www.w3.org/2021/09/UX-Guide-metadata-1.0/principles/">User
+					Experience Guide for Displaying Accessibility Metadata 1.0</a> for libraries and retailers.</p>
+			<p class="note">Please note that the accessibility summary is written from the perspective of the supplier
+				creating these files and some features and functions will vary depending on the reading system or
+				distributor the end user is operating within.</p>
 		</section>
 		<section id="before-writing">
 			<h2>Before you start writing</h2>
@@ -85,7 +87,14 @@
 			<h2>Some High-Level Considerations</h2>
 
 			<ul>
-			<li>The language of the Accessibility Summary should be in the same language of the primary publication. For example, a publication in French should have the accessibility Summary also in French. While some publications may have many passages in another language, the primary language should be determined. For example, a publication intended to teach Spanish to English speaking students would have the primary language as English. There should only be one accessibility summary; do not produce the accessibility summary in multiple languages.</li>
+				<li>There should only be one accessibility summary. Do not include multiple accessibility summaries in
+					different languages.</li>
+				<li>The language of the accessibility summary should be in the primary language of publication. For
+					example, a publication in French should have the accessibility summary also in French. While some
+					publications may have many passages in another language, the primary language should be determined.
+					For example, a publication intended to teach Spanish to English speaking students would have the
+					primary language as English.</li>
+				<li>Ensure the language of the accessibility summary is declared in the metadata.</li>
 				<li>Use simple language that communicates effectively to a non-technical and a non-accessibility aware
 					community.</li>
 				<li>Avoid terms that are only known in a specific knowledge domain, or explain the term in a simple
@@ -94,8 +103,15 @@
 					Guidelines (WCAG).</li>
 				<li>Include all accessibility features, even those detailed in another schema.org metadata item;
 					remember that the AccessibilitySummary may be the only piece of metadata that some users read.</li>
-									<li>The length of the Accessibility Summary is important. Ideally the accessibilitySummary should be under 1000 characters and we recommend against an accessibility summary over 2000 characters in length. The ONIX guideline suggests 500 characters, and we have asked that this guideline be increased. </li>
-				<li>The Accessibility Summary should be compact and place the most essential information at the beginning. We have no way of knowing how many characters various systems will display, and it is possible that the Accessibility Summary be truncated after a system-dependent number of characters. Also, we believe people will be reading quickly and if the Accessibility Summary is long, people may read only the beginning section.</li>
+				<li>The length of the Accessibility Summary is important. Ideally the accessibilitySummary should be
+					under 1000 characters and we recommend against an accessibility summary over 2000 characters in
+					length. The ONIX guideline suggests 500 characters, and we have asked that this guideline be
+					increased. </li>
+				<li>The Accessibility Summary should be compact and place the most essential information at the
+					beginning. We have no way of knowing how many characters various systems will display, and it is
+					possible that the Accessibility Summary be truncated after a system-dependent number of characters.
+					Also, we believe people will be reading quickly and if the Accessibility Summary is long, people may
+					read only the beginning section.</li>
 				<li>Templates may be a useful approach for creating accessibility summaries in your organization,
 					especially if all the content of a similar type goes through the same workflow and quality assurance
 					process. However, make sure that the <code>accessibilitySummary</code> metadata that ships with the
@@ -110,7 +126,14 @@
 			<section id="accessibility-conformance">
 				<h3>Accessibility Conformance Related Statements</h3>
 
-<p>The group of conformance statements are listed below. The level of conformance should be identified such as AA or A. There is also the possibility of referencing conformance to an "optomized" specification, which might not meet WCAG guidelines, such as an audio only specification. It is possible for the publisher to self-certify and not having third party certification should be noted. It has been brought up that WCAG A and AA conformance is a difficult or impossible claim to make, and will be addressed in WCAG 3.0. For this reason,  some organizations plan to qualify their claim by saying, "as far as we know" or "it strives to" in their statement. The suggested summary below contains this language.</p>
+				<p>The group of conformance statements are listed below. The level of conformance should be identified
+					such as AA or A. There is also the possibility of referencing conformance to an "optomized"
+					specification, which might not meet WCAG guidelines, such as an audio only specification. It is
+					possible for the publisher to self-certify and not having third party certification should be noted.
+					It has been brought up that WCAG A and AA conformance is a difficult or impossible claim to make,
+					and will be addressed in WCAG 3.0. For this reason, some organizations plan to qualify their claim
+					by saying, "as far as we know" or "it strives to" in their statement. The suggested summary below
+					contains this language.</p>
 
 				<table>
 					<thead>
@@ -124,26 +147,27 @@
 						<tr>
 							<td>Conformance statement </td>
 							<td>1</td>
-							<td>This publication strives to meet accepted Web Content Accessibility Guidelines (WCAG) at the AA level.</td>
-							
+							<td>This publication strives to meet accepted Web Content Accessibility Guidelines (WCAG) at
+								the AA level.</td>
+
 						</tr>
 						<tr>
 							<td>Organization that certifies</td>
 							<td>1</td>
 							<td>This publication was certified by a third party, Acme certifiers.</td>
-							
+
 						</tr>
 						<tr>
-						<td>Credentials of certifier</td>
-						<td>2</td>
-						<td>Acme certifiers is endorsed by the certifiers guild.</td>
+							<td>Credentials of certifier</td>
+							<td>2</td>
+							<td>Acme certifiers is endorsed by the certifiers guild.</td>
 						</tr>
 						<tr>
-						<td>Certifiers report</td>
-						<td>2</td>
-						<td>provide link to the report</td>
+							<td>Certifiers report</td>
+							<td>2</td>
+							<td>provide link to the report</td>
 						</tr>
-						
+
 
 					</tbody>
 				</table>
