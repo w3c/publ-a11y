@@ -80,13 +80,13 @@
 							<code>refines</code> attribute was nearly dropped in EPUB 3.1, it exposed that there was
 						still no other way to express this information. Consequently, future formats cannot rely on the
 							<code>source-of</code> property.</li>
-					<li>Relying on <code>dc:source</code> makes it confusing how to state that a digital-only
-						publication does not have a source for its markers. EPUB creators have resorted to identifying
-						the current publication as the source of itself or saying that the publication has a source of
-						nothing for the pagination, neither of which makes much sense logically and are at best hacks of
-						the metadata. Omitting a <code>dc:source</code>, while accurate in this situation, makes
-						validation difficult as it cannot be determined whether the EPUB creator simply forgot to
-						specify the source.</li>
+					<li>Relying on <code>dc:source</code> confuses how to state that a digital-only publication does not
+						have a source for its markers. EPUB creators have resorted to identifying the current
+						publication as the source of itself or saying that the publication has a source of nothing for
+						the pagination, neither of which makes much sense logically and are at best hacks of the
+						metadata. Omitting a <code>dc:source</code>, while accurate in this situation, makes validation
+						difficult as it cannot be determined whether the EPUB creator simply forgot to specify the
+						source.</li>
 				</ol>
 
 				<p>The <code>pageSource</code> property proposed in this document is intended to provide a simple and
@@ -151,7 +151,7 @@
 				<h3>Examples</h3>
 
 				<aside class="example" title="Pagination from a source with a unique identifier">
-					<p>In this example, the pagination correponds to a print edition with an ISBN number. A URN is used
+					<p>In this example, the pagination corresponds to a print edition with an ISBN number. A URN is used
 						to identify the scheme the number conforms to.</p>
 					<pre>&lt;meta
     property="a11y:pageSource">
