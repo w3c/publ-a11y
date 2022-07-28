@@ -1,891 +1,999 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
-	<head>
-		<meta charset="utf-8" />
-		<title>Accessibility Properties Crosswalk (schema.org, ONIX, MARC21 &amp; UNIMARC)</title>
-		<script src="https://www.w3.org/Tools/respec/respec-w3c" class="remove"></script>
-		<script src="../common/js/permalink-a11y.js" class="remove"></script>
-		<script class="remove">
-			//<![CDATA[
-			var respecConfig = {
-				group: "a11y-crosswalk-MARC",
-				specStatus: "CG-DRAFT",
-				noRecTrack: true,
-				edDraftURI: null,
-				latestVersion: "",
-				editors: [
-					{
-						name: "Madeleine Rothberg",
-						company: "WGBH",
-						companyURL: "https://www.wgbh.org"
-					},
-					{
-						name: "Charles LaPierre",
-						company: "Benetech",
-						companyURL: "https://benetech.org",
-						w3cid: 72055
-					}
-					{
-						name: "Gautier Chomel",
-						company: "EDRLab",
-						companyURL: "https://www.edrlab.org"
-					},
-				],
-				includePermalinks: true,
-				permalinkEdge: true,
-				permalinkHide: false,
-				localBiblio: {
-					"ONIX": {
-						"title": "ONIX for Books 3.0",
-						"href": "https://www.editeur.org/8/ONIX/"
-					}
+
+<head>
+	<meta charset="utf-8" />
+	<title>Accessibility Properties Crosswalk (schema.org, ONIX, MARC21 &amp; UNIMARC)</title>
+	<script src="https://www.w3.org/Tools/respec/respec-w3c" class="remove"></script>
+	<script src="../common/js/permalink-a11y.js" class="remove"></script>
+	<script class="remove">
+		//<![CDATA[
+		var respecConfig = {
+			group: "a11y-crosswalk-MARC",
+			specStatus: "CG-DRAFT",
+			noRecTrack: true,
+			edDraftURI: null,
+			latestVersion: "",
+			editors: [
+				{
+					name: "Madeleine Rothberg",
+					company: "WGBH",
+					companyURL: "https://www.wgbh.org"
 				},
-				github: {
-					repoURL: "https://github.com/w3c/a11y-discov-vocab",
-					branch: "main"
+				{
+					name: "Charles LaPierre",
+					company: "Benetech",
+					companyURL: "https://benetech.org",
+					w3cid: 72055
 				}
-			};//]]></script>
-		<style>
-			/* Table zebra style... */
-			
-			table.zebra {
-			    font-size:inherit;
-			    font:90%;
-			    margin:1em;
+					{
+					name: "Gautier Chomel",
+					company: "EDRLab",
+					companyURL: "https://www.edrlab.org"
+				},
+			],
+			includePermalinks: true,
+			permalinkEdge: true,
+			permalinkHide: false,
+			localBiblio: {
+				"ONIX": {
+					"title": "ONIX for Books 3.0",
+					"href": "https://www.editeur.org/8/ONIX/"
+				}
+			},
+			github: {
+				repoURL: "https://github.com/w3c/a11y-discov-vocab",
+				branch: "main"
 			}
-			
-			table.zebra td {
-			    padding-left: 0.3em;
-			}
-			
-			table.zebra th {
-			    font-weight: bold;
-			    text-align: center;
-			    background-color: rgb(0,0,128) !important;
-			    font-size: 110%;
-			    background: hsl(180, 30%, 50%);
-			    color: #fff;
-			}
-			
-			table.zebra th a:link {
-			  color: #fff;
-			}
-			
-			table.zebra th a:visited {
-			  color: #aaa;
-			}
-			
-			table.zebra tr:nth-child(even) {
-			    background-color: hsl(180, 30%, 93%) !important;
-			}
-			
-			table.zebra th{border-bottom:1px solid #bbb;padding:.2em 1em;}
-			table.zebra td{border-bottom:1px solid #ddd;padding:.2em 1em;}
-		</style>
-	</head>
-	<body>
-		<section id="abstract">
-			<p>This document is a work in progress to extends the existing crosswalk for accessibility metadata for Schema.org, EPUB, and ONIX to MARC21 and UNIMARC. </p>
-			<p>It also adds a definition column.</p>
-			<p>Note : <a href="https://cdn.ifla.org/wp-content/uploads/U_B_231_update2021_ONLINE_FINAL-1.pdf
-				">UNIMARC 231i (pdf file)</a> offers a easy mapping to ONIX 196. Some references may be best described by other UNIMARC codes.</p>
-		</section>
-		<section id="information">
-			<h2>Information and references:</h2>
-			<p>MARC 21 information: https://www.loc.gov/marc/bibliographic/</p>
-			<p></p>Fixed length fields (fixed fields) and variable length fields (very brief summary – fuller details: https://www.loc.gov/marc/specifications/specrecstruc.html )
-			<p>MARC 21 fixed field = 3 digit numeric code (except the Leader); no indicators, value in each position has a specific meaning.</p>
-			<p>MARC 21 variable length field = 3 digit numeric code; each field can have 2 indicators that signify different values; each field can have one or more subfields; convention to designate subfield = $ ; if no subfield, assume $a.</p> 
-			<p>More detailed information about MARC 21 fields 341 and 532</p> 
-			<p>ONIX definitions were added into the table to assist with mapping work.</p>
-			<p>Schema definitions are found here:  https://www.w3.org/2021/a11y-discov-vocab/latest/</p>
-			<p>“ConformsTo” term used in EPUB –drawn from Dublin Core.</p>
-		</section>
-		
-		<section id="sotd"></section>
-		
-		<section id="epub-onix">
-			<h2>From EPUB</h2>
-			
-			<p>The following table provides a crosswalk between the properties defined in the <a
+		};//]]></script>
+	<style>
+		/* Table zebra style... */
+
+		table.zebra {
+			font-size: inherit;
+			font: 90%;
+			margin: 1em;
+		}
+
+		table.zebra td {
+			padding-left: 0.3em;
+		}
+
+		table.zebra th {
+			font-weight: bold;
+			text-align: center;
+			background-color: rgb(0, 0, 128) !important;
+			font-size: 110%;
+			background: hsl(180, 30%, 50%);
+			color: #fff;
+		}
+
+		table.zebra th a:link {
+			color: #fff;
+		}
+
+		table.zebra th a:visited {
+			color: #aaa;
+		}
+
+		table.zebra tr:nth-child(even) {
+			background-color: hsl(180, 30%, 93%) !important;
+		}
+
+		table.zebra th {
+			border-bottom: 1px solid #bbb;
+			padding: .2em 1em;
+		}
+
+		table.zebra td {
+			border-bottom: 1px solid #ddd;
+			padding: .2em 1em;
+		}
+	</style>
+</head>
+
+<body>
+	<section id="abstract">
+		<p>This document is a work in progress to extends the existing crosswalk for accessibility metadata for
+			Schema.org, EPUB, and ONIX to MARC21 and UNIMARC. </p>
+		<p>It also adds a definition column.</p>
+		<p>Note : <a href="https://cdn.ifla.org/wp-content/uploads/U_B_231_update2021_ONLINE_FINAL-1.pdf
+				">UNIMARC 231i (pdf file)</a> offers a easy mapping to ONIX 196. Some references may be best described by other
+			UNIMARC codes.</p>
+	</section>
+	<section id="information">
+		<h2>Information and references:</h2>
+		<p>MARC 21 information: https://www.loc.gov/marc/bibliographic/</p>
+		<p></p>Fixed length fields (fixed fields) and variable length fields (very brief summary – fuller details:
+		https://www.loc.gov/marc/specifications/specrecstruc.html )
+		<p>MARC 21 fixed field = 3 digit numeric code (except the Leader); no indicators, value in each position has a
+			specific meaning.</p>
+		<p>MARC 21 variable length field = 3 digit numeric code; each field can have 2 indicators that signify different
+			values; each field can have one or more subfields; convention to designate subfield = $ ; if no subfield,
+			assume $a.</p>
+		<p>More detailed information about MARC 21 fields 341 and 532</p>
+		<p>ONIX definitions were added into the table to assist with mapping work.</p>
+		<p>Schema definitions are found here: https://www.w3.org/2021/a11y-discov-vocab/latest/</p>
+		<p>“ConformsTo” term used in EPUB –drawn from Dublin Core.</p>
+	</section>
+
+	<section id="sotd"></section>
+
+	<section id="epub-onix">
+		<h2>From EPUB</h2>
+
+		<p>The following table provides a crosswalk between the properties defined in the <a
 				href="https://www.w3.org/TR/epub-a11y-11">EPUB Accessibility specification</a> [[EPUB-A11Y-11]] and the
-				equivalents defined metadata standards [[ONIX]], MARC21, UNIMARC.</p>
-			
-			<p class="note">The <code>conformsTo</code> term used in EPUB is drawn from <a
-					href="http://www.dublincore.org/specifications/dublin-core/dcmi-terms/#terms-conformsTo">Dublin
-					Core</a>.</p>
-			
-			<table class="zebra">
-				<thead>
-					<tr>
-                        <th>Definition</th>
-						<th scope="col">EPUB</th>
-						<th scope="col">ONIX</th>
-                        <th scope="col">EPUB to MARC21</th>
-						<th scope="col">ONIX to MARC21</th>
-                        <th scope="col">UNIMARC</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-                        <td></td>
-						<td>certifiedBy</td>
-						<td><a href="https://ns.editeur.org/onix/en/196/93">List 196: Code 93</a>: Compliance certification by
-							<code>ProductFormFeatureDescription</code> carries the URL of a web page belonging to the organisation responsible for compliance testing and certification of the product – typically a ‘home page’ or a page describing the certification scheme itself. For use in ONIX 3.0 only</td>
-                        <td>532 8# Accessibility Note (Non-specific)</td>
-						<td>532 8# Accessibility Note$a</td>
-                        <td>231 ##$i93$2onix196</td>
-					</tr>
-					<tr>
-                        <td></td>
-						<td>certifierReport</td>
-						<td><a href="https://ns.editeur.org/onix/en/196/94">List: 196; Code: 94</a>: Compliance web page
-							for detailed accessibility information or, if a publisher is self-certifying, <a href="https://ns.editeur.org/onix/en/196/94">Code: 96</a>:
-							Publisher's web page for detailed accessibility information</td>
-                        <td>
-							<ul>
-								<li>532 8# Accessibility Note (Non-specific)</li>
-								<li>856 - Electronic Location and Access</li>
-								<li>856 42 $3Certifier report$u[URL to Certifier report]</li>
-							</ul>
-						</td>
-						<td>532 8# Accessibility Note$a</td>
-                    <td>231 ##$i94$2onix196 and/or 231 ##$i96$2onix196</td>
-					</tr>
-					<tr>
-                        <td></td>
-						<td>certifierCredential</td>
-						<td>–</td>
-                        <td>532 8# Accessibility Note (Non-specific)</td>
-                        <td></td>
-						<td></td>
-					</tr>
-					<tr>
-                        <td></td>
-						<td>
-							dcterms:conformsTo with the URL
-							<code>http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-a</code>
-						</td>
-						<td><a href="https://ns.editeur.org/onix/en/196/02">List: 196; Code: 02</a>: EPUB Accessibility
-							Specification 1.0 A</td>
-                        <td>532 8# Accessibility Note (Non-specific)</td>
-						<td>532 8# Accessibility Note$a</td>
-                        <td>231 ##$i02$2onix196</td>
-					</tr>
-					<tr>
-                        <td></td>
-						<td>
-							dcterms:conformsTo with the URL
-							<code>http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aa</code>
-						</td>
-						<td><a href="https://ns.editeur.org/onix/en/196/03">List: 196; Code: 03</a>: EPUB Accessibility Specification 1.0 AA</td>
-						<td>532 8# Accessibility Note (Non-specific)</td>
-						<td>532 8# Accessibility Note$a</td>
-                        <td>231 ##$i03$2onix196</td>
-					</tr>
-				</tbody>
-			</table>
-		</section>
-		
-		<section id="schema-onix">
-			<h2>From Schema.org</h2>
-			
-			<p>The following table provides a crosswalk between the Schema.org metadata and [[ONIX]], MARC21, UNIMARC.</p>
-			
-               <h3>accessibilityFeature</h3>
-                <p>ONIX: <a href="https://ns.editeur.org/onix/en/196">List 196</a> (specific codes follow)</p>
-                <p>MARC: Easy mapping thru list 231 allowing reference to any ONIX list and code.</p>
+			equivalents defined metadata standards [[ONIX]], MARC21, UNIMARC.</p>
 
-            <table class="zebra">
-				<thead>
-					<tr>
-                        <th>Definition</th>
-						<th>Schema.org</th>
-						<th>ONIX</th>
-                        <th>MARC21</th>
-                        <th>UNIMARC</th>
-					</tr>
-				</thead>
-                
-				<tbody>
+		<p class="note">The <code>conformsTo</code> term used in EPUB is drawn from <a
+				href="http://www.dublincore.org/specifications/dublin-core/dcmi-terms/#terms-conformsTo">Dublin
+				Core</a>.</p>
 
-					<tr>
-<td></td>
-						<td>alternativeText</td>
-						<td><a href="https://ns.editeur.org/onix/en/196/14">List: 196; Code: 14</a>: Short alternative
-							descriptions</td>
-<td></td>
-<td>231 ##$i14$2onix196</td>
-					</tr>
-					<tr>
-<td></td>
-						<td>annotations</td>
-						<td>–</td>
-<td></td>
-<td></td>
-					</tr>
-					<tr>
-<td></td>
-						<td>audioDescription</td>
-						<td>–</td>
-<td></td>
-<td></td>
-					</tr>
-					<tr>
-<td></td>
-						<td>bookmarks</td>
-						<td>N/A (Reading system feature)</td>
-<td></td>
-<td></td>
-					</tr>
-					<tr>
-<td></td>
-						<td>braille</td>
-						<td>–</td>
-<td></td>
-<td></td>
-					</tr>
-					<tr>
-<td></td>
-						<td>captions</td>
-						<td>–</td>
-<td></td>
-<td></td>
-					</tr>
-					<tr>
-<td></td>
-						<td>ChemML</td>
-						<td><a href="https://ns.editeur.org/onix/en/196/18">List: 196; Code: 18</a>: Accessible chem
-							content</td>
-<td></td>
-<td>231 ##$i18$2onix196</td>
-					</tr>
-					<tr>
-<td></td>
-						<td>describedMath</td>
-						<td>–</td>
-<td></td>
-<td></td>
-					</tr>
-					<tr>
-<td></td>
-						<td>displayTransformability</td>
-						<td><a href="https://ns.editeur.org/onix/en/175/E200">List: 175 ; Code: E200</a>: Reflowable.</td>
-<td></td>
-<td>231 ## $iE200$2onix175</td>
-					</tr>
-					<tr>
-<td></td>
-						<td>highContrastAudio</td>
-						<td>–</td>
-<td></td>
-<td></td>
-					</tr>
-					<tr>
-<td></td>
-						<td>highContrastDisplay</td>
-						<td>–</td>
-<td></td>
-<td></td>
-					</tr>
-					<tr>
-<td></td>
-						<td>index</td>
-						<td><a href="https://ns.editeur.org/onix/en/196/12">List: 196; Code: 12</a>: Index navigation</td>
-<td></td>
-<td>231 $i12$2onix196</td>
-					</tr>
-					<tr>
-<td></td>
-						<td>largePrint</td>
-						<td>–</td>
-<td></td>
-<td></td>
-					</tr>
-					<tr>
-<td></td>
-						<td>latex</td>
-						<td>–</td>
-<td></td>
-<td></td>
-					</tr>
-					<tr>
-<td></td>
-						<td>longDescription</td>
-						<td><a href="https://ns.editeur.org/onix/en/196/15">List: 196; Code: 15</a>: Full alternative
-							descriptions; 16: Visualised data also available as non-graphical data</td>
-<td></td>
-<td>231 $i15$2onix196</td>
-					</tr>
-					<tr>
-<td></td>
-						<td>MathML</td>
-						<td><a href="https://ns.editeur.org/onix/en/196/17">List: 196; Code: 17</a>: Accessible math
-							content</td>
-<td></td>
-<td>231 $i17$2onix196</td>
-					</tr>
-					<tr>
-<td></td>
-						<td>none</td>
-						<td>–</td>
-<td></td>
-<td></td>
-					</tr>
-					<tr>
-<td></td>
-						<td>printPageNumbers</td>
-						<td><a href="https://ns.editeur.org/onix/en/196/19">List: 196; Code: 19</a>: Print-equivalent page
-							numbering</td>
-<td></td>
-<td>231 $i19$2onix196</td>
-					</tr>
-					<tr>
-<td></td>
-						<td>readingOrder</td>
-						<td><a href="https://ns.editeur.org/onix/en/196/13">List: 196; Code: 13</a>: Reading order</td>
-<td></td>
-<td>231 $i13$2onix196</td>
-					</tr>
-					<tr>
-<td></td>
-						<td>rubyAnnotations</td>
-						<td>–</td>
-<td></td>
-<td></td>
-					</tr>
-					<tr>
-<td></td>
-						<td>signLanguage</td>
-						<td>–</td>
-<td></td>
-<td></td>
-					</tr>
-					<tr>
-<td></td>
-						<td>structuralNavigation</td>
-						<td>–</td>
-<td></td>
-<td></td>
-					</tr>
-					<tr>
-<td></td>
-						<td>sychronizedAudioText</td>
-						<td><a href="https://ns.editeur.org/onix/en/196/20">List: 196; Code: 20</a>: Synchronised
-							pre-recorded audio</td>
-<td></td>
-<td>231 $i20$2onix196</td>
-					</tr>
-					<tr>
-<td></td>
-						<td>tableOfContents</td>
-						<td><a href="https://ns.editeur.org/onix/en/196/11">List: 196; Code: 11</a>: Table of contents
-							navigation</td>
-<td></td>
-<td>231 $i11$2onix196</td>
-					</tr>
-					<tr>
-<td></td>
-						<td>taggedPDF</td>
-						<td>–</td>
-<td></td>
-<td></td>
-					</tr>
-					<tr>
-<td></td>
-						<td>tactileGraphic</td>
-						<td>–</td>
-<td></td>
-<td></td>
-					</tr>
-					<tr>
-<td></td>
-						<td>tactileObject</td>
-						<td>–</td>
-<td></td>
-<td></td>
-					</tr>
-					<tr>
-<td></td>
-						<td>timingControl</td>
-						<td>–</td>
-<td></td>
-<td></td>
-					</tr>
-					<tr>
-<td></td>
-						<td>transcript</td>
-						<td>–</td>
-<td></td>
-<td></td>
-					</tr>
-					<tr>
-<td></td>
-						<td>ttsMarkup</td>
-						<td><a href="https://ns.editeur.org/onix/en/196/21">List: 196; Code: 21</a>: Text-to-speech
-							hinting provided; <a href="https://ns.editeur.org/onix/en/196/22">Code 22</a>: Language tagging provided</td>
-<td></td>
-<td>231 $i21$2onix196 and/or 231 $i22$2onix196</td>
-					</tr>
-					<tr>
-<td></td>
-						<td>unlocked</td>
-						<td>–</td>
-<td></td>
-<td></td>
-					</tr>
-					<tr>
-<td></td>
-						<td>–</td>
-						<td><a href="https://ns.editeur.org/onix/en/196/22">List: 196; Code 22</a>: Language tagging
-							provided – helps with TTS in multi-lingual content</td>
-<td></td>
-<td>231 $i22$2onix196</td>
-					</tr>
-					<tr>
-<td></td>
-						<td>–</td>
-						<td><a href="https://ns.editeur.org/onix/en/196/24">List: 196; Code 24</a>: Dyslexia
-							readability</td>
-<td></td>
-<td></td>
-					</tr>
-					<tr>
-<td></td>
-						<td>–</td>
-						<td><a href="https://ns.editeur.org/onix/en/196/09">List: 196; Code 09</a>: Inaccessible</td>
-<td></td>
-<td>231 $i09$2onix196</td>
-					</tr>
-					<tr>
-<td></td>
-						<td>–</td>
-						<td><a href="https://ns.editeur.org/onix/en/196/10">List: 196; Code 10</a>: No reading system
-							accessibility options disabled</td>
-<td></td>
-<td>231 $i10$2onix196</td>
-					</tr>
-                </tbody>
-            </table>
-            
-            <h3>accessibilityHazard</h3>
-           <table class="zebra">
-				<thead>
-					<tr>
-                        <th scope="col">Definition</th>
-						<th scope="col">Schema.org</th>
-						<th scope="col">ONIX</th>
-                        <th scope="col">MARC21</th>
-                        <th scope="col">UNIMARC</th>
-					</tr>
-				</thead>
-                
-				<tbody>
-                 <tbody>
-					<tr>
-                        <td></td>
-						<td>flashing</td>
-						<td>–</td>
-                        <td></td>
-                        <td></td>
-					</tr>
-					<tr>
-                        <td></td>
-						<td>noFlashingHazard</td>
-						<td>–</td>
-                        <td></td>
-                        <td></td>
-					</tr>
-					<tr>
-                        <td></td>
-						<td>motionSimulation</td>
-						<td><a href="https://ns.editeur.org/onix/en/143/17">List: 143; Code: 17</a> WARNING – Motion simulation hazard
-							Products simulates (via visual effects) the experience of motion, which may cause nausea in sensitive people</td>
-                        <td></td>
-                        <td>231 $i17$2onix143</td>
-					</tr>
-					<tr>
-                        <td></td>
-						<td>noMotionSimulationHazard</td>
-						<td>–</td>
-                        <td></td>
-                        <td></td>
-					</tr>
-                
-					<tr>
-                        <td></td>
-						<td>sound</td>
-						<td><a href="https://ns.editeur.org/onix/en/175/A310">List: 175; Code: A310</a>: Sound effects
-							Incidental sounds added to the audiobook narration (eg background environmental sounds). (may not correspond to a hazard)</td>
-                        <td></td>
-                        <td>231 $iA310$2onix175</td>
-					</tr>
-					<tr>
-                        <td></td>
-						<td>noSoundHazard</td>
-						<td>–</td>
-                        <td></td>
-                        <td></td>
-					</tr>
-					<tr>
-                        <td></td>
-						<td>none</td>
-						<td>–</td>
-                        <td></td>
-                        <td></td>
-					</tr>
-					<tr>
-                        <td></td>
-						<td>unknown</td>
-						<td>–</td>
-                        <td></td>
-                        <td></td>
-					</tr>
-                 </tbody>
-            </table>
-            
-            <!-- Recommend remove this Table -->
-            <h3>accessibilityAPI (Recommend Removal)</h3>
-           <table class="zebra">
-				<thead>
-					<tr>
-                        <th scope="col">Definition</th>
-						<th scope="col">Schema.org</th>
-						<th scope="col">ONIX</th>
-                        <th scope="col">MARC21</th>
-                        <th scope="col">UNIMARC</th>
-					</tr>
-				</thead>
-                
-				<tbody>
+		<table class="zebra">
+			<thead>
+				<tr>
+					<th>Definition</th>
+					<th scope="col">EPUB</th>
+					<th scope="col">ONIX</th>
+					<th scope="col">EPUB to MARC21</th>
+					<th scope="col">ONIX to MARC21</th>
+					<th scope="col">UNIMARC</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td></td>
+					<td>certifiedBy</td>
+					<td><a href="https://ns.editeur.org/onix/en/196/93">List 196: Code 93</a>: Compliance certification
+						by
+						<code>ProductFormFeatureDescription</code> carries the URL of a web page belonging to the
+						organisation responsible for compliance testing and certification of the product – typically a
+						‘home page’ or a page describing the certification scheme itself. For use in ONIX 3.0 only
+					</td>
+					<td>532 8# Accessibility Note (Non-specific)</td>
+					<td>532 8# Accessibility Note$a</td>
+					<td>231 ##$i93$2onix196</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>certifierReport</td>
+					<td><a href="https://ns.editeur.org/onix/en/196/94">List: 196; Code: 94</a>: Compliance web page
+						for detailed accessibility information or, if a publisher is self-certifying, <a
+							href="https://ns.editeur.org/onix/en/196/94">Code: 96</a>:
+						Publisher's web page for detailed accessibility information</td>
+					<td>
+						<ul>
+							<li>532 8# Accessibility Note (Non-specific)</li>
+							<li>856 - Electronic Location and Access</li>
+							<li>856 42 $3Certifier report$u[URL to Certifier report]</li>
+						</ul>
+					</td>
+					<td>532 8# Accessibility Note$a</td>
+					<td>231 ##$i94$2onix196 and/or 231 ##$i96$2onix196</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>certifierCredential</td>
+					<td>–</td>
+					<td>532 8# Accessibility Note (Non-specific)</td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>
+						dcterms:conformsTo with the URL
+						<code>http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-a</code>
+					</td>
+					<td><a href="https://ns.editeur.org/onix/en/196/02">List: 196; Code: 02</a>: EPUB Accessibility
+						Specification 1.0 A</td>
+					<td>532 8# Accessibility Note (Non-specific)</td>
+					<td>532 8# Accessibility Note$a</td>
+					<td>231 ##$i02$2onix196</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>
+						dcterms:conformsTo with the URL
+						<code>http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aa</code>
+					</td>
+					<td><a href="https://ns.editeur.org/onix/en/196/03">List: 196; Code: 03</a>: EPUB Accessibility
+						Specification 1.0 AA</td>
+					<td>532 8# Accessibility Note (Non-specific)</td>
+					<td>532 8# Accessibility Note$a</td>
+					<td>231 ##$i03$2onix196</td>
+				</tr>
+			</tbody>
+		</table>
+	</section>
 
-					<tr>
-                        <td></td>
-						<td>AndroidAccessibility</td>
-						<td>–</td>
-                        <td></td>
-                        <td></td>
-					</tr>
-					<tr>
-                        <td></td>
-						<td>ARIA</td>
-						<td>–</td>
-                        <td></td>
-                        <td></td>
-					</tr>
-					<tr>
-                        <td></td>
-						<td>ATK</td>
-						<td>–</td>
-                        <td></td>
-                        <td></td>
-					</tr>
-					<tr>
-                        <td></td>
-						<td>AT-SPI</td>
-						<td>–</td>
-                        <td></td>
-                        <td></td>
-					</tr>
-					<tr>
-                        <td></td>
-						<td>BlackberryAccessibility</td>
-						<td>–</td>
-                        <td></td>
-                        <td></td>
-					</tr>
-					<tr>
-                        <td></td>
-						<td>iAccessible2</td>
-						<td>–</td>
-                        <td></td>
-                        <td></td>
-					</tr>
-					<tr>
-                        <td></td>
-						<td>iOSAccessibility</td>
-						<td>–</td>
-                        <td></td>
-                        <td></td>
-					</tr>
-					<tr>
-                        <td></td>
-						<td>JavaAccessibility</td>
-						<td>–</td>
-                        <td></td>
-                        <td></td>
-					</tr>
-					<tr>
-                        <td></td>
-						<td>MacOSXAccessibility</td>
-						<td>–</td>
-                        <td></td>
-                        <td></td>
-					</tr>
-					<tr>
-                        <td></td>
-						<td>MSAA</td>
-						<td>–</td>
-                        <td></td>
-                        <td></td>
-					</tr>
-					<tr>
-                        <td></td>
-						<td>UIAutomation</td>
-						<td>–</td>
-                        <td></td>
-                        <td></td>
-					</tr>
-                 </tbody>
-            </table>
-            
-            <!-- Recommend remove this Table -->
-            <h3>accessibilityControl (Recommend - Removal)</h3>
-            <table class="zebra">
-				<thead>
-					<tr>
-                        <th scope="col">Definition</th>
-						<th scope="col">Schema.org</th>
-						<th scope="col">ONIX</th>
-                        <th scope="col">MARC21</th>
-                        <th scope="col">UNIMARC</th>
-					</tr>
-				</thead>
-                
-				<tbody>
-	
-					<tr>
-                        <td></td>
-						<td>fullKeyboardControl</td>
-						<td>–</td>
-                        <td></td>
-                        <td></td>
-					</tr>
-					<tr>
-                        <td></td>
-						<td>fullMouseControl</td>
-						<td>–</td>
-                        <td></td>
-                        <td></td>
-					</tr>
-					<tr>
-                        <td></td>
-						<td>fullSwitchControl</td>
-						<td>–</td>
-                        <td></td>
-                        <td></td>
-					</tr>
-					<tr>
-                        <td></td>
-						<td>fullTouchControl</td>
-						<td>–</td>
-                        <td></td>
-                        <td></td>
-					</tr>
-					<tr>
-                        <td></td>
-						<td>fullVideoControl</td>
-						<td>–</td>
-                        <td></td>
-                        <td></td>
-					</tr>
-					<tr>
-                        <td></td>
-						<td>fullVoiceControl</td>
-						<td>–</td>
-                        <td></td>
-                        <td></td>
-					</tr>
-                 </tbody>
-            </table>
-            
-            <h3>accessMode</h3>
-           <table class="zebra">
-				<thead>
-					<tr>
-                        <th scope="col">Definition</th>
-						<th scope="col">Schema.org</th>
-						<th scope="col">ONIX</th>
-                        <th scope="col">MARC21</th>
-                        <th scope="col">UNIMARC</th>
-					</tr>
-				</thead>
-                
-				<tbody>
-					<tr>
-                        <td></td>
-						<td>auditory</td>
-						<td>–</td>
-                        <td></td>
-                        <td></td>
-					</tr>
-					<tr>
-                        <td></td>
-						<td>chartOnVisual</td>
-						<td><a href="https://ns.editeur.org/onix/en/81/19">List: 81; Code 19</a>: Figures, Diagrams,
-							Charts</td>
-                        <td></td>
-                        <td>231 $i19$2onix81</td>
-					</tr>
-					<tr>
-                        <td></td>
-						<td>chemOnVisual</td>
-						<td>–</td>
-                        <td></td>
-                        <td></td>
-					</tr>
-					<tr>
-                        <td></td>
-						<td>colorDependent</td>
-						<td>–</td>
-                        <td></td>
-                        <td></td>
-					</tr>
-					<tr>
-                        <td></td>
-						<td>diagramOnVisual</td>
-						<td><a href="https://ns.editeur.org/onix/en/81/19">List: 81; Code 19</a>: Figures, Diagrams,
-							Charts</td>
-                        <td></td>
-                        <td>231 $i19$2onix81</td>
-					</tr>
-					<tr>
-                        <td></td>
-						<td>mathOnVisual</td>
-						<td>–</td>
-                        <td></td>
-                        <td></td>
-					</tr>
-					<tr>
-                        <td></td>
-						<td>musicOnVisual</td>
-						<td>–</td>
-                        <td></td>
-                        <td></td>
-					</tr>
-					<tr>
-                        <td></td>
-						<td>tactile</td>
-						<td>–</td>
-                        <td></td>
-                        <td></td>
-					</tr>
-					<tr>
-                        <td></td>
-						<td>textOnVisual</td>
-						<td>–</td>
-                        <td></td>
-                        <td></td>
-					</tr>
-					<tr>
-                        <td></td>
-						<td>textual</td>
-						<td><a href="https://ns.editeur.org/onix/en/81/10">List: 81; Code: 10</a> combined with <a
-								href="https://ns.editeur.org/onix/en/196/10">List: 196; Code: 10</a> means all text is
-							actual text. Note that List: 81; Code: 10 on its own (without List: 196; Code: 10) admits
-							the possibility that the "text" is inaccessible because it is an image of text.
-						<br/>Note : on this point ONIX is unclear. Codes <a
-						href="https://ns.editeur.org/onix/en/196/09">16</a> and <a
-						href="https://ns.editeur.org/onix/en/196/09">14</a> or <a
-						href="https://ns.editeur.org/onix/en/196/09">15</a> should also be mobilised<a
-						href="https://ns.editeur.org/onix/en/196/09">List: 196; Code: 09</a> <em>Inaccessible
-						Known to lack significant features required for broad accessibility.</em> Would give a better indication for "Screen reader friendly" (if code 09 is not found so the publication is textual). In both cases it's hard for a publisher to figure out how to describe "all content is accessible thru true text", he must adopt a reasoning by absence.</td>
-                        <td>341 0#$atextual</td>
-                        <td></td>
-					</tr>
-					<tr>
-                        <td></td>
-						<td>visual</td>
-						<td><a href="https://ns.editeur.org/onix/en/81/07">List: 81; Code: 07</a>: Still images / graphics
-							or Code: 18: Photographs or Code: 19: Figures, diagrams, charts, graphs or Code: 12: Maps
-							and/or other cartographic content</td>
-                        <td></td>
-                        <td>231 $i07$2onix81</td>
-					</tr>
-            </table>
-            
-            <h3>accessModeSufficient</h3>
-            <p>ONIX crosswalks are for instances where accessModeSufficient includes this vocabulary entry
-							alone; combinations may occur but are more difficult to crosswalk</p>
-           <table class="zebra">
-				<thead>
-					<tr>
-                        <th scope="col">Definition</th>
-						<th scope="col">Schema.org</th>
-						<th scope="col">ONIX</th>
-                        <th scope="col">MARC21</th>
-                        <th scope="col">UNIMARC</th>
-					</tr>
-				</thead>
-                
-				<tbody>
-					<tr>
-                        <td></td>
-						<td>auditory</td>
-						<td><a href="https://ns.editeur.org/onix/en/81/01">List: 81; Code:01</a></td>
-                        <td> 341 0#$aauditory / 336 0#$bspw (?)</td>
-                        <td> 181 #0 $cspw$2rdacontent (may correspond only to human narration)</td>
-					</tr>
-					<tr>
-                        <td></td>
-						<td>tactile</td>
-						<td>–</td>
-                        <td></td>
-                        <td></td>
-					</tr>
-					<tr>
-                        <td></td>
-						<td>textual</td>
-						<td><a href="https://ns.editeur.org/onix/en/81/10">List: 81; Code: 10</a> combined with <a
-								href="https://ns.editeur.org/onix/en/196/10">List: 196; Code: 10</a> means all text is
-							actual text. Note that List: 81; Code: 10 on its own (without List: 196; Code: 10) admits
-							the possibility that the "text" is inaccessible because it is an image of text. 
-							<br/>Note : on this point ONIX is unclear. <a
+	<section id="schema-onix">
+		<h2>From Schema.org</h2>
+
+		<p>The following table provides a crosswalk between the Schema.org metadata and [[ONIX]], MARC21, UNIMARC.</p>
+
+		<h3>accessibilityFeature</h3>
+		<p>ONIX: <a href="https://ns.editeur.org/onix/en/196">List 196</a> (specific codes follow)</p>
+		<p>MARC21: would not map.</p>
+		<p>UNIMARC: Easy mapping thru list 231 allowing reference to any ONIX list and code.</p>
+
+		<table class="zebra">
+			<thead>
+				<tr>
+					<th>Definition</th>
+					<th>Schema.org</th>
+					<th>ONIX</th>
+					<th>MARC21</th>
+					<th>UNIMARC</th>
+				</tr>
+			</thead>
+
+			<tbody>
+
+				<tr>
+					<td></td>
+					<td>alternativeText</td>
+					<td><a href="https://ns.editeur.org/onix/en/196/14">List: 196; Code: 14</a>: Short alternative
+						descriptions</td>
+					<td>341 0# $avisual$balternativeText$2sapdv or 341 0# $aaudio$bcaptions$2sapdv</td>
+					<td>231 ##$i14$2onix196</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>annotations</td>
+					<td>–</td>
+					<td>341 0# $atextual$bannotations $2 sapdv or 532 8# $a This resource includes annotations from the
+						author, instructor and/or others.</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>audioDescription</td>
+					<td>–</td>
+					<td>341 0# $avisual$daudioDescription$2sapdv</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>bookmarks</td>
+					<td>N/A (Reading system feature)</td>
+					<td>341 0# $atextual$bbookmarks$2sapdv</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>braille</td>
+					<td>–</td>
+					<td>
+						<ul>
+							<li>Use Case [1] (the content is in Braille format) Not Applicable. Natively braille
+								resources are described using a number of fields in MARC21.</li>
+							<li>Use Case [2] (alternatives are available in Braille): 341 0# $atext$ebraille </li>
+						</ul>
+					</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>captions</td>
+					<td>–</td>
+					<td>341 0# $aauditory$bcaptions$2sapdv or 341 0# $avisual$bcaptions$2sapdv</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>ChemML</td>
+					<td><a href="https://ns.editeur.org/onix/en/196/18">List: 196; Code: 18</a>: Accessible chem
+						content</td>
+					<td>341 0# $avisual$bChemML$2sapdv</td>
+					<td>231 ##$i18$2onix196</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>describedMath</td>
+					<td>–</td>
+					<td>341 0# $avisual$bdescribedMath$2sapdv</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>displayTransformability</td>
+					<td><a href="https://ns.editeur.org/onix/en/175/E200">List: 175 ; Code: E200</a>: Reflowable.</td>
+					<td>341 0# $atextual$b displayTransformability$2sapdv</td>
+					<td>231 ## $iE200$2onix175</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>highContrastAudio</td>
+					<td>–</td>
+					<td>3410$aauditory$dhighContrastAudio$2sapdv</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>highContrastDisplay</td>
+					<td>–</td>
+					<td>3410#$atextual$b highContrastDisplay$2sapdv or 3410#$avisual$c highContrastDisplay$2sapd</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>index</td>
+					<td><a href="https://ns.editeur.org/onix/en/196/12">List: 196; Code: 12</a>: Index navigation</td>
+					<td>3410#$atextual$bindex$2sapdv</td>
+					<td>231 $i12$2onix196</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>largePrint</td>
+					<td>–</td>
+					<td>
+						<ul>
+							<li>3410#$atextual$blargePrint$2sapdv</li>
+							<li>007 pos 00 Text pos 01Specific material designation b Large print</li>
+							<li>008 Books/Music pos 23 form of item d Large print</li>
+							<li>008 Cartographic Pos 29 d Large print</li>
+							<li>340 ## $nLarge print (18 point)$2rdafs</li>
+						</ul>
+					</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>latex</td>
+					<td>–</td>
+					<td>3410#$avisual$blatex$2sapdv</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>longDescription</td>
+					<td><a href="https://ns.editeur.org/onix/en/196/15">List: 196; Code: 15</a>: Full alternative
+						descriptions; 16: Visualised data also available as non-graphical data</td>
+					<td>
+						<ul>
+							<li>3410#$avisual$blongDescription$2sapdv</li>
+							<li>3410#$avisual$bDescribed video$2sapdv</li>
+							<li>3410#$aauditory$bcaptions$2sapdv</li>
+							<li>3410#$aauditory$btranscript$2sapdv</li>
+						</ul>
+					</td>
+					<td>231 $i15$2onix196</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>MathML</td>
+					<td><a href="https://ns.editeur.org/onix/en/196/17">List: 196; Code: 17</a>: Accessible math
+						content</td>
+					<td>3410#$avisual$bMathML$2sapdv</td>
+					<td>231 $i17$2onix196</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>none</td>
+					<td>–</td>
+					<td>No mapping</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>printPageNumbers</td>
+					<td><a href="https://ns.editeur.org/onix/en/196/19">List: 196; Code: 19</a>: Print-equivalent page
+						numbering</td>
+					<td>3410#$atextual$bprintPageNumbers$2sapdv</td>
+					<td>231 $i19$2onix196</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>readingOrder</td>
+					<td><a href="https://ns.editeur.org/onix/en/196/13">List: 196; Code: 13</a>: Reading order</td>
+					<td>3410#$atextual$breadingOrder$2sapdv</td>
+					<td>231 $i13$2onix196</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>rubyAnnotations</td>
+					<td>–</td>
+					<td>3410#$atextual$brubyAnnotations$2sapdv</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>signLanguage</td>
+					<td>–</td>
+					<td>3410#$aauditory$csignLanguage$2sapdv</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>structuralNavigation</td>
+					<td>–</td>
+					<td>3410#$atextual$bstructuralNavigation$2sapdv</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>sychronizedAudioText</td>
+					<td><a href="https://ns.editeur.org/onix/en/196/20">List: 196; Code: 20</a>: Synchronised
+						pre-recorded audio</td>
+					<td>3410#$atextual$d sychronizedAudioText$2sapdv</td>
+					<td>231 $i20$2onix196</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>tableOfContents</td>
+					<td><a href="https://ns.editeur.org/onix/en/196/11">List: 196; Code: 11</a>: Table of contents
+						navigation</td>
+					<td>3410#$atextual$btableofContents$2sapdv</td>
+					<td>231 $i11$2onix196</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>taggedPDF</td>
+					<td>–</td>
+					<td>3410#$atextual$btaggedPDF$2sapdv</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>tactileGraphic</td>
+					<td>–</td>
+					<td>
+						<ul>
+							<li>Use case [1] (When used with creative works such as books, indicates that the resource
+								includes tactile graphics): 3410#$avisual$etactileGraphic$2sapd</li>
+							<li>Use case [2] (When used to describe an image resource or physical object, indicates that
+								the resource is a tactile graphic): 500 - Note ; 500 $a Tactile graphic</li>
+						</ul>
+						<p>And 336 Content type ; 336 ##$atactile image$2rdacontent</p>
+					</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>tactileObject</td>
+					<td>–</td>
+					<td></td>
+					<td>
+						<ul>
+							<li>Use case [1] (When used with creative works such as books, indicates that the resource
+								includes models to generate tactile 3D objects): 532 1# $aIncludes models to generate 3D
+								objects</li>
+							<li>Use case [2] (When used to describe a physical object, indicates that the resource is a
+								tactile 3D object): Leader pos 6 r Three-dimensional artifact or naturally occurring
+								object and 500 $aTactile 3D object.</li>
+						</ul>
+						<p>336 ##$atactile three-dimensional form$2rdacontent</p>
+					</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>timingControl</td>
+					<td>–</td>
+					<td>341$aauditory$dtimingControl$2sapdv or 341$avisual$dtimingControl$2sapdv</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>transcript</td>
+					<td>–</td>
+					<td>341$aauditory$btranscript$2sapdv</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>ttsMarkup</td>
+					<td><a href="https://ns.editeur.org/onix/en/196/21">List: 196; Code: 21</a>: Text-to-speech
+						hinting provided; <a href="https://ns.editeur.org/onix/en/196/22">Code 22</a>: Language tagging
+						provided</td>
+					<td>341$atext$bttsMarkup$2sapdv and 532 1# $a Text-to-speech has been optimised through provision of
+						PLS lexicons, SSML or CSS Speech synthesis hints.</td>
+					<td>231 $i21$2onix196 and/or 231 $i22$2onix196</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>unlocked</td>
+					<td>–</td>
+					<td>532 1# $aNo DRM (digital rights management) or other content restriction protocols have been
+						applied to the resource.</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>–</td>
+					<td><a href="https://ns.editeur.org/onix/en/196/22">List: 196; Code 22</a>: Language tagging
+						provided – helps with TTS in multi-lingual content</td>
+					<td>532 1# $aThe language of the text has been specified (eg via the HTML or XML lang attribute) to
+						optimise text-to-speech (and other alternative renderings), both at whole document level and,
+						where appropriate,for individual words, phrases or passages in a different language.</td>
+					<td>231 $i22$2onix196</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>–</td>
+					<td><a href="https://ns.editeur.org/onix/en/196/24">List: 196; Code 24</a>: Dyslexia readability
+					</td>
+					<td>532 1# $aSpecialised font, character and line spacing, justification and paragraph spacing, and
+						coloring for dyslexic readers.</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>–</td>
+					<td><a href="https://ns.editeur.org/onix/en/196/09">List: 196; Code 09</a>: Inaccessible</td>
+					<td>532 2# $aLacks significant accessibility features.</td>
+					<td>231 $i09$2onix196</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>–</td>
+					<td><a href="https://ns.editeur.org/onix/en/196/10">List: 196; Code 10</a>: No reading system
+						accessibility options disabled</td>
+					<td>532 8# $aNo accessibility features offered by the reading system, device or reading software
+						(including but not limited to choice of text size or typeface, choice of text or background
+						color, text-to-speech) are disabled, overridden or otherwise unusable with the product.</td>
+					<td>231 $i10$2onix196</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<h3>accessibilityHazard</h3>
+		<table class="zebra">
+			<thead>
+				<tr>
+					<th scope="col">Definition</th>
+					<th scope="col">Schema.org</th>
+					<th scope="col">ONIX</th>
+					<th scope="col">MARC21</th>
+					<th scope="col">UNIMARC</th>
+				</tr>
+			</thead>
+
+			<tbody>
+			<tbody>
+				<tr>
+					<td></td>
+					<td>flashing</td>
+					<td>–</td>
+					<td>532 8# $aThe resource presents a flashing hazard for photosensitive persons.</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>noFlashingHazard</td>
+					<td>–</td>
+					<td>532 8# $aThis resource does not present a flashing hazard.</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>motionSimulation</td>
+					<td><a href="https://ns.editeur.org/onix/en/143/17">List: 143; Code: 17</a> WARNING – Motion
+						simulation hazard
+						Products simulates (via visual effects) the experience of motion, which may cause nausea in
+						sensitive people</td>
+					<td>532 8# $aContains instances of motion simulation that may affect some individuals.</td>
+					<td>231 $i17$2onix143</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>noMotionSimulationHazard</td>
+					<td>–</td>
+					<td>532 8# $aThis resource does not contain instances of motion simulation.</td>
+					<td></td>
+				</tr>
+
+				<tr>
+					<td></td>
+					<td>sound</td>
+					<td><a href="https://ns.editeur.org/onix/en/175/A310">List: 175; Code: A310</a>: Sound effects
+						Incidental sounds added to the audiobook narration (eg background environmental sounds). (may
+						not correspond to a hazard)</td>
+					<td>532 8# $aContains auditory sounds that may affect some individuals.</td>
+					<td>231 $iA310$2onix175</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>noSoundHazard</td>
+					<td>–</td>
+					<td>532 8# $aThis resource does not contain auditory hazards.</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>none</td>
+					<td>–</td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>unknown</td>
+					<td>–</td>
+					<td>532 8# $aThis resource has not been evaluated for hazard risks.</td>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
+
+		<!-- Recommend remove this Table -->
+		<h3>accessibilityAPI (Recommend Removal)</h3>
+		<table class="zebra">
+			<thead>
+				<tr>
+					<th scope="col">Definition</th>
+					<th scope="col">Schema.org</th>
+					<th scope="col">ONIX</th>
+					<th scope="col">MARC21</th>
+					<th scope="col">UNIMARC</th>
+				</tr>
+			</thead>
+
+			<tbody>
+
+				<tr>
+					<td></td>
+					<td>AndroidAccessibility</td>
+					<td>–</td>
+					<td>532 0# $aResource is compatible with the Android Accessibility API.</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>ARIA</td>
+					<td>–</td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>ATK</td>
+					<td>–</td>
+					<td>532 0# $aResource is compatible with the Accessibility Toolkit (ATK) API for GNOME</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>AT-SPI</td>
+					<td>–</td>
+					<td>532 0# $a Indicates the resource is compatible with the Assistive Technology Service Provider
+						Interface (AT-SPI) API for GNOME.</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>BlackberryAccessibility</td>
+					<td>–</td>
+					<td>532 0# $aResource is compatible with the Blackberry Accessibility API.</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>iAccessible2</td>
+					<td>–</td>
+					<td>532 0# $aResource is compatible with the iAccessible2 API for Windows.</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>iOSAccessibility</td>
+					<td>–</td>
+					<td>532 0# $aResource is compatible with the iAccessible2 API for Apple iOS devices.</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>JavaAccessibility</td>
+					<td>–</td>
+					<td>532 0# $aResource is compatible with the Java Accessibility API (JAAPI).</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>MacOSXAccessibility</td>
+					<td>–</td>
+					<td>532 0# $aResource is compatible with the iAccessible2 API for Windows.</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>MSAA (Microsoft Active Accessibility)</td>
+					<td>–</td>
+					<td>532 0# $aResource is compatible with the Microsoft Active Accessibility (MSAA) API for Windows
+					</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>UIAutomation</td>
+					<td>–</td>
+					<td>532 0# $aCompatible with the User Interface Automation API for Windows.</td>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
+
+		<!-- Recommend remove this Table -->
+		<h3>accessibilityControl (Recommend - Removal)</h3>
+		<table class="zebra">
+			<thead>
+				<tr>
+					<th scope="col">Definition</th>
+					<th scope="col">Schema.org</th>
+					<th scope="col">ONIX</th>
+					<th scope="col">MARC21</th>
+					<th scope="col">UNIMARC</th>
+				</tr>
+			</thead>
+
+			<tbody>
+
+				<tr>
+					<td></td>
+					<td>fullKeyboardControl</td>
+					<td>–</td>
+					<td>532 0#$a Users can fully control the resource through keyboard input.</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>fullMouseControl</td>
+					<td>–</td>
+					<td>532 0#$a Users can fully control the resource through mouse input.</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>fullSwitchControl</td>
+					<td>–</td>
+					<td>532 0#$a Users can fully control the resource through switch input.</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>fullTouchControl</td>
+					<td>–</td>
+					<td>532 0#$a Users can fully control the resource through touch input.</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>fullVideoControl</td>
+					<td>–</td>
+					<td>532 0#$a Users can fully control the resource through video input.</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>fullVoiceControl</td>
+					<td>–</td>
+					<td>532 0#$a Users can fully control the resource through voice input.</td>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
+
+		<h3>accessMode</h3>
+		<table class="zebra">
+			<thead>
+				<tr>
+					<th scope="col">Definition</th>
+					<th scope="col">Schema.org</th>
+					<th scope="col">ONIX</th>
+					<th scope="col">MARC21</th>
+					<th scope="col">UNIMARC</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<tr>
+					<td></td>
+					<td>auditory</td>
+					<td>–</td>
+					<td>341 0#$aauditory; Also:
+						336 ##$aperformed music$2rdacontent;
+						336 ##$asounds$2rdacontent;
+						336 ##$aspoken word$2rdacontent;
+						344 ## $i sound</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>chartOnVisual</td>
+					<td><a href="https://ns.editeur.org/onix/en/81/19">List: 81; Code 19</a>: Figures, Diagrams,
+						Charts</td>
+					<td>341 0 $avisual; 532 8# $aResource contains charts encoded in visual form.</td>
+					<td>231 $i19$2onix81</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>chemOnVisual</td>
+					<td>–</td>
+					<td>341 0# $avisual; 532 8# $aResource contains chemical equations encoded in visual form.</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>colorDependent</td>
+					<td>–</td>
+					<td>532 2# $aThe resource contains information encoded in such that color perception is necessary.
+					</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>diagramOnVisual</td>
+					<td><a href="https://ns.editeur.org/onix/en/81/19">List: 81; Code 19</a>: Figures, Diagrams,
+						Charts</td>
+					<td>341 0# $avisual; 532 8# $a Resource contains diagrams encoded in visual form.</td>
+					<td>231 $i19$2onix81</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>mathOnVisual</td>
+					<td>–</td>
+					<td>341 0# $avisual;
+						532 8# $aResource contains mathematical notations encoded in visual form.</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>musicOnVisual</td>
+					<td>–</td>
+					<td>341 0# $avisual;
+						532 8# $a Resource contains music encoded in visual form.</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>tactile</td>
+					<td>–</td>
+					<td>341 0#$atactile </td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>textOnVisual</td>
+					<td>–</td>
+					<td>341 0# $avisual;
+						532 8# $a Resource contains text encoded in visual form.</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>textual</td>
+					<td><a href="https://ns.editeur.org/onix/en/81/10">List: 81; Code: 10</a> combined with <a
+							href="https://ns.editeur.org/onix/en/196/10">List: 196; Code: 10</a> means all text is
+						actual text. Note that List: 81; Code: 10 on its own (without List: 196; Code: 10) admits
+						the possibility that the "text" is inaccessible because it is an image of text.
+						<br />Note : on this point ONIX is unclear. Codes <a
+							href="https://ns.editeur.org/onix/en/196/09">16</a> and <a
+							href="https://ns.editeur.org/onix/en/196/09">14</a> or <a
+							href="https://ns.editeur.org/onix/en/196/09">15</a> should also be mobilised<a
+							href="https://ns.editeur.org/onix/en/196/09">List: 196; Code: 09</a> <em>Inaccessible
+							Known to lack significant features required for broad accessibility.</em> Would give a
+						better indication for "Screen reader friendly" (if code 09 is not found so the publication is
+						textual). In both cases it's hard for a publisher to figure out how to describe "all content is
+						accessible thru true text", he must adopt a reasoning by absence.
+					</td>
+					<td>341 0# $atextual</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>visual</td>
+					<td><a href="https://ns.editeur.org/onix/en/81/07">List: 81; Code: 07</a>: Still images / graphics
+						or Code: 18: Photographs or Code: 19: Figures, diagrams, charts, graphs or Code: 12: Maps
+						and/or other cartographic content</td>
+					<td>341 0# $avisual; Also:
+						<ul>
+							<li>336 ##$astill image$2rdacontent</li>
+							<li>336 ##$atwo-dimensional moving image$2rdacontent</li>
+							<li>336 ##$athree-dimensional moving image$2rdacontent</li>
+							<li>336 ##$acartographic image$2rdacontent</li>
+							<li>336$acartographic three-dimensional form$2rdacontent</li>
+							<li>336$acartographic moving image$2rdacontent</li>
+							<li>336$anotated movement$2rdacontent</li>
+							<li>336$anotated music$2rdacontent</li>
+							<li>336$aperformed movement$2rdacontent</li>
+						</ul>
+					</td>
+					<td>231 $i07$2onix81</td>
+				</tr>
+		</table>
+
+		<h3>accessModeSufficient</h3>
+		<p>ONIX crosswalks are for instances where accessModeSufficient includes this vocabulary entry
+			alone; combinations may occur but are more difficult to crosswalk</p>
+		<table class="zebra">
+			<thead>
+				<tr>
+					<th scope="col">Definition</th>
+					<th scope="col">Schema.org</th>
+					<th scope="col">ONIX</th>
+					<th scope="col">MARC21</th>
+					<th scope="col">UNIMARC</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<tr>
+					<td></td>
+					<td>auditory</td>
+					<td><a href="https://ns.editeur.org/onix/en/81/01">List: 81; Code:01</a></td>
+					<td>341 0#$aauditory$2sapdv</td>
+					<td> 181 #0 $cspw$2rdacontent (may correspond only to human narration)</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>tactile</td>
+					<td>–</td>
+					<td>341 0#$atactile$2sapdv</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>textual</td>
+					<td><a href="https://ns.editeur.org/onix/en/81/10">List: 81; Code: 10</a> combined with <a
+							href="https://ns.editeur.org/onix/en/196/10">List: 196; Code: 10</a> means all text is
+						actual text. Note that List: 81; Code: 10 on its own (without List: 196; Code: 10) admits
+						the possibility that the "text" is inaccessible because it is an image of text.
+						<br />Note : on this point ONIX is unclear. <a
 							href="https://ns.editeur.org/onix/en/196/09">List: 196; Code: 09</a> Inaccessible
-							Known to lack significant features required for broad accessibility. Would give a better indication for "Screen reader friendly" (if code 09 is not found so the publication is textual). In both cases it's hard for a publisher to figure out how to describe "all content is accesible thru true text", he must adopt a reasoning by absence.</td>
-                        <td></td>
-                        <td></td>
-					</tr>
-					<tr>
-                        <td></td>
-						<td>visual</td>
-						<td>–</td>
-                        <td></td>
-                        <td></td>
-					</tr>
-                </tbody>
-            </table>
-            
-            <h3>accessibilitySummary</h3>
-           <table class="zebra">
-				<thead>
-					<tr>
-                        <th scope="col">Definition</th>
-						<th scope="col">Schema.org</th>
-						<th scope="col">ONIX</th>
-                        <th scope="col">MARC21</th>
-                        <th scope="col">UNIMARC</th>
-					</tr>
-				</thead>
-                
-				<tbody>
-                    <tr>
-                        <td></td>
-                        <td><a href="https://ns.editeur.org/onix/en/196/00">List: 196; Code: 00</a>: Accessibility
-							Summary</td>
-                        <td></td>
-                        <td> 231 $i00$2onix196</td>
-					</tr>
-					<tr>
-                        <td></td>
-						<td>Human-readable text</td>
-						<td>If present, include information from <a href="https://ns.editeur.org/onix/en/196">List:
-							196</a>; Codes <a href="https://ns.editeur.org/onix/en/196">95</a>, <a href="https://ns.editeur.org/onix/en/196">96</a>, <a href="https://ns.editeur.org/onix/en/196">98</a>, and <a href="https://ns.editeur.org/onix/en/196">99</a> (links for further information about accessibility)</td>
-                        <td></td>
-                        <td></td>
-					</tr>
-				</tbody>
-			</table>
-		</section>
-	</body>
+						Known to lack significant features required for broad accessibility. Would give a better
+						indication for "Screen reader friendly" (if code 09 is not found so the publication is textual).
+						In both cases it's hard for a publisher to figure out how to describe "all content is accesible
+						thru true text", he must adopt a reasoning by absence.
+					</td>
+					<td>341 0#$atextual$2sapdv</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>visual</td>
+					<td>–</td>
+					<td>341 0#$avisual$2sapdv</td>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
+
+		<h3>accessibilitySummary</h3>
+		<table class="zebra">
+			<thead>
+				<tr>
+					<th scope="col">Definition</th>
+					<th scope="col">Schema.org</th>
+					<th scope="col">ONIX</th>
+					<th scope="col">MARC21</th>
+					<th scope="col">UNIMARC</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<tr>
+					<td></td>
+					<td><a href="https://ns.editeur.org/onix/en/196/00">List: 196; Code: 00</a>: Accessibility
+						Summary</td>
+					<td>532 8# $a [Text] </td>
+					<td> 231 $i00$2onix196</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>Human-readable text</td>
+					<td>If present, include information from <a href="https://ns.editeur.org/onix/en/196">List:
+							196</a>; Codes <a href="https://ns.editeur.org/onix/en/196">95</a>, <a
+							href="https://ns.editeur.org/onix/en/196">96</a>, <a
+							href="https://ns.editeur.org/onix/en/196">98</a>, and <a
+							href="https://ns.editeur.org/onix/en/196">99</a> (links for further information about
+						accessibility)</td>
+					<td>Would not map</td>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
+	</section>
+</body>
+
 </html>
