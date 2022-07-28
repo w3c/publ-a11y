@@ -103,18 +103,14 @@
 	</section>
 	<section id="information">
 		<h2>Information and references:</h2>
-		<p>MARC 21 information: https://www.loc.gov/marc/bibliographic/</p>
-		<p></p>Fixed length fields (fixed fields) and variable length fields (very brief summary – fuller details:
-		https://www.loc.gov/marc/specifications/specrecstruc.html )
-		<p>MARC 21 fixed field = 3 digit numeric code (except the Leader); no indicators, value in each position has a
-			specific meaning.</p>
-		<p>MARC 21 variable length field = 3 digit numeric code; each field can have 2 indicators that signify different
-			values; each field can have one or more subfields; convention to designate subfield = $ ; if no subfield,
-			assume $a.</p>
-		<p>More detailed information about MARC 21 fields 341 and 532</p>
-		<p>ONIX definitions were added into the table to assist with mapping work.</p>
 		<p>Schema definitions are found here: https://www.w3.org/2021/a11y-discov-vocab/latest/</p>
 		<p>“ConformsTo” term used in EPUB –drawn from Dublin Core.</p>
+		<h3>MARC21 ressources</h3>
+		<p><a href="https://www.loc.gov/marc/bibliographic/">MARC 21 information</a></p>
+		<p><a href="https://www.loc.gov/marc/specifications/specrecstruc.html">Fixed length fields (fixed fields) and variable length fields (very brief summary – fuller details)</a></p>
+		<p>MARC 21 fixed field = 3 digit numeric code (except the Leader); no indicators, value in each position has a specific meaning.</p>
+		<p>MARC 21 variable length field = 3 digit numeric code; each field can have 2 indicators that signify different values; each field can have one or more subfields; convention to designate subfield = $ ; if no subfield, assume $a.</p>
+		<p>More detailed information about <a href="https://www.loc.gov/marc/bibliographic/bd341.html">MARC 21 field 341</a> and <a href="https://www.loc.gov/marc/bibliographic/bd532.html"> MARC21 field 532</a></p>
 	</section>
 
 	<section id="sotd"></section>
@@ -133,7 +129,7 @@
 		<table class="zebra">
 			<thead>
 				<tr>
-					<th>Definition</th>
+					<th scope="col">Definition</th>
 					<th scope="col">EPUB</th>
 					<th scope="col">ONIX</th>
 					<th scope="col">EPUB to MARC21</th>
@@ -223,7 +219,7 @@
 
 		<h3>accessibilityFeature</h3>
 		<p>ONIX: <a href="https://ns.editeur.org/onix/en/196">List 196</a> (specific codes follow)</p>
-		<p>MARC21: would not map.</p>
+		<p>MARC21: would not map. Mapping of individual properties is possible as reflected in the following table</p>
 		<p>UNIMARC: Easy mapping thru list 231 allowing reference to any ONIX list and code.</p>
 
 		<table class="zebra">
@@ -519,7 +515,6 @@
 					</td>
 					<td><a href="https://www.w3.org/2021/a11y-discov-vocab/latest/#tactileObject">tactileObject</a></td>
 					<td>–</td>
-					<td></td>
 					<td>
 						<ul>
 							<li>Use case [1] (When used with creative works such as books, indicates that the resource
@@ -529,7 +524,9 @@
 								tactile 3D object): Leader pos 6 r Three-dimensional artifact or naturally occurring
 								object and 500 $aTactile 3D object.</li>
 						</ul>
-						<p>336 ##$atactile three-dimensional form$2rdacontent</p>
+						<p>336 ##$atactile three-dimensional form$2rdacontent</p></td>
+					<td>
+					
 					</td>
 				</tr>
 				<tr>
@@ -1048,8 +1045,7 @@
 
 		<h3><a href="https://www.w3.org/2021/a11y-discov-vocab/latest/#accessibilitySummary">accessibilitySummary</a></h3>
 		<blockquote>A human-readable summary of specific accessibility features or deficiencies, consistent with the other accessibility metadata but expressing subtleties such as "short descriptions are present but long descriptions will be needed for non-visual users" or "short descriptions are present and no long descriptions are needed."
-		
-		The accessibilitySummary property is a free-form field that allows authors to describe the accessible properties of the resource. As a result, it does not have an associated vocabulary.</blockquote>
+		</blockquote>
 		<table class="zebra">
 			<thead>
 				<tr>
@@ -1063,7 +1059,7 @@
 
 			<tbody>
 				<tr>
-					<td>A human-readable summary of specific accessibility features or deficiencies, consistent with the other accessibility metadata but expressing subtleties such as "short descriptions are present but long descriptions will be needed for non-visual users" or "short descriptions are present and no long descriptions are needed."</td>
+					<td>The accessibilitySummary property is a free-form field that allows authors to describe the accessible properties of the resource. As a result, it does not have an associated vocabulary.</td>
 					<td><a href="https://www.w3.org/2021/a11y-discov-vocab/latest/#accessibilitySummary">accessibilitySummary</a></td>
 					<td><a href="https://ns.editeur.org/onix/en/196/00">List: 196; Code: 00</a>:
 						Accessibility
@@ -1073,7 +1069,7 @@
 				</tr>
 				<tr>
 					<td>Definition not found</td>
-					<td><a href="">Human-readable text</a></td>
+					<td>Human-readable text</td>
 					<td>If present, include information from <a href="https://ns.editeur.org/onix/en/196">List:
 							196</a>; Codes <a href="https://ns.editeur.org/onix/en/196">95</a>, <a
 							href="https://ns.editeur.org/onix/en/196">96</a>, <a
