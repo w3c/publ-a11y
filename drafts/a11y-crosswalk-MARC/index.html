@@ -121,7 +121,8 @@
                         <th>Definition</th>
 						<th scope="col">EPUB</th>
 						<th scope="col">ONIX</th>
-                        <th scope="col">MARC21</th>
+                        <th scope="col">EPUB to MARC21</th>
+						<th scope="col">ONIX to MARC21</th>
                         <th scope="col">UNIMARC</th>
 					</tr>
 				</thead>
@@ -131,7 +132,8 @@
 						<td>certifiedBy</td>
 						<td><a href="https://ns.editeur.org/onix/en/196/93">List 196: Code 93</a>: Compliance certification by
 							<code>ProductFormFeatureDescription</code> carries the URL of a web page belonging to the organisation responsible for compliance testing and certification of the product – typically a ‘home page’ or a page describing the certification scheme itself. For use in ONIX 3.0 only</td>
-                        <td>341 $8$0#$aAuthority record control number or standard number</td>
+                        <td>532 8# Accessibility Note (Non-specific)</td>
+						<td>532 8# Accessibility Note$a</td>
                         <td>231 ##$i93$2onix196</td>
 					</tr>
 					<tr>
@@ -140,15 +142,23 @@
 						<td><a href="https://ns.editeur.org/onix/en/196/94">List: 196; Code: 94</a>: Compliance web page
 							for detailed accessibility information or, if a publisher is self-certifying, <a href="https://ns.editeur.org/onix/en/196/94">Code: 96</a>:
 							Publisher's web page for detailed accessibility information</td>
-                        <td></td>
+                        <td>
+							<ul>
+								<li>532 8# Accessibility Note (Non-specific)</li>
+								<li>856 - Electronic Location and Access</li>
+								<li>856 42 $3Certifier report$u[URL to Certifier report]</li>
+							</ul>
+						</td>
+						<td>532 8# Accessibility Note$a</td>
                     <td>231 ##$i94$2onix196 and/or 231 ##$i96$2onix196</td>
 					</tr>
 					<tr>
                         <td></td>
 						<td>certifierCredential</td>
 						<td>–</td>
+                        <td>532 8# Accessibility Note (Non-specific)</td>
                         <td></td>
-                        <td></td>
+						<td></td>
 					</tr>
 					<tr>
                         <td></td>
@@ -158,7 +168,8 @@
 						</td>
 						<td><a href="https://ns.editeur.org/onix/en/196/02">List: 196; Code: 02</a>: EPUB Accessibility
 							Specification 1.0 A</td>
-                        <td></td>
+                        <td>532 8# Accessibility Note (Non-specific)</td>
+						<td>532 8# Accessibility Note$a</td>
                         <td>231 ##$i02$2onix196</td>
 					</tr>
 					<tr>
@@ -167,9 +178,9 @@
 							dcterms:conformsTo with the URL
 							<code>http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aa</code>
 						</td>
-						<td><a href="https://ns.editeur.org/onix/en/196/03">List: 196; Code: 03</a>: EPUB Accessibility
-							Specification 1.0 AA</td>
-                        <td></td>
+						<td><a href="https://ns.editeur.org/onix/en/196/03">List: 196; Code: 03</a>: EPUB Accessibility Specification 1.0 AA</td>
+						<td>532 8# Accessibility Note (Non-specific)</td>
+						<td>532 8# Accessibility Note$a</td>
                         <td>231 ##$i03$2onix196</td>
 					</tr>
 				</tbody>
