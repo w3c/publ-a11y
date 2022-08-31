@@ -41,7 +41,7 @@
 	</head>
 	<body>
 		<section id="abstract">
-			<p></p>
+			<p>The Accessibility Summary's name is somewhat misleading. It is not intended to be a comprehensive  summary, but it should add additional information, clarifications,  and refinements to the other accessibility metadata. In creating the Accessibility Summary, one should assume that the other accessibility metadata has already been presented, and the Accessibility Summary serves to enhance the metadata. If there are features or shortcomings in the publication that is not expressed in other accessibility metadata, then the Accessibility Summary is the correct place to include this information. The remainder of these guidelines explains some considerations, and provides some examples of Accessibility Summaries.</p>
 		</section>
 		<section id="sotd"></section>
 		<section id="introduction">
@@ -49,10 +49,7 @@
 
 			<p>The <a href="https://www.w3.org/TR/epub-a11y-11/">EPUB Accessibility Conformance and
 					Discovery Specification defines a schema.org metadata term called "accessibilitySummary."</a> This
-				piece of metadata is extraordinarily unique and important in that it provides a human readable
-				description of the accessibility of the publication. It is expected that people who do not have formal
-				training in HTML, EPUB, or who are not experts in accessibility will be reading the
-				accessibilitySummary. Online Library and retail catalogues should present the accessibilitySummary to
+				piece of metadata is  important in that it provides   additional accessibility information or refines the accessibility metadata provided by other fields. Online Library and retail catalogues should present the accessibility metadata and the accessibilitySummary to
 				assist in making the decision to purchase or recommend the title. Individuals, professors, schools and
 				universities should be basing their decisions to purchase on the accessibility of products.</p>
 
@@ -105,12 +102,10 @@
 					
 				<li>Write out the words of the acronym before using the abbreviation, e.g. Web Content Accessibility
 					Guidelines (WCAG).</li>
-				<li>Include all accessibility features, even those detailed in another schema.org metadata item;
-					</li>
+				
 				<li>The length of the Accessibility Summary is important. Ideally the accessibilitySummary should be
-					under 1000 characters and we recommend against an accessibility summary over 2000 characters in
-					length. The ONIX guideline suggests 500 characters, and we have asked that this guideline be
-					increased. </li>
+					under 500 characters and we recommend against an accessibility summary over 1000 characters in
+					length. The ONIX guideline suggests 500 characters. </li>
 				<li>The Accessibility Summary should be compact and place the most essential information at the
 					beginning. We have no way of knowing how many characters various systems will display, and it is
 					possible that the Accessibility Summary be truncated after a system-dependent number of characters.
@@ -178,7 +173,7 @@
 			</section>
 
 			<section id="screen-reader-friendly">
-				<h3>Screen Reader Friendly</h3>
+				<h3>Delete this whole section??? Screen Reader Friendly</h3>
 <p>In the past, it has been difficult to determine if persons who use a screen reader will have complete (sufficient) access to the content of a publication. If the content is available as text and the description of important (non-decorative) graphical content is sufficient to provide access, then we recommend using the term “Screen Reader Friendly.” This can be determined with both Schema.org and ONIX. WCAG level “A” has required a text equivalent representation starting with 2.0. Alt text, extended descriptions, and descriptions in the surrounding text are the most common techniques to provide this level of access. In Schema.org, the term accessModeSufficient captures this important characteristic. If textual alone is denoted, you can have confidence that the publication will be Screen reader friendly. We will use the Accessibility Metadata description “complete textual content.”</p>
 				<table>
 					<thead>
@@ -203,7 +198,7 @@
 
 			
 			<section id="accessibility-features">
-				<h3>Accessibility Features</h3>
+				<h3>Delete this whole section???Accessibility Features</h3>
 
 				<table>
 					<thead>
@@ -383,43 +378,13 @@
 			</section>
 
 			<section id="accessibility-hazards">
-				<h3>Accessibility Hazards</h3>
+				<h3> Delete the table below, but keep the introduction???Accessibility Hazards</h3>
 
 				<p>Accessibility hazards: Some content, especially videos, may contain elements that have been found to
 					be problematic. Most common items are motion effects that make some people motion sick, flashing
 					that can cause severe distractions or even seizures, or loud sharp noises like a gunshot which can
-					cause hearing issues. It is only necessary to include this information if it is present.</p>
+					cause hearing issues. It is only necessary to include this information if more information about the hazard is wanted to be communicated. </p>
 
-				<table>
-					<thead>
-						<tr>
-							<th>Accessibility Metadata</th>
-							<th>Priority</th>
-							<th>Suggested summary</th>
-							
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>Flashing Hazard</td>
-							<td>1</td>
-							<td>Caution: the video contains flashing lights.</td>
-							
-						</tr>
-						<tr>
-							<td>Sound Hazard</td>
-							<td>1</td>
-							<td>Caution: the audio contains loud noises.</td>
-							
-						</tr>
-						<tr>
-							<td>Motion Hazard</td>
-							<td>1</td>
-							<td>Caution: the video has motion, which may affect some people.</td>
-							
-						</tr>
-					</tbody>
-				</table>
 			</section>
 		</section>
 		<section id="examples">
@@ -427,17 +392,14 @@
 
 			<aside class="example">
 				<pre><code>&lt;meta property="schema:accessibilitySummary">
-	The publication contains structural and page navigation. All non-decorative images have alt text or captions, or are described in the surrounding text. The publication meets WCAG 2.0 Level AA.
+	 
 &lt;/meta></code></pre>
 			</aside>
 
 			<aside class="example">
 				<pre><code>&lt;meta property="schema:accessibilitySummary">
-	This publication is screen reader friendly and is accessible to persons with disabilities. The publication was designed to be as accessible as possible to all persons with disabilities. It is compatible with the wide range of Assistive Technology on the market today. The built in features of most EPUB Reading Applications have accessibility features that may be used, e.g. read aloud is available in many Reading Apps. The publication meets the EPUB Accessibility requirements and it also meets the Web AccessibilityContent Guidelines (WCAG) at the double "AA" level.
+	
 
-	Extensive navigation is provided to make it easy to use. The logos provided have alt text to identify what the logo represents. there are no other images. There are no accessibility hazards.
-
-	There are no video or audio recordings.
 &lt;/meta></code></pre>
 			</aside>
 		</section>
