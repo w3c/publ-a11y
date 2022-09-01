@@ -50,27 +50,20 @@
 			<p>The <a href="https://www.w3.org/TR/epub-a11y-11/">EPUB Accessibility Conformance and
 					Discovery Specification defines a schema.org metadata term called "accessibilitySummary."</a> This
 				piece of metadata is  important in that it provides   additional accessibility information or refines the accessibility metadata provided by other fields. Online Library and retail catalogues should present the accessibility metadata and the accessibilitySummary to
-				assist in making the decision to purchase or recommend the title. Individuals, professors, schools and
-				universities should be basing their decisions to purchase on the accessibility of products.</p>
-
-			<p>The metadata accessibilitySummary can be found in either of two places, inside the EPUB in the OPF file,
-				or this information can be retrieved from ONIX <a href="https://ns.editeur.org/onix/en/196">code list:
-					196</a>; Code: 00: Accessibility Summary.</p>
+				assist in making the decision to select a title.  Selection of content should include accessibility considerations of products.</p>
 
 			<p class="note">Refer to the <a href="https://www.w3.org/2021/09/UX-Guide-metadata-1.0/principles/">User
 					Experience Guide for Displaying Accessibility Metadata 1.0</a> for libraries and retailers.</p>
-			<p class="note">Please note that the accessibility summary is written from the perspective of the supplier
-				creating these files and some features and functions will vary depending on the reading system or
-				distributor the end user is operating within.</p>
+			<p class="note">Please note that the accessibility summary is written from the perspective of the content provider 
+				and some features and functions will vary depending on the reading system or
+				the environment the end user is operating within.</p>
 		</section>
 		<section id="before-writing">
 			<h2>Before you start writing</h2>
 
 			<p>The <a href="https://daisy.github.io/ace/">Accessibility Checker for EPUB (Ace by DAISY)</a> is a tool
-				which can be used to help you determine some of the accessibility features within the publication. This
-				information can be found when looking at the report.html file Ace creates. This will help you determine
-				what should be included in the accessibilitySummary that will be put into the OPF file and/or ONIX
-				metadata feed.</p>
+				which can be used to help you determine some of the accessibility features within the publication.  This will help you determine
+				what should be included in the accessibilitySummary.</p>
 
 			<p>Next read the accessibility metadata in the EPUB package.opf file before you begin to write. Make note of
 				the features listed in the metadata as you prepare to write. One should always truthfully represent the
@@ -91,29 +84,27 @@
 					For example, a publication intended to teach Spanish to English speaking students would have the
 					primary language as English.</li>
 				<li>Ensure the language of the accessibility summary is declared in the metadata.</li>
-				<li>It should be noted that markup in metadata is commonly not allowed. While it may be tempting to use headings, bullets, bold, or  other markup, this must not be used.</li>
+				<li>It should be noted that markup in metadata is not allowed. While it may be tempting to use headings, bullets, bold, or  other markup, this must not be used.</li>
 
 				<li>Use simple language that communicates effectively to a non-technical and a non-accessibility aware
 					community.</li>
 				<li>Avoid terms that are only known in a specific knowledge domain, or explain the term in a simple
 					way.</li>
-					<li>The use of jargon or language that is not commonly understood should be avoided. It is better to explain what is meant. For example, the term "reflow" may not be understood by most people. Saying, "This publication is in EPUB 3 and supports the selection of font size which will enlarge the text and then wrap to fit the screen" is better than saying this publication supports reflowable text.</li>
+					<li>The use of jargon or language that is not commonly understood should be avoided. It is better to explain what is meant. </li>
 
 					
 				<li>Write out the words of the acronym before using the abbreviation, e.g. Web Content Accessibility
 					Guidelines (WCAG).</li>
 				
 				<li>The length of the Accessibility Summary is important. Ideally the accessibilitySummary should be
-					under 500 characters and we recommend against an accessibility summary over 1000 characters in
-					length. The ONIX guideline suggests 500 characters. </li>
-				<li>The Accessibility Summary should be compact and place the most essential information at the
+					under 500 characters in
+					length. The ONIX guideline suggests less than 500 characters. </li>
+				<li>The Accessibility Summary should be succinct and place the most essential information at the
 					beginning. We have no way of knowing how many characters various systems will display, and it is
-					possible that the Accessibility Summary be truncated after a system-dependent number of characters.
+					possible that the Accessibility Summary would be truncated after a system-dependent number of characters.
 					Also, we believe people will be reading quickly and if the Accessibility Summary is long, people may
 					read only the beginning section.</li>
-				<li>Templates may be a useful approach for creating accessibility summaries in your organization,
-					especially if all the content of a similar type goes through the same workflow and quality assurance
-					process. However, make sure that the <code>accessibilitySummary</code> metadata that ships with the
+				<li>If content of a similar type goes through the same workflow and quality assurance process, the same accessabilitySummary may be reused.  However, make sure that the <code>accessibilitySummary</code> metadata that ships with the
 					publication is accurate and applies to this particular publication.</li>
 			</ul>
 		</section>
@@ -161,37 +152,8 @@
 							<td>2</td>
 							<td>Acme certifiers is endorsed by the certifiers guild.</td>
 						</tr>
-						<tr>
-							<td>Certifiers report</td>
-							<td>2</td>
-							<td>provide link to the report</td>
-						</tr>
+						
 
-
-					</tbody>
-				</table>
-			</section>
-
-			<section id="screen-reader-friendly">
-				<h3>Delete this whole section??? Screen Reader Friendly</h3>
-<p>In the past, it has been difficult to determine if persons who use a screen reader will have complete (sufficient) access to the content of a publication. If the content is available as text and the description of important (non-decorative) graphical content is sufficient to provide access, then we recommend using the term “Screen Reader Friendly.” This can be determined with both Schema.org and ONIX. WCAG level “A” has required a text equivalent representation starting with 2.0. Alt text, extended descriptions, and descriptions in the surrounding text are the most common techniques to provide this level of access. In Schema.org, the term accessModeSufficient captures this important characteristic. If textual alone is denoted, you can have confidence that the publication will be Screen reader friendly. We will use the Accessibility Metadata description “complete textual content.”</p>
-				<table>
-					<thead>
-						<tr>
-							<th>Accessibility Metadata</th>
-							<th>Priority</th>
-							<th>Suggested summary</th>
-
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>complete textual content</td>
-							<td>1</td>
-							<td>This title is screen reader friendly and it will be accessible to a person using
-								text-to-speech or refreshable braille.</td>
-							
-						</tr>
 					</tbody>
 				</table>
 			</section>
