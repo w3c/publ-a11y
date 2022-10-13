@@ -163,12 +163,14 @@
 				<h3>Accessibility Features</h3>
 <p>Features that have been included in metadata may benefit from additional information that more clearly explains the feature.  Some examples have been provided in the table below.</p>
 
+<p>For a complete list of features see: <a href="https://www.w3.org/2021/a11y-discov-vocab/latest/#accessibilityFeature">Schema.org Accessibility Properties for Discoverability Vocabulary</a></p>
+
 				<table>
 					<thead>
 						<tr>
 							<th>Accessibility Metadata</th>
 							
-							<th>Suggested summary</th>
+							<th>Example Text</th>
 							<th>Information</th>
 						</tr>
 					</thead>
@@ -179,68 +181,41 @@
 							<td>WCAG requires alt text, and including additional information is suggested if there is something to add.</td>
 							
 						</tr>
-						<tr>
-							<td><em>accessibilityFeature</em> = <em>'audioDescription'</em></td>
-							
-							<td>Video has descriptive audio.</td>
-							<td></td>
-						</tr>
+					
 						<tr>
 							<td><em>accessibilityFeature</em> = <em>'braille'</em></td>
 
-							<td></td>
-							<td></td>
+							<td>The text is encoded as grade 2 UEB braille.</td>
+							<td>If the text is encoded as braille characters, this should be noted with the type and if it is contracted by stating it is grade 1 or 2, etc.</td>
 						</tr>
-						<tr>
-							<td><em>accessibilityFeature</em> = <em>'captions'</em></td>
-							
-							<td>Video has text captions.</td>
-							<td></td>
-						</tr>
-						<tr>
-							<td><em>accessibilityFeature</em> = <em>'describedMath'</em></td>
 
-							<td></td>
-							<td></td>
-						</tr>
+						
 						<tr>
 							<td><em>accessibilityFeature</em> = <em>'displayTransformability'</em></td>
 							
-							<td></td>
-							<td></td>
+							<td>This title contains complex tables that could not be provided using normal table markup. The content is provided as images of tables. People who require access to this as text should seek assistance.</br>
+							</br>
+							The initial chapter headings are highly stylized and are provided as images. These are marked as proper headings, and alt text is provided, which should minimize the issue of having text represented as images.</br>
+							</br>
+							The tables are represented as images, and the full text of the table is provided below the image within the details element, which can be expanded.</td>
+							<td>Sometimes contented is formatted in such a way that it cannot be reflowed or other features cannot be adjusted. Tables, which cannot be encoded and are presented as images is one common example of this. Another case is where a highly stylized chapter heading is used that cannot be enlarged or transformed. These shortcomings should be noted and if there is any work around, such as  a long description provided in addition to the image.</td>
 						</tr>
-						<tr>
-							<td><em>accessibilityFeature</em> = <em>'highContrastDisplay'</em></td>
-
-							<td></td>
-							<td></td>
-						</tr>
-						<tr>
+											<tr>
 							<td><em>accessibilityFeature</em> = <em>'Linked index'</em></td>
 							
-							<td>A comprehensive index is included with links to the top of the page.</td>
+							<td>A comprehensive index is included with links to the top of the page.</br>
+							</br>
+							A comprehensive index is included with links to the paragraph being referenced.</td>
 							<td>Provide information about the index other than it is present. A comprehensive list and where the words link to is worth highlighting.</td>
-						</tr>
-						<tr>
-							<td><em>accessibilityFeature</em> = <em>'largePrint'</em></td>
-
-							<td></td>
-							<td></td>
-						</tr>
-						<tr>
-							<td><em>accessibilityFeature</em> = <em>'latex'</em></td>
-							
-							<td></td>
-							<td></td>
 						</tr>
 						<tr>
 							<td><em>accessibilityFeature</em> = <em>'longDescription'</em></td>
 
 							<td>Extended descriptions are provided for complex graphical content that conveys important
-								information for understanding of the content.</td>
+								information for understanding of the content. The description is contained in a details element immediately below the image, which can be expanded.</td>
 							<td>Extended descriptions: Extended (or long) descriptions are used when complex graphics or
 								other highly visual components convey information. The extended description communicates
-								the equivalent information through text, tables, etc.</td>
+								the equivalent information through text, tables, etc. The technique for providing the description should be included, such as in a details element or through a link to another part of the book with a link back to the exact spot.</td>
 						</tr>
 						<tr>
 							<td><em>accessibilityFeature</em> of <em>'longDescription'</em> is missing</td>
@@ -254,8 +229,10 @@
 						<tr>
 							<td><em>accessibilityFeature</em> = <em>'MathML'</em></td>
 
-							<td>All Math is represented with MathML</td>
-							<td>The presence of MathML is importantespecially in STEM materials. The amount is also important. If there is a mix of ASCII math and MathML, it should be noted.</td>
+							<td>All displayed Math is represented with MathML. </br>
+							</br>
+							The chemical formulae are displayed and encoded as MathML with the proper labels for Chemistry.</td>
+							<td>The presence of MathML is important especially in STEM materials. The amount is also important. If there is a mix of math as plain text  and MathML, it should be noted. Also if Chemistry isencoded as MathML using the newer mechanisms for indicating these semantics, it should be noted.</td>
 						</tr>
 						<tr>
 							<td><em>accessibilityFeature</em> = <em>'printPageNumbers'</em> and <em>dc:source</em> is
@@ -278,7 +255,7 @@
 							<td><em>accessibilityFeature</em> of <em>'printPageNumbers'</em> is missing</td>
 							
 							<td>This publication does not contain page numbers that can be navigated.</td>
-							<td>No page navigation provided</td>
+							<td>If no page navigation is provided, it should be noted.</td>
 						</tr>
 						<tr>
 							<td><em>accessibilityFeature</em> = <em>'readingOrder'</em></td>
@@ -295,8 +272,8 @@
 						<tr>
 							<td><em>accessibilityFeature</em> = <em>'signLanguage'</em></td>
 
-							<td></td>
-							<td></td>
+							<td>There are several short videos in Amerigan Sign Language that explains key concepts.</td>
+							<td>If sign language access through a video or some other mechanism is provided, it should be described along with the type of sign language, e.g., American Sign Language (ASL).</td>
 						</tr>
 						<tr>
 							<td><em>accessibilityFeature</em> = <em>'structuralNavigation'</em> and
@@ -313,18 +290,6 @@
 							<td></td>
 						</tr>
 						<tr>
-							<td><em>accessibilityFeature</em> = <em>'tactileGraphic'</em></td>
-							
-							<td></td>
-							<td></td>
-						</tr>
-						<tr>
-							<td><em>accessibilityFeature</em> = <em>'tactileObject'</em></td>
-
-							<td></td>
-							<td></td>
-						</tr>
-						<tr>
 							<td><em>accessibilityFeature</em> = <em>'transcript'</em></td>
 							
 							<td>Video has a transcript.</td>
@@ -334,7 +299,7 @@
 							<td><em>accessibilityFeature</em> = <em>'ttsMarkup'</em></td>
 
 							<td></td>
-							<td></td>
+							<td>If specific markup is provide to assist TTS pronunciation, the type should be included.</td>
 						</tr>
 						</tbody>
 				</table>
