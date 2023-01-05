@@ -42,8 +42,8 @@
 	</head>
 	<body>
 		<section id="abstract">
-			<p>This proposal defines the <code>a11y:pageSource</code> property to identify the source of page markers
-				and the page list in EPUB publications.</p>
+			<p>This proposal defines the <code>a11y:pageBreakSource</code> property to identify the source of page
+				markers and the page list in EPUB publications.</p>
 		</section>
 		<section id="sotd"></section>
 		<section id="introduction">
@@ -89,8 +89,8 @@
 						source.</li>
 				</ol>
 
-				<p>The <code>pageSource</code> property proposed in this document is intended to provide a simple and
-					reliable solution to these problems moving forward.</p>
+				<p>The <code>pageBreakSource</code> property proposed in this document is intended to provide a simple
+					and reliable solution to these problems moving forward.</p>
 			</section>
 
 			<section id="sec-terminology">
@@ -106,17 +106,17 @@
 
 			<section id="conformance"></section>
 		</section>
-		<section id="pageSource">
-			<h2>The <code>pageSource</code> property</h2>
+		<section id="pageBreakSource">
+			<h2>The <code>pageBreakSource</code> property</h2>
 
-			<section id="pageSource-definition">
+			<section id="pageBreakSource-definition">
 				<h3>Definition</h3>
 
 				<table class="tabledef">
 					<tr>
 						<th>Name:</th>
 						<td>
-							<code>pageSource</code>
+							<code>pageBreakSource</code>
 						</td>
 					</tr>
 					<tr>
@@ -154,7 +154,7 @@
 					<p>In this example, the pagination corresponds to a print edition with an ISBN number. A URN is used
 						to identify the scheme the number conforms to.</p>
 					<pre>&lt;meta
-    property="a11y:pageSource">
+    property="a11y:pageBreakSource">
    urn:isbn:9780010010001
 &lt;/meta></pre>
 				</aside>
@@ -164,7 +164,7 @@
 						edition. The value <code>none</code> indicates that the pagination is not drawn from another
 						source.</p>
 					<pre>&lt;meta
-    property="a11y:pageSource">
+    property="a11y:pageBreakSource">
    none
 &lt;/meta></pre>
 				</aside>
@@ -173,7 +173,7 @@
 					<p>In this example, the name of the document and its format are used to identify the source of the
 						pagination.</p>
 					<pre>&lt;meta
-    property="a11y:pageSource">
+    property="a11y:pageBreakSource">
    Hobo eReader User Manual. PDF: https://example.org/manuals/hobo/
 &lt;/meta></pre>
 				</aside>
