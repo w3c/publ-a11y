@@ -42,8 +42,8 @@
 	</head>
 	<body>
 		<section id="abstract">
-			<p>This proposal defines the <code>a11y:pageBreakSource</code> property to identify the source of page
-				markers and the page list in EPUB publications.</p>
+			<p>This proposal defines the <code>pageBreakSource</code> property to identify the source of page markers
+				and the page list in EPUB publications.</p>
 		</section>
 		<section id="sotd"></section>
 		<section id="introduction">
@@ -154,7 +154,7 @@
 					<p>In this example, the pagination corresponds to a print edition with an ISBN number. A URN is used
 						to identify the scheme the number conforms to.</p>
 					<pre>&lt;meta
-    property="a11y:pageBreakSource">
+    property="pageBreakSource">
    urn:isbn:9780010010001
 &lt;/meta></pre>
 				</aside>
@@ -164,7 +164,7 @@
 						edition. The value <code>none</code> indicates that the pagination is not drawn from another
 						source.</p>
 					<pre>&lt;meta
-    property="a11y:pageBreakSource">
+    property="pageBreakSource">
    none
 &lt;/meta></pre>
 				</aside>
@@ -173,7 +173,7 @@
 					<p>In this example, the name of the document and its format are used to identify the source of the
 						pagination.</p>
 					<pre>&lt;meta
-    property="a11y:pageBreakSource">
+    property="pageBreakSource">
    Hobo eReader User Manual. PDF: https://example.org/manuals/hobo/
 &lt;/meta></pre>
 				</aside>
