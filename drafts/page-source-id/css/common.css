@@ -1,0 +1,45 @@
+
+/****************************************************/
+/*  property tables                                 */
+/****************************************************/
+
+/* ensure confomity of width for property tables */
+table.tabledef {
+	border-spacing: 0px;
+	border: none;
+	font-size: 1em;
+	width: 100%
+}
+
+table.tabledef td, table.tabledef th {
+	border: none;
+	background-color: rgb(236,246,255);
+	color: rgb(0,0,0);
+	padding: 0.3em;
+	vertical-align: top;
+}
+
+table.tabledef th {
+    text-align: left;
+	vertical-align: top;
+    width: 8em;
+    padding-left: 1em;
+}
+
+table.tabledef th {
+    border-left: 5px solid rgb(145,200,255);
+}
+
+table.tabledef td {
+    padding: 3px 3px 3px 10px;
+}
+
+table.tabledef td > p:first-child {
+	padding: 0em;
+	margin: 0em
+}
+
+a code
+{
+    color: rgb(3,69,117) !important;
+}
