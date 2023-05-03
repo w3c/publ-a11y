@@ -124,6 +124,12 @@
 				<p><b>All Accessibility Metadata:</b></p>
 				<p><img src="./media/image5.png" alt="Toggle box with all accessibility information" width="300" /></p>
 			</aside>
+			
+			<h3>General information (supplement the bibliographic information)</h3>
+			<p>TBD</p>
+			
+			<h3>Localization</h3>
+			<p>TBD</p>
 		</section>
 		<section id="discovering-accessible-content">
 			<h2>Discovering Accessible Content</h2>
@@ -169,124 +175,69 @@
         
 		<section id="order-of-key-information">
 			<h2>Key Information</h2>
-            
 			
-			<section id="screen-reader-friendly">
-				<h3>Screen Reader Friendly</h3>
-				<p><b>Value</b>: <i>Yes</i> / <i>No</i> / <i>Unknown</i></p>
+			<section id="enable-reading-without-sight">
+				<h3>Enable Reading Without Sight</h3>
 				<h4>Definition</h4>
 				<p>A Yes/No/Unknown answer to the question "Can a screen-reader user read this publication?". This can be based on a combination of metadata fields, if needed, that establish that the primary content of the publication is available in true text and is not an image of text.</p>
 				<h4>Rationale</h4>
 				<p>Most available digital publications include their content in true text and can report that they are screen reader friendly. Exceptions would include publications where critical content is included only in images, such as graphs, charts, or equations presented as images, and publications with a fixed appearance created by having an image of each page instead of true text.</p>
+                <h4>Examples</h4>
+                <p>TBD</p>
                 <h4>Implementation</h4>
                 <ul>
-                    <li><a href="../techniques/epub-metadata/index.html#screen-reader-friendly">EPUB Accessibility: Screen Reader Friendly</a></li>
-                    <li><a href="../techniques/onix-metadata/index.html#screen-reader-friendly">ONIX: Screen Reader Friendly</a></li>
+                    <li><a href="../techniques/epub-metadata/index.html#screen-reader-friendly">EPUB Accessibility: Enable Reading Without Sight</a></li>
+                    <li><a href="../techniques/onix-metadata/index.html#screen-reader-friendly">ONIX: Enable Reading Without Sight</a></li>
                 </ul>
 			</section>
 			
-			<section id="full-audio">
-				<h3>Full Audio</h3>
-				<p><b>Values</b>: <i>Yes / (if No - Omit this section)</i></p>
+			<section id="visual-adjustments">
+				<h3>Visual Adjustments</h3>
 				<h4>Definition</h4>
-				<p>An indication that this publication can be read in full auditorily. This designation applies even if the text is also available with the audio.</p>
+				<p>TBD</p>
 				<h4>Rationale</h4>
-				<p>Some users, including users with dyslexia or visual impairments, seek publications they can use entirely by listening. Full Audio metadata is important to the discovery process for these users. Publication providers may already be designating "audiobooks" as a separately searchable set based on the popular definition of an audiobook as an audio-only experience. Publications that include full text and full audio may not currently be grouped with audiobooks, so exposing this metadata adds additional publications to the list of titles audio users might be interested in.</p>
-                <p>Audiobooks presented without text are considered optimized publications. They do not meet all accessibility requirements, and therefore will not be discovered when filtering for "accessible" publications, but they provide access to the publication for specific users who require audio. Providing a way for users to search a collection for all publications with full audio will support these users and including this information in the metadata displayed will also alert users for whom audio is inaccessible. This piece of metadata should be included only if the value is "Yes". Since most digital publications available do not include audio, it is only important to include this metadata in the user interface for those that do.</p>
+				<p>TBD</p>
+				<h4>Examples</h4>
+                <p>TBD</p>
                 <h4>Implementation</h4>
                 <ul>
-                    <li><a href="../techniques/epub-metadata/index.html#full-audio">EPUB Accessibility: Full Audio</a></li>
-                    <li><a href="../techniques/onix-metadata/index.html#full-audio">ONIX: Full Audio</a></li>
+                    <li><a href="../techniques/epub-metadata/index.html">EPUB Accessibility: Visual Adjustments</a></li>
+                    <li><a href="../techniques/onix-metadata/index.html">ONIX: Visual Adjustments</a></li>
                 </ul>
-
 			</section>
 			
-			<section id="accessibility-summary">
-				<h3>Accessibility Summary</h3>
-				<p><b>Value</b>: Textual Data from metadata</p>
+            <section id="navigation">
+				<h3>Navigation</h3>
 				<h4>Definition</h4>
-				<p>A plain language description that adds additional information, clarifications, and refinements to the other accessibility metadata. Assuming that the other accessibility metadata has already been presented, it serves to enhance the metadata. If there are features or shortcomings in the publication that is not expressed in other accessibility metadata, then the Accessibility Summary is the correct place to include the refinements.</p>
+				<p>TBD</p>
 				<h4>Rationale</h4>
-				<p>A human readable description that refines  the machine processable metadata  or adds additional clarification that cannot be conveyed in other metadata is needed to be available. This  information combined with machine processable metadata  provides an end user or an educational professional sufficient information to determine if the title will be accessible to them personally, or to the students. It should be easy to read and understand if it will be suitable for use by persons with disabilities. This determination must be made before the end user purchases or selects the title, and must be determined before a title is selected for a course.</p>
+				<p>TBD</p>
+				<h4>Examples</h4>
+                <p>TBD</p>
                 <h4>Implementation</h4>
                 <ul>
-                     <li><a href="../techniques/epub-metadata/index.html#accessibility-summary">EPUB Accessibility: Summary</a></li>
-                    <li><a href="../techniques/onix-metadata/index.html#accessibility-summary">ONIX: Summary</a></li>
+                    <li><a href="../techniques/epub-metadata/index.html">EPUB Accessibility: Navigation</a></li>
+                    <li><a href="../techniques/onix-metadata/index.html">ONIX: Navigation</a></li>
                 </ul>
-
 			</section>
 			
-			<section id="accessibility-conformance">
-				<h3>Accessibility Conformance</h3>
-				<p><b>Value</b>: Textual Link based on Metadata</p>
+			<section id="book-features">
+				<h3>Book Features</h3>
 				<h4>Definition</h4>
-				<p>To report the accessibility conformance of a publication, metadata for accessibility conformance should be provided. It declares the accessibility standard or accessibility specifications to which the publication conforms. The value can be a URL or a code which identifies the accessibility standard or accessibility specifications.</p>
-				<p class="note">In case of EPUB publications, it will usually point to the EPUB Accessibility specifications or WCAG.</p>
-				<p class="note">If a publication is optimized for a particular user group (e.g., an audiobook), it would not conform to WCAG guidelines, but it may be perfectly useable by a particular group (e.g., persons who are blind). In this case, the accessibility conformance metadata should identify the specification used to create the optimized publication.</p>
+				<p>TBD</p>
 				<h4>Rationale</h4>
-				<p>Discovery metadata enables publications to have their accessibility exposed regardless of the overall accessibility of the publication. A publication optimized for a particular group, such as an audiobook, would not meet WCAG 2.0, but it would be fully accessible to many people. The conformance metadata details the accessibility of the publication, which allows end users and educators to evaluate the suitability of the publication for individuals.</p>
-                
-                <div class="note">
-					<p>At the time of publication of this document there is an open issue <a href="https://github.com/w3c/epub-specs/issues/1767">#1767</a> (Is zero tolerance for accessibility conformance practical?) in the working draft of EPUB Accessibility 1.1. It may change the values for the Accessibility Conformance metadata in the future revision of these guidelines.</p>
-				</div>
-                
+				<p>TBD</p>
+				<h4>Examples</h4>
+                <p>TBD</p>
                 <h4>Implementation</h4>
                 <ul>
-                     <li><a href="../techniques/epub-metadata/index.html#accessibility-conformance-links">EPUB Accessibility: Conformance (Links)</a></li>                     
-                     <li><a href="../techniques/epub-metadata/index.html#accessibility-conformance-string">EPUB Accessibility: Conformance (Strings)</a></li>
-                     <li><a href="../techniques/onix-metadata/index.html#accessibility-conformance">ONIX: Conformance</a></li>
+                    <li><a href="../techniques/epub-metadata/index.html">EPUB Accessibility: Book Features</a></li>
+                    <li><a href="../techniques/onix-metadata/index.html">ONIX: Book Features</a></li>
                 </ul>
-			</section>
-			
-			<section id="certified-by">
-				<h3>Certified By</h3>
-				<p><b>Value</b>: Textual Data from metadata</p>
-				<h4>Definition</h4>
-				<p>The <i>Certified By</i> property specifies the name of the party that certified the content. The certifier of the content could be the same party that created or published the publication, or a third-party accessibility certifier.</p>
-				<h4>Rationale</h4>
-				<p>When the metadata about a publication declares that it conforms to an accessibility specification reaching a certain level of WCAG conformance, the party making this assertion must be identified.</p>
-                <h4>Implementation</h4>
-               <ul>
-                     <li><a href="../techniques/epub-metadata/index.html#certified-by">EPUB Accessibility: Certified By</a></li>
-                    <li><a href="../techniques/onix-metadata/index.html#certified-by">ONIX: Certified By</a></li>
-                </ul>
-
-			</section>
-			
-			<section id="certifier-credential">
-				<h3>Certifier Credential</h3>
-				<p><b>Value</b>: Potentially linked textual data from metadata</p>
-				<h4>Definition</h4>
-				<p>The <i>Certifier Credential</i> indicates the name of the credential or badge that establishes the authority of the certifying party.</p>
-				<h4>Rationale</h4>
-				<p>Stating that the organization certifying this content has a credential recognized by the community gives a higher level of trust as to the accuracy of the conformance level reached.</p>
-                <h4>Implementation</h4>
-               <ul>
-                     <li><a href="../techniques/epub-metadata/index.html#certifier-credential">EPUB Accessibility: Certifier Credential</a></li>
-                    <li><a href="../techniques/onix-metadata/index.html#certifier-credential">ONIX: Certifier Credential</a></li>
-                </ul>
-
-			</section>
-			
-			<section id="certifier-report">
-				<h3>Certifier Report</h3>
-				<p><b>Value</b>: Potentially linked textual data from metadata</p>
-				<h4>Definition</h4>
-				<p>The <i>Certifier Report</i> is an URL pointing to a web page where the certifier publishes a report detailing the accessibility of the publication.</p>
-				<h4>Rationale</h4>
-				<p>Providing a link to the complete report allows end users and organizations to review the specifics of its conformance or failure to standards. The user interface should display a link to the report.</p>
-                <h4>Implementation</h4>
-                <ul>
-                     <li><a href="../techniques/epub-metadata/index.html#certifier-report">EPUB Accessibility: Certifier Report</a></li>
-                    <li><a href="../techniques/onix-metadata/index.html#certifier-report">ONIX: Certifier Report</a></li>
-                </ul>
-
 			</section>
 			
 			<section id="hazards">
 				<h3>Hazards</h3>
-				<p><b>Values</b>: flashing, motion simulation, sound, no flashing, no motion simulation, no
-					sound, none, or unknown.</p>
 				<h4>Definition</h4>
 				<p>Hazards are a list of possible ways in which this publication could be physiologically dangerous for some users (e.g., flashing elements, background sounds, and motion simulation).</p>
 				<h4>Rationale</h4>
@@ -296,22 +247,51 @@
                      <li><a href="../techniques/epub-metadata/index.html#hazards">EPUB Accessibility: Hazards</a></li>
                     <li><a href="../techniques/onix-metadata/index.html#hazards">ONIX: Hazards</a></li>
                 </ul>
-
 			</section>
 			
-			<section id="all-accessibility-metadata">
-				<h3>All Accessibility Metadata</h3>
-				<p><b>Value</b>: Link to complete list of all metadata fields</p>
+			<section id="certification">
+				<h3>Certification</h3>
 				<h4>Definition</h4>
-				<p>This field provides the listing of all accessibility metadata for the publication. It can be a hyperlink to another page or can be listed in HTML summary/details element. It should include metadata for <i>accessibilityFeature</i>, <i>accessibilityHazard</i>, <i>accessMode</i>, <i>accessModeSufficient</i> and all the accessibility metadata and conformance metadata listed above.</p>
+				<p>TBD</p>
 				<h4>Rationale</h4>
-				<p>A complete list of accessibility metadata is important for advanced users who would like to know about the presence of specific accessibility features in the publication. This listing is also important for verification of the interpretation of the accessibility metadata provided according to this user experience guide.</p>
+				<p>TBD</p>
+				<h4>Examples</h4>
+                <p>TBD</p>
                 <h4>Implementation</h4>
-                  <ul>
-                     <li><a href="../techniques/epub-metadata/index.html#all-accessibility-metadata">EPUB Accessibility: All Accessibility Metadata</a></li>
-                    <li><a href="../techniques/onix-metadata/index.html#all-accessibility-metadata">ONIX: All Accessibility Metadata</a></li>
+                <ul>
+                    <li><a href="../techniques/epub-metadata/index.html">EPUB Accessibility: Certification</a></li>
+                    <li><a href="../techniques/onix-metadata/index.html">ONIX: Certification</a></li>
                 </ul>
-
+			</section>
+			
+			<section id="conformance-group">
+				<h3>Conformance</h3>
+				<h4>Definition</h4>
+				<p>TBD</p>
+				<h4>Rationale</h4>
+				<p>TBD</p>
+				<h4>Examples</h4>
+                <p>TBD</p>
+                <h4>Implementation</h4>
+                <ul>
+                    <li><a href="../techniques/epub-metadata/index.html">EPUB Accessibility: Conformance</a></li>
+                    <li><a href="../techniques/onix-metadata/index.html">ONIX: Conformance</a></li>
+                </ul>
+			</section>
+			
+			<section id="additional-accessibility-information">
+				<h3>Additional Accessibility Information</h3>
+				<h4>Definition</h4>
+				<p>TBD</p>
+				<h4>Rationale</h4>
+				<p>TBD</p>
+				<h4>Examples</h4>
+                <p>TBD</p>
+                <h4>Implementation</h4>
+                <ul>
+                    <li><a href="../techniques/epub-metadata/index.html">EPUB Accessibility: Additional Accessibility Information</a></li>
+                    <li><a href="../techniques/onix-metadata/index.html">ONIX: Additional Accessibility Information</a></li>
+                </ul>
 			</section>
 			
 		</section>
