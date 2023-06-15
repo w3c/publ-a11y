@@ -280,11 +280,34 @@
 			<section id="conformance-group">
 				<h3>Conformance</h3>
 				
-				<p>TBD</p>
-				
-				<p>TBD</p>
-				<h4>Examples</h4>
-                <p>TBD</p>
+<p>Description: The conformance group provides the assertions made concerning the accessibility of the publication. At a minimum, the specification which it conforms to and the party doing the certification must be provided. It is also possible to determine if the certification is done by a third party. If the dc:publisher and a11y:certifiedBy property are different, then  this indicates the certification was done by a third party. The credentials of the certifying party and the  date of the evaluation will be of interest and should be provided. If there is a link to a report of the evaluation, that can also be provided. </p>
+ 
+<dl>
+<dt>conformsTo</dt><dd> REQUIRED - Identifies the accessibility specification and the conformance level to which  the publication  assertians are made. When the publication conforms to more than one specification, additional conformsTo statements may be provided. The EPUB Accessibility specification 1.1 uses natural language descriptions in the conformsTo statement, which means these values can be provided directly, and no translation will be necessary.</dd> 
+<dt>certifiedBy</dt>  <dd>REQUIRED -  This provides information about the organization providing the certification review or process for certification.</dd>
+<dt>Third party certification</dt><dd>This statement can be determined by comparing the values of the dc:publisher and a11y:certifiedBy properties. If the values are different, then third party certifications are true.</dd> 
+<dt>certifierCredential </dt><dd>If the certifier has a badge or a credential, then the value is provided.</dd>
+<dt>Certification date</dt><dd>If the date of the certifiers   evaluation is provided, then this would be of interest. This is associated with the certifier through the refines value, e.g., refines="#certifier" followed by the date.</dd>
+<dt>vcertifierReport </dt><dd>If a link to a report is provided, this may be of interest.</dd>
+</dl>
+
+<h4>Examples</h4>
+
+<p>The examples are provided first as a list of individual statements followed by a paragraph that concatinates statements that cover the whole conformance group. Either the list of individual statements or the paragraph style are appropriate, but do not provide both approaches.</p>
+<h5>Individual statements</h5>
+
+<ul>
+<li> This publication conforms to EPUB Accessibility 1.1 - WCAG 2.1 Level AA.</li>
+<li>This publication has been certified by a third party.</li>
+<li>This publication was certified on 2021-09-07.</li>
+<li>This publication is certified by Foo's Accessibility Testing.</li>
+<li>The certifier's credential is "A+ Accessibility Rating."</li>  
+<li>The certifier's report can be found at: <a href="http://www.example.com/a11y/report/9780000000001">Certifier's report.</a></li>
+</ul>
+<h5>Shown as a paragraph</h5>
+
+<p>This publication conforms to EPUB Accessibility 1.1 - WCAG 2.1 Level AA and has a third party certification done on 2021-09-07 by Foo's Accessibility Testing with the credential of "A+ Accessibility Rating." Their report can be found at: <a href="http://www.example.com/a11y/report/9780000000001">Certifier's report.</a></p>
+
                 <h4>Metadata techniques</h4>
                 <ul>
                     <li><a href="../techniques/epub-metadata/index.html">EPUB Accessibility: Conformance</a></li>
