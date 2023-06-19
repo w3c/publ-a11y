@@ -193,7 +193,6 @@
 			
 			<section id="visual-adjustments">
 				<h3>Visual Adjustments</h3>
-				<!--gautier-->
 				<p>A Yes/No/Unknown answer to the question "Can a user change the aspect of textual contents". </p>
 
 				<p>Indicates if the appearance of the text and the page layout can be modified according to the possibilities offered by the reading system.</p>
@@ -214,11 +213,14 @@
 				</li> 
 				 <li> 
 				<p>Short sentences:</p>
-				<aside class="example">Appearance can be modified.</aside>
+				<aside class="example">Appearance can be modified.</aside>				
+				<!--if Display transformability is present-->
 				<p>or</p>
-				<aside class="example">Appearance can not be modified.</aside>
+				<aside class="example">Appearance can not be modified.</aside>				
+				<!--if display transformability is not present and text on visual is present-->
 				<p>or</p>
 				<aside class="example">Unknown appearence modification possibilities.</aside>
+				<!--if neither display transformability nor text on visual are presents-->
 				 </li>
 				</ul> 
                 <h4>Implementation</h4>
