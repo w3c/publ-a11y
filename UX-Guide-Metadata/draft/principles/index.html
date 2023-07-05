@@ -177,13 +177,22 @@
 			<h2>Key Information</h2>
 			
 			<section id="enable-reading-without-sight">
-				<h3>Enable Reading Without Sight</h3>
-				
-				<p>A Yes/No/Unknown answer to the question "Can a screen-reader user read this publication?". This can be based on a combination of metadata fields, if needed, that establish that the primary content of the publication is available in true text and is not an image of text.</p>
-				
-				<p>Most available digital publications include their content in true text and can report that they are screen reader friendly. Exceptions would include publications where critical content is included only in images, such as graphs, charts, or equations presented as images, and publications with a fixed appearance created by having an image of each page instead of true text.</p>
+				<h3>Non visual reading</h3>
+				<p>A Yes/No/Unknown answer to the question "Can a user reading without sight get a restitution of all contents?".</p>
+				<p>Indicates that the content of the digital book can be consulted entirely in text, and the other media required for comprehension are described or have a textual alternative. Also means that all content required for comprehension is fully rendered to assistive technologies.</p>
+				<p>Most digital publications available include their content in digital text and may indicate that they are suitable for non visual reading. Exceptions are publications where some of the content essential to understanding is included only in images, such as graphs, tables or equations presented as images, and publications where the fixed appearance is created by an image on each page instead of actual text.</p>
                 <h4>Examples</h4>
-                <p>TBD</p>
+                <p>The examples are provided as long and short sentence for flexibility.</p> 
+				 <ul> 
+					 <li>
+				<p>Long sentence:</p>
+				<aside class="example"><p>Text and images alternatives available in computer-generated voice and Braille.</p></aside>
+				</li> 
+				 <li> 
+				<p>Short sentence:</p>
+				<aside class="example">Readable without sight.</aside>		
+				 </li>
+				</ul> 
                 <h4>Metadata techniques</h4>
                 <ul>
                     <li><a href="../techniques/epub-metadata/index.html#screen-reader-friendly">EPUB Accessibility: Enable Reading Without Sight</a></li>
@@ -205,7 +214,9 @@
 				 <ul> 
 					 <li>
 				<p>Long sentences:</p>
-				<aside class="example">Appearance of the text and page layout (color of background and texts, font family and font size as well as spaces between letters, words, sentences or paragraphs) can be modified according to the possibilities offered by the reading system.</aside>
+				<ul> 
+					<li>
+				<aside class="example">Appearance of the text and page layout can be modified according to the capabilities of the reading system (font family and font size, spaces between paragraphs, sentences, word and letter as well as color of background and texts).</aside>
 				<p>or</p>
 				<aside class="example">Text and page layout can not be modified, the reading experience is close to a print version. Reading system can still provide zooming options.</aside>
 				<p>or</p>
@@ -219,7 +230,7 @@
 				<aside class="example">Appearance can not be modified.</aside>				
 				<!--if display transformability is not present and text on visual is present-->
 				<p>or</p>
-				<aside class="example">Unknown appearence modification possibilities.</aside>
+				<aside class="example">Possibilities of modifying Appearance are not known.</aside>
 				<!--if neither display transformability nor text on visual are presents-->
 				 </li>
 				</ul> 
