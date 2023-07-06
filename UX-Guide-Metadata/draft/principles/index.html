@@ -331,9 +331,21 @@
 			
 			<section id="conformance-group">
 				<h3>Conformance</h3>
-				
-<p>The conformance group provides the assertions made concerning the accessibility of the publication. The language should be simple and report if accessibility recommendations are being met or if the publication is below suggested recommendations. At a minimum, the specification which it conforms to and the party doing the certification must be provided. It is also possible to determine if the certification is done by a third party. If the  publisher and the certifier property are different, then  this indicates the certification was done by a third party. The credentials of the certifying party and the  date of the evaluation will be of interest and should be provided. If there is a link to a report of the evaluation, that can also be provided. </p>
- 
+
+				<p>The conformance group provides the assertions made concerning the accessibility of the publication.  The conformance metadata uses termonology that most people will not understand, and therefore simple statements should be provided when EPUB accessibility and WCAG  levels are identified. If one of the conformance to accepted standards (EPUB accessibility and WCAG) cannot be made, a simple statement should state that the conformance to accepted standards could not be determined.</p>
+
+<p>in many cases, people will want to know more about the conformance of the publication. The detailed conformance information should be provided inside an HTML "details" element, which can be expanded to view more information.</p>
+
+<p>Simple statements:</p>
+<ul>
+<li>This publication meets accepted accessibility standards.</li>
+<li>  This publication meets the minimum accessibility standards.</li>
+<li>This publication is certified to meet accepted accessibility standards.</li>
+<li>  This publication is certified to meet the minimum accessibility standards.</li>
+<li>This publications accessibility conformance has not been associated with accepted standards.</li>
+</ul>
+<p>Information that can be placed inside the HTML "details" element:</p>
+
 <dl>
 <dt>Conformance Statement</dt><dd> Identifies the accessibility specification and the conformance level to which  the publication assertions are made. When the publication conforms to more than one specification, additional conformance statements may be provided. </dd>
 
@@ -345,22 +357,27 @@
 
 <h4>Examples</h4>
 
-<p>The examples are provided first as a list of individual statements followed by a paragraph that concatinates statements that cover the whole conformance group. Either the list of individual statements or the paragraph style are appropriate, but do not provide both approaches. The conformance statement should be shown independently from the certifier and their associated information. Two examples are provided for the conformance statement, one shows a statement that meets recommended accessibility requirements and a second that shows a publication that is blow the recommended level.</p>
-<aside class="example" title="Individual statements">
+<p>The examples are provided with the details first as a list of individual statements followed by a paragraph that concatinates statements that cover the whole conformance group. Either the list of individual statements or the paragraph style are appropriate, but do not provide both approaches.  Two examples are provided for the conformance statement, one shows a statement that is certified to meet recommended accessibility requirements and a second that is not certified and meets the minimum level.</p>
+<aside class="example" title="Details as individual statements">
+<p>This publication is certified to meet accepted accessibility standards.</p>
 
+<details><summary>More conformance information</summary>
 <ul>
-<li> This publication meets accessibility recommendations and reports (EPUB Accessibility 1.1 and Web Accessibility Content Guidelines (WCAG) 2.1 Level AA.)</li>
-<li> This publication falls below the accessibility recommendations  and reports (EPUB Accessibility 1.1 and Web Accessibility Content Guidelines (WCAG) 2.1 Level A.)</li>
+<li> This publication meets accepted accessibility recommendations and reports (EPUB Accessibility 1.1 and Web Accessibility Content Guidelines (WCAG) 2.1 Level AA.)</li>
 <li>This publication was certified on 2021-09-07.</li>
 <li>This publication is certified by Foo's Accessibility Testing (a third party.</li>
-<li>The certifier's credential is "A+ Accessibility Rating."</li>  
+<li>The certifier's credential is "Enterprise Accessibility Rating."</li>  
 <li>For more information, refer to: <a href="http://www.example.com/a11y/report/9780000000001">Certifier's report.</a></li>
 </ul>
+</details>
 </aside>
 
-<aside class="example" title="Statements as a Paragraph">
+<aside class="example" title="Details statements as a Paragraph">
+<p>This publication meets accepted accessibility standards.</p>
+<details><summary>More conformance information</summary>
 
-<p>This publication meets accessibility recommendations and reports (EPUB Accessibility 1.1 and the Web Content Accessibility Guidelines (WCAG) 2.1 Level AA).   The publication was certified on 2021-09-07 by Foo's Accessibility Testing (a third party) with the credential of "A+ Accessibility Rating." For more information refer to: <a href="http://www.example.com/a11y/report/9780000000001">Certifier's report.</a></p>
+<p>This publication meets accepted accessibility recommendations and reports (EPUB Accessibility 1.1 and the Web Content Accessibility Guidelines (WCAG) 2.1 Level A).   The publication was self-certified on 2021-09-07 by the publisher. For more information refer to: <a href="http://www.example.com/a11y/report/9780000000001">Certifier's report.</a></p>
+</details>
 </aside>
                 <h4>Metadata techniques</h4>
                 <ul>
