@@ -305,9 +305,11 @@
 				<p>In case there there are not hazards:</p>
 				<aside class="example">No hazards</aside>
 				
-				<p>In case there are known hazards:</p>
+				<p>In case there are known hazards, short version:</p>
 				<aside class="example">Flashing and motion simulation hazards</aside>
-
+				
+				<p>In case there are known hazards, long version:</p>
+				<aside class="example">The publication contains content that rapidly changing lights or visual stimuli, as well as simulated movements, which can cause discomfort, distraction, photosensitive seizures, or motion sickness.</aside>
                 
                 <h4>Metadata techniques</h4>
                  <ul>
@@ -375,6 +377,25 @@
 				</ul>
 			</section>
 			
+			<section id="accessibility-summary">
+				<h3>Accessibility Summary</h3>
+				
+				<p>The Accessibility Summary is a of the accessibility that complements, but does not duplicate, the other discoverability metadata.</p>
+				<p>It is a free-form field that allows authors to describe the additional information to the accessible properties of the resource.</p>
+				<p>Due to its nature, no specific processing of the content is required; it is sufficient to extract the text from the metadata and display it to end users.</p>
+				
+				<h4>Examples</h4>
+				<aside class="example">
+					<p>Subject experts were used to create the ALT text. The tables are represented as images, and the full text of the table is provided below the image within the details element, which can be expanded. There are several short videos in Amerigan Sign Language that explains key concepts.</p>
+				</aside>
+
+                <h4>Metadata techniques</h4>
+                <ul>
+                    <li><a href="../techniques/epub-metadata/index.html">EPUB Accessibility: Accessibility Summary</a></li>
+                    <li><a href="../techniques/onix-metadata/index.html">ONIX: Accessibility Summary</a></li>
+                </ul>
+			</section>
+			
 			<section id="additional-accessibility-information">
 				<h3>Additional Accessibility Information</h3>
 				
@@ -382,7 +403,7 @@
 				<p>Additional accessibility information includes a wide range of information related to ebook's content, therefore we group the features into subgroups so that the presentation is more understandable to end users.</p>
 				
 				<ul>
-					<li><b>Accessibility Summary</b>: a human-readable summary of the accessibility that complements, but does not duplicate, the other discoverability metadata</li>
+					<li><b>Detailed information on Conformance and Certification</b>: provides information on who certified the accessibility of the publication, on what date, according to what standard, etc.</li>
 					<li><b>Structure</b>: identify structuring aids that facilitate use of a resource (e.g. annotations, ARIA)</li>
 					<li><b>Adaptation</b>: identify provisions in the content that enable reading in alternative access modes (e.g. closed captions, ruby annotations, sign language, transcript)</li>
 					<!-- maybe we can remove High Contrast Display -->
