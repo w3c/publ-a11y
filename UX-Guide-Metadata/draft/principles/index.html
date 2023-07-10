@@ -322,49 +322,50 @@
                 </ul>
 			</section>
 			
-			<section id="book-features">
-				<h3>Book Features</h3>
-				
-				<p>This group of metadata provides a comprehensive description of the various functionalities and capabilities offered by an ebook. Groups together all the features that are not expressed by the other metadata groups.</p>
-
-				<p>Book features metadata includes a wide range of information related to ebook's content, therefore we group the features into subgroups so that the presentation is more understandable to end users.</p>
-				
-				<ul>
-					<li><b>Structure</b>: identify structuring aids that facilitate use of a resource (e.g. annotations, ARIA)</li>
-					<li><b>Adaptation</b>: identify provisions in the content that enable reading in alternative access modes (e.g. closed captions, ruby annotations, sign language, transcript)</li>
-					<li><b>Clarity</b>: identify ways that the content has been enhanced for improved auditory or visual clarity (e.g. high contrast display)</li>
-					<li><b>Tactile</b>: identify content that is available in tactile form (e.g. tactile content, tactile graphic, tactile objects)</li>
-					<li><b>Content</b>: explain specific types of contents present in the ebook (e.g. text on visual, music on visual)</li>
-					<li><b>Other</b>: e.g. timing control and color dependent</li>
-				</ul>
-
-				<p>This serves as a valuable resource for readers enabling them to understand the unique attributes and functionalities of the ebook, empowering readers to make informed decisions based on their preferences and needs. Additionally, this metadata serves as a valuable reference for digital libraries, online marketplaces, and ebook distribution platforms, ensuring accurate categorization and efficient discovery of ebooks with specific functionalities.</p>
-
-                <h4>Metadata techniques</h4>
-                <ul>
-                    <li><a href="../techniques/epub-metadata/index.html">EPUB Accessibility: Book Features</a></li>
-                    <li><a href="../techniques/onix-metadata/index.html">ONIX: Book Features</a></li>
-                </ul>
-			</section>
-			
 			<section id="hazards">
 				<h3>Hazards</h3>
 				
 				<p>Hazards are a list of possible ways in which this publication could be physiologically dangerous for some users (e.g., flashing elements, background sounds, and motion simulation).</p>
 				
-				<p>Unlike other accessibility properties, the presence of hazards can be expressed either positively or negatively. This is because users are more often looking for content that is safe for them. This section should always be displayed; indicate that no metadata was provided if that is the case.</p>
+				<p>Unlike other accessibility properties, the presence of hazards can be expressed either positively or negatively. This is because users are more often looking for content that is safe for them. This group should always be displayed; indicate that no metadata was provided if that is the case.</p>
+                
+                <h4>Examples</h4>
+				<p>In case there is not information about hazards:</p>
+				<aside class="example">No information about possible hazards</aside>
+				
+				<p>In case there there are not hazards:</p>
+				<aside class="example">No hazards</aside>
+				
+				<p>In case there are known hazards, short version:</p>
+				<aside class="example">Flashing and motion simulation hazards</aside>
+				
+				<p>In case there are known hazards, long version:</p>
+				<aside class="example">The publication contains content that rapidly changing lights or visual stimuli, as well as simulated movements, which can cause discomfort, distraction, photosensitive seizures, or motion sickness.</aside>
+                
                 <h4>Metadata techniques</h4>
                  <ul>
                      <li><a href="../techniques/epub-metadata/index.html#hazards">EPUB Accessibility: Hazards</a></li>
                     <li><a href="../techniques/onix-metadata/index.html#hazards">ONIX: Hazards</a></li>
                 </ul>
-			</section>	
+			</section>
 			
 			<section id="conformance-group">
 				<h3>Conformance</h3>
-				
-<p>The conformance group provides the assertions made concerning the accessibility of the publication. The language should be simple and report if accessibility recommendations are being met or if the publication is below suggested recommendations. At a minimum, the specification which it conforms to and the party doing the certification must be provided. It is also possible to determine if the certification is done by a third party. If the  publisher and the certifier property are different, then  this indicates the certification was done by a third party. The credentials of the certifying party and the  date of the evaluation will be of interest and should be provided. If there is a link to a report of the evaluation, that can also be provided. </p>
- 
+
+				<p>The conformance group provides the assertions made concerning the accessibility of the publication.  The conformance metadata uses terminology that most people will not understand, and therefore simple statements should be provided when EPUB accessibility and WCAG  levels are identified. If conformance to an accepted standard (EPUB accessibility and WCAG) cannot be made, a simple statement should state that the conformance to accepted standards could not be determined.</p>
+
+<p>in many cases, people will want to know more about the conformance and certification of the publication. The detailed conformance and certification information should be included within "Additional Accessibility Information."</p>
+
+<p>Simple statements:</p>
+<ul>
+<li>This publication meets accepted accessibility standards.</li>
+<li>  This publication meets the minimum accessibility standards.</li>
+<li>This publication is certified to meet accepted accessibility standards.</li>
+<li>  This publication is certified to meet the minimum accessibility standards.</li>
+<li>This publications accessibility conformance has not been associated with accepted standards.</li>
+</ul>
+<p>Information that can be placed in "Additional Accessibility Information":</p>
+
 <dl>
 <dt>Conformance Statement</dt><dd> Identifies the accessibility specification and the conformance level to which  the publication assertions are made. When the publication conforms to more than one specification, additional conformance statements may be provided. </dd>
 
@@ -376,22 +377,27 @@
 
 <h4>Examples</h4>
 
-<p>The examples are provided first as a list of individual statements followed by a paragraph that concatinates statements that cover the whole conformance group. Either the list of individual statements or the paragraph style are appropriate, but do not provide both approaches. The conformance statement should be shown independently from the certifier and their associated information. Two examples are provided for the conformance statement, one shows a statement that meets recommended accessibility requirements and a second that shows a publication that is blow the recommended level.</p>
-<aside class="example" title="Individual statements">
+<p>The "Additional Accessibility Information" section is first shown as a list of individual statements followed by an example that shows  a paragraph that concatinates statements that cover the whole conformance group. Either the list of individual statements or the paragraph style are appropriate, but do not provide both approaches.  Two examples are provided for the conformance statement, one shows a statement that is certified to meet recommended accessibility requirements and a second that is not certified and meets the minimum level.</p>
+<aside class="example" title="Additional Accessibility Information shown as individual statements">
+<p>This publication is certified to meet accepted accessibility standards.</p>
 
+<details><summary>Additional Accessibility Information</summary>
 <ul>
-<li> This publication meets accessibility recommendations and reports (EPUB Accessibility 1.1 and Web Accessibility Content Guidelines (WCAG) 2.1 Level AA.)</li>
-<li> This publication falls below the accessibility recommendations  and reports (EPUB Accessibility 1.1 and Web Accessibility Content Guidelines (WCAG) 2.1 Level A.)</li>
+<li> This publication meets accepted accessibility recommendations and reports (EPUB Accessibility 1.1 and Web Accessibility Content Guidelines (WCAG) 2.1 Level AA.)</li>
 <li>This publication was certified on 2021-09-07.</li>
 <li>This publication is certified by Foo's Accessibility Testing (a third party.</li>
-<li>The certifier's credential is "A+ Accessibility Rating."</li>  
+<li>The certifier's credential is "Enterprise Accessibility Rating."</li>  
 <li>For more information, refer to: <a href="http://www.example.com/a11y/report/9780000000001">Certifier's report.</a></li>
 </ul>
+</details>
 </aside>
 
-<aside class="example" title="Statements as a Paragraph">
+<aside class="example" title="Additional Accessibility Information statements shown as a Paragraph">
+<p>This publication meets accepted accessibility standards.</p>
+<details><summary>Additional Accessibility Information</summary>
 
-<p>This publication meets accessibility recommendations and reports (EPUB Accessibility 1.1 and the Web Content Accessibility Guidelines (WCAG) 2.1 Level AA).   The publication was certified on 2021-09-07 by Foo's Accessibility Testing (a third party) with the credential of "A+ Accessibility Rating." For more information refer to: <a href="http://www.example.com/a11y/report/9780000000001">Certifier's report.</a></p>
+<p>This publication meets accepted accessibility recommendations and reports (EPUB Accessibility 1.1 and the Web Content Accessibility Guidelines (WCAG) 2.1 Level A).   The publication was self-certified on 2021-09-07 by the publisher. For more information refer to: <a href="http://www.example.com/a11y/report/9780000000001">Certifier's report.</a></p>
+</details>
 </aside>
                 <h4>Metadata techniques</h4>
                 <ul>
@@ -402,18 +408,47 @@
 				</ul>
 			</section>
 			
+			<section id="accessibility-summary">
+				<h3>Accessibility Summary</h3>
+				
+				<p>The Accessibility Summary is a of the accessibility that complements, but does not duplicate, the other discoverability metadata.</p>
+				<p>It is a free-form field that allows authors to describe the additional information to the accessible properties of the resource.</p>
+				<p>Due to its nature, no specific processing of the content is required; it is sufficient to extract the text from the metadata and display it to end users.</p>
+				
+				<h4>Examples</h4>
+				<aside class="example">
+					<p>Subject experts were used to create the ALT text. The tables are represented as images, and the full text of the table is provided below the image within the details element, which can be expanded. There are several short videos in American Sign Language that explains key concepts.</p>
+				</aside>
+
+                <h4>Metadata techniques</h4>
+                <ul>
+                    <li><a href="../techniques/epub-metadata/index.html">EPUB Accessibility: Accessibility Summary</a></li>
+                    <li><a href="../techniques/onix-metadata/index.html">ONIX: Accessibility Summary</a></li>
+                </ul>
+			</section>
+			
 			<section id="additional-accessibility-information">
 				<h3>Additional Accessibility Information</h3>
 				
-				<p>TBD</p>
+				<p>In this section we list all additional metadata that can help users better understand the accessibility characteristics of publications. These are mainly metadata that do not fit into the other categories or are rarely used in trade publishing.</p>
+				<p>Additional accessibility information includes a wide range of information related to ebook's content, therefore we group the features into subgroups so that the presentation is more understandable to end users.</p>
 				
-				<p>TBD</p>
-				<h4>Examples</h4>
-                <p>TBD</p>
+				<ul>
+					<li><b>Detailed information on Conformance and Certification</b>: provides information on who certified the accessibility of the publication, on what date, according to what standard, etc.</li>
+					<li><b>Structure</b>: identify structuring aids that facilitate use of a resource (e.g. annotations, ARIA)</li>
+					<li><b>Adaptation</b>: identify provisions in the content that enable reading in alternative access modes (e.g. closed captions, ruby annotations, sign language, transcript)</li>
+					<!-- maybe we can remove High Contrast Display -->
+					<li><b>Clarity</b>: identify ways that the content has been enhanced for improved auditory or visual clarity (e.g. high contrast display)</li>
+					<li><b>Tactile</b>: identify content that is available in tactile form (e.g. tactile content, tactile graphic, tactile objects)</li>
+					<!-- maybe we can remove Content -->
+					<li><b>Content</b>: explain specific types of contents present in the ebook (e.g. text on visual, music on visual)</li>
+					<li><b>Other</b>: e.g. timing control and color dependent</li>
+				</ul>
+
                 <h4>Metadata techniques</h4>
                 <ul>
-                    <li><a href="../techniques/epub-metadata/index.html">EPUB Accessibility: Additional Accessibility Information</a></li>
-                    <li><a href="../techniques/onix-metadata/index.html">ONIX: Additional Accessibility Information</a></li>
+                    <li><a href="../techniques/epub-metadata/index.html">EPUB Accessibility: Book Features</a></li>
+                    <li><a href="../techniques/onix-metadata/index.html">ONIX: Book Features</a></li>
                 </ul>
 			</section>
 			
