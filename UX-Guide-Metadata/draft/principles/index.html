@@ -177,13 +177,22 @@
 			<h2>Key Information</h2>
 			
 			<section id="enable-reading-without-sight">
-				<h3>Enable Reading Without Sight</h3>
-				
-				<p>A Yes/No/Unknown answer to the question "Can a screen-reader user read this publication?". This can be based on a combination of metadata fields, if needed, that establish that the primary content of the publication is available in true text and is not an image of text.</p>
-				
-				<p>Most available digital publications include their content in true text and can report that they are screen reader friendly. Exceptions would include publications where critical content is included only in images, such as graphs, charts, or equations presented as images, and publications with a fixed appearance created by having an image of each page instead of true text.</p>
+				<h3>Non visual reading</h3>
+				<p>A Yes/No/Unknown answer to the question "Can a user reading without sight get a restitution of all contents?".</p>
+				<p>Indicates that the content of the digital book can be consulted entirely in text, and the other media required for comprehension are described or have a textual alternative. Also means that all content required for comprehension is fully rendered to assistive technologies.</p>
+				<p>Most digital publications available include their content in digital text and may indicate that they are suitable for non visual reading. Exceptions are publications where some of the content essential to understanding is included only in images, such as graphs, tables or equations presented as images, and publications where the fixed appearance is created by an image on each page instead of actual text.</p>
                 <h4>Examples</h4>
-                <p>TBD</p>
+                <p>The examples are provided as long and short sentence for flexibility.</p> 
+				 <ul> 
+					 <li>
+				<p>Long sentence:</p>
+				<aside class="example"><p>Text and images alternatives available in computer-generated voice and Braille.</p></aside>
+				</li> 
+				 <li> 
+				<p>Short sentence:</p>
+				<aside class="example">Readable without sight.</aside>		
+				 </li>
+				</ul> 
                 <h4>Metadata techniques</h4>
                 <ul>
                     <li><a href="../techniques/epub-metadata/index.html#screen-reader-friendly">EPUB Accessibility: Enable Reading Without Sight</a></li>
@@ -205,7 +214,9 @@
 				 <ul> 
 					 <li>
 				<p>Long sentences:</p>
-				<aside class="example">Appearance of the text and page layout (color of background and texts, font family and font size as well as spaces between letters, words, sentences or paragraphs) can be modified according to the possibilities offered by the reading system.</aside>
+				<ul> 
+					<li>
+				<aside class="example">Appearance of the text and page layout can be modified according to the capabilities of the reading system (font family and font size, spaces between paragraphs, sentences, word and letter as well as color of background and texts).</aside>
 				<p>or</p>
 				<aside class="example">Text and page layout can not be modified, the reading experience is close to a print version. Reading system can still provide zooming options.</aside>
 				<p>or</p>
@@ -219,7 +230,7 @@
 				<aside class="example">Appearance can not be modified.</aside>				
 				<!--if display transformability is not present and text on visual is present-->
 				<p>or</p>
-				<aside class="example">Unknown appearence modification possibilities.</aside>
+				<aside class="example">Possibilities of modifying Appearance are not known.</aside>
 				<!--if neither display transformability nor text on visual are presents-->
 				 </li>
 				</ul> 
@@ -307,9 +318,21 @@
 			
 			<section id="conformance-group">
 				<h3>Conformance</h3>
-				
-<p>The conformance group provides the assertions made concerning the accessibility of the publication. The language should be simple and report if accessibility recommendations are being met or if the publication is below suggested recommendations. At a minimum, the specification which it conforms to and the party doing the certification must be provided. It is also possible to determine if the certification is done by a third party. If the  publisher and the certifier property are different, then  this indicates the certification was done by a third party. The credentials of the certifying party and the  date of the evaluation will be of interest and should be provided. If there is a link to a report of the evaluation, that can also be provided. </p>
- 
+
+				<p>The conformance group provides the assertions made concerning the accessibility of the publication.  The conformance metadata uses terminology that most people will not understand, and therefore simple statements should be provided when EPUB accessibility and WCAG  levels are identified. If conformance to an accepted standard (EPUB accessibility and WCAG) cannot be made, a simple statement should state that the conformance to accepted standards could not be determined.</p>
+
+<p>in many cases, people will want to know more about the conformance and certification of the publication. The detailed conformance and certification information should be included within "Additional Accessibility Information."</p>
+
+<p>Simple statements:</p>
+<ul>
+<li>This publication meets accepted accessibility standards.</li>
+<li>  This publication meets the minimum accessibility standards.</li>
+<li>This publication is certified to meet accepted accessibility standards.</li>
+<li>  This publication is certified to meet the minimum accessibility standards.</li>
+<li>This publications accessibility conformance has not been associated with accepted standards.</li>
+</ul>
+<p>Information that can be placed in "Additional Accessibility Information":</p>
+
 <dl>
 <dt>Conformance Statement</dt><dd> Identifies the accessibility specification and the conformance level to which  the publication assertions are made. When the publication conforms to more than one specification, additional conformance statements may be provided. </dd>
 
@@ -321,22 +344,27 @@
 
 <h4>Examples</h4>
 
-<p>The examples are provided first as a list of individual statements followed by a paragraph that concatinates statements that cover the whole conformance group. Either the list of individual statements or the paragraph style are appropriate, but do not provide both approaches. The conformance statement should be shown independently from the certifier and their associated information. Two examples are provided for the conformance statement, one shows a statement that meets recommended accessibility requirements and a second that shows a publication that is blow the recommended level.</p>
-<aside class="example" title="Individual statements">
+<p>The "Additional Accessibility Information" section is first shown as a list of individual statements followed by an example that shows  a paragraph that concatinates statements that cover the whole conformance group. Either the list of individual statements or the paragraph style are appropriate, but do not provide both approaches.  Two examples are provided for the conformance statement, one shows a statement that is certified to meet recommended accessibility requirements and a second that is not certified and meets the minimum level.</p>
+<aside class="example" title="Additional Accessibility Information shown as individual statements">
+<p>This publication is certified to meet accepted accessibility standards.</p>
 
+<details><summary>Additional Accessibility Information</summary>
 <ul>
-<li> This publication meets accessibility recommendations and reports (EPUB Accessibility 1.1 and Web Accessibility Content Guidelines (WCAG) 2.1 Level AA.)</li>
-<li> This publication falls below the accessibility recommendations  and reports (EPUB Accessibility 1.1 and Web Accessibility Content Guidelines (WCAG) 2.1 Level A.)</li>
+<li> This publication meets accepted accessibility recommendations and reports (EPUB Accessibility 1.1 and Web Accessibility Content Guidelines (WCAG) 2.1 Level AA.)</li>
 <li>This publication was certified on 2021-09-07.</li>
 <li>This publication is certified by Foo's Accessibility Testing (a third party.</li>
-<li>The certifier's credential is "A+ Accessibility Rating."</li>  
+<li>The certifier's credential is "Enterprise Accessibility Rating."</li>  
 <li>For more information, refer to: <a href="http://www.example.com/a11y/report/9780000000001">Certifier's report.</a></li>
 </ul>
+</details>
 </aside>
 
-<aside class="example" title="Statements as a Paragraph">
+<aside class="example" title="Additional Accessibility Information statements shown as a Paragraph">
+<p>This publication meets accepted accessibility standards.</p>
+<details><summary>Additional Accessibility Information</summary>
 
-<p>This publication meets accessibility recommendations and reports (EPUB Accessibility 1.1 and the Web Content Accessibility Guidelines (WCAG) 2.1 Level AA).   The publication was certified on 2021-09-07 by Foo's Accessibility Testing (a third party) with the credential of "A+ Accessibility Rating." For more information refer to: <a href="http://www.example.com/a11y/report/9780000000001">Certifier's report.</a></p>
+<p>This publication meets accepted accessibility recommendations and reports (EPUB Accessibility 1.1 and the Web Content Accessibility Guidelines (WCAG) 2.1 Level A).   The publication was self-certified on 2021-09-07 by the publisher. For more information refer to: <a href="http://www.example.com/a11y/report/9780000000001">Certifier's report.</a></p>
+</details>
 </aside>
                 <h4>Metadata techniques</h4>
                 <ul>
