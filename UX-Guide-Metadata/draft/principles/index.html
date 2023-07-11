@@ -363,7 +363,11 @@
 
 				<p>The conformance group provides the assertions made concerning the accessibility of the publication.  The conformance metadata uses terminology that most people will not understand, and therefore simple statements should be provided when EPUB accessibility and WCAG  levels are identified. If conformance to an accepted standard (EPUB accessibility and WCAG) cannot be made, a simple statement should state that the conformance to accepted standards could not be determined. If the publication has been reviewed and there are accessibility problems, a statement can also be made that there are known accessibility limitations. If there is no conformance statement, then the accessibility of the publication is unknown.</p>
 
-<p>in many cases, people will want to know more about the conformance and certification of the publication. The detailed conformance and certification information should be included within "Additional Accessibility Information."</p>
+<p>In many cases, people will want to know more about the conformance and certification of the publication. The detailed conformance and certification information should be included within "Additional Accessibility Information."</p>
+
+<aside class="note">
+<p>In cases where the publication's compliance with accessibility standards is unknown or with known accessibility problems, it may be important for some local legislation (e.g., the European Accessibility Act) to indicate why the publication is not accessible. This information could be contained in the Accessibility Summary, or as machine readable metadata, in which case the information will be given in the additional compliance information.</p>
+</aside>
 
 <p>Simple statements:</p>
 <ul>
@@ -383,7 +387,7 @@
 <dt>Certifier's Credentials </dt><dd>If the certifier has a badge or a credential, then the text is provided. If there is a link to their credential, then this can be provided as a link.</dd>
 <dt>Certification date</dt><dd>If the date of the certifiers   evaluation is provided, then this would be of interest. This is normally associated with the certifier.</dd>
 <dt>Certifier's Report</dt><dd>If a link to a report is provided, this may be of interest.</dd>
-<dt>
+<dt>Reason why the publication does not meet the standards</dt><dd>For some local legislations it may be important to indicate why a publication is not compliant with the standards, such as if the company is too small and therefore not required to, or if the cost to produce the accessible version is too high. Showing this information may be important for insiders if required by local legislation, otherwise it can be omitted.</dd>
 </dl>
 
 <h4>Examples</h4>
@@ -408,6 +412,14 @@
 <details><summary>Additional Accessibility Information</summary>
 
 <p>This publication meets accepted accessibility recommendations and reports (EPUB Accessibility 1.1 and the Web Content Accessibility Guidelines (WCAG) 2.1 Level A).   The publication was self-certified on 2021-09-07 by the publisher. For more information refer to: <a href="http://www.example.com/a11y/report/9780000000001">Certifier's report.</a></p>
+</details>
+</aside>
+
+<aside class="example" title="Unknown accessibility conformance">
+<p>Conformance to accepted standards for accessibility of this publication cannot be determined.</p>
+<details><summary>Additional Accessibility Information</summary>
+
+<p>The creator of the publication is not required to publish in an accessible format because it is a micro-enterprise (e.g. enterprises employing fewer than 10 people and with annual turnover or balance sheet total not exceeding €2 million).</p>
 </details>
 </aside>
                 <h4>Metadata techniques</h4>
