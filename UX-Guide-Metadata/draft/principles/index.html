@@ -107,7 +107,7 @@
 		</section>
 		<section id="sotd"></section>
 		<section id="general-overview">
-			<h2>General Overview</h2>
+			<h2>General overview</h2>
 
 			<p>This document helps those who wish to render accessibility metadata directly to users understand how to
 				represent machine-readable accessibility metadata in a user-friendly User Interface / User Experience
@@ -162,7 +162,7 @@
 			</section>
 		</section>
 		<section id="discovering-accessible-content">
-			<h2>Discovering Accessible Content</h2>
+			<h2>Discovering accessible content</h2>
 
 			<p>The guidelines for presenting accessibility metadata detailed in this document are intended to improve
 				the user experience when readers browse the catalog entry for a publication. However, accessibility
@@ -196,7 +196,7 @@
 				provide.</p>
 		</section>
 		<section id="ui-technical-details">
-			<h2>UI Technical Details</h2>
+			<h2>UI technical details</h2>
 
 			<p>When you have accessibility metadata about a digital publication, it is important to share this
 				information in as user-friendly a way as possible. At a very high level, when displaying information
@@ -224,44 +224,43 @@
 			</section>
 		</section>
 		<section id="order-of-key-information">
-			<h2>Key Information</h2>
+			<h2>Key information</h2>
 
-			<section id="supports-non-visual-reading">
-				<h3>Supports non-visual reading</h3>
+			<section id="supports-nonvisual-reading">
+				<h3>Supports nonvisual reading</h3>
 
-				<p>A Yes/No/Unknown answer to the question "Can a user reading without sight get a restitution of all
-					contents?"</p>
+				<p>Indicates whether all content required for comprehension can be consumed in text and therefore is
+					fully available to assistive technologies and reading system text-to-speech functionality.</p>
 
-				<p>Indicates that all content required for comprehension can be consumed in text and therefore is fully
-					rendered to assistive technologies and text-to-speech functions proposed by the Reading System.</p>
+				<p>This field answers whether nonvisual reading is possible, not possible, or unknown.</p>
 
-				<p>Most digital publications available include their content in digital text. Exceptions are
-					publications where some of the content essential to understanding is included in images, such as
-					graphs, tables or equations presented as images, and publications where the fixed appearance is
-					created by an image on each page instead of actual text. In those cases a textual alternative must
-					be provided to insure that users reading with other senses than sight (mainly auditive and tactile)
-					get a complete restitution of the content necesary for comprehension.</p>
+				<p>Digital publications with essential content included in non-textual form (such as graphs, tables or
+					equations presented as images, videos, etc.) must include textual alternatives to ensure that users
+					reading with other senses than sight (mainly auditory and tactile) have access to the same
+					information as visual readers. These textual alternatives can include extended descriptions,
+					transcripts, captions, etc. depending on the nature of the nonvisual content.</p>
 
 				<section id="nv-examples">
 					<h4>Examples</h4>
 
-					<p>The examples are provided as long and short sentence for flexibility.</p>
+					<p>The examples are provided as lists of possible descriptive and compact explanations for
+						flexibility of adoption.</p>
 
-					<aside class="example" title="Long sentence">
+					<aside class="example" title="Descriptive explanations">
 						<ul>
-							<li>Text and images alternatives available in computer-generated speech and Braille.</li>
-							<li>Portions of the content will not be restituted in computer-generated speech and
-								Braille.</li>
-							<li>Portions of the content may not be restituted in computer-generated speech and
-								Braille.</li>
+							<li>All content available for computer-generated speech and braille reading.</li>
+							<li>Portions of the content will not be available in computer-generated speech and
+								braille.</li>
+							<li>Portions of the content may not be available in computer-generated speech and
+								braille.</li>
 						</ul>
 					</aside>
 
-					<aside class="example" title="Short sentence">
+					<aside class="example" title="Compact explanations">
 						<ul>
-							<li>Readable in audio and braille.</li>
-							<li>Not fully readable in audio and Braille.</li>
-							<li>May not be fully readable in audio and Braille.</li>
+							<li>Readable in computer-generated audio and braille.</li>
+							<li>Not fully readable in computer-generated audio and braille.</li>
+							<li>May not be fully readable in computer-generated audio and braille.</li>
 						</ul>
 					</aside>
 				</section>
@@ -271,47 +270,51 @@
 
 					<ul>
 						<li><a href="../techniques/epub-metadata/index.html#screen-reader-friendly">EPUB Accessibility:
-								Supports non visual reading</a></li>
-						<li><a href="../techniques/onix-metadata/index.html#screen-reader-friendly">ONIX: Supports non
-								visual reading</a></li>
+								Supports nonvisual reading</a></li>
+						<li><a href="../techniques/onix-metadata/index.html#screen-reader-friendly">ONIX: Supports
+								nonvisual reading</a></li>
 					</ul>
 				</section>
 			</section>
 
 			<section id="pre-recorded-audio">
-				<h3>Pre recorded audio</h3>
+				<h3>Pre-recorded audio</h3>
 
-				<p>Indicates the presence of pre recorded audio and specify if this audio is alone, acompanying text or
-					duplicateting text and in that last case if it is synchronized with text.</p>
+				<p>Indicates the presence of pre-recorded audio and specifies if this audio is standalone (an
+					audiobook), accompanies text (embedded audio and video clips), or represents an alternative to the
+					text (synchronized text-audio playback).</p>
 
-				<p>Publications with audio only created for mainstream use provide important access for many users with
-					disabilities even though they are not accessible to all. As they are more and more used, audiobooks
-					may provide more accessibility options in the future </p>
+				<p>Audiobooks created for mainstream use provide important access for many users with disabilities even
+					though they are not accessible to all. As they grow in popularity, audiobooks may provide more
+					accessibility options in the future.</p>
 
-				<p>Some publications provide audio addition to text, in that case it is important that the user gets
-					informed as he may not be able to access all contents of the book. </p>
+				<p>Some publications provide audio (including in video) in addition to text. In this case, it is
+					important that the user gets informed as they may not be able to access all contents of the book. </p>
 
-				<p>Some publication provide pre recorded audio with text synchronisation. They are known for providing
-					rich accessibility as pre recorded audio is known to convoy less pronunciations errors than
-					computer-generated speech. Users with earing impairments still can access the full content of the
-					book if Non visual reading is set to true.</p>
+				<p>Some publications provide pre-recorded audio with text synchronization. They are known for providing
+					rich accessibility as pre-recorded audio normally has fewer pronunciation errors than
+					computer-generated speech. Users with hearing impairments still can access the full content of these
+					books.</p>
 
 				<section id="pra-examples">
 					<h4>Examples</h4>
 
-					<aside class="example" title="Long sentence">
+					<p>The examples are provided as lists of possible descriptive and compact explanations for
+						flexibility of adoption.</p>
+
+					<aside class="example" title="Descriptive explanations">
 						<ul>
 							<li>Audiobook with no text alternative.</li>
-							<li>Contents availables as complementary audio and text.</li>
-							<li>All the content is available as pre recorded audio syncronized with text.</li>
+							<li>Contents available as complementary audio and text.</li>
+							<li>All the content is available as pre-recorded audio synchronized with text.</li>
 						</ul>
 					</aside>
 
-					<aside class="example" title="Short sentence">
+					<aside class="example" title="Compact explanations">
 						<ul>
 							<li>Audio only.</li>
-							<li>Complementary Audio and text.</li>
-							<li>Audio and text syncronised.</li>
+							<li>Complementary audio and text.</li>
+							<li>Synchronized audio and text.</li>
 						</ul>
 					</aside>
 				</section>
@@ -320,52 +323,54 @@
 					<h4>Metadata techniques</h4>
 
 					<ul>
-						<li><a href="../techniques/epub-metadata/index.html#screen-reader-friendly">EPUB Accessibility:
-								Enable Reading Without Sight</a></li>
-						<li><a href="../techniques/onix-metadata/index.html#screen-reader-friendly">ONIX: Enable Reading
-								Without Sight</a></li>
+						<li><a href="../techniques/epub-metadata/index.html#full-audio">EPUB Accessibility: Full
+								audio</a></li>
+						<li><a href="../techniques/onix-metadata/index.html#full-audio">ONIX: Full audio</a></li>
 					</ul>
 				</section>
 			</section>
 
 			<section id="visual-adjustments">
-				<h3>Visual Adjustments</h3>
+				<h3>Visual adjustments</h3>
 
-				<p>A Yes/No/Unknown answer to the question "Can a user change the aspect of textual contents". </p>
-
-				<p>Indicates if the appearance of the text and the page layout can be modified according to the
+				<p>Indicates if users can modify the appearance of the text and the page layout according to the
 					possibilities offered by the reading system.</p>
 
-				<p>Readers with visual impairment or cognitive disabilities rely on the ability to change color of
-					background and texts, font family and font size as well as spaces between letters, words, sentences
-					or paragraphs.</p>
+				<p>This field answers whether visual adjustments are possible, not possible, or unknown.</p>
 
-				<p><!--this one might be moved to the technics-->The reflowable information alone is not sufficient to
-					make sure that modifications operated will not result on text overlaying or unreadable colors.</p>
+				<p>Readers with visual impairments or cognitive disabilities need the ability to change the color of
+					text and its background (contrast), the font family and font size used, as well as spacing between
+					letters, words, sentences, or paragraphs.</p>
+
+				<p><!--this one might be moved to the technics-->Knowing that a publication can reflow to fit the
+					reading system's display area is not sufficient to know that modifications to the font, spacing, and
+					colors are possible or that the changes will not cause other readability issues (e.g., text being
+					clipped by its container).</p>
 
 				<section id="va-examples">
 					<h4>Examples</h4>
 
-					<p>The examples are provided as long and short sentence for flexibility.</p>
+					<p>The examples are provided as lists of possible descriptive and compact explanations for
+						flexibility of adoption.</p>
 
-					<aside class="example" title="Long sentences">
+					<aside class="example" title="Descriptive explanations">
 						<ul>
 							<li>Appearance of the text and page layout can be modified according to the capabilities of
 								the reading system (font family and font size, spaces between paragraphs, sentences,
-								word and letter as well as color of background and texts).</li>
-							<li>Text and page layout can not be modified, the reading experience is close to a print
-								version. Reading system can still provide zooming options.</li>
-							<li>Possibilities of modifying Appearance are not known.</li>
+								word, and letter, as well as color of background and texts).</li>
+							<li>Text and page layout can not be modified. The reading experience is close to a print
+								version. Reading systems can still provide zooming options.</li>
+							<li>Ability to modify the appearance is not known.</li>
 						</ul>
 					</aside>
 
-					<aside class="example" title="Short sentences">
+					<aside class="example" title="Compact explanations">
 						<ul>
 							<li>Appearance can be modified.</li>
 							<!--if Display transformability is present-->
-							<li>Appearance can not be modified.</li>
+							<li>Appearance cannot be modified.</li>
 							<!--if display transformability is not present and text on visual is present-->
-							<li>Possibilities of modifying Appearance are not known.</li>
+							<li>Modifiability not known.</li>
 							<!--if neither display transformability nor text on visual are presents-->
 						</ul>
 					</aside>
@@ -385,38 +390,38 @@
 			<section id="navigation">
 				<h3>Navigation</h3>
 
-				<p>Offering different ways to navigate the ebook content is important to allow the user to access each
-					part of the content. These features, which are essential for accessibility, are very important for
-					all users reading digital content. Therefore, clearly communicating to the user what navigation
-					features are available in the ebook is important to enable proper book selection.</p>
+				<p>Identifies the navigation features included in the publication.</p>
 
-				<p>Moreover Web Content Accessibility Guidelines standard state that <q>More than one way is available
-						to locate a Web page within a set of Web pages</q> (<cite><a
-							href="https://www.w3.org/TR/WCAG21/#multiple-ways">WCAG 2.1 Success Criterion 2.4.5 Multiple
-							Ways</a></cite>). Relating to ebooks, the web pages are the content of the book and the set
-					of web pages is the ebook itself. Therefore, it is important to communicate to the user the
-					different mechanisms that are present in the ebook to navigate the content: Table of Contents,
-					Index, etc.</p>
+				<p>Offering different ways to navigate digital publications (table of contents, index, etc.) is
+					important to allow the user to easily access each part of the content. These features are both
+					essential for accessibility and very important for all users reading publications. Therefore,
+					clearly communicating to the user what navigation features are available in the publication is
+					important to enable proper selection.</p>
+
+				<p>Note that the Web Content Accessibility Guidelines (WCAG) 2.1 standard requires that <q>[m]ore than
+						one way is available to locate a Web page within a set of Web pages</q> (<cite><a
+							href="https://www.w3.org/TR/WCAG21/#multiple-ways">Success Criterion 2.4.5 Multiple
+						Ways</a></cite>).</p>
 
 				<section id="nav-examples">
 					<h4>Examples</h4>
 
-					<p>The exemples are provided as extended (separated sentences) and compact (one sentence) for
-						flexibility.</p>
+					<p>The examples are provided as descriptive and compact explanations for flexibility of
+						adoption.</p>
 
-					<aside class="example" title="Separated sentences">
+					<aside class="example" title="Descriptive explanations">
 						<ul>
 							<li>Contains a table of contents that provides direct access to all chapters of the text via
 								links.</li>
 							<li>Index provides links to item references.</li>
 							<li>Landmarks provides quick access to main parts of the book.</li>
-							<li>There are references to link pages in the paginated version, with pages in the fluid
-								layout version.</li>
+							<li>A page list enables users to coordinate their reading with a statically paginated
+								version.</li>
 						</ul>
 					</aside>
 
-					<aside class="example" title="Single sentence">
-						<p>Navigation by Table of Contents, Index, Landmarks and Page list.</p>
+					<aside class="example" title="Compact explanation">
+						<p>Navigation by table of contents, index, landmarks, and page list.</p>
 					</aside>
 				</section>
 
@@ -430,32 +435,39 @@
 				</section>
 			</section>
 			<section id="charts-diagrams-and-formulas">
-				<h3>Charts, diagrams and formulas</h3>
+				<h3>Charts, diagrams, and formulas</h3>
 
-				<p>This group of metadata is used to indicate to end users the presence of formulas and complex graphs,
-					charts and diagrams within the title and whether or not these are usable in accessible format: for
-					example, whether formulas are navigable with assistive technologies, or whether extendend
-					descriptions are available for complex images.</p>
+				<p>Indicates the presence of formulas, graphs, charts, and diagrams within the title and whether these
+					are in an accessible format or available in an alternative form (e.g., whether formulas are
+					navigable with assistive technologies, or whether extended descriptions are available for complex
+					images).</p>
 
 				<p>This group should be displayed only if the metadata indicates the presence of formulas or charts and
 					graphs within the title, otherwise it can be hidden.</p>
 
+
 				<section id="cdf-examples">
 					<h4>Examples</h4>
 
+					<p>The examples are provided as lists of possible descriptive and compact explanations for
+						flexibility of adoption.</p>
+
 					<!-- MG: fix these -->
-					<aside class="example" title="Single sentence">
-						<p>This example indicates the presence of accessible formulas and graphs.</p>
-						<p>Contains accessible formulas. Charts and diagrams are present and described by extended
-							descriptions.</p>
-						<p>Accessible formulas, charts and diagrams with extended descriptions.</p>
+					<aside class="example" title="Descriptive explanations">
+						<ul>
+							<li>Contains accessible formulas. Charts and diagrams are present and described by extended
+								descriptions.</li>
+							<li>Contains formulas, charts, and diagrams without any information about the accessibility
+								of this content.</li>
+						</ul>
 					</aside>
 
-					<p>This example indicates the presence formulas and graphics, with no information about
-						accessibility:</p>
-
-					<aside class="example">Contains formulas, charts and diagrams without any information about the
-						accessibility of this content.</aside>
+					<aside class="example" title="Compact explanations">
+						<ul>
+							<li>Accessible formulas. Charts and diagrams have extended descriptions.</li>
+							<li>Accessibility of formulas, charts, and diagrams unknown.</li>
+						</ul>
+					</aside>
 				</section>
 
 				<section id="cdf-techniques">
@@ -472,27 +484,36 @@
 			<section id="hazards">
 				<h3>Hazards</h3>
 
-				<p>Hazards are a list of possible ways in which this publication could be physiologically dangerous for
-					some users (e.g., flashing elements, background sounds, and motion simulation).</p>
+				<p>Identifies any potential hazards (e.g., flashing elements, background sounds, and motion simulation)
+					that could afflict physiologically sensitive users.</p>
 
 				<p>Unlike other accessibility properties, the presence of hazards can be expressed either positively or
-					negatively. This is because users are more often looking for content that is safe for them. This
-					group should always be displayed; indicate that no metadata was provided if that is the case.</p>
+					negatively. This is because users search for content that is safe for them as well as want to know
+					when content is potentially dangerous to them.</p>
+
+				<p>This group should always be displayed. Indicate that no metadata is provided if that is the case.</p>
 
 				<section id="hazards-examples">
 					<h4>Examples</h4>
 
-					<aside class="example" title="No information about hazards">No information about possible
-						hazards</aside>
+					<p>The examples are provided as lists of possible descriptive and compact explanations for
+						flexibility of adoption.</p>
 
-					<aside class="example" title="No hazards">No hazards</aside>
+					<aside class="example" title="Descriptive explanations">
+						<ul>
+							<li>The publication contains rapidly changing lights or visual stimuli, as well as simulated
+								movements, which can cause discomfort, distraction, photosensitive seizures, or motion
+								sickness.</li>
+							<li>No information about possible hazards.</li>
+						</ul>
+					</aside>
 
-					<aside class="example" title="Known hazards. Short version">Flashing and motion simulation
-						hazards</aside>
-
-					<aside class="example" title="Known hazards. Long version">The publication contains content that
-						rapidly changing lights or visual stimuli, as well as simulated movements, which can cause
-						discomfort, distraction, photosensitive seizures, or motion sickness.</aside>
+					<aside class="example" title="Compact explanations">
+						<ul>
+							<li>Flashing and motion simulation hazards.</li>
+							<li>No hazards.</li>
+						</ul>
+					</aside>
 				</section>
 
 				<section id="hazards-techniques">
@@ -509,110 +530,156 @@
 			<section id="conformance-group">
 				<h3>Conformance</h3>
 
-				<p>The conformance group provides the assertions made concerning the accessibility of the publication.
-					The conformance metadata uses terminology that most people will not understand, and therefore simple
-					statements should be provided when EPUB accessibility and WCAG levels are identified. If conformance
-					to an accepted standard (EPUB accessibility and WCAG) cannot be made, a simple statement should
-					state that the conformance to accepted standards could not be determined. If the publication has
-					been reviewed and there are accessibility problems, a statement can also be made that there are
-					known accessibility limitations. If there is no conformance statement, then the accessibility of the
-					publication is unknown.</p>
+				<p>Identifies whether the digital publication meets internationally recognized conformance requirements
+					for accessibility.</p>
+
+				<p>Conformance metadata often uses terminology that most people will not understand, and therefore <a
+						href="#conf-statements">simple statements</a> should be provided when EPUB accessibility and
+					WCAG levels are identified.</p>
+
+				<p>If a publication identifies that there are accessibility problems, the statement should indicate that
+					there are known accessibility limitations. If the publication does not include a conformance claim,
+					the statement should indicate that conformance could not be determined. </p>
 
 				<p>In many cases, people will want to know more about the conformance and certification of the
-					publication. The detailed conformance and certification information should be included within
-					"Additional Accessibility Information."</p>
+					publication. The detailed conformance and certification information should be included within the
+						"<a href="#additional-accessibility-information">Additional accessibility information</a>."</p>
 
 				<aside class="note">
-					<p>In cases where the publication's compliance with accessibility standards is unknown or with known
-						accessibility problems, it may be important for some local legislation (e.g., the European
+					<p>In cases where the publication's compliance with accessibility standards is unknown, or it has
+						known accessibility problems, it may be important for local legislation (e.g., the European
 						Accessibility Act) to indicate why the publication is not accessible. This information could be
 						contained in the Accessibility Summary, or as machine readable metadata, in which case the
-						information will be given in the "Additional compliance information" section.</p>
+						information will be given in the "<a href="#additional-accessibility-information">Additional
+							accessibility information</a>" section.</p>
 				</aside>
 
-				<p>Simple statements:</p>
+				<section id="conf-statements">
+					<h4>Conformance statements</h4>
 
-				<ul>
-					<li>This publication meets accepted accessibility standards.</li>
-					<li> This publication meets the minimum accessibility standards.</li>
-					<li>This publication is certified to meet accepted accessibility standards.</li>
-					<li> This publication is certified to meet the minimum accessibility standards.</li>
-					<li>This publications accessibility conformance has not been associated with accepted
-						standards.</li>
-					<li>This publication is known to have accessibility limitations.</li>
-					<li>The accessibility of this publication is unknown.</li>
-				</ul>
+					<p>The following list explains the meaning of each recommended conformance statement.</p>
 
-				<p>Information that can be placed in "Additional Accessibility Information":</p>
+					<dl>
+						<dt>This publication meets accepted accessibility standards.</dt>
+						<dd>
+							<p>The publication contains a conformance claim that it meets WCAG 2 Level AA, but no
+								evaluator information is provided.</p>
+						</dd>
 
-				<dl>
-					<dt>Conformance Statement</dt>
-					<dd> Identifies the accessibility specification and the conformance level to which the publication
-						assertions are made. When the publication conforms to more than one specification, additional
-						conformance statements may be provided. If the publication has been reviewed and there are known
-						accessibility limitations, then this information can also be provided. </dd>
+						<dt>This publication meets minimum accessibility standards.</dt>
+						<dd>
+							<p>The publication contains a conformance claim that it meets WCAG 2 Level A, but no
+								evaluator information is provided.</p>
+						</dd>
 
-					<dt>Certifier's name</dt>
-					<dd>This provides information about the organization providing the certification review or process
-						for certification. Having third party certification is of high interest and should be provided.
-						Third party certification can be determined by comparing the name of the publisher and name of
-						the certifier. If the values are different, then third party certifications are true. This can
-						be provided as a parenthetical expression, i.e., inside parentheses.</dd>
+						<dt>This publication is certified to meet accepted accessibility standards.</dt>
+						<dd>
+							<p>The publication contains a conformance claim that it meets WCAG 2 Level AA, and the
+								evaluator's information is provided.</p>
+						</dd>
 
-					<dt>Certifier's Credentials </dt>
-					<dd>If the certifier has a badge or a credential, then the text is provided. If there is a link to
-						their credential, then this can be provided as a link.</dd>
+						<dt>This publication is certified to meet minimum accessibility standards.</dt>
+						<dd>
+							<p>The publication contains a conformance claim that it meets WCAG 2 Level A, and the
+								evaluator's information is provided.</p>
+						</dd>
 
-					<dt>Certification date</dt>
-					<dd>If the date of the certifiers evaluation is provided, then this would be of interest. This is
-						normally associated with the certifier.</dd>
+						<dt>This publication's accessibility conformance has not been associated with accepted
+							standards.</dt>
+						<dd>
+							<p>The publication contains a conformance claim that is not to the EPUB Accessibility
+								standard.</p>
+						</dd>
 
-					<dt>Certifier's Report</dt>
-					<dd>If a link to a report is provided, this may be of interest.</dd>
+						<dt>This publication is known to have accessibility limitations.</dt>
+						<dd>
+							<p>The publication does not meet the requirements of WCAG 2 Level A.</p>
+						</dd>
 
-					<dt>Reason why the publication does not meet the standards</dt>
-					<dd>For some local legislations it may be important to indicate why a publication is not compliant
-						with the standards, such as if the company is too small and therefore not required to, or if the
-						cost to produce the accessible version is too high. Showing this information may be important if
-						required by local legislation, otherwise it can be omitted.</dd>
-				</dl>
+						<dt>The accessibility of this publication is unknown.</dt>
+						<dd>
+							<p>The publication does not include a conformance claim.</p>
+						</dd>
+					</dl>
+				</section>
+
+				<section id="conf-aai">
+					<h4>Additional conformance information</h4>
+
+					<p>The following information can be placed in the "<a href="#additional-accessibility-information"
+							>Additional accessibility information</a>" section.</p>
+
+					<dl>
+						<dt>Conformance Statement</dt>
+						<dd>Identifies the accessibility specification and the conformance level to which the
+							publication assertions are made. When the publication conforms to more than one
+							specification, additional conformance statements may be provided. If the publication has
+							been reviewed and there are known accessibility limitations, then this information can also
+							be provided.</dd>
+
+						<dt>Certifier's name</dt>
+						<dd>Identifies the organization providing the certification review or process for certification.
+							Having third-party certification is of high interest and should be provided. Third-party
+							certification can be determined by comparing the name of the publisher and name of the
+							certifier. If the values are different, then third-party certification is true. Third-party
+							certification can be provided in parentheses after the certifier's name.</dd>
+
+						<dt>Certifier's Credentials </dt>
+						<dd>If the certifier has a badge or a credential, then the text is provided. If there is a link
+							to their credential, then this can be provided as a link.</dd>
+
+						<dt>Certification date</dt>
+						<dd>If the date of the certifier's evaluation is provided, then this would be of interest. This
+							is normally associated with the certifier.</dd>
+
+						<dt>Certifier's Report</dt>
+						<dd>If a link to a report is provided, this may be of interest.</dd>
+
+						<dt>Reason why the publication does not meet the standards</dt>
+						<dd>For some jurisdictions, it may be important to indicate why a publication is not compliant
+							with the standards, such as if the company is too small and therefore not required to, or if
+							the cost to produce the accessible version is too high. Showing this information may be
+							important if required by local legislation, otherwise it can be omitted.</dd>
+					</dl>
+				</section>
 
 				<section id="conf-examples">
 					<h4>Examples</h4>
 
-					<p>The "Additional Accessibility Information" section is first shown as a list of individual
-						statements followed by an example that shows a paragraph that concatinates statements that cover
-						the whole conformance group. Either the list of individual statements or the paragraph style are
-						appropriate, but do not provide both approaches. Three examples are provided for the conformance
-						statement, one shows a statement that is certified to meet recommended accessibility
-						requirements and a second that is not certified and meets the minimum level. The third shows
-						a publication with unknown accessibility.</p>
+					<p>Three examples are provided for the conformance statement, one shows a statement that is
+						certified to meet recommended accessibility requirements and a second that is not certified and
+						meets the minimum level. The third shows a publication with unknown accessibility.</p>
+
+					<p>The "<a href="#additional-accessibility-information">Additional accessibility information</a>"
+						section is first shown as descriptive statements followed by an example that shows a single
+						compact statement that covers the whole conformance group. Either the descriptive or compact
+						style is appropriate, but do not provide both approaches.</p>
 
 					<aside class="example" title="Additional Accessibility Information shown as individual statements">
 						<p>This publication is certified to meet accepted accessibility standards.</p>
 
 						<details><summary>Additional Accessibility Information</summary>
 							<ul>
-								<li> This publication meets accepted accessibility recommendations and reports (EPUB
+								<li>This publication meets accepted accessibility recommendations and reports (EPUB
 									Accessibility 1.1 and Web Accessibility Content Guidelines (WCAG) 2.1 Level
 									AA.)</li>
 								<li>This publication was certified on 2021-09-07.</li>
-								<li>This publication is certified by Foo's Accessibility Testing (a third party.</li>
+								<li>This publication is certified by Foo's Accessibility Testing (a third-party).</li>
 								<li>The certifier's credential is "Enterprise Accessibility Rating."</li>
-								<li>For more information, refer to: <a
-										href="http://www.example.com/a11y/report/9780000000001">Certifier's
+								<li>For more information, refer to the <a
+										href="http://www.example.com/a11y/report/9780000000001">certifier's
 									report.</a></li>
 							</ul>
 						</details>
 					</aside>
 
-					<aside class="example" title="Additional Accessibility Information statements shown as a Paragraph">
+					<aside class="example" title="Additional Accessibility Information statements shown as a paragraph">
 						<p>This publication meets accepted accessibility standards.</p>
 						<details><summary>Additional Accessibility Information</summary>
 							<p>This publication meets accepted accessibility recommendations and reports (EPUB
 								Accessibility 1.1 and the Web Content Accessibility Guidelines (WCAG) 2.1 Level A). The
 								publication was self-certified on 2021-09-07 by the publisher. For more information
-								refer to: <a href="http://www.example.com/a11y/report/9780000000001">Certifier's
+								refer to the <a href="http://www.example.com/a11y/report/9780000000001">certifier's
 									report.</a></p>
 						</details>
 					</aside>
@@ -622,7 +689,7 @@
 							determined.</p>
 						<details><summary>Additional Accessibility Information</summary>
 							<p>The creator of the publication is not required to publish in an accessible format because
-								it is a micro-enterprise (e.g. enterprises employing fewer than 10 people and with
+								it is a micro-enterprise (e.g., enterprises employing fewer than 10 people and with
 								annual turnover or balance sheet total not exceeding €2 million).</p>
 						</details>
 					</aside>
@@ -641,10 +708,10 @@
 			</section>
 
 			<section id="accessibility-summary">
-				<h3>Accessibility Summary</h3>
+				<h3>Accessibility summary</h3>
 
-				<p>The Accessibility Summary is a of the accessibility that complements, but does not duplicate, the
-					other discoverability metadata.</p>
+				<p>Provides a description of the accessibility that complements, but does not duplicate, the other
+					discoverability metadata.</p>
 
 				<p>It is a free-form field that allows authors to describe the additional information to the accessible
 					properties of the resource.</p>
@@ -655,7 +722,7 @@
 				<section id="sum-examples">
 					<h4>Examples</h4>
 
-					<aside class="example">
+					<aside class="example" title="An example accessibility summary">
 						<p>Subject experts were used to create the ALT text. The tables are represented as images, and
 							the full text of the table is provided below the image within the details element, which can
 							be expanded. There are several short videos in American Sign Language that explains key
@@ -675,60 +742,66 @@
 			</section>
 
 			<section id="additional-accessibility-information">
-				<h3>Additional Accessibility Information</h3>
+				<h3>Additional accessibility information</h3>
 
-				<p>In this section we list all additional metadata that can help users better understand the
-					accessibility characteristics of publications. These are mainly metadata that do not fit into the
-					other categories or are rarely used in trade publishing.</p>
+				<p>This section lists additional metadata categories that can help users better understand the
+					accessibility characteristics of digital publications. These are for metadata that do not fit into
+					the other categories or are rarely used in trade publishing.</p>
 
-				<p>Additional accessibility information includes a wide range of information related to ebook's content,
-					therefore we group the features into subgroups so that the presentation is more understandable to
-					end users.</p>
+				<p>Additional accessibility information includes a wide range of information related to the
+					publication's content. Therefore, the features are grouped so that the presentation is more
+					understandable to end users.</p>
 
-				<ul>
-					<li><b>Detailed information on Conformance and Certification</b>: provides information on who
-						certified the accessibility of the publication, on what date, according to what standard,
-						etc.</li>
-					<li><b>Structure</b>: identify structuring aids that facilitate use of a resource (e.g. annotations,
-						ARIA)</li>
-					<li><b>Adaptation</b>: identify provisions in the content that enable reading in alternative access
-						modes (e.g. closed captions, ruby annotations, sign language, transcript)</li>
+				<dl>
+					<dt>Detailed information on conformance and certification</dt>
+					<dd>
+						<p>For information on who certified the accessibility of the publication, on what date,
+							according to what standard, etc. Refer to <a href="#conf-aai"></a> for more information.</p>
+					</dd>
+
+					<dt>Structure</dt>
+					<dd>
+						<p>For information on any structuring aids that facilitate use of a resource (e.g., annotations,
+							ARIA).</p>
+					</dd>
+
+					<dt>Adaptation</dt>
+					<dd>
+						<p>For information on provisions in the content that enable reading in alternative access modes
+							(e.g., closed captions, ruby annotations, sign language, transcript).</p>
+					</dd>
+
 					<!-- maybe we can remove High Contrast Display -->
-					<li><b>Clarity</b>: identify ways that the content has been enhanced for improved auditory or visual
-						clarity (e.g. high contrast display)</li>
-					<li><b>Tactile</b>: identify content that is available in tactile form (e.g. tactile content,
-						tactile graphic, tactile objects)</li>
+					<dt>Clarity</dt>
+					<dd>
+						<p>For information on ways that the content has been enhanced for improved auditory or visual
+							clarity (e.g., high contrast display).</p>
+					</dd>
+
+					<dt>Tactile</dt>
+					<dd>
+						<p>For information on content that is available in tactile form (e.g., tactile content, tactile
+							graphic, tactile objects).</p>
+					</dd>
+
 					<!-- maybe we can remove Content -->
-					<li><b>Content</b>: explain specific types of contents present in the ebook (e.g. text on visual,
-						music on visual)</li>
-					<li><b>Other</b>: e.g. timing control and color dependent</li>
-				</ul>
+					<dt>Content</dt>
+					<dd>
+						<p>For information on specific types of content present in the digital publication (e.g., text
+							on visual, music on visual).</p>
+					</dd>
+
+					<dt>Other</dt>
+					<dd>
+						<p>For information that does not fall into one of the preceding categories (e.g., timing control
+							and color dependent).</p>
+					</dd>
+				</dl>
 
 				<section id="add-info-examples">
 					<h2>Examples</h2>
 
-					<p>In this example, a link to the accessibility information is provided with a traditional textual
-						link.</p>
-
-					<aside class="example">
-						<p>Title: Huckleberry Finn</p>
-						<p>Author: Mark Twain</p>
-						<p>Copyright: 1999</p>
-						<p>ISBN: 9780486110035</p>
-						<p>Publisher: Dover Publications</p>
-						<p>Book Features: <u>Accessibility Information</u>
-							<i>(textual link to accessibility information below)</i></p>
-					</aside>
-
-					<p>Alternatively, this link to the accessibility information could be provided with a clickable
-						image.</p>
-
-					<aside id="ex-bookFeatures" class="example">
-						<p>Book Features:</p>
-						<p><img src="./media/accessibility.svg" alt="Accessibility Information" width="75" /></p>
-						<p><i>(clickable image to accessibility information below)</i></p>
-						<p><i>Suggested Alt-text for image <q>Accessibility Information</q></i></p>
-					</aside>
+					<p>TBD</p>
 				</section>
 
 				<section id="add-info-techniques">
@@ -740,6 +813,30 @@
 					</ul>
 				</section>
 			</section>
+		</section>
+		<section id="examples">
+			<h2>Examples</h2>
+
+			<p>In this example, a link to the accessibility information is provided with a traditional textual link.</p>
+
+			<aside class="example">
+				<p>Title: Huckleberry Finn</p>
+				<p>Author: Mark Twain</p>
+				<p>Copyright: 1999</p>
+				<p>ISBN: 9780486110035</p>
+				<p>Publisher: Dover Publications</p>
+				<p>Book Features: <u>Accessibility Information</u>
+					<i>(textual link to accessibility information below)</i></p>
+			</aside>
+
+			<p>Alternatively, this link to the accessibility information could be provided with a clickable image.</p>
+
+			<aside id="ex-bookFeatures" class="example">
+				<p>Book Features:</p>
+				<p><img src="./media/accessibility.svg" alt="Accessibility Information" width="75" /></p>
+				<p><i>(clickable image to accessibility information below)</i></p>
+				<p><i>Suggested Alt-text for image <q>Accessibility Information</q></i></p>
+			</aside>
 		</section>
 		<section id="app-acknowledgements" class="appendix informative">
 			<h2 id="acknowledgements">Acknowledgements</h2>
@@ -771,7 +868,7 @@
 			</section>
 
 			<section id="ipr">
-				<h3>Intellectual Property Rights</h3>
+				<h3>Intellectual property rights</h3>
 
 				<ul>
 					<li>The accessibility icon used in <a href="#ex-bookFeatures">Example Book Features</a> is from <a
@@ -779,7 +876,6 @@
 							from W3C WAI</a> Status: Draft.</li>
 				</ul>
 			</section>
-
 		</section>
 	</body>
 </html>
