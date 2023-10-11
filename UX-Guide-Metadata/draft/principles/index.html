@@ -480,9 +480,8 @@
 					there are known accessibility limitations. If the publication does not include a conformance claim,
 					the statement should indicate that conformance could not be determined. </p>
 
-				<p>In many cases, people will want to know more about the conformance and certification of the
-					publication. The detailed conformance and certification information should be included within the
-						"<a href="#additional-accessibility-information">Additional accessibility information</a>."</p>
+				<p>In most cases, people will want to know more about the conformance and certification of the
+					publication. The certifying organization should be identified along with their credentials and placed immediately after the conformance statement.</p>
 
 				<aside class="note">
 					<p>In cases where the publication's compliance with accessibility standards is unknown, or it has
@@ -501,27 +500,21 @@
 					<dl>
 						<dt>This publication meets accepted accessibility standards.</dt>
 						<dd>
-							<p>The publication contains a conformance claim that it meets WCAG 2 Level AA, but no
-								evaluator information is provided or conformance is self-certified by the publisher.</p>
+							<p>The publication contains a conformance claim that it meets WCAG 2 Level AA.</p>
 						</dd>
 
 						<dt>This publication meets minimum accessibility standards.</dt>
 						<dd>
-							<p>The publication contains a conformance claim that it meets WCAG 2 Level A, but no
-								evaluator information is provided or conformance is self-certified by the publisher.</p>
+							<p>The publication contains a conformance claim that it meets WCAG 2 Level A.</p>
 						</dd>
 
-						<dt>This publication is certified to meet accepted accessibility standards.</dt>
-						<dd>
-							<p>The publication contains a conformance claim that it meets WCAG 2 Level AA, and
-								conformance is certified by a third-party evaluator.</p>
-						</dd>
+						<dt>Certifier's name</dt>
+						<dd>Identifies the organization providing the certification review or process for certification.
+							</dd>
 
-						<dt>This publication is certified to meet minimum accessibility standards.</dt>
-						<dd>
-							<p>The publication contains a conformance claim that it meets WCAG 2 Level A, and
-								conformance is certified by a third-party evaluator.</p>
-						</dd>
+						<dt>Certifier's Credentials </dt>
+						<dd>If the certifier has a badge or a credential, then the text is provided. If there is a link
+							to their credential, then this can be provided as a link.</dd>
 
 						<dt>This publication's accessibility conformance has not been associated with accepted
 							standards.</dt>
@@ -556,17 +549,6 @@
 							been reviewed and there are known accessibility limitations, then this information can also
 							be provided.</dd>
 
-						<dt>Certifier's name</dt>
-						<dd>Identifies the organization providing the certification review or process for certification.
-							Having third-party certification is of high interest and should be provided. Third-party
-							certification can be determined by comparing the name of the publisher and name of the
-							certifier. If the values are different, then third-party certification is true. Third-party
-							certification can be provided in parentheses after the certifier's name.</dd>
-
-						<dt>Certifier's Credentials </dt>
-						<dd>If the certifier has a badge or a credential, then the text is provided. If there is a link
-							to their credential, then this can be provided as a link.</dd>
-
 						<dt>Certification date</dt>
 						<dd>If the date of the certifier's evaluation is provided, then this would be of interest. This
 							is normally associated with the certifier.</dd>
@@ -585,9 +567,7 @@
 				<section id="conf-examples">
 					<h4>Examples</h4>
 
-					<p>Three examples are provided for the conformance statement, one shows a statement that is
-						certified to meet recommended accessibility requirements and a second that is not certified and
-						meets the minimum level. The third shows a publication with unknown accessibility.</p>
+					<p>Three examples are provided for the conformance statement, one shows a statement that meets recommended accessibility requirements and a second that meets the minimum level. The third shows a publication with unknown accessibility.</p>
 
 					<p>The "<a href="#additional-accessibility-information">Additional accessibility information</a>"
 						section is first shown as descriptive statements followed by an example that shows a single
@@ -595,17 +575,16 @@
 						style is appropriate, but do not provide both approaches.</p>
 
 					<aside class="example" title="Additional Accessibility Information with descriptive statements">
-						<p>This publication is certified to meet accepted accessibility standards.</p>
-
-						<details><summary>Additional Accessibility Information</summary>
+						<p>This publication meest accepted accessibility standards.</p>
+<p>This publication is certified by Foo's Accessibility Testing </p>
+<p>The certifier's credential is "Enterprise Accessibility Rating."</p>
+					<details><summary>Additional Accessibility Information</summary>
 							<ul>
 								<li>This publication meets accepted accessibility recommendations and reports (EPUB
 									Accessibility 1.1 and Web Accessibility Content Guidelines (WCAG) 2.1 Level
 									AA.)</li>
 								<li>This publication was certified on 2021-09-07.</li>
-								<li>This publication is certified by Foo's Accessibility Testing (a third-party).</li>
-								<li>The certifier's credential is "Enterprise Accessibility Rating."</li>
-								<li>For more information, refer to the <a
+																	<li>For more information, refer to the <a
 										href="http://www.example.com/a11y/report/9780000000001">certifier's
 									report.</a></li>
 							</ul>
@@ -613,11 +592,13 @@
 					</aside>
 
 					<aside class="example" title="Additional Accessibility Information with a compact statement">
-						<p>This publication meets accepted accessibility standards.</p>
+						<p>This publication meets minimum accessibility standards.</p>
+<p>This publication is certified by Foo's Accessibility Testing </p>
+<p>The certifier's credential is "Enterprise Accessibility Rating."</p>
 						<details><summary>Additional Accessibility Information</summary>
-							<p>This publication meets accepted accessibility recommendations and reports (EPUB
+							<p>This publication meets minimum accessibility standards and reports (EPUB
 								Accessibility 1.1 and the Web Content Accessibility Guidelines (WCAG) 2.1 Level A). The
-								publication was self-certified on 2021-09-07 by the publisher. For more information
+								publication was certified on 2021-09-07 by Foo's Accessibility Testing with a credential of "Enterprise Accessibility Rating." For more information
 								refer to the <a href="http://www.example.com/a11y/report/9780000000001">certifier's
 									report.</a></p>
 						</details>
