@@ -134,81 +134,6 @@
 
 			<p>Here is an example of what a user-friendly accessibility metadata web page could look like:</p>
 
-			<aside class="example">
-				<p><b>Screen Reader Friendly:</b> Yes</p>
-				<p><b>Accessibility Summary:</b> This publication includes markup to enable accessibility and
-					compatibility with assistive technology. Images, audio, and video in the publication are
-					well-described in conformance with WCAG 2.0 AA.</p>
-				<p><b>Accessibility Conformance:</b>
-					<a href="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aa">EPUB Accessibility,
-						WCAG2.0-AA</a></p>
-				<p><b>Certified By:</b> ACME Certification</p>
-				<p><b>Certifier Credential:</b>
-					<img src="./media/image1.png" alt="ACME Inc. credential webpage" width="50" /></p>
-				<p><b>All Accessibility Metadata:</b></p>
-				<p><img src="./media/image5.png" alt="Toggle box with all accessibility information" width="300" /></p>
-			</aside>
-
-			<section>
-				<h3>General information (supplement the bibliographic information)</h3>
-
-				<p>TBD</p>
-			</section>
-
-			<section>
-				<h3>Localization</h3>
-
-				<p>TBD</p>
-			</section>
-		</section>
-		<section id="discovering-accessible-content">
-			<h2>Discovering accessible content</h2>
-
-			<p>The guidelines for presenting accessibility metadata detailed in this document are intended to improve
-				the user experience when readers browse the catalog entry for a publication. However, accessibility
-				metadata also has a vital role to play in helping readers discover publications that are accessible for
-				them. Publication providers, such as vendors and libraries, are encouraged to create searching and
-				filtering tools that interpret accessibility metadata to aid in discovery. (A full discussion of search
-				and filtering issues is out of scope for this document, but this section provides some guidance until
-				further research can be carried out.)</p>
-
-			<p>While every user has different accessibility needs, meeting the Web Content Accessibility Guidelines
-				(WCAG) 2.0 requirements, even at level A, is a baseline that ensures a publication will be widely
-				accessible. Publication providers may therefore wish to create specific search capabilities to permit
-				users to find publications that have declared conformance to WCAG at any level. We suggest the creation
-				of an "Accessible" search filter that only returns publications with metadata that indicates conformance
-				to the user-selected WCAG Level &#8212; A, AA, or AAA.</p>
-
-			<p>Publications with full audio created for mainstream use provide important access for many users with
-				disabilities even though they are not accessible to all. (Note that these publications differ from
-				traditional audiobooks in that the audio accompanies the full or partial text of the publication.)
-				Publication providers may already have search tools aimed at finding traditional audiobooks, since they
-				are popular and common, but even if not, this would be a good addition to the suite of tools for finding
-				accessible publications. Publications with full audio may not pass WCAG requirements, however, because
-				they are targeted at a specific audience rather than broadly accessible. As a result, they would not be
-				found using the <q>Accessible</q> search suggested above.</p>
-
-			<p>Any of the metadata fields discussed in detail below could also be used as a filter &#8212; a
-					<q>Screen-reader accessible</q> search would be valued by screen reader users, and a way to ensure
-				no publications with hazards are downloaded would be valued by those with light-sensitive epilepsy or
-				other hazard-related conditions. But if only a single additional search filter fits best in a site's UI,
-				a tool for finding accessible materials that declare conformance to WCAG 2.0 is the best choice to
-				provide.</p>
-		</section>
-		<section id="ui-technical-details">
-			<h2>UI technical details</h2>
-
-			<p>When you have accessibility metadata about a digital publication, it is important to share this
-				information in as user-friendly a way as possible. At a very high level, when displaying information
-				about a digital publication, you may only want to acknowledge that <q>Accessibility Features</q> or
-					<q>Accessibility Information</q> is available. If the user would like to get at this information,
-				they can click a text or image link which will then provide the information that is discussed below.</p>
-
-			<div class="note">
-				<p>When a publisher does not provide any accessibility metadata for a publication, a statement should be
-					displayed to the user informing them that no information was supplied.</p>
-			</div>
-
 			<section id="techniques">
 				<h3>Metadata techniques</h3>
 
@@ -222,9 +147,24 @@
 					<li><p><a href="../techniques/onix-metadata/index.html">ONIX Accessibility Metadata</a></p></li>
 				</ul>
 			</section>
+
 		</section>
+	
+
+			<section id="general-info">
+				<h2>General information (supplement the bibliographic information)</h2>
+
+				<p>TBD</p>
+			</section>
+
 		<section id="order-of-key-information">
-			<h2>Key information</h2>
+			<h2>Key accessibility information</h2>
+
+			{{/*  <div class="note">
+				<p>When a publisher does not provide any accessibility metadata for a publication, a statement should be
+					displayed to the user informing them that no information was supplied.</p>
+			</div>  */}}
+
 
 			<section id="supports-nonvisual-reading">
 				<h3>Supports nonvisual reading</h3>
@@ -814,30 +754,55 @@
 				</section>
 			</section>
 		</section>
-		<section id="examples">
-			<h2>Examples</h2>
+	
+		<section id="discovering-accessible-content">
+			<h2>Discovering accessible content</h2>
 
-			<p>In this example, a link to the accessibility information is provided with a traditional textual link.</p>
+			<p>The guidelines for presenting accessibility metadata detailed in this document are intended to improve
+				the user experience when readers browse the catalog entry for a publication. However, accessibility
+				metadata also has a vital role to play in helping readers discover publications that are accessible for
+				them. Publication providers, such as vendors and libraries, are encouraged to create searching and
+				filtering tools that interpret accessibility metadata to aid in discovery. (A full discussion of search
+				and filtering issues is out of scope for this document, but this section provides some guidance until
+				further research can be carried out.)</p>
 
-			<aside class="example">
-				<p>Title: Huckleberry Finn</p>
-				<p>Author: Mark Twain</p>
-				<p>Copyright: 1999</p>
-				<p>ISBN: 9780486110035</p>
-				<p>Publisher: Dover Publications</p>
-				<p>Book Features: <u>Accessibility Information</u>
-					<i>(textual link to accessibility information below)</i></p>
-			</aside>
+			<p>While every user has different accessibility needs, meeting the Web Content Accessibility Guidelines
+				(WCAG) 2.0 requirements, even at level A, is a baseline that ensures a publication will be widely
+				accessible. Publication providers may therefore wish to create specific search capabilities to permit
+				users to find publications that have declared conformance to WCAG at any level. We suggest the creation
+				of an "Accessible" search filter that only returns publications with metadata that indicates conformance
+				to the user-selected WCAG Level &#8212; A, AA, or AAA.</p>
 
-			<p>Alternatively, this link to the accessibility information could be provided with a clickable image.</p>
+			<p>Publications with full audio created for mainstream use provide important access for many users with
+				disabilities even though they are not accessible to all. (Note that these publications differ from
+				traditional audiobooks in that the audio accompanies the full or partial text of the publication.)
+				Publication providers may already have search tools aimed at finding traditional audiobooks, since they
+				are popular and common, but even if not, this would be a good addition to the suite of tools for finding
+				accessible publications. Publications with full audio may not pass WCAG requirements, however, because
+				they are targeted at a specific audience rather than broadly accessible. As a result, they would not be
+				found using the <q>Accessible</q> search suggested above.</p>
 
-			<aside id="ex-bookFeatures" class="example">
-				<p>Book Features:</p>
-				<p><img src="./media/accessibility.svg" alt="Accessibility Information" width="75" /></p>
-				<p><i>(clickable image to accessibility information below)</i></p>
-				<p><i>Suggested Alt-text for image <q>Accessibility Information</q></i></p>
-			</aside>
+			<p>Any of the metadata fields discussed in detail below could also be used as a filter &#8212; a
+					<q>Screen-reader accessible</q> search would be valued by screen reader users, and a way to ensure
+				no publications with hazards are downloaded would be valued by those with light-sensitive epilepsy or
+				other hazard-related conditions. But if only a single additional search filter fits best in a site's UI,
+				a tool for finding accessible materials that declare conformance to WCAG 2.0 is the best choice to
+				provide.</p>
 		</section>
+
+		<section id="localization">
+			<h3>Localization</h3>
+
+			<p>TBD</p>
+		</section>
+
+		<section id="implementations">
+			<h3>Implementations</h3>
+
+			<p>TBD</p>
+		</section>
+
+
 		<section id="app-acknowledgements" class="appendix informative">
 			<h2 id="acknowledgements">Acknowledgements</h2>
 
