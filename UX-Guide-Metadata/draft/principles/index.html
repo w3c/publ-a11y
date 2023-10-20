@@ -103,7 +103,7 @@
 				independent organizations.</p>
 
 			<p>This document proposes a shared framework for presenting publication accessibility metadata in a
-				user-friendly manner.</p>
+				user-friendly manner, so as to offer the information to end users in a way that is easy for them to understand (even to the less technical) and consistent across different publications and different digital catalogs.</p>
 		</section>
 		<section id="sotd"></section>
 		<section id="general-overview">
@@ -124,15 +124,11 @@
 				important accessibility information that helps end users find and determine if the publication can meet
 				their specific accessibility needs.</p>
 
-			<p>Most metadata is meant to be machine-readable so that it aids in user search queries such as <q>Find all
-					digital publications that contain large print, or braille, or that meet a certain level of
-					accessibility conformance.</q></p>
+			<p>All accessibility metadata is meant to be machine-readable – apart from the accessibility summary - in this way accessibility metadata can be extracted and displayed uniformly across different publications and localized to different user interface languages.</q></p>
 
-			<p>The exception to this rule is the accessibility summary which, if present, describes in human-readable
-				prose the accessibility features present in the publication as well as any shortcomings, when
-				applicable. This summary is intended for direct presentation to end users.</p>
-
-			<p>Here is an example of what a user-friendly accessibility metadata web page could look like:</p>
+			<p>The accessibility summary was intended (in EPUB Accessibility 1.0) to describes in human-readable
+				prose the accessibility features present in the publication as well as any shortcomings. 
+				From EPUB Accessibility version 1.1 the accessibility summary became a human-readable summary of the accessibility that complements, but does not duplicate, the other discoverability metadata.</p>
 
 			<section id="techniques">
 				<h3>Metadata techniques</h3>
@@ -160,10 +156,14 @@
 		<section id="order-of-key-information">
 			<h2>Key accessibility information</h2>
 
-			{{/*  <div class="note">
+			<div class="note">
 				<p>When a publisher does not provide any accessibility metadata for a publication, a statement should be
 					displayed to the user informing them that no information was supplied.</p>
-			</div>  */}}
+			</div>
+			
+			<div class="note">
+				<p>This document does not define the order in which to show the key accessibility information; each implementer can decide the preferred order for showing the accessibility information that follows.</p>
+			</div>
 
 
 			<section id="supports-nonvisual-reading">
