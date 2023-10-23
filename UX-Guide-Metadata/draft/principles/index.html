@@ -126,9 +126,9 @@
 
 			<p>All accessibility metadata is meant to be machine-readable – apart from the accessibility summary - in this way accessibility metadata can be extracted and displayed uniformly across different publications and localized to different user interface languages.</q></p>
 
-			<p>The accessibility summary was intended (in EPUB Accessibility 1.0) to describes in human-readable
+			<p>The accessibility summary was intended (in EPUB Accessibility 1.0) to describe in human-readable
 				prose the accessibility features present in the publication as well as any shortcomings. 
-				From EPUB Accessibility version 1.1 the accessibility summary became a human-readable summary of the accessibility that complements, but does not duplicate, the other discoverability metadata.</p>
+				Starting in  EPUB Accessibility version 1.1 the accessibility summary became a human-readable summary of the accessibility that complements, but does not duplicate, the other discoverability metadata.</p>
 
 			<p>This document offers guidance on how to aggregate and display metadata to end users; these are not strict guidelines, but suggestions for providing a consistent experience for users through different portals. Different implementers may choose to implement these guidelines a slightly different way, some examples can be seen in the <a href="#implementations">Implementations</a> section of the document.</p>
 			
@@ -172,8 +172,8 @@
 				<h3>Supports nonvisual reading</h3>
 
 				<p>Indicates whether all content required for comprehension can be consumed in text and therefore is
-					fully available to assistive technologies and reading system text-to-speech functionality.</p>
-
+					fully available to assistive technologies and reading systems using text-to-speech or electronic braille functionality.</p>
+<div class="note"> <p>The term "electronic braille" and "refreshable braille" are used interchangeably, which denotes a device with pop-up pins to present the braille on a tactile screen.</p></div>
 				<p>This field answers whether nonvisual reading is possible, not possible, or unknown.</p>
 
 				<p>Digital publications with essential content included in non-textual form (such as graphs, tables or
@@ -190,19 +190,20 @@
 
 					<aside class="example" title="Descriptive explanations">
 						<ul>
-							<li>All content available for computer-generated speech and braille reading.</li>
-							<li>Portions of the content will not be available in computer-generated speech and
-								braille.</li>
-							<li>Portions of the content may not be available in computer-generated speech and
-								braille.</li>
+							<li>All content is available for computer-generated speech and refreshable braille reading.</li>
+														<li>Portions of the content may not be available in computer-generated speech and
+								refreshable braille.</li>
+<li>Portions of the content is not available in computer-generated speech and
+								electronic braille.</li>
 						</ul>
 					</aside>
 
 					<aside class="example" title="Compact explanations">
 						<ul>
-							<li>Readable in computer-generated audio and braille.</li>
-							<li>Not fully readable in computer-generated audio and braille.</li>
-							<li>May not be fully readable in computer-generated audio and braille.</li>
+							<li>Readable in computer-generated audio and refreshable braille.</li>
+<li>May not be fully readable in computer-generated audio and electronic braille.</li>
+							<li>Not fully readable in computer-generated audio and electronic braille.</li>
+							
 						</ul>
 					</aside>
 				</section>
@@ -231,7 +232,7 @@
 					accessibility options in the future.</p>
 
 				<p>Some publications provide audio (including in video) in addition to text. In this case, it is
-					important that the user gets informed as they may not be able to access all contents of the book. </p>
+					important that the user gets informed as they may not be able to access all content in the book. </p>
 
 				<p>Some publications provide pre-recorded audio with text synchronization. They are known for providing
 					rich accessibility as pre-recorded audio normally has fewer pronunciation errors than
@@ -538,10 +539,9 @@
 				</section>
 
 				<section id="conf-aai">
-					<h4>Additional conformance information</h4>
+					<h4>Detailed conformance information</h4>
 
-					<p>The following information can be placed in the "<a href="#additional-accessibility-information"
-							>Additional accessibility information</a>" section.</p>
+					<p>The following information can be placed in a section that shows the details of the conformance information.</p>
 
 					<dl>
 						<dt>Conformance Statement</dt>
@@ -571,16 +571,16 @@
 
 					<p>Three examples are provided for the conformance statement, one shows a statement that meets recommended accessibility requirements and a second that meets the minimum level. The third shows a publication with unknown accessibility.</p>
 
-					<p>The "<a href="#additional-accessibility-information">Additional accessibility information</a>"
-						section is first shown as descriptive statements followed by an example that shows a single
+					<p>The detailed conformance information section is first shown as descriptive statements followed by an example that shows a single
 						compact statement that covers the whole conformance group. Either the descriptive or compact
 						style is appropriate, but do not provide both approaches.</p>
 
-					<aside class="example" title="Additional Accessibility Information with descriptive statements">
-						<p>This publication meest accepted accessibility standards.</p>
+					<aside class="example" title=" descriptive statements with detailed conformance information">
+						<p>This publication meets accepted accessibility standards.</p>
 <p>This publication is certified by Foo's Accessibility Testing </p>
 <p>The certifier's credential is "Enterprise Accessibility Rating."</p>
-					<details><summary>Additional Accessibility Information</summary>
+					
+<p>Detailed Conformance Information:</p>
 							<ul>
 								<li>This publication meets accepted accessibility recommendations and reports (EPUB
 									Accessibility 1.1 and Web Accessibility Content Guidelines (WCAG) 2.1 Level
@@ -590,27 +590,28 @@
 										href="http://www.example.com/a11y/report/9780000000001">certifier's
 									report.</a></li>
 							</ul>
-						</details>
+						
 					</aside>
 
-					<aside class="example" title="Additional Accessibility Information with a compact statement">
+					<aside class="example" title="A compact statement with detailed conformance information">
 						<p>This publication meets minimum accessibility standards.</p>
 <p>This publication is certified by Foo's Accessibility Testing </p>
 <p>The certifier's credential is "Enterprise Accessibility Rating."</p>
-						<details><summary>Additional Accessibility Information</summary>
+
+<p>Detailed Conformance Information:</p>
 							<p>This publication meets minimum accessibility standards and reports (EPUB
 								Accessibility 1.1 and the Web Content Accessibility Guidelines (WCAG) 2.1 Level A). The
 								publication was certified on 2021-09-07 by Foo's Accessibility Testing with a credential of "Enterprise Accessibility Rating." For more information
 								refer to the <a href="http://www.example.com/a11y/report/9780000000001">certifier's
 									report.</a></p>
-						</details>
+						
 					</aside>
 
 					<aside class="example"
-						title="Unknown accessibility conformance with a compact Additional Accessibility Information statement">
+						title="Unknown accessibility conformance with a compact detailed conformance Information statement">
 						<p>Conformance to accepted standards for accessibility of this publication cannot be
 							determined.</p>
-						<details><summary>Additional Accessibility Information</summary>
+						<p>Detailed Conformance Information:</p>
 							<p>The creator of the publication is not required to publish in an accessible format because
 								it is a micro-enterprise (e.g., enterprises employing fewer than 10 people and with
 								annual turnover or balance sheet total not exceeding €2 million).</p>
