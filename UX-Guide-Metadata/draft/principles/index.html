@@ -472,7 +472,7 @@
 			<section id="conformance-group">
 				<h3>Conformance</h3>
 
-				<p>Identifies whether the digital publication meets internationally recognized conformance standards 
+				<p>Identifies whether the digital publication meets internationally recognized conformance requirements
 					for accessibility.</p>
 
 				<p>Conformance metadata often uses terminology that most people will not understand, and therefore <a
@@ -491,7 +491,8 @@
 						known accessibility problems, it may be important for local legislation (e.g., the European
 						Accessibility Act) to indicate why the publication is not accessible. This information could be
 						contained in the Accessibility Summary, or as machine readable metadata, in which case the
-						information should be given in the detailed accessibility information section.</p>
+						information will be given in the "<a href="#additional-accessibility-information">Additional
+							accessibility information</a>" section.</p>
 				</aside>
 
 				<section id="conf-statements">
@@ -502,12 +503,12 @@
 					<dl>
 						<dt>This publication meets accepted accessibility standards.</dt>
 						<dd>
-							<p>The publication contains a conformance claim that it meets the EPUB Accessibility and WCAG 2 Level AA standard.</p>
+							<p>The publication contains a conformance claim that it meets WCAG 2 Level AA.</p>
 						</dd>
 
 						<dt>This publication meets minimum accessibility standards.</dt>
 						<dd>
-							<p>The publication contains a conformance claim that it meets the EPUB Accessibility and WCAG 2 Level A standard.</p>
+							<p>The publication contains a conformance claim that it meets WCAG 2 Level A.</p>
 						</dd>
 
 						<dt>Certifier's name</dt>
@@ -527,7 +528,7 @@
 
 						<dt>This publication is known to have accessibility limitations.</dt>
 						<dd>
-							<p>The publication does not meet the requirements of EPUB Accessibility or WCAG 2 Level A.</p>
+							<p>The publication does not meet the requirements of WCAG 2 Level A.</p>
 						</dd>
 
 						<dt>The accessibility of this publication is unknown.</dt>
@@ -568,18 +569,20 @@
 				<section id="conf-examples">
 					<h4>Examples</h4>
 
-					<p>Three examples are provided for the conformance statement, one shows a statement that meets recommended accessibility standards and a second that meets the minimum level. The third shows a publication with unknown accessibility.</p>
+					<p>Three examples are provided for the conformance statement, one shows a statement that meets recommended accessibility requirements and a second that meets the minimum level. The third shows a publication with unknown accessibility.</p>
 
-					<p>The examples present the conformance statement, the certifier, the certifiers credentials and is followed by the detailed conformance information section </p>
+					<p>The detailed conformance information section is first shown as descriptive statements followed by an example that shows a single
+						compact statement that covers the whole conformance group. Either the descriptive or compact
+						style is appropriate, but do not provide both approaches.</p>
 
-					<aside class="example" title=" Conformance statements that meets accepted accessibility standards followed by detailed conformance information">
+					<aside class="example" title=" Descriptive statements with detailed conformance information">
 						<p>This publication meets accepted accessibility standards.</p>
 <p>This publication is certified by Foo's Accessibility Testing </p>
 <p>The certifier's credential is "Enterprise Accessibility Rating."</p>
 					
 <p>Detailed Conformance Information:</p>
 							<ul>
-								<li>This publication meets accepted accessibility standards and reports (EPUB
+								<li>This publication meets accepted accessibility recommendations and reports (EPUB
 									Accessibility 1.1 and Web Accessibility Content Guidelines (WCAG) 2.1 Level
 									AA.)</li>
 								<li>This publication was certified on 2021-09-07.</li>
@@ -590,7 +593,7 @@
 						
 					</aside>
 
-					<aside class="example" title="Conformance statements that meets minimum accessibility standards followed by detailed conformance information">
+					<aside class="example" title="A compact statement with detailed conformance information">
 						<p>This publication meets minimum accessibility standards.</p>
 <p>This publication is certified by Foo's Accessibility Testing </p>
 <p>The certifier's credential is "Enterprise Accessibility Rating."</p>
@@ -605,14 +608,14 @@
 					</aside>
 
 					<aside class="example"
-						title="Unknown accessibility conformance statement with detailed conformance Information">
+						title="Unknown accessibility conformance with a compact detailed conformance Information statement">
 						<p>Conformance to accepted standards for accessibility of this publication cannot be
 							determined.</p>
 						<p>Detailed Conformance Information:</p>
 							<p>The creator of the publication is not required to publish in an accessible format because
 								it is a micro-enterprise (e.g., enterprises employing fewer than 10 people and with
 								annual turnover or balance sheet total not exceeding €2 million).</p>
-						
+						</details>
 					</aside>
 				</section>
 
