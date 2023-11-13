@@ -126,6 +126,8 @@
 
 			<p>All accessibility metadata is meant to be machine-readable – apart from the accessibility summary - in this way accessibility metadata can be extracted and displayed uniformly across different publications and localized to different user interface languages.</q></p>
 
+			<p>One important aspect is that the role of the Accessibility Summary metadata has changed in the latest version of the EPUB Accessibility specification, so a more in-depth analysis in the <a href="#accessibility-summary">Accessibility summary</a> section is recommended.</p>
+			
 			<p>The accessibility summary was intended (in EPUB Accessibility 1.0) to describes in human-readable
 				prose the accessibility features present in the publication as well as any shortcomings. 
 				From EPUB Accessibility version 1.1 the accessibility summary became a human-readable summary of the accessibility that complements, but does not duplicate, the other discoverability metadata.</p>
@@ -159,8 +161,7 @@
 			<h2>Key accessibility information</h2>
 
 			<div class="note">
-				<p>When a publisher does not provide any accessibility metadata for a publication, a statement should be
-					displayed to the user informing them that no information was supplied.</p>
+				<p>When a publisher does not provide any accessibility metadata for a publication, should still be shown the three pieces of information that should always be present (with an indication of whether the information is missing): <a href="#supports-nonvisual-reading">Supports nonvisual reading</a>, <a href="#visual-adjustments">Visual adjustments</a> and <a href="#conformance-group">Conformance</a>.</p>
 			</div>
 			
 			<div class="note">
@@ -170,6 +171,10 @@
 
 			<section id="supports-nonvisual-reading">
 				<h3>Supports nonvisual reading</h3>
+				
+				<div class="note">
+					<p>This key information should always be shown displayed, even if there is no metadata (with the relevant wording).</p>
+				</div>
 
 				<p>Indicates whether all content required for comprehension can be consumed in text and therefore is
 					fully available to assistive technologies and reading system text-to-speech functionality.</p>
@@ -203,6 +208,7 @@
 							<li>Readable in computer-generated audio and braille.</li>
 							<li>Not fully readable in computer-generated audio and braille.</li>
 							<li>May not be fully readable in computer-generated audio and braille.</li>
+							<li>Unknown.</li>
 						</ul>
 					</aside>
 				</section>
@@ -221,6 +227,10 @@
 
 			<section id="pre-recorded-audio">
 				<h3>Pre-recorded audio</h3>
+				
+				<div class="note">
+					<p>This key information should be hidden if metadata is missing.</p>
+				</div>
 
 				<p>Indicates the presence of pre-recorded audio and specifies if this audio is standalone (an
 					audiobook), accompanies text (embedded audio and video clips), or represents an alternative to the
@@ -274,6 +284,10 @@
 
 			<section id="visual-adjustments">
 				<h3>Visual adjustments</h3>
+				
+				<div class="note">
+					<p>This key information should always be shown displayed, even if there is no metadata (with the relevant wording).</p>
+				</div>
 
 				<p>Indicates if users can modify the appearance of the text and the page layout according to the
 					possibilities offered by the reading system.</p>
@@ -331,6 +345,10 @@
 
 			<section id="navigation">
 				<h3>Navigation</h3>
+				
+				<div class="note">
+					<p>This key information should be hidden if metadata is missing.</p>
+				</div>
 
 				<p>Identifies the navigation features included in the publication.</p>
 
@@ -378,6 +396,10 @@
 			</section>
 			<section id="charts-diagrams-and-formulas">
 				<h3>Charts, diagrams, and formulas</h3>
+				
+				<div class="note">
+					<p>This key information should be hidden if metadata is missing.</p>
+				</div>
 
 				<p>Indicates the presence of formulas, graphs, charts, and diagrams within the title and whether these
 					are in an accessible format or available in an alternative form (e.g., whether formulas are
@@ -424,6 +446,10 @@
 
 			<section id="hazards">
 				<h3>Hazards</h3>
+				
+				<div class="note">
+					<p>This key information should be hidden if metadata is missing.</p>
+				</div>
 
 				<p>Identifies any potential hazards (e.g., flashing elements, background sounds, and motion simulation)
 					that could afflict physiologically sensitive users.</p>
@@ -470,6 +496,10 @@
 
 			<section id="conformance-group">
 				<h3>Conformance</h3>
+				
+				<div class="note">
+					<p>This key information should always be shown displayed, even if there is no metadata (with the relevant wording).</p>
+				</div>
 
 				<p>Identifies whether the digital publication meets internationally recognized conformance requirements
 					for accessibility.</p>
@@ -632,10 +662,16 @@
 
 			<section id="accessibility-summary">
 				<h3>Accessibility summary</h3>
-
-				<p>Provides a description of the accessibility that complements, but does not duplicate, the other
-					discoverability metadata.</p>
-
+				
+				<div class="note">
+					<p>This key information should be hidden if metadata is missing.</p>
+				</div>
+				
+				<p>The accessibility summary was intended (in EPUB Accessibility 1.0) to describes in human-readable
+					prose the accessibility features present in the publication as well as any shortcomings. 
+					From EPUB Accessibility version 1.1 the accessibility summary became a human-readable summary of the accessibility 
+					that complements, but does not duplicate, the other discoverability metadata.</p>
+				
 				<p>It is a free-form field that allows authors to describe the additional information to the accessible
 					properties of the resource.</p>
 
@@ -666,6 +702,10 @@
 
 			<section id="additional-accessibility-information">
 				<h3>Additional accessibility information</h3>
+				
+				<div class="note">
+					<p>This key information should be hidden if metadata is missing.</p>
+				</div>
 
 				<p>This section lists additional metadata categories that can help users better understand the
 					accessibility characteristics of digital publications. These are for metadata that do not fit into
