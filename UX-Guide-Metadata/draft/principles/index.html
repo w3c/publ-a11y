@@ -772,13 +772,69 @@
 		<section id="discovering-accessible-content">
 			<h2>Discovering accessible content</h2>
 
-			<p>The guidelines for presenting accessibility metadata detailed in this document are intended to improve
-				the user experience when readers browse the catalog entry for a publication. However, accessibility
-				metadata also has a vital role to play in helping readers discover publications that are accessible for
-				them. Publication providers, such as vendors and libraries, are encouraged to create searching and
-				filtering tools that interpret accessibility metadata to aid in discovery. (A full discussion of search
-				and filtering issues is out of scope for this document, but this section provides some guidance until
-				further research can be carried out.)</p>
+			<p>
+				The guidelines for presenting accessibility metadata detailed in this document are intended to improve the user experience when readers browse the catalog entry for a publication. However, accessibility metadata also has a vital role to play in helping readers discover publications that are accessible for them. 
+			</p>
+			<p>
+				Publication providers, such as vendors and libraries create searching and
+				filtering tools that interpret accessibility metadata to aid in discovery. 
+				The set and variety of filters depends on the public they address and 
+				the type of book they propose. 
+			</p>
+			<p>
+				Taking in consideration those realities, the following sections are proposing
+				 filtering options per category of information.
+
+			</p>
+
+			<section id="filtering-general">
+				<h3>Filtering General information</h3>
+				<p>The product details related to accessibility detailed in the general informations section of this document should all be available for filtering. If a choice is to be made, File format and Measure of protection are considered the most important ones.</p>
+			</section>
+			
+			<section id="filtering-reading-modes">
+				<h3>Filtering per reading modes</h3>
+				<p>Ways of consuming the content is a key information that should always be present in filtering. For non visual reading and visual adjustements only the positive values are used for filtering and two filters are to be considered: 
+					<aside class="example" title="Textual reading modes filtering">
+					<ul>
+					<li>Readable in read aloud and braille.</li>
+					<li>Appearance can be modified.</li>
+					</ul>
+					</aside>
+			</p>
+			<p>
+				While for audio the complete variety should be proposed:
+				<aside class="example" title="Audio reading modes filtering">
+				<ul>
+					<li>Audio only.</li>
+					<li>Complementary audio and text.</li>
+					<li>Synchronized audio and text.</li>
+				</ul>
+			</aside>
+			</p>
+
+			<section id="filtering-navigation">
+				<h3>Filtering per navigation options</h3>
+				<p>While all navigation options can be of use, the one related to possibility of coordinating reading with statically paginated version is crucial and should always be available for filtering. </p>
+				
+					<aside class="example" title="Navigation filtering options">
+						<ul>
+							<li>Page list.</li>
+							<li>Table of contents.</li>
+							<li>Index.</li>
+							<li>Landmarks.</li>
+						</ul>
+					</aside>
+			</section>
+			
+			<section id="filtering-features">
+				<h3>Filtering per features</h3>
+			<p>All book feature and related accessibility considerations can be filtered, however one looks particularly important, it is related to the potential hazards. The negative statement should be a sufficient filter.</p>
+
+			</section>
+
+			<section id="filtering-conformance">
+				<h3>Filtering per conformity</h3>
 
 			<p>While every user has different accessibility needs, meeting the Web Content Accessibility Guidelines
 				(WCAG) 2.0 requirements, even at level A, is a baseline that ensures a publication will be widely
@@ -787,21 +843,99 @@
 				of an "Accessible" search filter that only returns publications with metadata that indicates conformance
 				to the user-selected WCAG Level &#8212; A, AA, or AAA.</p>
 
-			<p>Publications with full audio created for mainstream use provide important access for many users with
-				disabilities even though they are not accessible to all. (Note that these publications differ from
-				traditional audiobooks in that the audio accompanies the full or partial text of the publication.)
-				Publication providers may already have search tools aimed at finding traditional audiobooks, since they
-				are popular and common, but even if not, this would be a good addition to the suite of tools for finding
-				accessible publications. Publications with full audio may not pass WCAG requirements, however, because
-				they are targeted at a specific audience rather than broadly accessible. As a result, they would not be
-				found using the <q>Accessible</q> search suggested above.</p>
+				<aside class="example" title="Filtering by conformance">
+					<p>Minimum accessibility standards (A)</p>
+					<p>Accepted accessibility standards (AA)</p>
+					<p>Full accessibility features (AAA)</p>
+					<p>Accessibility certified</p>
+				</aside>
 
-			<p>Any of the metadata fields discussed in detail below could also be used as a filter &#8212; a
-					<q>Screen-reader accessible</q> search would be valued by screen reader users, and a way to ensure
-				no publications with hazards are downloaded would be valued by those with light-sensitive epilepsy or
-				other hazard-related conditions. But if only a single additional search filter fits best in a site's UI,
-				a tool for finding accessible materials that declare conformance to WCAG 2.0 is the best choice to
-				provide.</p>
+		<section id="filtering-examples">
+			<h3>Filtering Examples</h3>
+<p>This section resumes the previous explanations in two examples: the most compact one with minimum filtering options to implement and the most complete one with all filtering options.</p>
+<section id="filtering-compact-example">
+	<h4>Example of compact filtering options</h4>
+<aside class="example" title="Filtering by conformance">
+	<ul>
+		<li>Readable in read aloud and braille.</li>
+		<li>Appearance can be modified.</li>
+		<li> Audio only. </li>
+		<li> Page list. </li>
+		<li>No hazards.</li>
+		<li>Minimum accessibility standards (A)</li>
+		<li>Accepted accessibility standards (AA)</li>
+	</ul>
+	</li>
+	</ul>
+</aside>
+</section>
+<section id="filtering-complete-example">
+	<h4>Example of complete filtering options</h4>
+<aside class="example" title="Filtering by conformance">
+<ul>
+	<li> General information
+		<ul>
+			<li>File format
+				<ul>
+					<li>EPUB</li>
+					<li>PDF</li>
+					<li>MP3</li>
+					<li>Audiobook</li>
+				</ul>
+			</li>
+			<li>Protection measure
+				<ul>
+				<li>LCP</li>
+				<li>Watermark</li>
+				<li>None</li>
+			</ul>
+			</li>
+			<li>Date of publication
+
+			</li>
+			<li>publishing house</li>
+			<li>Main language</li>
+		</ul>
+	</li>
+	<li>Reading modes
+		<ul>
+			<li>Readable in read aloud and braille.</li>
+			<li>Appearance can be modified.</li>
+			<li> Audio only. </li>
+			<li> Complementary audio and text. </li>
+			<li> Synchronized audio and text. </li>
+		</ul>
+	</li>
+	<li> Navigation	
+	<ul>
+	<li> Page list. </li>
+	<li> Table of contents. </li>
+	<li> Index. </li>
+	<li> Landmarks. </li>
+	</ul>
+</li>
+<li>Features and points of attention<ul>
+	<li>No hazards.</li>
+	<li>Accessible formulas. </li>
+	<li>Charts and diagrams have extended descriptions.</li>
+	<li>ARIA roles included.</li>
+	<li>Closed captions and sign languages for videos.</li>
+	<li>Tactile graphics attached.</li>
+	<li>Music scores visually presented.</li>
+	<li>Information encoded through colors.</li>
+	</ul>
+</ul></li>
+<li>conformity
+	<ul>
+	<li>Minimum accessibility standards (A)</li>
+	<li>Accepted accessibility standards (AA)</li>
+	<li>Full accessibility features (AAA)</li>
+	<li>Accessibility certified</li>
+</ul>
+</li>
+</ul>
+</aside>
+</section>
 		</section>
 
 		<section id="localization">
