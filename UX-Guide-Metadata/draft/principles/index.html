@@ -149,8 +149,50 @@
 
 			<section id="general-info">
 				<h2>General information (supplement the bibliographic information)</h2>
+				<p>
+					The product details are giving precious information about usability of the book in relation with specifics needs. The following informations should always be displayed: 
+					<ul>
+						<li>
+							File format (EPUB, PDF, MP3, Audiobook, etc.)
+						</li>
+						<li>
+							Protection measure or lack thereof
+						</li>
+						<li>
+							Date of publication
+						</li>
+						<li>
+							Name of the publishing house
+						</li>
+						<li>
+							Main language of the content
+						</li>
+					</ul>
+				</p>
 
-				<p>TBD</p>
+<detail>
+	<summary>
+		Why this information is important for accessibility?
+	</summary>
+</detail>
+<ul>
+	<li>
+		The file format gives a strong indication of accessibility: an MP3 format audio book will be less structured than an Audiobook; a PDF does not allows for fine typography tunning, etc.					
+	</li>
+	<li>
+		The protection measure may block assistive technologies such as screen readers. In addition, many specific reading devices such as DAISY readers or Braille notepads are not equipped to read encrypted files.					
+	</li>
+	<li>
+		The publication date gives an indication of when the files were produced. A book published before 2011 will probably be an EPUB2 file including poor semantics, and a book published in 2022 will be more likely to be correctly structured and benefit of strong semantics.			
+	</li>
+	<li>
+		The name of the publishing house can highlight the efforts it has made in terms of accessibility.					
+	</li>
+	<li>
+		The main language of the content enables readers to be sure that they will be able to read in good conditions by checking that they have a synthesised voice or the corresponding Braille table.				
+	</li>
+</ul>
+
 			</section>
 
 		<section id="order-of-key-information">
@@ -191,20 +233,17 @@
 
 					<aside class="example" title="Descriptive explanations">
 						<ul>
-							<li>All content is available for reading using computer-generated speech and refreshable braille .</li>
-														<li>Portions of the content may not be available for reading using computer-generated speech and
-								refreshable braille.</li>
-<li>Portions of the content are not available for reading using computer-generated speech and
-								refreshable braille.</li>
+							<li>All content is available in generated read aloud and electronic braille.</li>
+							<li>Portions of the content may not be available in generated read aloud and electronic braille.</li>
+							<li>Not all the content will be available in generated read aloud and electronic braille.</li>
 						</ul>
 					</aside>
 
 					<aside class="example" title="Compact explanations">
 						<ul>
-							<li>Readable in computer-generated audio and braille.</li>
-							<li>Not fully readable in computer-generated audio and braille.</li>
-							<li>May not be fully readable in computer-generated audio and braille.</li>
-							<li>Unknown.</li>
+							<li>Readable in read aloud and braille.</li>
+							<li>May not be fully readable in read aloud and braille.</li>
+							<li>Not fully readable in read aloud and braille.</li>
 						</ul>
 					</aside>
 				</section>
@@ -707,12 +746,6 @@
 					understandable to end users.</p>
 
 				<dl>
-					<dt>Detailed information on conformance and certification</dt>
-					<dd>
-						<p>For information on who certified the accessibility of the publication, on what date,
-							according to what standard, etc. Refer to <a href="#conf-aai"></a> for more information.</p>
-					</dd>
-
 					<dt>Structure</dt>
 					<dd>
 						<p>For information on any structuring aids that facilitate use of a resource (e.g., annotations,
@@ -755,7 +788,25 @@
 				<section id="add-info-examples">
 					<h2>Examples</h2>
 
-					<p>TBD</p>
+					<aside class="example" title="Descriptive explanations">
+						<ul>
+							<li>Content is enhanced with ARIA roles to optimize organization and facilitate navigation.</li>
+							<li>Videos included in publications have closed captions and sign language representation.</li>
+							<li>Tactile graphics have been integrated to facilitate access to visual elements by blind people.</li>
+							<li>Music scores are provided that are visually accessible.</li>
+							<li>Content contains information encoded through colors, which may be imperceptible to those who cannot distinguish colors.</li>
+						</ul>
+					</aside>
+
+					<aside class="example" title="Compact explanations">
+						<ul>
+							<li>ARIA roles included.</li>
+							<li>Closed captions and sign languages for videos.</li>
+							<li>Tactile graphics attached.</li>
+							<li>Music scores visually presented.</li>
+							<li>Information encoded through colors.</li>
+						</ul>
+					</aside>
 				</section>
 
 				<section id="add-info-techniques">
@@ -946,8 +997,13 @@
 
 		<section id="implementations">
 			<h3>Implementations</h3>
+<p>These guidelines provide a general framework and makes suggestions on the display of accessibility metadata. It is not a normative description of what must be done. It is instructive to provide examples of implementations  from the community.
+</p>
 
-			<p>TBD</p>
+<p>Linked below are static pages that show real-life implementations. We have captured these examples  from organization's websites that have agreed to allow us to showcase the work they have done to display  accessibility metadata.
+
+
+			<p>Links TBD</p>
 		</section>
 
 
