@@ -41,11 +41,11 @@
 			<h2>ONIX Metadata</h2>
 			
 			<p class="note">
-				Other techniques for implementing EPUB accessibility metadata are available: <a href="https://www.w3.org/2021/09/UX-Guide-metadata-1.0/principles/#techniques">Display Techniques for Displaying Accessibility Metadata</a>
+				Other techniques for implementing EPUB accessibility metadata are available: <a href="https://www.w3.org/2021/09/UX-Guide-metadata-2.0/principles/#techniques">Display Techniques for Displaying Accessibility Metadata</a>
 			</p>
             
  			<p class="note">
- 				This document provides techniques for meeting the guidelines of the <a href="https://www.w3.org/2021/09/UX-Guide-metadata-1.0/principles/">User Experience Guide for Displaying Accessibility Metadata</a>. It provides practical examples for extracting information from the ONIX metadata for showing it to the end users.
+ 				This document provides techniques for meeting the guidelines of the <a href="https://www.w3.org/2021/09/UX-Guide-metadata-2.0/principles/">User Experience Guide for Displaying Accessibility Metadata</a>. It provides practical examples for extracting information from the ONIX metadata for showing it to the end users.
 			</p>
 			
 			<p class="note">
@@ -59,9 +59,6 @@
 			</p>
 			
 			<p class="note">
-				ONIX does not have a 1:1 mapping with EPUB accessibility metadata.
-				As some accessibility assertions are posed differently between the two mechanisms, direct mapping between the two may not always be possible.
-				The <a href="http://www.a11ymetadata.org/the-specification/metadata-crosswalk/">EPUB to ONIX crosswalk</a> outlines the current high degree of overlap in metadata and will be updated as these two specifications evolve.
 				It is important to note that ONIX 3.0 includes a number of new accessibility metadata codes, some of which may not be expressible in earlier versions of ONIX.
 			</p>
 				
@@ -73,102 +70,7 @@
 						following examples on EPUB accessibility metadata: the results of the XPath shown are based on
 						this example.</p>
 					<aside class="example" id="onix-example-1">
-						<pre><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;ONIXMessage xmlns="http://ns.editeur.org/onix/3.0/reference" release="3.0"&gt;
-    &lt;Header&gt;...&lt;/Header&gt;
-    &lt;Product&gt;
-        &lt;RecordReference&gt;123456789&lt;/RecordReference&gt;
-        &lt;NotificationType&gt;01&lt;/NotificationType&gt;
-        &lt;ProductIdentifier&gt;
-            &lt;ProductIDType&gt;03&lt;/ProductIDType&gt;
-            &lt;IDValue&gt;9780000000000&lt;/IDValue&gt;
-        &lt;/ProductIdentifier&gt;
-        &lt;ProductIdentifier&gt;
-            &lt;ProductIDType&gt;15&lt;/ProductIDType&gt;
-            &lt;IDValue&gt;9780000000000&lt;/IDValue&gt;
-        &lt;/ProductIdentifier&gt;
-        &lt;DescriptiveDetail&gt;
-            &lt;ProductComposition&gt;00&lt;/ProductComposition&gt;
-            &lt;ProductForm&gt;ED&lt;/ProductForm&gt;
-            &lt;ProductFormDetail&gt;E101&lt;/ProductFormDetail&gt;
-            &lt;ProductFormFeature&gt;
-                &lt;ProductFormFeatureType&gt;09&lt;/ProductFormFeatureType&gt;
-                &lt;ProductFormFeatureValue&gt;00&lt;/ProductFormFeatureValue&gt;
-                &lt;ProductFormFeatureDescription&gt;
-                    This publication includes mark-up to enable accessibility and compatibility with assistive technology. Images, audio, and video in the publication are well-described in conformance with WCAG 2.0 A.
-                &lt;/ProductFormFeatureDescription&gt;
-            &lt;/ProductFormFeature&gt;
-            &lt;ProductFormFeature&gt;
-                &lt;ProductFormFeatureType&gt;09&lt;/ProductFormFeatureType&gt;
-                &lt;ProductFormFeatureValue&gt;03&lt;/ProductFormFeatureValue&gt;
-            &lt;/ProductFormFeature&gt;
-            &lt;ProductFormFeature&gt;
-                &lt;ProductFormFeatureType&gt;09&lt;/ProductFormFeatureType&gt;
-                &lt;ProductFormFeatureValue&gt;10&lt;/ProductFormFeatureValue&gt;
-            &lt;/ProductFormFeature&gt;
-            &lt;ProductFormFeature&gt;
-                &lt;ProductFormFeatureType&gt;09&lt;/ProductFormFeatureType&gt;
-                &lt;ProductFormFeatureValue&gt;11&lt;/ProductFormFeatureValue&gt;
-            &lt;/ProductFormFeature&gt;
-            &lt;ProductFormFeature&gt;
-                &lt;ProductFormFeatureType&gt;09&lt;/ProductFormFeatureType&gt;
-                &lt;ProductFormFeatureValue&gt;13&lt;/ProductFormFeatureValue&gt;
-            &lt;/ProductFormFeature&gt;
-            &lt;ProductFormFeature&gt;
-                &lt;ProductFormFeatureType&gt;09&lt;/ProductFormFeatureType&gt;
-                &lt;ProductFormFeatureValue&gt;14&lt;/ProductFormFeatureValue&gt;
-            &lt;/ProductFormFeature&gt;
-            &lt;ProductFormFeature&gt;
-                &lt;ProductFormFeatureType&gt;09&lt;/ProductFormFeatureType&gt;
-                &lt;ProductFormFeatureValue&gt;20&lt;/ProductFormFeatureValue&gt;
-            &lt;/ProductFormFeature&gt;
-            &lt;ProductFormFeature&gt;
-                &lt;ProductFormFeatureType&gt;09&lt;/ProductFormFeatureType&gt;
-                &lt;ProductFormFeatureValue&gt;22&lt;/ProductFormFeatureValue&gt;
-            &lt;/ProductFormFeature&gt;
-            &lt;ProductFormFeature&gt;
-                &lt;ProductFormFeatureType&gt;12&lt;/ProductFormFeatureType&gt;
-                &lt;ProductFormFeatureValue&gt;14&lt;/ProductFormFeatureValue&gt;
-            &lt;/ProductFormFeature&gt;
-            &lt;ProductFormFeature&gt;
-                &lt;ProductFormFeatureType&gt;12&lt;/ProductFormFeatureType&gt;
-                &lt;ProductFormFeatureValue&gt;16&lt;/ProductFormFeatureValue&gt;
-            &lt;/ProductFormFeature&gt;
-            &lt;ProductFormFeature&gt;
-                &lt;ProductFormFeatureType&gt;12&lt;/ProductFormFeatureType&gt;
-                &lt;ProductFormFeatureValue&gt;18&lt;/ProductFormFeatureValue&gt;
-            &lt;/ProductFormFeature&gt;
-            &lt;ProductFormFeature&gt;
-                &lt;ProductFormFeatureType&gt;12&lt;/ProductFormFeatureType&gt;
-                &lt;ProductFormFeatureValue&gt;20&lt;/ProductFormFeatureValue&gt;
-            &lt;/ProductFormFeature&gt;
-            &lt;ProductFormFeature&gt;
-                &lt;ProductFormFeatureType&gt;09&lt;/ProductFormFeatureType&gt;
-                &lt;ProductFormFeatureValue&gt;94&lt;/ProductFormFeatureValue&gt;
-                &lt;ProductFormFeatureDescription&gt;http://www.certifier.com/&lt;/ProductFormFeatureDescription&gt;
-            &lt;/ProductFormFeature&gt;
-            &lt;ProductFormFeature&gt;
-                &lt;ProductFormFeatureType&gt;09&lt;/ProductFormFeatureType&gt;
-                &lt;ProductFormFeatureValue&gt;94&lt;/ProductFormFeatureValue&gt;
-                &lt;ProductFormFeatureDescription&gt;http://www.example.com/a11y/report/9780000000001&lt;/ProductFormFeatureDescription&gt;
-            &lt;/ProductFormFeature&gt;
-            &lt;PrimaryContentType&gt;10&lt;/PrimaryContentType&gt;
-            &lt;EpubTechnicalProtection&gt;03&lt;/EpubTechnicalProtection&gt;
-            &lt;EpubUsageConstraint&gt;
-                &lt;EpubUsageType&gt;04&lt;/EpubUsageType&gt;
-                &lt;EpubUsageStatus&gt;02&lt;/EpubUsageStatus&gt;
-            &lt;/EpubUsageConstraint&gt;
-            &lt;TitleDetail&gt;...&lt;/TitleDetail&gt;
-            &lt;Contributor&gt;...&lt;/Contributor&gt;
-            &lt;Extent&gt;...&lt;/Extent&gt;
-            &lt;Subject&gt;...&lt;/Subject&gt;
-        &lt;/DescriptiveDetail&gt;
-        &lt;CollateralDetail&gt;...&lt;/CollateralDetail&gt;
-        &lt;PublishingDetail&gt;...&lt;/PublishingDetail&gt;
-        &lt;RelatedMaterial&gt;...&lt;/RelatedMaterial&gt;
-        &lt;ProductSupply&gt;...&lt;/ProductSupply&gt;
-    &lt;/Product&gt;
-&lt;/ONIXMessage&gt;</code></pre>
+						<pre><code>TBD</code></pre>
 					</aside>
 				</section>
 				<section>
@@ -179,284 +81,109 @@
 						some of the following examples on EPUB accessibility metadata: the results of the XPath shown are based on
 						this example.</p>
 					<aside class="example" id="onix-example-2">
-						<pre><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;ONIXMessage xmlns="http://ns.editeur.org/onix/3.0/reference" release="3.0"&gt;
-    &lt;Header&gt;...&lt;/Header&gt;
-    &lt;Product&gt;
-        &lt;RecordReference&gt;123456789&lt;/RecordReference&gt;
-        &lt;NotificationType&gt;01&lt;/NotificationType&gt;
-        &lt;ProductIdentifier&gt;
-            &lt;ProductIDType&gt;03&lt;/ProductIDType&gt;
-            &lt;IDValue&gt;0000000000000&lt;/IDValue&gt;
-        &lt;/ProductIdentifier&gt;
-        &lt;DescriptiveDetail&gt;
-            &lt;ProductComposition&gt;00&lt;/ProductComposition&gt;
-            &lt;ProductForm&gt;AO&lt;/ProductForm&gt;
-            &lt;PrimaryContentType&gt;01&lt;/PrimaryContentType&gt;
-            ...
-            &lt;TitleDetail&gt;...&lt;/TitleDetail&gt;
-            &lt;Contributor&gt;...&lt;/Contributor&gt;
-            &lt;Extent&gt;...&lt;/Extent&gt;
-            &lt;Subject&gt;...&lt;/Subject&gt;
-        &lt;/DescriptiveDetail&gt;
-        &lt;CollateralDetail&gt;...&lt;/CollateralDetail&gt;
-        &lt;PublishingDetail&gt;...&lt;/PublishingDetail&gt;
-        &lt;RelatedMaterial&gt;...&lt;/RelatedMaterial&gt;
-        &lt;ProductSupply&gt;...&lt;/ProductSupply&gt;
-    &lt;/Product&gt;
-&lt;/ONIXMessage&gt;</code></pre>
+						<pre><code>TBD</code></pre>
 					</aside>
 				</section>
 			</section>
 		</section>
 		<section id="techniques">
+			<h2>Conventions for implementations</h2>
+			<p>The code conventions used in the provided code snippet follow a structure commonly found in programming languages like Python, Java, or C++. Here&#39;s an explanation of the conventions:</p>
+			<dl>
+				<dt>Conditionals and Control Flow:</dt>
+					<dd><b>if</b>, <b>else if</b>, and <b>else</b> statements are used to define different conditions and the corresponding actions to be taken.</dd>
+				<dt>Operators:</dt>
+					<dd>Written operators (<i>is present</i>) are used to check if a particular code or codelist is present (or not) in the metadata record.</dd>
+				<dt>Logical operators:</dt>
+					<dd>Logical operators (<code>and</code>, <code>or</code>, <code>not</code>) are used to combine conditions.</dd>
+				<dt>String Literals:</dt>
+					<dd>String literals are used to represent the text that should be displayed when a particular condition is met.</dd>
+				<dt>Variable Naming:</dt>
+					<dd>The terms like &quot;codelist&quot; and &quot;code&quot; are used in a way that suggests a variable or data structure representing a code or codelist to be accessed directly after the ingestion of the metadata record.</dd>
+				<dt>Indentation:</dt>
+					<dd>The code uses consistent indentation to define blocks of code within conditional statements. This is crucial for readability and maintaining a clear structure.</dd>
+				<dt>Readability:</dt>
+					<dd>The code is written in a way that is intended to be easily readable and understandable even by non-coders.</dd>
+			</dl>
+		</section>
+		<section id="techniques">
 			<h2>Techniques</h2>
 			
-			<section id="screen-reader-friendly">
-				<h3>Screen Reader Friendly</h3>
-				<p><b>Value</b>: <i>Yes</i> / <i>No</i> / <i>Unknown</i></p>
-				<p>This technique relates to <a href="https://www.w3.org/2021/09/UX-Guide-metadata-1.0/principles/#screen-reader-friendly">Screen Reader Friendly principle</a>.</p>
+			<section id="supports-nonvisual-reading">
+				<h3>Supports nonvisual reading</h3>
+				<p>This technique relates to <a href="https://www.w3.org/2021/09/UX-Guide-metadata-2.0/principles/#supports-nonvisual-reading">Supports nonvisual reading key information</a>.</p>
+			
+			</section>
+			
+			<section id="pre-recorded-audio">
+				<h3>Pre-recorded audio</h3>
+				<p>This technique relates to <a href="https://www.w3.org/2021/09/UX-Guide-metadata-2.0/principles/#pre-recorded-audio">Pre-recorded audio key information</a>.</p>
 
-				<p>This information can be retrieved from ONIX <a href="https://ns.editeur.org/onix/en/81">List 81</a>; Code: 10 combined with <a href="https://ns.editeur.org/onix/en/196">code list 196</a>; Code: 10 means all text is actual text.</p>
-				<p class="note">
-					<a href="https://ns.editeur.org/onix/en/81">List 81</a>; Code: 10 on its own (without <a href="https://ns.editeur.org/onix/en/196">List 196</a>; Code: 10) admits the possibility that the ‘text’ is inaccessible because it is an image of text.
-				</p>
-				
-				<section id="example-1.1">
-					<h4>Example 1.1</h4>
-					<section id="xpath-1.1">
-						<h5>XPath</h5>
-						<p>This field is true if the both XPath elements exist:</p>
-						<aside class="example" id="code-example-1.1">
-							<pre><code>//Product/DescriptiveDetail/PrimaryContentType[text()="10"] and
-//Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType="09" and ProductFormFeatureValue="10"]</code></pre>
-						</aside>
-					</section>
-					<p>For this example, this XPath was evaluated on the ONIX record presented in <a href="#onix-example-1">EXAMPLE 1</a>.</p>
-					<section id="ui-1">
-						<h5>UI</h5>
-						<p>Screen Reader Friendly: Yes</p>
-					</section>
-				</section>
-				
 			</section>
-			<section id="full-audio">
-                <h3>Full Audio</h3>
-				<p><b>Values</b>: <i>Yes / (if No - Omit this section)</i></p>
-				<p>This technique relates to <a href="https://www.w3.org/2021/09/UX-Guide-metadata-1.0/principles/#full-audio">Full Audio principle</a>.</p>
-				
-				<p>If the publication is based on text with synchronized audio, this information can be retrieved from ONIX <a href="https://ns.editeur.org/onix/en/196">code list: 196</a>; Code: 20: Synchronised pre-recorded audio.</p>
-				<p>If the publication is audio-only (e.g. audiobook), this information can be retrieved from ONIX <a href="https://ns.editeur.org/onix/en/81">code list 81</a>; Code: 01: Audiobook.</p>
-				<section id="example-2.1">
-					<h4>Example 2.1</h4>
-					<section id="xpath-2.1">
-						<h5>XPath</h5>
-						<p>If the following XPath returns at least one result:</p>
-						<aside class="example" id="code-example-2.1">
-							<pre><code>//Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType="09" and ProductFormFeatureValue="20"]</code></pre>
-						</aside>
-						<p>For this example, this XPath was evaluated on the ONIX record presented in <a href="#onix-example-1">EXAMPLE 1</a>.</p>
-					</section>
-					<section id="ui-2.1">
-						<h5>UI</h5>
-						<p>Full Audio: Yes</p>
-					</section>
-				</section>
-				<section id="example-2.2">
-					<h4>Example 2.2</h4>
-					<section id="xpath-2.2">
-						<h5>XPath</h5>
-						<p>This field is true if the XPath returns one element for:</p>
-						<aside class="example" id="code-example-2.2">
-							<pre><code>//Product/DescriptiveDetail/PrimaryContentType[text()="01"]</code></pre>
-						</aside>
-						<p>For this example, this XPath was evaluated on the ONIX record presented in <a href="#onix-example-2">EXAMPLE 2</a>.</p>
-					</section>
-					<section id="ui-2.2">
-						<h5>UI</h5>
-						<p>Full Audio: Yes</p>
-					</section>
-				</section>
-			</section>
-			<section id="accessibility-summary">
-				<h3>Accessibility Summary</h3>
-				<p><b>Value</b>: Textual Data from metadata</p>
-				<p>This technique relates to <a href="https://www.w3.org/2021/09/UX-Guide-metadata-1.0/principles/#accessibility-summary">Accessibility Summary principle</a>.</p>
-				
-				<p>This information can be retrieved from ONIX <a href="https://ns.editeur.org/onix/en/196">code list:
-						196</a>; Code: 00: Accessibility Summary.</p>
-				<section id="example-3.1">
-					<h4>Example 3.1</h4>
-					<section id="xpath-3.1">
-						<h5>XPath</h5>
-						<p>The value can be retrieved using XPath:</p>
-						<aside class="example" id="code-example-3.1">
-							<pre><code>//Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType="09" and ProductFormFeatureValue="00"]/ProductFormFeatureDescription/text()</code></pre>
-						</aside>
-						<p>For this example, this XPath was evaluated on the ONIX record presented in <a href="#onix-example-1">EXAMPLE 1</a>.</p>
-					</section>
-					<section id="ui-3">
-						<h5>UI</h5>
-						<p>Accessibility Summary:</p>
-						<p>This publication includes markup to enable accessibility and compatibility with assistive
-							technology. Images, audio, and video in the publication are well-described in conformance
-							with WCAG 2.0 A.</p>
-					</section>
-				</section>
-			</section>
-			<section id="accessibility-conformance">
-				<h3>Accessibility Conformance</h3>
-				<p><b>Value</b>: Textual Link based on Metadata</p>
-				<p>This technique relates to <a href="https://www.w3.org/2021/09/UX-Guide-metadata-1.0/principles/#accessibility-conformance">Accessibility Conformance principle</a>.</p>
-					
+			
+			<section id="visual-adjustments">
+				<h3>Visual adjustments</h3>
+				<p>This technique relates to <a href="https://www.w3.org/2021/09/UX-Guide-metadata-2.0/principles/#visual-adjustments">Visual adjustments key information</a>.</p>
 				<ul>
-					<li>For EPUB Accessibility, WCAG-A: <a href="https://ns.editeur.org/onix/en/196">List: 196</a>; Code: 02: EPUB Accessibility Specification 1.0 A</li>
-					<li>For EPUB Accessibility, WCAG-AA: <a href="https://ns.editeur.org/onix/en/196">List: 196</a>; Code: 03: EPUB Accessibility Specification 1.0 AA</li>
-					<li>For EPUB Accessibility, WCAG-AAA: Not available in ONIX.</li>
+					<li><b>if</b> <var>codelist 196: code 36 (All textual content can be modified)</var> is present
+						<ul>
+							<li>then display <code>Appearance can be modified</code>.</li>
+						</ul>
+					</li>
+					<li><b>else if</b> <var>codelist 81: code 10 (Text)</var> is present and <var>codelist 196: code 36 (All textual content can be modified)</var> is not present
+						<ul>
+							<li>then display <code>Appearance cannot be modified</code>.</li>
+						</ul>
+					</li>
+					<li><b>else if</b> <var>codelist 81: code 45 (Text within images)</var> is present or <var>codelist 81: code 49 (Images of text)</var> is present
+						<ul>
+							<li>then display <code>Appearance cannot be modified for all textual content</code>.</li>
+						</ul>
+					</li>
+					<li><b>else</b>
+						<ul>
+							<li>display <code>Appearance modifiability not known</code>.</li>
+						</ul>
+					</li>
 				</ul>
-				<section id="example-4.1">
-					<h4>Example 4.1</h4>
-					<section id="xpath-4.1">
-						<h5>XPath</h5>
-						<p>If the following XPath returns at least one result:</p>
-						<aside class="example" id="code-example-4.1">
-							<pre><code>//Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType="09" and ProductFormFeatureValue="02"]</code></pre>
-						</aside>
-						<p>For this example, this XPath was evaluated on the ONIX record presented in <a href="#onix-example-1">EXAMPLE 1</a>.</p>
-					</section>
-					<section id="ui-4.1">
-						<h5>UI</h5>
-						<p>Accessibility Conformance: EPUB Accessibility, WCAG-A</p>
-					</section>
-				</section>
-				<section id="example-4.2">
-					<h4>Example 4.2</h4>
-					<section id="xpath-4.2">
-						<h5>XPath</h5>
-						<p>If the following XPath returns at least one result:</p>
-						<aside class="example" id="code-example-4.2">
-							<pre><code>//Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType="09" and ProductFormFeatureValue="03"] returns at least one result</code></pre>
-						</aside>
-						<p>For this example, this XPath was evaluated on the ONIX record presented in <a href="#onix-example-1">EXAMPLE 1</a>.</p>
-					</section>
-					<section id="ui-4.2">
-						<h5>UI</h5>
-						<p>Accessibility Conformance: EPUB Accessibility, WCAG-AA</p>
-					</section>
-				</section>
 			</section>
-			<section id="certified-by">
-				<h3>Certified By</h3>
-				<p><b>Value</b>: Textual Data from metadata</p>
-				<p>This technique relates to <a href="https://www.w3.org/2021/09/UX-Guide-metadata-1.0/principles/#certified-by">Certified By principle</a>.</p>
-				
-				<p><a href="https://ns.editeur.org/onix/en/196">List: 196</a>; Code: 93: Compliance certification by</p>
-				<section id="example-5.1">
-					<h4>Example 5.1</h4>
-					<section id="xpath-5.1">
-						<h5>XPath</h5>
-						<p>The value can be retrieve using XPath:</p>
-						<aside class="example" id="code-example-5.1">
-							<pre><code>//Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType="09" and ProductFormFeatureValue="93"]/ProductFormFeatureDescription/text()</code></pre>
-						</aside>
-						<p>For this example, this XPath was evaluated on the ONIX record presented in <a href="#onix-example-1">EXAMPLE 1</a>.</p>
-					</section>
-					<section id="ui-5.1">
-						<h5>UI</h5>
-						<p>Certified By: <a href="http://www.certifier.com/">http://www.certifier.com/</a></p>
-						<aside class="note">
-							<p><em>(Clickable URI to web page belonging to the organisation responsible for compliance testing and certification of the product)</em></p>
-						</aside>
-					</section>
-				</section>
-			</section>
-			<section id="certifier-credential">
-				<h3>Certifier Credential</h3>
-				<p><b>Value</b>: Potentially linked textual data from metadata</p>
-				<p>This technique relates to <a href="https://www.w3.org/2021/09/UX-Guide-metadata-1.0/principles/#certifier-credential">Certifier Credential principle</a>.</p>
-				
-				<p>Not available in ONIX</p>
-			</section>
-			<section id="certifier-report">
-				<h3>Certifier Report</h3>
-				<p><b>Value</b>: Potentially linked textual data from metadata</p>
-				<p>This technique relates to <a href="https://www.w3.org/2021/09/UX-Guide-metadata-1.0/principles/#certifier-report">Certifier Report principle</a>.</p>
+			
+			<section id="navigation">
+				<h3>Navigation</h3>
+				<p>This technique relates to <a href="https://www.w3.org/2021/09/UX-Guide-metadata-2.0/principles/#navigation">Navigation key information</a>.</p>
 
-				<p><a href="https://ns.editeur.org/onix/en/196">List: 196</a>; Code: 94: Compliance web page for
-					detailed accessibility information</p>
-				<p><strong>Or</strong></p>
-				<p>If it is certified by a trusted intermediary, <a href="https://ns.editeur.org/onix/en/196">List: 196</a>; Code: 95: Trusted intermediary’s web page for detailed accessibility information</p>
-					<p><strong>Or</strong></p>
-				<p>If a publisher is self-certifying, <a href="https://ns.editeur.org/onix/en/196">List: 196</a>; Code: 96: Publisher’s web page for detailed accessibility
-					information</p>
-				<section id="example-6.1">
-					<h4>Example 6.1</h4>
-					<section id="xpath-6.1">
-						<h5>XPath</h5>
-						<p>The value can be retrieve using XPath:</p>
-						<aside class="example" id="code-example-6.1.1">
-							<pre><code>//Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType="09" and ProductFormFeatureValue="94"]/ProductFormFeatureDescription/text()</code></pre>
-						</aside>
-						<aside class="example" id="code-example-6.1.2">
-							<pre><code>//Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType="09" and ProductFormFeatureValue="95"]/ProductFormFeatureDescription/text()</code></pre>
-						</aside>
-						<aside class="example" id="code-example-6.1.3">
-							<pre><code>//Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType="09" and ProductFormFeatureValue="96"]/ProductFormFeatureDescription/text()</code></pre>
-						</aside>
-						<p>For this example, this XPath was evaluated on the ONIX record presented in <a href="#onix-example-1">EXAMPLE 1</a>.</p>
-					</section>
-					<section id="ui-6.1">
-						<h5>UI</h5>
-						<p>Certifier Report</p>
-						<p><a href="http://www.example.com/a11y/report/9780000000001"><img src="../media/image2.svg"
-									alt="Report webpage" width="50" /></a></p>
-						<aside class="example">
-							<p><em>(Clickable Image to the URI of the report from metadata)</em></p>
-							<p><em>alt-text Report webpage</em></p>
-							<p><em>(Image here of checkmark with clipboard is just for reference feel free to choose
-									your own image)</em></p>
-						</aside>
-						<p><strong>Or</strong></p>
-						<aside class="example">
-							<p>Certifier Report: <em>Accessibility Report</em></p>
-							<p><em>(Clickable link to the URI of the report from metadata)</em></p>
-						</aside>
-					</section>
-				</section>
 			</section>
+			
+			<section id="charts-diagrams-and-formulas">
+				<h3>Charts, diagrams, and formulas</h3>
+				<p>This technique relates to <a href="https://www.w3.org/2021/09/UX-Guide-metadata-2.0/principles/#charts-diagrams-and-formulas">Charts, diagrams, and formulas key information</a>.</p>
+
+			</section>
+			
 			<section id="hazards">
 				<h3>Hazards</h3>
-				<p><b>Values</b>: flashing, motion simulation, sound, no flashing, no motion simulation, no sound, none, or Unknown.</p>
-				<p>This technique relates to <a href="https://www.w3.org/2021/09/UX-Guide-metadata-1.0/principles/#hazards">Hazards principle</a>.</p>
-				
-				<p>ONIX uses a composite to indicate different hazards.</p>
-				<p>To list the presence or absence of hazards it is used the <em>ProductFormFeature</em> element, with <em>ProductFormFeatureType</em> equal to 12 (<em>"US CPSIA or other international hazard warning"</em>, from <a href="https://ns.editeur.org/onix/en/79">code list 79</a>) and <em>ProductFormFeatureValue</em> from <a href="https://ns.editeur.org/onix/en/143">code list 143</a>.</p>
-			
-				<section id="example-7.1">
-					<h4>Example 7.1</h4>
-					<section id="xpath-7.1">
-						<h5>XPath</h5>
-						<p>The value can be retrieve using XPath:</p>
-						<aside class="example" id="code-example-7.1">
-							<pre><code>//Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType="12"]/ProductFormFeatureValue</code></pre>
-						</aside>
-						<p>For this example, this XPath was evaluated on the ONIX record presented in <a href="#onix-example-1">EXAMPLE 1</a>.</p>
-					</section>
-					<section id="ui-7.1">
-						<h5>UI</h5>
-						<p>Hazard: no Flashing, no Sound, no Motion Simulation</p>
-						<p>(because <em>ProductFormFeature</em> with <em>ProductFormFeatureType</em> equal to 12 and <em>ProductFormFeatureValue</em>s equal to: 14, 16, 18)</p>
-					</section>
-				</section>
-			
+				<p>This technique relates to <a href="https://www.w3.org/2021/09/UX-Guide-metadata-2.0/principles/#hazards">Hazards key information</a>.</p>
+
 			</section>
-			<section id="all-accessibility-metadata">
-				<h3>All Accessibility Metadata</h3>
-				<p><b>Value</b>: Link to complete list of all metadata fields</p>
-				<p>This technique relates to <a href="https://www.w3.org/2021/09/UX-Guide-metadata-1.0/principles/#all-accessibility-metadata">All Accessibility Metadata principle</a>.</p>
-				
-				<p>For a complete list of <a href="http://www.a11ymetadata.org/the-specification/metadata-crosswalk/">ONIX accessibility metadata refer to the crosswalk.</a></p>
+			
+			<section id="conformance-group">
+				<h3>Conformance</h3>
+				<p>This technique relates to <a href="https://www.w3.org/2021/09/UX-Guide-metadata-2.0/principles/#conformance-group">Conformance key information</a>.</p>
+
 			</section>
+			
+			<section id="accessibility-summary">
+				<h3>Accessibility summary</h3>
+				<p>This technique relates to <a href="https://www.w3.org/2021/09/UX-Guide-metadata-2.0/principles/#accessibility-summary">Accessibility summary key information</a>.</p>
+
+			</section>
+			
+			<section id="additional-accessibility-information">
+				<h3>Additional accessibility information</h3>
+				<p>This technique relates to <a href="https://www.w3.org/2021/09/UX-Guide-metadata-2.0/principles/#additional-accessibility-information">Additional accessibility information key information</a>.</p>
+
+			</section>
+			
 		</section>
 		<section id="app-acknowledgements" class="appendix informative">
 			<h2 id="acknowledgements">Acknowledgements</h2>
@@ -480,12 +207,6 @@
 				<ul>
 					<li>Erin Kirchner-Lucas</li>
 					<li>Luc Audrain</li>
-				</ul>
-			</section>
-			<section id="ipr">
-				<h3>Intellectual Property Rights</h3>
-				<ul>
-					<li>The report icon used in <a href="#ui-6.1">Example 6.1 UI</a> is <a href="https://thenounproject.com/search/?q=report&i=231003">report by Bastian König</a> from the <a href="https://thenounproject.com/">Noun Project</a></li>
 				</ul>
 			</section>
 		</section>
