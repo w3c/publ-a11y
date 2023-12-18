@@ -823,17 +823,80 @@ George asks why is details used here?</detail>
 		<section id="discovering-accessible-content">
 			<h2>Discovering accessible content</h2>
 
-			<p>The guidelines for presenting accessibility metadata detailed in this document are intended to improve
-				the user experience when readers browse the catalog entry for a publication. However, accessibility
-				metadata also has a vital role to play in helping readers discover publications that are accessible for
-				them. Publication providers, such as vendors and libraries, are encouraged to create searching and
-				filtering tools that interpret accessibility metadata to aid in discovery. (A full discussion of search
-				and filtering issues is out of scope for this document, but this section provides some guidance until
-				further research can be carried out.)</p>
+			<p>The guidelines for presenting accessibility metadata detailed in this document are intended to improve the user experience when readers browse the catalogue entry for a publication. However, accessibility metadata also has a vital role to play in helping readers discover publications that are accessible to them.</p>
+			<p>Publication providers, such as vendors and libraries create searching and
+			filtering tools that interpret accessibility metadata to aid in discovery.
+			The set and variety of filters depend on the public they address and
+			the type of book they propose. </p>
+			<p> User feedback stated that in the missing of specific accessibility filters, product details like file format and measures of protections are crucial information.</p>
+			<p>Taking into consideration those realities,
+			the following sections are proposing a minimum and an extension set for filtering options. Mostly any specific information could be added if considered of use for the public of the platform.</p>
 
-			<div class="issue" data-number="196">
-				<p>We are still doing research on this topic, anyone who would like to contribute ideas or feedback from end users can do so by commenting on issue <a href="https://github.com/w3c/publ-a11y/issues/196">#196</a>.</p>
-			</div>
+
+			<section id="minimum-filtering-set">
+				<h3>Minimum filtering set</h3>
+				<p>
+					Reading systems, commerce, and distribution platforms will typically have specific filtering options; 
+					having uniformity for key aspects and providing guidance for a standardized approach can help 
+					the discovery process for users searching relevant titles. 
+					Accomplishing this, however, should not prevent users with specifics reading needs finding books 
+					they are looking for. To achieve that goal it is recommended that all platforms 
+					present two minimum capabilities, centered around the ways of consuming the content. 
+					These are:
+					<ol>
+						<li>Titles that support non visual reading</li>
+						<li>Titles that support visual adjustments</li>
+					</ol>
+					<p>Of note, only the positive values should be used.</p>
+					<aside class="example" title="Minimum filtering options">
+					<ul>
+						<li>Supports Nonvisual Reading</li>
+						<li>Supports Visual Adjustments</li>
+					</ul>
+				</aside>
+				<div class="note">
+					<p>In 2023, in many markets, we observe very few ebooks with accessibility metadata. 
+					   In such situation, a filter allowing for the discovery of all titles with any accessibility metadata available may be considered with interest. 
+					   We decided not to include that facet in our recommandation because of three factors: 
+					   <li>a risk of finding titles that are informing about unknown accessibility or known limitations;</li>
+					   <li>a limited utility as some accessibility metadata like the presence of TOC will cause the filter to return almost all ebooks;</li>
+					   <li>a technical implementation complexity as it would mean to grab for more than 40 information.</li>
+					</p>
+				</div>
+			</section>
+			<section id="extended-filtering-set">
+				<h3>Extended filtering set</h3>
+				<p>
+					In specific domains, the addition of other options will become important 
+					to help users find content that responds to a particular need or scenarios. 
+					Each domain case would uniquely drive the selection of appropriate items. 
+					Some examples of these domains (not exclusive) are:</p>
+				<ul>
+					<li>
+						In an academic context, the presence of printed page numbers may be crucial 
+						to make sure the reader will be able to find or make a reference.
+					</li>
+					<li>
+						In a technical or scientific context, the information about ways provided to access complex contents 
+						like Charts, Diagrams, and Formulas would have a strong importance to know if accessibility markup were present.</li>
+					<li>
+						In markets where compliance to legislation is required, understanding conformity information becomes mandatory.
+					</li>
+					<li>
+						Platforms dedicated to selling children's books and interactive content may want to allow users 
+						to select books with no hazards, 
+						or inform about the presence of pre-recorded audio.</li>
+				</ul>
+				<aside class="example" title="Extended filtering options">
+					<ul>
+						<li>Page list</li>
+						<li>Charts, Diagrams, and Formulas</li>
+						<li>Minimum accessibility standards (A)</li>
+						<li>Accepted accessibility standards (AA)</li>
+						<li>No hazards</li>
+						<li>Pre-recorded audio</li>
+				</ul>
+			</aside>
 		</section>
 
 		<section id="localization">
