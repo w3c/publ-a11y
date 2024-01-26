@@ -33,6 +33,25 @@
 			};
 			// ]]>
 	  </script>
+	  <style>
+	  	var {
+			color: brown;
+		}
+	  	ol.condition > li {
+	  		margin-top: 1rem;
+	  		margin-left: 0;
+	  		padding-left: 0;
+	  	}
+	  	ol.condition > li > span {
+	  		display: block;
+	  	}
+	  	ol.condition > li > span:nth-child(2) {
+	  		margin-left: 2rem;
+	  	}
+	  	code.xpath {
+	  		word-break: keep-all;
+	  	}
+	  </style>
 	</head>
 	<body>
 		<section id="abstract"></section>
@@ -70,7 +89,7 @@
 						following examples on EPUB accessibility metadata: the results of the XPath shown are based on
 						this example.</p>
 					<aside class="example" id="onix-example-1">
-						<pre><code>TBD</code></pre>
+						<pre><code class="xpath">TBD</code></pre>
 					</aside>
 				</section>
 				<section>
@@ -81,21 +100,21 @@
 						some of the following examples on EPUB accessibility metadata: the results of the XPath shown are based on
 						this example.</p>
 					<aside class="example" id="onix-example-2">
-						<pre><code>TBD</code></pre>
+						<pre><code class="xpath">TBD</code></pre>
 					</aside>
 				</section>
 			</section>
 		</section>
-		<section id="techniques">
+		<section id="conventions">
 			<h2>Conventions for implementations</h2>
 			<p>The code conventions used in the provided code snippet follow a structure commonly found in programming languages like Python, Java, or C++. Here&#39;s an explanation of the conventions:</p>
 			<dl>
 				<dt>Conditionals and Control Flow:</dt>
-					<dd><b>if</b>, <b>else if</b>, and <b>else</b> statements are used to define different conditions and the corresponding actions to be taken.</dd>
+					<dd><b>IF</b>, <b>ELSE IF</b>, and <b>ELSE</b> (in bold and capital letters) statements are used to define different conditions and the corresponding actions to be taken.</dd>
 				<dt>Operators:</dt>
 					<dd>Written operators (<i>is present</i>) are used to check if a particular code or codelist is present (or not) in the metadata record.</dd>
 				<dt>Logical operators:</dt>
-					<dd>Logical operators (<code>and</code>, <code>or</code>, <code>not</code>) are used to combine conditions.</dd>
+					<dd>Logical operators (<b>AND</b>, <b>OR</b>, <b>NOT</b>, in bold and capital letters) are used to combine conditions.</dd>
 				<dt>String Literals:</dt>
 					<dd>String literals are used to represent the text that should be displayed when a particular condition is met.</dd>
 				<dt>Variable Naming:</dt>
@@ -105,6 +124,46 @@
 				<dt>Readability:</dt>
 					<dd>The code is written in a way that is intended to be easily readable and understandable even by non-coders.</dd>
 			</dl>
+		</section>
+		<section id="common-functions">
+			<h2>Common Functions</h2>
+			<p>In this section we define the functions common to all techniques, which are called by them during execution.</p>
+			<section id="pre-processing">
+				<h3>Pre Processing</h3>
+				<p>Before working directly with the metadata we must read the ONIX record. This is a common starting point for all techniques that allows us to query the record directly.</p>
+				<aside class="note">
+					<p>This algorithm does not describe how the ONIX record is discovered and obtained.</p>
+				</aside>
+				<p>This algorithm takes the <var>text</var> argument: a UTF-8 string representing the ONIX record.</p>
+				<p>To generate the internal representation, run the following steps:</p>
+				<ol class="condition">
+					<li><b>LET</b> <var>record</var> be textual representation of the ONIX record for the publication given <var>text</var>.</li>
+					<li><b>LET</b> <var>onix</var> be the DOM tree that results from parsing <var>record</var> using an XML DOM parser.</li>
+					<li>Return <var>onix</var>.</li>
+				</ol>
+				<aside class="note">
+					<p>The XML file being processed may contain namespaces, in the techniques when we use XPATH we will assume that the default namespace of the root record is used.</p>
+				</aside>
+			</section>
+			<section id="check-for-node">
+				<h3>Check for Node</h3>
+				<p>Many of the techniques rely on checking for the presence or absence of metadata in the ONIX record.</p>
+				<p>This algorithm takes:</p>
+				<ul>
+					<li>the <var>onix</var> argument: the internal representation of ONIX record (output of <a href="#pre-processing">pre processing</a>);</li>
+					<li>the <var>path</var> argument: the XPATH of the node to check the presence of.</li>
+				</ul>
+				<p>To check for node, run the following steps:</p>
+				<ol class="condition">
+					<li><b>LET</b> <var>record</var> be textual representation of the ONIX record for the publication given <var>text</var>.</li>
+					<li><b>LET</b> <var>onix</var> be the DOM tree that results from parsing <var>record</var> using an XML DOM parser.</li>
+					<li>
+						<span><b>IF</b> <var>onix</var> contains <var>path</var>:</span>
+						<span><b>THEN</b> return <code>True</code>.</span>
+					</li>
+					<li><b>ELSE</b> return <code>False</code>.</li>
+				</ol>
+			</section>
 		</section>
 		<section id="techniques">
 			<h2>Techniques</h2>
@@ -122,30 +181,55 @@
 			</section>
 			
 			<section id="visual-adjustments">
+				<!-- https://www.w3.org/TR/pub-manifest/#manifest-processing -->
 				<h3>Visual adjustments</h3>
 				<p>This technique relates to <a href="https://www.w3.org/2021/09/UX-Guide-metadata-2.0/principles/#visual-adjustments">Visual adjustments key information</a>.</p>
-				<ul>
-					<li><b>if</b> <var>codelist 196: code 36 (All textual content can be modified)</var> is present
-						<ul>
-							<li>then display <code>Appearance can be modified</code>.</li>
-						</ul>
+				<p>This algorithm takes the <var>text</var> argument: a UTF-8 string representing the ONIX record.</p>
+				<ol class="condition">
+					<li><b>LET</b> <var>onix</var> be the result of calling <a href="#pre-processing">pre processing</a> given <var>text</var>.</li>
+					<li><b>LET</b> <var>all_textual_content_can_be_modified</var> be the result of calling <a href="#pre-processing">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "36"]</code>.</li>
+					<li><b>LET</b> <var>text</var> be the result of calling <a href="#pre-processing">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/PrimaryContentType[text() = "10"]</code> <b>OR</b> the result of calling <a href="#pre-processing">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductContentType[text() = "10"]</code>.</li>
+					<li><b>LET</b> <var>text_within_images</var> be the result of calling <a href="#pre-processing">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/PrimaryContentType[text() = "45"]</code> <b>OR</b> the result of calling <a href="#pre-processing">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductContentType[text() = "45"]</code>.</li>
+					<li><b>LET</b> <var>images_of_text</var> be the result of calling <a href="#pre-processing">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/PrimaryContentType[text() = "49"]</code> <b>OR</b> the result of calling <a href="#pre-processing">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductContentType[text() = "49"]</code>.</li>
+					<li>
+						<span><b>IF</b> <var>all_textual_content_can_be_modified</var>:</span>
+						<span><b>THEN</b> display "<code id="visual-adjustments-1">Appearance can be modified</code>".</span>
 					</li>
-					<li><b>else if</b> <var>codelist 81: code 10 (Text)</var> is present and <var>codelist 196: code 36 (All textual content can be modified)</var> is not present
-						<ul>
-							<li>then display <code>Appearance cannot be modified</code>.</li>
-						</ul>
+					<li>
+						<span><b>ELSE IF</b> <var>text</var> <b>AND</b> <b>NOT</b> <var>all_textual_content_can_be_modified</var>:</span>
+						<span><b>THEN</b> display "<code id="visual-adjustments-2">Appearance cannot be modified</code>".</span>
 					</li>
-					<li><b>else if</b> <var>codelist 81: code 45 (Text within images)</var> is present or <var>codelist 81: code 49 (Images of text)</var> is present
-						<ul>
-							<li>then display <code>Appearance cannot be modified for all textual content</code>.</li>
-						</ul>
+					<li>
+						<span><b>ELSE IF</b> <var>text_within_images</var> <b>OR</b> <var>images_of_text</var>:</span>
+						<span><b>THEN</b> display "<code id="visual-adjustments-3">Appearance cannot be modified for all textual content</code>".</span>
 					</li>
-					<li><b>else</b>
-						<ul>
-							<li>display <code>Appearance modifiability not known</code>.</li>
-						</ul>
-					</li>
-				</ul>
+					<li><b>ELSE</b> display "<code id="visual-adjustments-4">Appearance modifiability not known</code>".</li>
+				</ol>
+				<details>
+					<summary>Understanding Visual adjustments technique</summary>
+					<dl>
+						<dt><var>all_textual_content_can_be_modified</var></dt>
+						<dd>
+							<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/196/36">code 36 of codelist 196</a> (All textual content can be modified) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+							<p><i>All textual content can be modified</i> means that the digital publication does not restrict the ability of users to modify and reflow the display of any textual content to the full extent allowed by the reading system (eg to change the text size or typeface, line height and word spacing, colors).</p>
+						</dd>
+						<dt><var>text</var></dt>
+						<dd>
+							<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/81/10">code 10 of codelist 81</a> (Text) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+							<p><i>Text</i> means that digital publication contains "real" text (user-selectable) as its main content (or as secondary content).</p>
+						</dd>
+						<dt><var>text_within_images</var></dt>
+						<dd>
+							<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/81/45">code 45 of codelist 81</a> (Text within images) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+							<p><i>Text within images</i> means that digital publication contains text within images (i.e. text in diagrams, charts or balloons on which the user will not be able to change the display settings) as its main content (or as secondary content).</p>
+						</dd>
+						<dt><var>images_of_text</var></dt>
+						<dd>
+							<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/81/49">code 49 of codelist 81</a> (Images of text) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+							<p><i>Images of text</i> means that digital publication contains images of text (i.e. pictures of text on which the user will not be able to change the display settings) as its main content (or as secondary content).</p>
+						</dd>
+					</dl>
+				</details>
 			</section>
 			
 			<section id="navigation">
