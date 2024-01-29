@@ -134,10 +134,10 @@
 				<aside class="note">
 					<p>This algorithm does not describe how the ONIX record is discovered and obtained.</p>
 				</aside>
-				<p>This algorithm takes the <var>text</var> argument: a UTF-8 string representing the ONIX record.</p>
+				<p>This algorithm takes the <var>onix_record_as_text</var> argument: a UTF-8 string representing the ONIX record.</p>
 				<p>To generate the internal representation, run the following steps:</p>
 				<ol class="condition">
-					<li><b>LET</b> <var>record</var> be textual representation of the ONIX record for the publication given <var>text</var>.</li>
+					<li><b>LET</b> <var>record</var> be textual representation of the ONIX record for the publication given <var>onix_record_as_text</var>.</li>
 					<li><b>LET</b> <var>onix</var> be the DOM tree that results from parsing <var>record</var> using an XML DOM parser.</li>
 					<li>Return <var>onix</var>.</li>
 				</ol>
@@ -184,11 +184,11 @@
 				<!-- https://www.w3.org/TR/pub-manifest/#manifest-processing -->
 				<h3>Visual adjustments</h3>
 				<p>This technique relates to <a href="https://www.w3.org/2021/09/UX-Guide-metadata-2.0/principles/#visual-adjustments">Visual adjustments key information</a>.</p>
-				<p>This algorithm takes the <var>text</var> argument: a UTF-8 string representing the ONIX record.</p>
+				<p>This algorithm takes the <var>onix_record_as_text</var> argument: a UTF-8 string representing the ONIX record.</p>
 				<ol class="condition">
-					<li><b>LET</b> <var>onix</var> be the result of calling <a href="#pre-processing">pre processing</a> given <var>text</var>.</li>
+					<li><b>LET</b> <var>onix</var> be the result of calling <a href="#pre-processing">pre processing</a> given <var>onix_record_as_text</var>.</li>
 					<li><b>LET</b> <var>all_textual_content_can_be_modified</var> be the result of calling <a href="#pre-processing">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "36"]</code>.</li>
-					<li><b>LET</b> <var>text</var> be the result of calling <a href="#pre-processing">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/PrimaryContentType[text() = "10"]</code> <b>OR</b> the result of calling <a href="#pre-processing">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductContentType[text() = "10"]</code>.</li>
+					<li><b>LET</b> <var>real_text</var> be the result of calling <a href="#pre-processing">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/PrimaryContentType[text() = "10"]</code> <b>OR</b> the result of calling <a href="#pre-processing">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductContentType[text() = "10"]</code>.</li>
 					<li><b>LET</b> <var>text_within_images</var> be the result of calling <a href="#pre-processing">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/PrimaryContentType[text() = "45"]</code> <b>OR</b> the result of calling <a href="#pre-processing">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductContentType[text() = "45"]</code>.</li>
 					<li><b>LET</b> <var>images_of_text</var> be the result of calling <a href="#pre-processing">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/PrimaryContentType[text() = "49"]</code> <b>OR</b> the result of calling <a href="#pre-processing">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductContentType[text() = "49"]</code>.</li>
 					<li>
@@ -196,7 +196,7 @@
 						<span><b>THEN</b> display "<code id="visual-adjustments-1">Appearance can be modified</code>".</span>
 					</li>
 					<li>
-						<span><b>ELSE IF</b> <var>text</var> <b>AND</b> <b>NOT</b> <var>all_textual_content_can_be_modified</var>:</span>
+						<span><b>ELSE IF</b> <var>real_text</var> <b>AND</b> <b>NOT</b> <var>all_textual_content_can_be_modified</var>:</span>
 						<span><b>THEN</b> display "<code id="visual-adjustments-2">Appearance cannot be modified</code>".</span>
 					</li>
 					<li>
@@ -211,9 +211,9 @@
 						<dt><var>all_textual_content_can_be_modified</var></dt>
 						<dd>
 							<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/196/36">code 36 of codelist 196</a> (All textual content can be modified) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
-							<p><i>All textual content can be modified</i> means that the digital publication does not restrict the ability of users to modify and reflow the display of any textual content to the full extent allowed by the reading system (eg to change the text size or typeface, line height and word spacing, colors).</p>
+							<p><i>All textual content can be modified</i> means that the digital publication does not restrict the ability of users to modify and reflow the display of any textual content to the full extent allowed by the reading system (i.e. to change the text size or typeface, line height and word spacing, colors).</p>
 						</dd>
-						<dt><var>text</var></dt>
+						<dt><var>real_text</var></dt>
 						<dd>
 							<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/81/10">code 10 of codelist 81</a> (Text) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
 							<p><i>Text</i> means that digital publication contains "real" text (user-selectable) as its main content (or as secondary content).</p>
