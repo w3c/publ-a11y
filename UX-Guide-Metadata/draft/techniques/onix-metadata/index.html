@@ -185,12 +185,16 @@
 				<h3>Visual adjustments</h3>
 				<p>This technique relates to <a href="https://www.w3.org/2021/09/UX-Guide-metadata-2.0/principles/#visual-adjustments">Visual adjustments key information</a>.</p>
 				<p>This algorithm takes the <var>onix_record_as_text</var> argument: a UTF-8 string representing the ONIX record.</p>
+				<h4>Variables setup</h4>
 				<ol class="condition">
 					<li><b>LET</b> <var>onix</var> be the result of calling <a href="#pre-processing">pre processing</a> given <var>onix_record_as_text</var>.</li>
 					<li><b>LET</b> <var>all_textual_content_can_be_modified</var> be the result of calling <a href="#pre-processing">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "36"]</code>.</li>
 					<li><b>LET</b> <var>real_text</var> be the result of calling <a href="#pre-processing">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/PrimaryContentType[text() = "10"]</code> <b>OR</b> the result of calling <a href="#pre-processing">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductContentType[text() = "10"]</code>.</li>
 					<li><b>LET</b> <var>text_within_images</var> be the result of calling <a href="#pre-processing">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/PrimaryContentType[text() = "45"]</code> <b>OR</b> the result of calling <a href="#pre-processing">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductContentType[text() = "45"]</code>.</li>
 					<li><b>LET</b> <var>images_of_text</var> be the result of calling <a href="#pre-processing">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/PrimaryContentType[text() = "49"]</code> <b>OR</b> the result of calling <a href="#pre-processing">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductContentType[text() = "49"]</code>.</li>
+				</ol>
+				<h4>Instructions</h4>
+				<ol class="condition">
 					<li>
 						<span><b>IF</b> <var>all_textual_content_can_be_modified</var>:</span>
 						<span><b>THEN</b> display "<code id="visual-adjustments-1">Appearance can be modified</code>".</span>
