@@ -155,8 +155,6 @@
 				</ul>
 				<p>To check for node, run the following steps:</p>
 				<ol class="condition">
-					<li><b>LET</b> <var>record</var> be textual representation of the ONIX record for the publication given <var>text</var>.</li>
-					<li><b>LET</b> <var>onix</var> be the DOM tree that results from parsing <var>record</var> using an XML DOM parser.</li>
 					<li>
 						<span><b>IF</b> <var>onix</var> contains <var>path</var>:</span>
 						<span><b>THEN</b> return <code>True</code>.</span>
@@ -188,10 +186,10 @@
 				<h4>Variables setup</h4>
 				<ol class="condition">
 					<li><b>LET</b> <var>onix</var> be the result of calling <a href="#pre-processing">pre processing</a> given <var>onix_record_as_text</var>.</li>
-					<li><b>LET</b> <var>all_textual_content_can_be_modified</var> be the result of calling <a href="#pre-processing">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "36"]</code>.</li>
-					<li><b>LET</b> <var>real_text</var> be the result of calling <a href="#pre-processing">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/PrimaryContentType[text() = "10"]</code> <b>OR</b> the result of calling <a href="#pre-processing">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductContentType[text() = "10"]</code>.</li>
-					<li><b>LET</b> <var>text_within_images</var> be the result of calling <a href="#pre-processing">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/PrimaryContentType[text() = "45"]</code> <b>OR</b> the result of calling <a href="#pre-processing">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductContentType[text() = "45"]</code>.</li>
-					<li><b>LET</b> <var>images_of_text</var> be the result of calling <a href="#pre-processing">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/PrimaryContentType[text() = "49"]</code> <b>OR</b> the result of calling <a href="#pre-processing">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductContentType[text() = "49"]</code>.</li>
+					<li><b>LET</b> <var>all_textual_content_can_be_modified</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "36"]</code>.</li>
+					<li><b>LET</b> <var>real_text</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/PrimaryContentType[text() = "10"]</code> <b>OR</b> the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductContentType[text() = "10"]</code>.</li>
+					<li><b>LET</b> <var>text_within_images</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/PrimaryContentType[text() = "45"]</code> <b>OR</b> the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductContentType[text() = "45"]</code>.</li>
+					<li><b>LET</b> <var>images_of_text</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/PrimaryContentType[text() = "49"]</code> <b>OR</b> the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductContentType[text() = "49"]</code>.</li>
 				</ol>
 				<h4>Instructions</h4>
 				<ol class="condition">
