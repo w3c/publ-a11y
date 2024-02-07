@@ -1,0 +1,114 @@
+{
+    "author": "W3C Publishing Community Group Accessibility Task Force",
+    "language": "en-US",
+    "variant": "canonical",
+    "audience": "general",
+    "description": "Original wording discussed by a large group representing different actors of the English-speaking geographies. It has been improved after proof of concept implementations and panel testers.",
+      "3-1": {
+        "key": "Supports nonvisual reading",
+        "descriptives": {
+            "1": "All content is available in generated read aloud speech and electronic braille.",
+            "2": "Portions of the content may not be available in generated read aloud speech and electronic braille.", 
+            "3": "Not all of the content will be available in generated read aloud speech and electronic braille."
+        },
+        "compacts": {
+            "1": "Readable in read aloud and braille.",
+            "2": "May not be fully readable in read aloud and braille.", 
+            "3": "Not fully readable in read aloud and braille."
+        }
+      },
+      "3-2": {
+        "key": "Pre-recorded audio",
+        "descriptives": {
+            "1": "Audiobook with no text alternative.",
+            "2": "Contents available as complementary audio and text.", 
+            "3": "All the content is available as pre-recorded audio synchronized with text."
+        },
+        "compacts": {
+            "4": "Audio only.",
+            "5": "Complementary audio and text.", 
+            "6": "Synchronized audio and text."
+        } 
+        },
+        "3-3": {
+        "key": "Visual adjustments",
+            "descriptives": {
+            "1": "Appearance of the text and page layout can be modified according to the capabilities of the reading system (font family and font size, spaces between paragraphs, sentences, words, and letters, as well as color of background and text).",
+            "2": "Text and page layout can not be modified. The reading experience is close to a print version. Reading systems can still provide zooming options.", 
+            "3": "Ability to modify the appearance is not known."
+        },
+        "compacts": {
+            "4": "Appearance can be modified.",
+            "5": "Appearance cannot be modified.", 
+            "6": "Appearance Modifiability not known."
+        }  
+        },
+        "3-4": {
+        "key": "Navigation",
+        "descriptives": {
+            "1": "Contains a table of contents that provides direct access to all chapters of the text via links.",
+            "2": "Index provides links to item references.", 
+            "3": "Landmarks provide quick access to main parts of the book.",
+            "4": "A page list enables users to coordinate their reading with a statically paginated version."
+        },
+        "compacts": {
+            "5": "Navigation by table of contents, index, landmarks, and page list."
+        }  
+      },
+      "3-5": {
+        "key": "Charts, diagrams, and formulas",
+        "descriptives": {
+            "1": "Contains accessible formulas. Charts and diagrams are present and described by extended descriptions.",
+            "2": "Contains formulas, charts, and diagrams without any information about the accessibility of this content.", 
+            "3": "Accessible formulas. Charts and diagrams have extended descriptions."
+        },
+        "compacts": {
+            "4": "Accessibility of formulas, charts, and diagrams unknown."
+        }
+      },
+      "3-6": {
+        "key": "Hazards",
+        "descriptives": {
+            "1": "The publication contains rapidly changing lights or visual stimuli, as well as simulated movements, which can cause discomfort, distraction, photosensitive seizures, or motion sickness.",
+            "2": "No information about possible hazards."
+        },
+        "compacts": {
+            "3": "Flashing and motion simulation hazards.",
+            "4": "No hazards."
+        } 
+      },
+      "3-7": {
+        "key": "Conformance",
+        "1": "This publication claims to meet accepted accessibility standards.",
+        "2": "This publication claims to meet minimum accessibility standards.",
+        "3": "Conformance to accepted standards for accessibility of this publication cannot be determined.", 
+        "4": "This publication is certified by {Certifier Name}", 
+        "5": "The certifier's credential is {Credential}",
+        "6": {
+            "key": "Detailed Conformance Information:",
+            "1": "This publication claims to meet accepted accessibility standards and reports (EPUB Accessibility 1.1 and Web Accessibility Content Guidelines (WCAG) 2.1 Level AA.)",
+            "2": "This publication was certified on {date}.",
+            "3": "For more information, refer to the certifier's report {url}.",
+            "4": "The creator of the publication is not required to publish in an accessible format because it is a micro-enterprise (e.g., enterprises employing fewer than 10 people and with annual turnover or balance sheet total not exceeding €2 million)."
+        }
+      },   
+      "3-8": {
+        "key": "Accessibility summary"
+      },   
+      "3-9": {
+        "key": "Additional accessibility information",
+        "descriptives": {
+            "1": "Content is enhanced with ARIA roles to optimize organization and facilitate navigation.",
+            "2": "Videos included in publications have closed captions and sign language representation.", 
+            "3": "Tactile graphics have been integrated to facilitate access to visual elements by blind people.",
+            "4": "Music scores are provided that are visually accessible.",
+            "5": "Content contains information encoded through colors, which may be imperceptible to those who cannot distinguish colors."},
+        "compacts": {
+            "1": "ARIA roles included.",
+            "2": "Closed captions and sign languages for videos.", 
+            "3": "Tactile graphics attached.",
+            "4": "Music scores visually presented.",
+            "5": "Information encoded through colors."
+        }
+      }
+}
