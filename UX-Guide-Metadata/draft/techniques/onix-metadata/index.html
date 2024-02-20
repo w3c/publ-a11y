@@ -183,6 +183,29 @@
 				<h3>Visual adjustments</h3>
 				<p>This technique relates to <a href="https://www.w3.org/2021/09/UX-Guide-metadata-2.0/principles/#visual-adjustments">Visual adjustments key information</a>.</p>
 				<p>This algorithm takes the <var>onix_record_as_text</var> argument: a UTF-8 string representing the ONIX record.</p>
+				<h4>Understanding the variables</h4>
+				<dl>
+					<dt><var>all_textual_content_can_be_modified</var></dt>
+					<dd>
+						<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/196/36">code 36 of codelist 196</a> (All textual content can be modified) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+						<p><i>All textual content can be modified</i> means that the digital publication does not restrict the ability of users to modify and reflow the display of any textual content to the full extent allowed by the reading system (i.e. to change the text size or typeface, line height and word spacing, colors).</p>
+					</dd>
+					<dt><var>real_text</var></dt>
+					<dd>
+						<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/81/10">code 10 of codelist 81</a> (Text) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+						<p><i>Text</i> means that digital publication contains "real" text (user-selectable) as its main content (or as secondary content).</p>
+					</dd>
+					<dt><var>text_within_images</var></dt>
+					<dd>
+						<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/81/45">code 45 of codelist 81</a> (Text within images) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+						<p><i>Text within images</i> means that digital publication contains text within images (i.e. text in diagrams, charts or balloons on which the user will not be able to change the display settings) as its main content (or as secondary content).</p>
+					</dd>
+					<dt><var>images_of_text</var></dt>
+					<dd>
+						<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/81/49">code 49 of codelist 81</a> (Images of text) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+						<p><i>Images of text</i> means that digital publication contains images of text (i.e. pictures of text on which the user will not be able to change the display settings) as its main content (or as secondary content).</p>
+					</dd>
+				</dl>
 				<h4>Variables setup</h4>
 				<ol class="condition">
 					<li><b>LET</b> <var>onix</var> be the result of calling <a href="#pre-processing">pre processing</a> given <var>onix_record_as_text</var>.</li>
@@ -207,31 +230,6 @@
 					</li>
 					<li><b>ELSE</b> display "<code id="visual-adjustments-4">Appearance modifiability not known</code>".</li>
 				</ol>
-				<details>
-					<summary>Understanding Visual adjustments technique</summary>
-					<dl>
-						<dt><var>all_textual_content_can_be_modified</var></dt>
-						<dd>
-							<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/196/36">code 36 of codelist 196</a> (All textual content can be modified) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
-							<p><i>All textual content can be modified</i> means that the digital publication does not restrict the ability of users to modify and reflow the display of any textual content to the full extent allowed by the reading system (i.e. to change the text size or typeface, line height and word spacing, colors).</p>
-						</dd>
-						<dt><var>real_text</var></dt>
-						<dd>
-							<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/81/10">code 10 of codelist 81</a> (Text) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
-							<p><i>Text</i> means that digital publication contains "real" text (user-selectable) as its main content (or as secondary content).</p>
-						</dd>
-						<dt><var>text_within_images</var></dt>
-						<dd>
-							<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/81/45">code 45 of codelist 81</a> (Text within images) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
-							<p><i>Text within images</i> means that digital publication contains text within images (i.e. text in diagrams, charts or balloons on which the user will not be able to change the display settings) as its main content (or as secondary content).</p>
-						</dd>
-						<dt><var>images_of_text</var></dt>
-						<dd>
-							<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/81/49">code 49 of codelist 81</a> (Images of text) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
-							<p><i>Images of text</i> means that digital publication contains images of text (i.e. pictures of text on which the user will not be able to change the display settings) as its main content (or as secondary content).</p>
-						</dd>
-					</dl>
-				</details>
 			</section>
 			
 			<section id="navigation">
