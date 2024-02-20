@@ -53,6 +53,13 @@
 		// ]]>
 	</script>
 		<style>
+        
+            .responsive {
+                width: 100%;
+                height: auto;
+            }
+
+
 			.fake-issue {
 				padding: .5em;
 				border: .5em;
@@ -202,6 +209,24 @@
 					the language. </li>
 			</ul>
 
+            <figure>
+                <figcaption>Flowchart: Metadata Ecosystem</figcaption>
+                <img class="responsive" src="media/MetadataEcosystem.png" aria-details="ecosystem" alt="Publisher Ecosystem flows into four areas: Content Files, Machine Readable Metadata, Metadata Processing, and Resulting Statements" />
+            </figure>
+            <details>
+                <summary>Flowchart's Detailed Description</summary>
+                <h4>Publisher Ecosystem flowing into "EPUB Files"</h4>
+                    <p>From the "EPUB Files" both Machine Readable Meadata flows into "EPUB Accessibility Metadata 1.1" and "ONIX". There is also a bidirectional link between the "EPUB Accessibility Metadata 1.1" through the "Crosswalk" to and from "ONIX".</p>
+                    <p>From the "EPUB Accessibility Metadata 1.1" this flows down to the Metadata Processing area and the "Display Techniques for EPUB Accessiblity Metadata".</p>
+                    <p>From the "ONIX" this flows down to the Metadata Processing area and the "Display Techniques for ONIX Accessibility Metadata".</p>
+                    <p>From both the "Display Techiques for EPUB Accessibility Metadata" and "Display Techiques for ONIX Accessibility Metadata" flow into the Resulting Statements area "User Experience Guide for Displaying Accessibility Metadata."</p>
+                
+                <h4>Publisher Ecosystem flowing into the "PDF (and other) Files"</h4>
+                    <p>From the "PDF (and other) Files" only the Machine Readable Metadata "ONIX" is derrived. There is also a bidirectional link between the "ONIX" through the "Crosswalk" to and from "EPUB Accessibility Metadata 1.1".</p>
+                    <p>From the "ONIX" this flows down to the Metadata Processing area and the "Display Techniques for ONIX Accessiblity Metadata".</p>
+                    <p>From the "Display Techiques for ONIX Accessibility Metadata" flow into the Resulting Statements area "User Experience Guide for Displaying Accessibility Metadata."</p>          
+            </details>
+            
 		</section>
 		<section id="order-of-key-information">
 			<h2>Key accessibility information</h2>
