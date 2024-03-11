@@ -56,11 +56,11 @@
 	<body>
 		<section id="abstract"></section>
         <section id="sotd"></section>
-        <section id="schema.org-metadata">
+        <section id="epub-accessibility-metadata">
             <h2>EPUB Accessibility Metadata</h2>
             
-            <p>This metadata as outlined in the <a href="http://www.idpf.org/epub/a11y/">1.0 Accessibility Specification
-                Conformance and Discoverability</a> can be found in the <a href="https://www.w3.org/publishing/epub3/epub-packages.html#sec-package-doc">EPUB Package Document</a></p>
+            <p>This metadata as outlined in the <a href="https://www.w3.org/TR/epub-a11y-11/">1.1 Accessibility Specification
+                Conformance and Discoverability</a> can be found in the <a href="https://www.w3.org/TR/epub-33/#sec-package-doc">EPUB Package Document</a></p>
 			
             <aside class="note">
                 Other techniques for implementing EPUB accessibility metadata are available: <a href="https://www.w3.org/2021/09/UX-Guide-metadata-2.0/principles/#techniques">Display Techniques for Displaying Accessibility Metadata</a>
@@ -70,23 +70,23 @@
  			    This document provides techniques for meeting the guidelines of the <a href="https://www.w3.org/2021/09/UX-Guide-metadata-2.0/principles/">User Experience Guide for Displaying Accessibility Metadata</a>. It provides practical examples for extracting information from the ONIX metadata for showing it to the end users.
 			 </aside>
                     
-            <section id="schema-examples">
-                <h3>Schema.org Examples</h3>
-				<section id="schema-org-describing-an-epub">
-				    <h4>Schema.org metadata describing an EPUB</h4>
-				    <p>Here is an example of embedded Schema.org embedded metadata within the OPF file, 
+            <section id="epub-a11y-metadata-examples">
+                <h3>EPUB Accessibility Metadata Examples</h3>
+				<section id="epub-a11y-metadata-describing-an-epub">
+				    <h4>EPUB accessibility metadata describing an EPUB</h4>
+				    <p>Here is an example of accessibility metadata embedded within the OPF file, 
                         which will be used as a reference point for the
                         following examples on EPUB accessibility metadata: the results of the XPath shown are based on
 				        this example.
                     </p>
-				    <aside class="example" id="schema-org-example-1">
+				    <aside class="example" id="epub-a11y-metadata-example-1">
                         <pre><code class="xpath">TBD</code></pre>
                     </aside>
 				</section>
 				<section>
-				    <h4 id="schema-org-describing-an-full-audio-book">Schema.org metadata describing an audiobook</h4>
-				        <p>Here is an example of an Schema.org OPF Metadata for describing an audiobook, which will be used as a reference point for the some of the following examples on EPUB accessibility metadata: the results of the XPath shown are based on this example.</p>
-				        <aside class="example" id="schema-org-example-2">
+				    <h4 id="epub-a11y-metadata-describing-an-full-audio-book">EPUB accessibility metadata describing an audiobook</h4>
+				        <p>Here is an example of an accessibility OPF Metadata for describing an audiobook, which will be used as a reference point for some of the following examples on EPUB accessibility metadata: the results of the XPath shown are based on this example.</p>
+				        <aside class="example" id="epub-a11y-metadata-example-2">
                             <pre><code class="xpath">TBD</code></pre>
 				        </aside>
 				</section>
@@ -158,19 +158,7 @@
         
 		<section id="techniques">
 			<h2>Techniques</h2>
-			
-			<section id="supports-nonvisual-reading">
-				<h3>Supports nonvisual reading</h3>
-				<p>This technique relates to <a href="https://www.w3.org/2021/09/UX-Guide-metadata-2.0/principles/#supports-nonvisual-reading">Supports nonvisual reading key information</a>.</p>
-			
-			</section>
-			
-			<section id="pre-recorded-audio">
-				<h3>Pre-recorded audio</h3>
-				<p>This technique relates to <a href="https://www.w3.org/2021/09/UX-Guide-metadata-2.0/principles/#pre-recorded-audio">Pre-recorded audio key information</a>.</p>
 
-			</section>
-			
 			<section id="visual-adjustments">
 				<!-- https://www.w3.org/TR/pub-manifest/#manifest-processing -->
 				<h3>Visual adjustments</h3>
@@ -230,6 +218,26 @@
 					</dl>
 				</details>
 			</section>
+	            
+			<section id="supports-nonvisual-reading">
+				<h3>Supports nonvisual reading</h3>
+				<p>This technique relates to <a href="https://www.w3.org/2021/09/UX-Guide-metadata-2.0/principles/#supports-nonvisual-reading">Supports nonvisual reading key information</a>.</p>
+			
+			</section>
+			
+			
+			<section id="conformance-group">
+				<h3>Conformance</h3>
+				<p>This technique relates to <a href="https://www.w3.org/2021/09/UX-Guide-metadata-2.0/principles/#conformance-group">Conformance key information</a>.</p>
+
+			</section>
+			
+		
+			<section id="pre-recorded-audio">
+				<h3>Pre-recorded audio</h3>
+				<p>This technique relates to <a href="https://www.w3.org/2021/09/UX-Guide-metadata-2.0/principles/#pre-recorded-audio">Pre-recorded audio key information</a>.</p>
+
+			</section>
 			
 			<section id="navigation">
 				<h3>Navigation</h3>
@@ -248,13 +256,7 @@
 				<p>This technique relates to <a href="https://www.w3.org/2021/09/UX-Guide-metadata-2.0/principles/#hazards">Hazards key information</a>.</p>
 
 			</section>
-			
-			<section id="conformance-group">
-				<h3>Conformance</h3>
-				<p>This technique relates to <a href="https://www.w3.org/2021/09/UX-Guide-metadata-2.0/principles/#conformance-group">Conformance key information</a>.</p>
-
-			</section>
-			
+            
 			<section id="accessibility-summary">
 				<h3>Accessibility summary</h3>
 				<p>This technique relates to <a href="https://www.w3.org/2021/09/UX-Guide-metadata-2.0/principles/#accessibility-summary">Accessibility summary key information</a>.</p>
