@@ -51,16 +51,26 @@
 	  	code.xpath {
 	  		word-break: keep-all;
 	  	}
+	  	code[id]::before, code[id]::after {
+			background: #faa;
+			border-radius: 3px;
+			font: normal normal 400 1em/1.2 monospace;
+			margin-left: 0.2em;
+			padding: 0.1em;
+		}
+		code[id]::after {
+			content: "[ID: " attr(id) "]";
+ 		/*html::before { content: "<html>"; }*/
 	  </style>
 	</head>
 	<body>
 		<section id="abstract"></section>
         <section id="sotd"></section>
-        <section id="schema.org-metadata">
+        <section id="epub-accessibility-metadata">
             <h2>EPUB Accessibility Metadata</h2>
             
-            <p>This metadata as outlined in the <a href="http://www.idpf.org/epub/a11y/">1.0 Accessibility Specification
-                Conformance and Discoverability</a> can be found in the <a href="https://www.w3.org/publishing/epub3/epub-packages.html#sec-package-doc">EPUB Package Document</a></p>
+            <p>This metadata as outlined in the <a href="https://www.w3.org/TR/epub-a11y-11/">1.1 Accessibility Specification
+                Conformance and Discoverability</a> can be found in the <a href="https://www.w3.org/TR/epub-33/#sec-package-doc">EPUB Package Document</a></p>
 			
             <aside class="note">
                 Other techniques for implementing EPUB accessibility metadata are available: <a href="https://www.w3.org/2021/09/UX-Guide-metadata-2.0/principles/#techniques">Display Techniques for Displaying Accessibility Metadata</a>
@@ -70,23 +80,23 @@
  			    This document provides techniques for meeting the guidelines of the <a href="https://www.w3.org/2021/09/UX-Guide-metadata-2.0/principles/">User Experience Guide for Displaying Accessibility Metadata</a>. It provides practical examples for extracting information from the ONIX metadata for showing it to the end users.
 			 </aside>
                     
-            <section id="schema-examples">
-                <h3>Schema.org Examples</h3>
-				<section id="schema-org-describing-an-epub">
-				    <h4>Schema.org metadata describing an EPUB</h4>
-				    <p>Here is an example of embedded Schema.org embedded metadata within the OPF file, 
+            <section id="epub-a11y-metadata-examples">
+                <h3>EPUB Accessibility Metadata Examples</h3>
+				<section id="epub-a11y-metadata-describing-an-epub">
+				    <h4>EPUB accessibility metadata describing an EPUB</h4>
+				    <p>Here is an example of accessibility metadata embedded within the OPF file, 
                         which will be used as a reference point for the
                         following examples on EPUB accessibility metadata: the results of the XPath shown are based on
 				        this example.
                     </p>
-				    <aside class="example" id="schema-org-example-1">
+				    <aside class="example" id="epub-a11y-metadata-example-1">
                         <pre><code class="xpath">TBD</code></pre>
                     </aside>
 				</section>
 				<section>
-				    <h4 id="schema-org-describing-an-full-audio-book">Schema.org metadata describing an audiobook</h4>
-				        <p>Here is an example of an Schema.org OPF Metadata for describing an audiobook, which will be used as a reference point for the some of the following examples on EPUB accessibility metadata: the results of the XPath shown are based on this example.</p>
-				        <aside class="example" id="schema-org-example-2">
+				    <h4 id="epub-a11y-metadata-describing-an-full-audio-book">EPUB accessibility metadata describing an audiobook</h4>
+				        <p>Here is an example of an accessibility OPF Metadata for describing an audiobook, which will be used as a reference point for the following examples on EPUB accessibility metadata: the results of the XPath shown are based on this example.</p>
+				        <aside class="example" id="epub-a11y-metadata-example-2">
                             <pre><code class="xpath">TBD</code></pre>
 				        </aside>
 				</section>
@@ -154,81 +164,100 @@
 					<li><b>ELSE</b> return <code>False</code>.</li>
 				</ol>
 			</section>
-		</section>
+			<section id="join-array-to-comma-list">
+				<h3>Join array to comma list</h3>
+				<p>This function serves to concatenate an array of strings, separating each element with a comma, with the last element separated by an "and".</p>
+				<p>For example if the input array has elements ["one", "two", "three"], then the output is going to be "one, two and three".</p>
+				<p>This algorithm takes the <var>string_array</var> argument: the list of string to join.</p>
+				<p>To join the array, run the following steps:</p>
+				<ol class="condition">
+					<li><b>LET</b> <var>output_string</var> be "".</li>
+					<li><b>LET</b> <var>array_length</var> be the length of given <var>string_array</var>.</li>
+					<li>
+						<span><b>IF</b> <var>array_length</var> == 1:</span>
+						<span><b>THEN</b> return <var>string_array[0]</var>.</span>
+					</li>
+					<li><b>FOR</b> <var>i</var> = 0 <b>TO</b> (<var>array_length</var> - 1):
+						<ol class="condition">
+							<li><b>CONCAT</b> <var>string_array[i]</var> <b>TO</b> <var>output_string</var>.</li>
+							<li>
+								<span><b>IF</b> <var>i</var> (<var>array_length</var> - 2):</span>
+								<span><b>THEN</b> <b>CONCAT</b> <code>", "</code> <b>TO</b> <var>output_string</var>.</span>
+							</li>
+							<li><b>ELSE</b> <b>CONCAT</b> <code id="join-array-and">" and "</code> <b>TO</b> <var>output_string</var>.</li>
+						</ol>
+					</li>
+					<li>return <var>output_string</var>.</li>
+				</ol>
+			</section>
+
+        </section>
         
 		<section id="techniques">
 			<h2>Techniques</h2>
-			
+
+			<section id="visual-adjustments">
+				<!-- https://www.w3.org/TR/pub-manifest/#manifest-processing -->
+				<h3>Visual adjustments</h3>
+				<p>This technique relates to <a href="https://www.w3.org/2021/09/UX-Guide-metadata-2.0/principles/#visual-adjustments">Visual adjustments key information</a>.</p>
+				<p>This algorithm takes the <var>package_document_as_text</var> argument: a UTF-8 string representing the Package document.</p>
+
+
+                <h4>Understanding the variables</h4>
+				<dl>
+                    <dt><var>all_textual_content_can_be_modified</var></dt>
+                    <dd>
+                        <p>If true it indicates that the <i>accessibilityFeature="displayTransformability"</i> (All textual content can be modified) is present in the OPF file, otherwise if false it means that the metadata is not present.</p>
+                        <p><i>All textual content can be modified</i> means that the digital publication does not restrict the ability of users to modify and reflow the display of any textual content to the full extent allowed by the reading system (i.e. to change the text size or typeface, line height and word spacing, colors).</p>
+                    </dd>
+					<dt><var>is_fixed_layout</var></dt>
+					<dd>
+						<p>If true it indicates that the <i>layout="pre-paginated"</i> (Fixed format) is present in the OPF file, otherwise if false it means that the metadata is not present.</p>
+						<p><i>Fixed format</i> means that digital publication is in fixed format (e.g. EPUB Fixed Layout).</p>
+					</dd>
+				</dl>
+
+                <h4>Variables setup</h4>
+				<ol class="condition">
+					<li><b>LET</b> <var>package_document</var> be the result of calling <a href="#pre-processing">pre processing</a> given <var>package_document_as_text</var>.</li>
+                    
+                    <li><b>LET</b> <var>all_textual_content_can_be_modified</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>displayTransformability</i>"]</code>.</li>
+
+                    <li><b>LET</b> <var>is_fixed_layout</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="rendition:<i>layout</i>" and text()="<i>pre-paginated</i>"]</code>.</li>
+                
+				</ol>
+				<h4>Instructions</h4>
+				<ol class="condition">
+					<li>
+						<span><b>IF</b> <var>all_textual_content_can_be_modified</var>:</span>
+						<span><b>THEN</b> display "<code id="visual-adjustments-1">Appearance can be modified"</code>.</span>
+					</li>
+					<li>
+						<span><b>ELSE IF</b> <var>is_fixed_layout</var>:</span>
+						<span><b>THEN</b> display <code id="visual-adjustments-2">"Appearance cannot be modified"</code>.</span>
+					</li>
+					<li><b>ELSE</b> display <code id="visual-adjustments-3">"Appearance modifiability not known"</code>.</li>
+				</ol>
+			</section>
+	            
 			<section id="supports-nonvisual-reading">
 				<h3>Supports nonvisual reading</h3>
 				<p>This technique relates to <a href="https://www.w3.org/2021/09/UX-Guide-metadata-2.0/principles/#supports-nonvisual-reading">Supports nonvisual reading key information</a>.</p>
 			
 			</section>
 			
+			
+			<section id="conformance-group">
+				<h3>Conformance</h3>
+				<p>This technique relates to <a href="https://www.w3.org/2021/09/UX-Guide-metadata-2.0/principles/#conformance-group">Conformance key information</a>.</p>
+
+			</section>
+			
+		
 			<section id="pre-recorded-audio">
 				<h3>Pre-recorded audio</h3>
 				<p>This technique relates to <a href="https://www.w3.org/2021/09/UX-Guide-metadata-2.0/principles/#pre-recorded-audio">Pre-recorded audio key information</a>.</p>
 
-			</section>
-			
-			<section id="visual-adjustments">
-				<!-- https://www.w3.org/TR/pub-manifest/#manifest-processing -->
-				<h3>Visual adjustments</h3>
-				<p>This technique relates to <a href="https://www.w3.org/2021/09/UX-Guide-metadata-2.0/principles/#visual-adjustments">Visual adjustments key information</a>.</p>
-				<p>This algorithm takes the <var>package_document_as_text</var> argument: a UTF-8 string representing the Package document.</p>
-				<h4>Variables setup</h4>
-				<ol class="condition">
-					<li><b>LET</b> <var>package_document</var> be the result of calling <a href="#pre-processing">pre processing</a> given <var>package_document_as_text</var>.</li>
-                    
-                    <li><b>LET</b> <var>all_textual_content_can_be_modified</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>displayTransformability</i>"]</code>.</li>
-					
-                    <li><b>LET</b> <var>real_text</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessModeSufficient</i>" and text()="<i>textual</i>"]</code> <b>OR</b> the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessMode</i>" and text()="<i>textual</i>"]</code>.</li>
-                    
-					<li><b>LET</b> <var>text_within_images</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessMode</i>" and text()="<i>textOnVisual</i>"]</code> <b>OR</b> the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessMode</i>" and text()="<i>mathOnVisual</i>"]</code>.</li>
-					
-                    <li><b>LET</b> <var>images_of_text</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessModeSufficient</i>" and text()="<i>visual</i>"]</code> <b>OR</b> the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessMode</i>" and text()="<i>visual</i>"]</code>.</li>
-				</ol>
-				<h4>Instructions</h4>
-				<ol class="condition">
-					<li>
-						<span><b>IF</b> <var>all_textual_content_can_be_modified</var>:</span>
-						<span><b>THEN</b> display "<code id="visual-adjustments-1">Appearance can be modified</code>".</span>
-					</li>
-					<li>
-						<span><b>ELSE IF</b> <var>real_text</var> <b>AND</b> <b>NOT</b> <var>all_textual_content_can_be_modified</var>:</span>
-						<span><b>THEN</b> display "<code id="visual-adjustments-2">Appearance cannot be modified</code>".</span>
-					</li>
-					<li>
-						<span><b>ELSE IF</b> <var>text_within_images</var> <b>OR</b> <var>images_of_text</var>:</span>
-						<span><b>THEN</b> display "<code id="visual-adjustments-3">Appearance cannot be modified for all textual content</code>".</span>
-					</li>
-					<li><b>ELSE</b> display "<code id="visual-adjustments-4">Appearance modifiability not known</code>".</li>
-				</ol>
-				<details>
-					<summary>Understanding Visual adjustments technique</summary>
-					<dl>
-						<dt><var>all_textual_content_can_be_modified</var></dt>
-						<dd>
-							<p>If true it indicates that the <i>accessibilityFeature="displayTransformability"</i> (All textual content can be modified) is present in the OPF file, otherwise if false it means that the metadata is not present.</p>
-							<p><i>All textual content can be modified</i> means that the digital publication does not restrict the ability of users to modify and reflow the display of any textual content to the full extent allowed by the reading system (i.e. to change the text size or typeface, line height and word spacing, colors).</p>
-						</dd>
-						<dt><var>real_text</var></dt>
-						<dd>
-							<p>If true it indicates that the <i>accessModeSufficient="textual"</i> <b>OR</b> <i>accessMode="textual"</i> (Text) is present in the OPF file, otherwise if false it means that the metadata is not present.</p>
-							<p><i>Text</i> means that digital publication contains "real" text (user-selectable) as its main content (or as secondary content).</p>
-						</dd>
-						<dt><var>text_within_images</var></dt>
-						<dd>
-                            <p>If true it indicates that the <i>accessMode="textOnVisual"</i> <b>OR</b> <i>accessMode="mathOnVisual"</i> (Text within images) is present in the OPF file, otherwise if false it means that the metadata is not present.</p>
-							<p><i>Text within images</i> means that digital publication contains text within images (i.e. text in diagrams, charts or balloons on which the user will not be able to change the display settings) as its main content (or as secondary content).</p>
-						</dd>
-						<dt><var>images_of_text</var></dt>
-						<dd>
-							<p>If true it indicates that the <i>accessModeSufficient = "visual"</i> <b>OR</b> <i>accessMode="visual"</i> (Images of text) is present in the OPF file, otherwise if false it means that the metadata is not present.</p>
-							<p><i>Images of text</i> means that digital publication contains images of text (i.e. pictures of text on which the user will not be able to change the display settings) as its main content (or as secondary content).</p>
-						</dd>
-					</dl>
-				</details>
 			</section>
 			
 			<section id="navigation">
@@ -246,15 +275,118 @@
 			<section id="hazards">
 				<h3>Hazards</h3>
 				<p>This technique relates to <a href="https://www.w3.org/2021/09/UX-Guide-metadata-2.0/principles/#hazards">Hazards key information</a>.</p>
+				<p>This algorithm takes the <var>package_document_as_text</var> argument: a UTF-8 string representing the Package document.</p>
 
+
+                <h4>Understanding the variables</h4>
+				<dl>
+					<dt><var>no_hazards_or_warnings_confirmed</var></dt>
+					<dd>
+                        <p>If true it indicates that the <i>accessibilityHazard="none"</i> (no accessibility hazards) is present in the OPF file, otherwise if false it means that the metadata is not present.</p>                        
+						<p>This means there is a positive indication in the accessiblity metadata within the EPUB confirming there are no associated hazard warnings with this product.</p>
+					</dd>
+					<dt><var>flashing_hazard</var></dt>
+					<dd>
+                        <p>If true it indicates that the <i>accessibilityHazard="flashing"</i> (WARNING - Flashing hazards) is present in the OPF file, otherwise if false it means that the metadata is not present.</p>                         
+						<p>This means that there is a positive indication in the accessiblity metadata within the EPUB confirming that the product has a flashing hazard which must be displayed.</p>
+					</dd>
+					<dt><var>no_flashing_hazards</var></dt>
+					<dd>
+                        <p>If true it indicates that the <i>accessibilityHazard="noFlashingHazard"</i> (No flashing hazard warning necessary) is present in the OPF file, otherwise if false it means that the metadata is not present.</p> 
+						<p>This means there is a positive indication in the accessiblity metadata within the EPUB confirming there are no flashing hazards associated with this product.</p>
+					</dd>
+					<dt><var>motion_simulation_hazard</var></dt>
+					<dd>
+                        <p>If true it indicates that the <i>accessibilityHazard="motionSimulation"</i> (WARNING - Motion simulation hazard) is present in the OPF file, otherwise if false it means that the metadata is not present.</p> 						
+						<p>This means that there is a positive indication in the accessiblity metadata within the EPUB confirming that the product has a motion simulation hazard which must be displayed.</p>
+					</dd>
+					<dt><var>no_motion_hazards</var></dt>
+					<dd>
+                        <p>If true it indicates that the <i>accessibilityHazard="noMotionSimulationHazard"</i> (No motion simulation hazard warning necessary) is present in the OPF file, otherwise if false it means that the metadata is not present.</p> 		<p>This means there is a positive indication in the accessiblity metadata within the EPUB confirming there are no motion simulation hazards associated with this product.</p>
+					</dd>
+					<dt><var>sound_hazard</var></dt>
+					<dd>
+                        <p>If true it indicates that the <i>accessibilityHazard="Sound"</i> (WARNING - Sound hazard) is present in the OPF file, otherwise if false it means that the metadata is not present.</p> 						
+ 						<p>This means that there is a positive indication in the accessiblity metadata within the EPUB confirming that the product has a sound hazard which must be displayed.</p>
+					</dd>
+					<dt><var>no_sound_hazards</var></dt>
+					<dd>
+                        <p>If true it indicates that the <i>accessibilityHazard="noSoundHazard"</i> (No sound hazard warning necessary) is present in the OPF file, otherwise if false it means that the metadata is not present.</p> 						
+						<p>This means there is a positive indication in the accessiblity metadata within the EPUB confirming there are no sound hazards associated with this product.</p>
+					</dd>
+					<dt><var>unknown_hazards</var></dt>
+					<dd>
+                        <p>If true it indicates that the <i>accessibilityHazard="unknown"</i> (unknown hazards) is present in the OPF file, otherwise if false it means that the metadata is not present.</p> 						
+						<p>This means it is unknown if there are any accessibility hazards associated with this product.</p>
+					</dd>
+                    
+				</dl>
+                
+				<h4>Variables setup</h4>
+				<ol class="condition">
+					<li><b>LET</b> <var>package_document</var> be the result of calling <a href="#pre-processing">pre processing</a> given <var>package_document_as_text</var>.</li>
+                    
+                    <li><b>LET</b> <var>no_hazards_or_warnings_confirmed</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityHazard</i>" and text()="<i>none</i>"]</code>.</li>
+
+                    <li><b>LET</b> <var>flashing_hazard</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityHazard</i>" and text()="<i>flashing</i>"]</code>.</li>
+
+
+                    <li><b>LET</b> <var>no_flashing_hazards</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityHazard</i>" and text()="<i>noFlashingHazard</i>"]</code>.</li>
+
+
+                    <li><b>LET</b> <var>motion_simulation_hazard</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityHazard</i>" and text()="<i>motionSimulation</i>"]</code>.</li>
+
+
+                    <li><b>LET</b> <var>no_motion_hazards</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityHazard</i>" and text()="<i>noMotionSimulation</i>"]</code>.</li>
+
+
+                    <li><b>LET</b> <var>sound_hazard</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityHazard</i>" and text()="<i>sound</i>"]</code>.</li>
+
+
+
+                    <li><b>LET</b> <var>no_sound_hazards</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityHazard</i>" and text()="<i>noSoundHazard</i>"]</code>.</li>
+
+
+                    <li><b>LET</b> <var>unknown_hazards</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityHazard</i>" and text()="<i>unknown</i>"]</code>.</li>
+                    
+				</ol>
+				<h4>Instructions</h4>
+				<ol class="condition">
+					<li>
+						<span><b>IF</b> <var>no_hazards_or_warnings_confirmed</var> <b>OR</b> (<var>no_flashing_hazards</var> <b>AND</b> <var>no_motion_hazards</var> <b>AND</b> <var>no_sound_hazards</var>):</span>
+						<span><b>THEN</b> display <code id="hazards-none">"No hazards"</code>.</span>
+					</li>
+					<li>
+						<span><b>ELSE IF</b> <var>flashing_hazard</var> <b>OR</b> <var>motion_simulation_hazard</var> <b>OR</b> <var>sound_hazard</var>:</span>
+						<span><b>THEN</b> <b>LET</b> <var>hazards</var> be  an empty array.</span>
+						<ol class="condition">
+							<li>
+								<span><b>IF</b> <var>flashing_hazard</var>:</span>
+								<span><b>THEN</b> <b>APPEND</b> <code id="hazards-flashing">"flashing"</code> to <var>hazards</var>.</span>
+							</li>
+							<li>
+								<span><b>IF</b> <var>motion_simulation_hazard</var>:</span>
+								<span><b>THEN</b> <b>APPEND</b> <code id="hazards-motion">"motion"</code> to <var>hazards</var>.</span>
+							</li>
+							<li>
+								<span><b>IF</b> <var>sound_hazard</var>:</span>
+								<span><b>THEN</b> <b>APPEND</b> <code id="hazards-sound">"sound"</code> to <var>hazards</var>.</span>
+							</li>
+							<li><b>LET</b> <var>hazards_string</var> be the result of calling <a href="#join-array-to-comma-list">join array to comma list</a> given <var>hazards</var>.</li>
+							<li><b>CONCAT</b> <code id="hazards-plural">"hazards"</code> <b>TO</b> <var>hazards_string</var>.</li>
+							<li><b>MAKE</b> uppercase the first character of <var>hazards_string</var>.</li>
+							<li>display <var>hazards_string</var>.</li>
+						</ol>
+					</li>
+                    <li>
+						<span><b>ELSE IF</b> <var>unknown_hazards</var></span>
+						<span><b>THEN</b> display <code id="hazards-unknown">"Unknown hazards"</code>.</span>
+                    </li>
+					<li><b>ELSE</b> display <code>""</code>.</li>
+				</ol>
 			</section>
 			
-			<section id="conformance-group">
-				<h3>Conformance</h3>
-				<p>This technique relates to <a href="https://www.w3.org/2021/09/UX-Guide-metadata-2.0/principles/#conformance-group">Conformance key information</a>.</p>
-
-			</section>
-			
+            
 			<section id="accessibility-summary">
 				<h3>Accessibility summary</h3>
 				<p>This technique relates to <a href="https://www.w3.org/2021/09/UX-Guide-metadata-2.0/principles/#accessibility-summary">Accessibility summary key information</a>.</p>
