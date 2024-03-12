@@ -190,7 +190,65 @@
 			<section id="supports-nonvisual-reading">
 				<h3>Supports nonvisual reading</h3>
 				<p>This technique relates to <a href="https://www.w3.org/2021/09/UX-Guide-metadata-2.0/principles/#supports-nonvisual-reading">Supports nonvisual reading key information</a>.</p>
-			
+				<p>This algorithm takes the <var>onix_record_as_text</var> argument: a UTF-8 string representing the ONIX record.</p>
+				<h4>Understanding the variables</h4>
+				<dl>
+					<dt><var>all_necessary_content_textual</var></dt>
+					<dd>
+						<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/196/52">code 52 of codelist 196</a> (All non-decorative content supports reading without sight) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+						<p><i>All non-decorative content supports reading without sight</i> means that all contents of the digital publication necessary to use and understanding, including text, images (via their alternative descriptions), audio and video material (via their transcripts, descriptions, captions or subtitles) are fully accessible via suitable reading devices, for example text-to-speech screen readers or tactile reading devices (‘Braille displays’), and nothing in the digital publication prevents or blocks the use of alternative reading modes. The entire publication can be navigated and ‘read’ using only text rendered via sound or touch, and does not require visual perception.</p>
+					</dd>
+					<dt><var>real_text</var></dt>
+					<dd>
+						<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/81/10">code 10 of codelist 81</a> (Text) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+						<p><i>Text</i> means that digital publication contains "real" text (user-selectable) as its main content (or as secondary content).</p>
+					</dd>
+					<dt><var>non_textual_content_still</var></dt>
+					<dd>
+						<p>If true it indicates that at least one of the following is present in the ONIX record:</p>
+						<ul>
+							<li><a href="https://ns.editeur.org/onix/en/81/07">code 07 of codelist 81</a> (Still images / graphics);</li>
+							<li><a href="https://ns.editeur.org/onix/en/81/18">code 18 of codelist 81</a> (Photographs);</li>
+							<li><a href="https://ns.editeur.org/onix/en/81/19">code 19 of codelist 81</a> (Figures, diagrams, charts, graphs);</li>
+							<li><a href="https://ns.editeur.org/onix/en/81/07">code 12 of codelist 81</a> (Maps and/or other cartographic content);</li>
+							<li><a href="https://ns.editeur.org/onix/en/81/49">code 49 of codelist 81</a> (Images of text);</li>
+							<li><a href="https://ns.editeur.org/onix/en/81/49">code 20 of codelist 81</a> (Additional images / graphics not part of main work);</li>
+							<li>otherwise if false it means that this metadata is not present.</li>
+						</ul>
+						<p>This means that the content contains images of any type.</p>
+					</dd>
+					<dt><var>textual_alternative_still</var></dt>
+					<dd>
+						<p>If true it indicates that at least one of the following is present in the ONIX record:</p>
+						<ul>
+							<li><a href="https://ns.editeur.org/onix/en/196/14">code 14 of codelist 81</a> (Short alternative textual descriptions);</li>
+							<li><a href="https://ns.editeur.org/onix/en/196/15">code 15 of codelist 81</a> (Full alternative textual descriptions);</li>
+							<li><a href="https://ns.editeur.org/onix/en/196/16">code 16 of codelist 81</a> (Visualised data also available as non-graphical data);</li>
+							<li>otherwise if false it means that this metadata is not present.</li>
+						</ul>
+						<p>This means that there are textual alternatives for images.</p>
+					</dd>
+				</dl>
+				<h4>Variables setup</h4>
+				<ol class="condition">
+					<li><b>LET</b> <var>onix</var> be the result of calling <a href="#pre-processing">pre processing</a> given <var>onix_record_as_text</var>.</li>
+					<li><b>LET</b> <var>all_necessary_content_textual</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "52"]</code>.</li>
+					<li><b>LET</b> <var>real_text</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/PrimaryContentType[text() = "10"]</code> <b>OR</b> the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductContentType[text() = "10"]</code>.</li>
+					<li><b>LET</b> <var>non_textual_content_still</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/PrimaryContentType[text() = "07" or text() = "18" or text() = "19" or text() = "12" or text() = "49" or text() = "20"]</code> <b>OR</b> the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductContentType[text() = "07" or text() = "18" or text() = "19" or text() = "12" or text() = "49" or text() = "20"]</code>.</li>
+					<li><b>LET</b> <var>textual_alternative_still</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and (ProductFormFeatureValue = "14" or ProductFormFeatureValue = "15" or ProductFormFeatureValue = "16")]</code>.</li>
+				</ol>
+				<h4>Instructions</h4>
+				<ol class="condition">
+					<li>
+						<span><b>IF</b> <var>all_necessary_content_textual</var>:</span>
+						<span><b>THEN</b> display <code id="nonvisual-reading-readable">"Readable in read aloud and braille"</code>.</span>
+					</li>
+					<li>
+						<span><b>ELSE IF</b> <var>real_text</var> <b>AND</b> <var>non_textual_content_still</var> <b>AND</b> <b>NOT</b> <var>textual_alternative_still</var>:</span>
+						<span><b>THEN</b> display <code id="nonvisual-reading-not-fully">"Not fully readable in read aloud and braille"</code>.</span>
+					</li>
+					<li><b>ELSE</b> display <code id="nonvisual-reading-may-not-fully">"May not be fully readable in read aloud and braille"</code>.</li>
+				</ol>
 			</section>
 			
 			<section id="visual-adjustments">
