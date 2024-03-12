@@ -226,7 +226,7 @@
 					more likely to be correctly structured and benefit from strong semantics. </li>
 				<li> The name of the publishing house can highlight the efforts it has made in terms of accessibility. </li>
 				<li> The main language of the content enables readers to be confident that they will be able to read
-					with their Assistive Technology that uses synthesised voice or the corresponding Braille table for
+					with their Assistive Technology that uses synthesized voice or the corresponding Braille table for
 					the language. </li>
 			</ul>
 
@@ -248,122 +248,6 @@
 					implementer can decide the preferred order for showing the accessibility information that
 					follows.</p>
 			</div>
-
-			<section id="supports-nonvisual-reading">
-				<h3>Supports nonvisual reading</h3>
-
-				<div class="note">
-					<p>This key information should always be displayed, even if there is no metadata (with the relevant
-						wording). </p>
-				</div>
-
-				<p>Indicates whether all content required for comprehension can be consumed in text and therefore is
-					fully available to assistive technologies and reading systems using text-to-speech or electronic
-					braille functionality.</p>
-				<div class="note">
-					<p>The term "electronic braille" and "refreshable braille" are used interchangeably, which denotes a
-						device with pop-up pins to present the braille on a tactile screen.</p>
-				</div>
-				<p>This field answers whether nonvisual reading is possible, not possible, or unknown.</p>
-
-				<p>Digital publications with essential content included in non-textual form (such as graphs, tables or
-					equations presented as images, videos, etc.) must include textual alternatives to ensure that users
-					reading with other senses than sight (mainly auditory and tactile) have access to the same
-					information as visual readers. These textual alternatives can include extended descriptions,
-					transcripts, captions, etc. depending on the nature of the nonvisual content.</p>
-
-				<section id="nv-examples">
-					<h4>Examples</h4>
-
-					<p>The examples are provided as lists of possible descriptive and compact explanations for
-						flexibility of adoption.</p>
-
-					<aside class="example" title="Descriptive explanations">
-						<ul>
-							<li>All content is available in generated read aloud speech and electronic braille.</li>
-							<li>Portions of the content may not be available in generated read aloud speech and
-								electronic braille.</li>
-							<li>Not all of the content will be available in generated read aloud speech and electronic
-								braille.</li>
-						</ul>
-					</aside>
-
-					<aside class="example" title="Compact explanations">
-						<ul>
-							<li>Readable in read aloud and braille.</li>
-							<li>May not be fully readable in read aloud and braille.</li>
-							<li>Not fully readable in read aloud and braille.</li>
-						</ul>
-					</aside>
-				</section>
-
-				<section id="nv-techniques">
-					<h4>Metadata techniques</h4>
-
-					<ul>
-						<li><a href="../techniques/epub-metadata/index.html#screen-reader-friendly">EPUB Accessibility:
-								Supports nonvisual reading</a></li>
-						<li><a href="../techniques/onix-metadata/index.html#screen-reader-friendly">ONIX: Supports
-								nonvisual reading</a></li>
-					</ul>
-				</section>
-			</section>
-
-			<section id="pre-recorded-audio">
-				<h3>Pre-recorded audio</h3>
-
-				<div class="note">
-					<p>This key information can be hidden if metadata is missing.</p>
-				</div>
-
-				<p>Indicates the presence of pre-recorded audio and specifies if this audio is standalone (an
-					audiobook), accompanies text (embedded audio and video clips), or represents an alternative to the
-					text (synchronized text-audio playback).</p>
-
-				<p>Audiobooks created for mainstream use provide important access for many users with disabilities even
-					though they are not accessible to all. As they grow in popularity, audiobooks may provide more
-					accessibility options in the future.</p>
-
-				<p>Some publications provide audio (including in video) in addition to text. In this case, it is
-					important that the user is informed that they may not be able to access all content in the book. </p>
-
-				<p>Some publications provide pre-recorded audio with text synchronization. Users with hearing
-					impairments still can access the full content of these books.</p>
-
-				<section id="pra-examples">
-					<h4>Examples</h4>
-
-					<p>The examples are provided as lists of possible descriptive and compact explanations for
-						flexibility of adoption.</p>
-
-					<aside class="example" title="Descriptive explanations">
-						<ul>
-							<li>Audiobook with no text alternative.</li>
-							<li>Contents available as complementary audio and text.</li>
-							<li>All the content is available as pre-recorded audio synchronized with text.</li>
-						</ul>
-					</aside>
-
-					<aside class="example" title="Compact explanations">
-						<ul>
-							<li>Audio only.</li>
-							<li>Complementary audio and text.</li>
-							<li>Synchronized audio and text.</li>
-						</ul>
-					</aside>
-				</section>
-
-				<section id="pra-techniques">
-					<h4>Metadata techniques</h4>
-
-					<ul>
-						<li><a href="../techniques/epub-metadata/index.html#full-audio">EPUB Accessibility: Full
-								audio</a></li>
-						<li><a href="../techniques/onix-metadata/index.html#full-audio">ONIX: Full audio</a></li>
-					</ul>
-				</section>
-			</section>
-
 			<section id="visual-adjustments">
 				<h3>Visual adjustments</h3>
 
@@ -426,74 +310,31 @@
 				</section>
 			</section>
 
-			<section id="navigation">
-				<h3>Navigation</h3>
+
+			<section id="supports-nonvisual-reading">
+				<h3>Supports nonvisual reading</h3>
 
 				<div class="note">
-					<p>This key information can be hidden if metadata is missing.</p>
+					<p>This key information should always be displayed, even if there is no metadata (with the relevant
+						wording). </p>
 				</div>
 
-				<p>Identifies the navigation features included in the publication.</p>
-
-				<p>Offering different ways to navigate digital publications (table of contents, index, etc.) is
-					important to allow the user to easily access each part of the content. These features are both
-					essential for accessibility and very important for all users reading publications. Therefore,
-					clearly communicating to the user what navigation features are available in the publication is
-					important to enable proper selection.</p>
-
-				<p>Note that the Web Content Accessibility Guidelines (WCAG) 2.1 standard requires that <q>more than one
-						way is available to locate a Web page within a set of Web pages</q> (<cite><a
-							href="https://www.w3.org/TR/WCAG21/#multiple-ways">Success Criterion 2.4.5 Multiple
-						Ways</a></cite>).</p>
-
-				<section id="nav-examples">
-					<h4>Examples</h4>
-
-					<p>The examples are provided as descriptive and compact explanations for flexibility of
-						adoption.</p>
-
-					<aside class="example" title="Descriptive explanations">
-						<ul>
-							<li>Contains a table of contents that provides direct access to all chapters of the text via
-								links.</li>
-							<li>Index provides links to item references. </li>
-							<li>Landmarks provide quick access to main parts of the book.</li>
-							<li>A page list enables users to coordinate their reading with a statically paginated
-								version.</li>
-						</ul>
-					</aside>
-
-					<aside class="example" title="Compact explanation">
-						<p>Navigation by table of contents, index, landmarks, and page list.</p>
-					</aside>
-				</section>
-
-				<section id="nav-techniques">
-					<h4>Metadata techniques</h4>
-
-					<ul>
-						<li><a href="../techniques/epub-metadata/index.html">EPUB Accessibility: Navigation</a></li>
-						<li><a href="../techniques/onix-metadata/index.html">ONIX: Navigation</a></li>
-					</ul>
-				</section>
-			</section>
-			<section id="charts-diagrams-and-formulas">
-				<h3>Charts, diagrams, and formulas</h3>
-
+				<p>Indicates whether all content required for comprehension can be consumed in text and therefore is
+					fully available to assistive technologies and reading systems using text-to-speech or electronic
+					braille functionality.</p>
 				<div class="note">
-					<p>This key information can be hidden if metadata is missing.</p>
+					<p>The term "electronic braille" and "refreshable braille" are used interchangeably, which denotes a
+						device with pop-up pins to present the braille on a tactile screen.</p>
 				</div>
+				<p>This field answers whether nonvisual reading is possible, not possible, or unknown.</p>
 
-				<p>Indicates the presence of formulas (including math, chemistry, etc.), graphs, charts, and diagrams
-					within the title and whether these are in an accessible format or available in an alternative form
-					(e.g., whether formulas are navigable with assistive technologies, or whether extended descriptions
-					are available for complex images).</p>
+				<p>Digital publications with essential content included in non-textual form (such as graphs, tables or
+					equations presented as images, videos, etc.) must include textual alternatives to ensure that users
+					reading with other senses than sight (mainly auditory and tactile) have access to the same
+					information as visual readers. These textual alternatives can include extended descriptions,
+					transcripts, captions, etc. depending on the nature of the nonvisual content.</p>
 
-				<p>This group should be displayed only if the metadata indicates the presence of formulas or charts and
-					graphs within the title, otherwise it can be hidden.</p>
-
-
-				<section id="cdf-examples">
+				<section id="nv-examples">
 					<h4>Examples</h4>
 
 					<p>The examples are provided as lists of possible descriptive and compact explanations for
@@ -501,83 +342,35 @@
 
 					<aside class="example" title="Descriptive explanations">
 						<ul>
-							<li>Contains accessible formulas. Charts and diagrams are present and described by extended
-								descriptions.</li>
-							<li>Contains formulas, charts, and diagrams without any information about the accessibility
-								of this content.</li>
+							<li>All content is available in generated read aloud speech and electronic braille.</li>
+							<li>Portions of the content may not be available in generated read aloud speech and
+								electronic braille.</li>
+							<li>Not all of the content will be available in generated read aloud speech and electronic
+								braille.</li>
 						</ul>
 					</aside>
 
 					<aside class="example" title="Compact explanations">
 						<ul>
-							<li>Accessible formulas. Charts and diagrams have extended descriptions.</li>
-							<li>Accessibility of formulas, charts, and diagrams unknown.</li>
+							<li>Readable in read aloud and braille.</li>
+							<li>May not be fully readable in read aloud and braille.</li>
+							<li>Not fully readable in read aloud and braille.</li>
 						</ul>
 					</aside>
 				</section>
 
-				<section id="cdf-techniques">
+				<section id="nv-techniques">
 					<h4>Metadata techniques</h4>
 
 					<ul>
-						<li><a href="../techniques/epub-metadata/index.html">EPUB Accessibility: Graphics and
-								Formulas</a></li>
-						<li><a href="../techniques/onix-metadata/index.html">ONIX: Graphics and Formulas</a></li>
+						<li><a href="../techniques/epub-metadata/index.html#screen-reader-friendly">EPUB Accessibility:
+								Supports nonvisual reading</a></li>
+						<li><a href="../techniques/onix-metadata/index.html#screen-reader-friendly">ONIX: Supports
+								nonvisual reading</a></li>
 					</ul>
 				</section>
 			</section>
-
-			<section id="hazards">
-				<h3>Hazards</h3>
-
-				<div class="note">
-					<p>This key information can be hidden if metadata is missing.</p>
-				</div>
-
-				<p>Identifies any potential hazards (e.g., flashing elements, background sounds, and motion simulation)
-					that could afflict physiologically sensitive users.</p>
-
-				<p>Unlike other accessibility properties, the presence of hazards can be expressed either positively or
-					negatively. This is because users search for content that is safe for them as well as want to know
-					when content is potentially dangerous to them.</p>
-
-				<p>This group should always be displayed. Indicate that no metadata is provided if that is the case.</p>
-
-				<section id="hazards-examples">
-					<h4>Examples</h4>
-
-					<p>The examples are provided as lists of possible descriptive and compact explanations for
-						flexibility of adoption.</p>
-
-					<aside class="example" title="Descriptive explanations">
-						<ul>
-							<li>The publication contains rapidly changing lights or visual stimuli, as well as simulated
-								movements, which can cause discomfort, distraction, photosensitive seizures, or motion
-								sickness.</li>
-							<li>No information about possible hazards.</li>
-						</ul>
-					</aside>
-
-					<aside class="example" title="Compact explanations">
-						<ul>
-							<li>Flashing and motion simulation hazards.</li>
-							<li>No hazards.</li>
-						</ul>
-					</aside>
-				</section>
-
-				<section id="hazards-techniques">
-					<h4>Metadata techniques</h4>
-
-					<ul>
-						<li><a href="../techniques/epub-metadata/index.html#hazards">EPUB Accessibility:
-							Hazards</a></li>
-						<li><a href="../techniques/onix-metadata/index.html#hazards">ONIX: Hazards</a></li>
-					</ul>
-				</section>
-			</section>
-
-			<section id="conformance-group">
+<section id="conformance-group">
 				<h3>Conformance</h3>
 
 				<div class="note">
@@ -746,6 +539,213 @@
 						<li><a href="../techniques/epub-metadata/index.html">EPUB Accessibility: Certification</a></li>
 						<li><a href="../techniques/onix-metadata/index.html">ONIX: Conformance</a></li>
 						<li><a href="../techniques/onix-metadata/index.html">ONIX: Certification</a></li>
+					</ul>
+				</section>
+			</section>
+
+			
+			<section id="pre-recorded-audio">
+				<h3>Pre-recorded audio</h3>
+
+				<div class="note">
+					<p>This key information can be hidden if metadata is missing.</p>
+				</div>
+
+				<p>Indicates the presence of pre-recorded audio and specifies if this audio is standalone (an
+					audiobook), accompanies text (embedded audio and video clips), or represents an alternative to the
+					text (synchronized text-audio playback).</p>
+
+				<p>Audiobooks created for mainstream use provide important access for many users with disabilities even
+					though they are not accessible to all. As they grow in popularity, audiobooks may provide more
+					accessibility options in the future.</p>
+
+				<p>Some publications provide audio (including in video) in addition to text. In this case, it is
+					important that the user is informed that they may not be able to access all content in the book. </p>
+
+				<p>Some publications provide pre-recorded audio with text synchronization. Users with hearing
+					impairments still can access the full content of these books.</p>
+
+				<section id="pra-examples">
+					<h4>Examples</h4>
+
+					<p>The examples are provided as lists of possible descriptive and compact explanations for
+						flexibility of adoption.</p>
+
+					<aside class="example" title="Descriptive explanations">
+						<ul>
+							<li>Audiobook with no text alternative.</li>
+							<li>Contents available as complementary audio and text.</li>
+							<li>All the content is available as pre-recorded audio synchronized with text.</li>
+						</ul>
+					</aside>
+
+					<aside class="example" title="Compact explanations">
+						<ul>
+							<li>Audio only.</li>
+							<li>Complementary audio and text.</li>
+							<li>Synchronized audio and text.</li>
+						</ul>
+					</aside>
+				</section>
+
+				<section id="pra-techniques">
+					<h4>Metadata techniques</h4>
+
+					<ul>
+						<li><a href="../techniques/epub-metadata/index.html#full-audio">EPUB Accessibility: Full
+								audio</a></li>
+						<li><a href="../techniques/onix-metadata/index.html#full-audio">ONIX: Full audio</a></li>
+					</ul>
+				</section>
+			</section>
+
+			<section id="navigation">
+				<h3>Navigation</h3>
+
+				<div class="note">
+					<p>This key information can be hidden if metadata is missing.</p>
+				</div>
+
+				<p>Identifies the navigation features included in the publication.</p>
+
+				<p>Offering different ways to navigate digital publications (table of contents, index, etc.) is
+					important to allow the user to easily access each part of the content. These features are both
+					essential for accessibility and very important for all users reading publications. Therefore,
+					clearly communicating to the user what navigation features are available in the publication is
+					important to enable proper selection.</p>
+
+				<p>Note that the Web Content Accessibility Guidelines (WCAG) 2.1 standard requires that <q>more than one
+						way is available to locate a Web page within a set of Web pages</q> (<cite><a
+							href="https://www.w3.org/TR/WCAG21/#multiple-ways">Success Criterion 2.4.5 Multiple
+						Ways</a></cite>).</p>
+
+				<section id="nav-examples">
+					<h4>Examples</h4>
+
+					<p>The examples are provided as descriptive and compact explanations for flexibility of
+						adoption.</p>
+
+					<aside class="example" title="Descriptive explanations">
+						<ul>
+							<li>Contains a table of contents that provides direct access to all chapters of the text via
+								links.</li>
+							<li>Index provides links to item references. </li>
+							<li>Landmarks provide quick access to main parts of the book.</li>
+							<li>A page list enables users to coordinate their reading with a statically paginated
+								version.</li>
+						</ul>
+					</aside>
+
+					<aside class="example" title="Compact explanation">
+						<p>Navigation by table of contents, index, landmarks, and page list.</p>
+					</aside>
+				</section>
+
+				<section id="nav-techniques">
+					<h4>Metadata techniques</h4>
+
+					<ul>
+						<li><a href="../techniques/epub-metadata/index.html">EPUB Accessibility: Navigation</a></li>
+						<li><a href="../techniques/onix-metadata/index.html">ONIX: Navigation</a></li>
+					</ul>
+				</section>
+			</section>
+			<section id="charts-diagrams-and-formulas">
+				<h3>Charts, diagrams, and formulas</h3>
+
+				<div class="note">
+					<p>This key information can be hidden if metadata is missing.</p>
+				</div>
+
+				<p>Indicates the presence of formulas (including math, chemistry, etc.), graphs, charts, and diagrams
+					within the title and whether these are in an accessible format or available in an alternative form
+					(e.g., whether formulas are navigable with assistive technologies, or whether extended descriptions
+					are available for complex images).</p>
+
+				<p>This group should be displayed only if the metadata indicates the presence of formulas or charts and
+					graphs within the title, otherwise it can be hidden.</p>
+
+
+				<section id="cdf-examples">
+					<h4>Examples</h4>
+
+					<p>The examples are provided as lists of possible descriptive and compact explanations for
+						flexibility of adoption.</p>
+
+					<aside class="example" title="Descriptive explanations">
+						<ul>
+							<li>Contains accessible formulas. Charts and diagrams are present and described by extended
+								descriptions.</li>
+							<li>Contains formulas, charts, and diagrams without any information about the accessibility
+								of this content.</li>
+						</ul>
+					</aside>
+
+					<aside class="example" title="Compact explanations">
+						<ul>
+							<li>Accessible formulas. Charts and diagrams have extended descriptions.</li>
+							<li>Accessibility of formulas, charts, and diagrams unknown.</li>
+						</ul>
+					</aside>
+				</section>
+
+				<section id="cdf-techniques">
+					<h4>Metadata techniques</h4>
+
+					<ul>
+						<li><a href="../techniques/epub-metadata/index.html">EPUB Accessibility: Graphics and
+								Formulas</a></li>
+						<li><a href="../techniques/onix-metadata/index.html">ONIX: Graphics and Formulas</a></li>
+					</ul>
+				</section>
+			</section>
+
+			<section id="hazards">
+				<h3>Hazards</h3>
+
+				<div class="note">
+					<p>This key information can be hidden if metadata is missing.</p>
+				</div>
+
+				<p>Identifies any potential hazards (e.g., flashing elements, background sounds, and motion simulation)
+					that could afflict physiologically sensitive users.</p>
+
+				<p>Unlike other accessibility properties, the presence of hazards can be expressed either positively or
+					negatively. This is because users search for content that is safe for them as well as want to know
+					when content is potentially dangerous to them.</p>
+
+				<p>This group should always be displayed. Indicate that no metadata is provided if that is the case.</p>
+
+				<section id="hazards-examples">
+					<h4>Examples</h4>
+
+					<p>The examples are provided as lists of possible descriptive and compact explanations for
+						flexibility of adoption.</p>
+
+					<aside class="example" title="Descriptive explanations">
+						<ul>
+							<li>The publication contains rapidly changing lights or visual stimuli, as well as simulated
+								movements, which can cause discomfort, distraction, photosensitive seizures, or motion
+								sickness.</li>
+							<li>No information about possible hazards.</li>
+						</ul>
+					</aside>
+
+					<aside class="example" title="Compact explanations">
+						<ul>
+							<li>Flashing and motion simulation hazards.</li>
+							<li>No hazards.</li>
+						</ul>
+					</aside>
+				</section>
+
+				<section id="hazards-techniques">
+					<h4>Metadata techniques</h4>
+
+					<ul>
+						<li><a href="../techniques/epub-metadata/index.html#hazards">EPUB Accessibility:
+							Hazards</a></li>
+						<li><a href="../techniques/onix-metadata/index.html#hazards">ONIX: Hazards</a></li>
 					</ul>
 				</section>
 			</section>
