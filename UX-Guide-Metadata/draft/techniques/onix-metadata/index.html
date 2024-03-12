@@ -279,6 +279,11 @@
 						<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/143/16">code 16 of codelist 143</a> (No sound hazard warning necessary) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
 						<p>This means there is a positive indication in the ONIX record confirming there are no sound hazards associated with this product.</p>
 					</dd>
+					<dt><var>unknown_if_contains_hazards</var></dt>
+					<dd>
+						<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/196/08">code 08 of codelist 196</a> (Unknown accessibility) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+						<p>This means that the product has not been assessed for hazards and there is no information about potential hazards.</p>
+					</dd>
 				</dl>
 				<h4>Variables setup</h4>
 				<ol class="condition">
@@ -290,6 +295,7 @@
 					<li><b>LET</b> <var>no_motion_hazards</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "12" and ProductFormFeatureValue = "18"]</code>.</li>
 					<li><b>LET</b> <var>sound_hazard</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "12" and ProductFormFeatureValue = "15"]</code>.</li>
 					<li><b>LET</b> <var>no_sound_hazards</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "12" and ProductFormFeatureValue = "16"]</code>.</li>
+					<li><b>LET</b> <var>unknown_if_contains_hazards</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "08"]</code>.</li>
 				</ol>
 				<h4>Instructions</h4>
 				<ol class="condition">
@@ -324,7 +330,14 @@
 							<li>display <var>hazards_string</var>.</li>
 						</ol>
 					</li>
-					<li><b>ELSE</b> display <code>""</code>.</li>
+					<li>
+						<span><b>ELSE IF</b> <var>unknown_if_contains_hazards</var>:</span>
+						<span><b>THEN</b> display <code id="hazards-unknown">"The presence of hazards is unknown"</code>.</span>
+					</li>
+					<li>
+						<b>ELSE</b> display <code id="hazards-no-metadata">"No information about possible hazards"</code>.
+						<p class="note">This key information can be hidden if metadata is missing.</p>
+					</li>
 				</ol>
 			</section>
 			
