@@ -164,32 +164,6 @@
 					<li><b>ELSE</b> return <code>False</code>.</li>
 				</ol>
 			</section>
-			<section id="join-array-to-comma-list">
-				<h3>Join array to comma list</h3>
-				<p>This function serves to concatenate an array of strings, separating each element with a comma, with the last element separated by an "and".</p>
-				<p>For example if the input array has elements ["one", "two", "three"], then the output is going to be "one, two and three".</p>
-				<p>This algorithm takes the <var>string_array</var> argument: the list of string to join.</p>
-				<p>To join the array, run the following steps:</p>
-				<ol class="condition">
-					<li><b>LET</b> <var>output_string</var> be "".</li>
-					<li><b>LET</b> <var>array_length</var> be the length of given <var>string_array</var>.</li>
-					<li>
-						<span><b>IF</b> <var>array_length</var> == 1:</span>
-						<span><b>THEN</b> return <var>string_array[0]</var>.</span>
-					</li>
-					<li><b>FOR</b> <var>i</var> = 0 <b>TO</b> (<var>array_length</var> - 1):
-						<ol class="condition">
-							<li><b>CONCAT</b> <var>string_array[i]</var> <b>TO</b> <var>output_string</var>.</li>
-							<li>
-								<span><b>IF</b> <var>i</var> (<var>array_length</var> - 2):</span>
-								<span><b>THEN</b> <b>CONCAT</b> <code>", "</code> <b>TO</b> <var>output_string</var>.</span>
-							</li>
-							<li><b>ELSE</b> <b>CONCAT</b> <code id="join-array-and">" and "</code> <b>TO</b> <var>output_string</var>.</li>
-						</ol>
-					</li>
-					<li>return <var>output_string</var>.</li>
-				</ol>
-			</section>
 
         </section>
         
@@ -314,10 +288,10 @@
                         <p>If true it indicates that the <i>accessibilityHazard="noSoundHazard"</i> (No sound hazard warning necessary) is present in the OPF file, otherwise if false it means that the metadata is not present.</p> 						
 						<p>This means there is a positive indication in the accessiblity metadata within the EPUB confirming there are no sound hazards associated with this product.</p>
 					</dd>
-					<dt><var>unknown_hazards</var></dt>
+					<dt><var>unknown_if_contains_hazards</var></dt>
 					<dd>
                         <p>If true it indicates that the <i>accessibilityHazard="unknown"</i> (unknown hazards) is present in the OPF file, otherwise if false it means that the metadata is not present.</p> 						
-						<p>This means it is unknown if there are any accessibility hazards associated with this product.</p>
+						<p>This means that the product has not been assessed for hazards and there is no information about potential hazards.</p>
 					</dd>
                     
 				</dl>
@@ -347,7 +321,7 @@
                     <li><b>LET</b> <var>no_sound_hazards</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityHazard</i>" and text()="<i>noSoundHazard</i>"]</code>.</li>
 
 
-                    <li><b>LET</b> <var>unknown_hazards</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityHazard</i>" and text()="<i>unknown</i>"]</code>.</li>
+                    <li><b>LET</b> <var>unknown_if_contains_hazards</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityHazard</i>" and text()="<i>unknown</i>"]</code>.</li>
                     
 				</ol>
 				<h4>Instructions</h4>
@@ -372,17 +346,25 @@
 								<span><b>IF</b> <var>sound_hazard</var>:</span>
 								<span><b>THEN</b> <b>APPEND</b> <code id="hazards-sound">"sound"</code> to <var>hazards</var>.</span>
 							</li>
-							<li><b>LET</b> <var>hazards_string</var> be the result of calling <a href="#join-array-to-comma-list">join array to comma list</a> given <var>hazards</var>.</li>
-							<li><b>CONCAT</b> <code id="hazards-plural">"hazards"</code> <b>TO</b> <var>hazards_string</var>.</li>
-							<li><b>MAKE</b> uppercase the first character of <var>hazards_string</var>.</li>
+							<li><b>LET</b> <var>hazards_string</var> be the result of:
+								<ul class="condition">
+									<li>calling join on <var>hazards</var> with the separator <code>", "</code></li>
+									<li>making uppercase the first character</li>
+									<li>replacing the last occurence of <code>", "</code> with <code id="join-array-and">" and "</code></li>
+									<li>concatenating <code id="hazards-plural">" hazards"</code> to the end of the string <b>IF</b> (length of <var>hazards</var>) > 1 <b>ELSE</b> concatenating <code id="hazards-singular">" hazard"</code> to the end of the string.</li>
+								</ul>
+							</li>
 							<li>display <var>hazards_string</var>.</li>
 						</ol>
 					</li>
                     <li>
-						<span><b>ELSE IF</b> <var>unknown_hazards</var></span>
-						<span><b>THEN</b> display <code id="hazards-unknown">"Unknown hazards"</code>.</span>
+						<span><b>ELSE IF</b> <var>unknown_if_contains_hazards</var></span>
+						<span><b>THEN</b> display <code id="hazards-unknown">"The presence of hazards is unknown"</code>.</span>
                     </li>
-					<li><b>ELSE</b> display <code>""</code>.</li>
+					<li>
+						<b>ELSE</b> display <code id="hazards-no-metadata">"No information about possible hazards"</code>.
+						<p class="note">This key information can be hidden if metadata is missing.</p>
+                    </li>
 				</ol>
 			</section>
 			
