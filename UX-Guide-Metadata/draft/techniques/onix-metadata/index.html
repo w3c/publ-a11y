@@ -297,7 +297,58 @@
 			<section id="pre-recorded-audio">
 				<h3>Pre-recorded audio</h3>
 				<p>This technique relates to <a href="https://www.w3.org/2021/09/UX-Guide-metadata-2.0/principles/#pre-recorded-audio">Pre-recorded audio key information</a>.</p>
-
+				<p>This algorithm takes the <var>onix_record_as_text</var> argument: a UTF-8 string representing the ONIX record.</p>
+				
+				<h4>Understanding the variables</h4>
+				<dl>
+					<dt><var>audiobook</var></dt>
+					<dd>
+						<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/81/01">code 01 of codelist 81</a> (Audiobook) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+						<p>This means that the primary content is an Audio recording of a reading of a book or other text.</p>
+					</dd>
+					<dt><var>all_content_audio</var></dt>
+					<dd>
+						<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/196/39">code 39 of codelist 196</a> (Supplementary material to an audiobook is accessible) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+						<p>This means that all supplementary visual or textual material necessary for understanding of an audiobook, is available as pre-recorded audio, or has full alternative text that can be read via text-to- speech. Only for use in ONIX 3.0 or later.</p>
+					</dd>
+					<dt><var>all_content_pre_recorded</var></dt>
+					<dd>
+						<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/196/51">code 51 of codelist 196</a> (All non-decorative content supports reading via pre-recorded audio) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+						<p>This means that all contents of the digital publication necessary to use and understanding, including any text, images (via alternative descriptions), video (via audio description) is fully accessible via suitable audio reproduction. The entire publication can be navigated and ‘read’ using only pre-recorded sound, and does not require visual or tactile perception.</p>
+					</dd>
+					<dt><var>synchronised_pre_recorded_audio</var></dt>
+					<dd>
+						<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/196/20">code 20 of codelist 196</a> (Synchronised pre-recorded audio) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+						<p>This that text-synchronised pre-recorded audio narration (natural or synthesised voice) is included for substantially all textual matter, including all alternative descriptions, e.g. via a SMIL media overlay.</p>
+					</dd>
+				</dl>
+				<h4>Variables setup</h4>
+				<ol class="condition">
+					<li><b>LET</b> <var>onix</var> be the result of calling <a href="#pre-processing">pre processing</a> given <var>onix_record_as_text</var>.</li>
+					<li><b>LET</b> <var>audiobook</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/DescriptiveDetail[PrimaryContentType = "81" or ContentType = "81"] </code>.</li>
+					<li><b>LET</b> <var>all_content_audio</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "39"]</code>.</li>
+					<li><b>LET</b> <var>all_content_pre_recorded</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "51"]</code>.</li>
+					<li><b>LET</b> <var>synchronised_pre_recorded_audio</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "20"]</code>.</li>
+				</ol>
+				<h4>Instructions</h4>
+				<ol class="condition">
+					<li>
+						<span><b>IF</b> <var>all_content_audio</var> <b>AND</b> <b>NOT</b> <var>synchronised_pre_recorded_audio</var>:</span>
+						<span><b>THEN</b> display <code id="pre-recorded-audio-only">"Audio only"</code>.</span>
+					</li>
+					<li>
+						<span><b>ELSE IF</b> <var>audiobook</var> <b>AND</b> <b>NOT</b> <var>all_content_pre_recorded</var>:</span>
+						<span><b>THEN</b> display <code id="pre-recorded-audio-complementary">"Complementary audio and text"</code>.</span>
+					</li>
+					<li>
+						<span><b>ELSE IF</b> <var>all_content_pre_recorded</var> <b>AND</b> <var>synchronised_pre_recorded_audio</var>:</span>
+						<span><b>THEN</b> display <code id="pre-recorded-audio-synchronized">"Synchronized audio and text"</code>.</span>
+					</li>
+					<li>
+						<b>ELSE</b> display <code id="pre-recorded-audio-no-metadata">"No information about pre-recorded audio"</code>.
+						<p class="note">This key information can be hidden if metadata is missing.</p>
+					</li>
+				</ol>
 			</section>
 			
 			<section id="navigation">
