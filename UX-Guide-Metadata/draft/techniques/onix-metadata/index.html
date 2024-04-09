@@ -326,6 +326,15 @@
 						<p>Otherwise, if false, it means that none of the metadata is not present.</p>
 						<p>This indicates that text-synchronised pre-recorded audio narration (natural or synthesised voice) is included for substantially all textual matter, including all alternative descriptions, e.g. via a SMIL media overlay.</p>
 					</dd>
+					<dt><var>non_textual_content_audio</var></dt>
+					<dd>
+					<p>If true it indicates that one of the following codes is present in the ONIX record: </p>
+						<ul>
+							<li>code 21 of codelist 81 (Partial performance – spoken word);</li>
+							<li>code 22 of codelist 81 (Additional audio content not part of main content);</li>
+							<p>Otherwise, if false, it means that none of the metadata is not present.</p>
+							<p>This indicates that pre-recorded audio content is included as part of the work. It can be Audio recording of a reading, performance or dramatization of part of the work	or additional pre-recorded audio of any supplementary material such as full or partial reading, lecture, performance, dramatization, interview, background documentary or other audio content not included in the primary or ‘unenhanced’ version</p>
+					</dd>
 				</dl>
 				<h4>Variables setup</h4>
 				<ol class="condition">
@@ -336,6 +345,8 @@
 					<li><b>LET</b> <var>synchronised_pre_recorded_audio</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "20"]</code> 
 					AND calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormDetail[text() = "A305"]</code>.
 					</li>
+					<li><b>LET</b> <var>non_textual_content_audio</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/DescriptiveDetail[ContentType = "21" or ContentType = "22"] </code>. 
+					</li>
 				</ol>
 				<h4>Instructions</h4>
 				<ol class="condition">
@@ -345,6 +356,10 @@
 					</li>
 					<li>
 						<span><b>ELSE IF</b> <var>audiobook</var> <b>AND</b> <b>NOT</b> <var>all_content_pre_recorded</var>:</span>
+						<span><b>THEN</b> display <code id="pre-recorded-audio-complementary">"Complementary audio and text"</code>.</span>
+					</li>
+					<li>
+						<span><b>ELSE IF</b> <var>>non_textual_content_audio</var> <b>AND</b> <b>NOT</b> <var>synchronised_pre_recorded_audio</var>:</span>
 						<span><b>THEN</b> display <code id="pre-recorded-audio-complementary">"Complementary audio and text"</code>.</span>
 					</li>
 					<li>
