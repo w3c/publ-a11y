@@ -335,6 +335,19 @@
 							<p>Otherwise, if false, it means that none of the metadata is not present.</p>
 							<p>This indicates that pre-recorded audio content is included as part of the work. It can be Audio recording of a reading, performance or dramatization of part of the work	or additional pre-recorded audio of any supplementary material such as full or partial reading, lecture, performance, dramatization, interview, background documentary or other audio content not included in the primary or ‘unenhanced’ version</p>
 					</dd>
+					<dt><var>non_textual_content_audio_in_video</var></dt>					
+					<dd>
+						<p>If true it indicates that one of the following codes is present in the ONIX record: </p>
+							<ul>
+								<li>code 06 of codelist 81 (Video);</li>
+								<li>code 24 of codelist 81 (Animated / interactive illustrations);</li>
+								<li>code 25 of codelist 81 (Partial performance – video);</li>
+								<li>code 26 of codelist 81 (Video recording of a reading);</li>
+								<li>code 27 of codelist 81 (Performance – visual);</li>
+								<li>code 30 of codelist 81 (Additional video content not part of main work);</li>
+							</ul>
+							<p>Otherwise, if false, it means that none of the metadata is not present.</p>
+							<p>This indicates that pre-recorded video including audio content is included as part of the work. It can be video recording of a reading, performance of part of the work or additional pre-recorded video of any supplementary material such as full or partial reading, lecture, performance, dramatization, interview, background documentary or other video containing audio content.</p>
 				</dl>
 				<h4>Variables setup</h4>
 				<ol class="condition">
@@ -347,6 +360,8 @@
 					</li>
 					<li><b>LET</b> <var>non_textual_content_audio</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/DescriptiveDetail[ContentType = "21" or ContentType = "22"] </code>. 
 					</li>
+					<li><b>LET</b> <var>non_textual_content_audio_in_video</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/DescriptiveDetail[ContentType = "06" or ContentType = "24" or ContentType = "25" or ContentType = "26" or ContentType = "27" or ContentType = "30"] </code>. 
+					</li>
 				</ol>
 				<h4>Instructions</h4>
 				<ol class="condition">
@@ -355,13 +370,9 @@
 						<span><b>THEN</b> display <code id="pre-recorded-audio-only">"Audio only"</code>.</span>
 					</li>
 					<li>
-						<span><b>ELSE IF</b> <var>audiobook</var> <b>AND</b> <b>NOT</b> <var>all_content_pre_recorded</var>:</span>
+						<span><b>ELSE IF</b> <var>audiobook</var> OR <var>non_textual_content_audio</var> OR <var>non_textual_content_audio_in_video</var> <b>AND</b> <b>NOT</b> <var>all_content_pre_recorded</var>:</span>
 						<span><b>THEN</b> display <code id="pre-recorded-audio-complementary">"Complementary audio and text"</code>.</span>
-					</li>
-					<li>
-						<span><b>ELSE IF</b> <var>>non_textual_content_audio</var> <b>AND</b> <b>NOT</b> <var>synchronised_pre_recorded_audio</var>:</span>
-						<span><b>THEN</b> display <code id="pre-recorded-audio-complementary">"Complementary audio and text"</code>.</span>
-					</li>
+					</li>		
 					<li>
 						<span><b>ELSE IF</b> <var>all_content_pre_recorded</var> <b>AND</b> <var>synchronised_pre_recorded_audio</var>:</span>
 						<span><b>THEN</b> display <code id="pre-recorded-audio-synchronized">"Synchronized audio and text"</code>.</span>
