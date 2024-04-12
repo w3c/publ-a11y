@@ -259,19 +259,13 @@
 
 					<li><b>LET</b> <var>all_necessary_content_textual</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessModeSufficient</i>" and text()="<i>textual</i>"]</code>.</li>
 					<li>
-						<b>LET</b> <var>non_textual_content_images</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[ <br/>
-                                                                    @property="schema:<i>accessMode</i>" and text()="<i>chartOnVisual</i>" or<br/>
-				                                                    @property="schema:<i>accessMode</i>" and text()="<i>chemOnVisual"</i>" or<br/>
-				                                                    @property="schema:<i>accessMode</i>" and text()="<i>diagramOnVisual</i>" or<br/>
-                                                                    @property="schema:<i>accessMode</i>" and text()="<i>mathOnVisual</i>" or<br/>
-                                                                    @property="schema:<i>accessMode</i>" and text()="<i>musicOnVisual</i>" or<br/>
-                                                                    @property="schema:<i>accessMode</i>" and text()="<i>textOnVisual</i>"]</code>.
+						<b>LET</b> <var>non_textual_content_images</var> be the result of calling <a href="#check-for-node">check for node</a> on 
+                        <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="<i>schema:accessibilityFeature</i>" and <br/>(text()="<i>chartOnVisual</i>" or text()="<i>chemOnVisual</i>" or <br/>
+                         text()="<i>diagramOnVisual"</i> or text()="<i>mathOnVisual</i>" or <br/>
+                         text()="<i>musicOnVisual"</i> or text()="<i>textOnVisual</i>")]</code>.
 					</li>
                     
-                    <li><b>LET</b> <var>textual_alternative_images</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[<br/>
-                                                    @property="schema:<i>accessibilityFeature</i>" and text()="<i>alternativeText</i>" or<br/>
-				                                    @property="schema:<i>accessibilityFeature</i>" and text()="<i>longDescription</i>" or<br/>
-                                                    @property="schema:<i>accessibilityFeature</i>" and text()="<i>describedMath</i>"]</code>.
+                    <li><b>LET</b> <var>textual_alternative_images</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="<i>schema:accessibilityFeature</i>" and <br/>(text()="<i>longDescription</i>" or text()="<i>alternativeText</i>" or text()="<i>describedMath"</i>)]</code>.
                     
 					</li>
 				</ol>
