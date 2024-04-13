@@ -58,9 +58,10 @@
 			margin-left: 0.2em;
 			padding: 0.1em;
 		}
-		code[id]::after {
-			content: "[ID: " attr(id) "]";
- 		/*html::before { content: "<html>"; }*/
+              code[id]::after {
+                  content: "[ID: " attr(id) "]";
+                  /*html::before { content: "<html>"; } */
+              }
 	  </style>
 	</head>
 	<body>
@@ -77,7 +78,7 @@
             </aside>
             
  			<aside class="note">
- 			    This document provides techniques for meeting the guidelines of the <a href="https://www.w3.org/2021/09/UX-Guide-metadata-2.0/principles/">User Experience Guide for Displaying Accessibility Metadata</a>. It provides practical examples for extracting information from the ONIX metadata for showing it to the end users.
+ 			    This document provides techniques for meeting the guidelines of the <a href="https://www.w3.org/2021/09/UX-Guide-metadata-2.0/principles/">User Experience Guide for Displaying Accessibility Metadata</a>. It provides practical examples for extracting information from the EPUB's OPF metadata for showing it to the end users.
 			 </aside>
                     
             <section id="epub-a11y-metadata-examples">
@@ -218,7 +219,70 @@
 			<section id="supports-nonvisual-reading">
 				<h3>Supports nonvisual reading</h3>
 				<p>This technique relates to <a href="https://www.w3.org/2021/09/UX-Guide-metadata-2.0/principles/#supports-nonvisual-reading">Supports nonvisual reading key information</a>.</p>
-			
+				<p>This algorithm takes the <var>package_document_as_text</var> argument: a UTF-8 string representing the Package document.</p>
+				<h4>Understanding the variables</h4>
+				<dl>
+					<dt><var>all_necessary_content_textual</var></dt>
+					<dd>
+						<p>If true it indicates that the <i>accessModeSufficient="textual"</i> (all main content is provided in textual form) is present in the OPF file, otherwise if false it means that the metadata is not present.</p>
+						<p><i>All non-decorative content supports reading without sight</i> means that all contents of the digital publication necessary to use and understanding, including text, images (via their alternative descriptions), audio and video material (via their transcripts, descriptions, captions or subtitles) are fully accessible via suitable reading devices, for example text-to-speech screen readers or tactile reading devices (‘Braille displays’), and nothing in the digital publication prevents or blocks the use of alternative reading modes. The entire publication can be navigated and ‘read’ using only text rendered via sound or touch, and does not require visual perception.</p>
+					</dd>
+					<dt><var>non_textual_content_images</var></dt>
+					<dd>
+						<p>If true it indicates that at least one of the following is present in the OPF file:</p>
+						<ul>
+							<li><i>accessMode="chartOnVisual"</i> (Charts and Graphs);</li>
+							<li><i>accessMode="chemOnVisual"</i> (Chemistry);</li>
+							<li><i>accessMode="diagramOnVisual"</i> (Diagrams);</li>
+							<li><i>accessMode="mathOnVisual"</i> (Math);</li>
+							<li><i>accessMode="musicOnVisual"</i> (Music);</li>
+							<li><i>accessMode="textOnVisual"</i> (Images of text);</li>
+							<li>otherwise if false it means that this metadata is not present.</li>
+						</ul>
+						<p>This means that the content contains images of any type.</p>
+					</dd>
+					<dt><var>textual_alternative_images</var></dt>
+					<dd>
+						<p>If true it indicates that at least one of the following is present in the OPF file:</p>
+						<ul>
+							<li><i>accessibilityFeature="alternativeText"</i> (Short alternative textual descriptions);</li>
+							<li><i>accessibilityFeature="longDescription"</i> (Full alternative textual descriptions);</li>
+							<li><i>accessibilityFeature="describedMath"</i> (Visual of math fully described));</li>
+							<li>otherwise if false it means that this metadata is not present.</li>
+						</ul>
+						<p>This means that there are textual alternatives for images.</p>
+					</dd>
+				</dl>
+				<h4>Variables setup</h4>
+				<ol class="condition">
+					<li><b>LET</b> <var>package_document</var> be the result of calling <a href="#pre-processing">pre processing</a> given <var>package_document_as_text</var>.</li>
+
+					<li><b>LET</b> <var>all_necessary_content_textual</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessModeSufficient</i>" and text()="<i>textual</i>"]</code>.</li>
+					<li>
+						<b>LET</b> <var>non_textual_content_images</var> be the result of calling <a href="#check-for-node">check for node</a> on 
+                        <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="<i>schema:accessibilityFeature</i>" and <br/>(text()="<i>chartOnVisual</i>" or text()="<i>chemOnVisual</i>" or <br/>
+                         text()="<i>diagramOnVisual"</i> or text()="<i>mathOnVisual</i>" or <br/>
+                         text()="<i>musicOnVisual"</i> or text()="<i>textOnVisual</i>")]</code>.
+					</li>
+                    
+                    <li><b>LET</b> <var>textual_alternative_images</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="<i>schema:accessibilityFeature</i>" and <br/>(text()="<i>longDescription</i>" or text()="<i>alternativeText</i>" or text()="<i>describedMath"</i>)]</code>.
+                    
+					</li>
+				</ol>
+				<h4>Instructions</h4>
+				<ol class="condition">
+					<li>
+						<span><b>IF</b> <var>all_necessary_content_textual</var>:</span>
+						<span><b>THEN</b> display <code id="nonvisual-reading-readable">"Readable in read aloud and braille"</code>.</span>
+					</li>
+					<li>
+						<span><b>ELSE IF</b> <var>non_textual_content_images</var> <b>AND</b> <b>NOT</b> <var>textual_alternative_images</var>:</span>
+						<span><b>THEN</b> display <code id="nonvisual-reading-not-fully">"Not fully readable in read aloud and braille"</code>.</span>
+					</li>
+					<li><b>ELSE</b> display <code id="nonvisual-reading-may-not-fully">"May not be fully readable in read aloud and braille"</code>.</li>
+				</ol>
+
+
 			</section>
 			
 			
@@ -234,13 +298,7 @@
 				<p>This technique relates to <a href="https://www.w3.org/2021/09/UX-Guide-metadata-2.0/principles/#pre-recorded-audio">Pre-recorded audio key information</a>.</p>
 
 			</section>
-	            
-			<section id="supports-nonvisual-reading">
-				<h3>Supports nonvisual reading</h3>
-				<p>This technique relates to <a href="https://www.w3.org/2021/09/UX-Guide-metadata-2.0/principles/#supports-nonvisual-reading">Supports nonvisual reading key information</a>.</p>
-			
-			</section>
-			
+	            			
 			
 			<section id="conformance-group">
 				<h3>Conformance</h3>
