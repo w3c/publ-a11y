@@ -95,7 +95,7 @@
 				It is important to use ONIX metadata as a complement to the accessibility data embedded within the publication itself, if describing accessible books, books with full audio and related products for the global book supply chain.
 				An ONIX file can be used to display accessibility information in advance of publication or when you do not have access to the metadata in the digital file itself.
 				Some accessibility information may only be available when you have access to the file itself.
-				If you are unfamiliar with ONIX, then there is more documentation available from <a href="https://www.editeur.org/83/Overview/">EDItEUR.org</a>.
+				If you are unfamiliar with ONIX, <b>THEN</b> there is more documentation available from <a href="https://www.editeur.org/83/Overview/">EDItEUR.org</a>.
 			</p>
 			
 			<p class="note">
@@ -580,9 +580,49 @@
 			</section>
 			
 			<section id="accessibility-summary">
-				<h3>Accessibility summary</h3>
+				<h3>Accessibility summary or addendum</h3>
 				<p>This technique relates to <a href="https://www.w3.org/2021/09/UX-Guide-metadata-2.0/principles/#accessibility-summary">Accessibility summary key information</a>.</p>
 
+				<p>This algorithm takes the <var>onix_record_as_text</var> argument: a UTF-8 string representing the ONIX record.</p>
+
+				<p class="note">
+					Being human-written, the accessibility summary and addendum will appear in the original language of the publication. Therefore it is necessary to take care of setting up the correct language tag information.
+				</p>
+
+				<p class="note">Accessibility summary existed when no system exposed the computed accessibility metadata. With more and more systems displaying this information, most of the accessibility summary may be redundant. It may be advised to display only the accessibility addendum. </p>
+
+				<h4>Understanding the variables</h4>
+				<dl>
+					<dt><var>accessibility_summary</var></dt>
+					<dd>
+						<p>Returns the value of <a href="https://ns.editeur.org/onix/en/196/00">code 00 of codelist 1196</a>  (Accessibility summary) if present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+						<p>This means there is a human-written text containing a short explanatory summary of the accessibility of the product or the URL of a web page comprising such a summary. Summarizes the already existent information and may add information that the publisher could not express with the other codes.</p>
+					</dd>
+					<dt><var>accessibility_addendum</var></dt>
+					<dd>
+						<p>Returns the value of <a href="https://ns.editeur.org/onix/en/196/92">code 92 of codelist 196</a> (Accessibility addendum) if present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+						<p>This means there is a human-written text containing a short addendum to the accessibility detail of the product. Contains precisions that the publisher could not express with the other's codes.</p>
+					</dd>
+					<dt><var>language_of_text</var></dt>
+					<dd>
+						<p>Returns the value of nearest  <a href="https://ns.editeur.org/onix/en/22/01">code 01 of codelist 22</a> Language of text)  if present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+						<p>This indicates the main language of the content and therefore the most probable language of accessibility summary and addendum.</p>
+					</dd>
+				</dl>
+				<h4>Variables setup</h4>
+				<ol class="condition">
+					{{/*  <li><b>LET</b> <var>onix</var> be the result of calling <a href="#pre-processing">pre processing</a> given <var>onix_record_as_text</var>.</li>  */}}
+				</ol>
+				<h4>Instructions</h4>
+				<ol class="condition">
+					<li><span><b>IF</b> <var>accessibility_addendum</var><b>AND</b> <var>accessibility_summary</var>
+						<b>THEN</b> display the content of <var>accessibility_addendum</var> in a Span with language_of_text as an argument</li>
+					<li><span><b>ELSE IF</b> <var>accessibility_addendum</var><b>AND NOT</b> <var>accessibility_summary</var>
+						<b>THEN</b> display the content of <var>accessibility_addendum</var> in a Span with language_of_text as an argument</li>
+					<li><span><b>ELSE IF</b> <var>accessibility_summary</var><b>AND NOT</b> <var>accessibility_addendum</var>
+						<b>THEN</b> display the content of <var>accessibility_summary</var> in a Span with language_of_text as an argument</li>
+					<li><span><b>ELSE</b> display nothing.</li>
+				</ol>
 			</section>
 			
 			<section id="additional-accessibility-information">
