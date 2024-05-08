@@ -388,7 +388,75 @@
 			<section id="navigation">
 				<h3>Navigation</h3>
 				<p>This technique relates to <a href="https://www.w3.org/2021/09/UX-Guide-metadata-2.0/principles/#navigation">Navigation key information</a>.</p>
-
+				<p>This algorithm takes the <var>onix_record_as_text</var> argument: a UTF-8 string representing the ONIX record.</p>
+				<h4>Understanding the variables</h4>
+				<dl>
+					<dt><var>table_of_contents_navigation</var></dt>
+					<dd>
+						<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/196/11">code 11 of codelist 196</a> (Table of contents navigation) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+						<p>This means that there is a Table of Contents in the publication that allows direct (eg hyperlinked) access to all levels of text organization above individual paragraphs (eg to all sections and subsections) and to all tables, figures, illustrations etc.</p>
+					</dd>
+					<dt><var>index_navigation</var></dt>
+					<dd>
+						<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/196/12">code 12 of codelist 196</a> (Index navigation) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+						<p>This means that there is an index that provides direct (eg hyperlinked) access to uses of the index terms in the document body.</p>
+					</dd>
+					<dt><var>print_equivalent_page_numbering</var></dt>
+					<dd>
+						<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/196/19">code 19 of codelist 196</a> (Print-equivalent page numbering) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+						<p>This means that in the publication contains references to the page numbering of an equivalent printed product.</p>
+					</dd>
+					<dt><var>next_previous_structural_navigation</var></dt>
+					<dd>
+						<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/196/29">code 29 of codelist 196</a> (Next / Previous structural navigation) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+						<p>This means that all levels of heading and other structural elements of the content are correctly marked up and (if applicable) numbered, to enable fast next heading / previous heading, next chapter / previous chapter navigation without returning to the table of contents.</p>
+					</dd>
+				</dl>
+				<h4>Variables setup</h4>
+				<ol class="condition">
+					<li><b>LET</b> <var>onix</var> be the result of calling <a href="#pre-processing">pre processing</a> given <var>onix_record_as_text</var>.</li>
+					<li><b>LET</b> <var>table_of_contents_navigation</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "11"]</code>.</li>
+					<li><b>LET</b> <var>index_navigation</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "12"]</code>.</li>
+					<li><b>LET</b> <var>print_equivalent_page_numbering</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "19"]</code>.</li>
+					<li><b>LET</b> <var>next_previous_structural_navigation</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "29"]</code>.</li>
+				</ol>
+				<h4>Instructions</h4>
+				<ol class="condition">
+					<li>
+						<span><b>IF</b> <var>table_of_contents_navigation</var> <b>OR</b> <var>index_navigation</var> <b>OR</b> <var>print_equivalent_page_numbering</var> <b>OR</b> <var>next_previous_structural_navigation</var>:</span>
+						<span><b>THEN</b> <b>LET</b> <var>navigation</var> be  an empty array.</span>
+						<ol class="condition">
+							<li>
+								<span><b>IF</b> <var>table_of_contents_navigation</var>:</span>
+								<span><b>THEN</b> <b>APPEND</b> <code id="navigation-toc">"table of contents"</code> to <var>navigation</var>.</span>
+							</li>
+							<li>
+								<span><b>IF</b> <var>index_navigation</var>:</span>
+								<span><b>THEN</b> <b>APPEND</b> <code id="navigation-index">"index"</code> to <var>navigation</var>.</span>
+							</li>
+							<li>
+								<span><b>IF</b> <var>print_equivalent_page_numbering</var>:</span>
+								<span><b>THEN</b> <b>APPEND</b> <code id="navigation-page-numbers">"page list"</code> to <var>navigation</var>.</span>
+							</li>
+							<li>
+								<span><b>IF</b> <var>next_previous_structural_navigation</var>:</span>
+								<span><b>THEN</b> <b>APPEND</b> <code id="navigation-structural">"structural navigation"</code> to <var>navigation</var>.</span>
+							</li>
+							<li><b>LET</b> <var>navigation_string</var> be the result of:
+								<ul class="condition">
+									<li>calling join on <var>navigation</var> with the separator <code>", "</code></li>
+									<li>replacing the last occurence of <code>", "</code> with <code id="join-array-and">" and "</code></li>
+									<li>concatenating <code id="navigation-intro">"Navigation by "</code> to the beginning of the string.</li>
+								</ul>
+							</li>
+							<li>display <var>navigation_string</var>.</li>
+						</ol>
+					</li>
+					<li>
+						<b>ELSE</b> display <code id="navigation-no-metadata">"No information about navigation"</code>.
+						<p class="note">This key information can be hidden if metadata is missing.</p>
+					</li>
+				</ol>
 			</section>
 			
 			<section id="charts-diagrams-and-formulas">
