@@ -291,6 +291,153 @@
 			<section id="conformance-group">
 				<h3>Conformance</h3>
 				<p>This technique relates to <a href="https://www.w3.org/2021/09/UX-Guide-metadata-2.0/principles/#conformance-group">Conformance key information</a>.</p>
+				
+				<h4>Understanding the variables</h4>
+				<dl>
+				</dl>
+				
+				<h4>Variables setup</h4>
+				<ol class="condition">
+					<li><b>LET</b> <var>onix</var> be the result of calling <a href="#pre-processing">pre processing</a> given <var>onix_record_as_text</var>.</li>
+					<li><b>LET</b> <var>epub_accessibility_1_0</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "02"]</code> <b>OR</b> calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "03"]</code>.</li>
+					<li><b>LET</b> <var>epub_accessibility_1_1</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "04"]</code>.</li>
+					<li><b>LET</b> <var>wcag_2_0</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "80"]</code>.</li>
+					<li><b>LET</b> <var>wcag_2_1</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "81"]</code>.</li>
+					<li><b>LET</b> <var>wcag_2_2</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "82"]</code>.</li>
+					<li><b>LET</b> <var>level_a</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "84"]</code> <b>OR</b> calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "02"]</code>.</li>
+					<li><b>LET</b> <var>level_aa</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "85"]</code> <b>OR</b> calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "03"]</code>.</li>
+					<li><b>LET</b> <var>level_aaa</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "86"]</code>.</li>
+					<li><b>LET</b> <var>certifier</var> be the value of the node extracted from <var>onix</var>, using the xpath <code class="xpath">...</code>.</li>
+					<li><b>LET</b> <var>certifier_credentials</var> be the value of the node extracted from <var>onix</var>, using the xpath <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "93"]/ProductFormFeatureDescription</code>.</li>
+					<li><b>LET</b> <var>certification_date</var> be the value of the node extracted from <var>onix</var>, using the xpath <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "91"]/ProductFormFeatureDescription</code>.</li>
+					<li><b>LET</b> <var>certifier_report</var> be the value of the node extracted from <var>onix</var>, using the xpath <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "94"]/ProductFormFeatureDescription</code>.</li>
+					<li><b>LET</b> <var>eaa_exception_micro_enterprises</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "75"]</code>.</li>
+					<li><b>LET</b> <var>eaa_exception_disproportionate_burden</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "76"]</code>.</li>
+					<li><b>LET</b> <var>eaa_exception_fundamental_modification</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "77"]</code>.</li>
+				</ol>
+				
+				<h4>Instructions</h4>
+				<ol class="condition">
+					<li>
+						<span><b>IF</b> <var>level_aaa</var>:</span>
+						<span><b>THEN</b> display <code id="conformance-aaa">"This publication claims to meet maximum accessibility standards"</code>.</span>
+					</li>
+					<li>
+						<span><b>ELSE IF</b> <var>level_aa</var>:</span>
+						<span><b>THEN</b> display <code id="conformance-aa">"This publication claims to meet accepted accessibility standards"</code>.</span>
+					</li>
+					<li>
+						<span><b>ELSE IF</b> <var>level_a</var>:</span>
+						<span><b>THEN</b> display <code id="conformance-a">"This publication claims to meet minimum accessibility standards"</code>.</span>
+					</li>
+					<li>
+						<span><b>ELSE</b>:</span>
+						<span><b>THEN</b> display <code id="conformance-no">"Conformance to accepted standards for accessibility of this publication cannot be determined."</code>.</span>
+					</li>
+					<li>
+						<span><b>IF</b> <var>certifier</var> is <b>NOT</b> empty:</span>
+						<span><b>THEN</b></span>
+						<ul class="condition">
+							<li>display <code id="conformance-certifier">"This publication is certified by "</code></li>
+							<li>display <var>certifier</var>.</li>
+						</ul>
+					</li>
+					<li>
+						<span><b>IF</b> <var>certifier_credentials</var> is <b>NOT</b> empty:</span>
+						<span><b>THEN</b></span>
+						<ul class="condition">
+							<li>display <code id="conformance-certifier-credentials">"The certifier's credential is "</code></li>
+							<li>display <var>certifier_credentials</var>.</li>
+						</ul>
+					</li>
+					<li>
+						<span>display <code id="conformance-details">"Detailed Conformance Information"</code> as heading.</span>
+					</li>
+					<li>
+						<span><b>IF</b> <var>epub_accessibility_1_0</var> <b>OR</b> <var>epub_accessibility_1_1</var> <b>OR</b> <var>wcag_2_0</var> <b>OR</b> <var>wcag_2_1</var> <b>OR</b> <var>wcag_2_2</var> <b>OR</b> <var>level_aaa</var> <b>OR</b> <var>level_aa</var> <b>OR</b> <var>level_a</var>:</span>
+						<span><b>THEN</b> display <code id="conformance-claim">"This publication claims to meet "</code>.</span>
+					</li>
+					<li>
+						<span><b>IF</b> <var>epub_accessibility_1_0</var>:</span>
+						<span><b>THEN</b> display <code id="conformance-epub-accessibility-1-0">" EPUB Accessibility 1.0 "</code>.</span>
+					</li>
+					<li>
+						<span><b>ELSE IF</b> <var>epub_accessibility_1_1</var>:</span>
+						<span><b>THEN</b> display <code id="conformance-epub-accessibility-1-1">" EPUB Accessibility 1.1 "</code>.</span>
+					</li>
+					<li>
+						<span><b>IF</b> <var>wcag_2_0</var>:</span>
+						<span><b>THEN</b> display <code id="conformance-wcag-2-0">" WCAG 2.0 "</code>.</span>
+					</li>
+					<li>
+						<span><b>ELSE IF</b> <var>wcag_2_1</var>:</span>
+						<span><b>THEN</b> display <code id="conformance-wcag-2-1">" WCAG 2.1 "</code>.</span>
+					</li>
+					<li>
+						<span><b>ELSE IF</b> <var>wcag_2_2</var>:</span>
+						<span><b>THEN</b> display <code id="conformance-wcag-2-2">" WCAG 2.2 "</code>.</span>
+					</li>
+					<li>
+						<span><b>IF</b> <var>level_aaa</var>:</span>
+						<span><b>THEN</b> display <code id="conformance-level-aaa">" Level AAA"</code>.</span>
+					</li>
+					<li>
+						<span><b>ELSE IF</b> <var>level_aa</var>:</span>
+						<span><b>THEN</b> display <code id="conformance-level-aa">" Level AA"</code>.</span>
+					</li>
+					<li>
+						<span><b>ELSE IF</b> <var>level_a</var>:</span>
+						<span><b>THEN</b> display <code id="conformance-level-a">" Level A"</code>.</span>
+					</li>
+					<li>
+						<span><b>IF</b> <var>certification_date</var> <b>OR</b> <var>certifier</var> <b>OR</b> <var>certifier_credentials</var>:</span>
+						<span><b>THEN</b> display <code id="conformance-certification-info">"The publication was certified "</code>.</span>
+					</li>
+					<li>
+						<span><b>IF</b> <var>certification_date</var>:</span>
+						<span><b>THEN</b></span>
+						<ul class="condition">
+							<li>display <code id="conformance-ceertification-date-prefix">" on "</code></li>
+							<li>display <var>certification_date</var>.</li>
+						</ul>
+					</li>
+					<li>
+						<span><b>IF</b> <var>certifier</var>:</span>
+						<span><b>THEN</b></span>
+						<ul class="condition">
+							<li>display <code id="conformance-certifier-prefix">" by "</code></li>
+							<li>display <var>certifier</var>.</li>
+						</ul>
+					</li>
+					<li>
+						<span><b>IF</b> <var>certifier_credentials</var>:</span>
+						<span><b>THEN</b></span>
+						<ul class="condition">
+							<li>display <code id="conformance-certifier-credentials-prefix">" with a credential of "</code></li>
+							<li>display <var>certifier_credentials</var>.</li>
+						</ul>
+					</li>
+					<li>
+						<span><b>IF</b> <var>certifier_report</var>:</span>
+						<span><b>THEN</b></span>
+						<ul class="condition">
+							<li>display <code id="conformance-certifier-report">"For more information refer to the certifier's report."</code></li>
+							<li>with <var>certifier_report</var> as link.</li>
+						</ul>
+					</li>
+					<li>
+						<span><b>IF</b> <var>eaa_exception_micro_enterprises</var>:</span>
+						<span><b>THEN</b> display <code id="conformance-eaa-exception-micro-enterprises">"The creator of the publication is not required to publish in an accessible format because it is a micro-enterprise (e.g., enterprises employing fewer than 10 people and with annual turnover or balance sheet total not exceeding €2 million)."</code>.</span>
+					</li>
+					<li>
+						<span><b>IF</b> <var>eaa_exception_disproportionate_burden</var>:</span>
+						<span><b>THEN</b> display <code id="conformance-eaa-disproportionate-burden">"The creator of the publication..."</code>.</span>
+					</li>
+					<li>
+						<span><b>IF</b> <var>eaa_exception_fundamental_modification</var>:</span>
+						<span><b>THEN</b> display <code id="conformance-eaa-fundamental-modification">"The creator of the publication..."</code>.</span>
+					</li>
+				</ol>
 
 			</section>
 			
@@ -356,13 +503,9 @@
 					<li><b>LET</b> <var>audiobook</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/DescriptiveDetail[PrimaryContentType = "81" or ContentType = "81"] </code>.</li>
 					<li><b>LET</b> <var>all_content_audio</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "39"]</code>.</li>
 					<li><b>LET</b> <var>all_content_pre_recorded</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "51"]</code>.</li>
-					<li><b>LET</b> <var>synchronised_pre_recorded_audio</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "20"]</code> 
-					AND calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormDetail[text() = "A305"]</code>.
-					</li>
-					<li><b>LET</b> <var>non_textual_content_audio</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/DescriptiveDetail[ContentType = "21" or ContentType = "22"] </code>. 
-					</li>
-					<li><b>LET</b> <var>non_textual_content_audio_in_video</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/DescriptiveDetail[ContentType = "06" or ContentType = "24" or ContentType = "25" or ContentType = "26" or ContentType = "27" or ContentType = "30"] </code>. 
-					</li>
+					<li><b>LET</b> <var>synchronised_pre_recorded_audio</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "20"]</code> AND calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormDetail[text() = "A305"]</code>.</li>
+					<li><b>LET</b> <var>non_textual_content_audio</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/DescriptiveDetail[ContentType = "21" or ContentType = "22"] </code>.</li>
+					<li><b>LET</b> <var>non_textual_content_audio_in_video</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/DescriptiveDetail[ContentType = "06" or ContentType = "24" or ContentType = "25" or ContentType = "26" or ContentType = "27" or ContentType = "30"] </code>.</li>
 				</ol>
 				<h4>Instructions</h4>
 				<ol class="condition">
