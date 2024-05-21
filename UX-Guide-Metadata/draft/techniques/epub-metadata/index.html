@@ -296,23 +296,62 @@
 			<section id="pre-recorded-audio">
 				<h3>Pre-recorded audio</h3>
 				<p>This technique relates to <a href="https://www.w3.org/2021/09/UX-Guide-metadata-2.0/principles/#pre-recorded-audio">Pre-recorded audio key information</a>.</p>
+                
+                <p>This algorithm takes the <var>package_document_as_text</var> argument: a UTF-8 string representing the Package document.</p>
 
-			</section>
-	            			
-			
-			<section id="conformance-group">
-				<h3>Conformance</h3>
-				<p>This technique relates to <a href="https://www.w3.org/2021/09/UX-Guide-metadata-2.0/principles/#conformance-group">Conformance key information</a>.</p>
+				<h4>Understanding the variables</h4>
+				<dl>
+					<dt><var>audiobook</var></dt>
+				        <p>If true it indicates that the <i>accessModeSufficient="auditory"</i> (all main content is provided in audio form) is present in the OPF file, otherwise if false it means that the metadata is not present.</p>
 
-			</section>
-			
-		
-			<section id="pre-recorded-audio">
-				<h3>Pre-recorded audio</h3>
-				<p>This technique relates to <a href="https://www.w3.org/2021/09/UX-Guide-metadata-2.0/principles/#pre-recorded-audio">Pre-recorded audio key information</a>.</p>
+                    <dt><var>synchronised_pre_recorded_audio</var></dt>
+					<dd>
+                        <p>If true it indicates that the <i>accessibilityFeature="sychronizedAudioText"</i> is present in the OPF file, otherwise, if false, it means that the metadata is not present.</p>
+						<p>This indicates that text-synchronised pre-recorded audio narration (natural or synthesised voice) is included for substantially all textual matter, including all alternative descriptions, e.g. via a SMIL media overlay.</p>
+					</dd>
+                    
+  					<dt><var>audio_content</var></dt>
+					<dd>
+                        <p>If true it indicates that the <i>accessMode="auditory"</i> is present in the OPF file, otherwise, if false, it means that the metadata is not present.</p>
 
+						<p>This indicates that pre-recorded audio content is included as part of the work.</p>
+					</dd>
+                  
+                    
+                </dl>
+				<h4>Variables setup</h4>
+				<ol class="condition">
+					<li><b>LET</b> <var>package_document</var> be the result of calling <a href="#pre-processing">pre processing</a> given <var>package_document_as_text</var>.</li>
+                    
+					<li><b>LET</b> <var>audiobook</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessModeSufficient</i>" and text()="<i>auditory</i>"]</code>.</li>
+                    
+					<li><b>LET</b> <var>synchronised_pre_recorded_audio</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>sychronizedAudioText</i>"]</code>.</li>
+                    
+					<li><b>LET</b> <var>audio_content</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessMode</i>" and text()="<i>auditory</i>"]</code>.</li>
+                    
+				</ol>
+				<h4>Instructions</h4>
+				<ol class="condition">
+					<li>
+						<span><b>IF</b> <var>audiobook</var>:</span>
+						<span><b>THEN</b> display <code id="pre-recorded-audio-only">"Audio only"</code>.</span>
+					</li>
+					<li>
+						<span><b>ELSE IF</b> <var>synchronised_pre_recorded_audio</var>:</span>
+						<span><b>THEN</b> display <code id="pre-recorded-audio-synchronized">"Synchronized audio and text"</code>.</span>
+					</li>					
+					<li>
+						<span><b>ELSE IF</b> <var>audio_content</var>:</span>
+						<span><b>THEN</b> display <code id="pre-recorded-audio-complementary">"Complementary audio and text"</code>.</span>
+					</li>		
+
+					<li>
+						<b>ELSE</b> display <code id="pre-recorded-audio-no-metadata">"No information about pre-recorded audio"</code>.
+						<p class="note">This key information can be hidden if metadata is missing.</p>
+					</li>
+				</ol>
 			</section>
-			
+	            						
 			<section id="navigation">
 				<h3>Navigation</h3>
 				<p>This technique relates to <a href="https://www.w3.org/2021/09/UX-Guide-metadata-2.0/principles/#navigation">Navigation key information</a>.</p>
@@ -436,7 +475,7 @@
 						</ol>
 					</li>
                     <li>
-						<span><b>ELSE IF</b> <var>unknown_if_contains_hazards</var></span>
+						<span><b>ELSE IF</b> <var>unknown_if_contains_hazards</var>:</span>
 						<span><b>THEN</b> display <code id="hazards-unknown">"The presence of hazards is unknown"</code>.</span>
                     </li>
 					<li>
@@ -483,12 +522,6 @@
 				<ul>
 					<li>Erin Kirchner-Lucas</li>
 					<li>Luc Audrain</li>
-				</ul>
-			</section>
-			<section id="ipr">
-				<h3>Intellectual Property Rights</h3>
-				<ul>
-					<li>The report icon used in <a href="#example-7.1">Example 7.1 (URL) UI</a> is <a href="https://thenounproject.com/search/?q=report&amp;i=231003">report by Bastian König</a> from the <a href="https://thenounproject.com/">Noun Project</a></li>
 				</ul>
 			</section>
 		</section>
