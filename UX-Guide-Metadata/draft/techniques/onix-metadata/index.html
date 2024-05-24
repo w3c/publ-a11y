@@ -260,7 +260,7 @@
 						<ul>
 							<li><a href="https://ns.editeur.org/onix/en/196/14">code 14 of codelist 196</a> (Short alternative textual descriptions);</li>
 							<li><a href="https://ns.editeur.org/onix/en/196/15">code 15 of codelist 196</a> (Full alternative textual descriptions);</li>
-							<li><a href="https://ns.editeur.org/onix/en/196/16">code 16 of codelist 196</a> (Visualised data also available as non-graphical data);</li>
+							<li><a href="https://ns.editeur.org/onix/en/196/16">code 16 of codelist 196</a> (Visualized data also available as non-graphical data);</li>
 							<li>otherwise if false it means that this metadata is not present.</li>
 						</ul>
 						<p>This means that there are textual alternatives for images.</p>
@@ -341,10 +341,11 @@
 						<p>If true it indicates that one of the following codes is present in the ONIX record: </p>
 							<ul>
 								<li><a href="https://ns.editeur.org/onix/en/81/06">code 06 of codelist 81</a> (Video);</li>
-								<li><a href="https://ns.editeur.org/onix/en/81/24">code 24 of codelist 81</a> (Animated / interactive illustrations);</li>
-								<li><a href="https://ns.editeur.org/onix/en/81/25">code 25 of codelist 81</a> (Partial performance – video);</li>
+								<li><a href="https://ns.editeur.org/onix/en/81/25">code 25 of codelist 81</a> (Narrative animation);</li>
 								<li><a href="https://ns.editeur.org/onix/en/81/26">code 26 of codelist 81</a> (Video recording of a reading);</li>
 								<li><a href="https://ns.editeur.org/onix/en/81/27">code 27 of codelist 81</a> (Performance – visual);</li>
+								<li><a href="https://ns.editeur.org/onix/en/81/28">code 28 of codelist 81</a> (Other video);</li>
+								<li><a href="https://ns.editeur.org/onix/en/81/29">code 29 of codelist 81</a> (Partial performance – video);</li>
 								<li><a href="https://ns.editeur.org/onix/en/81/30">code 30 of codelist 81</a> (Additional video content not part of main work);</li>
 							</ul>
 							<p>Otherwise, if false, it means that none of the above metadata is present.</p>
@@ -361,7 +362,7 @@
 					</li>
 					<li><b>LET</b> <var>non_textual_content_audio</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/DescriptiveDetail[ContentType = "21" or ContentType = "22"] </code>. 
 					</li>
-					<li><b>LET</b> <var>non_textual_content_audio_in_video</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/DescriptiveDetail[ContentType = "06" or ContentType = "24" or ContentType = "25" or ContentType = "26" or ContentType = "27" or ContentType = "30"] </code>. 
+					<li><b>LET</b> <var>non_textual_content_audio_in_video</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/DescriptiveDetail[ContentType = "06" or ContentType = "25" or ContentType = "26" or ContentType = "27" or ContentType = "28" or ContentType = "29" or ContentType = "30"] </code>. 
 					</li>
 				</ol>
 				<h4>Instructions</h4>
@@ -472,7 +473,7 @@
 					</dd>
 					<dt><var>charts_diagrams_as_non_graphical_data</var></dt>
 					<dd>
-						<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/196/16">code 16 of codelist 196</a> (Visualised data also available as non-graphical datas) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+						<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/196/16">code 16 of codelist 196</a> (Visualized data also available as non-graphical datas) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
 						<p>This means that there is a positive indication that all data presented in a visual format (graph, chart, etc) has an alternative non-graphical presentation of the same data.</p>
 					</dd>
 					<dt><var>charts_diagrams_diagrams_as_long_text</var></dt>
@@ -489,6 +490,11 @@
 					<dd>
 						<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/196/18">code 18 of codelist 196</a> (Accessible chemistry content as ChemML) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
 						<p>This means that there is a positive indication that the chemical formulae are presented using ChemML and works with compatible assistive technology.</p>
+					</dd>
+					<dt><var>chemical_formula_as_mathml</var></dt>
+					<dd>
+						<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/196/34">code 34 of codelist 196</a> (Accessible chemistry content as MathML) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+						<p>This means that there is a positive indication that the chemical formulae are presented using MathML and works with compatible assistive technology.</p>
 					</dd>
 					<dt><var>contains_math_formula</var></dt>
 					<dd>
@@ -522,12 +528,12 @@
 				<h4>Instructions</h4>
 				<ol class="condition">
 					<li>
-						<span><b>IF</b> <var>charts_diagrams_diagrams_as_long_text</var>:</span>
+						<span><b>IF</b> <var>contains_charts_diagrams</var> <b>AND</b>  <var>charts_diagrams_diagrams_as_long_text</var>:</span>
 						<span><b>THEN</b> display <code id="charts-diagrams-formulas-extended">"Charts and diagrams have extended descriptions"</code>.</span>
 					</li>
 					<li>
-						<span><b>IF</b> <var>charts_diagrams_as_non_graphical_data</var>:</span>
-						<span><b>THEN</b> display <code id="charts-diagrams-formulas-non-graphical-data">"Visualised data also available as non-graphical data"</code>.</span>
+						<span><b>IF</b> <var>contains_charts_diagrams</var> <b>AND</b>  <var>charts_diagrams_as_non_graphical_data</var>:</span>
+						<span><b>THEN</b> display <code id="charts-diagrams-formulas-non-graphical-data">"Visualized data also available as non-graphical data"</code>.</span>
 					</li>
 					<li>
 						<span><b>IF</b> <var>chemical_formula_as_chemml</var> <b>OR</b> <var>chemical_formula_as_mathml</var>:</span>
