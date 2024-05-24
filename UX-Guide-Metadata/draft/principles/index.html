@@ -108,11 +108,11 @@
 
 	<body>
 		<section id="abstract">
-			<p>Reading a publication is a very personal experience. For most of us this is routine, and give little
+			<p>Reading a publication is a very personal experience. For most of us this is routine, and we give little
 				consideration to how we obtained the title before we read it. We may go to a bookstore, search for the
 				title to purchase online, or have the title selected for us by an instructor for a class.</p>
 
-			<p>Now consider you are blind and rely on an assistive technology. You need that technology to assist you in
+			<p>Now consider you are blind and rely on assistive technology. You need that technology to assist you in
 				the purchase process as well as to read the publication. You may wonder: will my screen reader work with
 				this title; are there image descriptions that will be spoken to describe these images; are there page
 				numbers which are accessible; is the reading order correct so I don't hear a caution after reading a
@@ -124,7 +124,7 @@
 				independent organizations.</p>
 
 			<p>This document proposes a shared framework for presenting publication accessibility metadata in a
-				user-friendly manner, so as to offer the information to end users in a way that is easy for them to
+				user-friendly manner &#8212; to offer the information to end users in a way that is easy for them to
 				understand (even for the less technical) and consistent across different publications and different
 				digital catalogs. It is useful to point out that some of the metadata is of high interest  to  everybody. For example, many people want to make visual adjustments to make the reading experience more pleasurable.</p>
 		</section>
@@ -134,7 +134,7 @@
 
 			<p>This document helps those who wish to render accessibility metadata directly to users understand how to
 				represent machine-readable accessibility metadata in a user-friendly User Interface / User Experience
-				(UI/UX). this document   targets implementers such as  book stores, retailers, distributers etc. Content creaters will benefit from reading these Principles, and are encouraged to follow <a href="https://www.w3.org/TR/epub-a11y-11/">EPUB Accessibility 1.1 Conformance and Discoverability Requirements section and its techniques.</a></p>
+				(UI/UX). This document   targets implementers such as  bookstores, retailers, distributors etc. Content creators will benefit from reading these Principles and are encouraged to follow <a href="https://www.w3.org/TR/epub-a11y-11/">EPUB Accessibility 1.1 Conformance and Discoverability Requirements section and its techniques.</a></p>
 
 			<div class="note">
 				<p>This document presents high-level principles without going into technical issues related to the
@@ -157,7 +157,7 @@
 
 			<p>This document offers guidance on how to aggregate and display metadata to end users; these are not strict
 				guidelines, but suggestions for providing a consistent experience for users through different portals.
-				Different implementers may choose to implement these guidelines a slightly different way, some examples
+				Different implementers may choose to implement these guidelines in a slightly different way, some examples
 				can be seen in the <a href="#implementations">Implementations</a> section of the document.</p>
 
             <section id="metadata-ecosystem">
@@ -206,7 +206,7 @@
 			<h2>General information (supplement the bibliographic information)</h2>
 			<p>To solve the problem of displaying the accessibility metadata in a human readable form, vendors will determine their correct statement to display (from the User Experience Guide) by parsing the metadata and using the appropriate Display Techniques document. </p>
 
-			<p>The product details provide precious information about the usability of the book in relation to specific user needs. The following informations should always be displayed:</p>
+			<p>The product details provide precious information about the usability of the book in relation to specific user needs. The following information should always be displayed:</p>
 
 			<ul>
 				<li> File format (EPUB, PDF, MP3, Audiobook, etc.) </li>
@@ -219,7 +219,7 @@
 			<h3>Why this information is important for accessibility</h3>
 			
 			<ul>
-				<li> The file format gives a strong indication of accessibility: an MP3 format audio book will be less
+				<li> The file format gives a strong indication of accessibility: an MP3 format audiobook will be less
 					structured than an Audiobook; a PDF does not allow for typography modification, etc. </li>
 				<li> The protection measure may block assistive technologies such as screen readers. In addition, many
 					specific reading devices such as DAISY readers or Braille notepads are not equipped to read
@@ -284,7 +284,7 @@
 							<li>Appearance of the text and page layout can be modified according to the capabilities of
 								the reading system (font family and font size, spaces between paragraphs, sentences,
 								words, and letters, as well as color of background and text).</li>
-							<li>Text and page layout can not be modified. The reading experience is close to a print
+							<li>Text and page layout cannot be modified. The reading experience is close to a print
 								version. Reading systems can still provide zooming options.</li>
 							<li>Ability to modify the appearance is not known.</li>
 						</ul>
@@ -326,7 +326,7 @@
 					fully available to assistive technologies and reading systems using text-to-speech or electronic
 					braille functionality.</p>
 				<div class="note">
-					<p>The term "electronic braille" and "refreshable braille" are used interchangeably, which denotes a
+					<p>The terms "electronic braille" and "refreshable braille" are used interchangeably, which denotes a
 						device with pop-up pins to present the braille on a tactile screen.</p>
 				</div>
 				<p>This field answers whether nonvisual reading is possible, not possible, or unknown.</p>
@@ -350,7 +350,7 @@
 								electronic braille.</li>
 							<li>Not all of the content will be available in generated read aloud speech and electronic
 								braille.</li>
-<li>It is not known if thecontent will be available in generated read aloud speech and electronic
+<li>It is not known if the content will be available in generated read aloud speech and electronic
 								braille.</li>
 						</ul>
 					</aside>
@@ -360,7 +360,7 @@
 							<li>Readable in read aloud and braille.</li>
 							<li>May not be fully readable in read aloud and braille.</li>
 							<li>Not fully readable in read aloud and braille.</li>
-<li>Not known ifReadable in read aloud and braille</li>
+<li>Not known if readable in read aloud and braille</li>
 						</ul>
 					</aside>
 				</section>
@@ -430,7 +430,7 @@
 
 						<dt>Certifier's Credentials </dt>
 						<dd>If the certifier has a badge or a credential, then the text is provided. If there is a link
-							to their credential, then this can be provided as a link.If the certifier has a logo or
+							to their credential, then this can be provided as a link. If the certifier has a logo or
 							badge, this can be displayed. The display of the logo or badge can be arranged between the
 							certifier and the distributor showing the accessibility metadata.</dd>
 
@@ -488,7 +488,7 @@
 
 					<p>Four  examples are provided for the conformance statement, one shows a statement that claims to
 						meet recommended accessibility standards and a second that claims to meet the minimum level. The
-						third and fourth shows a publication with unknown accessibility.</p>
+						third and fourth show a publication with unknown accessibility.</p>
 
 					<p>The examples present the conformance statement, the certifier, the certifiers credentials and is
 						followed by the detailed conformance information section </p>
@@ -572,7 +572,7 @@
 					though they are not accessible to all. As they grow in popularity, audiobooks may provide more
 					accessibility options in the future.</p>
 
-				<p>Some publications provide audio (including in video) in addition to text. In this case, it is
+				<p>Some publications provide audio (including audio in video) in addition to text. In this case, it is
 					important that the user is informed that they may not be able to access all content in the book. </p>
 
 				<p>Some publications provide pre-recorded audio with text synchronization. Users with hearing
@@ -776,7 +776,7 @@
 					Accessibility version 1.1 the accessibility summary became a human-readable summary of the
 					accessibility that complements, but does not duplicate, the other discoverability metadata.</p>
 
-				<p>It is a free-form field that allows authors to describe the additional information to the accessible
+				<p>It is a free-form field that allows authors to add   additional information to the accessible
 					properties of the resource.</p>
 
 				<p>Due to its nature, no specific processing of the content is required; it is sufficient to extract the
@@ -822,8 +822,7 @@
 				<dl>
 					<dt>Structure</dt>
 					<dd>
-						<p>For information on any structuring aids that facilitate use of a resource (e.g., annotations,
-							ARIA).</p>
+						<p>For information on any structuring aids that facilitate use of a resource (e.g., ARIA).</p>
 					</dd>
 
 					<dt>Adaptation</dt>
@@ -878,7 +877,7 @@
 					<aside class="example" title="Compact explanations">
 						<ul>
 							<li>ARIA roles included.</li>
-							<li>Closed captions and sign languages for videos.</li>
+							<li>Closed captions and sign language interpretation for videos.</li>
 							<li>Tactile graphics attached.</li>
 							<li>Music scores visually presented.</li>
 							<li>Information encoded through colors.</li>
@@ -906,9 +905,9 @@
 			<p>Publication providers, such as vendors and libraries create searching and filtering tools that interpret
 				accessibility metadata to aid in discovery. The set and variety of filters depend on the public they
 				address and the type of book they propose. </p>
-			<p> User feedback stated that in the missing of specific accessibility filters, product details like file
-				format and measures of protections are crucial information.</p>
-			<p>Taking into consideration those realities, the following sections are proposing a minimum and an
+			<p> User feedback indicates that in the absence of specific accessibility filters, they find product details like file
+				format and protection measures (e.g., digital rights management) crucial information in determining usability.</p>
+			<p>Taking into consideration those realities, the following sections  propose a minimum and an
 				extension set for filtering options. Mostly any specific information could be added if considered of use
 				for the public of the platform.</p>
 
@@ -917,12 +916,12 @@
 				<h3>Minimum filtering set</h3>
 				<p> Reading systems, commerce, and distribution platforms will typically have specific filtering
 					options; having uniformity for key aspects and providing guidance for a standardized approach can
-					help the discovery process for users searching relevant titles. Accomplishing this, however, should
+					help the discovery process for users searching for relevant titles. Accomplishing this, however, should
 					not prevent users with specific reading needs from finding books they are looking for. To achieve
-					that goal it is recommended that all platforms present two minimum capabilities, centered around the
+					this goal, it is recommended that all platforms present two minimum capabilities, centered around the
 					ways of consuming the content. These are:</p>
 				<ol>
-					<li>Titles that support non visual reading</li>
+					<li>Titles that support nonvisual reading</li>
 					<li>Titles that support visual adjustments</li>
 				</ol>
 				<p>Of note, only the positive values should be used.</p>
@@ -947,7 +946,7 @@
 					<li> In markets where compliance to legislation is required, understanding conformity information
 						becomes mandatory. </li>
 					<li> Platforms dedicated to selling children's books and interactive content may want to allow users
-						to select books with no hazards, or inform about the presence of pre-recorded audio. </li>
+						to select books with no hazards or inform them about the presence of pre-recorded audio. </li>
 				</ul>
 				<aside class="example" title="Extended filtering options">
 					<ul>
@@ -964,7 +963,7 @@
 		<section id="localization">
 			<h2>Localization</h2>
 			<p>In these guidelines, we have used simple language to communicate the meaning of the metadata values.
-				Many people have contributed to development of the words and phrases we have selected. We intend to
+				Many people have contributed to the development of the words and phrases we have selected. We intend to
 				provide a mechanism for the publishing community to provide translations that localizes the strings
 				for equally effective communication in many languages. We understand that simply translating the
 				strings is not enough; the subtle meaning of the words and phrases of accessibility concepts must be
@@ -974,8 +973,8 @@
 			<p>The wording is part of the UX and similarities of wordings in language areas are as crucial as the
 				organization and categorization of the information.</p>
 			<p>The wording proposed in this guide has been widely discussed by a large group representing different
-				actors of the English speaking geographies. It has been improved after proof of concept
-				implementations and panel testers.</p>
+				actors of the English-speaking geographies. It has been improved after proof-of-concept
+				implementations and reviewed by panels  of testers.</p>
 			<p>To agree on linguistic areas wordings the actors should follow a localization framework. The UX guide
 				translation webpage will propose such framework and list translations with contextualization of the
 				localization process.</p>
@@ -983,7 +982,7 @@
 
 		<section id="implementations">
 			<h2>Implementations</h2>
-			<p>These guidelines provide a general framework and makes suggestions on the display of accessibility
+			<p>These guidelines provide a general framework and make suggestions on the display of accessibility
 				metadata. It is not a normative description of what must be done. It is instructive to provide
 				examples of implementations from the community. </p>
 
