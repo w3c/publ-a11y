@@ -404,6 +404,14 @@
 					publication. The certifying organization should be identified along with their credentials and
 					placed immediately after the conformance statement.</p>
 
+				<aside class="note">
+					<p>In cases where the publication's compliance with accessibility standards is unknown, or it has
+						known accessibility problems, it may be important for local legislation (e.g., the European
+						Accessibility Act) to indicate why the publication is not accessible. This information could be
+						contained in the Accessibility Summary, or as machine readable metadata, in which case the
+						information may be given in the detailed accessibility information section.</p>
+				</aside>
+
 				<section id="conf-statements">
 					<h4>Conformance statements</h4>
 
@@ -444,9 +452,9 @@
 								Level A.</p>
 						</dd>
 
-						<dt>The publication does not include a conformance claim.</dt>
+						<dt>The accessibility of this publication is unknown.</dt>
 						<dd>
-							<p>The conformity to a standard of this publication is unknown.</p>
+							<p>The publication does not include a conformance claim.</p>
 						</dd>
 					</dl>
 				</section>
@@ -472,6 +480,12 @@
 						<dt>Certifier's Report</dt>
 						<dd>If a link to a report is provided, this may be of interest.</dd>
 
+						<dt>Reason why the publication does not claim to meet the standards</dt>
+						<dd>For some jurisdictions, it may be important to indicate why a publication is not compliant
+							with the standards, such as if the company is too small and therefore not required to, or if
+							the cost to produce the accessible version is too high. Showing this information may be
+							important if required by local legislation, otherwise it can be omitted.</dd>
+					</dl>
 				</section>
 
 				<section id="conf-examples">
@@ -515,12 +529,24 @@
 					</aside>
 
 					<aside class="example"
-						title="Unknown accessibility conformance statement">
-<p class="note">It is not mandatory that the detailed conformance information be displayed. Publishers may not want their exemption information to be made public, and have the option to express their conformance information in the accessibility summary.  It may be advisable for implementors to instead provide guidance to the end user by including a user-friendly statement such as, "This title may not yet be fully accessible to all readers. Check the list of accessibility features to determine  if this title is suitable for your way of reading."
+						title="Unknown accessibility conformance statement with detailed conformance Information">
+<p class="note">In cases    where the publisher is claiming an exemption, as in the example below, it is up to  implementors to decide what to present to end users. It is not mandatory that the detailed conformance information  be displayed. Publishers may not want their exemption information to be made public, and have the option to express their conformance information in the accessibility summary.  It may be advisable for implementors to instead provide guidance to the end user by including a user-friendly statement such as, "This title may not yet be fully accessible to all readers. Check the list of accessibility features to determine  if this title is suitable for your way of reading."
 </p>
-						<p>The publication does not include a conformance claim</p>
+						<p>Conformance to accepted standards for accessibility of this publication cannot be
+							determined.</p>
 						<p>Detailed Conformance Information:</p>
-						<p>The conformance metadata was not found. The creator of the publication may have provided more information in the Accessibility summary.</p>
+						<p>The creator of the publication is not required to publish in an accessible format because it
+							is a micro-enterprise (e.g., enterprises employing fewer than 10 people and with annual
+							turnover or balance sheet total not exceeding €2 million).</p>
+
+					</aside>
+<aside class="example"
+						title="Unknown accessibility conformance statement with missing detailed conformance Information">
+						<p>Conformance to accepted standards for accessibility of this publication cannot be
+							determined.</p>
+						<p>Detailed Conformance Information:</p>
+<p> The conformance metadata was not found.</p>
+						
 
 					</aside>
 				</section>
