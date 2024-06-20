@@ -645,6 +645,60 @@
 				<h3>Accessibility summary</h3>
 				<p>This technique relates to <a href="https://www.w3.org/2021/09/UX-Guide-metadata-2.0/principles/#accessibility-summary">Accessibility summary key information</a>.</p>
 
+				<p>This algorithm takes the <var>package_document_as_text</var> argument: a UTF-8 string representing the Package document.</p>
+
+				<p class="note">
+					Being human-written, the accessibility summary will appear in the original language of the publication. Therefore it is necessary to take care of setting up the correct language tag information.
+				</p>
+
+				<p class="note">Accessibility summaries were necessary when no systems exposed computed accessibility metadata. With more systems now displaying this information, much of the accessibility summary may be redundant. Publishers should focus on adding information not provided within the computed metadata, such as specifying where in a video file a flashing hazard exists, or noting the reason why they failed to meet WCAG-AA due to color contrast issues in the Appendix.</p>
+
+				<h4>Understanding the variables</h4>
+				<dl>
+					<dt><var>accessibility_summary</var></dt>
+					<dd>
+						<p>If true it indicates that the <i>accessibilitySummary</i> is present in the OPF file, otherwise if false it means that the metadata is not present.</p>
+						<p>This means there is a human-written text containing a short explanatory summary of the accessibility of the product or the URL of a web page comprising such a summary. Summarizes the already existent information and may add information that the publisher could not express with the other codes.</p>
+					</dd>
+					<dt><var>lang_attribute_accessibility_summary</var></dt>
+					<dd>
+						<p>Returns the lang attribute of the node containing the <var>accessibility_summary</var>, or the lang attribute of the nearest anchestor.</p>
+						<p>This is the language code in which the text of the Accessibility summary was written.</p>
+					</dd>
+					<dt><var>language_of_text</var></dt>
+					<dd>
+						<p>Returns the value of nearest "language" (Language of content) if present in the OPF File, otherwise if false it means that the metadata is not present.</p>
+						<p>This indicates the main language of the content and therefore the most probable language of accessibility summary.</p>
+					</dd>
+				</dl>
+				<h4>Variables setup</h4>
+				<ol class="condition">
+                    <li><b>LET</b> <var>package_document</var> be the result of calling <a href="#pre-processing">pre processing</a> given <var>package_document_as_text</var>.</li>
+
+                    <li><b>LET</b> <var>accessibility_summary</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilitySummary</i>"]</code>.</li>
+
+                    <li><b>LET</b> <var>lang_attribute_accessibility_summary</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilitySummary</i>"]/(@lang|ancestor::*/@lang)[last()]</code>.</li>
+
+                    <li><b>LET</b> <var>language_of_text</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/dc:language[1]/text()</code>.</li>
+
+ 				</ol>
+				<h4>Instructions</h4>
+				<ol class="condition">
+                    <li>
+						<span><b>IF</b> <var>lang_attribute_accessibility_summary</var> is <b>NOT</b> empty:</span>
+						<span><b>THEN</b> <b>LET</b> <var>language_accessibility_summary</var> be the value of <var>lang_attribute_accessibility_summary</var>.</span>
+					</li>
+					<li>
+						<b>ELSE</b> <b>LET</b> <var>language_accessibility_summary</var> be the value of <var>language_of_text</var>.
+					</li>
+					<li>
+						<span><b>ELSE IF</b> <var>accessibility_summary</var> is <b>NOT</b> empty:</span>
+						<span><b>THEN</b> display the content of <var>accessibility_summary</var> with <var>language_accessibility_summary</var> as language.</span></li>
+					<li>
+						<b>ELSE</b> display <code id="accessibility-summary-no-metadata">"No accessibility summary"</code>.
+						<p class="note">This key information can be hidden if metadata is missing.</p>
+					</li>
+				</ol>
 			</section>
 			
 			<section id="additional-accessibility-information">
