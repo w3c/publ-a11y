@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+i<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
 
 	<head>
@@ -109,7 +109,7 @@
 	<body>
 		<section id="abstract">
 
-			<p>The accessibility of a publication is useful to know regardless of a person's abilities, as features such as the ability to make visual adjustments make for a better reading experience for everybody. This document proposes a shared framework for presenting publication accessibility metadata in a user-friendly manner — to offer the information to end users in a way that is easy to understand regardless of their technical knowledge and is consistent across different publications and different digital catalogs. </p>
+			<p>The accessibility of a publication is useful to know regardless of a person's abilities, as features such as the ability to make visual adjustments make for a better reading experience for everybody. This document proposes a shared framework for presenting publication accessibility metadata declarations in a user-friendly manner — to offer the information to end users in a way that is easy to understand regardless of their technical knowledge and is consistent across different publications and different digital catalogs. </p>
 		</section>
 		<section id="sotd"></section>
 <section id="intro">
@@ -138,7 +138,7 @@
 			<h2>General overview</h2>
 
 			<p>This document helps those who wish to render accessibility metadata directly to users understand how to
-				represent machine-readable accessibility metadata in a user-friendly User Interface / User Experience
+				represent the accessibility claims inherent in machine-readable accessibility metadata in a user-friendly User Interface / User Experience
 				(UI/UX). This document   targets implementers such as  bookstores, retailers, distributors etc. Content creators will benefit from reading these Principles and are encouraged to follow <a href="https://www.w3.org/TR/epub-a11y-11/">EPUB Accessibility 1.1 Conformance and Discoverability Requirements section and its techniques.</a></p>
 
 			<div class="note">
@@ -149,7 +149,7 @@
 			</div>
 
 			<p>Metadata found either inside a digital publication or in a corresponding external record may have
-				important accessibility information that helps end users find and determine if the publication can meet
+				important accessibility claims  that helps end users find and determine if the publication can meet
 				their specific accessibility needs.</p>
 
 			<p>All accessibility metadata is meant to be machine-readable – apart from the accessibility summary - in
@@ -160,7 +160,7 @@
 				version of the EPUB Accessibility specification, so a more in-depth analysis in the <a
 					href="#accessibility-summary">Accessibility summary</a> section is recommended.</p>
 
-			<p>This document offers guidance on how to aggregate and display metadata to end users; these are not strict
+			<p>This document offers guidance on how to aggregate and display claims inherent  in metadata to end users; these are not strict
 				guidelines, but suggestions for providing a consistent experience for users through different portals.
 				Different implementers may choose to implement these guidelines in a slightly different way, some examples
 				can be seen in the <a href="#implementations">Implementations</a> section of the document.</p>
@@ -292,7 +292,6 @@
 							<li>Text and page layout cannot be modified. The reading experience is close to a print
 								version. Reading systems can still provide zooming options.</li>
 							<li>Ability to modify the appearance is not known.</li>
-<li>The appearance cannot be modified.</li>
 						</ul>
 					</aside>
 
@@ -302,7 +301,7 @@
 							<!--if Display transformability is present-->
 							<li>Appearance cannot be modified.</li>
 							<!--if display transformability is not present and text on visual is present-->
-<!-- or if accessibility features are none or if ONIX code 09 -->
+
 							<li>Ability to modify the appearance is not known.</li>
 							<!--if neither display transformability nor text on visual are presents-->
 						</ul>
@@ -359,7 +358,6 @@
 								braille.</li>
 <li>It is not known if the content will be available in generated read aloud speech and electronic
 								braille.</li>
-<li>Content will not be available in generated read aloud speech and electronic braille.</li>
 						</ul>
 					</aside>
 
@@ -369,7 +367,6 @@
 							<li>May not be fully readable in read aloud and braille.</li>
 							<li>Not fully readable in read aloud and braille.</li>
 <li>Not known if readable in read aloud and braille</li>
-<li>Not readable in read aloud and braille.</li>
 						</ul>
 					</aside>
 				</section>
@@ -400,8 +397,7 @@
 						href="#conf-statements">simple statements</a> should be provided when EPUB accessibility and
 					WCAG levels are identified.</p>
 
-				<p>If a publication identifies that there are accessibility problems, the statement should indicate that
-					there are known accessibility limitations. If the publication does not include a conformance claim,
+				<p>If the publication does not include a conformance claim,
 					the statement should indicate that conformance could not be determined. </p>
 
 				<p>In most cases, people will want to know more about the conformance and certification of the
@@ -424,8 +420,11 @@
 						<dd>
 							<p>The publication contains a conformance claim that it meets the EPUB Accessibility and
 								WCAG 2 Level A standard.</p>
+						</dd><dt>This publication claims to exceed accepted accessibility standards.</dt>
+						<dd>
+							<p>The publication contains a conformance claim that it meets the EPUB Accessibility and
+								WCAG 2 Level AAA standard.</p>
 						</dd>
-
 						<dt>Certifier's name</dt>
 						<dd>Identifies the organization providing the certification review or process for certification. </dd>
 
@@ -459,9 +458,7 @@
 						<dt>Conformance Statement</dt>
 						<dd>Identifies the accessibility specification and the conformance level to which the
 							publication assertions are made. When the publication claims to conform to more than one
-							specification, additional conformance statements may be provided. If the publication has
-							been reviewed and there are known accessibility limitations, then this information can also
-							be provided.</dd>
+							specification, additional conformance statements may be provided.</dd>
 
 						<dt>Certification date</dt>
 						<dd>If the date of the certifier's evaluation is provided, then this would be of interest. This
