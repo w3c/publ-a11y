@@ -660,7 +660,7 @@
 				<p>This algorithm takes the <var>onix_record_as_text</var> argument: a UTF-8 string representing the ONIX record.</p>
 
 				<p class="note">
-					Being human-written, the accessibility summary and addendum will appear in the original language of the publication. Therefore it is necessary to take care of setting up the correct language tag information.
+					Being human-written, the accessibility summary and addendum will appear in the original language of the publication. Therefore it is necessary of take care of setting up the correct language tag information.
 				</p>
 
 				<p class="note">Accessibility summary existed when no system exposed the computed accessibility metadata. With more and more systems displaying this information, most of the accessibility summary may be redundant. It may be advised to display only the accessibility addendum. </p>
@@ -674,17 +674,17 @@
 					</dd>
 					<dt><var>lang_attribute_accessibility_summary</var></dt>
 					<dd>
-						<p>Returns the lang attribute of the node containing the <var>accessibility_summary</var>, or the lang attribute of the nearest anchestor.</p>
+						<p>Returns the lang attribute of the node containing the <var>accessibility_summary</var>, or the lang attribute of the nearest ancestor.</p>
 						<p>This is the language code in which the text of the Accessibility summary was written.</p>
 					</dd>
 					<dt><var>accessibility_addendum</var></dt>
 					<dd>
 						<p>Returns the description of <a href="https://ns.editeur.org/onix/en/196/92">code 92 of codelist 196</a> (Accessibility addendum) if present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
-						<p>This means there is a human-written text containing a short addendum to the accessibility detail of the product. Contains precisions that the publisher could not express with the other's codes.</p>
+						<p>This means there is a human-written text containing a short addendum to the accessibility detail of the product. It contains precise information that the publisher could not express with the other's codes.</p>
 					</dd>
 					<dt><var>lang_attribute_accessibility_addendum</var></dt>
 					<dd>
-						<p>Returns the lang attribute of the node containing the <var>accessibility_addendum</var>, or the lang attribute of the nearest anchestor.</p>
+						<p>Returns the lang attribute of the node containing the <var>accessibility_addendum</var>, or the lang attribute of the nearest ancestor.</p>
 						<p>This is the language code in which the text of the Accessibility addendum was written.</p>
 					</dd>
 					<dt><var>known_limited_accessibility</var></dt>
@@ -694,7 +694,7 @@
 					</dd>
 					<dt><var>lang_known_limited_accessibility</var></dt>
 					<dd>
-						<p>Returns the lang attribute of the node containing the <var>known_limited_accessibility</var>, or the lang attribute of the nearest anchestor.</p>
+						<p>Returns the lang attribute of the node containing the <var>known_limited_accessibility</var>, or the lang attribute of the nearest ancestor.</p>
 						<p>This is the language code in which the text of the Inaccessible, or known limited accessibility was written.</p>
 					</dd>
 					<dt><var>language_of_text</var></dt>
