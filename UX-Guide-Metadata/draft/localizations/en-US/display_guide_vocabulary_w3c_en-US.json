@@ -64,15 +64,15 @@
     },
     "navigation-toc": {
         "descriptive": "Contains a table of contents that provides direct access to all chapters of the text via links",
-        "compact": "Table of contents",
+        "compact": "Table of contents"
     },
     "Navigation-index": {
         "descriptive": "Index provides links to item references", 
-        "compact": "Index",
+        "compact": "Index"
     },
     "Navigation-landmarks": {
         "descriptive": "Landmarks provide quick access to main parts of the book",
-        "compact": "Landmarks",
+        "compact": "Landmarks"
     },
     "Navigation-page": {
         "descriptive": "A page list enables users to coordinate their reading with a statically paginated version",
