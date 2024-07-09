@@ -1,0 +1,61 @@
+{
+  "author": "European Digital Reading Lab",
+  "language": "fr-FR",
+  "variant": "LINA25",
+  "description": "Formulation discutée par un groupe représentant différents acteurs de l'industrie en France. Il a été amélioré après des implémentations de preuve de concept, des enquêtes auprès des usagers et des tests par un panel d'utilisateurs.",
+  "visual-adjustments-modifiable": {
+    "descriptive": "L'apparence du texte et la mise en page peuvent être modifiées selon les possibilités du système de lecture (généralement cela concerne la police et sa taille, les espaces entre les paragraphes, les phrases, les mots et les lettres, ainsi que la couleur du fond et du texte)."
+  },
+  "visual-adjustments-unmodifiable": {
+  },
+  "visual-adjustments-unknown": {
+  },
+  "nonvisual-reading-readable": {
+  },
+  "nonvisual-reading-not-fully": {
+  },
+  "nonvisual-reading-may-not-fully": {
+  },
+  "Conformance-accepted": {
+  },
+  "Conformance-minimum": {
+  },
+  "Conformance-unknown": {
+  },
+  "Detailed-Conformance": {
+  },
+  "pre-recorded-audio-only": {
+  },
+  "pre-recorded-audio-complementary": {
+  },
+  "pre-recorded-audio-synchronized": {
+  },
+  "pre-recorded-audio-no-metadata": {
+  },
+  "navigation-toc": {
+  },
+  "Navigation-index": {
+  },
+  "Navigation-landmarks": {
+  },
+  "Navigation-page": {
+  },
+  "Charts-diagrams-formulas-yes": {
+  },
+  "Charts-diagrams-formulas-unknown": {
+  },
+  "Hazards-yes": {
+  },
+  "Hazards-no": {
+  },
+  "aria-roles": {
+  },
+  "video-captions": {
+  },
+  "tactile-graphics": {
+  },
+  "music-visual": {
+  },
+  "information-through-colors": {
+  }
+}
