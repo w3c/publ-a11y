@@ -1,4 +1,4 @@
-i<!DOCTYPE html>
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
 
 	<head>
@@ -164,6 +164,12 @@ i<!DOCTYPE html>
 				guidelines, but suggestions for providing a consistent experience for users through different portals.
 				Different implementers may choose to implement these guidelines in a slightly different way, some examples
 				can be seen in the <a href="#implementations">Implementations</a> section of the document.</p>
+<section id="accessibility-claims">
+<h2>Accessibility claims and declarations</h2>
+
+<p>When  presenting  accessibility metadata provided by the publisher, it is suggested that the section is introduced using  terms  such as "claims" or "declarations." This heading should clearly convey  to the end user that the information comes directly from the publisher and represents the accessibility information that the publisher intends to communicate.
+</p>
+</section>
 
             <section id="metadata-ecosystem">
                 <h2>Publisher metadata ecosystem</h2>
@@ -261,7 +267,7 @@ i<!DOCTYPE html>
 
 				<div class="note">
 					<p>This key information should always be displayed, even if there is no metadata (See  the examples where 
-						the metadata is not known). </p>
+							the metadata is not known). </p>
 				</div>
 
 				<p>Indicates if users can modify the appearance of the text and the page layout according to the
@@ -410,19 +416,19 @@ i<!DOCTYPE html>
 					<p>The following list explains the meaning of each recommended conformance statement.</p>
 
 					<dl>
-						<dt>This publication claims to meet accepted accessibility standards.</dt>
+						<dt>This publication meets accepted accessibility standards.</dt>
 						<dd>
-							<p>The publication contains a conformance claim that it meets the EPUB Accessibility and
+							<p>The publication contains a conformance statement that it meets the EPUB Accessibility and
 								WCAG 2 Level AA standard.</p>
 						</dd>
 
-						<dt>This publication claims to meet minimum accessibility standards.</dt>
+						<dt>This publication meets minimum accessibility standards.</dt>
 						<dd>
-							<p>The publication contains a conformance claim that it meets the EPUB Accessibility and
+							<p>The publication contains a conformance statement that it meets the EPUB Accessibility and
 								WCAG 2 Level A standard.</p>
-						</dd><dt>This publication claims to exceed accepted accessibility standards.</dt>
+						</dd><dt>This publication exceeds accepted accessibility standards.</dt>
 						<dd>
-							<p>The publication contains a conformance claim that it meets the EPUB Accessibility and
+							<p>The publication contains a conformance statement that it meets the EPUB Accessibility and
 								WCAG 2 Level AAA standard.</p>
 						</dd>
 						<dt>Certifier's name</dt>
@@ -437,11 +443,11 @@ i<!DOCTYPE html>
 						<dt>This publication's accessibility conformance has not been associated with accepted
 							standards.</dt>
 						<dd>
-							<p>The publication contains a conformance claim that is not to the EPUB Accessibility
+							<p>The publication contains a conformance statement that is not to the EPUB Accessibility
 								standard.</p>
 						</dd>
 
-						<dt>The publication does not include a conformance claim.</dt>
+						<dt>The publication does not include a conformance statement.</dt>
 						<dd>
 							<p>The conformity to a standard of this publication is unknown.</p>
 						</dd>
@@ -481,7 +487,7 @@ i<!DOCTYPE html>
 
 					<aside class="example"
 						title=" Conformance statement that claims to meet accepted accessibility standards followed by detailed conformance information">
-						<p>This publication claims to meet accepted accessibility standards.</p>
+						<p>This publication meets accepted accessibility standards.</p>
 						<p>This publication is certified by Foo's Accessibility Testing </p>
 						<p>The certifier's credential is "Enterprise Accessibility Rating."</p>
 
@@ -496,7 +502,7 @@ i<!DOCTYPE html>
 
 					<aside class="example"
 						title="Conformance statement that claims to meet minimum accessibility standards followed by detailed conformance information">
-						<p>This publication claims to meet minimum accessibility standards.</p>
+						<p>This publication meets minimum accessibility standards.</p>
 						<p>This publication is certified by Foo's Accessibility Testing </p>
 						<p>The certifier's credential is "Enterprise Accessibility Rating."</p>
 
@@ -781,7 +787,48 @@ i<!DOCTYPE html>
 					</ul>
 				</section>
 			</section>
+<section id="legal-considerations">
+<h3>Legal considerations</h3>
+<div class="note">
+					<p>This key information should  be hidden if metadata is not present	.</p>
+				</div>
+<div class="note"><p>We are actively seeking comments on this "legal consideration" section. If you are a publisher, we want your feedback! Please visit the GitHub Issue tracking to leave a comment  in the existing  issue at: <div class="issue" data-number="350"></div></p>
+</div>
 
+<div class="note">Disclaimer: nothing here may be construed as legal advice supplied by W3C or any the groups or individuals who have contributed to this document.
+Always get legal advice from in-house or your retained counsel to assess legal compliance and risk.</div>
+
+<p>In some jurisdictions publishers may be able to claim an exemption from the provision of accessible publications, including the provision of accessibility metadata. This should always be subject to clarification by legal counsel for each jurisdiction.
+	One example of this, at time of writing, is from the EAA when the publisher is a micro-enterprise (i.e., enterprises employing fewer than 10 people and with annual turnover or balance sheet total not exceeding 2 million euro).</p>
+<p>Other legal considerations currently included in the EAA may include exceptions on individual versions of a title, where jurisdiction will not require the title to be accessible if it involves a fundamental alteration of the content, or if making it accessible would place a disproportionate burden on the publisher. (This may vary in other jurisdictions).</p>
+
+<p>Publishers may need to include information about an exemption or exception in metadata for legal or clarity reasons, either to bodies that enforce legislation or for other business to business communication. However this is not information that needs to be displayed on public sites as it does not mean anything to most consumers and could lead to misunderstandings. Nevertheless, the objective is to provide as much accessibility information as is possible."</p>
+
+            <section id="legal-examples">
+					<h2>Examples</h2>
+<p>TBD</p>
+<!--
+					<aside class="example" title="Descriptive explanation">
+
+<p>This title may not yet be fully accessible to all readers. Check the list of accessibility features to determine  if this title is suitable for your way of reading.</p>
+</aside>
+<aside class="example" title="Compact explanation">
+<p>May not  be fully accessible. Check features for suitability.</p>
+</aside>
+-->
+</section>
+
+						
+<section id="legal-techniques">
+					<h4>Metadata techniques</h4>
+
+					<ul>
+						<li><a href="../techniques/epub-metadata/index.html#legal-considerations">EPUB Accessibility: legal considerations</a></li>
+						<li><a href="../techniques/onix-metadata/index.html#legal-considerations">ONIX: legal considerations</a></li>
+					</ul>
+				</section>
+			
+</section>
 			<section id="additional-accessibility-information">
 				<h3>Additional accessibility information</h3>
 
@@ -963,6 +1010,8 @@ i<!DOCTYPE html>
 			<p>These guidelines provide a general framework and make suggestions on the display of accessibility
 				metadata. It is not a normative description of what must be done. It is instructive to provide
 				examples of implementations from the community. </p>
+<p>We are collecting information on companies and organizations that wish to possibly commit examples of their implementation.  Please visit the GitHub issue to review companies and organizations that have volunteered. Please put your company name, your name and your contact information to possibly volunteer an implementation.</p>
+<div class="issue" data-number="268"></div>
 
 			<p>Linked below are static pages that show real-life implementations. We have captured these examples
 				from organization's websites that have agreed to allow us to showcase the work they have done to
