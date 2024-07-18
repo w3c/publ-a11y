@@ -758,6 +758,9 @@
 			<section id="legal-considerations">
 				<h3>Legal considerations</h3>
 				<p>This technique relates to <a href="https://www.w3.org/2021/09/UX-Guide-metadata-2.0/principles/#legal-considerations">Legal considerations key information</a>.</p>
+				<div class="note">
+					<p>We are actively seeking comments on this "legal consideration" section. If you are a publisher, we want your feedback! Please visit the GitHub Issue tracking to leave a comment  in the existing  issue at: <div class="issue" data-number="350"></div></p>
+				</div>
 				<p>This algorithm takes the <var>onix_record_as_text</var> argument: a UTF-8 string representing the ONIX record.</p>
 				<h4>Understanding the variables</h4>
 				<dl>
@@ -787,15 +790,7 @@
 				<h4>Instructions</h4>
 				<ol class="condition">
 					<li>
-						<span><b>IF</b> <var>eaa_exemption_micro_enterprises</var>:</span>
-						<span><b>THEN</b> display <code id="tbd">"TBD"</code>.</span>
-					</li>
-					<li>
-						<span><b>ELSE IF</b> <var>eaa_exception_disproportionate_burden</var>:</span>
-						<span><b>THEN</b> display <code id="tbd">"TBD"</code>.</span>
-					</li>
-					<li>
-						<span><b>ELSE IF</b> <var>eaa_exception_fundamental_modification</var>:</span>
+						<span><b>IF</b> <var>eaa_exemption_micro_enterprises</var> <b>OR</b> <var>eaa_exception_disproportionate_burden</var> <b>OR</b> <var>eaa_exception_fundamental_modification</var>:</span>
 						<span><b>THEN</b> display <code id="tbd">"TBD"</code>.</span>
 					</li>
 					<li>
