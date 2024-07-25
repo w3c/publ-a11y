@@ -297,7 +297,7 @@
 					<dt><var>epub_accessibility_1_0</var></dt>
 					<dd>
 						<p>If true it indicates that either the <a href="https://ns.editeur.org/onix/en/196/02">code 02 of codelist 196</a> (EPUB Accessibility Specification 1.0 A) or the <a href="https://ns.editeur.org/onix/en/196/03">code 03 of codelist 196</a> (EPUB Accessibility Specification 1.0 AA) are present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
-						<p>This means that the publication conforms with either the requirements of EPUB Accessibility Spec 1.0, both level A or level AA.</p>
+						<p>This means that the publication conforms with either the requirements of EPUB Accessibility Spec 1.0, at level A or level AA.</p>
 					</dd>
 					<dt><var>epub_accessibility_1_1</var></dt>
 					<dd>
@@ -307,7 +307,7 @@
 					<dt><var>wcag_2_0</var></dt>
 					<dd>
 						<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/196/80">code 80 of codelist 196</a> (WCAG v2.0) or the <a href="https://ns.editeur.org/onix/en/196/02">code 02 of codelist 196</a> (EPUB Accessibility Specification 1.0 A) or the <a href="https://ns.editeur.org/onix/en/196/03">code 03 of codelist 196</a> (EPUB Accessibility Specification 1.0 AA) are present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
-						<p>This means that the publication conforms with the requirements of WCAG version 2.0 or with the requirements of EPUB Accessibility Spec 1.0 (both level A or level AA). This is because being compliant with EPUB Accessibility 1.0 specification means at least being compliant with WCAG 2.0 specification.</p>
+						<p>This means that the publication conforms with the requirements of WCAG version 2.0 or with the requirements of EPUB Accessibility Spec 1.0 (at level A or level AA). This is because being compliant with EPUB Accessibility 1.0 specification means at least being compliant with WCAG 2.0 specification.</p>
 					</dd>
 					<dt><var>wcag_2_1</var></dt>
 					<dd>
@@ -404,7 +404,7 @@
 						<span><b>THEN</b></span>
 						<ul class="condition">
 							<li>display <code id="conformance-certifier-credentials">"The certifier's credential is "</code></li>
-							<li>display <var>certifier_credentials</var>.</li>
+							<li>display <var>certifier_credentials</var> as link <b>IF</b> <var>certifier_credentials</var> is an URL.</li>
 						</ul>
 					</li>
 					<li>
@@ -471,7 +471,7 @@
 						<span><b>THEN</b></span>
 						<ul class="condition">
 							<li>display <code id="conformance-certifier-credentials-prefix">" with a credential of "</code></li>
-							<li>display <var>certifier_credentials</var>.</li>
+							<li>display <var>certifier_credentials</var> as link <b>IF</b> <var>certifier_credentials</var> is an URL.</li>
 						</ul>
 					</li>
 					<li>
