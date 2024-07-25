@@ -4,53 +4,75 @@
     "variant": "canonical",
     "audience": "general",
     "description": "Original wording discussed by a large group representing different actors of the English-speaking geographies. It has been improved after proof of concept implementations and panel testers",
-    "nonvisual-reading-yes": {
-        "descriptive": "All content is available in generated read aloud speech and electronic braille",
-        "compact": "Readable in read aloud and braille"
-    },
-    "nonvisual-reading-maybe": {
-        "descriptive": "Portions of the content may not be available in generated read aloud speech and electronic braille",
-        "compact": "May not be fully readable in read aloud and braille"
-    },
-    "nonvisual-reading-no": {
-        "descriptive": "Not all of the content will be available in generated read aloud speech and electronic braille",
-        "compact": "Not fully readable in read aloud and braille"
-    },
-    "Audiobook-no-text": {
-        "descriptive": "Audiobook with no text alternative",
-        "compact": "Audio only"
-    },
-    "complementary-audio-text": {
-        "descriptive": "Contents available as complementary audio and text",
-        "compact": "Complementary audio and text"
-    },
-    "full-syncronized-audio-text": {
-        "descriptive": "All the content is available as pre-recorded audio synchronized with text",
-        "compact": "Synchronized audio and text"
-    },
-    "Visual-adjustments-yes": {
+    "visual-adjustments-modifiable": {
         "descriptive": "Appearance of the text and page layout can be modified according to the capabilities of the reading system (font family and font size, spaces between paragraphs, sentences, words, and letters, as well as color of background and text)",
         "compact": "Appearance can be modified"
     },
-    "Visual-adjustments-no": {
+    "visual-adjustments-unmodifiable": {
         "descriptive": "Text and page layout can not be modified. The reading experience is close to a print version. Reading systems can still provide zooming options",
         "compact": "Appearance cannot be modified"
     },
-    "Visual-adjustments-unknown": {
+    "visual-adjustments-unknown": {
         "descriptive": "Ability to modify the appearance is not known",
         "compact": "Appearance Modifiability not known"
     },
-    "Navigation-toc": {
+    "nonvisual-reading-readable": {
+        "descriptive": "All content is available in generated read aloud speech and electronic braille",
+        "compact": "Readable in read aloud and braille"
+    },
+    "nonvisual-reading-not-fully": {
+        "descriptive": "Not all of the content will be available in generated read aloud speech and electronic braille",
+        "compact": "Not fully readable in read aloud and braille"
+    },
+    "nonvisual-reading-may-not-fully": {
+        "descriptive": "Portions of the content may not be available in generated read aloud speech and electronic braille",
+        "compact": "May not be fully readable in read aloud and braille"
+    },
+    "Conformance-accepted": {
+        "descriptive": "This publication claims to meet accepted accessibility standards and reports EPUB Accessibility 1.1 and Web Accessibility Content Guidelines (WCAG) 2.1 Level AA compliance",
+        "compact": "This publication claims to meet accepted accessibility standards"
+    },
+    "Conformance-minimum": {
+        "descriptive": "This publication claims to meet accepted accessibility standards and reports Web Accessibility Content Guidelines (WCAG) 2.1 Level A compliance",
+        "compact": "This publication claims to meet minimum accessibility standards"
+    },
+    "Conformance-unknown": {
+        "compact": "Conformance to accepted standards for accessibility of this publication cannot be determined"
+    },
+    "Detailed-Conformance": {
+        "detailled-conformance-information": "Detailed Conformance Information:",
+        "certifier-name": "This publication is certified by {Certifier Name}", 
+        "certifier-credential": "The certifier's credential is {Credential}",
+        "certificate-date": "This publication was certified on {date}",
+        "certifier-report": "For more information, refer to the certifier's report {url}"
+    },   
+    "pre-recorded-audio-only": {
+        "descriptive": "Audiobook with no text alternative",
+        "compact": "Audio only"
+    },
+    "pre-recorded-audio-complementary": {
+        "descriptive": "Contents available as complementary audio and text",
+        "compact": "Complementary audio and text"
+    },
+    "pre-recorded-audio-synchronized": {
+        "descriptive": "All the content is available as pre-recorded audio synchronized with text",
+        "compact": "Synchronized audio and text"
+    },
+    "pre-recorded-audio-no-metadata": {
+        "descriptive": "No information about pre-recorded audio",
+        "compact": "No information about pre-recorded audio"
+    },
+    "navigation-toc": {
         "descriptive": "Contains a table of contents that provides direct access to all chapters of the text via links",
-        "compact": "Table of contents",
+        "compact": "Table of contents"
     },
     "Navigation-index": {
         "descriptive": "Index provides links to item references", 
-        "compact": "Index",
+        "compact": "Index"
     },
     "Navigation-landmarks": {
         "descriptive": "Landmarks provide quick access to main parts of the book",
-        "compact": "Landmarks",
+        "compact": "Landmarks"
     },
     "Navigation-page": {
         "descriptive": "A page list enables users to coordinate their reading with a statically paginated version",
@@ -72,27 +94,6 @@
         "descriptive": "Flashing and motion simulation hazards",
         "compact": "No hazards"
     },
-    "Conformance-accepted": {
-        "descriptive": "This publication claims to meet accepted accessibility standards and reports EPUB Accessibility 1.1 and Web Accessibility Content Guidelines (WCAG) 2.1 Level AA compliance",
-        "compact": "This publication claims to meet accepted accessibility standards"
-    },
-    "Conformance-minimum": {
-        "descriptive": "This publication claims to meet accepted accessibility standards and reports Web Accessibility Content Guidelines (WCAG) 2.1 Level A compliance",
-        "compact": "This publication claims to meet minimum accessibility standards"
-    },
-    "Conformance-unknown": {
-        "compact": "Conformance to accepted standards for accessibility of this publication cannot be determined"
-    },
-    "Conformance-exemption-micro": {
-        "descriptive": "The creator of the publication is not required to publish in an accessible format because it is a micro-enterprise (e.g., enterprises employing fewer than 10 people and with annual turnover or balance sheet total not exceeding €2 million)"
-    },
-    "Detailed-Conformance": {
-        "detailled-conformance-information": "Detailed Conformance Information:",
-        "certifier-name": "This publication is certified by {Certifier Name}", 
-        "certifier-credential": "The certifier's credential is {Credential}",
-        "certificate-date": "This publication was certified on {date}",
-        "certifier-report": "For more information, refer to the certifier's report {url}"
-    },   
       "Accessibility summary": "Accessibility summary",
       "Additional accessibility information": "Additional accessibility information",
       "aria-roles": {
