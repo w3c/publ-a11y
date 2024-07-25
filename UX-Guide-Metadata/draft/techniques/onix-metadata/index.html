@@ -291,6 +291,198 @@
 			<section id="conformance-group">
 				<h3>Conformance</h3>
 				<p>This technique relates to <a href="https://www.w3.org/2021/09/UX-Guide-metadata-2.0/principles/#conformance-group">Conformance key information</a>.</p>
+				
+				<h4>Understanding the variables</h4>
+				<dl>
+					<dt><var>epub_accessibility_1_0</var></dt>
+					<dd>
+						<p>If true it indicates that either the <a href="https://ns.editeur.org/onix/en/196/02">code 02 of codelist 196</a> (EPUB Accessibility Specification 1.0 A) or the <a href="https://ns.editeur.org/onix/en/196/03">code 03 of codelist 196</a> (EPUB Accessibility Specification 1.0 AA) are present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+						<p>This means that the publication conforms with either the requirements of EPUB Accessibility Spec 1.0, at level A or level AA.</p>
+					</dd>
+					<dt><var>epub_accessibility_1_1</var></dt>
+					<dd>
+						<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/196/04">code 04 of codelist 196</a> (EPUB Accessibility Specification 1.1) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+						<p>This means that the publication conforms with the requirements of EPUB Accessibility Spec 1.1.</p>
+					</dd>
+					<dt><var>wcag_2_0</var></dt>
+					<dd>
+						<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/196/80">code 80 of codelist 196</a> (WCAG v2.0) or the <a href="https://ns.editeur.org/onix/en/196/02">code 02 of codelist 196</a> (EPUB Accessibility Specification 1.0 A) or the <a href="https://ns.editeur.org/onix/en/196/03">code 03 of codelist 196</a> (EPUB Accessibility Specification 1.0 AA) are present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+						<p>This means that the publication conforms with the requirements of WCAG version 2.0 or with the requirements of EPUB Accessibility Spec 1.0 (at level A or level AA). This is because being compliant with EPUB Accessibility 1.0 specification means at least being compliant with WCAG 2.0 specification.</p>
+					</dd>
+					<dt><var>wcag_2_1</var></dt>
+					<dd>
+						<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/196/81">code 81 of codelist 196</a> (WCAG v2.1) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+						<p>This means that the publication conforms with the requirements of WCAG version 2.1.</p>
+					</dd>
+					<dt><var>wcag_2_2</var></dt>
+					<dd>
+						<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/196/82">code 82 of codelist 196</a> (WCAG v2.2) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+						<p>This means that the publication conforms with the requirements of WCAG version 2.2.</p>
+					</dd>
+					<dt><var>level_a</var></dt>
+					<dd>
+						<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/196/84">code 84 of codelist 196</a> (WCAG level A) or the <a href="https://ns.editeur.org/onix/en/196/02">code 02 of codelist 196</a> (EPUB Accessibility Specification 1.0 A) are present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+						<p>This means that the publication conforms with the requirements of WCAG level A or with the requirements of EPUB Accessibility Spec 1.0 level A.</p>
+					</dd>
+					<dt><var>level_aa</var></dt>
+					<dd>
+						<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/196/85">code 85 of codelist 196</a> (WCAG level AA) or the <a href="https://ns.editeur.org/onix/en/196/03">code 03 of codelist 196</a> (EPUB Accessibility Specification 1.0 AA) are present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+						<p>This means that the publication conforms with the requirements of WCAG level AA or with the requirements of EPUB Accessibility Spec 1.0 level AA.</p>
+					</dd>
+					<dt><var>level_aaa</var></dt>
+					<dd>
+						<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/196/86">code 86 of codelist 196</a> (WCAG level AAA) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+						<p>This means that the publication conforms with the requirements of WCAG level AAA.</p>
+					</dd>
+					<dt><var>certifier</var></dt>
+					<dd>
+						<p>Returns the description of <a href="https://ns.editeur.org/onix/en/196/90">code 90 of codelist 196</a> (Compliance certification by (name)) if present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+						<p>This means that the name of the organization responsible for compliance testing and certification of the product is present.</p>
+					</dd>
+					<dt><var>certifier_credentials</var></dt>
+					<dd>
+						<p>Returns the description of <a href="https://ns.editeur.org/onix/en/196/93">code 93 of codelist 196</a> (Compliance certification by (URL)) if present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+						<p>This means that the the URL of a web page belonging to an organization responsible for compliance testing and certification of the product is present – typically a ‘home page’ or a page describing the certification scheme itself.</p>
+					</dd>
+					<dt><var>certification_date</var></dt>
+					<dd>
+						<p>Returns the description of <a href="https://ns.editeur.org/onix/en/196/91">code 91 of codelist 196</a> (Latest accessibility assessment date) if present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+						<p>This means that the date of the latest assessment or re-assessment of the accessibility of the product is present.</p>
+					</dd>
+					<dt><var>certifier_report</var></dt>
+					<dd>
+						<p>Returns the description of <a href="https://ns.editeur.org/onix/en/196/94">code 94 of codelist 196</a> (Compliance web page for detailed accessibility information) if present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+						<p>This means that is present the URL of a compliance web page for detailed accessibility information. The web page should be maintained by an independent compliance scheme or testing organization. Note the web page may include information about specific national requirements or voluntary conformance reports.</p>
+					</dd>
+				</dl>
+				
+				<h4>Variables setup</h4>
+				<ol class="condition">
+					<li><b>LET</b> <var>onix</var> be the result of calling <a href="#pre-processing">pre processing</a> given <var>onix_record_as_text</var>.</li>
+					<li><b>LET</b> <var>epub_accessibility_1_0</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "02"]</code> <b>OR</b> calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "03"]</code>.</li>
+					<li><b>LET</b> <var>epub_accessibility_1_1</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "04"]</code>.</li>
+					<li><b>LET</b> <var>wcag_2_0</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "80"]</code> <b>OR</b> calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "02"]</code> <b>OR</b> calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "03"]</code>.</li>
+					<li><b>LET</b> <var>wcag_2_1</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "81"]</code>.</li>
+					<li><b>LET</b> <var>wcag_2_2</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "82"]</code>.</li>
+					<li><b>LET</b> <var>level_a</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "84"]</code> <b>OR</b> calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "02"]</code>.</li>
+					<li><b>LET</b> <var>level_aa</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "85"]</code> <b>OR</b> calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "03"]</code>.</li>
+					<li><b>LET</b> <var>level_aaa</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "86"]</code>.</li>
+					<li><b>LET</b> <var>certifier</var> be the value of the node extracted from <var>onix</var>, using the xpath <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "90"]/ProductFormFeatureDescription</code>.</li>
+					<li><b>LET</b> <var>certifier_credentials</var> be the value of the node extracted from <var>onix</var>, using the xpath <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "93"]/ProductFormFeatureDescription</code>.</li>
+					<li><b>LET</b> <var>certification_date</var> be the value of the node extracted from <var>onix</var>, using the xpath <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "91"]/ProductFormFeatureDescription</code>.</li>
+					<li><b>LET</b> <var>certifier_report</var> be the value of the node extracted from <var>onix</var>, using the xpath <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "94"]/ProductFormFeatureDescription</code>.</li>
+				</ol>
+				
+				<h4>Instructions</h4>
+				<ol class="condition">
+					<li>
+						<span><b>IF</b> <var>level_aaa</var>:</span>
+						<span><b>THEN</b> display <code id="conformance-aaa">"This publication exceeds accepted accessibility standards"</code>.</span>
+					</li>
+					<li>
+						<span><b>ELSE IF</b> <var>level_aa</var>:</span>
+						<span><b>THEN</b> display <code id="conformance-aa">"This publication meets accepted accessibility standards"</code>.</span>
+					</li>
+					<li>
+						<span><b>ELSE IF</b> <var>level_a</var>:</span>
+						<span><b>THEN</b> display <code id="conformance-a">"This publication meets minimum accessibility standards"</code>.</span>
+					</li>
+					<li>
+						<span><b>ELSE</b>:</span>
+						<span><b>THEN</b> display <code id="conformance-no">"The publication does not include a conformance statement"</code>.</span>
+					</li>
+					<li>
+						<span><b>IF</b> <var>certifier</var> is <b>NOT</b> empty:</span>
+						<span><b>THEN</b></span>
+						<ul class="condition">
+							<li>display <code id="conformance-certifier">"This publication is certified by "</code></li>
+							<li>display <var>certifier</var>.</li>
+						</ul>
+					</li>
+					<li>
+						<span><b>IF</b> <var>certifier_credentials</var> is <b>NOT</b> empty:</span>
+						<span><b>THEN</b></span>
+						<ul class="condition">
+							<li>display <code id="conformance-certifier-credentials">"The certifier's credential is "</code></li>
+							<li>display <var>certifier_credentials</var> as link <b>IF</b> <var>certifier_credentials</var> is an URL.</li>
+						</ul>
+					</li>
+					<li>
+						<span>display <code id="conformance-details">"Detailed Conformance Information"</code> as heading.</span>
+					</li>
+					<li>
+						<span><b>IF</b> <var>epub_accessibility_1_0</var> <b>OR</b> <var>epub_accessibility_1_1</var> <b>OR</b> <var>wcag_2_0</var> <b>OR</b> <var>wcag_2_1</var> <b>OR</b> <var>wcag_2_2</var> <b>OR</b> <var>level_aaa</var> <b>OR</b> <var>level_aa</var> <b>OR</b> <var>level_a</var>:</span>
+						<span><b>THEN</b> display <code id="conformance-claim">"This publication claims to meet "</code>.</span>
+					</li>
+					<li>
+						<span><b>IF</b> <var>epub_accessibility_1_0</var>:</span>
+						<span><b>THEN</b> display <code id="conformance-epub-accessibility-1-0">" EPUB Accessibility 1.0 "</code>.</span>
+					</li>
+					<li>
+						<span><b>ELSE IF</b> <var>epub_accessibility_1_1</var>:</span>
+						<span><b>THEN</b> display <code id="conformance-epub-accessibility-1-1">" EPUB Accessibility 1.1 "</code>.</span>
+					</li>
+					<li>
+						<span><b>IF</b> <var>wcag_2_2</var>:</span>
+						<span><b>THEN</b> display <code id="conformance-wcag-2-0">" WCAG 2.2 "</code>.</span>
+					</li>
+					<li>
+						<span><b>ELSE IF</b> <var>wcag_2_1</var>:</span>
+						<span><b>THEN</b> display <code id="conformance-wcag-2-1">" WCAG 2.1 "</code>.</span>
+					</li>
+					<li>
+						<span><b>ELSE IF</b> <var>wcag_2_0</var>:</span>
+						<span><b>THEN</b> display <code id="conformance-wcag-2-2">" WCAG 2.0 "</code>.</span>
+					</li>
+					<li>
+						<span><b>IF</b> <var>level_aaa</var>:</span>
+						<span><b>THEN</b> display <code id="conformance-level-aaa">" Level AAA"</code>.</span>
+					</li>
+					<li>
+						<span><b>ELSE IF</b> <var>level_aa</var>:</span>
+						<span><b>THEN</b> display <code id="conformance-level-aa">" Level AA"</code>.</span>
+					</li>
+					<li>
+						<span><b>ELSE IF</b> <var>level_a</var>:</span>
+						<span><b>THEN</b> display <code id="conformance-level-a">" Level A"</code>.</span>
+					</li>
+					<li>
+						<span><b>IF</b> <var>certification_date</var> <b>OR</b> <var>certifier</var> <b>OR</b> <var>certifier_credentials</var>:</span>
+						<span><b>THEN</b> display <code id="conformance-certification-info">"The publication was certified "</code>.</span>
+					</li>
+					<li>
+						<span><b>IF</b> <var>certification_date</var>:</span>
+						<span><b>THEN</b></span>
+						<ul class="condition">
+							<li>display <code id="conformance-ceertification-date-prefix">" on "</code></li>
+							<li>display <var>certification_date</var>.</li>
+						</ul>
+					</li>
+					<li>
+						<span><b>IF</b> <var>certifier</var>:</span>
+						<span><b>THEN</b></span>
+						<ul class="condition">
+							<li>display <code id="conformance-certifier-prefix">" by "</code></li>
+							<li>display <var>certifier</var>.</li>
+						</ul>
+					</li>
+					<li>
+						<span><b>IF</b> <var>certifier_credentials</var>:</span>
+						<span><b>THEN</b></span>
+						<ul class="condition">
+							<li>display <code id="conformance-certifier-credentials-prefix">" with a credential of "</code></li>
+							<li>display <var>certifier_credentials</var> as link <b>IF</b> <var>certifier_credentials</var> is an URL.</li>
+						</ul>
+					</li>
+					<li>
+						<span><b>IF</b> <var>certifier_report</var>:</span>
+						<span><b>THEN</b></span>
+						<ul class="condition">
+							<li>display <code id="conformance-certifier-report">"For more information refer to the certifier's report."</code></li>
+							<li>with <var>certifier_report</var> as link.</li>
+						</ul>
+					</li>
+				</ol>
 
 			</section>
 			
@@ -748,6 +940,7 @@
 					<li>
 						<span><b>ELSE IF</b> <var>accessibility_summary</var> is <b>NOT</b> empty:</span>
 						<span><b>THEN</b> display the content of <var>accessibility_summary</var> with <var>language_accessibility_summary</var> as language.</li></span>
+					</li>
 					<li>
 						<b>ELSE</b> display <code id="accessibility-summary-no-metadata">"No accessibility summary"</code>.
 						<p class="note">This key information can be hidden if metadata is missing.</p>
