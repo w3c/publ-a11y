@@ -354,6 +354,12 @@
 						<p>Returns the description of <i>a11y:certifierReport</i> (Compliance web page for detailed accessibility information) if present in the OPF, otherwise if false it means that the metadata is not present.</p>
 						<p>This means that is present the URL of a compliance web page for detailed accessibility information. The web page should be maintained by an independent compliance scheme or testing organization. Note the web page may include information about specific national requirements or voluntary conformance reports.</p>
 					</dd>
+                    <dt><var>conformance-claimed</var></dt>
+					<dd>
+						<p>If true it indicates that the <i>conformsTo</i> is present in the OPF file, otherwise if false it means that the metadata is not present.</p>
+						<p>This means that the publication conforms to some specification.</p>
+					</dd>
+
 				</dl>
 				
 				<h4>Variables setup</h4>
@@ -384,6 +390,8 @@
                     <li><b>LET</b> <var>certification_date</var> be the value of the node extracted from <var>package_document</var>, using the xpath <code class="xpath">/package/metadata/meta[@property="dcterms:date" and @refines=//meta[@property="a11y:certifiedBy"]/@id]/text()]</code>.</li>
 					
                     <li><b>LET</b> <var>certifier_report</var> be the value of the node extracted from <var>package_document</var>, using the xpath <code class="xpath">/package/metadata/meta[@property="a11y:<i>certifierReport</i>"]/text()]</code>.</li>
+                    
+                    <li><b>LET</b> <var>conformance_claimed</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="dcterms:<i>conformsTo</i>"]</code>.</li>
 				</ol>
 				
 				<h4>Instructions</h4>
@@ -400,6 +408,11 @@
 						<span><b>ELSE IF</b> <var>level_a</var>:</span>
 						<span><b>THEN</b> display <code id="conformance-a">"This publication meets minimum accessibility standards"</code>.</span>
 					</li>
+                    <li>
+  						<span><b>ELSE IF</b> <var>conformance_claimed</var>:</span>
+						<span><b>THEN</b> display <code id="unknown-conformance">"Conformance to accepted standards for accessibility of this publication cannot be determined"</code>.</span>
+                      
+                    </li>
 					<li>
 						<span><b>ELSE</b>:</span>
 						<span><b>THEN</b> display <code id="conformance-no">"The publication does not include a conformance statement"</code>.</span>
