@@ -591,11 +591,16 @@
 
                         <p>This means that there is an index that provides direct (eg hyperlinked) access to uses of the index terms in the document body.</p>
 					</dd>
-					<dt><var>print_equivalent_page_numbering</var></dt>
+					<dt><var>page_break_markers</var></dt>
 					<dd>
                         <p>If true it indicates that the <i>accessibilityFeature="pageBreakMarkers"</i> (Print-equivalent page numbering) is present in the OPF file, otherwise if false it means that the metadata is not present.</p>
 						<p>This means that in the publication contains references to the page numbering of an equivalent printed product.</p>
 					</dd>
+                    <dt><var>page_navigation</var></dt>
+                    <dd>
+                        <p>If true it indicates that the <i>accessibilityFeature="pageNavigation"</i> (Page Navigation) is present in the OPF file, otherwise if false it means that the metadata is not present.</p>
+                        <p>This means that the e-publication includes a means of navigating to static page break locations.</p>
+                    </dd>
 					<dt><var>next_previous_structural_navigation</var></dt>
 					<dd>
                         <p>If true it indicates that the <i>accessibilityFeature="structuralNavigation"</i> (Next / Previous structural navigation) is present in the OPF file, otherwise if false it means that the metadata is not present.</p>
@@ -607,13 +612,15 @@
                     
 					<li><b>LET</b> <var>package_document</var> be the result of calling <a href="#pre-processing">pre processing</a> given <var>package_document_as_text</var>.</li>
                      
-                   <li><b>LET</b> <var>table_of_contents_navigation</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>tableOfContents</i>"]</code>.</li>
+                    <li><b>LET</b> <var>table_of_contents_navigation</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>tableOfContents</i>"]</code>.</li>
 
-                   <li><b>LET</b> <var>index_navigation</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>index</i>"]</code>.</li>
+                    <li><b>LET</b> <var>index_navigation</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>index</i>"]</code>.</li>
 
-                   <li><b>LET</b> <var>print_equivalent_page_numbering</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>pageBreakMarkers</i>"]</code>.</li>
+                    <li><b>LET</b> <var>page_break_markers</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>pageBreakMarkers</i>"]</code>.</li>
 
-                   <li><b>LET</b> <var>next_previous_structural_navigation</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>structuralNavigation</i>"]</code>.</li>
+                    <li><b>LET</b> <var>page_navigation</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>pageNavigation</i>"]</code>.</li>
+                    
+                    <li><b>LET</b> <var>next_previous_structural_navigation</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>structuralNavigation</i>"]</code>.</li>
 
   				</ol>
 				<h4>Instructions</h4>
@@ -630,11 +637,15 @@
 								<span><b>IF</b> <var>index_navigation</var>:</span>
 								<span><b>THEN</b> <b>APPEND</b> <code id="navigation-index">"index"</code> to <var>navigation</var>.</span>
 							</li>
-							<li>
-								<span><b>IF</b> <var>print_equivalent_page_numbering</var>:</span>
-								<span><b>THEN</b> <b>APPEND</b> <code id="navigation-page-numbers">"page list"</code> to <var>navigation</var>.</span>
+                            <li>
+								<span><b>IF</b> <var>page_break_markers</var>:</span>
+								<span><b>THEN</b> <b>APPEND</b> <code id="navigation-page-breaks">"page breaks"</code> to <var>navigation</var>.</span>
 							</li>
-							<li>
+                            <li>
+							     <span><b>IF</b> <var>page_navigation</var>:</span>
+							     <span><b>THEN</b> <b>APPEND</b> <code id="navigation-page-navigation">"page navigation"</code> to <var>navigation</var>.</span>
+                            </li>
+ 							<li>
 								<span><b>IF</b> <var>next_previous_structural_navigation</var>:</span>
 								<span><b>THEN</b> <b>APPEND</b> <code id="navigation-structural">"structural navigation"</code> to <var>navigation</var>.</span>
 							</li>
@@ -1074,12 +1085,6 @@
 							<p>If true it indicates that the <i>accessibilityFeature="highContrastDisplay"</i> (Use of high contrast between text and background color) is present in the OPF file, otherwise if false it means that the metadata is not present.</p>
 							<p>This means that body text is presented with a contrast ratio of at least 4.5:1 (or 3:1 for large/heading text).</p>
 						</dd>                  
-                        <dt><var>page_navigation</var></dt>
-						<dd>
-							<p>If true it indicates that the <i>accessibilityFeature="pageNavigation"</i> (Page Navigation) is present in the OPF file, otherwise if false it means that the metadata is not present.</p>
-							<p>This means that the e-publication includes a means of navigating to static page break locations.</p>
-						</dd>
-
 						<dt><var>large_print</var></dt>
 						<dd>
 							<p>If true it indicates that the <i>accessibilityFeature="largePrint"</i> (Large Print) is present in the OPF file, otherwise if false it means that the metadata is not present.</p>
@@ -1093,7 +1098,6 @@
 						<li><b>LET</b> <var>text_to_speech_hinting</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>ttsMarkup</i>"]</code>.</li>
     				    <li><b>LET</b> <var>high_contrast_between_foreground_and_background_audio</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>highContrastAudio</i>"]</code>.</li>
     				    <li><b>LET</b> <var>high_contrast_between_text_and_background</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>highContrastDisplay</i>"]</code>.</li>
-                        <li><b>LET</b> <var>page_navigation</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>pageNavigation</i>"]</code>.</li>
                         <li><b>LET</b> <var>large_print</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>largePrint</i>"]</code>.</li>
                     </ol>
 					
@@ -1111,10 +1115,6 @@
 						<li>
 							<span><b>IF</b> <var>high_contrast_between_text_and_background</var>:</span>
 							<span><b>THEN</b> <b>APPEND</b> <code id="additional-accessibility-information-clarity-high-contrast-between-text-and-background">"high contrast between text and background"</code> to <var>clarity</var>.</span>
-						</li>
-						<li>
-							<span><b>IF</b> <var>page_navigation</var>:</span>
-							<span><b>THEN</b> <b>APPEND</b> <code id="additional-accessibility-information-clarity-page-navigation">"page navigation "</code> to <var>clarity</var>.</span>
 						</li>
 						<li>
 							<span><b>IF</b> <var>large_print</var>:</span>
