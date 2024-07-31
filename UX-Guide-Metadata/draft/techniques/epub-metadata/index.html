@@ -290,6 +290,226 @@
 				<h3>Conformance</h3>
 				<p>This technique relates to <a href="https://www.w3.org/2021/09/UX-Guide-metadata-2.0/principles/#conformance-group">Conformance key information</a>.</p>
 
+				<p>This algorithm takes the <var>package_document_as_text</var> argument: a UTF-8 string representing the Package document.</p>
+                 
+				<h4>Understanding the variables</h4>
+				<dl>
+					<dt><var>epub_accessibility_1_0</var></dt>
+					<dd>
+                        <p>If true it indicates that the <i>conformsTo="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-a"</i> (EPUB Accessibility Specification 1.0 A) or the <i>conformsTo="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aa"</i> (EPUB Accessibility Specification 1.0 AA) or the <i>conformsTo="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aaa"</i> (EPUB Accessibility Specification 1.0 AAA) or the <i>conformsTo</i> contains "EPUB Accessibility 1.0" is present in the OPF file, otherwise if false it means that the metadata is not present.</p>
+						<p>This means that the publication conforms with either the requirements of EPUB Accessibility Spec 1.0, at level A, AA, or AAA.</p>
+					</dd>
+					<dt><var>epub_accessibility_1_1</var></dt>
+					<dd>
+                        <p>If true it indicates that the <i>conformsTo</i> contains "EPUB Accessibility 1.1"  (EPUB Accessibility Specification 1.1) is present in the OPF file, otherwise if false it means that the metadata is not present.</p>
+						<p>This means that the publication conforms with the requirements of EPUB Accessibility Spec 1.1.</p>
+					</dd>
+					<dt><var>wcag_2_0</var></dt>
+					<dd>
+                        <p>If true it indicates that the <i>conformsTo</i> contains "WCAG 2.0" or <i>conformsTo="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-a"</i> (EPUB Accessibility Specification 1.0 A) or the <i>conformsTo="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aa"</i> (EPUB Accessibility Specification 1.0 AA) or the <i>conformsTo="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aaa"</i> (EPUB Accessibility Specification 1.0 AAA) are present in the OPF file, otherwise if false it means that the metadata is not present.</p>
+						<p>This means that the publication conforms with the requirements of WCAG version 2.0 or with the requirements of EPUB Accessibility Spec 1.0 (at level A, AA, or AAA). This is because being compliant with EPUB Accessibility 1.0 specification means at least being compliant with WCAG 2.0 specification.</p>
+					</dd>
+					<dt><var>wcag_2_1</var></dt>
+					<dd>
+						 <p>If true it indicates that the <i>conformsTo</i> contains "WCAG 2.1" is present in the OPF file, otherwise if false it means that the metadata is not present.</p>
+						<p>This means that the publication conforms with the requirements of WCAG version 2.1.</p>
+					</dd>
+					<dt><var>wcag_2_2</var></dt>
+					<dd>
+				        <p>If true it indicates that the <i>conformsTo</i> contains "WCAG 2.2" is present in the OPF file, otherwise if false it means that the metadata is not present.</p>
+						<p>This means that the publication conforms with the requirements of WCAG version 2.2.</p>
+					</dd>
+					<dt><var>level_a</var></dt>
+					<dd>
+						<p>If true it indicates that the <i>conformsTo</i> contains "Level A" or the <i>conformsTo="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-a"</i> (EPUB Accessibility Specification 1.0 A) are present in the OPF file, otherwise if false it means that the metadata is not present.</p>
+						<p>This means that the publication conforms with the requirements of WCAG level A or with the requirements of EPUB Accessibility Spec 1.0 level A.</p>
+					</dd>
+					<dt><var>level_aa</var></dt>
+					<dd>
+						<p>If true it indicates that the <i>conformsTo</i> contains "Level AA" or the <i>conformsTo="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aa"</i> (EPUB Accessibility Specification 1.0 AA) are present in the OPF file, otherwise if false it means that the metadata is not present.</p>
+						<p>This means that the publication conforms with the requirements of WCAG level AA or with the requirements of EPUB Accessibility Spec 1.0 level AA.</p>
+					</dd>
+					<dt><var>level_aaa</var></dt>
+					<dd>
+						<p>If true it indicates that the <i>conformsTo</i> contains "Level AAA" or the <i>conformsTo="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aaa"</i> (EPUB Accessibility Specification 1.0 A) are present in the OPF file, otherwise if false it means that the metadata is not present.</p>
+						<p>This means that the publication conforms with the requirements of WCAG level AAA or with the requirements of EPUB Accessibility Spec 1.0 level AAA.</p>
+					</dd>
+					<dt><var>certifier</var></dt>
+					<dd>
+						<p>Returns the description of <i>a11y:certifiedBy</i> (Compliance certification by (name)) if present in the OPF file, otherwise if false it means that the metadata is not present.</p>
+						<p>This means that the name of the organization responsible for compliance testing and certification of the product is present.</p>
+					</dd>
+					<dt><var>certifier_credentials</var></dt>
+					<dd>
+						<p>Returns the description of <i>a11y:certifierCredential</i> (Compliance certification by (URL)) if present in the OPF file, otherwise if false it means that the metadata is not present.</p> 
+						<p>This means that the the URL of a web page belonging to an organization responsible for compliance testing and certification of the product is present – typically a ‘home page’ or a page describing the certification scheme itself.</p>
+					</dd>
+					<dt><var>certification_date</var></dt>
+					<dd>
+						<p>Returns the description of <i>dcterms:date</i> if that date property is associated with the <i>a11y:certifiedBy</i> (Latest accessibility assessment date) if present in the OPF file, otherwise if false it means that the metadata is not present.</p>
+						<p>This means that the date of the latest assessment or re-assessment of the accessibility of the product is present.</p>
+					</dd>
+					<dt><var>certifier_report</var></dt>
+					<dd>
+						<p>Returns the description of <i>a11y:certifierReport</i> (Compliance web page for detailed accessibility information) if present in the OPF, otherwise if false it means that the metadata is not present.</p>
+						<p>This means that is present the URL of a compliance web page for detailed accessibility information. The web page should be maintained by an independent compliance scheme or testing organization. Note the web page may include information about specific national requirements or voluntary conformance reports.</p>
+					</dd>
+                    <dt><var>conformance-claimed</var></dt>
+					<dd>
+						<p>If true it indicates that the <i>conformsTo</i> is present in the OPF file, otherwise if false it means that the metadata is not present.</p>
+						<p>This means that the publication conforms to some specification.</p>
+					</dd>
+
+				</dl>
+				
+				<h4>Variables setup</h4>
+				<ol class="condition">
+					<li><b>LET</b> <var>package_document</var> be the result of calling <a href="#pre-processing">pre processing</a> given <var>package_document_as_text</var>.</li>
+                    
+					<li><b>LET</b> <var>epub_accessibility_1_0</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="dcterms:<i>conformsTo</i>" and contains(text(), <i>http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-</i>"]</code>.</li>
+                    
+                    <li><b>LET</b> <var>epub_accessibility_1_1</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="dcterms:<i>conformsTo</i>" and contains(text(), <i>"EPUB Accessibility 1.1"</i>)]</code>.</li>
+                    
+					<li><b>LET</b> <var>wcag_2_0</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="dcterms:<i>conformsTo</i>" and contains(text(), <i>"http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-"</i>)]</code> <b>OR</b> calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="dcterms:<i>conformsTo</i>" and contains(text(), <i>"WCAG 2.0"</i>)]</code></li>
+                    
+                    <li><b>LET</b> <var>wcag_2_1</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="dcterms:<i>conformsTo</i>" and contains(text(), <i>WCAG 2.1"</i>)]</code>.</li>
+            
+					<li><b>LET</b> <var>wcag_2_2</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="dcterms:<i>conformsTo</i>" and contains(text(), <i>WCAG 2.2"</i>)]</code>.</li>
+    
+					<li><b>LET</b> <var>level_a</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="dcterms:<i>conformsTo</i>" and contains(text(), <i>Level A"</i>)]</code> <b>OR</b> calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="dcterms:<i>conformsTo</i>" and text()=<i>http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-a</i>"]</code>.</li>
+                    
+					<li><b>LET</b> <var>level_aa</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="dcterms:<i>conformsTo</i>" and contains(text(), <i>Level AA"</i>)]</code> <b>OR</b> calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="dcterms:<i>conformsTo</i>" and text()=<i>http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aa</i>"]</code>.</li>
+                    
+                    <li><b>LET</b> <var>level_aaa</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="dcterms:<i>conformsTo</i>" and contains(text(), <i>Level AAA"</i>)]</code> <b>OR</b> calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="dcterms:<i>conformsTo</i>" and text()=<i>http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aaa</i>"]</code>.</li>
+                    
+					
+                    <li><b>LET</b> <var>certifier</var> be the value of the node extracted from <var>package_document</var>, using the xpath <code class="xpath">/package/metadata/meta[@property="a11y:<i>certifiedBy</i>"]/text()</code>.</li>
+					
+                    <li><b>LET</b> <var>certifier_credentials</var> be the value of the node extracted from <var>package_document</var>, using the xpath <code class="xpath">/package/metadata/meta[@property="a11y:<i>certifierCredential</i>"]/text()</code>.</li>
+					
+                    <li><b>LET</b> <var>certification_date</var> be the value of the node extracted from <var>package_document</var>, using the xpath <code class="xpath">/package/metadata/meta[@property="dcterms:date" and @refines=//meta[@property="a11y:certifiedBy"]/@id]/text()]</code>.</li>
+					
+                    <li><b>LET</b> <var>certifier_report</var> be the value of the node extracted from <var>package_document</var>, using the xpath <code class="xpath">/package/metadata/meta[@property="a11y:<i>certifierReport</i>"]/text()]</code>.</li>
+                    
+                    <li><b>LET</b> <var>conformance_claimed</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="dcterms:<i>conformsTo</i>"]</code>.</li>
+				</ol>
+				
+				<h4>Instructions</h4>
+				<ol class="condition">
+					<li>
+						<span><b>IF</b> <var>level_aaa</var>:</span>
+						<span><b>THEN</b> display <code id="conformance-aaa">"This publication exceeds accepted accessibility standards"</code>.</span>
+					</li>
+					<li>
+						<span><b>ELSE IF</b> <var>level_aa</var>:</span>
+						<span><b>THEN</b> display <code id="conformance-aa">"This publication meets accepted accessibility standards"</code>.</span>
+					</li>
+					<li>
+						<span><b>ELSE IF</b> <var>level_a</var>:</span>
+						<span><b>THEN</b> display <code id="conformance-a">"This publication meets minimum accessibility standards"</code>.</span>
+					</li>
+                    <li>
+  						<span><b>ELSE IF</b> <var>conformance_claimed</var>:</span>
+						<span><b>THEN</b> display <code id="unknown-conformance">"Conformance to accepted standards for accessibility of this publication cannot be determined"</code>.</span>
+                      
+                    </li>
+					<li>
+						<span><b>ELSE</b>:</span>
+						<span><b>THEN</b> display <code id="conformance-no">"The publication does not include a conformance statement"</code>.</span>
+					</li>
+					<li>
+						<span><b>IF</b> <var>certifier</var> is <b>NOT</b> empty:</span>
+						<span><b>THEN</b></span>
+						<ul class="condition">
+							<li>display <code id="conformance-certifier">"This publication is certified by "</code></li>
+							<li>display <var>certifier</var>.</li>
+						</ul>
+					</li>
+					<li>
+						<span><b>IF</b> <var>certifier_credentials</var> is <b>NOT</b> empty:</span>
+						<span><b>THEN</b></span>
+						<ul class="condition">
+							<li>display <code id="conformance-certifier-credentials">"The certifier's credential is "</code></li>
+							<li>display <var>certifier_credentials</var> as link <b>IF</b> <var>certifier_credentials</var> is an URL.</li>
+						</ul>
+					</li>
+					<li>
+						<span>display <code id="conformance-details">"Detailed Conformance Information"</code> as heading.</span>
+					</li>
+					<li>
+						<span><b>IF</b> <var>epub_accessibility_1_0</var> <b>OR</b> <var>epub_accessibility_1_1</var> <b>OR</b> <var>wcag_2_0</var> <b>OR</b> <var>wcag_2_1</var> <b>OR</b> <var>wcag_2_2</var> <b>OR</b> <var>level_aaa</var> <b>OR</b> <var>level_aa</var> <b>OR</b> <var>level_a</var>:</span>
+						<span><b>THEN</b> display <code id="conformance-claim">"This publication claims to meet "</code>.</span>
+					</li>
+					<li>
+						<span><b>IF</b> <var>epub_accessibility_1_0</var>:</span>
+						<span><b>THEN</b> display <code id="conformance-epub-accessibility-1-0">" EPUB Accessibility 1.0 "</code>.</span>
+					</li>
+					<li>
+						<span><b>ELSE IF</b> <var>epub_accessibility_1_1</var>:</span>
+						<span><b>THEN</b> display <code id="conformance-epub-accessibility-1-1">" EPUB Accessibility 1.1 "</code>.</span>
+					</li>
+					<li>
+						<span><b>IF</b> <var>wcag_2_2</var>:</span>
+						<span><b>THEN</b> display <code id="conformance-wcag-2-0">" WCAG 2.2 "</code>.</span>
+					</li>
+					<li>
+						<span><b>ELSE IF</b> <var>wcag_2_1</var>:</span>
+						<span><b>THEN</b> display <code id="conformance-wcag-2-1">" WCAG 2.1 "</code>.</span>
+					</li>
+					<li>
+						<span><b>ELSE IF</b> <var>wcag_2_0</var>:</span>
+						<span><b>THEN</b> display <code id="conformance-wcag-2-2">" WCAG 2.0 "</code>.</span>
+					</li>
+					<li>
+						<span><b>IF</b> <var>level_aaa</var>:</span>
+						<span><b>THEN</b> display <code id="conformance-level-aaa">" Level AAA"</code>.</span>
+					</li>
+					<li>
+						<span><b>ELSE IF</b> <var>level_aa</var>:</span>
+						<span><b>THEN</b> display <code id="conformance-level-aa">" Level AA"</code>.</span>
+					</li>
+					<li>
+						<span><b>ELSE IF</b> <var>level_a</var>:</span>
+						<span><b>THEN</b> display <code id="conformance-level-a">" Level A"</code>.</span>
+					</li>
+					<li>
+						<span><b>IF</b> <var>certification_date</var> <b>OR</b> <var>certifier</var> <b>OR</b> <var>certifier_credentials</var>:</span>
+						<span><b>THEN</b> display <code id="conformance-certification-info">"The publication was certified "</code>.</span>
+					</li>
+					<li>
+						<span><b>IF</b> <var>certification_date</var>:</span>
+						<span><b>THEN</b></span>
+						<ul class="condition">
+							<li>display <code id="conformance-ceertification-date-prefix">" on "</code></li>
+							<li>display <var>certification_date</var>.</li>
+						</ul>
+					</li>
+					<li>
+						<span><b>IF</b> <var>certifier</var>:</span>
+						<span><b>THEN</b></span>
+						<ul class="condition">
+							<li>display <code id="conformance-certifier-prefix">" by "</code></li>
+							<li>display <var>certifier</var>.</li>
+						</ul>
+					</li>
+					<li>
+						<span><b>IF</b> <var>certifier_credentials</var>:</span>
+						<span><b>THEN</b></span>
+						<ul class="condition">
+							<li>display <code id="conformance-certifier-credentials-prefix">" with a credential of "</code></li>
+							<li>display <var>certifier_credentials</var> as link <b>IF</b> <var>certifier_credentials</var> is an URL.</li>
+						</ul>
+					</li>
+					<li>
+						<span><b>IF</b> <var>certifier_report</var>:</span>
+						<span><b>THEN</b></span>
+						<ul class="condition">
+							<li>display <code id="conformance-certifier-report">"For more information refer to the certifier's report."</code></li>
+							<li>with <var>certifier_report</var> as link.</li>
+						</ul>
+					</li>
+				</ol>
+                
 			</section>
 			
 		
@@ -371,11 +591,16 @@
 
                         <p>This means that there is an index that provides direct (eg hyperlinked) access to uses of the index terms in the document body.</p>
 					</dd>
-					<dt><var>print_equivalent_page_numbering</var></dt>
+					<dt><var>page_break_markers</var></dt>
 					<dd>
                         <p>If true it indicates that the <i>accessibilityFeature="pageBreakMarkers"</i> (Print-equivalent page numbering) is present in the OPF file, otherwise if false it means that the metadata is not present.</p>
-						<p>This means that in the publication contains references to the page numbering of an equivalent printed product.</p>
+						<p>This means that the publication contains references to the page numbering of an equivalent printed product.</p>
 					</dd>
+                    <dt><var>page_navigation</var></dt>
+                    <dd>
+                        <p>If true it indicates that the <i>accessibilityFeature="pageNavigation"</i> (Page Navigation) is present in the OPF file, otherwise if false it means that the metadata is not present.</p>
+                        <p>This means that the e-publication includes a means of navigating to static page break locations.</p>
+                    </dd>
 					<dt><var>next_previous_structural_navigation</var></dt>
 					<dd>
                         <p>If true it indicates that the <i>accessibilityFeature="structuralNavigation"</i> (Next / Previous structural navigation) is present in the OPF file, otherwise if false it means that the metadata is not present.</p>
@@ -387,13 +612,15 @@
                     
 					<li><b>LET</b> <var>package_document</var> be the result of calling <a href="#pre-processing">pre processing</a> given <var>package_document_as_text</var>.</li>
                      
-                   <li><b>LET</b> <var>table_of_contents_navigation</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>tableOfContents</i>"]</code>.</li>
+                    <li><b>LET</b> <var>table_of_contents_navigation</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>tableOfContents</i>"]</code>.</li>
 
-                   <li><b>LET</b> <var>index_navigation</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>index</i>"]</code>.</li>
+                    <li><b>LET</b> <var>index_navigation</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>index</i>"]</code>.</li>
 
-                   <li><b>LET</b> <var>print_equivalent_page_numbering</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>pageBreakMarkers</i>"]</code>.</li>
+                    <li><b>LET</b> <var>page_break_markers</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>pageBreakMarkers</i>"]</code>.</li>
 
-                   <li><b>LET</b> <var>next_previous_structural_navigation</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>structuralNavigation</i>"]</code>.</li>
+                    <li><b>LET</b> <var>page_navigation</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>pageNavigation</i>"]</code>.</li>
+                    
+                    <li><b>LET</b> <var>next_previous_structural_navigation</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>structuralNavigation</i>"]</code>.</li>
 
   				</ol>
 				<h4>Instructions</h4>
@@ -410,18 +637,22 @@
 								<span><b>IF</b> <var>index_navigation</var>:</span>
 								<span><b>THEN</b> <b>APPEND</b> <code id="navigation-index">"index"</code> to <var>navigation</var>.</span>
 							</li>
-							<li>
-								<span><b>IF</b> <var>print_equivalent_page_numbering</var>:</span>
-								<span><b>THEN</b> <b>APPEND</b> <code id="navigation-page-numbers">"page list"</code> to <var>navigation</var>.</span>
+                            <li>
+								<span><b>IF</b> <var>page_break_markers</var>:</span>
+								<span><b>THEN</b> <b>APPEND</b> <code id="navigation-page-breaks">"page breaks"</code> to <var>navigation</var>.</span>
 							</li>
-							<li>
+                            <li>
+							     <span><b>IF</b> <var>page_navigation</var>:</span>
+							     <span><b>THEN</b> <b>APPEND</b> <code id="navigation-page-navigation">"page navigation"</code> to <var>navigation</var>.</span>
+                            </li>
+ 							<li>
 								<span><b>IF</b> <var>next_previous_structural_navigation</var>:</span>
 								<span><b>THEN</b> <b>APPEND</b> <code id="navigation-structural">"structural navigation"</code> to <var>navigation</var>.</span>
 							</li>
 							<li><b>LET</b> <var>navigation_string</var> be the result of:
 								<ul class="condition">
 									<li>calling join on <var>navigation</var> with the separator <code>", "</code></li>
-									<li>replacing the last occurence of <code>", "</code> with <code id="join-array-and">" and "</code></li>
+									<li>replacing the last occurrence of <code>", "</code> with <code id="join-array-and">" ,and "</code></li>
 									<li>concatenating <code id="navigation-intro">"Navigation by "</code> to the beginning of the string.</li>
 								</ul>
 							</li>
@@ -622,7 +853,7 @@
 								<ul class="condition">
 									<li>calling join on <var>hazards</var> with the separator <code>", "</code></li>
 									<li>making uppercase the first character</li>
-									<li>replacing the last occurence of <code>", "</code> with <code id="join-array-and">" and "</code></li>
+									<li>replacing the last occurrence of <code>", "</code> with <code id="join-array-and">" ,and "</code></li>
 									<li>concatenating <code id="hazards-plural">" hazards"</code> to the end of the string <b>IF</b> (length of <var>hazards</var>) > 1 <b>ELSE</b> concatenating <code id="hazards-singular">" hazard"</code> to the end of the string.</li>
 								</ul>
 							</li>
@@ -700,11 +931,213 @@
 					</li>
 				</ol>
 			</section>
-			
+
+            <section id="legal-considerations">
+				<h3>Legal considerations</h3>
+				<p>This technique relates to <a href="https://www.w3.org/2021/09/UX-Guide-metadata-2.0/principles/#legal-considerations">Legal considerations key information</a>.</p>
+				<div class="note">
+					<p>We are actively seeking comments on this "legal consideration" section. If you are a publisher, we want your feedback! Please visit the GitHub Issue tracking to leave a comment  in the existing  issue at: <div class="issue" data-number="350"></div></p>
+				</div>
+				<p>This algorithm takes the <var>package_document_as_text</var> argument: a UTF-8 string representing the Package document.</p>
+            
+				<h4>Understanding the variables</h4>
+				<dl>
+					<dt><var>eaa_exemption_micro_enterprises</var></dt>
+					<dd>
+						<p>If true it indicates that the <i><a href="https://www.w3.org/TR/epub-a11y-exemption/#exemption-property">a11y:exemption</a>="<a href="https://www.w3.org/TR/epub-a11y-exemption/#exemption-values">eaa-microenterprise</a>"</i> (EEA exception 1 – Micro-enterprises) is present in the OPF file, otherwise if false it means that the metadata is not present.</p>
+						<p>This means that the digital product falls under European Accessibility Act exemption for Micro-enterprises (as defined by current regulations). The product may not have to comply with requirements of the EAA if the publisher is a micro-enterprise.</p>
+					</dd>
+					<dt><var>eaa_exception_disproportionate_burden</var></dt>
+					<dd>
+						<p>If true it indicates that the <i><a href="https://www.w3.org/TR/epub-a11y-exemption/#exemption-property">a11y:exemption</a>="<a href="https://www.w3.org/TR/epub-a11y-exemption/#exemption-values">eaa_disproportionate_burden</a>"</i> (EAA exception 2 – Disproportionate burden) is present in the OPF file, otherwise if false it means that the metadata is not present.</p>
+						<p>This means that the digital product falls under European Accessibility Act exception for Disproportionate burden (as defined by current regulations). The product may not have to comply with requirements of the EAA if doing so would financially overburden the publisher.</p>
+					</dd>
+					<dt><var>eaa_exception_fundamental_modification</var></dt>
+					<dd>
+						<p>If true it indicates that the <i><a href="https://www.w3.org/TR/epub-a11y-exemption/#exemption-property">a11y:exemption</a>="<a href="https://www.w3.org/TR/epub-a11y-exemption/#exemption-values">eaa_fundamental_modification</a>"</i> (EAA exception 3 – Fundamental modification) is present in the OPF file, otherwise if false it means that the metadata is not present.</p>
+						<p>This means that the digital product falls under European Accessibility Act exception for Fundamental modification (as defined by current regulations). The product may not have to comply with requirements of the EAA if doing so requires a fundamental modification of the nature of the product or service.</p>
+					</dd>
+				</dl>
+				<h4>Variables setup</h4>
+				<ol class="condition">
+					<li><b>LET</b> <var>package_document</var> be the result of calling <a href="#pre-processing">pre processing</a> given <var>package_document_as_text</var>.</li>
+					<li><b>LET</b> <var>eaa_exemption_micro_enterprises</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="a11y:<i>exemption</i>" and text()="<i>eaa-microenterprise</i>"]</code>.</li>
+					<li><b>LET</b> <var>eaa_exception_disproportionate_burden</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="a11y:<i>exemption</i>" and text()="<i>eaa-disproportionate-burden</i>"]</code>.</li>
+					<li><b>LET</b> <var>eaa_exception_fundamental_modification</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="a11y:<i>exemption</i>" and text()="<i>eaa-fundamental-alteration</i>"]</code>.</li>
+				</ol>
+				<h4>Instructions</h4>
+				<ol class="condition">
+					<li>
+						<span><b>IF</b> <var>eaa_exemption_micro_enterprises</var> <b>OR</b> <var>eaa_exception_disproportionate_burden</var> <b>OR</b> <var>eaa_exception_fundamental_modification</var>:</span>
+						<span><b>THEN</b> display <code id="tbd">"TBD"</code>.</span>
+					</li>
+					<li>
+						<b>ELSE</b> display <code id="legal-considerations-no-metadata">"No legal considerations"</code>.
+						<p class="note">This key information can be hidden if metadata is missing.</p>
+					</li>
+				</ol>
+			</section>
+            
+            
 			<section id="additional-accessibility-information">
 				<h3>Additional accessibility information</h3>
 				<p>This technique relates to <a href="https://www.w3.org/2021/09/UX-Guide-metadata-2.0/principles/#additional-accessibility-information">Additional accessibility information key information</a>.</p>
 
+				<p>This algorithm takes the <var>package_document_as_text</var> argument: a UTF-8 string representing the Package document.</p>
+
+                <section id="additional-accessibility-information-adaptation">
+					<h3>Adaptation</h3>
+	
+					<h5>Understanding the variables</h5>
+					<dl>
+						<dt><var>audio_descriptions</var></dt>
+						<dd>
+							<p>If true it indicates that the <i>accessibilityFeature="audioDescriptions"</i> (Audio Descriptions) is present in the OPF file, otherwise if false it means that the metadata is not present.</p>
+							<p>This means that there is an audio descriptions track available for video content.</p>
+						</dd>
+						<dt><var>closed_captions</var></dt>
+						<dd>
+							<p>If true it indicates that the <i>accessibilityFeature="closedCaptions"</i> (Closed captions) is present in the OPF file, otherwise if false it means that the metadata is not present.</p>
+							<p>This means that the audio content of a video can be seen via closed captions that can be turned on or off  by the viewer and which will be a separate file from the video itself.</p>
+						</dd>
+						<dt><var>open_captions</var></dt>
+						<dd>
+							<p>If true it indicates that the <i>accessibilityFeature="openCaptions"</i> (Open captions) is present in the OPF file, otherwise if false it means that the metadata is not present.</p>
+							<p>This means that the audio content of a video can be seen via open captions, which means they cannot be turned off and are always visible when the video plays.</p>
+						</dd>
+						<dt><var>transcript</var></dt>
+						<dd>
+							<p>If true it indicates that the <i>accessibilityFeature="transcript"</i> (transcript) is present in the OPF file, otherwise if false it means that the metadata is not present.</p>
+							<p>This means that a transcript of the audio content of the product is supplied with it.</p>
+						</dd>
+						<dt><var>sign_language</var></dt>
+						<dd>
+							<p>If true it indicates that the <i>accessibilityFeature="signLanguage"</i> (Sign language interpretation) is present in the OPF file, otherwise if false it means that the metadata is not present.</p>
+							<p>This means that a full signing of audio content of the product is supplied with the video file.</p>
+						</dd>
+					</dl>
+					
+					<h5>Variables setup</h5>
+					<ol class="condition">
+                        <li><b>LET</b> <var>package_document</var> be the result of calling <a href="#pre-processing">pre processing</a> given <var>package_document_as_text</var>.</li>
+						<li><b>LET</b> <var>audio_descriptions</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>audioDescription</i>"]</code>.</li>
+						<li><b>LET</b> <var>closed_captions</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>closedCaptions</i>"]</code>.</li>
+                        <li><b>LET</b> <var>open_captions</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>openCaptions</i>"]</code>.</li>
+                        <li><b>LET</b> <var>transcript</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>transcript</i>"]</code>.</li>
+                        <li><b>LET</b> <var>sign_language</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>signLanguage</i>"]</code>.</li>
+    				</ol>
+					
+					<h5>Instructions</h5>
+					<ol class="condition">
+						<li><b>LET</b> <var>adaptation</var> be  an empty array.</li>
+						<li>
+							<span><b>IF</b> <var>audio_descriptions</var>:</span>
+							<span><b>THEN</b> <b>APPEND</b> <code id="additional-accessibility-information-adaptation-audio-descriptions">"audio descriptions"</code> to <var>adaptation</var>.</span>
+						</li>
+						<li>
+							<span><b>IF</b> <var>closed_captions</var>:</span>
+							<span><b>THEN</b> <b>APPEND</b> <code id="additional-accessibility-information-adaptation-closed-captions">"closed captions"</code> to <var>adaptation</var>.</span>
+						</li>
+						<li>
+							<span><b>IF</b> <var>open_captions</var>:</span>
+							<span><b>THEN</b> <b>APPEND</b> <code id="additional-accessibility-information-adaptation-open-captions">"open captions"</code> to <var>adaptation</var>.</span>
+						</li>
+						<li>
+							<span><b>IF</b> <var>transcript</var>:</span>
+							<span><b>THEN</b> <b>APPEND</b> <code id="additional-accessibility-information-adaptation-transcript">"transcript"</code> to <var>adaptation</var>.</span>
+						</li>
+						<li>
+							<span><b>IF</b> <var>sign_language</var>:</span>
+							<span><b>THEN</b> <b>APPEND</b> <code id="additional-accessibility-information-adaptation-sign-language">"sign language"</code> to <var>adaptation</var>.</span>
+						</li>
+						<li><b>IF</b> <var>adaptation</var> is <b>NOT</b> empty:
+							<ol class="condition">
+								<li><b>LET</b> <var>adaptation_string</var> be the result of:
+									<ul class="condition">
+										<li>calling join on <var>adaptation</var> with the separator <code>", "</code></li>
+										<li>making uppercase the first character</li>
+										<li>replacing the last occurrence of <code>", "</code> with <code id="join-array-and">" ,and "</code>.</li>
+									</ul>
+								</li>
+								<li>display <var>adaptation_string</var>.</li>
+							</ol>
+						</li>
+					</ol>
+				</section>
+				
+				<section id="additional-accessibility-information-clarity">
+					<h3>Clarity</h3>
+	
+					<h5>Understanding the variables</h5>
+					<dl>
+						<dt><var>text_to_speech_hinting</var></dt>
+						<dd>
+							<p>If true it indicates that the <i>accessibilityFeature="ttsMarkup"</i>  (Text-to-speech markup provided) is present in the OPF file, otherwise if false it means that the metadata is not present.</p>
+							<p>This means that text-to-speech has been optimised through provision of PLS lexicons, SSML or CSS Speech synthesis hints or other speech synthesis markup languages or hinting.</p>
+						</dd>
+						<dt><var>high_contrast_between_foreground_and_background_audio</var></dt>
+						<dd>
+							<p>If true it indicates that the <i>accessibilityFeature="highContrastAudio"</i> (Use of high contrast between foreground and background audio) is present in the OPF file, otherwise if false it means that the metadata is not present.</p>
+							<p>This means that foreground audio content (eg voice) is presented with no or low background noise (eg ambient sounds, music), at least 20dB below the level of the foreground, or background noise can be switched off (eg via an alternative audio track). Brief and occasional sound effects may be as loud as foreground voice so long as they are isolated from the foreground.</p>
+						</dd>  
+                        <dt><var>high_contrast_between_text_and_background</var></dt>
+						<dd>
+							<p>If true it indicates that the <i>accessibilityFeature="highContrastDisplay"</i> (Use of high contrast between text and background color) is present in the OPF file, otherwise if false it means that the metadata is not present.</p>
+							<p>This means that body text is presented with a contrast ratio of at least 4.5:1 (or 3:1 for large/heading text).</p>
+						</dd>                  
+						<dt><var>large_print</var></dt>
+						<dd>
+							<p>If true it indicates that the <i>accessibilityFeature="largePrint"</i> (Large Print) is present in the OPF file, otherwise if false it means that the metadata is not present.</p>
+							<p>This means that the e-publication has been formatted to meet large print guidelines.</p>
+						</dd>
+					</dl>
+					
+					<h5>Variables setup</h5>
+					<ol class="condition">
+						<li><b>LET</b> <var>package_document</var> be the result of calling <a href="#pre-processing">pre processing</a> given <var>package_document_as_text</var>.</li>
+						<li><b>LET</b> <var>text_to_speech_hinting</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>ttsMarkup</i>"]</code>.</li>
+    				    <li><b>LET</b> <var>high_contrast_between_foreground_and_background_audio</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>highContrastAudio</i>"]</code>.</li>
+    				    <li><b>LET</b> <var>high_contrast_between_text_and_background</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>highContrastDisplay</i>"]</code>.</li>
+                        <li><b>LET</b> <var>large_print</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>largePrint</i>"]</code>.</li>
+                    </ol>
+					
+					<h5>Instructions</h5>
+					<ol class="condition">
+						<li><b>LET</b> <var>clarity</var> be  an empty array.</li>
+						<li>
+							<span><b>IF</b> <var>text_to_speech_hinting</var>:</span>
+							<span><b>THEN</b> <b>APPEND</b> <code id="additional-accessibility-information-clarity-text-to-speech-hinting">"text-to-speech hinting provided"</code> to <var>clarity</var>.</span>
+						</li>
+						<li>
+							<span><b>IF</b> <var>high_contrast_between_foreground_and_background_audio</var>:</span>
+							<span><b>THEN</b> <b>APPEND</b> <code id="additional-accessibility-information-clarity-high-contrast-between-foreground-and-background-audio">"high contrast between foreground and background audio"</code> to <var>clarity</var>.</span>
+						</li>
+						<li>
+							<span><b>IF</b> <var>high_contrast_between_text_and_background</var>:</span>
+							<span><b>THEN</b> <b>APPEND</b> <code id="additional-accessibility-information-clarity-high-contrast-between-text-and-background">"high contrast between text and background"</code> to <var>clarity</var>.</span>
+						</li>
+						<li>
+							<span><b>IF</b> <var>large_print</var>:</span>
+							<span><b>THEN</b> <b>APPEND</b> <code id="additional-accessibility-information-clarity-large-print">"large print "</code> to <var>clarity</var>.</span>
+						</li>
+
+                        
+                        <li><b>IF</b> <var>clarity</var> is <b>NOT</b> empty:
+							<ol class="condition">
+								<li><b>LET</b> <var>clarity_string</var> be the result of:
+									<ul class="condition">
+										<li>calling join on <var>clarity</var> with the separator <code>", "</code></li>
+										<li>making uppercase the first character</li>
+										<li>replacing the last occurrence of <code>", "</code> with <code id="join-array-and">" ,and "</code>.</li>
+									</ul>
+								</li>
+								<li>display <var>clarity_string</var>.</li>
+							</ol>
+						</li>
+					</ol>
+				</section>
+                
+                
 			</section>
 			
 		</section>
