@@ -638,7 +638,7 @@
 							<li><b>LET</b> <var>navigation_string</var> be the result of:
 								<ul class="condition">
 									<li>calling join on <var>navigation</var> with the separator <code>", "</code></li>
-									<li>replacing the last occurence of <code>", "</code> with <code id="join-array-and">" and "</code></li>
+									<li>replacing the last occurrence of <code>", "</code> with <code id="join-array-and">", and "</code></li>
 									<li>concatenating <code id="navigation-intro">"Navigation by "</code> to the beginning of the string.</li>
 								</ul>
 							</li>
@@ -827,7 +827,7 @@
 								<ul class="condition">
 									<li>calling join on <var>hazards</var> with the separator <code>", "</code></li>
 									<li>making uppercase the first character</li>
-									<li>replacing the last occurence of <code>", "</code> with <code id="join-array-and">" and "</code></li>
+									<li>replacing the last occurrence of <code>", "</code> with <code id="join-array-and">", and "</code></li>
 									<li>concatenating <code id="hazards-plural">" hazards"</code> to the end of the string <b>IF</b> (length of <var>hazards</var>) > 1 <b>ELSE</b> concatenating <code id="hazards-singular">" hazard"</code> to the end of the string.</li>
 								</ul>
 							</li>
@@ -939,7 +939,7 @@
 					</li>
 					<li>
 						<span><b>ELSE IF</b> <var>accessibility_summary</var> is <b>NOT</b> empty:</span>
-						<span><b>THEN</b> display the content of <var>accessibility_summary</var> with <var>language_accessibility_summary</var> as language.</li></span>
+						<span><b>THEN</b> display the content of <var>accessibility_summary</var> with <var>language_accessibility_summary</var> as language.</span>
 					</li>
 					<li>
 						<b>ELSE</b> display <code id="accessibility-summary-no-metadata">"No accessibility summary"</code>.
@@ -1068,7 +1068,7 @@
 									<ul class="condition">
 										<li>calling join on <var>adaptation</var> with the separator <code>", "</code></li>
 										<li>making uppercase the first character</li>
-										<li>replacing the last occurence of <code>", "</code> with <code id="join-array-and">" and "</code>.</li>
+										<li>replacing the last occurrence of <code>", "</code> with <code id="join-array-and">", and "</code>.</li>
 									</ul>
 								</li>
 								<li>display <var>adaptation_string</var>.</li>
@@ -1168,7 +1168,7 @@
 									<ul class="condition">
 										<li>calling join on <var>clarity</var> with the separator <code>", "</code></li>
 										<li>making uppercase the first character</li>
-										<li>replacing the last occurence of <code>", "</code> with <code id="join-array-and">" and "</code>.</li>
+										<li>replacing the last occurrence of <code>", "</code> with <code id="join-array-and">", and "</code>.</li>
 									</ul>
 								</li>
 								<li>display <var>clarity_string</var>.</li>
