@@ -403,8 +403,8 @@
 						href="#conf-statements">simple statements</a> should be provided when EPUB accessibility and
 					WCAG levels are identified.</p>
 
-				<p>If the publication does not include a conformance claim,
-					the statement should indicate that conformance could not be determined. </p>
+				<p>When there is a conformance claim to an unknown specification, the statement should indicate that Conformance to accepted standards for accessibility of this publication cannot be determined. If the publication does not include a conformance claim,
+					the statement should indicate that The publication does not include a conformance statement.</p>
 
 				<p>In most cases, people will want to know more about the conformance and certification of the
 					publication. The certifying organization should be identified along with their credentials and
@@ -431,6 +431,17 @@
 							<p>The publication contains a conformance statement that it meets the EPUB Accessibility and
 								WCAG 2 Level AAA standard.</p>
 						</dd>
+<dt>Conformance to accepted standards for accessibility of this publication cannot be determined.</dt>
+						<dd>
+							<p>The publication contains a conformance statement that is not to the EPUB Accessibility
+								standard.</p>
+						</dd>
+
+						<dt>The publication does not include a conformance statement.</dt>
+						<dd>
+							<p>The conformance metadata is missing and conformity to a standard of this publication is unknown.</p>
+						</dd>
+				
 						<dt>Certifier's name</dt>
 						<dd>Identifies the organization providing the certification review or process for certification. </dd>
 
@@ -440,18 +451,7 @@
 							badge, this can be displayed. The display of the logo or badge can be arranged between the
 							certifier and the distributor showing the accessibility metadata.</dd>
 
-						<dt>This publication's accessibility conformance has not been associated with accepted
-							standards.</dt>
-						<dd>
-							<p>The publication contains a conformance statement that is not to the EPUB Accessibility
-								standard.</p>
-						</dd>
-
-						<dt>The publication does not include a conformance statement.</dt>
-						<dd>
-							<p>The conformity to a standard of this publication is unknown.</p>
-						</dd>
-					</dl>
+							</dl>
 				</section>
 
 				<section id="conf-aai">
@@ -478,9 +478,9 @@
 				<section id="conf-examples">
 					<h4>Examples</h4>
 
-					<p>Three examples are provided for the conformance statement, one shows a statement that claims to
+					<p>Four examples are provided for the conformance statement, one shows a statement that claims to
 						meet recommended accessibility standards and a second that claims to meet the minimum level. The
-						third   shows a publication with unknown accessibility.</p>
+						third is an example to an unknown specification. The fourth shows a publication with unknown accessibility.</p>
 
 					<p>The examples present the conformance statement, the certifier, the certifiers credentials and is
 						followed by the detailed conformance information section </p>
@@ -515,10 +515,25 @@
 
 					</aside>
 
+					
+
+					<aside class="example"
+						title="Conformance to accepted standards for accessibility of this publication cannot be determined followed by detailed conformance information">
+						<p>Conformance to accepted standards for accessibility of this publication cannot be determined.</p>
+						<p>This publication is certified by Foo's Accessibility Testing </p>
+						<p>The certifier's credential is "Enterprise Accessibility Rating."</p>
+
+						<p>Detailed Conformance Information:</p>
+						<p>This publication reports (Publisher's in-house specification.)
+The publication was certified on 2021-09-07 by Foo's Accessibility Testing with a credential of
+							"Enterprise Accessibility Rating." For more information refer to the <a
+								href="http://www.example.com/a11y/report/9780000000001">certifier's report.</a></p>
+
+					</aside>
+
 <aside class="example"
 						title="Unknown  conformance statement">
-						<p>Conformance to accepted standards for accessibility of this publication cannot be
-							determined.</p>
+						<p>The publication does not include a conformance statement.</p>
 						<p>Detailed Conformance Information:</p>
 <p>The conformance metadata was not found.</p>
 						
