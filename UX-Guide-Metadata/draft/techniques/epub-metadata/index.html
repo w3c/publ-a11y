@@ -591,11 +591,6 @@
 
                         <p>This means that there is an index that provides direct (eg hyperlinked) access to uses of the index terms in the document body.</p>
 					</dd>
-					<dt><var>page_break_markers</var></dt>
-					<dd>
-                        <p>If true it indicates that the <i>accessibilityFeature="pageBreakMarkers"</i> (Print-equivalent page numbering) is present in the OPF file, otherwise if false it means that the metadata is not present.</p>
-						<p>This means that the publication contains references to the page numbering of an equivalent printed product.</p>
-					</dd>
                     <dt><var>page_navigation</var></dt>
                     <dd>
                         <p>If true it indicates that the <i>accessibilityFeature="pageNavigation"</i> (Page Navigation) is present in the OPF file, otherwise if false it means that the metadata is not present.</p>
@@ -615,8 +610,6 @@
                     <li><b>LET</b> <var>table_of_contents_navigation</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>tableOfContents</i>"]</code>.</li>
 
                     <li><b>LET</b> <var>index_navigation</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>index</i>"]</code>.</li>
-
-                    <li><b>LET</b> <var>page_break_markers</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>pageBreakMarkers</i>"]</code>.</li>
 
                     <li><b>LET</b> <var>page_navigation</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>pageNavigation</i>"]</code>.</li>
                     
@@ -638,12 +631,8 @@
 								<span><b>THEN</b> <b>APPEND</b> <code id="navigation-index">"index"</code> to <var>navigation</var>.</span>
 							</li>
                             <li>
-								<span><b>IF</b> <var>page_break_markers</var>:</span>
-								<span><b>THEN</b> <b>APPEND</b> <code id="navigation-page-breaks">"page breaks"</code> to <var>navigation</var>.</span>
-							</li>
-                            <li>
 							     <span><b>IF</b> <var>page_navigation</var>:</span>
-							     <span><b>THEN</b> <b>APPEND</b> <code id="navigation-page-navigation">"page navigation"</code> to <var>navigation</var>.</span>
+							     <span><b>THEN</b> <b>APPEND</b> <code id="navigation-page-navigation">"supports page navigation"</code> to <var>navigation</var>.</span>
                             </li>
  							<li>
 								<span><b>IF</b> <var>next_previous_structural_navigation</var>:</span>
@@ -1090,6 +1079,12 @@
 							<p>If true it indicates that the <i>accessibilityFeature="largePrint"</i> (Large Print) is present in the OPF file, otherwise if false it means that the metadata is not present.</p>
 							<p>This means that the e-publication has been formatted to meet large print guidelines.</p>
 						</dd>
+                        <dt><var>page_break_markers</var></dt>
+                        <dd>
+                            <p>If true it indicates that the <i>accessibilityFeature="pageBreakMarkers"</i> (Print-equivalent page numbering) is present in the OPF file, otherwise if false it means that the metadata is not present.</p>
+                            <p>This means that the publication contains references to the page numbering.</p>
+                        </dd>
+                        
 					</dl>
 					
 					<h5>Variables setup</h5>
@@ -1099,6 +1094,7 @@
     				    <li><b>LET</b> <var>high_contrast_between_foreground_and_background_audio</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>highContrastAudio</i>"]</code>.</li>
     				    <li><b>LET</b> <var>high_contrast_between_text_and_background</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>highContrastDisplay</i>"]</code>.</li>
                         <li><b>LET</b> <var>large_print</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>largePrint</i>"]</code>.</li>
+                        <li><b>LET</b> <var>page_break_markers</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>pageBreakMarkers</i>"]</code>.</li>
                     </ol>
 					
 					<h5>Instructions</h5>
@@ -1120,6 +1116,10 @@
 							<span><b>IF</b> <var>large_print</var>:</span>
 							<span><b>THEN</b> <b>APPEND</b> <code id="additional-accessibility-information-clarity-large-print">"large print "</code> to <var>clarity</var>.</span>
 						</li>
+                        <li>
+                            <span><b>IF</b> <var>page_break_markers</var>:</span>
+                            <span><b>THEN</b> <b>APPEND</b> <code id="additional-accessibility-information-clarity-page-breaks">"page breaks"</code> to <var>clarity</var>.</span>
+							</li>
 
                         
                         <li><b>IF</b> <var>clarity</var> is <b>NOT</b> empty:
