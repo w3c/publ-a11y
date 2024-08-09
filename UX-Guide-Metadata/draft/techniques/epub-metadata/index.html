@@ -60,7 +60,6 @@
 		}
               code[id]::after {
                   content: "[ID: " attr(id) "]";
-                  /*html::before { content: "<html>"; } */
               }
 	  </style>
 	</head>
@@ -70,11 +69,10 @@
         <section id="epub-accessibility-metadata">
             <h2>EPUB Accessibility Metadata</h2>
             
-            <p>This metadata as outlined in the <a href="https://www.w3.org/TR/epub-a11y-11/">1.1 Accessibility Specification
-                Conformance and Discoverability</a> can be found in the <a href="https://www.w3.org/TR/epub-33/#sec-package-doc">EPUB Package Document</a></p>
+            <p>This metadata as outlined in EPUB Accessibility 1.1 [[epub-a11y-11]], can be found in the EPUB package document [[EPUB]].</p>
 			
             <aside class="note">
-                Other techniques for implementing EPUB accessibility metadata are available: <a href="https://www.w3.org/2021/09/UX-Guide-metadata-2.0/principles/#techniques">Display Techniques for Displaying Accessibility Metadata</a>
+                Techniques for displaying accessibility metadata in other metadata formats can be found in the User Experience Guide for Displaying Accessibility Metadata document.
             </aside>
             
  			<aside class="note">
@@ -85,7 +83,7 @@
                 <h3>EPUB Accessibility Metadata Examples</h3>
 				<section id="epub-a11y-metadata-describing-an-epub">
 				    <h4>EPUB accessibility metadata describing an EPUB</h4>
-				    <p>Here is an example of accessibility metadata embedded within the OPF file, 
+				    <p>Here is an example of accessibility metadata embedded within the package document, 
                         which will be used as a reference point for the
                         following examples on EPUB accessibility metadata: the results of the XPath shown are based on
 				        this example.
@@ -130,8 +128,8 @@
 			<h2>Common Functions</h2>
 			<p>In this section we define the functions common to all techniques, which are called by them during execution.</p>
 			<section id="pre-processing">
-				<h3>Pre Processing</h3>
-				<p>Before working directly with the metadata we must read the metadata in the Package document (OPF file) inside the EPUB. This is a common starting point for all techniques that allows us to query the metadata directly.</p>
+				<h3>Preprocessing</h3>
+				<p>Before working directly with the metadata we must read the metadata in the Package document (package document) inside the EPUB. This is a common starting point for all techniques that allows us to query the metadata directly.</p>
 				<aside class="note">
 					<p>This algorithm does not describe how the Package document is discovered and extracted within an EPUB.</p>
 				</aside>
@@ -154,7 +152,7 @@
 
 				<p>This algorithm takes:</p>
 				<ul>
-					<li>the <var>package_document</var> argument: the internal representation of the Package document (output of <a href="#pre-processing">pre processing</a>);</li>
+					<li>the <var>package_document</var> argument: the internal representation of the Package document (output of <a href="#pre-processing">preprocessing</a>);</li>
 					<li>the <var>path</var> argument: the XPATH of the node to check the presence of.</li>
 				</ul>
 				<p>To check for node, run the following steps:</p>
@@ -183,19 +181,19 @@
 				<dl>
                     <dt><var>all_textual_content_can_be_modified</var></dt>
                     <dd>
-                        <p>If true it indicates that the <i>accessibilityFeature="displayTransformability"</i> (All textual content can be modified) is present in the OPF file, otherwise if false it means that the metadata is not present.</p>
+                        <p>If true it indicates that the <i>accessibilityFeature="displayTransformability"</i> (All textual content can be modified) is present in the package document, otherwise if false it means that the metadata is not present.</p>
                         <p><i>All textual content can be modified</i> means that the digital publication does not restrict the ability of users to modify and reflow the display of any textual content to the full extent allowed by the reading system (i.e. to change the text size or typeface, line height and word spacing, colors).</p>
                     </dd>
 					<dt><var>is_fixed_layout</var></dt>
 					<dd>
-						<p>If true it indicates that the <i>layout="pre-paginated"</i> (Fixed format) is present in the OPF file, otherwise if false it means that the metadata is not present.</p>
+						<p>If true it indicates that the <i>layout="pre-paginated"</i> (Fixed format) is present in the package document, otherwise if false it means that the metadata is not present.</p>
 						<p><i>Fixed format</i> means that digital publication is in fixed format (e.g. EPUB Fixed Layout).</p>
 					</dd>
 				</dl>
 
                 <h4>Variables setup</h4>
 				<ol class="condition">
-					<li><b>LET</b> <var>package_document</var> be the result of calling <a href="#pre-processing">pre processing</a> given <var>package_document_as_text</var>.</li>
+					<li><b>LET</b> <var>package_document</var> be the result of calling <a href="#pre-processing">preprocessing</a> given <var>package_document_as_text</var>.</li>
                     
                     <li><b>LET</b> <var>all_textual_content_can_be_modified</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>displayTransformability</i>"]</code>.</li>
 
@@ -224,12 +222,12 @@
 				<dl>
 					<dt><var>all_necessary_content_textual</var></dt>
 					<dd>
-						<p>If true it indicates that the <i>accessModeSufficient="textual"</i> (all main content is provided in textual form) is present in the OPF file, otherwise if false it means that the metadata is not present.</p>
+						<p>If true it indicates that the <i>accessModeSufficient="textual"</i> (all main content is provided in textual form) is present in the package document, otherwise if false it means that the metadata is not present.</p>
 						<p><i>All non-decorative content supports reading without sight</i> means that all contents of the digital publication necessary to use and understanding, including text, images (via their alternative descriptions), audio and video material (via their transcripts, descriptions, captions or subtitles) are fully accessible via suitable reading devices, for example text-to-speech screen readers or tactile reading devices (‘Braille displays’), and nothing in the digital publication prevents or blocks the use of alternative reading modes. The entire publication can be navigated and ‘read’ using only text rendered via sound or touch, and does not require visual perception.</p>
 					</dd>
 					<dt><var>non_textual_content_images</var></dt>
 					<dd>
-						<p>If true it indicates that at least one of the following is present in the OPF file:</p>
+						<p>If true it indicates that at least one of the following is present in the package document:</p>
 						<ul>
 							<li><i>accessMode="chartOnVisual"</i> (Charts and Graphs);</li>
 							<li><i>accessMode="chemOnVisual"</i> (Chemistry);</li>
@@ -243,7 +241,7 @@
 					</dd>
 					<dt><var>textual_alternative_images</var></dt>
 					<dd>
-						<p>If true it indicates that at least one of the following is present in the OPF file:</p>
+						<p>If true it indicates that at least one of the following is present in the package document:</p>
 						<ul>
 							<li><i>accessibilityFeature="alternativeText"</i> (Short alternative textual descriptions);</li>
 							<li><i>accessibilityFeature="longDescription"</i> (Full alternative textual descriptions);</li>
@@ -255,7 +253,7 @@
 				</dl>
 				<h4>Variables setup</h4>
 				<ol class="condition">
-					<li><b>LET</b> <var>package_document</var> be the result of calling <a href="#pre-processing">pre processing</a> given <var>package_document_as_text</var>.</li>
+					<li><b>LET</b> <var>package_document</var> be the result of calling <a href="#pre-processing">preprocessing</a> given <var>package_document_as_text</var>.</li>
 
 					<li><b>LET</b> <var>all_necessary_content_textual</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessModeSufficient</i>" and text()="<i>textual</i>"]</code>.</li>
 					<li>
@@ -296,57 +294,57 @@
 				<dl>
 					<dt><var>epub_accessibility_1_0</var></dt>
 					<dd>
-                        <p>If true it indicates that the <i>conformsTo="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-a"</i> (EPUB Accessibility Specification 1.0 A) or the <i>conformsTo="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aa"</i> (EPUB Accessibility Specification 1.0 AA) or the <i>conformsTo="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aaa"</i> (EPUB Accessibility Specification 1.0 AAA) or the <i>conformsTo</i> contains "EPUB Accessibility 1.0" is present in the OPF file, otherwise if false it means that the metadata is not present.</p>
+                        <p>If true it indicates that the <i>conformsTo="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-a"</i> (EPUB Accessibility Specification 1.0 A) or the <i>conformsTo="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aa"</i> (EPUB Accessibility Specification 1.0 AA) or the <i>conformsTo="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aaa"</i> (EPUB Accessibility Specification 1.0 AAA) is present in the package document, otherwise if false it means that the metadata is not present.</p>
 						<p>This means that the publication conforms with either the requirements of EPUB Accessibility Spec 1.0, at level A, AA, or AAA.</p>
 					</dd>
 					<dt><var>epub_accessibility_1_1</var></dt>
 					<dd>
-                        <p>If true it indicates that the <i>conformsTo</i> contains "EPUB Accessibility 1.1"  (EPUB Accessibility Specification 1.1) is present in the OPF file, otherwise if false it means that the metadata is not present.</p>
+                        <p>If true it indicates that the <i>conformsTo</i> contains "EPUB Accessibility 1.1"  (EPUB Accessibility Specification 1.1) is present in the package document, otherwise if false it means that the metadata is not present.</p>
 						<p>This means that the publication conforms with the requirements of EPUB Accessibility Spec 1.1.</p>
 					</dd>
-					<dt><var>wcag_2_0</var></dt>
+					<dt><var>wcag_20</var></dt>
 					<dd>
-                        <p>If true it indicates that the <i>conformsTo</i> contains "WCAG 2.0" or <i>conformsTo="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-a"</i> (EPUB Accessibility Specification 1.0 A) or the <i>conformsTo="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aa"</i> (EPUB Accessibility Specification 1.0 AA) or the <i>conformsTo="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aaa"</i> (EPUB Accessibility Specification 1.0 AAA) are present in the OPF file, otherwise if false it means that the metadata is not present.</p>
+                        <p>If true it indicates that the <i>conformsTo</i> contains "WCAG 2.0" or <i>conformsTo="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-a"</i> (EPUB Accessibility Specification 1.0 A) or the <i>conformsTo="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aa"</i> (EPUB Accessibility Specification 1.0 AA) or the <i>conformsTo="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aaa"</i> (EPUB Accessibility Specification 1.0 AAA) are present in the package document, otherwise if false it means that the metadata is not present.</p>
 						<p>This means that the publication conforms with the requirements of WCAG version 2.0 or with the requirements of EPUB Accessibility Spec 1.0 (at level A, AA, or AAA). This is because being compliant with EPUB Accessibility 1.0 specification means at least being compliant with WCAG 2.0 specification.</p>
 					</dd>
-					<dt><var>wcag_2_1</var></dt>
+					<dt><var>wcag_21</var></dt>
 					<dd>
-						 <p>If true it indicates that the <i>conformsTo</i> contains "WCAG 2.1" is present in the OPF file, otherwise if false it means that the metadata is not present.</p>
+						 <p>If true it indicates that the <i>conformsTo</i> contains "WCAG 2.1" is present in the package document, otherwise if false it means that the metadata is not present.</p>
 						<p>This means that the publication conforms with the requirements of WCAG version 2.1.</p>
 					</dd>
-					<dt><var>wcag_2_2</var></dt>
+					<dt><var>wcag_22</var></dt>
 					<dd>
-				        <p>If true it indicates that the <i>conformsTo</i> contains "WCAG 2.2" is present in the OPF file, otherwise if false it means that the metadata is not present.</p>
+				        <p>If true it indicates that the <i>conformsTo</i> contains "WCAG 2.2" is present in the package document, otherwise if false it means that the metadata is not present.</p>
 						<p>This means that the publication conforms with the requirements of WCAG version 2.2.</p>
 					</dd>
 					<dt><var>level_a</var></dt>
 					<dd>
-						<p>If true it indicates that the <i>conformsTo</i> contains "Level A" or the <i>conformsTo="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-a"</i> (EPUB Accessibility Specification 1.0 A) are present in the OPF file, otherwise if false it means that the metadata is not present.</p>
+						<p>If true it indicates that the <i>conformsTo</i> contains "Level A" or the <i>conformsTo="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-a"</i> (EPUB Accessibility Specification 1.0 A) are present in the package document, otherwise if false it means that the metadata is not present.</p>
 						<p>This means that the publication conforms with the requirements of WCAG level A or with the requirements of EPUB Accessibility Spec 1.0 level A.</p>
 					</dd>
 					<dt><var>level_aa</var></dt>
 					<dd>
-						<p>If true it indicates that the <i>conformsTo</i> contains "Level AA" or the <i>conformsTo="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aa"</i> (EPUB Accessibility Specification 1.0 AA) are present in the OPF file, otherwise if false it means that the metadata is not present.</p>
+						<p>If true it indicates that the <i>conformsTo</i> contains "Level AA" or the <i>conformsTo="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aa"</i> (EPUB Accessibility Specification 1.0 AA) are present in the package document, otherwise if false it means that the metadata is not present.</p>
 						<p>This means that the publication conforms with the requirements of WCAG level AA or with the requirements of EPUB Accessibility Spec 1.0 level AA.</p>
 					</dd>
 					<dt><var>level_aaa</var></dt>
 					<dd>
-						<p>If true it indicates that the <i>conformsTo</i> contains "Level AAA" or the <i>conformsTo="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aaa"</i> (EPUB Accessibility Specification 1.0 A) are present in the OPF file, otherwise if false it means that the metadata is not present.</p>
+						<p>If true it indicates that the <i>conformsTo</i> contains "Level AAA" or the <i>conformsTo="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aaa"</i> (EPUB Accessibility Specification 1.0 A) are present in the package document, otherwise if false it means that the metadata is not present.</p>
 						<p>This means that the publication conforms with the requirements of WCAG level AAA or with the requirements of EPUB Accessibility Spec 1.0 level AAA.</p>
 					</dd>
 					<dt><var>certifier</var></dt>
 					<dd>
-						<p>Returns the description of <i>a11y:certifiedBy</i> (Compliance certification by (name)) if present in the OPF file, otherwise if false it means that the metadata is not present.</p>
+						<p>Returns the description of <i>a11y:certifiedBy</i> (Compliance certification by (name)) if present in the package document, otherwise if false it means that the metadata is not present.</p>
 						<p>This means that the name of the organization responsible for compliance testing and certification of the product is present.</p>
 					</dd>
 					<dt><var>certifier_credentials</var></dt>
 					<dd>
-						<p>Returns the description of <i>a11y:certifierCredential</i> (Compliance certification by (URL)) if present in the OPF file, otherwise if false it means that the metadata is not present.</p> 
+						<p>Returns the description of <i>a11y:certifierCredential</i> (Compliance certification by (URL)) if present in the package document, otherwise if false it means that the metadata is not present.</p> 
 						<p>This means that the the URL of a web page belonging to an organization responsible for compliance testing and certification of the product is present – typically a ‘home page’ or a page describing the certification scheme itself.</p>
 					</dd>
 					<dt><var>certification_date</var></dt>
 					<dd>
-						<p>Returns the description of <i>dcterms:date</i> if that date property is associated with the <i>a11y:certifiedBy</i> (Latest accessibility assessment date) if present in the OPF file, otherwise if false it means that the metadata is not present.</p>
+						<p>Returns the description of <i>dcterms:date</i> if that date property is associated with the <i>a11y:certifiedBy</i> (Latest accessibility assessment date) if present in the package document, otherwise if false it means that the metadata is not present.</p>
 						<p>This means that the date of the latest assessment or re-assessment of the accessibility of the product is present.</p>
 					</dd>
 					<dt><var>certifier_report</var></dt>
@@ -356,7 +354,7 @@
 					</dd>
                     <dt><var>conformance-claimed</var></dt>
 					<dd>
-						<p>If true it indicates that the <i>conformsTo</i> is present in the OPF file, otherwise if false it means that the metadata is not present.</p>
+						<p>If true it indicates that the <i>conformsTo</i> is present in the package document, otherwise if false it means that the metadata is not present.</p>
 						<p>This means that the publication conforms to some specification.</p>
 					</dd>
 
@@ -364,17 +362,17 @@
 				
 				<h4>Variables setup</h4>
 				<ol class="condition">
-					<li><b>LET</b> <var>package_document</var> be the result of calling <a href="#pre-processing">pre processing</a> given <var>package_document_as_text</var>.</li>
+					<li><b>LET</b> <var>package_document</var> be the result of calling <a href="#pre-processing">preprocessing</a> given <var>package_document_as_text</var>.</li>
                     
 					<li><b>LET</b> <var>epub_accessibility_1_0</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="dcterms:<i>conformsTo</i>" and contains(text(), <i>http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-</i>"]</code>.</li>
                     
                     <li><b>LET</b> <var>epub_accessibility_1_1</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="dcterms:<i>conformsTo</i>" and contains(text(), <i>"EPUB Accessibility 1.1"</i>)]</code>.</li>
                     
-					<li><b>LET</b> <var>wcag_2_0</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="dcterms:<i>conformsTo</i>" and contains(text(), <i>"http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-"</i>)]</code> <b>OR</b> calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="dcterms:<i>conformsTo</i>" and contains(text(), <i>"WCAG 2.0"</i>)]</code></li>
+					<li><b>LET</b> <var>wcag_20</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="dcterms:<i>conformsTo</i>" and contains(text(), <i>"http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-"</i>)]</code> <b>OR</b> calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="dcterms:<i>conformsTo</i>" and contains(text(), <i>"WCAG 2.0"</i>)]</code></li>
                     
-                    <li><b>LET</b> <var>wcag_2_1</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="dcterms:<i>conformsTo</i>" and contains(text(), <i>WCAG 2.1"</i>)]</code>.</li>
+                    <li><b>LET</b> <var>wcag_21</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="dcterms:<i>conformsTo</i>" and contains(text(), <i>WCAG 2.1"</i>)]</code>.</li>
             
-					<li><b>LET</b> <var>wcag_2_2</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="dcterms:<i>conformsTo</i>" and contains(text(), <i>WCAG 2.2"</i>)]</code>.</li>
+					<li><b>LET</b> <var>wcag_22</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="dcterms:<i>conformsTo</i>" and contains(text(), <i>WCAG 2.2"</i>)]</code>.</li>
     
 					<li><b>LET</b> <var>level_a</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="dcterms:<i>conformsTo</i>" and contains(text(), <i>Level A"</i>)]</code> <b>OR</b> calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="dcterms:<i>conformsTo</i>" and text()=<i>http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-a</i>"]</code>.</li>
                     
@@ -437,7 +435,7 @@
 						<span>display <code id="conformance-details">"Detailed Conformance Information"</code> as heading.</span>
 					</li>
 					<li>
-						<span><b>IF</b> <var>epub_accessibility_1_0</var> <b>OR</b> <var>epub_accessibility_1_1</var> <b>OR</b> <var>wcag_2_0</var> <b>OR</b> <var>wcag_2_1</var> <b>OR</b> <var>wcag_2_2</var> <b>OR</b> <var>level_aaa</var> <b>OR</b> <var>level_aa</var> <b>OR</b> <var>level_a</var>:</span>
+						<span><b>IF</b> <var>epub_accessibility_1_0</var> <b>OR</b> <var>epub_accessibility_1_1</var> <b>OR</b> <var>wcag_20</var> <b>OR</b> <var>wcag_21</var> <b>OR</b> <var>wcag_22</var> <b>OR</b> <var>level_aaa</var> <b>OR</b> <var>level_aa</var> <b>OR</b> <var>level_a</var>:</span>
 						<span><b>THEN</b> display <code id="conformance-claim">"This publication claims to meet "</code>.</span>
 					</li>
 					<li>
@@ -449,15 +447,15 @@
 						<span><b>THEN</b> display <code id="conformance-epub-accessibility-1-1">" EPUB Accessibility 1.1 "</code>.</span>
 					</li>
 					<li>
-						<span><b>IF</b> <var>wcag_2_2</var>:</span>
+						<span><b>IF</b> <var>wcag_22</var>:</span>
 						<span><b>THEN</b> display <code id="conformance-wcag-2-0">" WCAG 2.2 "</code>.</span>
 					</li>
 					<li>
-						<span><b>ELSE IF</b> <var>wcag_2_1</var>:</span>
+						<span><b>ELSE IF</b> <var>wcag_21</var>:</span>
 						<span><b>THEN</b> display <code id="conformance-wcag-2-1">" WCAG 2.1 "</code>.</span>
 					</li>
 					<li>
-						<span><b>ELSE IF</b> <var>wcag_2_0</var>:</span>
+						<span><b>ELSE IF</b> <var>wcag_20</var>:</span>
 						<span><b>THEN</b> display <code id="conformance-wcag-2-2">" WCAG 2.0 "</code>.</span>
 					</li>
 					<li>
@@ -522,17 +520,18 @@
 				<h4>Understanding the variables</h4>
 				<dl>
 					<dt><var>all_content_audio</var></dt>
-				        <p>If true it indicates that the <i>accessModeSufficient="auditory"</i> (all main content is provided in audio form) is present in the OPF file, otherwise if false it means that the metadata is not present.</p>
-
+                    <dd>
+				        <p>If true it indicates that the <i>accessModeSufficient="auditory"</i> (all main content is provided in audio form) is present in the package document, otherwise if false it means that the metadata is not present.</p>
+                    </dd>
                     <dt><var>synchronised_pre_recorded_audio</var></dt>
 					<dd>
-                        <p>If true it indicates that the <i>accessibilityFeature="sychronizedAudioText"</i> is present in the OPF file, otherwise, if false, it means that the metadata is not present.</p>
+                        <p>If true it indicates that the <i>accessibilityFeature="sychronizedAudioText"</i> is present in the package document, otherwise, if false, it means that the metadata is not present.</p>
 						<p>This indicates that text-synchronised pre-recorded audio narration (natural or synthesised voice) is included for substantially all textual matter, including all alternative descriptions, e.g. via a SMIL media overlay.</p>
 					</dd>
                     
   					<dt><var>audio_content</var></dt>
 					<dd>
-                        <p>If true it indicates that the <i>accessMode="auditory"</i> is present in the OPF file, otherwise, if false, it means that the metadata is not present.</p>
+                        <p>If true it indicates that the <i>accessMode="auditory"</i> is present in the package document, otherwise, if false, it means that the metadata is not present.</p>
 
 						<p>This indicates that pre-recorded audio content is included as part of the work.</p>
 					</dd>
@@ -541,7 +540,7 @@
                 </dl>
 				<h4>Variables setup</h4>
 				<ol class="condition">
-					<li><b>LET</b> <var>package_document</var> be the result of calling <a href="#pre-processing">pre processing</a> given <var>package_document_as_text</var>.</li>
+					<li><b>LET</b> <var>package_document</var> be the result of calling <a href="#pre-processing">preprocessing</a> given <var>package_document_as_text</var>.</li>
                     
 					<li><b>LET</b> <var>all_content_audio</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessModeSufficient</i>" and text()="<i>auditory</i>"]</code>.</li>
                     
@@ -566,8 +565,7 @@
 					</li>		
 
 					<li>
-						<b>ELSE</b> display <code id="pre-recorded-audio-no-metadata">"No information about pre-recorded audio"</code>.
-						<p class="note">This key information can be hidden if metadata is missing.</p>
+						<b>ELSE</b> either omit this key informtion if metadata is missing or display <code id="pre-recorded-audio-no-metadata">"No information about pre-recorded audio"</code>.
 					</li>
 				</ol>
 			</section>
@@ -581,31 +579,31 @@
 				<dl>
 					<dt><var>table_of_contents_navigation</var></dt>
 					<dd>
-                        <p>If true it indicates that the <i>accessibilityFeature="tableOfContents"</i> (Table of contents navigation) is present in the OPF file, otherwise if false it means that the metadata is not present.</p>
+                        <p>If true it indicates that the <i>accessibilityFeature="tableOfContents"</i> (Table of contents navigation) is present in the package document, otherwise if false it means that the metadata is not present.</p>
  
 						<p>This means that the resource includes a table of contents that provides links to the major sections of the content.</p>
 					</dd>
 					<dt><var>index_navigation</var></dt>
 					<dd>
-                        <p>If true it indicates that the <i>accessibilityFeature="index"</i> (Index navigation) is present in the OPF file, otherwise if false it means that the metadata is not present.</p>
+                        <p>If true it indicates that the <i>accessibilityFeature="index"</i> (Index navigation) is present in the package document, otherwise if false it means that the metadata is not present.</p>
 
                         <p>This means that there is an index that provides direct (eg hyperlinked) access to uses of the index terms in the document body.</p>
 					</dd>
                     <dt><var>page_navigation</var></dt>
                     <dd>
-                        <p>If true it indicates that the <i>accessibilityFeature="pageNavigation"</i> (Page Navigation) is present in the OPF file, otherwise if false it means that the metadata is not present.</p>
+                        <p>If true it indicates that the <i>accessibilityFeature="pageNavigation"</i> (Page Navigation) is present in the package document, otherwise if false it means that the metadata is not present.</p>
                         <p>This means that the e-publication includes a means of navigating to static page break locations.</p>
                     </dd>
 					<dt><var>next_previous_structural_navigation</var></dt>
 					<dd>
-                        <p>If true it indicates that the <i>accessibilityFeature="structuralNavigation"</i> (Next / Previous structural navigation) is present in the OPF file, otherwise if false it means that the metadata is not present.</p>
+                        <p>If true it indicates that the <i>accessibilityFeature="structuralNavigation"</i> (Next / Previous structural navigation) is present in the package document, otherwise if false it means that the metadata is not present.</p>
 						<p>This means that all levels of heading and other structural elements of the content are correctly marked up and (if applicable) numbered, to enable fast next heading / previous heading, next chapter / previous chapter navigation without returning to the table of contents.</p>
 					</dd>
 				</dl>
 				<h4>Variables setup</h4>
 				<ol class="condition">
                     
-					<li><b>LET</b> <var>package_document</var> be the result of calling <a href="#pre-processing">pre processing</a> given <var>package_document_as_text</var>.</li>
+					<li><b>LET</b> <var>package_document</var> be the result of calling <a href="#pre-processing">preprocessing</a> given <var>package_document_as_text</var>.</li>
                      
                     <li><b>LET</b> <var>table_of_contents_navigation</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>tableOfContents</i>"]</code>.</li>
 
@@ -649,8 +647,7 @@
 						</ol>
 					</li>
 					<li>
-						<b>ELSE</b> display <code id="navigation-no-metadata">"No information about navigation"</code>.
-						<p class="note">This key information can be hidden if metadata is missing.</p>
+						<b>ELSE</b> either omit this key informtion if metadata is missing or display <code id="navigation-no-metadata">"No information about navigation"</code>.
 					</li>
 				</ol>
 			</section>
@@ -664,43 +661,43 @@
 				<dl>
 					<dt><var>contains_charts_diagrams</var></dt>
 					<dd>
-                        <p>If true it indicates that the <i>accessibilityFeature="chartOnVisual"</i> (charts encoded in visual form) is present in the OPF file, otherwise if false it means that the metadata is not present.</p>                   
+                        <p>If true it indicates that the <i>accessibilityFeature="chartOnVisual"</i> (charts encoded in visual form) is present in the package document, otherwise if false it means that the metadata is not present.</p>                   
 						<p>This means that there is a positive indication that the product has some information conveyed via some form of illustration, such as a graph, a chart, a diagram, a figure, etc).</p>
 					</dd>
 					<dt><var>long_text_descriptions</var></dt>
 					<dd>
-                        <p>If true it indicates that the <i>accessibilityFeature="longDescriptions"</i> (Full alternative textual description) is present in the OPF file, otherwise if false it means that the metadata is not present.</p>
+                        <p>If true it indicates that the <i>accessibilityFeature="longDescriptions"</i> (Full alternative textual description) is present in the package document, otherwise if false it means that the metadata is not present.</p>
 						<p>This means that there is a positive indication that a full alternative textual description has been supplied for all of the graphs, charts, diagrams, or figures necessary to understand the content.</p>
 					</dd>
 					<dt><var>contains_chemical_formula</var></dt>
 					<dd>              
-						<p>If true it indicates that the <i>accessibilityFeature="chemOnVisual"</i> (Chemical content) is present in the OPF file, otherwise if false it means that the metadata is not present.</p>
+						<p>If true it indicates that the <i>accessibilityFeature="chemOnVisual"</i> (Chemical content) is present in the package document, otherwise if false it means that the metadata is not present.</p>
 						<p>This means that there is a positive indication that the publication contains chemical notations, formulae.</p>
 					</dd>
 					<dt><var>chemical_formula_as_chemml</var></dt>
 					<dd>
-						<p>If true it indicates that the <i>accessibilityFeature="ChemML"</i> (Accessible chemistry content as ChemML) is present in the OPF file, otherwise if false it means that the metadata is not present.</p>
+						<p>If true it indicates that the <i>accessibilityFeature="ChemML"</i> (Accessible chemistry content as ChemML) is present in the package document, otherwise if false it means that the metadata is not present.</p>
 						<p>This means that there is a positive indication that the chemical formulae are presented using ChemML and works with compatible assistive technology.</p>
 					</dd>
 					<dt><var>contains_math_formula</var></dt>
 					<dd>
-						<p>If true it indicates that the <i>accessibilityFeature="describedMath"</i> (Mathematical content) is present in the OPF file, otherwise if false it means that the metadata is not present.</p>
+						<p>If true it indicates that the <i>accessibilityFeature="describedMath"</i> (Mathematical content) is present in the package document, otherwise if false it means that the metadata is not present.</p>
 						<p>This means that there is a positive indication that the publication contains mathematical notation, equations, formulae.</p>
 					</dd>
 					<dt><var>math_formula_as_latex</var></dt>
 					<dd>
-						<p>If true it indicates that the <i>accessibilityFeature="latex"</i> (Accessible math content as LaTeX) is present in the OPF file, otherwise if false it means that the metadata is not present.</p>
+						<p>If true it indicates that the <i>accessibilityFeature="latex"</i> (Accessible math content as LaTeX) is present in the package document, otherwise if false it means that the metadata is not present.</p>
 						<p>This means that there is a positive indication that the chemical formulae are presented using LaTeX and works with compatible assistive technology.</p>
 					</dd>
 					<dt><var>math_formula_as_mathml</var></dt>
 					<dd>
-						<p>If true it indicates that the <i>accessibilityFeature="MathML"</i> (Accessible math content as MathML) is present in the OPF file, otherwise if false it means that the metadata is not present.</p>
+						<p>If true it indicates that the <i>accessibilityFeature="MathML"</i> (Accessible math content as MathML) is present in the package document, otherwise if false it means that the metadata is not present.</p>
 						<p>This means that there is a positive indication that all mathematical content is presented using MathML and works with compatible assistive technology.</p>
 					</dd>
 				</dl>
 				<h4>Variables setup</h4>
 				<ol class="condition">
-					<li><b>LET</b> <var>package_document</var> be the result of calling <a href="#pre-processing">pre processing</a> given <var>package_document_as_text</var>.</li>
+					<li><b>LET</b> <var>package_document</var> be the result of calling <a href="#pre-processing">preprocessing</a> given <var>package_document_as_text</var>.</li>
                     
                     <li><b>LET</b> <var>contains_charts_diagrams</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>chartOnVisual</i>"]</code>.</li>
 					
@@ -748,41 +745,41 @@
 				<dl>
 					<dt><var>no_hazards_or_warnings_confirmed</var></dt>
 					<dd>
-                        <p>If true it indicates that the <i>accessibilityHazard="none"</i> (no accessibility hazards) is present in the OPF file, otherwise if false it means that the metadata is not present.</p>                        
+                        <p>If true it indicates that the <i>accessibilityHazard="none"</i> (no accessibility hazards) is present in the package document, otherwise if false it means that the metadata is not present.</p>                        
 						<p>This means there is a positive indication in the accessiblity metadata within the EPUB confirming there are no associated hazard warnings with this product.</p>
 					</dd>
 					<dt><var>flashing_hazard</var></dt>
 					<dd>
-                        <p>If true it indicates that the <i>accessibilityHazard="flashing"</i> (WARNING - Flashing hazards) is present in the OPF file, otherwise if false it means that the metadata is not present.</p>                         
+                        <p>If true it indicates that the <i>accessibilityHazard="flashing"</i> (WARNING - Flashing hazards) is present in the package document, otherwise if false it means that the metadata is not present.</p>                         
 						<p>This means that there is a positive indication in the accessiblity metadata within the EPUB confirming that the product has a flashing hazard which must be displayed.</p>
 					</dd>
 					<dt><var>no_flashing_hazards</var></dt>
 					<dd>
-                        <p>If true it indicates that the <i>accessibilityHazard="noFlashingHazard"</i> (No flashing hazard warning necessary) is present in the OPF file, otherwise if false it means that the metadata is not present.</p> 
+                        <p>If true it indicates that the <i>accessibilityHazard="noFlashingHazard"</i> (No flashing hazard warning necessary) is present in the package document, otherwise if false it means that the metadata is not present.</p> 
 						<p>This means there is a positive indication in the accessiblity metadata within the EPUB confirming there are no flashing hazards associated with this product.</p>
 					</dd>
 					<dt><var>motion_simulation_hazard</var></dt>
 					<dd>
-                        <p>If true it indicates that the <i>accessibilityHazard="motionSimulation"</i> (WARNING - Motion simulation hazard) is present in the OPF file, otherwise if false it means that the metadata is not present.</p> 						
+                        <p>If true it indicates that the <i>accessibilityHazard="motionSimulation"</i> (WARNING - Motion simulation hazard) is present in the package document, otherwise if false it means that the metadata is not present.</p> 						
 						<p>This means that there is a positive indication in the accessiblity metadata within the EPUB confirming that the product has a motion simulation hazard which must be displayed.</p>
 					</dd>
 					<dt><var>no_motion_hazards</var></dt>
 					<dd>
-                        <p>If true it indicates that the <i>accessibilityHazard="noMotionSimulationHazard"</i> (No motion simulation hazard warning necessary) is present in the OPF file, otherwise if false it means that the metadata is not present.</p> 		<p>This means there is a positive indication in the accessiblity metadata within the EPUB confirming there are no motion simulation hazards associated with this product.</p>
+                        <p>If true it indicates that the <i>accessibilityHazard="noMotionSimulationHazard"</i> (No motion simulation hazard warning necessary) is present in the package document, otherwise if false it means that the metadata is not present.</p> 		<p>This means there is a positive indication in the accessiblity metadata within the EPUB confirming there are no motion simulation hazards associated with this product.</p>
 					</dd>
 					<dt><var>sound_hazard</var></dt>
 					<dd>
-                        <p>If true it indicates that the <i>accessibilityHazard="Sound"</i> (WARNING - Sound hazard) is present in the OPF file, otherwise if false it means that the metadata is not present.</p> 						
+                        <p>If true it indicates that the <i>accessibilityHazard="Sound"</i> (WARNING - Sound hazard) is present in the package document, otherwise if false it means that the metadata is not present.</p> 						
  						<p>This means that there is a positive indication in the accessiblity metadata within the EPUB confirming that the product has a sound hazard which must be displayed.</p>
 					</dd>
 					<dt><var>no_sound_hazards</var></dt>
 					<dd>
-                        <p>If true it indicates that the <i>accessibilityHazard="noSoundHazard"</i> (No sound hazard warning necessary) is present in the OPF file, otherwise if false it means that the metadata is not present.</p> 						
+                        <p>If true it indicates that the <i>accessibilityHazard="noSoundHazard"</i> (No sound hazard warning necessary) is present in the package document, otherwise if false it means that the metadata is not present.</p> 						
 						<p>This means there is a positive indication in the accessiblity metadata within the EPUB confirming there are no sound hazards associated with this product.</p>
 					</dd>
 					<dt><var>unknown_if_contains_hazards</var></dt>
 					<dd>
-                        <p>If true it indicates that the <i>accessibilityHazard="unknown"</i> (unknown hazards) is present in the OPF file, otherwise if false it means that the metadata is not present.</p> 						
+                        <p>If true it indicates that the <i>accessibilityHazard="unknown"</i> (unknown hazards) is present in the package document, otherwise if false it means that the metadata is not present.</p> 						
 						<p>This means that the product has not been assessed for hazards and there is no information about potential hazards.</p>
 					</dd>
                     
@@ -790,7 +787,7 @@
                 
 				<h4>Variables setup</h4>
 				<ol class="condition">
-					<li><b>LET</b> <var>package_document</var> be the result of calling <a href="#pre-processing">pre processing</a> given <var>package_document_as_text</var>.</li>
+					<li><b>LET</b> <var>package_document</var> be the result of calling <a href="#pre-processing">preprocessing</a> given <var>package_document_as_text</var>.</li>
                     
                     <li><b>LET</b> <var>no_hazards_or_warnings_confirmed</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityHazard</i>" and text()="<i>none</i>"]</code>.</li>
 
@@ -854,8 +851,8 @@
 						<span><b>THEN</b> display <code id="hazards-unknown">"The presence of hazards is unknown"</code>.</span>
                     </li>
 					<li>
-						<b>ELSE</b> display <code id="hazards-no-metadata">"No information about possible hazards"</code>.
-						<p class="note">This key information can be hidden if metadata is missing.</p>
+						<b>ELSE</b> either omit this key informtion if metadata is missing or display <code id="hazards-no-metadata">"No information about possible hazards"</code>.
+
                     </li>
 				</ol>
 			</section>
@@ -877,7 +874,7 @@
 				<dl>
 					<dt><var>accessibility_summary</var></dt>
 					<dd>
-						<p>If true it indicates that the <i>accessibilitySummary</i> is present in the OPF file, otherwise if false it means that the metadata is not present.</p>
+						<p>If true it indicates that the <i>accessibilitySummary</i> is present in the package document, otherwise if false it means that the metadata is not present.</p>
 						<p>This means there is a human-written text containing a short explanatory summary of the accessibility of the product or the URL of a web page comprising such a summary. Summarizes the already existent information and may add information that the publisher could not express with the other codes.</p>
 					</dd>
 					<dt><var>lang_attribute_accessibility_summary</var></dt>
@@ -887,13 +884,13 @@
 					</dd>
 					<dt><var>language_of_text</var></dt>
 					<dd>
-						<p>Returns the value of nearest "language" (Language of content) if present in the OPF File, otherwise if false it means that the metadata is not present.</p>
+						<p>Returns the value of nearest "language" (Language of content) if present in the package document, otherwise if false it means that the metadata is not present.</p>
 						<p>This indicates the main language of the content and therefore the most probable language of accessibility summary.</p>
 					</dd>
 				</dl>
 				<h4>Variables setup</h4>
 				<ol class="condition">
-                    <li><b>LET</b> <var>package_document</var> be the result of calling <a href="#pre-processing">pre processing</a> given <var>package_document_as_text</var>.</li>
+                    <li><b>LET</b> <var>package_document</var> be the result of calling <a href="#pre-processing">preprocessing</a> given <var>package_document_as_text</var>.</li>
 
                     <li><b>LET</b> <var>accessibility_summary</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilitySummary</i>"]</code>.</li>
 
@@ -915,41 +912,40 @@
 						<span><b>ELSE IF</b> <var>accessibility_summary</var> is <b>NOT</b> empty:</span>
 						<span><b>THEN</b> display the content of <var>accessibility_summary</var> with <var>language_accessibility_summary</var> as language.</span></li>
 					<li>
-						<b>ELSE</b> display <code id="accessibility-summary-no-metadata">"No accessibility summary"</code>.
-						<p class="note">This key information can be hidden if metadata is missing.</p>
+						<b>ELSE</b> either omit this key informtion if metadata is missing or display <code id="accessibility-summary-no-metadata">"No accessibility summary"</code>.
 					</li>
 				</ol>
 			</section>
 
             <section id="legal-considerations">
 				<h3>Legal considerations</h3>
-				<p>This technique relates to <a href="https://www.w3.org/2021/09/UX-Guide-metadata-2.0/principles/#legal-considerations">Legal considerations key information</a>.</p>
-	
                 <div class="issue" data-number="350">We are actively seeking comments on this "legal consideration" section. If you are a publisher, we want your feedback! Please visit the GitHub Issue tracking linked above to leave a comment.</div>
                 
-                <p>This algorithm takes the <var>package_document_as_text</var> argument: a UTF-8 string representing the Package document.</p>
+				<p>This technique relates to <a href="https://www.w3.org/2021/09/UX-Guide-metadata-2.0/principles/#legal-considerations">Legal considerations key information</a>.</p>
+	
+                 <p>This algorithm takes the <var>package_document_as_text</var> argument: a UTF-8 string representing the Package document.</p>
             
 				<h4>Understanding the variables</h4>
 				<dl>
 					<dt><var>eaa_exemption_micro_enterprises</var></dt>
 					<dd>
-						<p>If true it indicates that the <i><a href="https://www.w3.org/TR/epub-a11y-exemption/#exemption-property">a11y:exemption</a>="<a href="https://www.w3.org/TR/epub-a11y-exemption/#exemption-values">eaa-microenterprise</a>"</i> (EEA exception 1 – Micro-enterprises) is present in the OPF file, otherwise if false it means that the metadata is not present.</p>
+						<p>If true it indicates that the <i><a href="https://www.w3.org/TR/epub-a11y-exemption/#exemption-property">a11y:exemption</a>="<a href="https://www.w3.org/TR/epub-a11y-exemption/#exemption-values">eaa-microenterprise</a>"</i> (EEA exception 1 – Micro-enterprises) is present in the package document, otherwise if false it means that the metadata is not present.</p>
 						<p>This means that the digital product falls under European Accessibility Act exemption for Micro-enterprises (as defined by current regulations). The product may not have to comply with requirements of the EAA if the publisher is a micro-enterprise.</p>
 					</dd>
 					<dt><var>eaa_exception_disproportionate_burden</var></dt>
 					<dd>
-						<p>If true it indicates that the <i><a href="https://www.w3.org/TR/epub-a11y-exemption/#exemption-property">a11y:exemption</a>="<a href="https://www.w3.org/TR/epub-a11y-exemption/#exemption-values">eaa_disproportionate_burden</a>"</i> (EAA exception 2 – Disproportionate burden) is present in the OPF file, otherwise if false it means that the metadata is not present.</p>
+						<p>If true it indicates that the <i><a href="https://www.w3.org/TR/epub-a11y-exemption/#exemption-property">a11y:exemption</a>="<a href="https://www.w3.org/TR/epub-a11y-exemption/#exemption-values">eaa_disproportionate_burden</a>"</i> (EAA exception 2 – Disproportionate burden) is present in the package document, otherwise if false it means that the metadata is not present.</p>
 						<p>This means that the digital product falls under European Accessibility Act exception for Disproportionate burden (as defined by current regulations). The product may not have to comply with requirements of the EAA if doing so would financially overburden the publisher.</p>
 					</dd>
 					<dt><var>eaa_exception_fundamental_modification</var></dt>
 					<dd>
-						<p>If true it indicates that the <i><a href="https://www.w3.org/TR/epub-a11y-exemption/#exemption-property">a11y:exemption</a>="<a href="https://www.w3.org/TR/epub-a11y-exemption/#exemption-values">eaa_fundamental_modification</a>"</i> (EAA exception 3 – Fundamental modification) is present in the OPF file, otherwise if false it means that the metadata is not present.</p>
+						<p>If true it indicates that the <i><a href="https://www.w3.org/TR/epub-a11y-exemption/#exemption-property">a11y:exemption</a>="<a href="https://www.w3.org/TR/epub-a11y-exemption/#exemption-values">eaa_fundamental_modification</a>"</i> (EAA exception 3 – Fundamental modification) is present in the package document, otherwise if false it means that the metadata is not present.</p>
 						<p>This means that the digital product falls under European Accessibility Act exception for Fundamental modification (as defined by current regulations). The product may not have to comply with requirements of the EAA if doing so requires a fundamental modification of the nature of the product or service.</p>
 					</dd>
 				</dl>
 				<h4>Variables setup</h4>
 				<ol class="condition">
-					<li><b>LET</b> <var>package_document</var> be the result of calling <a href="#pre-processing">pre processing</a> given <var>package_document_as_text</var>.</li>
+					<li><b>LET</b> <var>package_document</var> be the result of calling <a href="#pre-processing">preprocessing</a> given <var>package_document_as_text</var>.</li>
 					<li><b>LET</b> <var>eaa_exemption_micro_enterprises</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="a11y:<i>exemption</i>" and text()="<i>eaa-microenterprise</i>"]</code>.</li>
 					<li><b>LET</b> <var>eaa_exception_disproportionate_burden</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="a11y:<i>exemption</i>" and text()="<i>eaa-disproportionate-burden</i>"]</code>.</li>
 					<li><b>LET</b> <var>eaa_exception_fundamental_modification</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="a11y:<i>exemption</i>" and text()="<i>eaa-fundamental-alteration</i>"]</code>.</li>
@@ -961,8 +957,7 @@
 						<span><b>THEN</b> display <code id="tbd">"TBD"</code>.</span>
 					</li>
 					<li>
-						<b>ELSE</b> display <code id="legal-considerations-no-metadata">"No legal considerations"</code>.
-						<p class="note">This key information can be hidden if metadata is missing.</p>
+						<b>ELSE</b> either omit this key informtion if metadata is missing or display <code id="legal-considerations-no-metadata">"No legal considerations"</code>.
 					</li>
 				</ol>
 			</section>
@@ -981,34 +976,34 @@
 					<dl>
 						<dt><var>audio_descriptions</var></dt>
 						<dd>
-							<p>If true it indicates that the <i>accessibilityFeature="audioDescriptions"</i> (Audio Descriptions) is present in the OPF file, otherwise if false it means that the metadata is not present.</p>
+							<p>If true it indicates that the <i>accessibilityFeature="audioDescriptions"</i> (Audio Descriptions) is present in the package document, otherwise if false it means that the metadata is not present.</p>
 							<p>This means that there is an audio descriptions track available for video content.</p>
 						</dd>
 						<dt><var>closed_captions</var></dt>
 						<dd>
-							<p>If true it indicates that the <i>accessibilityFeature="closedCaptions"</i> (Closed captions) is present in the OPF file, otherwise if false it means that the metadata is not present.</p>
+							<p>If true it indicates that the <i>accessibilityFeature="closedCaptions"</i> (Closed captions) is present in the package document, otherwise if false it means that the metadata is not present.</p>
 							<p>This means that the audio content of a video can be seen via closed captions that can be turned on or off  by the viewer and which will be a separate file from the video itself.</p>
 						</dd>
 						<dt><var>open_captions</var></dt>
 						<dd>
-							<p>If true it indicates that the <i>accessibilityFeature="openCaptions"</i> (Open captions) is present in the OPF file, otherwise if false it means that the metadata is not present.</p>
+							<p>If true it indicates that the <i>accessibilityFeature="openCaptions"</i> (Open captions) is present in the package document, otherwise if false it means that the metadata is not present.</p>
 							<p>This means that the audio content of a video can be seen via open captions, which means they cannot be turned off and are always visible when the video plays.</p>
 						</dd>
 						<dt><var>transcript</var></dt>
 						<dd>
-							<p>If true it indicates that the <i>accessibilityFeature="transcript"</i> (transcript) is present in the OPF file, otherwise if false it means that the metadata is not present.</p>
+							<p>If true it indicates that the <i>accessibilityFeature="transcript"</i> (transcript) is present in the package document, otherwise if false it means that the metadata is not present.</p>
 							<p>This means that a transcript of the audio content of the product is supplied with it.</p>
 						</dd>
 						<dt><var>sign_language</var></dt>
 						<dd>
-							<p>If true it indicates that the <i>accessibilityFeature="signLanguage"</i> (Sign language interpretation) is present in the OPF file, otherwise if false it means that the metadata is not present.</p>
+							<p>If true it indicates that the <i>accessibilityFeature="signLanguage"</i> (Sign language interpretation) is present in the package document, otherwise if false it means that the metadata is not present.</p>
 							<p>This means that a full signing of audio content of the product is supplied with the video file.</p>
 						</dd>
 					</dl>
 					
 					<h5>Variables setup</h5>
 					<ol class="condition">
-                        <li><b>LET</b> <var>package_document</var> be the result of calling <a href="#pre-processing">pre processing</a> given <var>package_document_as_text</var>.</li>
+                        <li><b>LET</b> <var>package_document</var> be the result of calling <a href="#pre-processing">preprocessing</a> given <var>package_document_as_text</var>.</li>
 						<li><b>LET</b> <var>audio_descriptions</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>audioDescription</i>"]</code>.</li>
 						<li><b>LET</b> <var>closed_captions</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>closedCaptions</i>"]</code>.</li>
                         <li><b>LET</b> <var>open_captions</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>openCaptions</i>"]</code>.</li>
@@ -1061,27 +1056,27 @@
 					<dl>
 						<dt><var>text_to_speech_hinting</var></dt>
 						<dd>
-							<p>If true it indicates that the <i>accessibilityFeature="ttsMarkup"</i>  (Text-to-speech markup provided) is present in the OPF file, otherwise if false it means that the metadata is not present.</p>
+							<p>If true it indicates that the <i>accessibilityFeature="ttsMarkup"</i>  (Text-to-speech markup provided) is present in the package document, otherwise if false it means that the metadata is not present.</p>
 							<p>This means that text-to-speech has been optimised through provision of PLS lexicons, SSML or CSS Speech synthesis hints or other speech synthesis markup languages or hinting.</p>
 						</dd>
 						<dt><var>high_contrast_between_foreground_and_background_audio</var></dt>
 						<dd>
-							<p>If true it indicates that the <i>accessibilityFeature="highContrastAudio"</i> (Use of high contrast between foreground and background audio) is present in the OPF file, otherwise if false it means that the metadata is not present.</p>
+							<p>If true it indicates that the <i>accessibilityFeature="highContrastAudio"</i> (Use of high contrast between foreground and background audio) is present in the package document, otherwise if false it means that the metadata is not present.</p>
 							<p>This means that foreground audio content (eg voice) is presented with no or low background noise (eg ambient sounds, music), at least 20dB below the level of the foreground, or background noise can be switched off (eg via an alternative audio track). Brief and occasional sound effects may be as loud as foreground voice so long as they are isolated from the foreground.</p>
 						</dd>  
                         <dt><var>high_contrast_between_text_and_background</var></dt>
 						<dd>
-							<p>If true it indicates that the <i>accessibilityFeature="highContrastDisplay"</i> (Use of high contrast between text and background color) is present in the OPF file, otherwise if false it means that the metadata is not present.</p>
+							<p>If true it indicates that the <i>accessibilityFeature="highContrastDisplay"</i> (Use of high contrast between text and background color) is present in the package document, otherwise if false it means that the metadata is not present.</p>
 							<p>This means that body text is presented with a contrast ratio of at least 4.5:1 (or 3:1 for large/heading text).</p>
 						</dd>                  
 						<dt><var>large_print</var></dt>
 						<dd>
-							<p>If true it indicates that the <i>accessibilityFeature="largePrint"</i> (Large Print) is present in the OPF file, otherwise if false it means that the metadata is not present.</p>
+							<p>If true it indicates that the <i>accessibilityFeature="largePrint"</i> (Large Print) is present in the package document, otherwise if false it means that the metadata is not present.</p>
 							<p>This means that the e-publication has been formatted to meet large print guidelines.</p>
 						</dd>
                         <dt><var>page_break_markers</var></dt>
                         <dd>
-                            <p>If true it indicates that the <i>accessibilityFeature="pageBreakMarkers"</i> (Print-equivalent page numbering) is present in the OPF file, otherwise if false it means that the metadata is not present.</p>
+                            <p>If true it indicates that the <i>accessibilityFeature="pageBreakMarkers"</i> (Print-equivalent page numbering) is present in the package document, otherwise if false it means that the metadata is not present.</p>
                             <p>This means that the publication contains references to the page numbering.</p>
                         </dd>
                         
@@ -1089,7 +1084,7 @@
 					
 					<h5>Variables setup</h5>
 					<ol class="condition">
-						<li><b>LET</b> <var>package_document</var> be the result of calling <a href="#pre-processing">pre processing</a> given <var>package_document_as_text</var>.</li>
+						<li><b>LET</b> <var>package_document</var> be the result of calling <a href="#pre-processing">preprocessing</a> given <var>package_document_as_text</var>.</li>
 						<li><b>LET</b> <var>text_to_speech_hinting</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>ttsMarkup</i>"]</code>.</li>
     				    <li><b>LET</b> <var>high_contrast_between_foreground_and_background_audio</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>highContrastAudio</i>"]</code>.</li>
     				    <li><b>LET</b> <var>high_contrast_between_text_and_background</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>highContrastDisplay</i>"]</code>.</li>
