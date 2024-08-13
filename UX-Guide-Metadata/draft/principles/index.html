@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
+	<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
 
 	<head>
 		<meta charset="utf-8" />
@@ -114,10 +114,8 @@
 		<section id="sotd"></section>
 <section id="intro">
    <h2>Introduction</h2>
-   
-   <section id="background" class="informative">
-      <h3>Background</h3>
-      			<p>Reading a publication is a very personal experience. For most   people this is routine, and   little
+ 
+	     			<p>Reading a publication is a very personal experience. For most   people this is routine, and   little
 				consideration is given to how   the title was obtained before it is read. Users may go to a bookstore, search for the
 				title to purchase online, or have the title selected for them by an instructor for a class.</p>
 
@@ -132,7 +130,7 @@
 				accessible from the outset, not fixed later) and getting the accessibility validation or audit done by
 				independent organizations.</p>
 
-   </section>
+   
 </section>
 		<section id="general-overview">
 			<h2>General overview</h2>
@@ -214,15 +212,15 @@
 
 		</section>
 		<section id="general-info">
-			<h2>General information (supplement the bibliographic information)</h2>
+			<h2>General information</h2>
 			<p>To solve the problem of displaying the accessibility metadata in a human readable form, vendors will determine their correct statement to display (from the User Experience Guide) by parsing the metadata and using the appropriate Display Techniques document. </p>
 
 			<p>The product details provide precious information about the usability of the book in relation to specific user needs. The following information should always be displayed:</p>
 
 			<ul>
-				<li> File format (EPUB, PDF, MP3, Audiobook, etc.) </li>
+				<li> File format (EPUB 2 or 3, PDF, MP3, Audiobook, etc.) </li>
 				<li> Protection measure or lack thereof </li>
-				<li> Date of publication </li>
+				
 				<li> Name of the publishing house </li>
 				<li> Main language of the content </li>
 			</ul>
@@ -231,13 +229,11 @@
 			
 			<ul>
 				<li> The file format gives a strong indication of accessibility: an MP3 format audiobook will be less
-					structured than an Audiobook; a PDF does not allow for typography modification, etc. </li>
+					structured than an Audiobook; a PDF does not allow for typography modification, EPUB 2 is deprecated, an EPUB 3 supports page navigation and better structural semantics, etc. </li>
 				<li> The protection measure may block assistive technologies such as screen readers. In addition, many
 					specific reading devices such as DAISY readers or Braille notepads are not equipped to read
 					encrypted files. </li>
-				<li> The publication date gives an indication of when the files were produced. A book published before
-					2011 will probably be an EPUB2 file including poor semantics, and a book published in 2022 will be
-					more likely to be correctly structured and benefit from strong semantics. </li>
+				
 				<li> The name of the publishing house can highlight the efforts it has made in terms of accessibility. </li>
 				<li> The main language of the content enables readers to be confident that they will be able to read
 					with their Assistive Technology that uses synthesized voice or the corresponding Braille table for
@@ -315,8 +311,8 @@
 				</section>
 
 				<section id="va-techniques">
-					<h4>Metadata techniques</h4>
-
+					<h4>Display techniques for Visual adjustments support</h4>
+<p>Specific techniques for meeting this principle are defined in the following documents:</p>
 					<ul>
 						<li><a href="../techniques/epub-metadata/index.html">EPUB Accessibility: Visual
 							Adjustments</a></li>
@@ -378,8 +374,8 @@
 				</section>
 
 				<section id="nv-techniques">
-					<h4>Metadata techniques</h4>
-
+					<h4>Display techniques  for nonvisual reading support</h4>
+<p>Specific techniques for meeting this principle are defined in the following documents:</p>
 					<ul>
 						<li><a href="../techniques/epub-metadata/index.html#screen-reader-friendly">EPUB Accessibility:
 								Supports nonvisual reading</a></li>
@@ -403,8 +399,8 @@
 						href="#conf-statements">simple statements</a> should be provided when EPUB accessibility and
 					WCAG levels are identified.</p>
 
-				<p>If the publication does not include a conformance claim,
-					the statement should indicate that conformance could not be determined. </p>
+				<p>When there is a conformance claim to an unknown specification, the statement should indicate that Conformance to accepted standards for accessibility of this publication cannot be determined. If the publication does not include a conformance claim,
+					the statement should indicate that the publication does not include a conformance statement.</p>
 
 				<p>In most cases, people will want to know more about the conformance and certification of the
 					publication. The certifying organization should be identified along with their credentials and
@@ -431,6 +427,17 @@
 							<p>The publication contains a conformance statement that it meets the EPUB Accessibility and
 								WCAG 2 Level AAA standard.</p>
 						</dd>
+<dt>Conformance to accepted standards for accessibility of this publication cannot be determined.</dt>
+						<dd>
+							<p>The publication contains a conformance statement that is not to the EPUB Accessibility
+								standard.</p>
+						</dd>
+
+						<dt>The publication does not include a conformance statement.</dt>
+						<dd>
+							<p>The conformance metadata is missing and conformity to a standard of this publication is unknown.</p>
+						</dd>
+				
 						<dt>Certifier's name</dt>
 						<dd>Identifies the organization providing the certification review or process for certification. </dd>
 
@@ -440,18 +447,7 @@
 							badge, this can be displayed. The display of the logo or badge can be arranged between the
 							certifier and the distributor showing the accessibility metadata.</dd>
 
-						<dt>This publication's accessibility conformance has not been associated with accepted
-							standards.</dt>
-						<dd>
-							<p>The publication contains a conformance statement that is not to the EPUB Accessibility
-								standard.</p>
-						</dd>
-
-						<dt>The publication does not include a conformance statement.</dt>
-						<dd>
-							<p>The conformity to a standard of this publication is unknown.</p>
-						</dd>
-					</dl>
+							</dl>
 				</section>
 
 				<section id="conf-aai">
@@ -478,9 +474,9 @@
 				<section id="conf-examples">
 					<h4>Examples</h4>
 
-					<p>Three examples are provided for the conformance statement, one shows a statement that claims to
+					<p>Four examples are provided for the conformance statement, one shows a statement that claims to
 						meet recommended accessibility standards and a second that claims to meet the minimum level. The
-						third   shows a publication with unknown accessibility.</p>
+						third is an example to an unknown specification. The fourth shows a publication with unknown accessibility.</p>
 
 					<p>The examples present the conformance statement, the certifier, the certifiers credentials and is
 						followed by the detailed conformance information section </p>
@@ -515,10 +511,25 @@
 
 					</aside>
 
+					
+
+					<aside class="example"
+						title="Conformance to accepted standards for accessibility of this publication cannot be determined followed by detailed conformance information">
+						<p>Conformance to accepted standards for accessibility of this publication cannot be determined.</p>
+						<p>This publication is certified by Foo's Accessibility Testing </p>
+						<p>The certifier's credential is "Enterprise Accessibility Rating."</p>
+
+						<p>Detailed Conformance Information:</p>
+						<p>This publication reports (Publisher's in-house specification.)
+The publication was certified on 2021-09-07 by Foo's Accessibility Testing with a credential of
+							"Enterprise Accessibility Rating." For more information refer to the <a
+								href="http://www.example.com/a11y/report/9780000000001">certifier's report.</a></p>
+
+					</aside>
+
 <aside class="example"
 						title="Unknown  conformance statement">
-						<p>Conformance to accepted standards for accessibility of this publication cannot be
-							determined.</p>
+						<p>The publication does not include a conformance statement.</p>
 						<p>Detailed Conformance Information:</p>
 <p>The conformance metadata was not found.</p>
 						
@@ -527,12 +538,14 @@
 				</section>
 
 				<section id="conf-techniques">
-					<h4>Metadata techniques</h4>
+					<h4>Display techniques for conformance support</h4>
+<p>Specific techniques for meeting this principle are defined in the following documents:</p>
+
 
 					<ul>
-						<li><a href="../techniques/epub-metadata/index.html">EPUB Accessibility: Conformance</a></li>
+						<li><a href="../techniques/epub-metadata/index.html#conformance-group">EPUB Accessibility: Conformance</a></li>
 						<li><a href="../techniques/epub-metadata/index.html">EPUB Accessibility: Certification</a></li>
-						<li><a href="../techniques/onix-metadata/index.html">ONIX: Conformance</a></li>
+						<li><a href="../techniques/onix-metadata/index.html#conformance-group">ONIX: Conformance</a></li>
 						<li><a href="../techniques/onix-metadata/index.html">ONIX: Certification</a></li>
 					</ul>
 				</section>
@@ -584,8 +597,8 @@
 				</section>
 
 				<section id="pra-techniques">
-					<h4>Metadata techniques</h4>
-
+					<h4>Display techniques for pre-recorded audio support</h4>
+<p>Specific techniques for meeting this principle are defined in the following documents:</p>
 					<ul>
 						<li><a href="../techniques/epub-metadata/index.html#full-audio">EPUB Accessibility: Full
 								audio</a></li>
@@ -637,8 +650,8 @@
 				</section>
 
 				<section id="nav-techniques">
-					<h4>Metadata techniques</h4>
-
+					<h4>Display techniques for navigation support</h4>
+<p>Specific techniques for meeting this principle are defined in the following documents:</p>
 					<ul>
 						<li><a href="../techniques/epub-metadata/index.html">EPUB Accessibility: Navigation</a></li>
 						<li><a href="../techniques/onix-metadata/index.html">ONIX: Navigation</a></li>
@@ -685,8 +698,9 @@
 				</section>
 
 				<section id="cdf-techniques">
-					<h4>Metadata techniques</h4>
-
+					<h4>Display techniques for charts, diagrams, and formulas support</h4>
+					
+<p>Specific techniques for meeting this principle are defined in the following documents:</p>
 					<ul>
 						<li><a href="../techniques/epub-metadata/index.html">EPUB Accessibility: Graphics and
 								Formulas</a></li>
@@ -738,8 +752,8 @@
 				</section>
 
 				<section id="hazards-techniques">
-					<h4>Metadata techniques</h4>
-
+					<h4>Display techniques for hazards reporting</h4>
+<p>Specific techniques for meeting this principle are defined in the following documents:</p>
 					<ul>
 						<li><a href="../techniques/epub-metadata/index.html#hazards">EPUB Accessibility:
 							Hazards</a></li>
@@ -778,8 +792,8 @@
 				</section>
 
 				<section id="sum-techniques">
-					<h4>Metadata techniques</h4>
-
+					<h4>Display techniques for accessibility summary support</h4>
+<p>Specific techniques for meeting this principle are defined in the following documents:</p>
 					<ul>
 						<li><a href="../techniques/epub-metadata/index.html">EPUB Accessibility: Accessibility
 								Summary</a></li>
@@ -789,11 +803,12 @@
 			</section>
 <section id="legal-considerations">
 <h3>Legal considerations</h3>
-<div class="note">
-					<p>This key information should  be hidden if metadata is not present	.</p>
-				</div>
+
 <div class="issue" data-number="350">We are actively seeking comments on this "legal consideration" section. If you are a publisher, we want your feedback! Please visit the GitHub Issue tracking linked above to leave a comment.</div>
 
+<div class="note">
+					<p>This key information should  be hidden if metadata is not present	.</p>
+</div>				
 
 <div class="note">Disclaimer: nothing here may be construed as legal advice supplied by W3C or any the groups or individuals who have contributed to this document.
 Always get legal advice from in-house or your retained counsel to assess legal compliance and risk.</div>
@@ -820,8 +835,8 @@ Always get legal advice from in-house or your retained counsel to assess legal c
 
 						
 <section id="legal-techniques">
-					<h4>Metadata techniques</h4>
-
+					<h4> Display techniques for legal considerations support</h4>
+<p>Specific techniques for meeting this principle are defined in the following documents:</p>
 					<ul>
 						<li><a href="../techniques/epub-metadata/index.html#legal-considerations">EPUB Accessibility: legal considerations</a></li>
 						<li><a href="../techniques/onix-metadata/index.html#legal-considerations">ONIX: legal considerations</a></li>
@@ -911,8 +926,8 @@ Always get legal advice from in-house or your retained counsel to assess legal c
 				</section>
 
 				<section id="add-info-techniques">
-					<h4>Metadata techniques</h4>
-
+					<h4>Display techniques for additional accessibility information support</h4>
+<p>Specific techniques for meeting this principle are defined in the following documents:</p>
 					<ul>
 						<li><a href="../techniques/epub-metadata/index.html">EPUB Accessibility: Book Features</a></li>
 						<li><a href="../techniques/onix-metadata/index.html">ONIX: Book Features</a></li>
@@ -1007,11 +1022,10 @@ Always get legal advice from in-house or your retained counsel to assess legal c
 
 		<section id="implementations">
 			<h2>Implementations</h2>
-			<p>These guidelines provide a general framework and make suggestions on the display of accessibility
+<div class="issue" data-number="268">We are collecting information on companies and organizations that wish to possibly commit examples of their implementation.  Please visit this GitHub issue to review companies and organizations that have put their name forward. To possibly volunteer  an implementation, please put your company name, your name and your contact information.</div>			
+<p>These guidelines provide a general framework and make suggestions on the display of accessibility
 				metadata. It is not a normative description of what must be done. It is instructive to provide
 				examples of implementations from the community. </p>
-<p>We are collecting information on companies and organizations that wish to possibly commit examples of their implementation.  Please visit the GitHub issue to review companies and organizations that have volunteered. Please put your company name, your name and your contact information to possibly volunteer an implementation.</p>
-<div class="issue" data-number="268"></div>
 
 			<p>Linked below are static pages that show real-life implementations. We have captured these examples
 				from organization's websites that have agreed to allow us to showcase the work they have done to
