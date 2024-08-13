@@ -288,23 +288,22 @@
 
 					<aside class="example" title="Descriptive explanations">
 						<ul>
-							<li>Appearance of the text and page layout can be modified according to the capabilities of
+							<li id="visual-adjustments-modifiable-descriptive">Appearance of the text and page layout can be modified according to the capabilities of
 								the reading system (font family and font size, spaces between paragraphs, sentences,
 								words, and letters, as well as color of background and text).</li>
-							<li>Text and page layout cannot be modified. The reading experience is close to a print
+							<li id="visual-adjustments-unmodifiable-descriptive">Text and page layout cannot be modified. The reading experience is close to a print
 								version. Reading systems can still provide zooming options.</li>
-							<li>Ability to modify the appearance is not known.</li>
+							<li id="visual-adjustments-unknown-descriptive">Ability to modify the appearance is not known.</li>
 						</ul>
 					</aside>
 
 					<aside class="example" title="Compact explanations">
 						<ul>
-							<li>Appearance can be modified.</li>
+							<li id="visual-adjustments-modifiable-compact">Appearance can be modified.</li>
 							<!--if Display transformability is present-->
-							<li>Appearance cannot be modified.</li>
+							<li id="visual-adjustments-unmodifiable-compact">Appearance cannot be modified.</li>
 							<!--if display transformability is not present and text on visual is present-->
-
-							<li>Ability to modify the appearance is not known.</li>
+							<li id="visual-adjustments-unknown-compact">Ability to modify the appearance is not known.</li>
 							<!--if neither display transformability nor text on visual are presents-->
 						</ul>
 					</aside>
@@ -353,22 +352,22 @@
 
 					<aside class="example" title="Descriptive explanations">
 						<ul>
-							<li>All content is available in generated read aloud speech and electronic braille.</li>
-							<li>Portions of the content may not be available in generated read aloud speech and
+							<li id="nonvisual-reading-readable-descriptive">All content is available in generated read aloud speech and electronic braille.</li>
+							<li id="nonvisual-reading-may-not-fully-descriptive">Portions of the content may not be available in generated read aloud speech and
 								electronic braille.</li>
-							<li>Not all of the content will be available in generated read aloud speech and electronic
+							<li id="nonvisual-reading-not-fully-descriptive">Not all of the content will be available in generated read aloud speech and electronic
 								braille.</li>
-<li>It is not known if the content will be available in generated read aloud speech and electronic
+							<!--To be Confirmed (see https://github.com/w3c/publ-a11y/issues/367)--><li id="nonvisual-reading-unknown">It is not known if the content will be available in generated read aloud speech and electronic
 								braille.</li>
 						</ul>
 					</aside>
 
 					<aside class="example" title="Compact explanations">
 						<ul>
-							<li>Readable in read aloud and braille.</li>
-							<li>May not be fully readable in read aloud and braille.</li>
-							<li>Not fully readable in read aloud and braille.</li>
-<li>Not known if readable in read aloud and braille</li>
+							<li id="nonvisual-reading-readable-compact">Readable in read aloud and braille.</li>
+							<li id="nonvisual-reading-may-not-fully-compact">May not be fully readable in read aloud and braille.</li>
+							<li id="nonvisual-reading-not-fully-compact">Not fully readable in read aloud and braille.</li>
+							<!--To be Confirmed (see https://github.com/w3c/publ-a11y/issues/367)--><li id="nonvisual-reading-unknown-compact">Not known if readable in read aloud and braille</li>
 						</ul>
 					</aside>
 				</section>
@@ -408,40 +407,33 @@
 
 				<section id="conf-statements">
 					<h4>Conformance statements</h4>
-
 					<p>The following list explains the meaning of each recommended conformance statement.</p>
-
 					<dl>
-						<dt>This publication meets accepted accessibility standards.</dt>
-						<dd>
-							<p>The publication contains a conformance statement that it meets the EPUB Accessibility and
-								WCAG 2 Level AA standard.</p>
+						<dt id="conformance-aaa-compact">This publication exceeds accepted accessibility standards.</dt>
+						<dd id="conformance-aaa-descriptive">
+							<p>The publication contains a conformance statement that it meets the EPUB Accessibility and WCAG 2 Level AAA standard.</p>
+						</dd>
+						<dt id="conformance-aa-compact">This publication meets accepted accessibility standards.</dt>
+						<dd id="conformance-aa-descriptive">
+							<p>The publication contains a conformance statement that it meets the EPUB Accessibility and WCAG 2 Level AA standard.</p>
 						</dd>
 
-						<dt>This publication meets minimum accessibility standards.</dt>
-						<dd>
-							<p>The publication contains a conformance statement that it meets the EPUB Accessibility and
-								WCAG 2 Level A standard.</p>
-						</dd><dt>This publication exceeds accepted accessibility standards.</dt>
-						<dd>
-							<p>The publication contains a conformance statement that it meets the EPUB Accessibility and
-								WCAG 2 Level AAA standard.</p>
+						<dt id="conformance-a-compact">This publication meets minimum accessibility standards.</dt>
+						<dd id="conformance-a-descriptive">
+							<p>The publication contains a conformance statement that it meets the EPUB Accessibility and WCAG 2 Level A standard.</p>
 						</dd>
-<dt>Conformance to accepted standards for accessibility of this publication cannot be determined.</dt>
-						<dd>
-							<p>The publication contains a conformance statement that is not to the EPUB Accessibility
-								standard.</p>
-						</dd>
-
-						<dt>The publication does not include a conformance statement.</dt>
-						<dd>
+						<!--To be Confirmed (see https://github.com/w3c/publ-a11y/issues/368)--><dt id="conformance-not-EPUB-compact">Conformance to accepted standards for accessibility of this publication cannot be determined.</dt>
+						<dd id="conformance-not-EPUB-descriptive">
+							<p>The publication contains a conformance statement that is not to the EPUB Accessibility standard.</p>
+						<dt id="conformance-unknown-compact">The publication does not include a conformance statement.</dt>
+						<dd id="conformance-unknown-descriptive">
 							<p>The conformance metadata is missing and conformity to a standard of this publication is unknown.</p>
 						</dd>
 				
-						<dt>Certifier's name</dt>
+						<dt id="certifier-name">Certifier's name</dt>
 						<dd>Identifies the organization providing the certification review or process for certification. </dd>
 
-						<dt>Certifier's Credentials </dt>
+						<dt id="certifier-credential">Certifier's Credentials </dt>
 						<dd>If the certifier has a badge or a credential, then the text is provided. If there is a link
 							to their credential, then this can be provided as a link. If the certifier has a logo or
 							badge, this can be displayed. The display of the logo or badge can be arranged between the
@@ -450,7 +442,7 @@
 							</dl>
 				</section>
 
-				<section id="conf-aai">
+				<section id="detailled-conformance-information">
 					<h4>Detailed conformance information</h4>
 
 					<p>The following information can be placed in a section that shows the details of the conformance
@@ -462,11 +454,11 @@
 							publication assertions are made. When the publication claims to conform to more than one
 							specification, additional conformance statements may be provided.</dd>
 
-						<dt>Certification date</dt>
+						<dt id="certificate-date">Certification date</dt>
 						<dd>If the date of the certifier's evaluation is provided, then this would be of interest. This
 							is normally associated with the certifier.</dd>
 
-						<dt>Certifier's Report</dt>
+						<dt id="certifier-report">Certifier's Report</dt>
 						<dd>If a link to a report is provided, this may be of interest.</dd>
 </dl>
 				</section>
@@ -482,7 +474,7 @@
 						followed by the detailed conformance information section </p>
 
 					<aside class="example"
-						title=" Conformance statement that claims to meet accepted accessibility standards followed by detailed conformance information">
+						title="Conformance statement that claims to meet accepted accessibility standards followed by detailed conformance information">
 						<p>This publication meets accepted accessibility standards.</p>
 						<p>This publication is certified by Foo's Accessibility Testing </p>
 						<p>The certifier's credential is "Enterprise Accessibility Rating."</p>
@@ -573,7 +565,7 @@ The publication was certified on 2021-09-07 by Foo's Accessibility Testing with 
 				<p>Some publications provide pre-recorded audio with text synchronization. Users with hearing
 					impairments still can access the full content of these books.</p>
 
-				<section id="pra-examples">
+				<section id="pre-recorded-audio-examples">
 					<h4>Examples</h4>
 
 					<p>The examples are provided as lists of possible descriptive and compact explanations for
@@ -581,22 +573,22 @@ The publication was certified on 2021-09-07 by Foo's Accessibility Testing with 
 
 					<aside class="example" title="Descriptive explanations">
 						<ul>
-							<li>Audiobook with no text alternative.</li>
-							<li>Contents available as complementary audio and text.</li>
-							<li>All the content is available as pre-recorded audio synchronized with text.</li>
+							<li id="pre-recorded-audio-only-descriptive">Audiobook with no text alternative.</li>
+							<li id="pre-recorded-audio-complementary-descriptive">Contents available as complementary audio and text.</li>
+							<li id="pre-recorded-audio-synchronized-descriptive">All the content is available as pre-recorded audio synchronized with text.</li>
 						</ul>
 					</aside>
 
 					<aside class="example" title="Compact explanations">
 						<ul>
-							<li>Audio only.</li>
-							<li>Complementary audio and text.</li>
-							<li>Synchronized audio and text.</li>
+							<li id="pre-recorded-audio-only-compact">Audio only.</li>
+							<li id="pre-recorded-audio-complementary-compact">Complementary audio and text.</li>
+							<li id="pre-recorded-audio-synchronized-compact">Synchronized audio and text.</li>
 						</ul>
 					</aside>
 				</section>
 
-				<section id="pra-techniques">
+				<section id="pre-recorded-audio-techniques">
 					<h4>Display techniques for pre-recorded audio support</h4>
 <p>Specific techniques for meeting this principle are defined in the following documents:</p>
 					<ul>
@@ -635,17 +627,19 @@ The publication was certified on 2021-09-07 by Foo's Accessibility Testing with 
 
 					<aside class="example" title="Descriptive explanations">
 						<ul>
-							<li>Contains a table of contents that provides direct access to all chapters of the text via
-								links.</li>
-							<li>Index provides links to item references. </li>
-							<li>Landmarks provide quick access to main parts of the book.</li>
-							<li>A page list enables users to coordinate their reading with a statically paginated
-								version.</li>
+							<li id="navigation-toc-descriptive">Contains a table of contents that provides direct access to all chapters of the text via links.</li>
+							<li id="Navigation-index-descriptive">Index provides links to item references. </li>
+							<li id="Navigation-landmarks-descriptive">Landmarks provide quick access to main parts of the book.</li>
+							<li id="Navigation-page-descriptive">A page list enables users to coordinate their reading with a statically paginated version.</li>
 						</ul>
 					</aside>
 
 					<aside class="example" title="Compact explanation">
-						<p>Navigation by table of contents, index, landmarks, and page list.</p>
+						<p><span id="navigation-intro-compact">Navigation by</span> 
+							<span id="navigation-toc-compact">table of contents</span>, 
+							<span id="Navigation-index-compact">index</span>, 
+							<span id="Navigation-landmarks-compact">landmarks</span>, and 
+							<span id="Navigation-page-compact">page list</span>.</p>
 					</aside>
 				</section>
 
@@ -682,10 +676,8 @@ The publication was certified on 2021-09-07 by Foo's Accessibility Testing with 
 
 					<aside class="example" title="Descriptive explanations">
 						<ul>
-							<li>Contains accessible formulas. Charts and diagrams are present and described by extended
-								descriptions.</li>
-							<li>Contains formulas, charts, and diagrams without any information about the accessibility
-								of this content.</li>
+							<li id="Charts-diagrams-formulas-yes">Contains accessible formulas. Charts and diagrams are present and described by extended descriptions.</li>
+							<li>Contains formulas, charts, and diagrams without any information about the accessibility of this content.</li>
 						</ul>
 					</aside>
 
