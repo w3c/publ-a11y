@@ -87,15 +87,15 @@
             "descriptive": "Contains a table of contents that provides direct access to all chapters of the text via links",
             "compact": "Table of contents"
         },
-        "Navigation-index": {
+        "navigation-index": {
             "descriptive": "Index provides links to item references", 
             "compact": "Index"
         },
-        "Navigation-landmarks": {
+        "navigation-landmarks": {
             "descriptive": "Landmarks provide quick access to main parts of the book",
             "compact": "Landmarks"
         },
-        "Navigation-page": {
+        "navigation-page": {
             "descriptive": "A page list enables users to coordinate their reading with a statically paginated version",
             "compact": "Page list"
         },
@@ -128,17 +128,17 @@
         //     "descriptive":  "Contains formulas, charts, and diagrams without any information about the accessibility of this content",
         //     "compact": "Accessibility of formulas, charts, and diagrams unknown"
         // },
-    "Hazards": "Hazards",
-        "Hazards-yes": {
+    "hazards": "Hazards",
+        "hazards-yes": {
             "descriptive": "The publication contains rapidly changing lights or visual stimuli, as well as simulated movements, which can cause discomfort, distraction, photosensitive seizures, or motion sickness",
             "compact": "No information about possible hazards"
         },
-        "Hazards-no": {
+        "hazards-no": {
             "descriptive": "Flashing and motion simulation hazards",
             "compact": "No hazards"
         },
-    "Accessibility summary": "Accessibility summary",
-    "Additional accessibility information": "Additional accessibility information",
+    "accessibility summary": "Accessibility summary",
+    "additional accessibility information": "Additional accessibility information",
         "aria-roles": {
             "descriptive": "Content is enhanced with ARIA roles to optimize organization and facilitate navigation",
             "compact": "ARIA roles included"
