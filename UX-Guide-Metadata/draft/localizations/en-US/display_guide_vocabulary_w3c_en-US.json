@@ -5,158 +5,158 @@
     "audience": "general",
     "description": "Original wording discussed by a large group representing different actors of the English-speaking geographies. It has been improved after proof of concept implementations and panel testers",
     "Visual-adjustments-title": "Visual adjustments",
-    "visual-adjustments-modifiable": {
-        "descriptive": "Appearance of the text and page layout can be modified according to the capabilities of the reading system (font family and font size, spaces between paragraphs, sentences, words, and letters, as well as color of background and text)",
-        "compact": "Appearance can be modified"
-    },
-    "visual-adjustments-unmodifiable": {
-        "descriptive": "Text and page layout can not be modified. The reading experience is close to a print version. Reading systems can still provide zooming options",
-        "compact": "Appearance cannot be modified"
-    },
-    "visual-adjustments-unknown": {
-        "descriptive": "Ability to modify the appearance is not known",
-        "compact": "Appearance Modifiability not known"
-    },
+        "visual-adjustments-modifiable": {
+            "descriptive": "Appearance of the text and page layout can be modified according to the capabilities of the reading system (font family and font size, spaces between paragraphs, sentences, words, and letters, as well as color of background and text)",
+            "compact": "Appearance can be modified"
+        },
+        "visual-adjustments-unmodifiable": {
+            "descriptive": "Text and page layout can not be modified. The reading experience is close to a print version. Reading systems can still provide zooming options",
+            "compact": "Appearance cannot be modified"
+        },
+        "visual-adjustments-unknown": {
+            "descriptive": "Ability to modify the appearance is not known",
+            "compact": "Appearance Modifiability not known"
+        },
     "nonvisual-reading-title": "Supports nonvisual reading",
-    "nonvisual-reading-readable": {
-        "descriptive": "All content is available in generated read aloud speech and electronic braille",
-        "compact": "Readable in read aloud and braille"
-    },
-    "nonvisual-reading-may-not-fully": {
-        "descriptive": "Portions of the content may not be available in generated read aloud speech and electronic braille",
-        "compact": "May not be fully readable in read aloud and braille"
-    },
-    "nonvisual-reading-not-fully": {
-        "descriptive": "Not all of the content will be available in generated read aloud speech and electronic braille",
-        "compact": "Not fully readable in read aloud and braille"
-    },
+        "nonvisual-reading-readable": {
+            "descriptive": "All content is available in generated read aloud speech and electronic braille",
+            "compact": "Readable in read aloud and braille"
+        },
+        "nonvisual-reading-may-not-fully": {
+            "descriptive": "Portions of the content may not be available in generated read aloud speech and electronic braille",
+            "compact": "May not be fully readable in read aloud and braille"
+        },
+        "nonvisual-reading-not-fully": {
+            "descriptive": "Not all of the content will be available in generated read aloud speech and electronic braille",
+            "compact": "Not fully readable in read aloud and braille"
+        },
         // <!--To be Confirmed (see https://github.com/w3c/publ-a11y/issues/367)-->"nonvisual-reading-unknown": {
-    //     "descriptive": "It is not known if the content will be available in generated read aloud speech and electronic braille",
-    //     "compact": "Not known if readable in read aloud and braille"
-    // },
+        //     "descriptive": "It is not known if the content will be available in generated read aloud speech and electronic braille",
+        //     "compact": "Not known if readable in read aloud and braille"
+        // },
     "conformance-title": "Conformance",
-    "conformance-aaa": {
-        "descriptive": "The publication contains a conformance statement that it meets the EPUB Accessibility and WCAG 2 Level AAA standard",
-        "compact": "This publication exceeds accepted accessibility standards"
-    },
+        "conformance-aaa": {
+            "descriptive": "The publication contains a conformance statement that it meets the EPUB Accessibility and WCAG 2 Level AAA standard",
+            "compact": "This publication exceeds accepted accessibility standards"
+        },
         "conformance-aa": {
-        "descriptive": "The publication contains a conformance statement that it meets the EPUB Accessibility and WCAG 2 Level AA standard",
-        "compact": "This publication meets accepted accessibility standards"
-    },
-    "conformance-a": {
-        "descriptive": "The publication contains a conformance statement that it meets the EPUB Accessibility and WCAG 2 Level A standard",
-        "compact": "This publication meets minimum accessibility standards"
-    },
-    "conformance-not-EPUB": {
-        "descriptive": "The publication contains a conformance statement that is not to the EPUB Accessibility standard",
-        "compact": "Conformance to accepted standards for accessibility of this publication cannot be determined"
-    },
+            "descriptive": "The publication contains a conformance statement that it meets the EPUB Accessibility and WCAG 2 Level AA standard",
+            "compact": "This publication meets accepted accessibility standards"
+        },
+        "conformance-a": {
+            "descriptive": "The publication contains a conformance statement that it meets the EPUB Accessibility and WCAG 2 Level A standard",
+            "compact": "This publication meets minimum accessibility standards"
+        },
+        "conformance-not-EPUB": {
+            "descriptive": "The publication contains a conformance statement that is not to the EPUB Accessibility standard",
+            "compact": "Conformance to accepted standards for accessibility of this publication cannot be determined"
+        },
         "conformance-unknown": {
-        "descriptive": "The conformance metadata is missing and conformity to a standard of this publication is unknown",
-        "compact": "The publication does not include a conformance statement"
-    },
-    "detailed-Conformance": {
-        "detailled-conformance-information": "Detailed Conformance Information:",
-        "certifier-name": "This publication is certified by {Certifier Name}", 
-        "certifier-credential": "The certifier's credential is {Credential}",
-        "certificate-date": "This publication was certified on {date}",
-        "certifier-report": "For more information, refer to the certifier's report {url}"
-    },
+            "descriptive": "The conformance metadata is missing and conformity to a standard of this publication is unknown",
+            "compact": "The publication does not include a conformance statement"
+        },
+        "detailed-Conformance": {
+            "detailled-conformance-information": "Detailed Conformance Information:",
+            "certifier-name": "This publication is certified by {Certifier Name}", 
+            "certifier-credential": "The certifier's credential is {Credential}",
+            "certificate-date": "This publication was certified on {date}",
+            "certifier-report": "For more information, refer to the certifier's report {url}"
+        },
     "pre-recorded-audio-title": "Pre-recorded audio",
-    "pre-recorded-audio-only": {
-        "descriptive": "Audiobook with no text alternative",
-        "compact": "Audio only"
-    },
-    "pre-recorded-audio-complementary": {
-        "descriptive": "Contents available as complementary audio and text",
-        "compact": "Complementary audio and text"
-    },
-    "pre-recorded-audio-synchronized": {
-        "descriptive": "All the content is available as pre-recorded audio synchronized with text",
-        "compact": "Synchronized audio and text"
-    },
-    "pre-recorded-audio-no-metadata": {
-        "descriptive": "No information about pre-recorded audio",
-        "compact": "No information about pre-recorded audio"
-    },
+        "pre-recorded-audio-only": {
+            "descriptive": "Audiobook with no text alternative",
+            "compact": "Audio only"
+        },
+        "pre-recorded-audio-complementary": {
+            "descriptive": "Contents available as complementary audio and text",
+            "compact": "Complementary audio and text"
+        },
+        "pre-recorded-audio-synchronized": {
+            "descriptive": "All the content is available as pre-recorded audio synchronized with text",
+            "compact": "Synchronized audio and text"
+        },
+        "pre-recorded-audio-no-metadata": {
+            "descriptive": "No information about pre-recorded audio",
+            "compact": "No information about pre-recorded audio"
+        },
     "navigation-title": "Navigation",
-    "navigation-intro": {
-        "compact": "Navigation by"
-    },
-    "navigation-toc": {
-        "descriptive": "Contains a table of contents that provides direct access to all chapters of the text via links",
-        "compact": "Table of contents"
-    },
-    "Navigation-index": {
-        "descriptive": "Index provides links to item references", 
-        "compact": "Index"
-    },
-    "Navigation-landmarks": {
-        "descriptive": "Landmarks provide quick access to main parts of the book",
-        "compact": "Landmarks"
-    },
-    "Navigation-page": {
-        "descriptive": "A page list enables users to coordinate their reading with a statically paginated version",
-        "compact": "Page list"
-    },
+        "navigation-intro": {
+            "compact": "Navigation by"
+        },
+        "navigation-toc": {
+            "descriptive": "Contains a table of contents that provides direct access to all chapters of the text via links",
+            "compact": "Table of contents"
+        },
+        "Navigation-index": {
+            "descriptive": "Index provides links to item references", 
+            "compact": "Index"
+        },
+        "Navigation-landmarks": {
+            "descriptive": "Landmarks provide quick access to main parts of the book",
+            "compact": "Landmarks"
+        },
+        "Navigation-page": {
+            "descriptive": "A page list enables users to coordinate their reading with a statically paginated version",
+            "compact": "Page list"
+        },
     "charts-diagrams-formulas-title": "Charts, diagrams, and formulas",
-    "charts-diagrams-formulas-extended": {
-        "descriptive": "Charts and diagrams have extended descriptions", 
-        "compact": "" 
-    },
-    "charts-diagrams-formulas-non-graphical-data": {
-        "descriptive": "Visualized data also available as non-graphical data", 
-        "compact": "" 
-    },
-    "charts-diagrams-formulas-accessible-chemistry": {
-        "descriptive": "Accessible chemistry content", 
-        "compact": "" 
-    },
-    "charts-diagrams-formulas-accessible-math": {
-        "descriptive": "Accessible math content", 
-        "compact": "" 
-    },
-    "charts-diagrams-formulas-accessible-unknown": {
-        "descriptive": "Accessibility of formulas, charts, and diagrams unknown", 
-        "compact": "" 
-    },
-    // "Charts-diagrams-formulas-yes": {
-    //     "descriptive":  "Contains accessible formulas. Charts and diagrams are present and described by extended descriptions",
-    //     "compact": "Accessible formulas. Charts and diagrams have extended descriptions"
-    // },
-    // "Charts-diagrams-formulas-unknown": {
-    //     "descriptive":  "Contains formulas, charts, and diagrams without any information about the accessibility of this content",
-    //     "compact": "Accessibility of formulas, charts, and diagrams unknown"
-    // },
+        "charts-diagrams-formulas-extended": {
+            "descriptive": "Charts and diagrams have extended descriptions", 
+            "compact": "" 
+        },
+        "charts-diagrams-formulas-non-graphical-data": {
+            "descriptive": "Visualized data also available as non-graphical data", 
+            "compact": "" 
+        },
+        "charts-diagrams-formulas-accessible-chemistry": {
+            "descriptive": "Accessible chemistry content", 
+            "compact": "" 
+        },
+        "charts-diagrams-formulas-accessible-math": {
+            "descriptive": "Accessible math content", 
+            "compact": "" 
+        },
+        "charts-diagrams-formulas-accessible-unknown": {
+            "descriptive": "Accessibility of formulas, charts, and diagrams unknown", 
+            "compact": "" 
+        },
+        // "Charts-diagrams-formulas-yes": {
+        //     "descriptive":  "Contains accessible formulas. Charts and diagrams are present and described by extended descriptions",
+        //     "compact": "Accessible formulas. Charts and diagrams have extended descriptions"
+        // },
+        // "Charts-diagrams-formulas-unknown": {
+        //     "descriptive":  "Contains formulas, charts, and diagrams without any information about the accessibility of this content",
+        //     "compact": "Accessibility of formulas, charts, and diagrams unknown"
+        // },
     "Hazards": "Hazards",
-    "Hazards-yes": {
-        "descriptive": "The publication contains rapidly changing lights or visual stimuli, as well as simulated movements, which can cause discomfort, distraction, photosensitive seizures, or motion sickness",
-        "compact": "No information about possible hazards"
-    },
-    "Hazards-no": {
-        "descriptive": "Flashing and motion simulation hazards",
-        "compact": "No hazards"
-    },
+        "Hazards-yes": {
+            "descriptive": "The publication contains rapidly changing lights or visual stimuli, as well as simulated movements, which can cause discomfort, distraction, photosensitive seizures, or motion sickness",
+            "compact": "No information about possible hazards"
+        },
+        "Hazards-no": {
+            "descriptive": "Flashing and motion simulation hazards",
+            "compact": "No hazards"
+        },
     "Accessibility summary": "Accessibility summary",
     "Additional accessibility information": "Additional accessibility information",
-      "aria-roles": {
-        "descriptive": "Content is enhanced with ARIA roles to optimize organization and facilitate navigation",
-        "compact": "ARIA roles included"
-    },
-      "video-captions": {
-        "descriptive": "Videos included in publications have closed captions and sign language representation", 
-        "compact": "Closed captions and sign languages for videos"
-    },
-      "tactile-graphics": {
-        "descriptive": "Tactile graphics have been integrated to facilitate access to visual elements by blind people",
-        "compact": "Tactile graphics attached"
-    },
-      "music-visual": {
-        "descriptive": "Music scores are provided that are visually accessible",
-        "compact": "Music scores visually presented"
-    },
-    "information-through-colors": {
-        "descriptive": "Content contains information encoded through colors, which may be imperceptible to those who cannot distinguish colors",
-        "compact": "Information encoded through colors"
-    }
+        "aria-roles": {
+            "descriptive": "Content is enhanced with ARIA roles to optimize organization and facilitate navigation",
+            "compact": "ARIA roles included"
+        },
+        "video-captions": {
+            "descriptive": "Videos included in publications have closed captions and sign language representation", 
+            "compact": "Closed captions and sign languages for videos"
+        },
+        "tactile-graphics": {
+            "descriptive": "Tactile graphics have been integrated to facilitate access to visual elements by blind people",
+            "compact": "Tactile graphics attached"
+        },
+        "music-visual": {
+            "descriptive": "Music scores are provided that are visually accessible",
+            "compact": "Music scores visually presented"
+        },
+        "information-through-colors": {
+            "descriptive": "Content contains information encoded through colors, which may be imperceptible to those who cannot distinguish colors",
+            "compact": "Information encoded through colors"
+        }
 }
