@@ -164,6 +164,22 @@
 					<li><b>ELSE</b> return <code>False</code>.</li>
 				</ol>
 			</section>
+			<section id="join-array-to-comma-list">
+				<h3>Join array to comma list</h3>
+				<p>This function serves to concatenate an array of strings, separating each element with a comma, with the last element separated by an <code>", and"</code> (this string is localizable).</p>
+				<p>For example if the input array has elements <code>["one", "two", "three"]</code>, then the output is going to be <code>"one, two, and three"</code>.</p>
+				<p>This algorithm takes the <var>string_array</var> argument: the list of string to join.</p>
+				<p>To join the array, run the following steps:</p>
+				<ol class="condition">
+					<li><b>LET</b> <var>output_string</var> be the result of:
+						<ul class="condition">
+							<li>calling join on <var>string_array</var> with the separator <code>", "</code></li>
+							<li>replacing the last occurrence of <code>", "</code> with <code id="join-array-and">", and "</code>.</li>
+						</ul>
+					</li>
+					<li>return <var>output_string</var>.</li>
+				</ol>
+			</section>
 
         </section>
         
@@ -638,8 +654,7 @@
 							</li>
 							<li><b>LET</b> <var>navigation_string</var> be the result of:
 								<ul class="condition">
-									<li>calling join on <var>navigation</var> with the separator <code>", "</code></li>
-									<li>replacing the last occurrence of <code>", "</code> with <code id="join-array-and">" ,and "</code></li>
+									<li>calling <a href="#join-array-to-comma-list">join array to comma list</a> given <var>navigation</var></li>
 									<li>concatenating <code id="navigation-intro">"Navigation by "</code> to the beginning of the string.</li>
 								</ul>
 							</li>
@@ -837,9 +852,8 @@
 							</li>
 							<li><b>LET</b> <var>hazards_string</var> be the result of:
 								<ul class="condition">
-									<li>calling join on <var>hazards</var> with the separator <code>", "</code></li>
-									<li>making uppercase the first character</li>
-									<li>replacing the last occurrence of <code>", "</code> with <code id="join-array-and">" ,and "</code></li>
+									<li>calling <a href="#join-array-to-comma-list">join array to comma list</a> given <var>hazards</var></li>
+									<li>uppercasing the first character</li>
 									<li>concatenating <code id="hazards-plural">" hazards"</code> to the end of the string <b>IF</b> (length of <var>hazards</var>) > 1 <b>ELSE</b> concatenating <code id="hazards-singular">" hazard"</code> to the end of the string.</li>
 								</ul>
 							</li>
@@ -1068,9 +1082,8 @@
 							<ol class="condition">
 								<li><b>LET</b> <var>adaptation_string</var> be the result of:
 									<ul class="condition">
-										<li>calling join on <var>adaptation</var> with the separator <code>", "</code></li>
-										<li>making uppercase the first character</li>
-										<li>replacing the last occurrence of <code>", "</code> with <code id="join-array-and">" ,and "</code>.</li>
+										<li>calling <a href="#join-array-to-comma-list">join array to comma list</a> given <var>adaptation</var></li>
+										<li>uppercasing the first character.</li>
 									</ul>
 								</li>
 								<li>display <var>adaptation_string</var>.</li>
@@ -1183,9 +1196,8 @@
 							<ol class="condition">
 								<li><b>LET</b> <var>clarity_string</var> be the result of:
 									<ul class="condition">
-										<li>calling join on <var>clarity</var> with the separator <code>", "</code></li>
-										<li>making uppercase the first character</li>
-										<li>replacing the last occurrence of <code>", "</code> with <code id="join-array-and">" ,and "</code>.</li>
+										<li>calling <a href="#join-array-to-comma-list">join array to comma list</a> given <var>clarity</var></li>
+										<li>uppercasing the first character.</li>
 									</ul>
 								</li>
 								<li>display <var>clarity_string</var>.</li>
