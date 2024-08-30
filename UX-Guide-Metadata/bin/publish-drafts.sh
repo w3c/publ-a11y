@@ -15,13 +15,17 @@ normal=$(tput sgr0)
 
 # input
 read -p 'Publishing date (format YYYY-MM-DD): ' publishDate
+publishDateWithoutDashes=${publishDate//-/}
 
 for document in "${documents[@]}"
 do 
-	echo "\n\nDocument ${bold}$document${normal}..."
+	printf "\n\nDocument ${bold}$document${normal}...\n"
 	
-	# tmp dir for document
+	# variables for document
 	tmpdir=$(mktemp -d)
+	filename=${document##*/}
+	versionFilename="$filename-draft-note-$publishDateWithoutDashes.html"
+	versionURL="https://w3c.github.io/publ-a11y/UX-Guide-Metadata/2.0/$document/$versionFilename"
 
 	# copies the content to the temporary directory
 	printf "\nCopying the content to the temporary directory..."
@@ -33,7 +37,7 @@ do
 	curl \
 		-G \
 		--data-urlencode "type=respec" \
-		--data-urlencode "url=https://w3c.github.io/publ-a11y/UX-Guide-Metadata/draft/$document/?specStatus=CG-DRAFT&publishDate=$publishDate" \
+		--data-urlencode "url=https://w3c.github.io/publ-a11y/UX-Guide-Metadata/draft/$document/?specStatus=CG-DRAFT&publishDate=$publishDate&thisVersion=$versionURL" \
 		https://labs.w3.org/spec-generator/ \
 		-o "$tmpdir/index.html"
 	
@@ -71,6 +75,9 @@ do
 	
 	printf "\nMoving temporary files to directory..."
 	mv $tmpdir/* "$basedir/../2.0/$document/"
+	
+	printf "\nCopying for versioning..."
+	cp "$basedir/../2.0/$document/index.html" "$basedir/../2.0/$document/$versionFilename"
 
 done
 
