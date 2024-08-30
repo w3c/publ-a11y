@@ -57,10 +57,20 @@
         },
         "detailed-Conformance": {
             "detailled-conformance-information": "Detailed Conformance Information:",
-            "certifier-name": "This publication is certified by {Certifier Name}", 
-            "certifier-credential": "The certifier's credential is {Credential}",
-            "certificate-date": "This publication was certified on {date}",
-            "certifier-report": "For more information, refer to the certifier's report {url}"
+            "conformance-claim": "This publication claims to meet",
+            "conformance-epub-accessibility-1-0": " EPUB Accessibility 1.0 ", 
+            "conformance-epub-accessibility-1-1": " EPUB Accessibility 1.1 ", 
+            "conformance-wcag-2-2": " WCAG 2.2 ", 
+            "conformance-wcag-2-1": " WCAG 2.1 ", 
+            "conformance-wcag-2-0": " WCAG 2.0 ", 
+            "conformance-level-aaa": " Level AAA", 
+            "conformance-level-aa": " Level AA", 
+            "conformance-level-a": " Level A", 
+            "conformance-certification-info": "The publication was certified",
+            "conformance-certification-date-prefix": " on ",
+            "conformance-certifier-prefix": " by ",
+			"conformance-certifier-credentials-prefix": " with a credential of ",
+            "conformance-certifier-report": "For more information refer to the certifier's report."
         },
     "pre-recorded-audio-title": "Pre-recorded audio",
         "pre-recorded-audio-only": {
