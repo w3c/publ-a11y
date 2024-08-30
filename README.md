@@ -5,6 +5,8 @@
 
 This is the repository for the Accessibility related discussions of the [Publishing@W3C Groups](https://www.w3.org/publishing/). 
 
+[Minutes of the task force meetings](https://github.com/w3c/publ-a11y/wiki/Minutes-of-Publishing-CG-Accessibility-Task-Force-Meetings)
+
 ## Contributing to the Repository
 
 Use the standard fork, branch, and pull request workflow to propose changes to the specification. Please make branch names informative—by including the issue or bug number for example.
