@@ -115,6 +115,7 @@
             "descriptive": "A page list enables users to coordinate their reading with a statically paginated version",
             "compact": "Page list"
         },
+        "navigation-join-array-and": ", and",
     "charts-diagrams-formulas-title": "Charts, diagrams, and formulas",
         "charts-diagrams-formulas-extended": {
             "descriptive": "Charts and diagrams have extended descriptions", 
