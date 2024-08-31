@@ -1,10 +1,10 @@
 # User Experience Guide for Displaying Accessibility Metadata 2.0
  
-[Public draft for review](https://w3c.github.io/publ-a11y/UX-Guide-Metadata/2.0/public-draft/principles)
+[Principles public draft for review](https://w3c.github.io/publ-a11y/UX-Guide-Metadata/2.0/principles)
 
-* [Current Editor's Draft - Techniques](https://w3c.github.io/publ-a11y/UX-Guide-Metadata/2.0/public-draft/techniques/):
-	* [Display Techniques for EPUB Accessibility Metadata 2.0](https://w3c.github.io/publ-a11y/UX-Guide-Metadata/2.0/public-draft/techniques/epub-metadata/)
-	* [Display Techniques for ONIX Accessibility Metadata 2.0](https://w3c.github.io/publ-a11y/UX-Guide-Metadata/2.0/public-draft/techniques/onix-metadata/)
+* [Techniques public draft](https://w3c.github.io/publ-a11y/UX-Guide-Metadata/2.0/techniques/):
+	* [Display Techniques for EPUB Accessibility Metadata 2.0](https://w3c.github.io/UX-Guide-Metadata/2.0/public-draft/techniques/epub-metadata/)
+	* [Display Techniques for ONIX Accessibility Metadata 2.0](https://w3c.github.ioUX-Guide-Metadata/2.0/public-draft/techniques/onix-metadata/)
 
 
 ## live editor's drafts
