@@ -145,7 +145,7 @@
         //     "descriptive":  "Contains formulas, charts, and diagrams without any information about the accessibility of this content",
         //     "compact": "Accessibility of formulas, charts, and diagrams unknown"
         // },
-    "hazards": "Hazards",
+    "hazards-title": "Hazards",
         "hazards-yes": {
             "descriptive": "The publication contains rapidly changing lights or visual stimuli, as well as simulated movements, which can cause discomfort, distraction, photosensitive seizures, or motion sickness",
             "compact": "No information about possible hazards"
@@ -154,8 +154,8 @@
             "descriptive": "Flashing and motion simulation hazards",
             "compact": "No hazards"
         },
-    "accessibility summary": "Accessibility summary",
-    "additional accessibility information": "Additional accessibility information",
+    "accessibility-summary-title": "Accessibility summary",
+    "additional-accessibility-information-title": "Additional accessibility information",
         "aria-roles": {
             "descriptive": "Content is enhanced with ARIA roles to optimize organization and facilitate navigation",
             "compact": "ARIA roles included"
