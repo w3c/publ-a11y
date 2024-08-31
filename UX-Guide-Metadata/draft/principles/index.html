@@ -398,7 +398,7 @@
 						href="#conf-statements">simple statements</a> should be provided when EPUB accessibility and
 					WCAG levels are identified.</p>
 
-				<p>When there is a conformance claim to an unknown specification, the statement should indicate that Conformance to accepted standards for accessibility of this publication cannot be determined. If the publication does not include a conformance claim,
+				<p>If the publication does not include a conformance claim,
 					the statement should indicate that the publication does not include a conformance statement.</p>
 
 				<p>In most cases, people will want to know more about the conformance and certification of the
@@ -422,9 +422,8 @@
 						<dd id="conformance-a-descriptive">
 							<p>The publication contains a conformance statement that it meets the EPUB Accessibility and WCAG 2 Level A standard.</p>
 						</dd>
-						<!--To be Confirmed (see https://github.com/w3c/publ-a11y/issues/368)--><dt id="conformance-not-EPUB-compact">Conformance to accepted standards for accessibility of this publication cannot be determined.</dt>
-						<dd id="conformance-not-EPUB-descriptive">
-							<p>The publication contains a conformance statement that is not to the EPUB Accessibility standard.</p>
+						<!--To be Confirmed (see https://github.com/w3c/publ-a11y/issues/368)-->
+
 						<dt id="conformance-unknown-compact">The publication does not include a conformance statement.</dt>
 						<dd id="conformance-unknown-descriptive">
 							<p>The conformance metadata is missing and conformity to a standard of this publication is unknown.</p>
@@ -466,7 +465,9 @@
 				<section id="conf-examples">
 					<h4>Examples</h4>
 
-					<p>Four examples are provided for the conformance statement, one shows a statement that claims to meet recommended accessibility standards and a second that claims to meet the minimum level. The third is an example to an unknown specification. The fourth shows a publication with unknown accessibility.</p>
+					<p>Three examples are provided for the conformance statement, one shows a statement that claims to
+						meet recommended accessibility standards and a second that claims to meet the minimum level. The
+						third example shows a publication with unknown accessibility.</p>
 
 					<p>The examples present the conformance statement, the certifier, the certifiers credentials and is followed by the detailed conformance information section </p>
 
@@ -526,32 +527,30 @@
 							<a href="http://www.example.com/a11y/report/9780000000001">certifier's report</span>.</a>
 						</p>
 					</aside>
+
+					
+
 					<aside class="example"
 						title="Conformance to accepted standards for accessibility of this publication cannot be determined followed by detailed conformance information">
-						<p id="conformance-not-EPUB-compact">Conformance to accepted standards for accessibility of this publication cannot be determined.</p>
-						<p>
-							<span id="conformance-certification-info-compact_3">The publication was certified</span> 
-							<span id="conformance-certifier-prefix-compact_3">by</span> Foo's Accessibility Testing 
-						</p>
-						<p id="detailled-conformance-information_3">Detailed Conformance Information:</p>
-						<p><span id="conformance-claim_3">This publication claims to meet</span>  
-							{Name of publisher's in-house specification}.
-							<span id="conformance-certification-info-descriptive_3">The publication was certified</span> 
-							<span id="conformance-certification-date-prefix_3">on</span> 
-							2021-09-07 
-							<span id="conformance-certifier-prefix-descriptive_3">by</span> 
-							Foo's Accessibility Testing 
-							<span id="conformance-certifier-credentials-prefix_3">with a credential of</span>
-							"Enterprise Accessibility Rating." 
-							<span id="conformance-certifier-report_3">For more information, refer to the 
-							<a href="http://www.example.com/a11y/report/9780000000001">certifier's report</span>.</a>
-						</p>
+						<p>Conformance to accepted standards for accessibility of this publication cannot be determined.</p>
+						<p>This publication is certified by Foo's Accessibility Testing </p>
+						<p>The certifier's credential is "Enterprise Accessibility Rating."</p>
+
+						<p>Detailed Conformance Information:</p>
+						<p>This publication reports (Publisher's in-house specification.)
+The publication was certified on 2021-09-07 by Foo's Accessibility Testing with a credential of
+							"Enterprise Accessibility Rating." For more information refer to the <a
+								href="http://www.example.com/a11y/report/9780000000001">certifier's report.</a></p>
+
 					</aside>
-					<aside class="example"
-						title="Unknown conformance statement">
-						<p id="conformance-unknown-compact">The publication does not include a conformance statement.</p>
-						<p id="detailled-conformance-information_4">Detailed Conformance Information:</p>
-						<p id="conformance-unknown-descriptive">The conformance metadata was not found.</p>
+
+<aside class="example"
+						title="Unknown  conformance statement">
+						<p>The publication does not include a conformance statement.</p>
+						<p>Detailed Conformance Information:</p>
+<p>The conformance metadata was not found.</p>
+						
+
 					</aside>
 				</section>
 
@@ -562,9 +561,9 @@
 
 					<ul>
 						<li><a href="../techniques/epub-metadata/index.html#conformance-group">EPUB Accessibility: Conformance</a></li>
-						<li><a href="../techniques/epub-metadata/index.html">EPUB Accessibility: Certification</a></li>
+						
 						<li><a href="../techniques/onix-metadata/index.html#conformance-group">ONIX: Conformance</a></li>
-						<li><a href="../techniques/onix-metadata/index.html">ONIX: Certification</a></li>
+
 					</ul>
 				</section>
 			</section>
@@ -656,7 +655,7 @@
 							<li id="navigation-toc-descriptive">Contains a table of contents that provides direct access to all chapters of the text via links.</li>
 							<li id="Navigation-index-descriptive">Index provides links to item references. </li>
 							<li id="Navigation-landmarks-descriptive">Landmarks provide quick access to main parts of the book.</li>
-							<li id="Navigation-page-descriptive">A page list enables users to coordinate their reading with a statically paginated version.</li>
+							<li id="Navigation-page-descriptive">A page list enables users to navigate directly to     pages from the  identified print source version.</li>
 						</ul>
 					</aside>
 
@@ -929,14 +928,15 @@ Always get legal advice from in-house or your retained counsel to assess legal c
 
 				<section id="add-info-examples">
 					<h2>Examples</h2>
-
+<div class="note"	>There are many features that may be present.  Some of the features are listed in the examples. A complete list can be found in the techniques. 
+</div>
 					<aside class="example" title="Descriptive explanations">
 						<ul>
 							<li>Content is enhanced with ARIA roles to optimize organization and facilitate
 								navigation.</li>
 <li>Page breaks   included  from the original print source.</li>
-							<li>Videos included in publications have closed captions and sign language representation. </li>
-							<li>Tactile graphics have been integrated to facilitate access to visual elements by blind
+							<li>Videos included in publications have closed captions. </li>
+							<li>Tactile graphics have been integrated to facilitate access to visual elements for blind
 								people.</li>
 							<li>Music scores are provided that are visually accessible.</li>
 							<li>Content contains information encoded through colors, which may be imperceptible to those
@@ -948,7 +948,7 @@ Always get legal advice from in-house or your retained counsel to assess legal c
 						<ul>
 							<li>ARIA roles included.</li>
 <li>Page breaks</li>
-							<li>Closed captions and sign language interpretation for videos.</li>
+							<li>Closed captions for videos.</li>
 							<li>Tactile graphics attached.</li>
 							<li>Music scores visually presented.</li>
 							<li>Information encoded through colors.</li>
