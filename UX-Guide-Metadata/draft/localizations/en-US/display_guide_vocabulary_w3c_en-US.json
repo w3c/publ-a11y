@@ -175,5 +175,5 @@
             "descriptive": "Content contains information encoded through colors, which may be imperceptible to those who cannot distinguish colors",
             "compact": "Information encoded through colors"
         },
-        "join-array-to-comma-list": ", and",
+        "join-array-to-comma-list": ", and"
 }
