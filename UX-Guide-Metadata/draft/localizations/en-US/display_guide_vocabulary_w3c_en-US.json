@@ -168,6 +168,60 @@
 
     "accessibility-summary-title": "Accessibility summary",
     "additional-accessibility-information-title": "Additional accessibility information",
+        "additional-accessibility-information-adaptation-title":"Adaptation",
+            "additional-accessibility-information-adaptation-dyslexia-readability":
+            {
+                "descriptive": "",
+                "compact": "dyslexia readability"
+            },
+            "additional-accessibility-information-adaptation-closed-captions":            {
+                "descriptive": "Videos included in publications have closed captions that can be turned off, selected and accessed as text",
+                "compact": "closed captions"
+            },
+            "additional-accessibility-information-adaptation-open-captions":            {
+                "descriptive": "Videos included in publications have open captions that are only visually accessible",
+                "compact": "open captions"
+            },
+            "additional-accessibility-information-adaptation-full-transcript":            {
+                "descriptive": "",
+                "compact": "full transcript"
+            },
+            "additional-accessibility-information-adaptation-sign-language":            {
+                "descriptive": "",
+                "compact": "sign language"
+            },
+        "additional-accessibility-information-clarity-title":"Clarity",
+            "additional-accessibility-information-clarity-text-to-speech-hinting":            {
+                "descriptive": "",
+                "compact": "text-to-speech hinting provided"
+            },
+            ,
+            "additional-accessibility-information-clarity-color-not-sole-means-of-conveying-information":            {
+                "descriptive": "",
+                "compact": "color is not the sole means of conveying information"
+            },
+            ,
+            "additional-accessibility-information-clarity-high-contrast-between-text-and-background":            {
+                "descriptive": "",
+                "compact": "high contrast between text and background"
+            },
+            "additional-accessibility-information-clarity-ultra-high-contrast-between-text-and-background":            {
+                "descriptive": "",
+                "compact": "ultra high contrast between text and background"
+            },
+            "additional-accessibility-information-clarity-visible-page-numbering":            {
+                "descriptive": "Visible page breaks included from the original print source",
+                "compact": "visible page numbering"
+            },
+            "additional-accessibility-information-clarity-high-contrast-between-foreground-and-background-audio":            {
+                "descriptive": "",
+                "compact": "high contrast between foreground and background audio"
+            },
+            "additional-accessibility-information-clarity-without-background-sounds":            {
+                "descriptive": "",
+                "compact": "without background sounds"
+            },
+
         "aria-roles": {
             "descriptive": "Content is enhanced with ARIA roles to optimize organization and facilitate navigation",
             "compact": "ARIA roles included"
