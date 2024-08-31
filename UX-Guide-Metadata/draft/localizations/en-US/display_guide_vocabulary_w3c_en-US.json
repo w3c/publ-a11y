@@ -30,10 +30,6 @@
             "descriptive": "Not all of the content will be available in generated read aloud speech and electronic braille",
             "compact": "Not fully readable in read aloud and braille"
         },
-        // <!--To be Confirmed (see https://github.com/w3c/publ-a11y/issues/367)-->"nonvisual-reading-unknown": {
-        //     "descriptive": "It is not known if the content will be available in generated read aloud speech and electronic braille",
-        //     "compact": "Not known if readable in read aloud and braille"
-        // },
     "conformance-title": "Conformance",
         "conformance-aaa": {
             "descriptive": "The publication contains a conformance statement that it meets the EPUB Accessibility and WCAG 2 Level AAA standard",
@@ -136,14 +132,6 @@
             "descriptive": "Contains formulas, charts, and diagrams without any information about the accessibility of this content.", 
             "compact": "Accessibility of formulas, charts, and diagrams unknown" 
         },
-        // "Charts-diagrams-formulas-yes": {
-        //     "descriptive":  "Contains accessible formulas. Charts and diagrams are present and described by extended descriptions",
-        //     "compact": "Accessible formulas. Charts and diagrams have extended descriptions"
-        // },
-        // "Charts-diagrams-formulas-unknown": {
-        //     "descriptive":  "Contains formulas, charts, and diagrams without any information about the accessibility of this content",
-        //     "compact": "Accessibility of formulas, charts, and diagrams unknown"
-        // },
     "hazards-title": "Hazards",
         "hazards-yes": {
             "descriptive": "The publication contains rapidly changing lights or visual stimuli, as well as simulated movements, which can cause discomfort, distraction, photosensitive seizures, or motion sickness",
