@@ -133,14 +133,39 @@
             "compact": "Accessibility of formulas, charts, and diagrams unknown" 
         },
     "hazards-title": "Hazards",
-        "hazards-yes": {
-            "descriptive": "The publication contains rapidly changing lights or visual stimuli, as well as simulated movements, which can cause discomfort, distraction, photosensitive seizures, or motion sickness",
-            "compact": "No information about possible hazards"
-        },
-        "hazards-no": {
-            "descriptive": "Flashing and motion simulation hazards",
+
+        "hazards-none": {
+            "descriptive": "The publication contains no hazards",
             "compact": "No hazards"
         },
+        
+        "hazards-flashing": {
+            "descriptive": "rapidly changing lights",
+            "compact": "flashing"
+        },
+        "hazards-motion": {
+            "descriptive": "visual stimuli or simulated movements",
+            "compact": "motion"
+        },
+        "hazards-sound": {
+            "descriptive": "auditory content (sounds, noises, spoken words, music, etc.)",
+            "compact": "sound"
+        },
+        "hasards-explanatory": {
+            "descriptive":"which can cause discomfort, distraction, photosensitive seizures, or motion sickness",
+            "compact": ""
+        },
+        "hazards-plural": " hazards",
+        "hazards-singular":" hazard",
+        "hazards-unknown": {
+            "descriptive": "The presence of hazards is unknown",
+            "compact": "Hasards unknown"
+        },
+        "hazards-no-metadata": {
+            "descriptive": "No information about possible hazards",
+            "compact": "No information about hazards"
+        },
+
     "accessibility-summary-title": "Accessibility summary",
     "additional-accessibility-information-title": "Additional accessibility information",
         "aria-roles": {

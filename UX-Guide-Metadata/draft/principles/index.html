@@ -761,19 +761,25 @@ The publication was certified on 2021-09-07 by Foo's Accessibility Testing with 
 
 					<aside class="example" title="Descriptive explanations">
 						<ul>
-							<li>The publication contains no hazards.</li>
-							<li>The publication contains rapidly changing lights or visual stimuli, as well as simulated
-								movements, which can cause discomfort, distraction, photosensitive seizures, or motion
-								sickness.</li>
-							<li>No information about possible hazards.</li>
+							<li><span id="hazards-none-descriptive">The publication contains no hazards.</span></li>
+							<li><span id="hazards-flashing-descriptive">The publication contains </span>
+								<span id="hazards-sound-descriptive">rapidly changing lights,</span>
+								<span id="hazards-motion-descriptive">visual stimuli or simulated movements, </span>
+								<span id="hasards-explanatory-descriptive">which can cause discomfort, distraction, photosensitive seizures, or motion sickness.</span></li>
+							<li><span id="hazards-unknown-descriptive">No information about possible hazards.</span></li>
 						</ul>
 					</aside>
 
 					<aside class="example" title="Compact explanations">
 						<ul>
-							<li>No hazards.</li>
-							<li>Flashing and motion simulation hazards.</li>
-							<li>No information about hazards.</li>		
+							<li>
+								<span id="hazards-none-compact"></span>No hazards.</li>
+							<li>
+								<span id="hazards-flashing-compact">Flashing</span>
+								<span id="join-array-to-comma-list_2">, and </span>
+								<span id="hazards-motion-compact">motion simulation hazards.</span></li>
+							<li>
+								<span id="hazards-unknown-compact">No information about hazards.</span></li>		
 						</ul>
 					</aside>
 				</section>
@@ -934,7 +940,7 @@ Always get legal advice from in-house or your retained counsel to assess legal c
 						<ul>
 							<li>Content is enhanced with ARIA roles to optimize organization and facilitate
 								navigation.</li>
-<li>Page breaks   included  from the original print source.</li>
+							<li>Page breaks included from the original print source.</li>
 							<li>Videos included in publications have closed captions. </li>
 							<li>Tactile graphics have been integrated to facilitate access to visual elements for blind
 								people.</li>
@@ -947,7 +953,7 @@ Always get legal advice from in-house or your retained counsel to assess legal c
 					<aside class="example" title="Compact explanations">
 						<ul>
 							<li>ARIA roles included.</li>
-<li>Page breaks</li>
+							<li>visible page numbering</li>
 							<li>Closed captions for videos.</li>
 							<li>Tactile graphics attached.</li>
 							<li>Music scores visually presented.</li>
