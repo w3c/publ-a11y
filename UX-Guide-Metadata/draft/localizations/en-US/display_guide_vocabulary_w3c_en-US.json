@@ -118,24 +118,24 @@
         "navigation-join-array-and": ", and",
     "charts-diagrams-formulas-title": "Charts, diagrams, and formulas",
         "charts-diagrams-formulas-extended": {
-            "descriptive": "Charts and diagrams have extended descriptions", 
-            "compact": "" 
+            "descriptive": "Charts and diagrams are present and described by extended descriptions", 
+            "compact": "Charts and diagrams have extended descriptions" 
         },
         "charts-diagrams-formulas-non-graphical-data": {
-            "descriptive": "Visualized data also available as non-graphical data", 
-            "compact": "" 
+            "descriptive": "Contains visual data available in accessible format", 
+            "compact": "Visualized data also available as non-graphical data" 
         },
         "charts-diagrams-formulas-accessible-chemistry": {
-            "descriptive": "Accessible chemistry content", 
-            "compact": "" 
+            "descriptive": "Contains chemistry formulas in accessible format", 
+            "compact": "Accessible chemistry content" 
         },
         "charts-diagrams-formulas-accessible-math": {
-            "descriptive": "Accessible math content", 
-            "compact": "" 
+            "descriptive": "Contains math formulas in accessible format", 
+            "compact": "Accessible math content" 
         },
         "charts-diagrams-formulas-accessible-unknown": {
-            "descriptive": "Accessibility of formulas, charts, and diagrams unknown", 
-            "compact": "" 
+            "descriptive": "Contains formulas, charts, and diagrams without any information about the accessibility of this content.", 
+            "compact": "Accessibility of formulas, charts, and diagrams unknown" 
         },
         // "Charts-diagrams-formulas-yes": {
         //     "descriptive":  "Contains accessible formulas. Charts and diagrams are present and described by extended descriptions",
