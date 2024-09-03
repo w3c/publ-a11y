@@ -195,12 +195,10 @@
                 "descriptive": "",
                 "compact": "text-to-speech hinting provided"
             },
-            ,
             "additional-accessibility-information-clarity-color-not-sole-means-of-conveying-information":            {
                 "descriptive": "",
                 "compact": "color is not the sole means of conveying information"
             },
-            ,
             "additional-accessibility-information-clarity-high-contrast-between-text-and-background":            {
                 "descriptive": "",
                 "compact": "high contrast between text and background"
