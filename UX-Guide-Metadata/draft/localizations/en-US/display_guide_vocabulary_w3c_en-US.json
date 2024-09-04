@@ -1,10 +1,13 @@
 {
-    "author": "W3C Publishing Community Group Accessibility Task Force",
-    "language": "en-US",
-    "variant": "canonical",
-    "audience": "general",
-    "description": "Original wording discussed by a large group representing different actors of the English-speaking geographies. It has been improved after proof of concept implementations and panel testers",
-    "Visual-adjustments-title": "Visual adjustments",
+ "metadata": { 
+        "author": "W3C Publishing Community Group Accessibility Task Force",
+        "language": "en-US",
+        "variant": "canonical",
+        "audience": "general",
+        "description": "Original wording discussed by a large group representing different actors of the English-speaking geographies. It has been improved after proof of concept implementations and panel testers"
+ },
+    "visual-adjustments": {
+      "visual-adjustments-title": "Visual adjustments",
         "visual-adjustments-modifiable": {
             "descriptive": "Appearance of the text and page layout can be modified according to the capabilities of the reading system (font family and font size, spaces between paragraphs, sentences, words, and letters, as well as color of background and text)",
             "compact": "Appearance can be modified"
@@ -16,7 +19,9 @@
         "visual-adjustments-unknown": {
             "descriptive": "Ability to modify the appearance is not known",
             "compact": "Appearance Modifiability not known"
-        },
+        }
+    },
+"nonvisual-reading": {
     "nonvisual-reading-title": "Supports nonvisual reading",
         "nonvisual-reading-readable": {
             "descriptive": "All content is available in generated read aloud speech and electronic braille",
@@ -29,7 +34,9 @@
         "nonvisual-reading-not-fully": {
             "descriptive": "Not all of the content will be available in generated read aloud speech and electronic braille",
             "compact": "Not fully readable in read aloud and braille"
-        },
+        }
+},
+"conformance": {
     "conformance-title": "Conformance",
         "conformance-aaa": {
             "descriptive": "The publication contains a conformance statement that it meets the EPUB Accessibility and WCAG 2 Level AAA standard",
@@ -73,8 +80,10 @@
 			"conformance-certifier-credentials-prefix-compact": " The certifier's credential is ",
 			"conformance-certifier-credentials-prefix-descriptive": " with a credential of ",
             "conformance-certifier-report": "For more information refer to the certifier's report."
-        },
-    "pre-recorded-audio-title": "Pre-recorded audio",
+        }
+},
+"pre-recorded-audio": {
+        "pre-recorded-audio-title": "Pre-recorded audio",
         "pre-recorded-audio-only": {
             "descriptive": "Audiobook with no text alternative",
             "compact": "Audio only"
@@ -90,7 +99,9 @@
         "pre-recorded-audio-no-metadata": {
             "descriptive": "No information about pre-recorded audio",
             "compact": "No information about pre-recorded audio"
-        },
+        }
+},
+"navigation": {
     "navigation-title": "Navigation",
         "navigation-intro": {
             "compact": "Navigation by"
@@ -110,8 +121,10 @@
         "navigation-page": {
             "descriptive": "A page list enables users to coordinate their reading with a statically paginated version",
             "compact": "Page list"
-        },
-    "charts-diagrams-formulas-title": "Charts, diagrams, and formulas",
+        }
+},
+"charts-diagrams-formulas": {
+        "charts-diagrams-formulas-title": "Charts, diagrams, and formulas",
         "charts-diagrams-formulas-extended": {
             "descriptive": "Charts and diagrams are present and described by extended descriptions", 
             "compact": "Charts and diagrams have extended descriptions" 
@@ -131,14 +144,14 @@
         "charts-diagrams-formulas-accessible-unknown": {
             "descriptive": "Contains formulas, charts, and diagrams without any information about the accessibility of this content.", 
             "compact": "Accessibility of formulas, charts, and diagrams unknown" 
-        },
-    "hazards-title": "Hazards",
-
+        }
+},
+"hazards": {
+        "hazards-title": "Hazards",
         "hazards-none": {
             "descriptive": "The publication contains no hazards",
             "compact": "No hazards"
         },
-        
         "hazards-flashing": {
             "descriptive": "rapidly changing lights",
             "compact": "flashing"
@@ -164,10 +177,13 @@
         "hazards-no-metadata": {
             "descriptive": "No information about possible hazards",
             "compact": "No information about hazards"
-        },
-
-    "accessibility-summary-title": "Accessibility summary",
-    "additional-accessibility-information-title": "Additional accessibility information",
+        }
+},
+"accessibility-summary": {
+    "accessibility-summary-title": "Accessibility summary"
+},
+"additional-accessibility-information": {
+        "additional-accessibility-information-title": "Additional accessibility information",
         "additional-accessibility-information-adaptation-title":"Adaptation",
             "additional-accessibility-information-adaptation-dyslexia-readability":
             {
@@ -239,6 +255,9 @@
         "information-through-colors": {
             "descriptive": "Content contains information encoded through colors, which may be imperceptible to those who cannot distinguish colors",
             "compact": "Information encoded through colors"
-        },
+        }
+},
+"common-arrays": {
         "join-array-to-comma-list": ", and"
+    }
 }
