@@ -18,7 +18,7 @@ To reconcile both sources of provided localization materials, we propose a colle
 First let us know as soon as possible that you are working on a localization and wish to submit it. That allows us to prepare a placeholder for your work. This is not mandatory but we invite you to contact the group and participate to a regular call of the working group as those are open to anyone. 
 
 When you are ready to publish your work, two options are possible: 
-* If you don’t know what a JSON or a Pull Request is, you are welcome to contact us so we can attribute a translator role at the Gitlocalize dedicated project page.
+* If you don’t know what a JSON or a Pull Request is, you are welcome to contact us so we can attribute a translator role at the [Gitlocalize dedicated project page](https://gitlocalize.com/repo/9555).
 * If you feel technically ready or have a collaborator that can push a pull request, the process is to duplicate the canonical original file UX-Guide-Metadata/draft/localizations/en-US/display_guide_vocabulary_w3c_en-US.json, modify it by changing the values in front of each key, and open a pull request so we can review it. Please be aware that we could have questions or ask for precision in the process before accepting and merging your contribution. 
 
 ## How to choose between localization files?
