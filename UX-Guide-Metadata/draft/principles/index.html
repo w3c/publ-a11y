@@ -259,7 +259,7 @@
 					follows.</p>
 			</div>
 			<section id="visual-adjustments">
-				<h3>Visual adjustments</h3>
+				<h3 id="Visual-adjustments-title">Visual adjustments</h3>
 
 				<div class="note">
 					<p>This key information should always be displayed, even if there is no metadata (See  the examples where 
@@ -322,7 +322,7 @@
 
 
 			<section id="supports-nonvisual-reading">
-				<h3>Supports nonvisual reading</h3>
+				<h3 id="nonvisual-reading-title">Supports nonvisual reading</h3>
 
 				<div class="note">
 					<p>This key information should always be displayed, even if there is no metadata (See  the examples where 
@@ -384,7 +384,7 @@
 				</section>
 			</section>
 <section id="conformance-group">
-				<h3>Conformance</h3>
+				<h3 id="conformance-title">Conformance</h3>
 
 				<div class="note">
 					<p>This key information should always be displayed, even if there is no metadata (See  the examples where 
@@ -459,7 +459,7 @@
 
 						<dt id="certifier-report">Certifier's Report</dt>
 						<dd>If a link to a report is provided, this may be of interest.</dd>
-</dl>
+					</dl>
 				</section>
 
 				<section id="conf-examples">
@@ -469,42 +469,83 @@
 						meet recommended accessibility standards and a second that claims to meet the minimum level. The
 						third example shows a publication with unknown accessibility.</p>
 
-					<p>The examples present the conformance statement, the certifier, the certifiers credentials and is
-						followed by the detailed conformance information section </p>
+					<p>The examples present the conformance statement, the certifier, the certifiers credentials and is followed by the detailed conformance information section </p>
 
 					<aside class="example"
 						title="Conformance statement that claims to meet accepted accessibility standards followed by detailed conformance information">
-						<p>This publication meets accepted accessibility standards.</p>
-						<p>This publication is certified by Foo's Accessibility Testing </p>
-						<p>The certifier's credential is "Enterprise Accessibility Rating."</p>
+						<p id="conformance-aa-compact_1">This publication meets accepted accessibility standards.</p>
+						<p>
+							<span id="conformance-certification-info-compact_1">The publication was certified</span> 
+							<span id="conformance-certifier-prefix-compact_1">by</span> Foo's Accessibility Testing 
+						</p>
+						<p>
+							<span id="conformance-certifier-credentials-prefix-compact_1">The certifier's credential is</span> 
+							"Enterprise Accessibility Rating."
+						</p>
 
-						<p>Detailed Conformance Information:</p>
-						<p>This publication reports (EPUB
-								Accessibility 1.1 and Web Accessibility Content Guidelines (WCAG) 2.1 Level AA.) This publication was certified on 2021-09-07by Foo's Accessibility Testing with a credential of
-							"Enterprise Accessibility Rating." For more information, refer to the <a
-									href="http://www.example.com/a11y/report/9780000000001">certifier's report.</a></p>
-						
+						<p id="detailled-conformance-information_1">Detailed Conformance Information:</p>
+						<p>
+							<span id="conformance-claim_1">This publication claims to meet</span> 
+							<span id="conformance-epub-accessibility-1-1">EPUB Accessibility 1.1</span> 
+							<span id="conformance-wcag-2-1-descriptive">Web Accessibility Content Guidelines (WCAG) 2.1</span> 
+							<span id="conformance-level-aa">Level AA.</span> 
+							<span id="conformance-certification-info-descriptive_1">The publication was certified</span> 
+							<span id="conformance-certification-date-prefix_1">on</span> 
+							2021-09-07 
+							<span id="conformance-certifier-prefix-descriptive_1">by</span> 
+							Foo's Accessibility Testing 
+							<span id="conformance-certifier-credentials-prefix_1">with a credential of</span>
+							"Enterprise Accessibility Rating." 
+							<span id="conformance-certifier-report_1">For more information, refer to the 
+							<a href="http://www.example.com/a11y/report/9780000000001">certifier's report.</a></span>
+						</p>
 
 					</aside>
 
 					<aside class="example"
 						title="Conformance statement that claims to meet minimum accessibility standards followed by detailed conformance information">
-						<p>This publication meets minimum accessibility standards.</p>
+						<p id="conformance-a-compact_2">This publication meets minimum accessibility standards.</p>
+						<p>
+							<span id="conformance-certification-info-compact_2">The publication was certified</span> 
+							<span id="conformance-certifier-prefix-compact_2">by</span> Foo's Accessibility Testing 
+						</p>
+
+						<p id="detailled-conformance-information_2">Detailed Conformance Information:</p>
+						<p>
+							<span id="conformance-claim_2">This publication claims to meet</span> 
+							<span id="conformance-epub-accessibility-1-0"> EPUB Accessibility 1.0 </span> 
+							<span id="conformance-wcag-2-0-descriptive">Web Content Accessibility Guidelines (WCAG) 2.0</span> 
+							<span id="conformance-level-a">Level A.</span> 
+							<span id="conformance-certification-info-descriptive_2">The publication was certified</span> 
+							<span id="conformance-certification-date-prefix_2">on</span> 
+							2021-09-07 
+							<span id="conformance-certifier-prefix-descriptive_2">by</span> 
+							Foo's Accessibility Testing 
+							<span id="conformance-certifier-credentials-prefix_2">with a credential of</span>
+							"Enterprise Accessibility Rating." 
+							<span id="conformance-certifier-report_2">For more information, refer to the 
+							<a href="http://www.example.com/a11y/report/9780000000001">certifier's report.</a></span>
+						</p>
+					</aside>
+
+					
+
+					<aside class="example"
+						title="Conformance to accepted standards for accessibility of this publication cannot be determined followed by detailed conformance information">
+						<p>Conformance to accepted standards for accessibility of this publication cannot be determined.</p>
 						<p>This publication is certified by Foo's Accessibility Testing </p>
 						<p>The certifier's credential is "Enterprise Accessibility Rating."</p>
 
 						<p>Detailed Conformance Information:</p>
-						<p>This publication reports (EPUB
-							Accessibility 1.1 and the Web Content Accessibility Guidelines (WCAG) 2.1 Level A). The
-							publication was certified on 2021-09-07 by Foo's Accessibility Testing with a credential of
+						<p>This publication reports (Publisher's in-house specification.)
+The publication was certified on 2021-09-07 by Foo's Accessibility Testing with a credential of
 							"Enterprise Accessibility Rating." For more information refer to the <a
 								href="http://www.example.com/a11y/report/9780000000001">certifier's report.</a></p>
 
 					</aside>
 
-					
-
-<aside class="example" title="Unknown  conformance statement">
+<aside class="example"
+						title="Unknown conformance statement">
 						<p>The publication does not include a conformance statement.</p>
 						<p>Detailed Conformance Information:</p>
 <p>The conformance metadata was not found.</p>
@@ -529,7 +570,7 @@
 
 			
 			<section id="pre-recorded-audio">
-				<h3>Pre-recorded audio</h3>
+				<h3 id="pre-recorded-audio-title">Pre-recorded audio</h3>
 
 				<div class="note">
 					<p>This key information can be hidden if metadata is missing.</p>
@@ -584,7 +625,7 @@
 			</section>
 
 			<section id="navigation">
-				<h3>Navigation</h3>
+				<h3 id="navigation-title">Navigation</h3>
 
 				<div class="note">
 					<p>This key information can be hidden if metadata is missing.</p>
@@ -612,18 +653,19 @@
 					<aside class="example" title="Descriptive explanations">
 						<ul>
 							<li id="navigation-toc-descriptive">Contains a table of contents that provides direct access to all chapters of the text via links.</li>
-							<li id="Navigation-index-descriptive">Index provides links to item references. </li>
-							<li id="Navigation-landmarks-descriptive">Landmarks provide quick access to main parts of the book.</li>
-							<li id="Navigation-page-descriptive">A page list enables users to navigate directly to     pages from the  identified print source version.</li>
+							<li id="navigation-index-descriptive">Index provides links to item references. </li>
+							<li id="navigation-landmarks-descriptive">Landmarks provide quick access to main parts of the book.</li>
+							<li id="navigation-page-descriptive">A page list enables users to navigate directly to pages from the  identified print source version.</li>
 						</ul>
 					</aside>
 
 					<aside class="example" title="Compact explanation">
 						<p><span id="navigation-intro-compact">Navigation by</span> 
 							<span id="navigation-toc-compact">table of contents</span>, 
-							<span id="Navigation-index-compact">index</span>, 
-							<span id="Navigation-landmarks-compact">landmarks</span>, and 
-							<span id="Navigation-page-compact">page list</span>.</p>
+							<span id="navigation-index-compact">index</span>, 
+							<span id="navigation-landmarks-compact">landmarks</span>
+							<span id="join-array-to-comma-list_1">, and </span>
+							<span id="navigation-page-compact">page list.</span></p>
 					</aside>
 				</section>
 
@@ -637,7 +679,7 @@
 				</section>
 			</section>
 			<section id="charts-diagrams-and-formulas">
-				<h3>Charts, diagrams, and formulas</h3>
+				<h3 id="charts-diagrams-formulas-title">Charts, diagrams, and formulas</h3>
 
 				<div class="note">
 					<p>This key information can be hidden if metadata is missing.</p>
@@ -660,15 +702,24 @@
 
 					<aside class="example" title="Descriptive explanations">
 						<ul>
-							<li id="Charts-diagrams-formulas-yes">Contains accessible formulas. Charts and diagrams are present and described by extended descriptions.</li>
-							<li>Contains formulas, charts, and diagrams without any information about the accessibility of this content.</li>
+							<li>
+								<span id="charts-diagrams-formulas-extended-descriptive">Charts and diagrams are present and described by extended descriptions.</span>
+								<span id="charts-diagrams-formulas-accessible-math-descriptive">Contains math formulas in accessible format.</span>
+							</li>
+							<li>
+								<span id="charts-diagrams-formulas-accessible-unknown-descriptive"> formulas, charts, and diagrams without any information about the accessibility of this content.</span>
+							</li>
 						</ul>
 					</aside>
 
 					<aside class="example" title="Compact explanations">
 						<ul>
-							<li>Accessible formulas. Charts and diagrams have extended descriptions.</li>
-							<li>Accessibility of formulas, charts, and diagrams unknown.</li>
+							<li>
+								<span id="charts-diagrams-formulas-extended-compact">Charts and diagrams have extended descriptions.</span>
+								<span id="charts-diagrams-formulas-accessible-math-compact"> Accessible math content.</span></li>
+							<li>
+								<span id="charts-diagrams-formulas-accessible-unknown-compact">of formulas, charts, and diagrams unknown.</span>
+							</li>
 						</ul>
 					</aside>
 				</section>
@@ -686,7 +737,7 @@
 			</section>
 
 			<section id="hazards">
-				<h3>Hazards</h3>
+				<h3 id="hazards-title">Hazards</h3>
 
 				<div class="note">
 					<p>This key information can be hidden if metadata is missing.</p>
@@ -710,19 +761,25 @@
 
 					<aside class="example" title="Descriptive explanations">
 						<ul>
-<li>The publication contains no hazards.</li>
-							<li>The publication contains rapidly changing lights or visual stimuli, as well as simulated
-								movements, which can cause discomfort, distraction, photosensitive seizures, or motion
-								sickness.</li>
-							<li>No information about possible hazards.</li>
+							<li><span id="hazards-none-descriptive">The publication contains no hazards.</span></li>
+							<li><span id="hazards-flashing-descriptive">The publication contains </span>
+								<span id="hazards-sound-descriptive">rapidly changing lights,</span>
+								<span id="hazards-motion-descriptive">visual stimuli or simulated movements, </span>
+								<span id="hasards-explanatory-descriptive">which can cause discomfort, distraction, photosensitive seizures, or motion sickness.</span></li>
+							<li><span id="hazards-unknown-descriptive">No information about possible hazards.</span></li>
 						</ul>
 					</aside>
 
 					<aside class="example" title="Compact explanations">
 						<ul>
-<li>No hazards.</li>
-							<li>Flashing and motion simulation hazards.</li>
-					<li>No information about hazards.</li>		
+							<li>
+								<span id="hazards-none-compact"></span>No hazards.</li>
+							<li>
+								<span id="hazards-flashing-compact">Flashing</span>
+								<span id="join-array-to-comma-list_2">, and </span>
+								<span id="hazards-motion-compact">motion simulation hazards.</span></li>
+							<li>
+								<span id="hazards-unknown-compact">No information about hazards.</span></li>		
 						</ul>
 					</aside>
 				</section>
@@ -739,7 +796,7 @@
 			</section>
 
 			<section id="accessibility-summary">
-				<h3>Accessibility summary</h3>
+				<h3 id="accessibility-summary-title">Accessibility summary</h3>
 
 				<div class="note">
 					<p>This key information can be hidden if metadata is missing.</p>
@@ -821,7 +878,7 @@ Always get legal advice from in-house or your retained counsel to assess legal c
 			
 </section>
 			<section id="additional-accessibility-information">
-				<h3>Additional accessibility information</h3>
+				<h3 id="additional-accessibility-information-title">Additional accessibility information</h3>
 
 				<div class="note">
 					<p>This key information can be hidden if metadata is missing.</p>
@@ -883,7 +940,7 @@ Always get legal advice from in-house or your retained counsel to assess legal c
 						<ul>
 							<li>Content is enhanced with ARIA roles to optimize organization and facilitate
 								navigation.</li>
-<li>Page breaks   included  from the original print source.</li>
+							<li>Page breaks included from the original print source.</li>
 							<li>Videos included in publications have closed captions. </li>
 							<li>Tactile graphics have been integrated to facilitate access to visual elements for blind
 								people.</li>
@@ -896,7 +953,7 @@ Always get legal advice from in-house or your retained counsel to assess legal c
 					<aside class="example" title="Compact explanations">
 						<ul>
 							<li>ARIA roles included.</li>
-<li>Page breaks</li>
+							<li>visible page numbering</li>
 							<li>Closed captions for videos.</li>
 							<li>Tactile graphics attached.</li>
 							<li>Music scores visually presented.</li>
