@@ -186,22 +186,22 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
     "repoURL": "https://github.com/w3c/publ-a11y/",
     "branch": "main"
   },
-  "publishDate": "2024-08-30",
-  "thisVersion": "https://w3c.github.io/publ-a11y/UX-Guide-Metadata/2.0/techniques/onix-metadata/onix-metadata-draft-note-20240830.html",
-  "publishISODate": "2024-08-30T00:00:00.000Z",
-  "generatedSubtitle": "Draft Community Group Report 30 August 2024"
+  "publishDate": "2024-09-06",
+  "thisVersion": "https://w3c.github.io/publ-a11y/UX-Guide-Metadata/2.0/techniques/onix-metadata/onix-metadata-draft-note-20240906.html",
+  "publishISODate": "2024-09-06T00:00:00.000Z",
+  "generatedSubtitle": "Draft Community Group Report 06 September 2024"
 }</script>
 <link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2021/cg-draft"></head>
-	<body class="h-entry informative"><div class="head">
+	<body class="h-entry informative toc-inline"><div class="head">
     
     <h1 id="title" class="title">Display Techniques for ONIX Accessibility Metadata 2.0</h1> 
     <p id="w3c-state">
       <a href="https://www.w3.org/standards/types#reports">Draft Community Group Report</a>
-      <time class="dt-published" datetime="2024-08-30">30 August 2024</time>
+      <time class="dt-published" datetime="2024-09-06">06 September 2024</time>
     </p>
     <dl>
       <dt>This version:</dt><dd>
-              <a class="u-url" href="https://w3c.github.io/publ-a11y/UX-Guide-Metadata/2.0/techniques/onix-metadata/onix-metadata-draft-note-20240830.html">https://w3c.github.io/publ-a11y/UX-Guide-Metadata/2.0/techniques/onix-metadata/onix-metadata-draft-note-20240830.html</a>
+              <a class="u-url" href="https://w3c.github.io/publ-a11y/UX-Guide-Metadata/2.0/techniques/onix-metadata/onix-metadata-draft-note-20240906.html">https://w3c.github.io/publ-a11y/UX-Guide-Metadata/2.0/techniques/onix-metadata/onix-metadata-draft-note-20240906.html</a>
             </dd>
       <dt>Latest published version:</dt><dd>
               <a href="https://www.w3.org/publishing/a11y/UX-Guide-metadata/techniques/onix-metadata/">https://www.w3.org/publishing/a11y/UX-Guide-metadata/techniques/onix-metadata/</a>
@@ -261,7 +261,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
           discussion of this specification.
         
     
-  </p></section><nav id="toc"><h2 class="introductory" id="table-of-contents">Table of Contents</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#abstract">Abstract</a></li><li class="tocline"><a class="tocxref" href="#sotd">Status of This Document</a></li><li class="tocline"><a class="tocxref" href="#onix-metadata"><bdi class="secno">1. </bdi>ONIX Metadata</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#onix-record-examples"><bdi class="secno">1.1 </bdi>ONIX record examples</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#onix-record-describing-an-epub"><bdi class="secno">1.1.1 </bdi>ONIX record describing an EPUB</a></li><li class="tocline"><a class="tocxref" href="#onix-record-describing-an-full-audio-book-here-is-an-example-of-an-onix-record-version-3.0-for-describing-a-full-audio-book"><bdi class="secno">1.1.2 </bdi>ONIX record describing an audiobook</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#conventions"><bdi class="secno">2. </bdi>Conventions for implementations</a></li><li class="tocline"><a class="tocxref" href="#common-functions"><bdi class="secno">3. </bdi>Common Functions</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#preprocessing"><bdi class="secno">3.1 </bdi>Preprocessing</a></li><li class="tocline"><a class="tocxref" href="#check-for-node"><bdi class="secno">3.2 </bdi>Check for Node</a></li><li class="tocline"><a class="tocxref" href="#join-array-to-comma-list"><bdi class="secno">3.3 </bdi>Join array to comma list</a></li></ol></li><li class="tocline"><a class="tocxref" href="#techniques"><bdi class="secno">4. </bdi>Techniques</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#visual-adjustments"><bdi class="secno">4.1 </bdi>Visual adjustments</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#understanding-the-variables"><bdi class="secno">4.1.1 </bdi>Understanding the variables</a></li><li class="tocline"><a class="tocxref" href="#variables-setup"><bdi class="secno">4.1.2 </bdi>Variables setup</a></li><li class="tocline"><a class="tocxref" href="#instructions"><bdi class="secno">4.1.3 </bdi>Instructions</a></li></ol></li><li class="tocline"><a class="tocxref" href="#supports-nonvisual-reading"><bdi class="secno">4.2 </bdi>Supports nonvisual reading</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#understanding-the-variables-0"><bdi class="secno">4.2.1 </bdi>Understanding the variables</a></li><li class="tocline"><a class="tocxref" href="#variables-setup-0"><bdi class="secno">4.2.2 </bdi>Variables setup</a></li><li class="tocline"><a class="tocxref" href="#instructions-0"><bdi class="secno">4.2.3 </bdi>Instructions</a></li></ol></li><li class="tocline"><a class="tocxref" href="#conformance-group"><bdi class="secno">4.3 </bdi>Conformance</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#understanding-the-variables-1"><bdi class="secno">4.3.1 </bdi>Understanding the variables</a></li><li class="tocline"><a class="tocxref" href="#variables-setup-1"><bdi class="secno">4.3.2 </bdi>Variables setup</a></li><li class="tocline"><a class="tocxref" href="#instructions-1"><bdi class="secno">4.3.3 </bdi>Instructions</a></li></ol></li><li class="tocline"><a class="tocxref" href="#pre-recorded-audio"><bdi class="secno">4.4 </bdi>Pre-recorded audio</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#understanding-the-variables-2"><bdi class="secno">4.4.1 </bdi>Understanding the variables</a></li><li class="tocline"><a class="tocxref" href="#variables-setup-2"><bdi class="secno">4.4.2 </bdi>Variables setup</a></li><li class="tocline"><a class="tocxref" href="#instructions-2"><bdi class="secno">4.4.3 </bdi>Instructions</a></li></ol></li><li class="tocline"><a class="tocxref" href="#navigation"><bdi class="secno">4.5 </bdi>Navigation</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#understanding-the-variables-3"><bdi class="secno">4.5.1 </bdi>Understanding the variables</a></li><li class="tocline"><a class="tocxref" href="#variables-setup-3"><bdi class="secno">4.5.2 </bdi>Variables setup</a></li><li class="tocline"><a class="tocxref" href="#instructions-3"><bdi class="secno">4.5.3 </bdi>Instructions</a></li></ol></li><li class="tocline"><a class="tocxref" href="#charts-diagrams-and-formulas"><bdi class="secno">4.6 </bdi>Charts, diagrams, and formulas</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#understanding-the-variables-4"><bdi class="secno">4.6.1 </bdi>Understanding the variables</a></li><li class="tocline"><a class="tocxref" href="#variables-setup-4"><bdi class="secno">4.6.2 </bdi>Variables setup</a></li><li class="tocline"><a class="tocxref" href="#instructions-4"><bdi class="secno">4.6.3 </bdi>Instructions</a></li></ol></li><li class="tocline"><a class="tocxref" href="#hazards"><bdi class="secno">4.7 </bdi>Hazards</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#understanding-the-variables-5"><bdi class="secno">4.7.1 </bdi>Understanding the variables</a></li><li class="tocline"><a class="tocxref" href="#variables-setup-5"><bdi class="secno">4.7.2 </bdi>Variables setup</a></li><li class="tocline"><a class="tocxref" href="#instructions-5"><bdi class="secno">4.7.3 </bdi>Instructions</a></li></ol></li><li class="tocline"><a class="tocxref" href="#accessibility-summary"><bdi class="secno">4.8 </bdi>Accessibility summary</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#understanding-the-variables-6"><bdi class="secno">4.8.1 </bdi>Understanding the variables</a></li><li class="tocline"><a class="tocxref" href="#variables-setup-6"><bdi class="secno">4.8.2 </bdi>Variables setup</a></li><li class="tocline"><a class="tocxref" href="#instructions-6"><bdi class="secno">4.8.3 </bdi>Instructions</a></li></ol></li><li class="tocline"><a class="tocxref" href="#legal-considerations"><bdi class="secno">4.9 </bdi>Legal considerations</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#understanding-the-variables-7"><bdi class="secno">4.9.1 </bdi>Understanding the variables</a></li><li class="tocline"><a class="tocxref" href="#variables-setup-7"><bdi class="secno">4.9.2 </bdi>Variables setup</a></li><li class="tocline"><a class="tocxref" href="#instructions-7"><bdi class="secno">4.9.3 </bdi>Instructions</a></li></ol></li><li class="tocline"><a class="tocxref" href="#additional-accessibility-information"><bdi class="secno">4.10 </bdi>Additional accessibility information</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#additional-accessibility-information-adaptation"><bdi class="secno">4.10.1 </bdi>Adaptation</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#understanding-the-variables-8"><bdi class="secno">4.10.1.1 </bdi>Understanding the variables</a></li><li class="tocline"><a class="tocxref" href="#variables-setup-8"><bdi class="secno">4.10.1.2 </bdi>Variables setup</a></li><li class="tocline"><a class="tocxref" href="#instructions-8"><bdi class="secno">4.10.1.3 </bdi>Instructions</a></li></ol></li><li class="tocline"><a class="tocxref" href="#additional-accessibility-information-clarity"><bdi class="secno">4.10.2 </bdi>Clarity</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#understanding-the-variables-9"><bdi class="secno">4.10.2.1 </bdi>Understanding the variables</a></li><li class="tocline"><a class="tocxref" href="#variables-setup-9"><bdi class="secno">4.10.2.2 </bdi>Variables setup</a></li><li class="tocline"><a class="tocxref" href="#instructions-9"><bdi class="secno">4.10.2.3 </bdi>Instructions</a></li></ol></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#acknowledgements"><bdi class="secno">A. </bdi>Acknowledgements</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#contributors"><bdi class="secno">A.1 </bdi>Contributors</a></li><li class="tocline"><a class="tocxref" href="#reviewers"><bdi class="secno">A.2 </bdi>Reviewers</a></li></ol></li></ol></nav>
+  </p></section><nav id="toc"><h2 class="introductory" id="table-of-contents">Table of Contents</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#abstract">Abstract</a></li><li class="tocline"><a class="tocxref" href="#sotd">Status of This Document</a></li><li class="tocline"><a class="tocxref" href="#onix-metadata"><bdi class="secno">1. </bdi>ONIX Metadata</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#onix-record-examples"><bdi class="secno">1.1 </bdi>ONIX record examples</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#onix-record-describing-an-epub"><bdi class="secno">1.1.1 </bdi>ONIX record describing an EPUB</a></li><li class="tocline"><a class="tocxref" href="#onix-record-describing-an-full-audio-book-here-is-an-example-of-an-onix-record-version-3.0-for-describing-a-full-audio-book"><bdi class="secno">1.1.2 </bdi>ONIX record describing an audiobook</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#conventions"><bdi class="secno">2. </bdi>Conventions for implementations</a></li><li class="tocline"><a class="tocxref" href="#common-functions"><bdi class="secno">3. </bdi>Common Functions</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#preprocessing"><bdi class="secno">3.1 </bdi>Preprocessing</a></li><li class="tocline"><a class="tocxref" href="#check-for-node"><bdi class="secno">3.2 </bdi>Check for Node</a></li><li class="tocline"><a class="tocxref" href="#join-array-to-comma-list"><bdi class="secno">3.3 </bdi>Join array to comma list</a></li></ol></li><li class="tocline"><a class="tocxref" href="#techniques"><bdi class="secno">4. </bdi>Techniques</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#visual-adjustments"><bdi class="secno">4.1 </bdi>Visual adjustments</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#understanding-the-variables"><bdi class="secno">4.1.1 </bdi>Understanding the variables</a></li><li class="tocline"><a class="tocxref" href="#variables-setup"><bdi class="secno">4.1.2 </bdi>Variables setup</a></li><li class="tocline"><a class="tocxref" href="#instructions"><bdi class="secno">4.1.3 </bdi>Instructions</a></li></ol></li><li class="tocline"><a class="tocxref" href="#supports-nonvisual-reading"><bdi class="secno">4.2 </bdi>Supports nonvisual reading</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#understanding-the-variables-0"><bdi class="secno">4.2.1 </bdi>Understanding the variables</a></li><li class="tocline"><a class="tocxref" href="#variables-setup-0"><bdi class="secno">4.2.2 </bdi>Variables setup</a></li><li class="tocline"><a class="tocxref" href="#instructions-0"><bdi class="secno">4.2.3 </bdi>Instructions</a></li></ol></li><li class="tocline"><a class="tocxref" href="#conformance-group"><bdi class="secno">4.3 </bdi>Conformance</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#understanding-the-variables-1"><bdi class="secno">4.3.1 </bdi>Understanding the variables</a></li><li class="tocline"><a class="tocxref" href="#variables-setup-1"><bdi class="secno">4.3.2 </bdi>Variables setup</a></li><li class="tocline"><a class="tocxref" href="#instructions-1"><bdi class="secno">4.3.3 </bdi>Instructions</a></li></ol></li><li class="tocline"><a class="tocxref" href="#pre-recorded-audio"><bdi class="secno">4.4 </bdi>Pre-recorded audio</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#understanding-the-variables-2"><bdi class="secno">4.4.1 </bdi>Understanding the variables</a></li><li class="tocline"><a class="tocxref" href="#variables-setup-2"><bdi class="secno">4.4.2 </bdi>Variables setup</a></li><li class="tocline"><a class="tocxref" href="#instructions-2"><bdi class="secno">4.4.3 </bdi>Instructions</a></li></ol></li><li class="tocline"><a class="tocxref" href="#navigation"><bdi class="secno">4.5 </bdi>Navigation</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#understanding-the-variables-3"><bdi class="secno">4.5.1 </bdi>Understanding the variables</a></li><li class="tocline"><a class="tocxref" href="#variables-setup-3"><bdi class="secno">4.5.2 </bdi>Variables setup</a></li><li class="tocline"><a class="tocxref" href="#instructions-3"><bdi class="secno">4.5.3 </bdi>Instructions</a></li></ol></li><li class="tocline"><a class="tocxref" href="#charts-diagrams-and-formulas"><bdi class="secno">4.6 </bdi>Charts, diagrams, and formulas</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#understanding-the-variables-4"><bdi class="secno">4.6.1 </bdi>Understanding the variables</a></li><li class="tocline"><a class="tocxref" href="#variables-setup-4"><bdi class="secno">4.6.2 </bdi>Variables setup</a></li><li class="tocline"><a class="tocxref" href="#instructions-4"><bdi class="secno">4.6.3 </bdi>Instructions</a></li></ol></li><li class="tocline"><a class="tocxref" href="#hazards"><bdi class="secno">4.7 </bdi>Hazards</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#understanding-the-variables-5"><bdi class="secno">4.7.1 </bdi>Understanding the variables</a></li><li class="tocline"><a class="tocxref" href="#variables-setup-5"><bdi class="secno">4.7.2 </bdi>Variables setup</a></li><li class="tocline"><a class="tocxref" href="#instructions-5"><bdi class="secno">4.7.3 </bdi>Instructions</a></li></ol></li><li class="tocline"><a class="tocxref" href="#accessibility-summary"><bdi class="secno">4.8 </bdi>Accessibility summary</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#understanding-the-variables-6"><bdi class="secno">4.8.1 </bdi>Understanding the variables</a></li><li class="tocline"><a class="tocxref" href="#variables-setup-6"><bdi class="secno">4.8.2 </bdi>Variables setup</a></li><li class="tocline"><a class="tocxref" href="#instructions-6"><bdi class="secno">4.8.3 </bdi>Instructions</a></li></ol></li><li class="tocline"><a class="tocxref" href="#legal-considerations"><bdi class="secno">4.9 </bdi>Legal considerations</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#understanding-the-variables-7"><bdi class="secno">4.9.1 </bdi>Understanding the variables</a></li><li class="tocline"><a class="tocxref" href="#variables-setup-7"><bdi class="secno">4.9.2 </bdi>Variables setup</a></li><li class="tocline"><a class="tocxref" href="#instructions-7"><bdi class="secno">4.9.3 </bdi>Instructions</a></li></ol></li><li class="tocline"><a class="tocxref" href="#additional-accessibility-information"><bdi class="secno">4.10 </bdi>Additional accessibility information</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#additional-accessibility-information-adaptation"><bdi class="secno">4.10.1 </bdi>Adaptation</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#understanding-the-variables-8"><bdi class="secno">4.10.1.1 </bdi>Understanding the variables</a></li><li class="tocline"><a class="tocxref" href="#variables-setup-8"><bdi class="secno">4.10.1.2 </bdi>Variables setup</a></li><li class="tocline"><a class="tocxref" href="#instructions-8"><bdi class="secno">4.10.1.3 </bdi>Instructions</a></li></ol></li><li class="tocline"><a class="tocxref" href="#additional-accessibility-information-clarity"><bdi class="secno">4.10.2 </bdi>Clarity</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#understanding-the-variables-9"><bdi class="secno">4.10.2.1 </bdi>Understanding the variables</a></li><li class="tocline"><a class="tocxref" href="#variables-setup-9"><bdi class="secno">4.10.2.2 </bdi>Variables setup</a></li><li class="tocline"><a class="tocxref" href="#instructions-9"><bdi class="secno">4.10.2.3 </bdi>Instructions</a></li></ol></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#acknowledgements"><bdi class="secno">A. </bdi>Acknowledgements</a></li></ol></nav>
 		<section id="onix-metadata"><div class="header-wrapper"><h2 id="x1-onix-metadata"><bdi class="secno">1. </bdi>ONIX Metadata</h2><a class="self-link" href="#onix-metadata" aria-label="Permalink for Section 1."></a></div>
 			
 			
@@ -657,7 +657,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
 						<span><b>IF</b> <var>certification_date</var>:</span>
 						<span><b>THEN</b></span>
 						<ul class="condition">
-							<li>display <code id="conformance-ceertification-date-prefix">" on "</code></li>
+							<li>display <code id="conformance-certification-date-prefix">" on "</code></li>
 							<li>display <var>certification_date</var>.</li>
 						</ul>
 					</li>
@@ -1149,7 +1149,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
 			
 			<section id="legal-considerations"><div class="header-wrapper"><h3 id="x4-9-legal-considerations"><bdi class="secno">4.9 </bdi>Legal considerations</h3><a class="self-link" href="#legal-considerations" aria-label="Permalink for Section 4.9"></a></div>
 				
-				<div class="issue" id="issue-container-number-350"><div role="heading" class="issue-title marker" id="h-issue" aria-level="4"><a href="https://github.com/w3c/publ-a11y/issues/350"><span class="issue-number">Issue 350</span></a><span class="issue-label">: Feedback requested on exceptions and exemptions from publishers</span></div><p class="">We are actively seeking comments on this "legal consideration" section. If you are a publisher, we want your feedback! Please visit the GitHub Issue tracking linked above to leave a comment.</p></div>
+				<div class="issue" id="issue-container-number-350"><div role="heading" class="issue-title marker" id="h-issue" aria-level="4"><a href="https://github.com/w3c/publ-a11y/issues/350"><span class="issue-number">Issue 350</span></a><span class="issue-label">: Feedback requested on exceptions and exemptions from publishers <a class="respec-gh-label" href="https://github.com/w3c/publ-a11y/issues/?q=is%3Aissue+is%3Aopen+label%3A%22UX-Guide%22" style="background-color: rgb(34, 73, 175); color: rgb(255, 255, 255);" aria-label="GitHub label: UX-Guide">UX-Guide</a></span></div><p class="">We are actively seeking comments on this "legal consideration" section. If you are a publisher, we want your feedback! Please visit the GitHub Issue tracking linked above to leave a comment.</p></div>
 				<p>This technique relates to <a href="../../principles/#legal-considerations">Legal considerations key information</a>.</p>
 				<p>This algorithm takes the <var>onix_record_as_text</var> argument: a UTF-8 string representing the ONIX record.</p>
 				<section id="understanding-the-variables-7"><div class="header-wrapper"><h4 id="x4-9-1-understanding-the-variables"><bdi class="secno">4.9.1 </bdi>Understanding the variables</h4><a class="self-link" href="#understanding-the-variables-7" aria-label="Permalink for Section 4.9.1"></a></div>
@@ -1374,30 +1374,37 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
 			</section>
 		</section>
 		<section id="app-acknowledgements" class="appendix informative"><div class="header-wrapper"><h2 id="acknowledgements"><bdi class="secno">A. </bdi>Acknowledgements</h2><a class="self-link" href="#acknowledgements" aria-label="Permalink for Appendix A."></a></div><p><em>This section is non-normative.</em></p>
-			
-			<section id="contributors"><div class="header-wrapper"><h3 id="a-1-contributors"><bdi class="secno">A.1 </bdi>Contributors</h3><a class="self-link" href="#contributors" aria-label="Permalink for Appendix A.1"></a></div>
-				
-				<ul>
-					<li>Avneesh Singh</li>
-                    <li>Charles LaPierre</li>
-					<li>Dave Cramer</li>
-                    <li>George Kerscher</li>
-                    <li>Gregorio Pellegrino</li>
-					<li>Jason White</li>
-					<li>Madeleine Rothberg</li>
-                    <li>Matt Garrish</li>
-					<li>Rachel Comerford</li>
-					<li>Rick Johnson</li>
-				</ul>
-			</section>
-			<section id="reviewers"><div class="header-wrapper"><h3 id="a-2-reviewers"><bdi class="secno">A.2 </bdi>Reviewers</h3><a class="self-link" href="#reviewers" aria-label="Permalink for Appendix A.2"></a></div>
-				
-				<ul>
-					<li>Erin Kirchner-Lucas</li>
-					<li>Luc Audrain</li>
-				</ul>
-			</section>
-		</section>
+	
+	
+	<p>The leadership and editing contributions of the following individuals were central to producing this guide:</p>
+	
+	<ul>
+		<li>Avneesh Singh</li>
+		<li>Charles LaPierre</li>
+		<li>Chris Saynor</li>
+		<li>Gautier Chomel</li>
+		<li>George Kerscher</li>
+		<li>Gregorio Pellegrino</li>
+		<li>Madeleine Rothberg</li>
+		<li>Matt Garrish</li>
+	</ul>
+	
+	<p>The following members of the Publishing Community Group contributed to the development of this document:</p>
+	
+	<ul>
+		<li>Chris Oliver</li>
+		<li>Christopher Carr</li>
+		<li>Hadrien Gardeur</li>
+		<li>James Yanchak</li>
+		<li>Jason White</li>
+		<li>Jonas Lillqvist</li>
+		<li>Miia Kirsi</li>
+		<li>Naomi Kennedy</li>
+		<li>Rick Johnson</li>
+		<li>Simon Mellins</li>
+	</ul>
+</section>
+	
 	
 
 <p role="navigation" id="back-to-top">
