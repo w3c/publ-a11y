@@ -5,22 +5,15 @@
 
     <xsl:template match="/">
         <strings>
-            <xsl:apply-templates select="//xhtml:h3[@id]"/>
-            <xsl:apply-templates select="//xhtml:aside[@class='example']//*[@id]"/>
+            <xsl:apply-templates select="//*[@data-localization-id]"/>
         </strings>
     </xsl:template>
-
-    <xsl:template match="xhtml:h3[@id]">
-        <string>
-            <id><xsl:value-of select="@id"/></id>
-            <value><xsl:value-of select="."/></value>
-        </string>
-    </xsl:template>
     
-    <xsl:template match="//xhtml:aside[@class='example']//*[@id]">
+    <xsl:template match="//*[@data-localization-id]">
         <string>
-            <id><xsl:value-of select="@id"/></id>
-            <value><xsl:value-of select="."/></value>
+            <id><xsl:value-of select="@data-localization-id"/></id>
+            <mode><xsl:value-of select="@data-localization-mode"/></mode>
+            <value><xsl:value-of select="normalize-space(.)"/></value>
         </string>
     </xsl:template>
     

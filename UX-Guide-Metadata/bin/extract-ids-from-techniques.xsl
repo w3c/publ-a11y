@@ -12,7 +12,7 @@
     <xsl:template match="xhtml:code[@id]">
         <string>
             <id><xsl:value-of select="@id"/></id>
-            <value><xsl:value-of select="substring(., 2, string-length(.) - 2)"/></value>
+            <value><xsl:value-of select="normalize-space(substring(., 2, string-length(.) - 2))"/></value>
         </string>
     </xsl:template>
     
