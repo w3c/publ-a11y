@@ -5,14 +5,15 @@
 
     <xsl:template match="/">
         <strings>
-            <xsl:apply-templates select="//xhtml:code[@id]"/>
+            <xsl:apply-templates select="//*[@data-localization-id]"/>
         </strings>
     </xsl:template>
-
-    <xsl:template match="xhtml:code[@id]">
+    
+    <xsl:template match="//*[@data-localization-id]">
         <string>
-            <id><xsl:value-of select="@id"/></id>
-            <value><xsl:value-of select="normalize-space(substring(., 2, string-length(.) - 2))"/></value>
+            <id><xsl:value-of select="@data-localization-id"/></id>
+            <mode><xsl:value-of select="@data-localization-mode"/></mode>
+            <value><xsl:value-of select="normalize-space(.)"/></value>
         </string>
     </xsl:template>
     
