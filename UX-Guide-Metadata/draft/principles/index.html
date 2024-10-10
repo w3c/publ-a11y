@@ -357,8 +357,8 @@
 								electronic braille.</li>
 							<li data-localization-id="nonvisual-reading-not-fully" data-localization-mode="descriptive">Not all of the content will be available in generated read aloud speech and electronic
 								braille.</li>
-							<!--To be Confirmed (see https://github.com/w3c/publ-a11y/issues/367)--><li data-localization-id="nonvisual-reading-unknown">It is not known if the content will be available in generated read aloud speech and electronic
-								braille.</li>
+							<!--To be Confirmed (see https://github.com/w3c/publ-a11y/issues/367)><li data-localization-id="nonvisual-reading-unknown">It is not known if the content will be available in generated read aloud speech and electronic
+								braille.</li> -->
 						</ul>
 					</aside>
 
@@ -366,7 +366,7 @@
 						<ul>
 							<li data-localization-id="nonvisual-reading-readable" data-localization-mode="compact">Readable in read aloud and braille.</li>
 							<li data-localization-id="nonvisual-reading-may-not-fully" data-localization-mode="compact">May not be fully readable in read aloud and braille.</li>
-							<li data-localization-id="nonvisual-reading-not-fully" data-localization-mode="compact">Not fully readable in read aloud and braille.</li>
+							<!-- <li data-localization-id="nonvisual-reading-not-fully" data-localization-mode="compact">Not fully readable in read aloud and braille.</li> -->
 							<!--To be Confirmed (see https://github.com/w3c/publ-a11y/issues/367)--><li data-localization-id="nonvisual-reading-unknown" data-localization-mode="compact">Not known if readable in read aloud and braille</li>
 						</ul>
 					</aside>
@@ -509,12 +509,15 @@
 							<span data-localization-id="conformance-certification-info" data-localization-mode="compact">The publication was certified</span> 
 							<span data-localization-id="conformance-certifier-prefix" data-localization-mode="compact">by</span> Foo's Accessibility Testing 
 						</p>
-
+<p>
+							<span data-localization-id="conformance-certifier-credentials-prefix" data-localization-mode="compact">The certifier's credential is</span> 
+							"Enterprise Accessibility Rating."</p>
 						<p data-localization-id="conformance-details">Detailed Conformance Information:</p>
 						<p>
 							<span data-localization-id="conformance-claim">This publication claims to meet</span> 
 							<span data-localization-id="conformance-epub-accessibility-1-0"> EPUB Accessibility 1.0 </span> 
-							<span data-localization-id="conformance-wcag-2-0" data-localization-mode="descriptive">Web Content Accessibility Guidelines (WCAG) 2.0</span> 
+							<span data-localization-id="conformance-wcag-2-2" data-localization-mode="descriptive">Web Content Accessibility Guidelines (WCAG) 2.2</span> 
+
 							<span data-localization-id="conformance-level-a">Level A.</span> 
 							<span data-localization-id="conformance-certification-info" data-localization-mode="descriptive">The publication was certified</span> 
 							<span data-localization-id="conformance-certification-date-prefix">on</span> 
@@ -633,7 +636,7 @@ The publication was certified on 2021-09-07 by Foo's Accessibility Testing with 
 
 				<p>Identifies the navigation features included in the publication.</p>
 
-				<p>Offering different ways to navigate digital publications (table of contents, index, etc.) is
+				<p>Offering different ways to navigate digital publications (table of contents, by headings, index, etc.) is
 					important to allow the user to easily access each part of the content. These features are both
 					essential for accessibility and very important for all users reading publications. Therefore,
 					clearly communicating to the user what navigation features are available in the publication is
@@ -653,6 +656,7 @@ The publication was certified on 2021-09-07 by Foo's Accessibility Testing with 
 					<aside class="example" title="Descriptive explanations">
 						<ul>
 							<li data-localization-id="navigation-toc" data-localization-mode="descriptive">Contains a table of contents that provides direct access to all chapters of the text via links.</li>
+<li data-localization-id="navigation-structural" data-localization-mode="descriptive">Contains book elements such as headings, tables, etc for structured navigation. </li>
 							<li data-localization-id="navigation-index" data-localization-mode="descriptive">Index provides links to item references. </li>
 							<li data-localization-id="navigation-landmarks" data-localization-mode="descriptive">Landmarks provide quick access to main parts of the book.</li>
 							<li data-localization-id="navigation-page-navigation" data-localization-mode="descriptive">A page list enables users to navigate directly to pages from the  identified print source version.</li>
@@ -662,6 +666,7 @@ The publication was certified on 2021-09-07 by Foo's Accessibility Testing with 
 					<aside class="example" title="Compact explanation">
 						<p><span data-localization-id="navigation-intro" data-localization-mode="compact">Navigation by</span> 
 							<span data-localization-id="navigation-toc" data-localization-mode="compact">table of contents</span>, 
+<span data-localization-id="navigation-structural" data-localization-mode="compact">headings</span>, 
 							<span data-localization-id="navigation-index" data-localization-mode="compact">index</span>, 
 							<span data-localization-id="navigation-landmarks" data-localization-mode="compact">landmarks</span>
 							<span data-localization-id="join-array-and">, and </span>
@@ -704,9 +709,12 @@ The publication was certified on 2021-09-07 by Foo's Accessibility Testing with 
 						<ul>
 							<li>
 								<span data-localization-id="charts-diagrams-formulas-extended" data-localization-mode="descriptive">Charts and diagrams are present and described by extended descriptions.</span>
-								<span data-localization-id="charts-diagrams-formulas-accessible-math" data-localization-mode="descriptive">Contains math formulas in accessible format.</span>
-							</li>
-							<li>
+</li>
+								<li><span data-localization-id="charts-diagrams-formulas-accessible-math" data-localization-mode="descriptive">Contains math formulas in accessible format.</span>
+</li>
+<li><span data-localization-id="charts-diagrams-formulas-accessible-chemistry" data-localization-mode="descriptive">Chemistry is in an accessible format.</span>
+</li>
+						<li>
 								<span data-localization-id="charts-diagrams-formulas-unknown" data-localization-mode="descriptive"> formulas, charts, and diagrams without any information about the accessibility of this content.</span>
 							</li>
 						</ul>
@@ -716,9 +724,11 @@ The publication was certified on 2021-09-07 by Foo's Accessibility Testing with 
 						<ul>
 							<li>
 								<span data-localization-id="charts-diagrams-formulas-extended" data-localization-mode="compact">Charts and diagrams have extended descriptions.</span>
-								<span data-localization-id="charts-diagrams-formulas-accessible-math" data-localization-mode="compact"> Accessible math content.</span></li>
+								<span data-localization-id="charts-diagrams-formulas-accessible-math" data-localization-mode="compact"> Accessible math content.</span>
+<span data-localization-id="charts-diagrams-formulas-accessible-chemistry" data-localization-mode="compact">Accessible chemistry content.</span>
+</li>
 							<li>
-								<span data-localization-id="charts-diagrams-formulas-unknown" data-localization-mode="compact">of formulas, charts, and diagrams unknown.</span>
+								<span data-localization-id="charts-diagrams-formulas-unknown" data-localization-mode="compact">Accessibility of formulas, charts, and diagrams unknown.</span>
 							</li>
 						</ul>
 					</aside>
