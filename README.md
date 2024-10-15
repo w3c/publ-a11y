@@ -5,13 +5,15 @@
 
 This is the repository for the Accessibility Task Force of the Publishing Community Group.
 
-[Minutes of the task force meetings](https://github.com/w3c/publ-a11y/wiki/Minutes-of-Publishing-CG-Accessibility-Task-Force-Meetings)
-
 ## Participation
 
 To join the task force, please first become a member of the [Publishing Community Group](https://www.w3.org/community/publishingcg/).
 
-Task force meetings are announced on the community group's public mailing list. All members are welcome to join.
+## Meetings
+
+Task force meetings are announced on the community group's public mailing list. All members of the Publishing Community Group are welcome to join.
+
+[Minutes of the task force meetings](https://github.com/w3c/publ-a11y/wiki/Minutes-of-Publishing-CG-Accessibility-Task-Force-Meetings)
 
 ## Documents
 
