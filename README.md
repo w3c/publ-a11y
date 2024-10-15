@@ -11,7 +11,7 @@ To join the task force, please first become a member of the [Publishing Communit
 
 ## Meetings
 
-Task force meetings are announced on the Publishing Community Group's [public mailing list](https://lists.w3.org/Archives/Public/public-publishingcg/). All members of the Publishing Community Group are welcome to join.
+Task force meetings are announced on the Publishing Community Group's [public mailing list](https://lists.w3.org/Archives/Public/public-publishingcg/). All members of the group are welcome to join.
 
 [Minutes of the task force meetings](https://github.com/w3c/publ-a11y/wiki/Minutes-of-Publishing-CG-Accessibility-Task-Force-Meetings)
 
