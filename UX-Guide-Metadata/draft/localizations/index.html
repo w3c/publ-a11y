@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
+    <head>
+        <meta charset="utf-8" />
+        <title>Display guide localization strings</title>
+        <style>
+            table {
+                width: 100%;
+                border-collapse: collapse;
+            }
+            th, td {
+                border: 1px solid #ddd;
+                padding: 10px;
+            }
+            th {
+                background-color: #f2f2f2;
+            }
+            .inline-list-item {
+                display: inline;
+            }
+            .inline-list-item::after {
+                content: ": ";
+            }
+            .inline-list-item:last-child::after {
+                content: "";
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Accessibility Metadata Display Vocabulary</h1>
+        <select id="json-source-select">
+            <option value="https://raw.githubusercontent.com/w3c/publ-a11y/refs/heads/main/UX-Guide-Metadata/draft/localizations/en-US/display_guide_vocabulary_w3c_en-US.json">W3C en-US</option>
+            <option value="https://raw.githubusercontent.com/w3c/publ-a11y/refs/heads/main/UX-Guide-Metadata/draft/localizations/fr-FR/display_guide_vocabulary_edrlab_fr-FR.json">EDRLab fr-FR</option>
+            <option value="https://raw.githubusercontent.com/w3c/publ-a11y/refs/heads/main/UX-Guide-Metadata/draft/localizations/en-US/display_guide_vocabulary_fondazioneLIA_it-it.json">Fondazione Lia it-IT</option>
+        </select>
+
+        <div id="tables-container"></div>
+
+        <script>
+            // Function to fetch JSON data
+            async function fetchJsonData(url) {
+                try {
+                    const response = await fetch(url);
+                    if (!response.ok) {
+                        throw new Error(`HTTP error status: ${response.status}`);
+                    }
+                    return await response.json();
+                } catch (error) {
+                    console.error('Error fetching JSON:', error);
+                }
+            }
+
+            // Function to create lists and tables for each key-value pair
+            function createListsAndTables(data, parentContainer) {
+                Object.keys(data).forEach(key => {
+                    if (key === 'metadata') {
+                        const metadataList = document.createElement('ul');
+                        Object.keys(data[key]).forEach(subKey => {
+                            const listItem = document.createElement('li');
+                            const spanKey = document.createElement('span');
+                            spanKey.className = 'inline-list-item';
+                            spanKey.textContent = subKey;
+                            const spanValue = document.createElement('span');
+                            spanValue.textContent = data[key][subKey];
+                            listItem.appendChild(spanKey);
+                            listItem.appendChild(spanValue);
+                            metadataList.appendChild(listItem);
+                        });
+                        parentContainer.appendChild(document.createElement('h2')).textContent = 'metadata';
+                        parentContainer.appendChild(metadataList);
+                    } else if (typeof data[key] === 'object') {
+                        const tableHeading = document.createElement('h2');
+                        tableHeading.innerHTML = `<span class="key">${key}-title</span>: <span class="value">${data[key]['*title'] || key}</span>`;
+                        parentContainer.appendChild(tableHeading);
+
+                        const table = document.createElement('table');
+                        const tableHeader = document.createElement('thead');
+                        const tableBody = document.createElement('tbody');
+
+                        // Create table header
+                        const headerRow = document.createElement('tr');
+                        headerRow.innerHTML = `
+                            <th>Key ID</th>
+                            <th>Descriptive sentence</th>
+                            <th>Compact sentence</th>
+                        `;
+                        tableHeader.appendChild(headerRow);
+
+                        // Create table body
+                        Object.keys(data[key]).forEach(subKey => {
+                            if (subKey !== '*title' && typeof data[key][subKey] === 'object' && data[key][subKey].descriptive) {
+                                const row = document.createElement('tr');
+                                row.innerHTML = `
+                                    <td>${subKey}</td>
+                                    <td>${data[key][subKey].descriptive}</td>
+                                    <td>${data[key][subKey].compact}</td>
+                                `;
+                                tableBody.appendChild(row);
+                            }
+                        });
+
+                        // Assemble the table
+                        table.appendChild(tableHeader);
+                        table.appendChild(tableBody);
+
+                        parentContainer.appendChild(table);
+                    }
+                });
+            }
+
+            // Function to initialize the list and table creation
+            function initializeListAndTableCreation(data) {
+                const tablesContainer = document.getElementById('tables-container');
+                tablesContainer.innerHTML = ''; // Clear the container before populating it
+
+                createListsAndTables(data, tablesContainer);
+            }
+
+            // Event listener for select change
+            document.getElementById('json-source-select').addEventListener('change', async function() {
+                const selectedUrl = this.value;
+                fetchJsonData(selectedUrl)
+                    .then(data => initializeListAndTableCreation(data))
+                    .catch(error => console.error('Error creating lists and tables:', error));
+            });
+
+            // Load initial JSON data and create lists and tables
+            const initialUrl = document.getElementById('json-source-select').value;
+            fetchJsonData(initialUrl)
+                .then(data => initializeListAndTableCreation(data))
+                .catch(error => console.error('Error creating lists and tables:', error));
+        </script>
+    </body>
+</html>
