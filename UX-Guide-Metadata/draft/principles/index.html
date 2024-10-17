@@ -181,8 +181,8 @@
 			<section id="processing-guide">
 				<h2>Metadata processing overview</h2>
 
-				<p>The following diagram depicts how this principles document fits with the format-specific techniques
-					in the process of receiving and displaying accessibility metadata.</p>
+				<p>The following diagram depicts how this document fits with the format-specific techniques in the
+					process of receiving and displaying accessibility metadata.</p>
 
 				<img class="responsive" src="media/MetadataProcessing.png" aria-details="ecosystem"
 					alt="Outline of the processing for EPUB, ONIX, and PDF metadata. Description follows." />
@@ -197,8 +197,9 @@
 						depending on how the metadata is submitted it may need to be transformed (e.g., if a vendor
 						prefers to handle only ONIX metadata for display they would need to preprocess the metadata
 						embedded in an EPUB or PDF file). The process of transforming the metadata is out of scope of
-						this document, but the Publishing Community Group maintains a crosswalk between EPUB and ONIX
-						and PDF and ONIX to help understand the necessary transforms.</p>
+						this document, however. For more information, refer to the <a
+							href="https://w3c.github.io/publ-a11y/drafts/a11y-crosswalk-MARC/">Accessibility Properties
+							Crosswalk</a>.</p>
 				</div>
 
 				<p>This guide assumes that the metadata conforms to a recognized standard, otherwise it would be
@@ -213,9 +214,8 @@
 						applying these values is defined in the application note <a
 							href="https://www.editeur.org/files/ONIX%203/APPNOTE%20Accessibility%20metadata%20in%20ONIX%20(advanced).pdf"
 							>Providing accessibility metadata in ONIX (advanced)</a>.</li>
-					<li>
-						<div class="ednote">TODO: confirm PDF docs</div>
-					</li>
+					<li>For PDF, the PDF/UA standard [[iso-14289]] and <a href="https://pdfa.org/wtpdf/">Well-Tagged PDF
+							guide</a> define how to describe accessibility metadata.</li>
 				</ul>
 
 				<p>Knowing how the metadata is expressed, the techniques documents define the specifics of how to to
@@ -223,8 +223,8 @@
 					primarily for developers, to help them with the specific processing of the metadata markup
 					grammars.</p>
 
-				<p>Finally, this principles documents defines the purpose of each piece of metadata in more detail and
-					gives the precedence to its display in user interfaces.</p>
+				<p>Finally, this document defines the purpose of each piece of metadata in more detail and gives the
+					precedence to its display in user interfaces.</p>
 			</section>
 
 			<section id="techniques">
