@@ -107,7 +107,7 @@
 	<body>
 		<section id="abstract">
 			<p>The accessibility of a publication is useful to know regardless of a person's abilities, as features such
-				as the ability to make visual adjustments make for a better reading experience for everybody. This
+				as the ability to make visual adjustments make for a better reading experience for everybody. These guidelines
 				document proposes a shared framework for presenting publication accessibility metadata declarations in a
 				user-friendly manner — to offer the information to end users in a way that is easy to understand
 				regardless of their technical knowledge and is consistent across different publications and different
@@ -117,35 +117,35 @@
 		<section id="intro">
 			<h2>Introduction</h2>
 
-			<p>Reading a publication is a very personal experience. For most people this is routine, and little
+			<p>Reading a digital publication is a very personal experience. For most people this is routine, and little
 				consideration is given to how the title was obtained before it is read. Users may go to a bookstore,
 				search for the title to purchase online, or have the title selected for them by an instructor for a
 				class.</p>
 
 			<p>Now consider that the person is blind and relies on assistive technology. The user needs that technology
-				to assist them in the purchase process as well as to read the publication. The person may wonder: will
+				to assist them in the purchase process as well as to read the e-book. The person may wonder: will
 				the screen reader work with this title; are there image descriptions that will be spoken to describe
 				these images; are there page numbers which are accessible; is the reading order correct so a caution
 				after reading a paragraph which could be dangerous will be announced? All of these, and more
 				accessibility concerns are potential issues consumers have when trying to purchase and ultimately read a
-				digital publication.</p>
+				digital publication in any format.</p>
 
-			<p>The good news is more and more publishers are creating publications that are Born Accessible (i.e.,
+			<p>The good news is more and more publishers are creating digital publications that are Born Accessible (i.e.,
 				accessible from the outset, not fixed later) and getting the accessibility validation or audit done by
 				independent organizations.</p>
 		</section>
 		<section id="general-overview">
 			<h2>General overview</h2>
 
-			<p>This document helps those who wish to render accessibility metadata directly to users understand how to
+			<p>These guidelines   help those who wish to render accessibility metadata directly to users understand how to
 				represent the accessibility claims inherent in machine-readable accessibility metadata in a
 				user-friendly User Interface / User Experience (UI/UX). This document targets implementers such as
-				bookstores, retailers, distributors etc. Content creators will benefit from reading these Principles and
+				bookstores, retailers, distributors etc. Content creators will benefit from reading these guidelines and
 				are encouraged to follow <a href="https://www.w3.org/TR/epub-a11y-11/">EPUB Accessibility 1.1
 					Conformance and Discoverability Requirements section and its techniques.</a></p>
 
 			<div class="note">
-				<p>This document presents high-level principles without going into technical issues related to the
+				<p>This document presents high-level guidelines  without going into technical issues related to the
 					different metadata standards in the publishing industry. </p>
 				<p>Therefore, <a href="#techniques">techniques are available</a> that illustrate to developers how to
 					retrieve data to show the information outlined in this document.</p>
@@ -155,7 +155,7 @@
 				important accessibility claims that helps end users find and determine if the publication can meet their
 				specific accessibility needs.</p>
 
-			<p>All accessibility metadata is meant to be machine-readable – apart from the accessibility summary - in
+			<p>All accessibility metadata is meant to be machine-readable – except for the accessibility summary - in
 				this way accessibility metadata can be extracted and displayed uniformly across different publications
 				and localized to different user interface languages.</p>
 
@@ -243,7 +243,7 @@
 				determine their correct statement to display (from the Accessibility Metadata Display Guide for Digital
 				Publications) by parsing the metadata and using the appropriate Display Techniques document. </p>
 
-			<p>The product details provide precious information about the usability of the book in relation to specific
+			<p>The product details provide precious information about the usability of the e-book in relation to specific
 				user needs. The following information should always be displayed:</p>
 
 			<ul>
@@ -256,11 +256,11 @@
 				<h3>Why this information is important for accessibility</h3>
 
 				<ul>
-					<li> The file format gives a strong indication of accessibility: an MP3 format audiobook will be
-						less structured than an Audiobook; a PDF does not allow for typography modification, EPUB 2 is
-						deprecated, an EPUB 3 supports page navigation and better structural semantics, etc. </li>
+					<li> The file format gives a strong indication of accessibility: a PDF does not allow for typography modification, EPUB 2 is
+						deprecated, an EPUB 3 supports page navigation and better structural semantics; an MP3 format audiobook will be
+						less structured than an Audiobook, etc. </li>
 					<li> The protection measure may block assistive technologies such as screen readers. In addition,
-						many specific reading devices such as DAISY readers or Braille notepads are not equipped to read
+						many specific eReading devices such as DAISY readers or Braille notepads are not equipped to read
 						encrypted files. </li>
 
 					<li> The name of the publishing house can highlight the efforts it has made in terms of
@@ -273,25 +273,17 @@
 		</section>
 		<section id="order-of-key-information">
 			<h2>Key accessibility information</h2>
-			<!--
-			<div class="note">
-				<p>When the content creator does not provide any accessibility metadata for a publication, the three
-					pieces of key information that should always be present can still be shown (with an indication that
-					the information is missing): <a href="#visual-adjustments">Visual adjustments</a>, <a href="#supports-nonvisual-reading">Supports nonvisual reading</a>,
-						and <a href="#conformance-group"
-						>Conformance</a>.</p>
-			</div>
--->
+			
 			<section id="intro-key-info" class="introductory">
 				<h3>Introduction to key accessibility information</h3>
 
-				<p>When focusing on the accessibility of a digital publication, three areas of key information come to
+				<p>When focusing on the accessibility of any digital publication, three areas of key information come to
 					mind:</p>
 
 				<ul>
 					<li>People who need to adjust the visual presentation want to know if they can enlarge the text,
 						which is essential for low vision users. People with dyslexia must be able to select the font
-						and adjust the foreground, background, and line length. People with low vision and dyslexia
+						and adjust the foreground, background, and line spacing and length. People with low vision and dyslexia
 						represent the largest percentage of the print-disabled population.</li>
 					<li>People who use a screen reader need to know if all the content in the title will be accessible
 						to them. When images have text descriptions (alt text), they are assured that they will be not
@@ -312,7 +304,7 @@
 
 				<p>The other five areas provide details about specific features or shortcomings in publications. It is
 					expected that these other areas of key information will give people what they need to make an
-					informed choice to read a particular title.</p>
+					informed choice to read a particular e-book.</p>
 
 				<div class="note">
 					<p>This document does not define the order in which to show the key accessibility information; each
