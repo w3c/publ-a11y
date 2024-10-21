@@ -47,6 +47,22 @@
 			github: {
 				repoURL: "https://github.com/w3c/publ-a11y/",
 				branch: "main"
+			},
+			localBiblio: {
+				"iso14289-1" : {
+					"title": "ISO 14289-1:2024: Document management applications — Electronic document file format enhancement for accessibility — Part 1: Use of ISO 32000-1 (PDF/UA-1)",
+					"href": "https://www.iso.org/standard/82278.html",
+					"publisher": "ISO"
+				},
+				"iso14289-2" : {
+					"title": "ISO 14289-2:2024: Document management applications — Electronic document file format enhancement for accessibility — Part 2: Use of ISO 32000-2 (PDF/UA-2)",
+					"href": "https://www.iso.org/standard/64599.html",
+					"publisher": "ISO"
+				},
+				"onix": {
+					"title": "ONIX for Books 3.0",
+					"href": "https://www.editeur.org/8/ONIX/"
+				}
 			}
 		};
 		// ]]>
@@ -200,37 +216,66 @@
 					information that the publisher intends to communicate. </p>
 			</section>
 
-			<section id="metadata-ecosystem">
-				<h2>Publisher metadata ecosystem</h2>
+			<section id="processing-guide">
+				<h2>Metadata processing overview</h2>
 
-				<p>It is helpful to visualize the metadata workflow. The image below shows the path publisher's metadata
-					takes to get to the end user through a distributor or library. The two paths visualized for EPUB
-					accessibility metadata and ONIX correspond to the techniques referenced in the linked techniques
-					documents.</p>
+				<p>The following diagram depicts how these guidelines relate to the format-specific techniques in the
+					process of receiving and displaying accessibility metadata.</p>
 
-				<figure>
-					<figcaption>Flowchart: Metadata Ecosystem</figcaption>
-					<img class="responsive" src="media/MetadataEcosystem.jpg" aria-details="ecosystem"
-						alt="Digital Publication Ecosystem flows into four areas: Metadata Delivery, Accessibility Metadata spec, Metadata Processing, and Resulting Statements"
-					 />
-				</figure>
+				<img class="responsive" src="media/MetadataProcessing.png" aria-details="ecosystem"
+					alt="Outline of the processing for EPUB, PDF, ONIX and MARC metadata. Description follows." />
 
-				<details id="ecosystem">
-					<summary>Flowchart's Detailed Description</summary>
-					<p> The digital publication ecosystem has two main channels of "Metadata Delivery": "Embedded inside
-						the EPUB", and "Thru the supply chain."</p>
-					<p> From the "Metadata Delivery" this flows into the "Accessibility Metadata spec" where from
-						"Embedded inside the EPUB" flows into the "EPUB Accessibility Metadata 1.1 specification", and
-						from "the supply chain" flows into the "ONIX Accessibility metadata." At this same level the
-						"Crosswalk" links between the EPUB and ONIX metadata. </p>
-					<p> From here both flow down into the "Metadata Processing" layer where the EPUB metadata gets
-						processed through the "Display Techniques for EPUB Accessibility Metadata", and the "ONIX
-						accessibility metadata" is processed through the "Display Techniques for ONIX Accessibility
-						Metadata."</p>
-					<p> Finally from the "Metadata Processing" layer both the Display Techniques for EPUB and ONIX flow
-						into the "Resulting Statements" layer "Accessibility Metadata Display Guide for Digital
-						Publications"</p>
-				</details>
+				<div class="note">
+					<p>Work on integrating PDF and MARC is ongoing. The diagram and text of this section will be updated
+						in future versions as the related documents are finalized.</p>
+				</div>
+
+				<p>The diagram categorizes two ways that metadata accompanies a publication. In the first are digital
+					publication formats that directly embed accessibility metadata (EPUB and PDF). In the second are
+					external metadata record formats (ONIX and MARC) that accompany a digital publication as it moves
+					through the supply chain.</p>
+
+				<p>In some cases, digital publication may include both internal and external metadata (e.g., an EPUB
+					could have accessibility metadata in it package document and also be provided to a vendor with an
+					ONIX record). In these cases, vendors and reading system developers determine for themselves which
+					set of metadata they will use to display to users.</p>
+
+				<div class="note">
+					<p>This guide assumes the metadata is already in one of the formats described in the diagram, but
+						depending on how the metadata is submitted it may need to be transformed (e.g., if a vendor
+						prefers to handle only ONIX metadata for display they would need to preprocess the metadata
+						embedded in an EPUB or PDF file).</p>
+					<p>The process of transforming metadata is not it scope for this document nor is how to reconcile
+						metadata when it is provided in multiple forms. The guide assumes any processing has already
+						occurred. For information on mapping between formats, refer to the <a
+							href="https://w3c.github.io/publ-a11y/drafts/a11y-crosswalk-MARC/">Accessibility Properties
+							Crosswalk</a>.</p>
+				</div>
+
+				<p>The next level of the diagram depicts the encoding standards expected for each format. This guide
+					assumes that the metadata conforms to a recognized standard, otherwise it would be difficult to
+					anticipate and process the incoming information for users:</p>
+
+				<ul>
+					<li>For EPUB, the EPUB Accessibility standard [[epub-a11y-11]] defines required and recommended
+						metadata for accessible publications. Guidance on applying this metadata is found in the EPUB
+						Accessibility techniques [[epub-a11y-tech-11]].</li>
+					<li>For ONIX, the accessibility characteristics of the corresponding digital publication are
+						expressed using <a href="https://ns.editeur.org/onix/en">code lists</a> [[onix]], and guidance
+						on applying these values is defined in the application note <a
+							href="https://www.editeur.org/files/ONIX%203/APPNOTE%20Accessibility%20metadata%20in%20ONIX%20(advanced).pdf"
+							>Providing accessibility metadata in ONIX (advanced)</a>.</li>
+					<li>For PDF, the PDF/UA standard [[iso14289-1]][[iso14289-2]] and <a href="https://pdfa.org/wtpdf/"
+							>Well-Tagged PDF guide</a> define how to describe accessibility metadata.</li>
+				</ul>
+
+				<p>Knowing how the metadata is encoded and how it is expressed, the next stage of processing is to use
+					the algorithms defined in the respective techniques documents to discover and translate the
+					information into human-readable statements. These documents are intended primarily for developers,
+					to help them with the specific processing of the metadata markup grammars.</p>
+
+				<p>Finally, this document is shown at the last stage of processing, as it defines the purpose of each
+					piece of metadata in more detail and prioritizes the display for readers.</p>
 			</section>
 
 			<section id="techniques">
