@@ -27,7 +27,61 @@
         </style>
     </head>
     <body>
-        <h1>Accessibility Metadata Display Vocabulary</h1>
+        <section>
+        <h1>Display guide localization strategy and strings</h1>
+        <section>
+            <h2>Localization strategy</h2>
+           
+                <p>
+                    With the rapidly evolving landscape of accessible ebooks available, most concerned persons are discovering a new world. To ensure the information is widely spread and understood, the implication of local actors like NGOs libraries serving persons with disabilities and other local actors in the fight to end the book famine for readers with print disabilities is crucial and should be highlighted.  
+                </p>
+                <p>	
+                    The localization of the display guide is a good opportunity to make known the rich accessibility features offered by modern formats like EPUB. Reversely, having a local project scale to write an understandable vocabulary to describe such features is a precious qualitative approach that will benefit to every player in the value chain. 
+                </p>
+                <p>	
+                    To build a local project and facilitate feedback comparisons, you can use open source methodology, resources, and prototypes published by EDRLab for the original <a href="https://edition-accessible.github.io/signalement/en/index-en.html">Signposting accessible digital books project</a> that led to the initial <a href="https://edition-accessible.github.io/signalement/documents/EDRLab-Signalement_lettreW3C_EN.pdf">Feedback letter (PDF)</a> addressed in early 2022. And has already been used and adapted in various places. 
+                </p>
+                <p>	
+                    In these projects, emphasis was placed on the implications for the end users. For instance, the French wording proposed by EDRLab resulted from a quantitative survey of different reader groups, carefully selected panels of individual observations, and an extended feedback process through a dedicated formular available on the 140 first implementation platforms.
+                </p>
+                <p>	
+                    Additionally, companies like Vitalsource that need wide localization have offered to open-source their professional translation work, which has produced the needed quantity and that is better to use than nothing when no national project has issued a handcrafted vocabulary.  
+                </p>
+                <p>	
+                    To reconcile both sources of provided localization materials, we propose a collection mechanism based on a detailed identification of the provenance. Because persons and organisations with different levels of technicality must be able to contribute, we accept both raw files via Pull requests and also propose a friendly localization user interface through GitLocalize. 
+                </p>
+
+
+            <section>
+                <h3 id="How-to-contribute">How to contribute?</h3>
+                <p>First let us know as soon as possible that you are working on a localization and wish to submit it. That allows us to prepare a placeholder for your work. This is not mandatory but we invite you to contact the group and participate to a regular call of the working group as those are open to anyone. </p>
+                <p>When you are ready to publish your work, two options are possible: 
+                    <ul>
+                        <li>If you don’t know what a JSON or a Pull Request is, you are welcome to contact us so we can attribute a translator role at the <a href="https://gitlocalize.com/repo/9555">Gitlocalize dedicated project page</a>.</li>
+                        <li>If you feel technically ready or have a collaborator that can push a pull request, the process is to duplicate the canonical original file UX-Guide-Metadata/draft/localizations/en-US/display_guide_vocabulary_w3c_en-US.json, modify it by changing the values in front of each key, and open a pull request so we can review it. Please be aware that we could have questions or ask for precision in the process before accepting and merging your contribution.</li>
+                    </ul>
+                    </p>
+
+            </section>
+            <section>
+                <h3 id="How-to-choose-between-localization-files">How to choose between localization files?</h3>
+
+                <p>The first keys of each JSON files contains descriptive information about it, including 
+                    <ul>
+                        <li>Author, name of the organisation responsible for the establishment and maintenance of this localisation</li>
+                        <li>Language, is a 4 letters code where the two first letters specifies the language as per ISO 639-1 and the two others the country as per ISO 3166-1 alpha-2 </li>
+                        <li>Variant, a one word free name to identify your work</li>
+                        <li>Audience describes the public. We recommend to use any vocabulary from the <a href="https://ns.editeur.org/onix/en/28/">ONIX list 28</a>. More than one audience can be informed with a comma separating each.</li>
+                        <li>Description, a free field including a short description of how this localization was obtained </li>
+                    </ul>
+                    </p>
+            </section>
+        </section>
+        <section>
+        <h2>Accessibility Metadata Display Vocabulary</h2>
+        <p>
+            Choose a string to be displayed in the following section
+        </p> 
         <select id="json-source-select">
             <option value="https://raw.githubusercontent.com/w3c/publ-a11y/refs/heads/main/UX-Guide-Metadata/draft/localizations/en-US/display_guide_vocabulary_w3c_en-US.json">W3C en-US</option>
             <option value="https://raw.githubusercontent.com/w3c/publ-a11y/refs/heads/main/UX-Guide-Metadata/draft/localizations/fr-FR/display_guide_vocabulary_edrlab_fr-FR.json">EDRLab fr-FR</option>
@@ -36,99 +90,189 @@
 
         <div id="tables-container"></div>
 
+        </section>
+    </section>
         <script>
             // Function to fetch JSON data
-            async function fetchJsonData(url) {
-                try {
-                    const response = await fetch(url);
-                    if (!response.ok) {
-                        throw new Error(`HTTP error status: ${response.status}`);
+async function fetchJsonData(url) {
+    try {
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error(`HTTP error status: ${response.status}`);
+        }
+        return await response.json();
+    } catch (error) {
+        console.error('Error fetching JSON:', error);
+    }
+}
+
+// Function to create lists and tables for each key-value pair
+function createListsAndTables(data, parentContainer) {
+    Object.keys(data).forEach(key => {
+        if (key === 'metadata') {
+            const metadataList = document.createElement('ul');
+            Object.keys(data[key]).forEach(subKey => {
+                const listItem = document.createElement('li');
+                const spanKey = document.createElement('span');
+                spanKey.className = 'inline-list-item';
+                spanKey.textContent = subKey;
+                const spanValue = document.createElement('span');
+                spanValue.textContent = data[key][subKey];
+                listItem.appendChild(spanKey);
+                listItem.appendChild(spanValue);
+                metadataList.appendChild(listItem);
+            });
+            parentContainer.appendChild(document.createElement('h3')).textContent = 'Information about this localization string';
+            parentContainer.appendChild(metadataList);
+        } else if (typeof data[key] === 'object') {
+            // Find the title key within the object
+            const titleKey = Object.keys(data[key]).find(subKey => subKey.endsWith('-title'));
+            const titleValue = titleKey ? data[key][titleKey] : key;
+
+            // Display the title
+            const tableHeading = document.createElement('h3');
+            tableHeading.innerHTML = `<span class="key">${key}</span>: <span class="value">${titleValue}</span>`;
+            parentContainer.appendChild(tableHeading);
+
+            // Check if there are any descriptive keys
+            const descriptiveKeys = Object.keys(data[key]).filter(subKey => typeof data[key][subKey] === 'object' && data[key][subKey].descriptive);
+
+            if (descriptiveKeys.length > 0) {
+                // Create table if descriptive keys are present
+                const table = document.createElement('table');
+                const tableHeader = document.createElement('thead');
+                const tableBody = document.createElement('tbody');
+
+                // Create table header
+                const headerRow = document.createElement('tr');
+                headerRow.innerHTML = `
+                    <th>Key ID</th>
+                    <th>Descriptive sentence</th>
+                    <th>Compact sentence</th>
+                `;
+                tableHeader.appendChild(headerRow);
+
+                // Create table body
+                descriptiveKeys.forEach(subKey => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${subKey}</td>
+                        <td>${data[key][subKey].descriptive}</td>
+                        <td>${data[key][subKey].compact}</td>
+                    `;
+                    tableBody.appendChild(row);
+                });
+
+                // Assemble the table
+                table.appendChild(tableHeader);
+                table.appendChild(tableBody);
+
+                parentContainer.appendChild(table);
+            } else {
+                // If no descriptive keys are present, display a list of all subkeys
+                const subkeysList = document.createElement('ul');
+                Object.keys(data[key]).forEach(subKey => {
+                    if (subKey !== titleKey) { // Exclude the title key if it exists
+                        const listItem = document.createElement('li');
+                        const keySpan = document.createElement('span');
+                        keySpan.className = 'key';
+                        keySpan.textContent = subKey;
+                        const valueSpan = document.createElement('span');
+                        valueSpan.className = 'value';
+                        valueSpan.textContent = data[key][subKey];
+                        listItem.innerHTML = `<span class="key">${subKey}</span>: <span class="value">${data[key][subKey]}</span>`;
+                        subkeysList.appendChild(listItem);
                     }
-                    return await response.json();
-                } catch (error) {
-                    console.error('Error fetching JSON:', error);
-                }
+                });
+                parentContainer.appendChild(subkeysList);
             }
 
-            // Function to create lists and tables for each key-value pair
-            function createListsAndTables(data, parentContainer) {
-                Object.keys(data).forEach(key => {
-                    if (key === 'metadata') {
-                        const metadataList = document.createElement('ul');
-                        Object.keys(data[key]).forEach(subKey => {
-                            const listItem = document.createElement('li');
-                            const spanKey = document.createElement('span');
-                            spanKey.className = 'inline-list-item';
-                            spanKey.textContent = subKey;
-                            const spanValue = document.createElement('span');
-                            spanValue.textContent = data[key][subKey];
-                            listItem.appendChild(spanKey);
-                            listItem.appendChild(spanValue);
-                            metadataList.appendChild(listItem);
-                        });
-                        parentContainer.appendChild(document.createElement('h2')).textContent = 'metadata';
-                        parentContainer.appendChild(metadataList);
-                    } else if (typeof data[key] === 'object') {
-                        const tableHeading = document.createElement('h2');
-                        tableHeading.innerHTML = `<span class="key">${key}-title</span>: <span class="value">${data[key]['*title'] || key}</span>`;
-                        parentContainer.appendChild(tableHeading);
+            // Handle subsets of additional-accessibility-information
+            if (key === 'additional-accessibility-information') {
+                Object.keys(data[key]).forEach(subSubsetKey => {
+                    if (typeof data[key][subSubsetKey] === 'object' && subSubsetKey.endsWith('-title')) {
+                        const subsetTitle = data[key][subSubsetKey];
+                        const subsetHeading = document.createElement('h4');
+                        subsetHeading.textContent = subsetTitle;
+                        parentContainer.appendChild(subsetHeading);
 
-                        const table = document.createElement('table');
-                        const tableHeader = document.createElement('thead');
-                        const tableBody = document.createElement('tbody');
+                        const subsetDescriptiveKeys = Object.keys(data[key]).filter(subKey => subKey.startsWith(subSubsetKey.replace('-title', '')) && typeof data[key][subKey] === 'object' && data[key][subKey].descriptive);
+                        if (subsetDescriptiveKeys.length > 0) {
+                            const subsetTable = document.createElement('table');
+                            const subsetTableHeader = document.createElement('thead');
+                            const subsetTableBody = document.createElement('tbody');
 
-                        // Create table header
-                        const headerRow = document.createElement('tr');
-                        headerRow.innerHTML = `
-                            <th>Key ID</th>
-                            <th>Descriptive sentence</th>
-                            <th>Compact sentence</th>
-                        `;
-                        tableHeader.appendChild(headerRow);
+                            // Create table header
+                            const subsetHeaderRow = document.createElement('tr');
+                            subsetHeaderRow.innerHTML = `
+                                <th>Key ID</th>
+                                <th>Descriptive sentence</th>
+                                <th>Compact sentence</th>
+                            `;
+                            subsetTableHeader.appendChild(subsetHeaderRow);
 
-                        // Create table body
-                        Object.keys(data[key]).forEach(subKey => {
-                            if (subKey !== '*title' && typeof data[key][subKey] === 'object' && data[key][subKey].descriptive) {
+                            // Create table body
+                            subsetDescriptiveKeys.forEach(subKey => {
                                 const row = document.createElement('tr');
                                 row.innerHTML = `
                                     <td>${subKey}</td>
                                     <td>${data[key][subKey].descriptive}</td>
                                     <td>${data[key][subKey].compact}</td>
                                 `;
-                                tableBody.appendChild(row);
-                            }
-                        });
+                                subsetTableBody.appendChild(row);
+                            });
 
-                        // Assemble the table
-                        table.appendChild(tableHeader);
-                        table.appendChild(tableBody);
+                            // Assemble the table
+                            subsetTable.appendChild(subsetTableHeader);
+                            subsetTable.appendChild(subsetTableBody);
 
-                        parentContainer.appendChild(table);
+                            parentContainer.appendChild(subsetTable);
+                        } else {
+                            // If no descriptive keys are present in the subset, display a list of all subkeys
+                            const subsetSubkeysList = document.createElement('ul');
+                            Object.keys(data[key]).forEach(subKey => {
+                                if (subKey.startsWith(subSubsetKey.replace('-title', '')) && subKey !== subSubsetKey) {
+                                    const listItem = document.createElement('li');
+                                    const keySpan = document.createElement('span');
+                                    keySpan.className = 'key';
+                                    keySpan.textContent = subKey;
+                                    const valueSpan = document.createElement('span');
+                                    valueSpan.className = 'value';
+                                    valueSpan.textContent = data[key][subKey];
+                                    listItem.innerHTML = `<span class="key">${subKey}</span>: <span class="value">${data[key][subKey]}</span>`;
+                                    subsetSubkeysList.appendChild(listItem);
+                                }
+                            });
+                            parentContainer.appendChild(subsetSubkeysList);
+                        }
                     }
                 });
             }
+        }
+    });
+}
 
-            // Function to initialize the list and table creation
-            function initializeListAndTableCreation(data) {
-                const tablesContainer = document.getElementById('tables-container');
-                tablesContainer.innerHTML = ''; // Clear the container before populating it
+// Function to initialize the list and table creation
+function initializeListAndTableCreation(data) {
+    const tablesContainer = document.getElementById('tables-container');
+    tablesContainer.innerHTML = ''; // Clear the container before populating it
 
-                createListsAndTables(data, tablesContainer);
-            }
+    createListsAndTables(data, tablesContainer);
+}
 
-            // Event listener for select change
-            document.getElementById('json-source-select').addEventListener('change', async function() {
-                const selectedUrl = this.value;
-                fetchJsonData(selectedUrl)
-                    .then(data => initializeListAndTableCreation(data))
-                    .catch(error => console.error('Error creating lists and tables:', error));
-            });
+// Event listener for select change
+document.getElementById('json-source-select').addEventListener('change', async function() {
+    const selectedUrl = this.value;
+    fetchJsonData(selectedUrl)
+        .then(data => initializeListAndTableCreation(data))
+        .catch(error => console.error('Error creating lists and tables:', error));
+});
 
-            // Load initial JSON data and create lists and tables
-            const initialUrl = document.getElementById('json-source-select').value;
-            fetchJsonData(initialUrl)
-                .then(data => initializeListAndTableCreation(data))
-                .catch(error => console.error('Error creating lists and tables:', error));
+// Load initial JSON data and create lists and tables
+const initialUrl = document.getElementById('json-source-select').value;
+fetchJsonData(initialUrl)
+    .then(data => initializeListAndTableCreation(data))
+    .catch(error => console.error('Error creating lists and tables:', error));
         </script>
     </body>
 </html>
