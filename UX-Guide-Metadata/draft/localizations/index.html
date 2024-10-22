@@ -3,28 +3,142 @@
     <head>
         <meta charset="utf-8" />
         <title>Display guide localization strings</title>
-        <style>
-            table {
-                width: 100%;
-                border-collapse: collapse;
-            }
-            th, td {
-                border: 1px solid #ddd;
-                padding: 10px;
-            }
-            th {
-                background-color: #f2f2f2;
-            }
-            .inline-list-item {
-                display: inline;
-            }
-            .inline-list-item::after {
-                content: ": ";
-            }
-            .inline-list-item:last-child::after {
-                content: "";
-            }
-        </style>
+         <script src="https://www.w3.org/Tools/respec/respec-w3c" class="remove" defer="defer"></script>
+		<script class="remove">
+		// <![CDATA[
+		var respecConfig = {
+			group: "publishingcg",
+			specStatus: "CG-DRAFT",
+			noRecTrack: true,
+			latestVersion: "https://www.w3.org/publishing/a11y/UX-Guide-metadata/principles/",
+			edDraftURI: "https://w3c.github.io/publ-a11y/UX-Guide-Metadata/draft/principles/",
+			canonicalURI: "https://www.w3.org/publishing/a11y/UX-Guide-metadata/principles/",
+			editors: [
+				{
+					"name": "Charles LaPierre",
+					"company": "Benetech",
+					"companyURL": "http://www.benetech.org",
+					"w3cid": 72055
+				},
+				{
+					"name": "Gregorio Pellegrino",
+					"company": "Fondazione LIA",
+					"companyURL": "https://fondazionelia.org",
+					"w3cid": 97111
+				},
+				{
+					"name": "Gautier Chomel",
+					"company": "EDRLab ",
+					"companyURL": "https://www.edrlab.org",
+					"w3cid": 136660 
+				},
+				{
+					"name": "George Kerscher",
+					"company": "DAISY Consortium",
+					"companyURL": "https://daisy.org/",
+					"w3cid": 1460 
+				}
+			],
+			processVersion: 2020,
+			includePermalinks: false,
+			permalinkEdge: true,
+			permalinkHide: false,
+			diffTool: "http://www.aptest.com/standards/htmldiff/htmldiff.pl",
+			github: {
+				repoURL: "https://github.com/w3c/publ-a11y/",
+				branch: "main"
+			},
+			localBiblio: {
+				"iso14289-1" : {
+					"title": "ISO 14289-1:2024: Document management applications — Electronic document file format enhancement for accessibility — Part 1: Use of ISO 32000-1 (PDF/UA-1)",
+					"href": "https://www.iso.org/standard/82278.html",
+					"publisher": "ISO"
+				},
+				"iso14289-2" : {
+					"title": "ISO 14289-2:2024: Document management applications — Electronic document file format enhancement for accessibility — Part 2: Use of ISO 32000-2 (PDF/UA-2)",
+					"href": "https://www.iso.org/standard/64599.html",
+					"publisher": "ISO"
+				},
+				"onix": {
+					"title": "ONIX for Books 3.0",
+					"href": "https://www.editeur.org/8/ONIX/"
+				}
+			}
+		};
+		// ]]>
+	</script>
+		<style>
+			.responsive {
+				width: 100%;
+				height: auto;
+			}
+			
+			
+			.fake-issue {
+				padding: .5em;
+				border: .5em;
+				border-left-style: solid;
+				page-break-inside: avoid;
+				margin: 1em auto;
+			}
+			
+			.fake-issue {
+				border-color: #e05252;
+				border-color: var(--issue-border);
+				background: #fbe9e9;
+				background: var(--issue-bg);
+				color: black;
+				color: var(--issue-text);
+				counter-increment: issue;
+				overflow: auto;
+			}
+			
+			.fake-issue::before,
+			.fake-issue > .marker {
+				color: #831616;
+				color: var(--issueheading-text);
+			}
+			
+			.fake-issue::before,
+			.fake-issue > .marker {
+				text-transform: uppercase;
+				padding-right: 1em;
+			}
+			
+			.fake-issue a.respec-gh-label {
+				padding: 5px;
+				margin: 0 2px 0 2px;
+				font-size: 10px;
+				text-transform: none;
+				text-decoration: none;
+				font-weight: 700;
+				border-radius: 4px;
+				position: relative;
+				bottom: 2px;
+				border: none;
+				display: inline-block;
+			}                                       
+                table {
+                    width: 100%;
+                    border-collapse: collapse;
+                }
+                th, td {
+                    border: 1px solid #ddd;
+                    padding: 10px;
+                }
+                th {
+                    background-color: #f2f2f2;
+                }
+                .inline-list-item {
+                    display: inline;
+                }
+                .inline-list-item::after {
+                    content: ": ";
+                }
+                .inline-list-item:last-child::after {
+                    content: "";
+                }
+            </style>
     </head>
     <body>
         <section>
