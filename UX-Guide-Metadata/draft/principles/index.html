@@ -1331,8 +1331,58 @@
 				We understand that different countries or different target audience services may want to use specific language, and we have provided flexibility in the guide to accommodate this while maintaining a high level of understanding and similar quality to help users in a country find likewise information between two bookstores or libraries in the same language area. 
 				Simply translating the strings is not enough; the subtle meaning of the words and phrases of accessibility concepts must be localized for maximum understanding. Therefore, we intend to provide a mechanism for the publishing community to provide translations that localizes the strings for equally effective communication in many languages.</p>
 
-			<p>To agree on linguistic areas wordings the actors should follow a localization framework. The <a href="/localizations">Display guide localization strings page</a> webpage propose such framework and list translations with contextualization of the localization process.</p>
+				<p>The <a href="../localizations">Display guide localization strings page</a> list translations with contextualization of the localization process.</p>
 
+				<p>The following subsections proposes a localization framework to help establishing linguistic areas wordings agreed between actors of the concerned geographical area. </p>
+				
+			<section>
+				<h3>Localization strategy</h3>
+			   
+					<p>
+						With the rapidly evolving landscape of accessible ebooks available, most concerned persons are discovering a new world. To ensure the information is widely spread and understood, the implication of local actors like NGOs libraries serving persons with disabilities and other local actors in the fight to end the book famine for readers with print disabilities is crucial and should be highlighted.  
+					</p>
+					<p>	
+						The localization of the display guide is a good opportunity to make known the rich accessibility features offered by modern formats like EPUB. Reversely, having a local project scale to write an understandable vocabulary to describe such features is a precious qualitative approach that will benefit to every player in the value chain. 
+					</p>
+					<p>	
+						To build a local project and facilitate feedback comparisons, you can use open source methodology, resources, and prototypes published by EDRLab for the original <a href="https://edition-accessible.github.io/signalement/en/index-en.html">Signposting accessible digital books project</a> that led to the initial <a href="https://edition-accessible.github.io/signalement/documents/EDRLab-Signalement_lettreW3C_EN.pdf">Feedback letter (PDF)</a> addressed in early 2022. And has already been used and adapted in various places. 
+					</p>
+					<p>	
+						In these projects, emphasis was placed on the implications for the end users. For instance, the French wording proposed by EDRLab resulted from a quantitative survey of different reader groups, carefully selected panels of individual observations, and an extended feedback process through a dedicated formular available on the 140 first implementation platforms.
+					</p>
+					<p>	
+						Additionally, companies like Vitalsource that need wide localization have offered to open-source their professional translation work, which has produced the needed quantity and that is better to use than nothing when no national project has issued a handcrafted vocabulary.  
+					</p>
+					<p>	
+						To reconcile both sources of provided localization materials, we propose a collection mechanism based on a detailed identification of the provenance. Because persons and organisations with different levels of technicality must be able to contribute, we accept both raw files via Pull requests and also propose a friendly localization user interface through GitLocalize. 
+					</p>
+	
+	
+				<section>
+					<h3 id="How-to-contribute">How to contribute?</h3>
+					<p>First let us know as soon as possible that you are working on a localization and wish to submit it. That allows us to prepare a placeholder for your work. This is not mandatory but we invite you to contact the group and participate to a regular call of the working group as those are open to anyone. </p>
+					<p>When you are ready to publish your work, two options are possible: 
+						<ul>
+							<li>If you don’t know what a JSON or a Pull Request is, you are welcome to contact us so we can attribute a translator role at the <a href="https://gitlocalize.com/repo/9555">Gitlocalize dedicated project page</a>.</li>
+							<li>If you feel technically ready or have a collaborator that can push a pull request, the process is to duplicate the canonical original file UX-Guide-Metadata/draft/localizations/en-US/display_guide_vocabulary_w3c_en-US.json, modify it by changing the values in front of each key, and open a pull request so we can review it. Please be aware that we could have questions or ask for precision in the process before accepting and merging your contribution.</li>
+						</ul>
+						</p>
+	
+				</section>
+				<section>
+					<h3 id="How-to-choose-between-localization-files">How to choose between localization files?</h3>
+	
+					<p>The first keys of each JSON files contains descriptive information about it, including 
+						<ul>
+							<li>Author, name of the organisation responsible for the establishment and maintenance of this localisation</li>
+							<li>Language, is a 4 letters code where the two first letters specifies the language as per ISO 639-1 and the two others the country as per ISO 3166-1 alpha-2 </li>
+							<li>Variant, a one word free name to identify your work</li>
+							<li>Audience describes the public. We recommend to use any vocabulary from the <a href="https://ns.editeur.org/onix/en/28/">ONIX list 28</a>. More than one audience can be informed with a comma separating each.</li>
+							<li>Description, a free field including a short description of how this localization was obtained </li>
+						</ul>
+						</p>
+				</section>
+			</section>
 			
 		</section>
 		<section id="implementations">
