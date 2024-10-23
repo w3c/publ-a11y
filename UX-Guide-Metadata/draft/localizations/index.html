@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
     <head>
         <meta charset="utf-8" />
-        <title>Display guide localization strings</title>
+        <title>Display guide localization strings visualiser</title>
          <script src="https://www.w3.org/Tools/respec/respec-w3c" class="remove" defer="defer"></script>
 		<script class="remove">
 		// <![CDATA[
@@ -126,24 +126,31 @@
             </style>
     </head>
     <body>
+        <section id="info">
+        <h2>How to use this page</h2>
+            <p>
+                This page is part of the <a href="../principles/#techniques">Accessibility Metadata Display Guide for Digital Publications 2.0</a> and complementary with the each of the <a href="../principles/#techniques">techniques documents</a>. 
+            </p>
+            <p>
+                The Principles document provides details about <a href="../principles/#techniques">Localization</a>, <a href="../principles/#techniques">localization strategy</a>, <a href="../principles/#techniques">how to contribute</a> and <a href="../principles/#techniques">how to choose localization files</a>. 
+            </p>
+            <p>This page includes a selector that affects the content being presented.</p>
+    </section>
         <section>
-        <h1>Accessibility Metadata Display localized Vocabulary visualizer</h1>
-   
-        <div data-include="display_guide_vocabulary_en-US_w3c.json" data-include-replace="true"></div>
-        <section>
+            <h2>Localization string selector</h2>
         <p>
-            Choose a string to be displayed in the following section
+            The selector allows to choose a string that will be displayed in the following sections, changing the content and language of them.
         </p> 
         <select id="json-source-select">
             <option value="https://raw.githubusercontent.com/w3c/publ-a11y/refs/heads/main/UX-Guide-Metadata/draft/localizations/en-US/display_guide_vocabulary_w3c_en-US.json">W3C en-US</option>
             <option value="https://raw.githubusercontent.com/w3c/publ-a11y/refs/heads/main/UX-Guide-Metadata/draft/localizations/fr-FR/display_guide_vocabulary_edrlab_fr-FR.json">EDRLab fr-FR</option>
             <option value="https://raw.githubusercontent.com/w3c/publ-a11y/refs/heads/main/UX-Guide-Metadata/draft/localizations/en-US/display_guide_vocabulary_fondazioneLIA_it-it.json">Fondazione Lia it-IT</option>
         </select>
-
-        <div id="tables-container"></div>
+    </section>
+        <section id="tables-container"></section>
 
         </section>
-    </section>
+
         <script>
             // Function to fetch JSON data
 async function fetchJsonData(url) {
@@ -160,6 +167,9 @@ async function fetchJsonData(url) {
 
 // Function to create lists and tables for each key-value pair
 function createListsAndTables(data, parentContainer) {
+        // Set the lang attribute based on the language key
+        const language = data.metadata.language;
+        parentContainer.setAttribute('lang', language);
     Object.keys(data).forEach(key => {
         if (key === 'metadata') {
             const metadataList = document.createElement('ul');
