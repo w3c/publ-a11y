@@ -760,7 +760,7 @@
 					</li>
 					<li>
 						<span><b>IF</b> (<var>contains_charts_diagrams</var> <b>OR</b> <var>contains_chemical_formula</var> <b>OR</b> <var>contains_math_formula</var>) <b>AND</b> <b>NOT</b> (<var>long_text_descriptions</var> <b>OR</b> <var>chemical_formula_as_chemml</var> <b>OR</b> <var>math_formula_as_latex</var> <b>OR</b> <var>math_formula_as_mathml</var>):</span>
-						<span><b>THEN</b> display <code id="charts-diagrams-formulas-unknown">"The accessibility of formulas, charts, and diagrams is not available"</code>.</span>
+						<span><b>THEN</b> display <code id="charts-diagrams-formulas-unknown">"accessibility of formulas, charts, math, and diagrams not identified as being accessible"</code>.</span>
 					</li>
 				</ol>
 
@@ -863,7 +863,7 @@
 							</li>
 							<li>
 								<span><b>IF</b> <var>motion_simulation_hazard</var>:</span>
-								<span><b>THEN</b> <b>APPEND</b> <code id="hazards-motion">"motion"</code> to <var>hazards</var>.</span>
+								<span><b>THEN</b> <b>APPEND</b> <code id="hazards-motion">"motion simulation"</code> to <var>hazards</var>.</span>
 							</li>
 							<li>
 								<span><b>IF</b> <var>sound_hazard</var>:</span>
@@ -881,7 +881,7 @@
 					</li>
                     <li>
 						<span><b>ELSE IF</b> <var>unknown_if_contains_hazards</var>:</span>
-						<span><b>THEN</b> display <code id="hazards-unknown">"The presence of hazards is unknown."</code>.</span>
+						<span><b>THEN</b> display <code id="hazards-unknown">"The presence of hazards is unknown"</code>.</span>
                     </li>
 					<li>
 						<b>ELSE</b> either omit this key informtion if metadata is missing or display <code id="hazards-no-metadata">"No information about possible hazards is available."</code>.
