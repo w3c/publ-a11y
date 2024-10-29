@@ -85,16 +85,25 @@
                 
                 <aside class="example" title="Compact Versus Descriptive">
                     <pre>
-                        <code>data-localization-id="visual-adjustments-modifiable" data-localization-mode="compact"</code> "Appearance can be modified"
-                        
-        Versus
-                        <code>data-localization-id="visual-adjustments-modifiable" data-localization-mode="descriptive"</code> "Appearance of the text and page layout can be modified according to the capabilities of
-								the reading system (font family and font size, spaces between paragraphs, sentences,
-								words, and letters, as well as color of background and text)."
+                        <code>
+                            "visual-adjustments": 
+                                {
+                                "visual-adjustments-title": "Visual adjustments",
+                                "visual-adjustments-modifiable": 
+                                    {
+                                    "descriptive": "Appearance of the text and page layout can be modified according to the capabilities of the reading system (font family and font size, spaces between paragraphs, sentences, words, and letters, as well as color of background and text)",
+                                    "compact": "Appearance can be modified"
+                                    }
+                                }
+                        </code>
                     </pre>  
                 </aside>
                 
                 The option is yours to provide either the "compact" or "descriptive" versions to the end user or perhaps even allow the user to choose what they wish to see.
+                
+                <aside class="ednote">
+                    Link to the English JSON file where this example is taken from.
+                </aside>
                 
 			 </aside>
             
