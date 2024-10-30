@@ -88,6 +88,34 @@
  				This document provides techniques for meeting the guidelines of the <a href="../../principles/">User Experience Guide for Displaying Accessibility Metadata</a>. It provides practical examples for extracting information from the ONIX metadata for showing it to the end users.
 			</p>
 			
+			<aside class="note">
+ 			    The examples provided in this document demonstrate the "compact" version of what is to be displayed.
+                For every text string both the "compact" or the "descriptive" options are available.
+                
+                <aside class="example" title="Compact Versus Descriptive">
+                    <pre>
+                        <code>
+                            "visual-adjustments": 
+                                {
+                                "visual-adjustments-title": "Visual adjustments",
+                                "visual-adjustments-modifiable": 
+                                    {
+                                    "descriptive": "Appearance of the text and page layout can be modified according to the capabilities of the reading system (font family and font size, spaces between paragraphs, sentences, words, and letters, as well as color of background and text)",
+                                    "compact": "Appearance can be modified"
+                                    }
+                                }
+                        </code>
+                    </pre>  
+                </aside>
+                
+                The option is yours to provide either the "compact" or "descriptive" versions to the end user or perhaps even allow the user to choose what they wish to see.
+                
+                <aside class="ednote">
+                    Link to the English JSON file where this example is taken from.
+                </aside>
+                
+			 </aside>
+			
 			<p class="note">
 				ONIX messages describe products for the global book supply chain and will be sent from publisher or creator of the EPUB or digital books with full audio to those who will make the products available for sale, lending or subscription.
 				These platforms may not yet have the actual files, as they may not yet be ready, or may only choose to list them for sale if they have certain accessibility features.
