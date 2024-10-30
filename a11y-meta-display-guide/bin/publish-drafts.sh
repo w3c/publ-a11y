@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Script for creating static version for the UX-Guide-Metadata documents
-# It starts from the published draft (in the main branch): https://w3c.github.io/publ-a11y/UX-Guide-Metadata/draft/principles/
+# It starts from the published draft (in the main branch): https://w3c.github.io/publ-a11y/a11y-meta-display-guide/draft/guidelines/
 # It generates the static version
 # It runs nuchecker and link checker
 # The output is a zip folder that can be sent to W3C staff for publishing on the website
@@ -9,7 +9,7 @@
 # pre-run: cleans and temporary directory...
 basedir=$(readlink -f "$0")
 basedir=$(dirname "$basedir")
-documents=( "principles" "techniques/epub-metadata" "techniques/onix-metadata" )
+documents=( "guidelines" "techniques/epub-metadata" "techniques/onix-metadata" )
 bold=$(tput bold)
 normal=$(tput sgr0)
 
@@ -25,11 +25,11 @@ do
 	tmpdir=$(mktemp -d)
 	filename=${document##*/}
 	versionFilename="$filename-draft-note-$publishDateWithoutDashes.html"
-	versionURL="https://w3c.github.io/publ-a11y/UX-Guide-Metadata/2.0/$document/$versionFilename"
+	versionURL="https://w3c.github.io/publ-a11y/a11y-meta-display-guide/2.0/$document/$versionFilename"
 
 	# copies the content to the temporary directory
 	printf "\nCopying the content to the temporary directory..."
-	cp -a "$basedir/../draft/$document/." $tmpdir
+	cp -a "$basedir/../2.0/draft/$document/." $tmpdir
 	rm $tmpdir/*.md
 	
 	# generates the static version
@@ -37,7 +37,7 @@ do
 	curl \
 		-G \
 		--data-urlencode "type=respec" \
-		--data-urlencode "url=https://w3c.github.io/publ-a11y/UX-Guide-Metadata/draft/$document/?specStatus=CG-DRAFT&publishDate=$publishDate&thisVersion=$versionURL" \
+		--data-urlencode "url=https://w3c.github.io/publ-a11y/a11y-meta-display-guide/2.0/draft/$document/?specStatus=CG-DRAFT&publishDate=$publishDate&thisVersion=$versionURL" \
 		https://labs.w3.org/spec-generator/ \
 		-o "$tmpdir/index.html"
 	
@@ -65,7 +65,7 @@ do
 	checklink \
 		--summary \
 		--broken \
-		"https://w3c.github.io/publ-a11y/UX-Guide-Metadata/draft/$document/?specStatus=CG-DRAFT&publishDate=$publishDate"
+		"https://w3c.github.io/publ-a11y/a11y-meta-display-guide/2.0/draft/$document/?specStatus=CG-DRAFT&publishDate=$publishDate"
 	
 	# commenting while waiting for this issue to be fixed: https://github.com/w3c/publ-a11y/issues/386
 	# if [ $? -gt 0 ] 

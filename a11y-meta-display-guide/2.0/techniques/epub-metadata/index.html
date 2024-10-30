@@ -1,0 +1,1662 @@
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US"><head>
+<meta charset="utf-8">
+<meta name="generator" content="ReSpec 35.1.1">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<style>
+span.example-title{text-transform:none}
+:is(aside,div).example,div.illegal-example{padding:.5em;margin:1em 0;position:relative;clear:both}
+div.illegal-example{color:red}
+div.illegal-example p{color:#000}
+aside.example div.example{border-left-width:.1em;border-color:#999;background:#fff}
+</style>
+<style>
+.issue-label{text-transform:initial}
+.warning>p:first-child{margin-top:0}
+.warning{padding:.5em;border-left-width:.5em;border-left-style:solid}
+span.warning{padding:.1em .5em .15em}
+.issue.closed span.issue-number{text-decoration:line-through}
+.issue.closed span.issue-number::after{content:" (Closed)";font-size:smaller}
+.warning{border-color:#f11;border-color:var(--warning-border,#f11);border-width:.2em;border-style:solid;background:#fbe9e9;background:var(--warning-bg,#fbe9e9);color:#000;color:var(--text,#000)}
+.warning-title:before{content:"⚠";font-size:1.3em;float:left;padding-right:.3em;margin-top:-.3em}
+li.task-list-item{list-style:none}
+input.task-list-item-checkbox{margin:0 .35em .25em -1.6em;vertical-align:middle}
+.issue a.respec-gh-label{padding:5px;margin:0 2px 0 2px;font-size:10px;text-transform:none;text-decoration:none;font-weight:700;border-radius:4px;position:relative;bottom:2px;border:none;display:inline-block}
+</style>
+<style>
+dfn{cursor:pointer}
+.dfn-panel{position:absolute;z-index:35;min-width:300px;max-width:500px;padding:.5em .75em;margin-top:.6em;font-family:"Helvetica Neue",sans-serif;font-size:small;background:#fff;background:var(--indextable-hover-bg,#fff);color:#000;color:var(--text,#000);box-shadow:0 1em 3em -.4em rgba(0,0,0,.3),0 0 1px 1px rgba(0,0,0,.05);box-shadow:0 1em 3em -.4em var(--tocsidebar-shadow,rgba(0,0,0,.3)),0 0 1px 1px var(--tocsidebar-shadow,rgba(0,0,0,.05));border-radius:2px}
+.dfn-panel:not(.docked)>.caret{position:absolute;top:-9px}
+.dfn-panel:not(.docked)>.caret::after,.dfn-panel:not(.docked)>.caret::before{content:"";position:absolute;border:10px solid transparent;border-top:0;border-bottom:10px solid #fff;border-bottom-color:var(--indextable-hover-bg,#fff);top:0}
+.dfn-panel:not(.docked)>.caret::before{border-bottom:9px solid #a2a9b1;border-bottom-color:var(--indextable-hover-bg,#a2a9b1)}
+.dfn-panel *{margin:0}
+.dfn-panel b{display:block;color:#000;color:var(--text,#000);margin-top:.25em}
+.dfn-panel ul a[href]{color:#333;color:var(--text,#333)}
+.dfn-panel>div{display:flex}
+.dfn-panel a.self-link{font-weight:700;margin-right:auto}
+.dfn-panel .marker{padding:.1em;margin-left:.5em;border-radius:.2em;text-align:center;white-space:nowrap;font-size:90%;color:#040b1c}
+.dfn-panel .marker.dfn-exported{background:#d1edfd;box-shadow:0 0 0 .125em #1ca5f940}
+.dfn-panel .marker.idl-block{background:#8ccbf2;box-shadow:0 0 0 .125em #0670b161}
+.dfn-panel a:not(:hover){text-decoration:none!important;border-bottom:none!important}
+.dfn-panel a[href]:hover{border-bottom-width:1px}
+.dfn-panel ul{padding:0}
+.dfn-panel li{margin-left:1em}
+.dfn-panel.docked{position:fixed;left:.5em;top:unset;bottom:2em;margin:0 auto;max-width:calc(100vw - .75em * 2 - .5em - .2em * 2);max-height:30vh;overflow:auto}
+</style>
+		
+		
+<title>Display Techniques for EPUB Accessibility Metadata 2.0</title>
+		
+		
+		  
+<style>
+
+	  	var {
+			color: brown;
+		}
+	  	ol.condition > li {
+	  		margin-top: 1rem;
+	  		margin-left: 0;
+	  		padding-left: 0;
+	  	}
+	  	ol.condition > li > span {
+	  		display: block;
+	  	}
+	  	ol.condition > li > span:nth-child(2) {
+	  		margin-left: 2rem;
+	  	}
+	  	code.xpath {
+	  		word-break: keep-all;
+	  	}
+	  	code[id]::before, code[id]::after {
+			background: #faa;
+			border-radius: 3px;
+			font: normal normal 400 1em/1.2 monospace;
+			margin-left: 0.2em;
+			padding: 0.1em;
+		}
+              code[id]::after {
+                  content: "[ID: " attr(id) "]";
+              }
+	  
+</style>
+	
+<style id="respec-mainstyle">
+@keyframes pop{
+0%{transform:scale(1,1)}
+25%{transform:scale(1.25,1.25);opacity:.75}
+100%{transform:scale(1,1)}
+}
+a.internalDFN{color:inherit;border-bottom:1px solid #99c;text-decoration:none}
+a.externalDFN{color:inherit;border-bottom:1px dotted #ccc;text-decoration:none}
+a.bibref{text-decoration:none}
+.respec-offending-element:target{animation:pop .25s ease-in-out 0s 1}
+.respec-offending-element,a[href].respec-offending-element{text-decoration:red wavy underline}
+@supports not (text-decoration:red wavy underline){
+.respec-offending-element:not(pre){display:inline-block}
+.respec-offending-element{background:url(data:image/gif;base64,R0lGODdhBAADAPEAANv///8AAP///wAAACwAAAAABAADAEACBZQjmIAFADs=) bottom repeat-x}
+}
+#references :target{background:#eaf3ff;animation:pop .4s ease-in-out 0s 1}
+cite .bibref{font-style:normal}
+a[href].orcid{padding-left:4px;padding-right:4px}
+a[href].orcid>svg{margin-bottom:-2px}
+ol.tof,ul.tof{list-style:none outside none}
+.caption{margin-top:.5em;font-style:italic}
+#issue-summary>ul{column-count:2}
+#issue-summary li{list-style:none;display:inline-block}
+details.respec-tests-details{margin-left:1em;display:inline-block;vertical-align:top}
+details.respec-tests-details>*{padding-right:2em}
+details.respec-tests-details[open]{z-index:999999;position:absolute;border:thin solid #cad3e2;border-radius:.3em;background-color:#fff;padding-bottom:.5em}
+details.respec-tests-details[open]>summary{border-bottom:thin solid #cad3e2;padding-left:1em;margin-bottom:1em;line-height:2em}
+details.respec-tests-details>ul{width:100%;margin-top:-.3em}
+details.respec-tests-details>li{padding-left:1em}
+.self-link:hover{opacity:1;text-decoration:none;background-color:transparent}
+aside.example .marker>a.self-link{color:inherit}
+.header-wrapper{display:flex;align-items:baseline}
+:is(h2,h3,h4,h5,h6):not(#toc>h2,#abstract>h2,#sotd>h2,.head>h2){position:relative;left:-.5em}
+:is(h2,h3,h4,h5,h6):not(#toch2)+a.self-link{color:inherit;order:-1;position:relative;left:-1.1em;font-size:1rem;opacity:.5}
+:is(h2,h3,h4,h5,h6)+a.self-link::before{content:"§";text-decoration:none;color:var(--heading-text)}
+:is(h2,h3)+a.self-link{top:-.2em}
+:is(h4,h5,h6)+a.self-link::before{color:#000}
+@media (max-width:767px){
+dd{margin-left:0}
+}
+@media print{
+.removeOnSave{display:none}
+}
+</style>
+<meta name="color-scheme" content="light">
+<link rel="canonical" href="https://www.w3.org/publishing/a11y/UX-Guide-metadata/techniques/epub-metadata/">
+<style>
+.hljs{--base:#fafafa;--mono-1:#383a42;--mono-2:#686b77;--mono-3:#717277;--hue-1:#0b76c5;--hue-2:#336ae3;--hue-3:#a626a4;--hue-4:#42803c;--hue-5:#ca4706;--hue-5-2:#c91243;--hue-6:#986801;--hue-6-2:#9a6a01}
+@media (prefers-color-scheme:dark){
+.hljs{--base:#282c34;--mono-1:#abb2bf;--mono-2:#818896;--mono-3:#5c6370;--hue-1:#56b6c2;--hue-2:#61aeee;--hue-3:#c678dd;--hue-4:#98c379;--hue-5:#e06c75;--hue-5-2:#be5046;--hue-6:#d19a66;--hue-6-2:#e6c07b}
+}
+.hljs{display:block;overflow-x:auto;padding:.5em;color:#383a42;color:var(--mono-1,#383a42);background:#fafafa;background:var(--base,#fafafa)}
+.hljs-comment,.hljs-quote{color:#717277;color:var(--mono-3,#717277);font-style:italic}
+.hljs-doctag,.hljs-formula,.hljs-keyword{color:#a626a4;color:var(--hue-3,#a626a4)}
+.hljs-deletion,.hljs-name,.hljs-section,.hljs-selector-tag,.hljs-subst{color:#ca4706;color:var(--hue-5,#ca4706);font-weight:700}
+.hljs-literal{color:#0b76c5;color:var(--hue-1,#0b76c5)}
+.hljs-addition,.hljs-attribute,.hljs-meta-string,.hljs-regexp,.hljs-string{color:#42803c;color:var(--hue-4,#42803c)}
+.hljs-built_in,.hljs-class .hljs-title{color:#9a6a01;color:var(--hue-6-2,#9a6a01)}
+.hljs-attr,.hljs-number,.hljs-selector-attr,.hljs-selector-class,.hljs-selector-pseudo,.hljs-template-variable,.hljs-type,.hljs-variable{color:#986801;color:var(--hue-6,#986801)}
+.hljs-bullet,.hljs-link,.hljs-meta,.hljs-selector-id,.hljs-symbol,.hljs-title{color:#336ae3;color:var(--hue-2,#336ae3)}
+.hljs-emphasis{font-style:italic}
+.hljs-strong{font-weight:700}
+.hljs-link{text-decoration:underline}
+</style>
+<style>
+var{position:relative;cursor:pointer}
+var[data-type]::after,var[data-type]::before{position:absolute;left:50%;top:-6px;opacity:0;transition:opacity .4s;pointer-events:none}
+var[data-type]::before{content:"";transform:translateX(-50%);border-width:4px 6px 0 6px;border-style:solid;border-color:transparent;border-top-color:#222}
+var[data-type]::after{content:attr(data-type);transform:translateX(-50%) translateY(-100%);background:#222;text-align:center;font-family:"Dank Mono","Fira Code",monospace;font-style:normal;padding:6px;border-radius:3px;color:#daca88;text-indent:0;font-weight:400}
+var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
+</style>
+<script id="initialUserConfig" type="application/json">{
+  "group": "publishingcg",
+  "specStatus": "CG-DRAFT",
+  "noRecTrack": true,
+  "latestVersion": "https://www.w3.org/publishing/a11y/UX-Guide-metadata/techniques/epub-metadata/",
+  "edDraftURI": "https://w3c.github.io/publ-a11y/UX-Guide-Metadata/draft/techniques/epub-metadata/",
+  "canonicalURI": "https://www.w3.org/publishing/a11y/UX-Guide-metadata/techniques/epub-metadata/",
+  "editors": [
+    {
+      "name": "Charles LaPierre",
+      "company": "Benetech",
+      "companyURL": "http://www.benetech.org",
+      "w3cid": 72055
+    }
+  ],
+  "processVersion": 2020,
+  "includePermalinks": false,
+  "permalinkEdge": true,
+  "permalinkHide": false,
+  "diffTool": "http://www.aptest.com/standards/htmldiff/htmldiff.pl",
+  "github": {
+    "repoURL": "https://github.com/w3c/publ-a11y/",
+    "branch": "main"
+  },
+  "publishDate": "2024-09-06",
+  "thisVersion": "https://w3c.github.io/publ-a11y/UX-Guide-Metadata/2.0/techniques/epub-metadata/epub-metadata-draft-note-20240906.html",
+  "publishISODate": "2024-09-06T00:00:00.000Z",
+  "generatedSubtitle": "Draft Community Group Report 06 September 2024"
+}</script>
+<link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2021/cg-draft"></head>
+	<body class="h-entry informative"><div class="head">
+    
+    <h1 id="title" class="title">Display Techniques for EPUB Accessibility Metadata 2.0</h1> 
+    <p id="w3c-state">
+      <a href="https://www.w3.org/standards/types#reports">Draft Community Group Report</a>
+      <time class="dt-published" datetime="2024-09-06">06 September 2024</time>
+    </p>
+    <dl>
+      <dt>This version:</dt><dd>
+              <a class="u-url" href="https://w3c.github.io/publ-a11y/UX-Guide-Metadata/2.0/techniques/epub-metadata/epub-metadata-draft-note-20240906.html">https://w3c.github.io/publ-a11y/UX-Guide-Metadata/2.0/techniques/epub-metadata/epub-metadata-draft-note-20240906.html</a>
+            </dd>
+      <dt>Latest published version:</dt><dd>
+              <a href="https://www.w3.org/publishing/a11y/UX-Guide-metadata/techniques/epub-metadata/">https://www.w3.org/publishing/a11y/UX-Guide-metadata/techniques/epub-metadata/</a>
+            </dd>
+      <dt>Latest editor's draft:</dt><dd><a href="https://w3c.github.io/publ-a11y/UX-Guide-Metadata/draft/techniques/epub-metadata/">https://w3c.github.io/publ-a11y/UX-Guide-Metadata/draft/techniques/epub-metadata/</a></dd>
+      
+      
+      
+      
+      <dt>Editor:</dt><dd class="editor p-author h-card vcard" data-editor-id="72055">
+    <span class="p-name fn">Charles LaPierre</span> (<a class="p-org org h-org" href="http://www.benetech.org">Benetech</a>)
+  </dd>
+      
+      
+      <dt>Feedback:</dt><dd>
+        <a href="https://github.com/w3c/publ-a11y/">GitHub w3c/publ-a11y</a>
+        (<a href="https://github.com/w3c/publ-a11y/pulls/">pull requests</a>,
+        <a href="https://github.com/w3c/publ-a11y/issues/new/choose">new issue</a>,
+        <a href="https://github.com/w3c/publ-a11y/issues/">open issues</a>)
+      </dd>
+      
+    </dl>
+    
+    <p class="copyright">
+          <a href="https://www.w3.org/policies/#copyright">Copyright</a>
+          ©
+          2024
+          
+          the Contributors to the Display Techniques for EPUB Accessibility Metadata 2.0
+          Specification, published by the
+          <a href="https://www.w3.org/groups/cg/publishingcg">Publishing Community Group</a> under the
+          <a href="https://www.w3.org/community/about/agreements/cla/">W3C Community Contributor License Agreement (CLA)</a>. A human-readable
+                <a href="https://www.w3.org/community/about/agreements/cla-deed/">summary</a>
+                is available.
+              
+        </p>
+    <hr title="Separator for header">
+  </div>
+		<section id="abstract" class="introductory"><h2>Abstract</h2></section>
+        <section id="sotd" class="introductory"><h2>Status of This Document</h2><p>
+      This specification was published by the
+      <a href="https://www.w3.org/groups/cg/publishingcg">Publishing Community Group</a>. It is not a W3C Standard nor is it
+      on the W3C Standards Track.
+      
+            Please note that under the
+            <a href="https://www.w3.org/community/about/agreements/cla/">W3C Community Contributor License Agreement (CLA)</a>
+            there is a limited opt-out and other conditions apply.
+          
+      Learn more about
+      <a href="https://www.w3.org/community/">W3C Community and Business Groups</a>.
+    </p><p>
+    <a href="https://github.com/w3c/publ-a11y/issues/">GitHub Issues</a> are preferred for
+          discussion of this specification.
+        
+    
+  </p></section><nav id="toc"><h2 class="introductory" id="table-of-contents">Table of Contents</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#abstract">Abstract</a></li><li class="tocline"><a class="tocxref" href="#sotd">Status of This Document</a></li><li class="tocline"><a class="tocxref" href="#epub-accessibility-metadata"><bdi class="secno">1. </bdi>EPUB Accessibility Metadata</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#epub-a11y-metadata-examples"><bdi class="secno">1.1 </bdi>EPUB Accessibility Metadata Examples</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#epub-a11y-metadata-describing-an-epub"><bdi class="secno">1.1.1 </bdi>EPUB accessibility metadata describing an EPUB</a></li><li class="tocline"><a class="tocxref" href="#epub-a11y-metadata-describing-an-full-audio-book"><bdi class="secno">1.1.2 </bdi>EPUB accessibility metadata describing an audiobook</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#conventions"><bdi class="secno">2. </bdi>Conventions for implementations</a></li><li class="tocline"><a class="tocxref" href="#common-functions"><bdi class="secno">3. </bdi>Common Functions</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#pre-processing"><bdi class="secno">3.1 </bdi>Preprocessing</a></li><li class="tocline"><a class="tocxref" href="#check-for-node"><bdi class="secno">3.2 </bdi>Check for Node</a></li><li class="tocline"><a class="tocxref" href="#join-array-to-comma-list"><bdi class="secno">3.3 </bdi>Join array to comma list</a></li></ol></li><li class="tocline"><a class="tocxref" href="#techniques"><bdi class="secno">4. </bdi>Techniques</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#visual-adjustments"><bdi class="secno">4.1 </bdi>Visual adjustments</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#understanding-the-variables"><bdi class="secno">4.1.1 </bdi>Understanding the variables</a></li><li class="tocline"><a class="tocxref" href="#variables-setup"><bdi class="secno">4.1.2 </bdi>Variables setup</a></li><li class="tocline"><a class="tocxref" href="#instructions"><bdi class="secno">4.1.3 </bdi>Instructions</a></li></ol></li><li class="tocline"><a class="tocxref" href="#supports-nonvisual-reading"><bdi class="secno">4.2 </bdi>Supports nonvisual reading</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#understanding-the-variables-0"><bdi class="secno">4.2.1 </bdi>Understanding the variables</a></li><li class="tocline"><a class="tocxref" href="#variables-setup-0"><bdi class="secno">4.2.2 </bdi>Variables setup</a></li><li class="tocline"><a class="tocxref" href="#instructions-0"><bdi class="secno">4.2.3 </bdi>Instructions</a></li></ol></li><li class="tocline"><a class="tocxref" href="#conformance-group"><bdi class="secno">4.3 </bdi>Conformance</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#understanding-the-variables-1"><bdi class="secno">4.3.1 </bdi>Understanding the variables</a></li><li class="tocline"><a class="tocxref" href="#variables-setup-1"><bdi class="secno">4.3.2 </bdi>Variables setup</a></li><li class="tocline"><a class="tocxref" href="#instructions-1"><bdi class="secno">4.3.3 </bdi>Instructions</a></li></ol></li><li class="tocline"><a class="tocxref" href="#pre-recorded-audio"><bdi class="secno">4.4 </bdi>Pre-recorded audio</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#understanding-the-variables-2"><bdi class="secno">4.4.1 </bdi>Understanding the variables</a></li><li class="tocline"><a class="tocxref" href="#variables-setup-2"><bdi class="secno">4.4.2 </bdi>Variables setup</a></li><li class="tocline"><a class="tocxref" href="#instructions-2"><bdi class="secno">4.4.3 </bdi>Instructions</a></li></ol></li><li class="tocline"><a class="tocxref" href="#navigation"><bdi class="secno">4.5 </bdi>Navigation</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#understanding-the-variables-3"><bdi class="secno">4.5.1 </bdi>Understanding the variables</a></li><li class="tocline"><a class="tocxref" href="#variables-setup-3"><bdi class="secno">4.5.2 </bdi>Variables setup</a></li><li class="tocline"><a class="tocxref" href="#instructions-3"><bdi class="secno">4.5.3 </bdi>Instructions</a></li></ol></li><li class="tocline"><a class="tocxref" href="#charts-diagrams-and-formulas"><bdi class="secno">4.6 </bdi>Charts, diagrams, and formulas</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#understanding-the-variables-4"><bdi class="secno">4.6.1 </bdi>Understanding the variables</a></li><li class="tocline"><a class="tocxref" href="#variables-setup-4"><bdi class="secno">4.6.2 </bdi>Variables setup</a></li><li class="tocline"><a class="tocxref" href="#instructions-4"><bdi class="secno">4.6.3 </bdi>Instructions</a></li></ol></li><li class="tocline"><a class="tocxref" href="#hazards"><bdi class="secno">4.7 </bdi>Hazards</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#understanding-the-variables-5"><bdi class="secno">4.7.1 </bdi>Understanding the variables</a></li><li class="tocline"><a class="tocxref" href="#variables-setup-5"><bdi class="secno">4.7.2 </bdi>Variables setup</a></li><li class="tocline"><a class="tocxref" href="#instructions-5"><bdi class="secno">4.7.3 </bdi>Instructions</a></li></ol></li><li class="tocline"><a class="tocxref" href="#accessibility-summary"><bdi class="secno">4.8 </bdi>Accessibility summary</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#understanding-the-variables-6"><bdi class="secno">4.8.1 </bdi>Understanding the variables</a></li><li class="tocline"><a class="tocxref" href="#variables-setup-6"><bdi class="secno">4.8.2 </bdi>Variables setup</a></li><li class="tocline"><a class="tocxref" href="#instructions-6"><bdi class="secno">4.8.3 </bdi>Instructions</a></li></ol></li><li class="tocline"><a class="tocxref" href="#legal-considerations"><bdi class="secno">4.9 </bdi>Legal considerations</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#understanding-the-variables-7"><bdi class="secno">4.9.1 </bdi>Understanding the variables</a></li><li class="tocline"><a class="tocxref" href="#variables-setup-7"><bdi class="secno">4.9.2 </bdi>Variables setup</a></li><li class="tocline"><a class="tocxref" href="#instructions-7"><bdi class="secno">4.9.3 </bdi>Instructions</a></li></ol></li><li class="tocline"><a class="tocxref" href="#additional-accessibility-information"><bdi class="secno">4.10 </bdi>Additional accessibility information</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#additional-accessibility-information-adaptation"><bdi class="secno">4.10.1 </bdi>Adaptation</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#understanding-the-variables-8"><bdi class="secno">4.10.1.1 </bdi>Understanding the variables</a></li><li class="tocline"><a class="tocxref" href="#variables-setup-8"><bdi class="secno">4.10.1.2 </bdi>Variables setup</a></li><li class="tocline"><a class="tocxref" href="#instructions-8"><bdi class="secno">4.10.1.3 </bdi>Instructions</a></li></ol></li><li class="tocline"><a class="tocxref" href="#additional-accessibility-information-clarity"><bdi class="secno">4.10.2 </bdi>Clarity</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#understanding-the-variables-9"><bdi class="secno">4.10.2.1 </bdi>Understanding the variables</a></li><li class="tocline"><a class="tocxref" href="#variables-setup-9"><bdi class="secno">4.10.2.2 </bdi>Variables setup</a></li><li class="tocline"><a class="tocxref" href="#instructions-9"><bdi class="secno">4.10.2.3 </bdi>Instructions</a></li></ol></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#acknowledgements"><bdi class="secno">A. </bdi>Acknowledgements</a></li><li class="tocline"><a class="tocxref" href="#references"><bdi class="secno">B. </bdi>References</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#informative-references"><bdi class="secno">B.1 </bdi>Informative references</a></li></ol></li></ol></nav>
+        <section id="epub-accessibility-metadata"><div class="header-wrapper"><h2 id="x1-epub-accessibility-metadata"><bdi class="secno">1. </bdi>EPUB Accessibility Metadata</h2><a class="self-link" href="#epub-accessibility-metadata" aria-label="Permalink for Section 1."></a></div>
+            
+            
+            <p>This metadata as outlined in EPUB Accessibility 1.1 [<cite><a class="bibref" data-link-type="biblio" href="#bib-epub-a11y-11" title="EPUB Accessibility 1.1">epub-a11y-11</a></cite>], can be found in the EPUB package document [<cite><a class="bibref" data-link-type="biblio" href="#bib-epub-33" title="EPUB 3.3">EPUB-33</a></cite>].</p>
+			
+            <div class="note" role="note" id="issue-container-generatedID"><div role="heading" class="note-title marker" id="h-note" aria-level="3"><span>Note</span></div><aside class="">
+                Techniques for displaying accessibility metadata in other metadata formats can be found in the User Experience Guide for Displaying Accessibility Metadata document.
+            </aside></div>
+            
+ 			<div class="note" role="note" id="issue-container-generatedID-0"><div role="heading" class="note-title marker" id="h-note-0" aria-level="3"><span>Note</span></div><aside class="">
+ 			    This document provides techniques for meeting the guidelines of the <a href="../../principles/">User Experience Guide for Displaying Accessibility Metadata</a>. It provides practical examples for extracting information from the EPUB's OPF metadata for showing it to the end users.
+			 </aside></div>
+                    
+            <section id="epub-a11y-metadata-examples"><div class="header-wrapper"><h3 id="x1-1-epub-accessibility-metadata-examples"><bdi class="secno">1.1 </bdi>EPUB Accessibility Metadata Examples</h3><a class="self-link" href="#epub-a11y-metadata-examples" aria-label="Permalink for Section 1.1"></a></div>
+                
+				<section id="epub-a11y-metadata-describing-an-epub"><div class="header-wrapper"><h4 id="x1-1-1-epub-accessibility-metadata-describing-an-epub"><bdi class="secno">1.1.1 </bdi>EPUB accessibility metadata describing an EPUB</h4><a class="self-link" href="#epub-a11y-metadata-describing-an-epub" aria-label="Permalink for Section 1.1.1"></a></div>
+				    
+				    <p>Here is an example of accessibility metadata embedded within the package document, 
+                        which will be used as a reference point for the
+                        following examples on EPUB accessibility metadata: the results of the XPath shown are based on
+				        this example.
+                    </p>
+				    <aside class="example" id="epub-a11y-metadata-example-1"><div class="marker">
+    <a class="self-link" href="#epub-a11y-metadata-example-1">Example<bdi> 1</bdi></a>
+  </div>
+                        <pre><code class="xpath hljs" aria-busy="false">TBD</code></pre>
+                    </aside>
+				</section>
+				<section id="epub-accessibility-metadata-describing-an-audiobook"><div class="header-wrapper"><h4 id="epub-a11y-metadata-describing-an-full-audio-book"><bdi class="secno">1.1.2 </bdi>EPUB accessibility metadata describing an audiobook</h4><a class="self-link" href="#epub-a11y-metadata-describing-an-full-audio-book" aria-label="Permalink for Section 1.1.2"></a></div>
+				    
+
+                <p>Here is an example of an accessibility OPF Metadata for describing an audiobook, which will be used as a reference point for the following examples on EPUB accessibility metadata: the results of the XPath shown are based on this example.</p>
+				        <aside class="example" id="epub-a11y-metadata-example-2"><div class="marker">
+    <a class="self-link" href="#epub-a11y-metadata-example-2">Example<bdi> 2</bdi></a>
+  </div>
+                            <pre><code class="xpath hljs" aria-busy="false">TBD</code></pre>
+				        </aside>
+				</section>
+            </section>
+        </section>
+        
+		<section id="conventions"><div class="header-wrapper"><h2 id="x2-conventions-for-implementations"><bdi class="secno">2. </bdi>Conventions for implementations</h2><a class="self-link" href="#conventions" aria-label="Permalink for Section 2."></a></div>
+			
+			<p>The code conventions used in the provided code snippet follow a structure commonly found in programming languages like Python, Java, or C++. Here's an explanation of the conventions:</p>
+			<dl>
+				<dt>Conditionals and Control Flow:</dt>
+					<dd><b>IF</b>, <b>ELSE IF</b>, and <b>ELSE</b> (in bold and capital letters) statements are used to define different conditions and the corresponding actions to be taken.</dd>
+				<dt>Operators:</dt>
+					<dd>Written operators (<i>is present</i>) are used to check if a particular code or codelist is present (or not) in the metadata record.</dd>
+				<dt>Logical operators:</dt>
+					<dd>Logical operators (<b>AND</b>, <b>OR</b>, <b>NOT</b>, in bold and capital letters) are used to combine conditions.</dd>
+				<dt>String Literals:</dt>
+					<dd>String literals are used to represent the text that should be displayed when a particular condition is met.</dd>
+				<dt>Variable Naming:</dt>
+					<dd>The terms like "property" and "value" are used in a way that suggests a variable or data structure representing the metadata record.</dd>
+				<dt>Indentation:</dt>
+					<dd>The code uses consistent indentation to define blocks of code within conditional statements. This is crucial for readability and maintaining a clear structure.</dd>
+				<dt>Readability:</dt>
+					<dd>The code is written in a way that is intended to be easily readable and understandable even by non-coders.</dd>
+			</dl>
+		</section>
+        
+		<section id="common-functions"><div class="header-wrapper"><h2 id="x3-common-functions"><bdi class="secno">3. </bdi>Common Functions</h2><a class="self-link" href="#common-functions" aria-label="Permalink for Section 3."></a></div>
+			
+			<p>In this section we define the functions common to all techniques, which are called by them during execution.</p>
+			<section id="pre-processing"><div class="header-wrapper"><h3 id="x3-1-preprocessing"><bdi class="secno">3.1 </bdi>Preprocessing</h3><a class="self-link" href="#pre-processing" aria-label="Permalink for Section 3.1"></a></div>
+				
+				<p>Before working directly with the metadata we must read the metadata in the Package document (package document) inside the EPUB. This is a common starting point for all techniques that allows us to query the metadata directly.</p>
+				<div class="note" role="note" id="issue-container-generatedID-1"><div role="heading" class="note-title marker" id="h-note-1" aria-level="4"><span>Note</span></div><aside class="">
+					<p>This algorithm does not describe how the Package document is discovered and extracted within an EPUB.</p>
+				</aside></div>
+				<p>This algorithm takes the <var>package_document_as_text</var> argument: a UTF-8 string representing the Package document.</p>
+				<p>To generate the internal representation, run the following steps:</p>
+				<ol class="condition">
+					<li><b>LET</b> <var>package_document_content</var> be textual representation of the Package document for the publication given <var>package_document_as_text</var>.</li>
+					<li><b>LET</b> <var>package_document</var> be the DOM tree that results from parsing <var>package_document_content</var> using an XML DOM parser.</li>
+					<li>Return <var>package_document</var>.</li>
+				</ol>
+			</section>
+            
+     		<section id="check-for-node"><div class="header-wrapper"><h3 id="x3-2-check-for-node"><bdi class="secno">3.2 </bdi>Check for Node</h3><a class="self-link" href="#check-for-node" aria-label="Permalink for Section 3.2"></a></div>
+				
+				<p>Many of the techniques rely on checking for the presence or absence of metadata in the metadata section of the Package document.</p>
+
+                <div class="note" role="note" id="issue-container-generatedID-2"><div role="heading" class="note-title marker" id="h-note-2" aria-level="4"><span>Note</span></div><aside class="">
+                    <p>All XPATHs are made for EPUB 3, while for EPUB 2 they would need to be adjusted.</p>
+                </aside></div>
+
+				<p>This algorithm takes:</p>
+				<ul>
+					<li>the <var>package_document</var> argument: the internal representation of the Package document (output of <a href="#pre-processing">preprocessing</a>);</li>
+					<li>the <var>path</var> argument: the XPATH of the node to check the presence of.</li>
+				</ul>
+				<p>To check for node, run the following steps:</p>
+				<ol class="condition">
+					<li>
+						<span><b>IF</b> <var>package_document</var> contains <var>path</var>:</span>
+						<span><b>THEN</b> return <code>True</code>.</span>
+					</li>
+					<li><b>ELSE</b> return <code>False</code>.</li>
+				</ol>
+			</section>
+			<section id="join-array-to-comma-list"><div class="header-wrapper"><h3 id="x3-3-join-array-to-comma-list"><bdi class="secno">3.3 </bdi>Join array to comma list</h3><a class="self-link" href="#join-array-to-comma-list" aria-label="Permalink for Section 3.3"></a></div>
+				
+				<p>This function serves to concatenate an array of strings, separating each element with a comma, with the last element separated by an <code>", and"</code> (this string is localizable).</p>
+				<p>For example if the input array has elements <code>["one", "two", "three"]</code>, then the output is going to be <code>"one, two, and three"</code>.</p>
+				<p>This algorithm takes the <var>string_array</var> argument: the list of string to join.</p>
+				<p>To join the array, run the following steps:</p>
+				<ol class="condition">
+					<li><b>LET</b> <var>output_string</var> be the result of:
+						<ul class="condition">
+							<li>calling join on <var>string_array</var> with the separator <code>", "</code></li>
+							<li>replacing the last occurrence of <code>", "</code> with <code id="join-array-and">", and "</code>.</li>
+						</ul>
+					</li>
+					<li>return <var>output_string</var>.</li>
+				</ol>
+			</section>
+
+        </section>
+        
+		<section id="techniques"><div class="header-wrapper"><h2 id="x4-techniques"><bdi class="secno">4. </bdi>Techniques</h2><a class="self-link" href="#techniques" aria-label="Permalink for Section 4."></a></div>
+			
+
+			<section id="visual-adjustments"><div class="header-wrapper"><h3 id="x4-1-visual-adjustments"><bdi class="secno">4.1 </bdi>Visual adjustments</h3><a class="self-link" href="#visual-adjustments" aria-label="Permalink for Section 4.1"></a></div>
+				
+				
+				<p>This technique relates to <a href="../../principles/#visual-adjustments">Visual adjustments key information</a>.</p>
+				<p>This algorithm takes the <var>package_document_as_text</var> argument: a UTF-8 string representing the Package document.</p>
+
+
+                <section id="understanding-the-variables"><div class="header-wrapper"><h4 id="x4-1-1-understanding-the-variables"><bdi class="secno">4.1.1 </bdi>Understanding the variables</h4><a class="self-link" href="#understanding-the-variables" aria-label="Permalink for Section 4.1.1"></a></div>
+				<dl>
+                    <dt><var>all_textual_content_can_be_modified</var></dt>
+                    <dd>
+                        <p>If true it indicates that the <i>accessibilityFeature="displayTransformability"</i> (All textual content can be modified) is present in the package document, otherwise if false it means that the metadata is not present.</p>
+                        <p><i>All textual content can be modified</i> means that the digital publication does not restrict the ability of users to modify and reflow the display of any textual content to the full extent allowed by the reading system (i.e. to change the text size or typeface, line height and word spacing, colors).</p>
+                    </dd>
+					<dt><var>is_fixed_layout</var></dt>
+					<dd>
+						<p>If true it indicates that the <i>layout="pre-paginated"</i> (Fixed format) is present in the package document, otherwise if false it means that the metadata is not present.</p>
+						<p><i>Fixed format</i> means that digital publication is in fixed format (e.g. EPUB Fixed Layout).</p>
+					</dd>
+				</dl>
+
+                </section><section id="variables-setup"><div class="header-wrapper"><h4 id="x4-1-2-variables-setup"><bdi class="secno">4.1.2 </bdi>Variables setup</h4><a class="self-link" href="#variables-setup" aria-label="Permalink for Section 4.1.2"></a></div>
+				<ol class="condition">
+					<li><b>LET</b> <var>package_document</var> be the result of calling <a href="#pre-processing">preprocessing</a> given <var>package_document_as_text</var>.</li>
+                    
+                    <li><b>LET</b> <var>all_textual_content_can_be_modified</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>displayTransformability</i>"]</code>.</li>
+
+                    <li><b>LET</b> <var>is_fixed_layout</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="rendition:<i>layout</i>" and text()="<i>pre-paginated</i>"]</code>.</li>
+                
+				</ol>
+				</section><section id="instructions"><div class="header-wrapper"><h4 id="x4-1-3-instructions"><bdi class="secno">4.1.3 </bdi>Instructions</h4><a class="self-link" href="#instructions" aria-label="Permalink for Section 4.1.3"></a></div>
+				<ol class="condition">
+					<li>
+						<span><b>IF</b> <var>all_textual_content_can_be_modified</var>:</span>
+						<span><b>THEN</b> display "<code id="visual-adjustments-modifiable">Appearance can be modified"</code>.</span>
+					</li>
+					<li>
+						<span><b>ELSE IF</b> <var>is_fixed_layout</var>:</span>
+						<span><b>THEN</b> display <code id="visual-adjustments-unmodifiable">"Appearance cannot be modified"</code>.</span>
+					</li>
+					<li><b>ELSE</b> display <code id="visual-adjustments-unknown">"Appearance modifiability not known"</code>.</li>
+				</ol>
+			</section></section>
+	            
+			<section id="supports-nonvisual-reading"><div class="header-wrapper"><h3 id="x4-2-supports-nonvisual-reading"><bdi class="secno">4.2 </bdi>Supports nonvisual reading</h3><a class="self-link" href="#supports-nonvisual-reading" aria-label="Permalink for Section 4.2"></a></div>
+				
+				<p>This technique relates to <a href="../../principles/#supports-nonvisual-reading">Supports nonvisual reading key information</a>.</p>
+				<p>This algorithm takes the <var>package_document_as_text</var> argument: a UTF-8 string representing the Package document.</p>
+				<section id="understanding-the-variables-0"><div class="header-wrapper"><h4 id="x4-2-1-understanding-the-variables"><bdi class="secno">4.2.1 </bdi>Understanding the variables</h4><a class="self-link" href="#understanding-the-variables-0" aria-label="Permalink for Section 4.2.1"></a></div>
+				<dl>
+					<dt><var>all_necessary_content_textual</var></dt>
+					<dd>
+						<p>If true it indicates that the <i>accessModeSufficient="textual"</i> (all main content is provided in textual form) is present in the package document, otherwise if false it means that the metadata is not present.</p>
+						<p><i>All non-decorative content supports reading without sight</i> means that all contents of the digital publication necessary to use and understanding, including text, images (via their alternative descriptions), audio and video material (via their transcripts, descriptions, captions or subtitles) are fully accessible via suitable reading devices, for example text-to-speech screen readers or tactile reading devices (‘Braille displays’), and nothing in the digital publication prevents or blocks the use of alternative reading modes. The entire publication can be navigated and ‘read’ using only text rendered via sound or touch, and does not require visual perception.</p>
+					</dd>
+					<dt><var>non_textual_content_images</var></dt>
+					<dd>
+						<p>If true it indicates that at least one of the following is present in the package document:</p>
+						<ul>
+							<li><i>accessMode="chartOnVisual"</i> (Charts and Graphs);</li>
+							<li><i>accessMode="chemOnVisual"</i> (Chemistry);</li>
+							<li><i>accessMode="diagramOnVisual"</i> (Diagrams);</li>
+							<li><i>accessMode="mathOnVisual"</i> (Math);</li>
+							<li><i>accessMode="musicOnVisual"</i> (Music);</li>
+							<li><i>accessMode="textOnVisual"</i> (Images of text);</li>
+							<li>otherwise if false it means that this metadata is not present.</li>
+						</ul>
+						<p>This means that the content contains images of any type.</p>
+					</dd>
+					<dt><var>textual_alternative_images</var></dt>
+					<dd>
+						<p>If true it indicates that at least one of the following is present in the package document:</p>
+						<ul>
+							<li><i>accessibilityFeature="alternativeText"</i> (Short alternative textual descriptions);</li>
+							<li><i>accessibilityFeature="longDescription"</i> (Full alternative textual descriptions);</li>
+							<li><i>accessibilityFeature="describedMath"</i> (Visual of math fully described));</li>
+							<li>otherwise if false it means that this metadata is not present.</li>
+						</ul>
+						<p>This means that there are textual alternatives for images.</p>
+					</dd>
+				</dl>
+				</section><section id="variables-setup-0"><div class="header-wrapper"><h4 id="x4-2-2-variables-setup"><bdi class="secno">4.2.2 </bdi>Variables setup</h4><a class="self-link" href="#variables-setup-0" aria-label="Permalink for Section 4.2.2"></a></div>
+				<ol class="condition">
+					<li><b>LET</b> <var>package_document</var> be the result of calling <a href="#pre-processing">preprocessing</a> given <var>package_document_as_text</var>.</li>
+
+					<li><b>LET</b> <var>all_necessary_content_textual</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessModeSufficient</i>" and text()="<i>textual</i>"]</code>.</li>
+					<li>
+						<b>LET</b> <var>non_textual_content_images</var> be the result of calling <a href="#check-for-node">check for node</a> on 
+                        <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="<i>schema:accessibilityFeature</i>" and <br>(text()="<i>chartOnVisual</i>" or text()="<i>chemOnVisual</i>" or <br>
+                         text()="<i>diagramOnVisual"</i> or text()="<i>mathOnVisual</i>" or <br>
+                         text()="<i>musicOnVisual"</i> or text()="<i>textOnVisual</i>")]</code>.
+					</li>
+                    
+                    <li><b>LET</b> <var>textual_alternative_images</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="<i>schema:accessibilityFeature</i>" and <br>(text()="<i>longDescription</i>" or text()="<i>alternativeText</i>" or text()="<i>describedMath"</i>)]</code>.
+                    
+					</li>
+				</ol>
+				</section><section id="instructions-0"><div class="header-wrapper"><h4 id="x4-2-3-instructions"><bdi class="secno">4.2.3 </bdi>Instructions</h4><a class="self-link" href="#instructions-0" aria-label="Permalink for Section 4.2.3"></a></div>
+				<ol class="condition">
+					<li>
+						<span><b>IF</b> <var>all_necessary_content_textual</var>:</span>
+						<span><b>THEN</b> display <code id="nonvisual-reading-readable">"Readable in read aloud and braille"</code>.</span>
+					</li>
+					<li>
+						<span><b>ELSE IF</b> <var>non_textual_content_images</var> <b>AND</b> <b>NOT</b> <var>textual_alternative_images</var>:</span>
+						<span><b>THEN</b> display <code id="nonvisual-reading-not-fully">"Not fully readable in read aloud and braille"</code>.</span>
+					</li>
+					<li><b>ELSE</b> display <code id="nonvisual-reading-may-not-fully">"May not be fully readable in read aloud and braille"</code>.</li>
+				</ol>
+
+
+			</section></section>
+			
+			
+			<section id="conformance-group"><div class="header-wrapper"><h3 id="x4-3-conformance"><bdi class="secno">4.3 </bdi>Conformance</h3><a class="self-link" href="#conformance-group" aria-label="Permalink for Section 4.3"></a></div>
+				
+				<p>This technique relates to <a href="../../principles/#conformance-group">Conformance key information</a>.</p>
+
+				<p>This algorithm takes the <var>package_document_as_text</var> argument: a UTF-8 string representing the Package document.</p>
+                 
+				<section id="understanding-the-variables-1"><div class="header-wrapper"><h4 id="x4-3-1-understanding-the-variables"><bdi class="secno">4.3.1 </bdi>Understanding the variables</h4><a class="self-link" href="#understanding-the-variables-1" aria-label="Permalink for Section 4.3.1"></a></div>
+				<dl>
+					<dt><var>epub_accessibility_1_0</var></dt>
+					<dd>
+                        <p>If true it indicates that the <i>conformsTo="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-a"</i> (EPUB Accessibility Specification 1.0 A) or the <i>conformsTo="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aa"</i> (EPUB Accessibility Specification 1.0 AA) or the <i>conformsTo="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aaa"</i> (EPUB Accessibility Specification 1.0 AAA) is present in the package document, otherwise if false it means that the metadata is not present.</p>
+						<p>This means that the publication conforms with either the requirements of EPUB Accessibility Spec 1.0, at level A, AA, or AAA.</p>
+					</dd>
+					<dt><var>epub_accessibility_1_1</var></dt>
+					<dd>
+                        <p>If true it indicates that the <i>conformsTo</i> contains "EPUB Accessibility 1.1"  (EPUB Accessibility Specification 1.1) is present in the package document, otherwise if false it means that the metadata is not present.</p>
+						<p>This means that the publication conforms with the requirements of EPUB Accessibility Spec 1.1.</p>
+					</dd>
+					<dt><var>wcag_20</var></dt>
+					<dd>
+                        <p>If true it indicates that the <i>conformsTo</i> contains "WCAG 2.0" or <i>conformsTo="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-a"</i> (EPUB Accessibility Specification 1.0 A) or the <i>conformsTo="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aa"</i> (EPUB Accessibility Specification 1.0 AA) or the <i>conformsTo="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aaa"</i> (EPUB Accessibility Specification 1.0 AAA) are present in the package document, otherwise if false it means that the metadata is not present.</p>
+						<p>This means that the publication conforms with the requirements of WCAG version 2.0 or with the requirements of EPUB Accessibility Spec 1.0 (at level A, AA, or AAA). This is because being compliant with EPUB Accessibility 1.0 specification means at least being compliant with WCAG 2.0 specification.</p>
+					</dd>
+					<dt><var>wcag_21</var></dt>
+					<dd>
+						 <p>If true it indicates that the <i>conformsTo</i> contains "WCAG 2.1" is present in the package document, otherwise if false it means that the metadata is not present.</p>
+						<p>This means that the publication conforms with the requirements of WCAG version 2.1.</p>
+					</dd>
+					<dt><var>wcag_22</var></dt>
+					<dd>
+				        <p>If true it indicates that the <i>conformsTo</i> contains "WCAG 2.2" is present in the package document, otherwise if false it means that the metadata is not present.</p>
+						<p>This means that the publication conforms with the requirements of WCAG version 2.2.</p>
+					</dd>
+					<dt><var>level_a</var></dt>
+					<dd>
+						<p>If true it indicates that the <i>conformsTo</i> contains "Level A" or the <i>conformsTo="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-a"</i> (EPUB Accessibility Specification 1.0 A) are present in the package document, otherwise if false it means that the metadata is not present.</p>
+						<p>This means that the publication conforms with the requirements of WCAG level A or with the requirements of EPUB Accessibility Spec 1.0 level A.</p>
+					</dd>
+					<dt><var>level_aa</var></dt>
+					<dd>
+						<p>If true it indicates that the <i>conformsTo</i> contains "Level AA" or the <i>conformsTo="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aa"</i> (EPUB Accessibility Specification 1.0 AA) are present in the package document, otherwise if false it means that the metadata is not present.</p>
+						<p>This means that the publication conforms with the requirements of WCAG level AA or with the requirements of EPUB Accessibility Spec 1.0 level AA.</p>
+					</dd>
+					<dt><var>level_aaa</var></dt>
+					<dd>
+						<p>If true it indicates that the <i>conformsTo</i> contains "Level AAA" or the <i>conformsTo="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aaa"</i> (EPUB Accessibility Specification 1.0 A) are present in the package document, otherwise if false it means that the metadata is not present.</p>
+						<p>This means that the publication conforms with the requirements of WCAG level AAA or with the requirements of EPUB Accessibility Spec 1.0 level AAA.</p>
+					</dd>
+					<dt><var>certifier</var></dt>
+					<dd>
+						<p>Returns the description of <i>a11y:certifiedBy</i> (Compliance certification by (name)) if present in the package document, otherwise if false it means that the metadata is not present.</p>
+						<p>This means that the name of the organization responsible for compliance testing and certification of the product is present.</p>
+					</dd>
+					<dt><var>certifier_credentials</var></dt>
+					<dd>
+						<p>Returns the description of <i>a11y:certifierCredential</i> (Compliance certification by (URL)) if present in the package document, otherwise if false it means that the metadata is not present.</p> 
+						<p>This means that the the URL of a web page belonging to an organization responsible for compliance testing and certification of the product is present – typically a ‘home page’ or a page describing the certification scheme itself.</p>
+					</dd>
+					<dt><var>certification_date</var></dt>
+					<dd>
+						<p>Returns the description of <i>dcterms:date</i> if that date property is associated with the <i>a11y:certifiedBy</i> (Latest accessibility assessment date) if present in the package document, otherwise if false it means that the metadata is not present.</p>
+						<p>This means that the date of the latest assessment or re-assessment of the accessibility of the product is present.</p>
+					</dd>
+					<dt><var>certifier_report</var></dt>
+					<dd>
+						<p>Returns the description of <i>a11y:certifierReport</i> (Compliance web page for detailed accessibility information) if present in the OPF, otherwise if false it means that the metadata is not present.</p>
+						<p>This means that is present the URL of a compliance web page for detailed accessibility information. The web page should be maintained by an independent compliance scheme or testing organization. Note the web page may include information about specific national requirements or voluntary conformance reports.</p>
+					</dd>
+                    <dt><var>conformance-claimed</var></dt>
+					<dd>
+						<p>If true it indicates that the <i>conformsTo</i> is present in the package document, otherwise if false it means that the metadata is not present.</p>
+						<p>This means that the publication conforms to some specification.</p>
+					</dd>
+
+				</dl>
+				
+				</section><section id="variables-setup-1"><div class="header-wrapper"><h4 id="x4-3-2-variables-setup"><bdi class="secno">4.3.2 </bdi>Variables setup</h4><a class="self-link" href="#variables-setup-1" aria-label="Permalink for Section 4.3.2"></a></div>
+				<ol class="condition">
+					<li><b>LET</b> <var>package_document</var> be the result of calling <a href="#pre-processing">preprocessing</a> given <var>package_document_as_text</var>.</li>
+                    
+					<li><b>LET</b> <var>epub_accessibility_1_0</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="dcterms:<i>conformsTo</i>" and contains(text(), <i>http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-</i>"]</code>.</li>
+                    
+                    <li><b>LET</b> <var>epub_accessibility_1_1</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="dcterms:<i>conformsTo</i>" and contains(text(), <i>"EPUB Accessibility 1.1"</i>)]</code>.</li>
+                    
+					<li><b>LET</b> <var>wcag_20</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="dcterms:<i>conformsTo</i>" and contains(text(), <i>"http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-"</i>)]</code> <b>OR</b> calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="dcterms:<i>conformsTo</i>" and contains(text(), <i>"WCAG 2.0"</i>)]</code></li>
+                    
+                    <li><b>LET</b> <var>wcag_21</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="dcterms:<i>conformsTo</i>" and contains(text(), <i>WCAG 2.1"</i>)]</code>.</li>
+            
+					<li><b>LET</b> <var>wcag_22</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="dcterms:<i>conformsTo</i>" and contains(text(), <i>WCAG 2.2"</i>)]</code>.</li>
+    
+					<li><b>LET</b> <var>level_a</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="dcterms:<i>conformsTo</i>" and contains(text(), <i>Level A"</i>)]</code> <b>OR</b> calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="dcterms:<i>conformsTo</i>" and text()=<i>http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-a</i>"]</code>.</li>
+                    
+					<li><b>LET</b> <var>level_aa</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="dcterms:<i>conformsTo</i>" and contains(text(), <i>Level AA"</i>)]</code> <b>OR</b> calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="dcterms:<i>conformsTo</i>" and text()=<i>http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aa</i>"]</code>.</li>
+                    
+                    <li><b>LET</b> <var>level_aaa</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="dcterms:<i>conformsTo</i>" and contains(text(), <i>Level AAA"</i>)]</code> <b>OR</b> calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="dcterms:<i>conformsTo</i>" and text()=<i>http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aaa</i>"]</code>.</li>
+                    
+					
+                    <li><b>LET</b> <var>certifier</var> be the value of the node extracted from <var>package_document</var>, using the xpath <code class="xpath">/package/metadata/meta[@property="a11y:<i>certifiedBy</i>"]/text()</code>.</li>
+					
+                    <li><b>LET</b> <var>certifier_credentials</var> be the value of the node extracted from <var>package_document</var>, using the xpath <code class="xpath">/package/metadata/meta[@property="a11y:<i>certifierCredential</i>"]/text()</code>.</li>
+					
+                    <li><b>LET</b> <var>certification_date</var> be the value of the node extracted from <var>package_document</var>, using the xpath <code class="xpath">/package/metadata/meta[@property="dcterms:date" and @refines=//meta[@property="a11y:certifiedBy"]/@id]/text()]</code>.</li>
+					
+                    <li><b>LET</b> <var>certifier_report</var> be the value of the node extracted from <var>package_document</var>, using the xpath <code class="xpath">/package/metadata/meta[@property="a11y:<i>certifierReport</i>"]/text()]</code>.</li>
+                    
+                    <li><b>LET</b> <var>conformance_claimed</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="dcterms:<i>conformsTo</i>"]</code>.</li>
+				</ol>
+				
+				</section><section id="instructions-1"><div class="header-wrapper"><h4 id="x4-3-3-instructions"><bdi class="secno">4.3.3 </bdi>Instructions</h4><a class="self-link" href="#instructions-1" aria-label="Permalink for Section 4.3.3"></a></div>
+				<ol class="condition">
+					<li>
+						<span><b>IF</b> <var>level_aaa</var>:</span>
+						<span><b>THEN</b> display <code id="conformance-aaa">"This publication exceeds accepted accessibility standards"</code>.</span>
+					</li>
+					<li>
+						<span><b>ELSE IF</b> <var>level_aa</var>:</span>
+						<span><b>THEN</b> display <code id="conformance-aa">"This publication meets accepted accessibility standards"</code>.</span>
+					</li>
+					<li>
+						<span><b>ELSE IF</b> <var>level_a</var>:</span>
+						<span><b>THEN</b> display <code id="conformance-a">"This publication meets minimum accessibility standards"</code>.</span>
+					</li>
+                    <li>
+  						<span><b>ELSE IF</b> <var>conformance_claimed</var>:</span>
+						<span><b>THEN</b> display <code id="unknown-conformance">"Conformance to accepted standards for accessibility of this publication cannot be determined"</code>.</span>
+                      
+                    </li>
+					<li>
+						<span><b>ELSE</b>:</span>
+						<span><b>THEN</b> display <code id="conformance-no">"The publication does not include a conformance statement"</code>.</span>
+					</li>
+					<li>
+						<span><b>IF</b> <var>certifier</var> is <b>NOT</b> empty:</span>
+						<span><b>THEN</b></span>
+						<ul class="condition">
+							<li>display <code id="conformance-certifier">"This publication is certified by "</code></li>
+							<li>display <var>certifier</var>.</li>
+						</ul>
+					</li>
+					<li>
+						<span><b>IF</b> <var>certifier_credentials</var> is <b>NOT</b> empty:</span>
+						<span><b>THEN</b></span>
+						<ul class="condition">
+							<li>display <code id="conformance-certifier-credentials">"The certifier's credential is "</code></li>
+							<li>display <var>certifier_credentials</var> as link <b>IF</b> <var>certifier_credentials</var> is an URL.</li>
+						</ul>
+					</li>
+					<li>
+						<span>display <code id="conformance-details">"Detailed Conformance Information"</code> as heading.</span>
+					</li>
+					<li>
+						<span><b>IF</b> <var>epub_accessibility_1_0</var> <b>OR</b> <var>epub_accessibility_1_1</var> <b>OR</b> <var>wcag_20</var> <b>OR</b> <var>wcag_21</var> <b>OR</b> <var>wcag_22</var> <b>OR</b> <var>level_aaa</var> <b>OR</b> <var>level_aa</var> <b>OR</b> <var>level_a</var>:</span>
+						<span><b>THEN</b> display <code id="conformance-claim">"This publication claims to meet "</code>.</span>
+					</li>
+					<li>
+						<span><b>IF</b> <var>epub_accessibility_1_0</var>:</span>
+						<span><b>THEN</b> display <code id="conformance-epub-accessibility-1-0">" EPUB Accessibility 1.0 "</code>.</span>
+					</li>
+					<li>
+						<span><b>ELSE IF</b> <var>epub_accessibility_1_1</var>:</span>
+						<span><b>THEN</b> display <code id="conformance-epub-accessibility-1-1">" EPUB Accessibility 1.1 "</code>.</span>
+					</li>
+					<li>
+						<span><b>IF</b> <var>wcag_22</var>:</span>
+						<span><b>THEN</b> display <code id="conformance-wcag-2-2">" WCAG 2.2 "</code>.</span>
+					</li>
+					<li>
+						<span><b>ELSE IF</b> <var>wcag_21</var>:</span>
+						<span><b>THEN</b> display <code id="conformance-wcag-2-1">" WCAG 2.1 "</code>.</span>
+					</li>
+					<li>
+						<span><b>ELSE IF</b> <var>wcag_20</var>:</span>
+						<span><b>THEN</b> display <code id="conformance-wcag-2-0">" WCAG 2.0 "</code>.</span>
+					</li>
+					<li>
+						<span><b>IF</b> <var>level_aaa</var>:</span>
+						<span><b>THEN</b> display <code id="conformance-level-aaa">" Level AAA"</code>.</span>
+					</li>
+					<li>
+						<span><b>ELSE IF</b> <var>level_aa</var>:</span>
+						<span><b>THEN</b> display <code id="conformance-level-aa">" Level AA"</code>.</span>
+					</li>
+					<li>
+						<span><b>ELSE IF</b> <var>level_a</var>:</span>
+						<span><b>THEN</b> display <code id="conformance-level-a">" Level A"</code>.</span>
+					</li>
+					<li>
+						<span><b>IF</b> <var>certification_date</var> <b>OR</b> <var>certifier</var> <b>OR</b> <var>certifier_credentials</var>:</span>
+						<span><b>THEN</b> display <code id="conformance-certification-info">"The publication was certified "</code>.</span>
+					</li>
+					<li>
+						<span><b>IF</b> <var>certification_date</var>:</span>
+						<span><b>THEN</b></span>
+						<ul class="condition">
+							<li>display <code id="conformance-certification-date-prefix">" on "</code></li>
+							<li>display <var>certification_date</var>.</li>
+						</ul>
+					</li>
+					<li>
+						<span><b>IF</b> <var>certifier</var>:</span>
+						<span><b>THEN</b></span>
+						<ul class="condition">
+							<li>display <code id="conformance-certifier-prefix">" by "</code></li>
+							<li>display <var>certifier</var>.</li>
+						</ul>
+					</li>
+					<li>
+						<span><b>IF</b> <var>certifier_credentials</var>:</span>
+						<span><b>THEN</b></span>
+						<ul class="condition">
+							<li>display <code id="conformance-certifier-credentials-prefix">" with a credential of "</code></li>
+							<li>display <var>certifier_credentials</var> as link <b>IF</b> <var>certifier_credentials</var> is an URL.</li>
+						</ul>
+					</li>
+					<li>
+						<span><b>IF</b> <var>certifier_report</var>:</span>
+						<span><b>THEN</b></span>
+						<ul class="condition">
+							<li>display <code id="conformance-certifier-report">"For more information refer to the certifier's report."</code></li>
+							<li>with <var>certifier_report</var> as link.</li>
+						</ul>
+					</li>
+				</ol>
+                
+			</section></section>
+			
+		
+			<section id="pre-recorded-audio"><div class="header-wrapper"><h3 id="x4-4-pre-recorded-audio"><bdi class="secno">4.4 </bdi>Pre-recorded audio</h3><a class="self-link" href="#pre-recorded-audio" aria-label="Permalink for Section 4.4"></a></div>
+				
+				<p>This technique relates to <a href="../../principles/#pre-recorded-audio">Pre-recorded audio key information</a>.</p>
+                
+                <p>This algorithm takes the <var>package_document_as_text</var> argument: a UTF-8 string representing the Package document.</p>
+
+				<section id="understanding-the-variables-2"><div class="header-wrapper"><h4 id="x4-4-1-understanding-the-variables"><bdi class="secno">4.4.1 </bdi>Understanding the variables</h4><a class="self-link" href="#understanding-the-variables-2" aria-label="Permalink for Section 4.4.1"></a></div>
+				<dl>
+					<dt><var>all_content_audio</var></dt>
+                    <dd>
+				        <p>If true it indicates that the <i>accessModeSufficient="auditory"</i> (all main content is provided in audio form) is present in the package document, otherwise if false it means that the metadata is not present.</p>
+                    </dd>
+                    <dt><var>synchronised_pre_recorded_audio</var></dt>
+					<dd>
+                        <p>If true it indicates that the <i>accessibilityFeature="sychronizedAudioText"</i> is present in the package document, otherwise, if false, it means that the metadata is not present.</p>
+						<p>This indicates that text-synchronised pre-recorded audio narration (natural or synthesised voice) is included for substantially all textual matter, including all alternative descriptions, e.g. via a SMIL media overlay.</p>
+					</dd>
+                    
+  					<dt><var>audio_content</var></dt>
+					<dd>
+                        <p>If true it indicates that the <i>accessMode="auditory"</i> is present in the package document, otherwise, if false, it means that the metadata is not present.</p>
+
+						<p>This indicates that pre-recorded audio content is included as part of the work.</p>
+					</dd>
+                  
+                    
+                </dl>
+				</section><section id="variables-setup-2"><div class="header-wrapper"><h4 id="x4-4-2-variables-setup"><bdi class="secno">4.4.2 </bdi>Variables setup</h4><a class="self-link" href="#variables-setup-2" aria-label="Permalink for Section 4.4.2"></a></div>
+				<ol class="condition">
+					<li><b>LET</b> <var>package_document</var> be the result of calling <a href="#pre-processing">preprocessing</a> given <var>package_document_as_text</var>.</li>
+                    
+					<li><b>LET</b> <var>all_content_audio</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessModeSufficient</i>" and text()="<i>auditory</i>"]</code>.</li>
+                    
+					<li><b>LET</b> <var>synchronised_pre_recorded_audio</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>sychronizedAudioText</i>"]</code>.</li>
+                    
+					<li><b>LET</b> <var>audio_content</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessMode</i>" and text()="<i>auditory</i>"]</code>.</li>
+                    
+				</ol>
+				</section><section id="instructions-2"><div class="header-wrapper"><h4 id="x4-4-3-instructions"><bdi class="secno">4.4.3 </bdi>Instructions</h4><a class="self-link" href="#instructions-2" aria-label="Permalink for Section 4.4.3"></a></div>
+				<ol class="condition">
+					<li>
+						<span><b>IF</b> <var>all_content_audio</var>:</span>
+						<span><b>THEN</b> display <code id="pre-recorded-audio-only">"Audio only"</code>.</span>
+					</li>
+					<li>
+						<span><b>ELSE IF</b> <var>synchronised_pre_recorded_audio</var>:</span>
+						<span><b>THEN</b> display <code id="pre-recorded-audio-synchronized">"Synchronized audio and text"</code>.</span>
+					</li>					
+					<li>
+						<span><b>ELSE IF</b> <var>audio_content</var>:</span>
+						<span><b>THEN</b> display <code id="pre-recorded-audio-complementary">"Complementary audio and text"</code>.</span>
+					</li>		
+
+					<li>
+						<b>ELSE</b> either omit this key informtion if metadata is missing or display <code id="pre-recorded-audio-no-metadata">"No information about pre-recorded audio"</code>.
+					</li>
+				</ol>
+			</section></section>
+
+      <section id="navigation"><div class="header-wrapper"><h3 id="x4-5-navigation"><bdi class="secno">4.5 </bdi>Navigation</h3><a class="self-link" href="#navigation" aria-label="Permalink for Section 4.5"></a></div>
+				
+				<p>This technique relates to <a href="../../principles/#navigation">Navigation key information</a>.</p>
+                <p>This algorithm takes the <var>package_document_as_text</var> argument: a UTF-8 string representing the Package document.</p>
+
+				<section id="understanding-the-variables-3"><div class="header-wrapper"><h4 id="x4-5-1-understanding-the-variables"><bdi class="secno">4.5.1 </bdi>Understanding the variables</h4><a class="self-link" href="#understanding-the-variables-3" aria-label="Permalink for Section 4.5.1"></a></div>
+				<dl>
+					<dt><var>table_of_contents_navigation</var></dt>
+					<dd>
+                        <p>If true it indicates that the <i>accessibilityFeature="tableOfContents"</i> (Table of contents navigation) is present in the package document, otherwise if false it means that the metadata is not present.</p>
+ 
+						<p>This means that the resource includes a table of contents that provides links to the major sections of the content.</p>
+					</dd>
+					<dt><var>index_navigation</var></dt>
+					<dd>
+                        <p>If true it indicates that the <i>accessibilityFeature="index"</i> (Index navigation) is present in the package document, otherwise if false it means that the metadata is not present.</p>
+
+                        <p>This means that there is an index that provides direct (eg hyperlinked) access to uses of the index terms in the document body.</p>
+					</dd>
+                    <dt><var>page_navigation</var></dt>
+                    <dd>
+                        <p>If true it indicates that the <i>accessibilityFeature="pageNavigation"</i> (Page Navigation) is present in the package document, otherwise if false it means that the metadata is not present.</p>
+                        <p>This means that the e-publication includes a means of navigating to static page break locations.</p>
+                    </dd>
+					<dt><var>next_previous_structural_navigation</var></dt>
+					<dd>
+                        <p>If true it indicates that the <i>accessibilityFeature="structuralNavigation"</i> (Next / Previous structural navigation) is present in the package document, otherwise if false it means that the metadata is not present.</p>
+						<p>This means that all levels of heading and other structural elements of the content are correctly marked up and (if applicable) numbered, to enable fast next heading / previous heading, next chapter / previous chapter navigation without returning to the table of contents.</p>
+					</dd>
+				</dl>
+				</section><section id="variables-setup-3"><div class="header-wrapper"><h4 id="x4-5-2-variables-setup"><bdi class="secno">4.5.2 </bdi>Variables setup</h4><a class="self-link" href="#variables-setup-3" aria-label="Permalink for Section 4.5.2"></a></div>
+				<ol class="condition">
+                    
+					<li><b>LET</b> <var>package_document</var> be the result of calling <a href="#pre-processing">preprocessing</a> given <var>package_document_as_text</var>.</li>
+                     
+                    <li><b>LET</b> <var>table_of_contents_navigation</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>tableOfContents</i>"]</code>.</li>
+
+                    <li><b>LET</b> <var>index_navigation</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>index</i>"]</code>.</li>
+
+                    <li><b>LET</b> <var>page_navigation</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>pageNavigation</i>"]</code>.</li>
+                    
+                    <li><b>LET</b> <var>next_previous_structural_navigation</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>structuralNavigation</i>"]</code>.</li>
+
+  				</ol>
+				</section><section id="instructions-3"><div class="header-wrapper"><h4 id="x4-5-3-instructions"><bdi class="secno">4.5.3 </bdi>Instructions</h4><a class="self-link" href="#instructions-3" aria-label="Permalink for Section 4.5.3"></a></div>
+				<ol class="condition">
+					<li>
+						<span><b>IF</b> <var>table_of_contents_navigation</var> <b>OR</b> <var>index_navigation</var> <b>OR</b> <var>print_equivalent_page_numbering</var> <b>OR</b> <var>next_previous_structural_navigation</var>:</span>
+						<span><b>THEN</b> <b>LET</b> <var>navigation</var> be  an empty array.</span>
+						<ol class="condition">
+							<li>
+								<span><b>IF</b> <var>table_of_contents_navigation</var>:</span>
+								<span><b>THEN</b> <b>APPEND</b> <code id="navigation-toc">"table of contents"</code> to <var>navigation</var>.</span>
+							</li>
+							<li>
+								<span><b>IF</b> <var>index_navigation</var>:</span>
+								<span><b>THEN</b> <b>APPEND</b> <code id="navigation-index">"index"</code> to <var>navigation</var>.</span>
+							</li>
+                            <li>
+							     <span><b>IF</b> <var>page_navigation</var>:</span>
+							     <span><b>THEN</b> <b>APPEND</b> <code id="navigation-page-navigation">"supports page navigation"</code> to <var>navigation</var>.</span>
+                            </li>
+ 							<li>
+								<span><b>IF</b> <var>next_previous_structural_navigation</var>:</span>
+								<span><b>THEN</b> <b>APPEND</b> <code id="navigation-structural">"structural navigation"</code> to <var>navigation</var>.</span>
+							</li>
+							<li><b>LET</b> <var>navigation_string</var> be the result of:
+								<ul class="condition">
+									<li>calling <a href="#join-array-to-comma-list">join array to comma list</a> given <var>navigation</var></li>
+									<li>concatenating <code id="navigation-intro">"Navigation by "</code> to the beginning of the string.</li>
+								</ul>
+							</li>
+							<li>display <var>navigation_string</var>.</li>
+						</ol>
+					</li>
+					<li>
+						<b>ELSE</b> either omit this key informtion if metadata is missing or display <code id="navigation-no-metadata">"No information about navigation"</code>.
+					</li>
+				</ol>
+			</section></section>
+                
+			<section id="charts-diagrams-and-formulas"><div class="header-wrapper"><h3 id="x4-6-charts-diagrams-and-formulas"><bdi class="secno">4.6 </bdi>Charts, diagrams, and formulas</h3><a class="self-link" href="#charts-diagrams-and-formulas" aria-label="Permalink for Section 4.6"></a></div>
+				
+				<p>This technique relates to <a href="../../principles/#charts-diagrams-and-formulas">Charts, diagrams, and formulas key information</a>.</p>
+                
+                <p>This algorithm takes the <var>package_document_as_text</var> argument: a UTF-8 string representing the Package document.</p>
+				<section id="understanding-the-variables-4"><div class="header-wrapper"><h4 id="x4-6-1-understanding-the-variables"><bdi class="secno">4.6.1 </bdi>Understanding the variables</h4><a class="self-link" href="#understanding-the-variables-4" aria-label="Permalink for Section 4.6.1"></a></div>
+				<dl>
+					<dt><var>contains_charts_diagrams</var></dt>
+					<dd>
+                        <p>If true it indicates that the <i>accessibilityFeature="chartOnVisual"</i> (charts encoded in visual form) is present in the package document, otherwise if false it means that the metadata is not present.</p>                   
+						<p>This means that there is a positive indication that the product has some information conveyed via some form of illustration, such as a graph, a chart, a diagram, a figure, etc).</p>
+					</dd>
+					<dt><var>long_text_descriptions</var></dt>
+					<dd>
+                        <p>If true it indicates that the <i>accessibilityFeature="longDescriptions"</i> (Full alternative textual description) is present in the package document, otherwise if false it means that the metadata is not present.</p>
+						<p>This means that there is a positive indication that a full alternative textual description has been supplied for all of the graphs, charts, diagrams, or figures necessary to understand the content.</p>
+					</dd>
+					<dt><var>contains_chemical_formula</var></dt>
+					<dd>              
+						<p>If true it indicates that the <i>accessibilityFeature="chemOnVisual"</i> (Chemical content) is present in the package document, otherwise if false it means that the metadata is not present.</p>
+						<p>This means that there is a positive indication that the publication contains chemical notations, formulae.</p>
+					</dd>
+					<dt><var>chemical_formula_as_chemml</var></dt>
+					<dd>
+						<p>If true it indicates that the <i>accessibilityFeature="ChemML"</i> (Accessible chemistry content as ChemML) is present in the package document, otherwise if false it means that the metadata is not present.</p>
+						<p>This means that there is a positive indication that the chemical formulae are presented using ChemML and works with compatible assistive technology.</p>
+					</dd>
+					<dt><var>contains_math_formula</var></dt>
+					<dd>
+						<p>If true it indicates that the <i>accessibilityFeature="describedMath"</i> (Mathematical content) is present in the package document, otherwise if false it means that the metadata is not present.</p>
+						<p>This means that there is a positive indication that the publication contains mathematical notation, equations, formulae.</p>
+					</dd>
+					<dt><var>math_formula_as_latex</var></dt>
+					<dd>
+						<p>If true it indicates that the <i>accessibilityFeature="latex"</i> (Accessible math content as LaTeX) is present in the package document, otherwise if false it means that the metadata is not present.</p>
+						<p>This means that there is a positive indication that the chemical formulae are presented using LaTeX and works with compatible assistive technology.</p>
+					</dd>
+					<dt><var>math_formula_as_mathml</var></dt>
+					<dd>
+						<p>If true it indicates that the <i>accessibilityFeature="MathML"</i> (Accessible math content as MathML) is present in the package document, otherwise if false it means that the metadata is not present.</p>
+						<p>This means that there is a positive indication that all mathematical content is presented using MathML and works with compatible assistive technology.</p>
+					</dd>
+				</dl>
+				</section><section id="variables-setup-4"><div class="header-wrapper"><h4 id="x4-6-2-variables-setup"><bdi class="secno">4.6.2 </bdi>Variables setup</h4><a class="self-link" href="#variables-setup-4" aria-label="Permalink for Section 4.6.2"></a></div>
+				<ol class="condition">
+					<li><b>LET</b> <var>package_document</var> be the result of calling <a href="#pre-processing">preprocessing</a> given <var>package_document_as_text</var>.</li>
+                    
+                    <li><b>LET</b> <var>contains_charts_diagrams</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>chartOnVisual</i>"]</code>.</li>
+					
+                    <li><b>LET</b> <var>long_text_descriptions</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>longDescriptions</i>"]</code>.</li>
+					
+                    <li><b>LET</b> <var>contains_chemical_formula</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>chemOnVisual</i>"]</code>.</li>
+					
+                    <li><b>LET</b> <var>chemical_formula_as_chemml</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>ChemML</i>"]</code>.</li>
+					
+                    
+	                <li><b>LET</b> <var>contains_math_formula</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>describedMath</i>"]</code>.</li>
+				
+	                <li><b>LET</b> <var>math_formula_as_latex</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>latex</i>"]</code>.</li>
+
+	                <li><b>LET</b> <var>math_formula_as_mathml</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>MathML</i>"]</code>.</li>
+				</ol>
+				</section><section id="instructions-4"><div class="header-wrapper"><h4 id="x4-6-3-instructions"><bdi class="secno">4.6.3 </bdi>Instructions</h4><a class="self-link" href="#instructions-4" aria-label="Permalink for Section 4.6.3"></a></div>
+				<ol class="condition">
+					<li>
+						<span><b>IF</b> (<var>contains_charts_diagrams</var> <b>AND</b> <var>long_text_descriptions</var>):</span>
+						<span><b>THEN</b> display <code id="charts-diagrams-formulas-extended">"Charts and diagrams have extended descriptions"</code>.</span>
+					</li>
+					<li>
+						<span><b>IF</b> <var>chemical_formula_as_chemml</var>:</span>
+						<span><b>THEN</b> display <code id="charts-diagrams-formulas-accessible-chemistry">"Accessible chemistry content"</code>.</span>
+					</li>
+					<li>
+						<span><b>IF</b> <var>math_formula_as_latex</var> <b>OR</b> <var>math_formula_as_mathml</var>:</span>
+						<span><b>THEN</b> display <code id="charts-diagrams-formulas-accessible-math">"Accessible math content"</code>.</span>
+					</li>
+					<li>
+						<span><b>IF</b> (<var>contains_charts_diagrams</var> <b>OR</b> <var>contains_chemical_formula</var> <b>OR</b> <var>contains_math_formula</var>) <b>AND</b> <b>NOT</b> (<var>long_text_descriptions</var> <b>OR</b> <var>chemical_formula_as_chemml</var> <b>OR</b> <var>math_formula_as_latex</var> <b>OR</b> <var>math_formula_as_mathml</var>):</span>
+						<span><b>THEN</b> display <code id="charts-diagrams-formulas-unknown">"Accessibility of formulas, charts, and diagrams unknown"</code>.</span>
+					</li>
+				</ol>
+
+			</section></section>
+			
+			<section id="hazards"><div class="header-wrapper"><h3 id="x4-7-hazards"><bdi class="secno">4.7 </bdi>Hazards</h3><a class="self-link" href="#hazards" aria-label="Permalink for Section 4.7"></a></div>
+				
+				<p>This technique relates to <a href="../../principles/#hazards">Hazards key information</a>.</p>
+				<p>This algorithm takes the <var>package_document_as_text</var> argument: a UTF-8 string representing the Package document.</p>
+        
+        <section id="understanding-the-variables-5"><div class="header-wrapper"><h4 id="x4-7-1-understanding-the-variables"><bdi class="secno">4.7.1 </bdi>Understanding the variables</h4><a class="self-link" href="#understanding-the-variables-5" aria-label="Permalink for Section 4.7.1"></a></div>
+				<dl>
+					<dt><var>no_hazards_or_warnings_confirmed</var></dt>
+					<dd>
+                        <p>If true it indicates that the <i>accessibilityHazard="none"</i> (no accessibility hazards) is present in the package document, otherwise if false it means that the metadata is not present.</p>                        
+						<p>This means there is a positive indication in the accessiblity metadata within the EPUB confirming there are no associated hazard warnings with this product.</p>
+					</dd>
+					<dt><var>flashing_hazard</var></dt>
+					<dd>
+                        <p>If true it indicates that the <i>accessibilityHazard="flashing"</i> (WARNING - Flashing hazards) is present in the package document, otherwise if false it means that the metadata is not present.</p>                         
+						<p>This means that there is a positive indication in the accessiblity metadata within the EPUB confirming that the product has a flashing hazard which must be displayed.</p>
+					</dd>
+					<dt><var>no_flashing_hazards</var></dt>
+					<dd>
+                        <p>If true it indicates that the <i>accessibilityHazard="noFlashingHazard"</i> (No flashing hazard warning necessary) is present in the package document, otherwise if false it means that the metadata is not present.</p> 
+						<p>This means there is a positive indication in the accessiblity metadata within the EPUB confirming there are no flashing hazards associated with this product.</p>
+					</dd>
+					<dt><var>motion_simulation_hazard</var></dt>
+					<dd>
+                        <p>If true it indicates that the <i>accessibilityHazard="motionSimulation"</i> (WARNING - Motion simulation hazard) is present in the package document, otherwise if false it means that the metadata is not present.</p> 						
+						<p>This means that there is a positive indication in the accessiblity metadata within the EPUB confirming that the product has a motion simulation hazard which must be displayed.</p>
+					</dd>
+					<dt><var>no_motion_hazards</var></dt>
+					<dd>
+                        <p>If true it indicates that the <i>accessibilityHazard="noMotionSimulationHazard"</i> (No motion simulation hazard warning necessary) is present in the package document, otherwise if false it means that the metadata is not present.</p> 		<p>This means there is a positive indication in the accessiblity metadata within the EPUB confirming there are no motion simulation hazards associated with this product.</p>
+					</dd>
+					<dt><var>sound_hazard</var></dt>
+					<dd>
+                        <p>If true it indicates that the <i>accessibilityHazard="Sound"</i> (WARNING - Sound hazard) is present in the package document, otherwise if false it means that the metadata is not present.</p> 						
+ 						<p>This means that there is a positive indication in the accessiblity metadata within the EPUB confirming that the product has a sound hazard which must be displayed.</p>
+					</dd>
+					<dt><var>no_sound_hazards</var></dt>
+					<dd>
+                        <p>If true it indicates that the <i>accessibilityHazard="noSoundHazard"</i> (No sound hazard warning necessary) is present in the package document, otherwise if false it means that the metadata is not present.</p> 						
+						<p>This means there is a positive indication in the accessiblity metadata within the EPUB confirming there are no sound hazards associated with this product.</p>
+					</dd>
+					<dt><var>unknown_if_contains_hazards</var></dt>
+					<dd>
+                        <p>If true it indicates that the <i>accessibilityHazard="unknown"</i> (unknown hazards) is present in the package document, otherwise if false it means that the metadata is not present.</p> 						
+						<p>This means that the product has not been assessed for hazards and there is no information about potential hazards.</p>
+					</dd>
+                    
+				</dl>
+                
+				</section><section id="variables-setup-5"><div class="header-wrapper"><h4 id="x4-7-2-variables-setup"><bdi class="secno">4.7.2 </bdi>Variables setup</h4><a class="self-link" href="#variables-setup-5" aria-label="Permalink for Section 4.7.2"></a></div>
+				<ol class="condition">
+					<li><b>LET</b> <var>package_document</var> be the result of calling <a href="#pre-processing">preprocessing</a> given <var>package_document_as_text</var>.</li>
+                    
+                    <li><b>LET</b> <var>no_hazards_or_warnings_confirmed</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityHazard</i>" and text()="<i>none</i>"]</code>.</li>
+
+                    <li><b>LET</b> <var>flashing_hazard</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityHazard</i>" and text()="<i>flashing</i>"]</code>.</li>
+
+
+                    <li><b>LET</b> <var>no_flashing_hazards</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityHazard</i>" and text()="<i>noFlashingHazard</i>"]</code>.</li>
+
+
+                    <li><b>LET</b> <var>motion_simulation_hazard</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityHazard</i>" and text()="<i>motionSimulation</i>"]</code>.</li>
+
+
+                    <li><b>LET</b> <var>no_motion_hazards</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityHazard</i>" and text()="<i>noMotionSimulation</i>"]</code>.</li>
+
+
+                    <li><b>LET</b> <var>sound_hazard</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityHazard</i>" and text()="<i>sound</i>"]</code>.</li>
+
+
+
+                    <li><b>LET</b> <var>no_sound_hazards</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityHazard</i>" and text()="<i>noSoundHazard</i>"]</code>.</li>
+
+
+                    <li><b>LET</b> <var>unknown_if_contains_hazards</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityHazard</i>" and text()="<i>unknown</i>"]</code>.</li>
+                    
+				</ol>
+				</section><section id="instructions-5"><div class="header-wrapper"><h4 id="x4-7-3-instructions"><bdi class="secno">4.7.3 </bdi>Instructions</h4><a class="self-link" href="#instructions-5" aria-label="Permalink for Section 4.7.3"></a></div>
+				<ol class="condition">
+					<li>
+						<span><b>IF</b> <var>no_hazards_or_warnings_confirmed</var> <b>OR</b> (<var>no_flashing_hazards</var> <b>AND</b> <var>no_motion_hazards</var> <b>AND</b> <var>no_sound_hazards</var>):</span>
+						<span><b>THEN</b> display <code id="hazards-none">"No hazards"</code>.</span>
+					</li>
+					<li>
+						<span><b>ELSE IF</b> <var>flashing_hazard</var> <b>OR</b> <var>motion_simulation_hazard</var> <b>OR</b> <var>sound_hazard</var>:</span>
+						<span><b>THEN</b> <b>LET</b> <var>hazards</var> be  an empty array.</span>
+						<ol class="condition">
+							<li>
+								<span><b>IF</b> <var>flashing_hazard</var>:</span>
+								<span><b>THEN</b> <b>APPEND</b> <code id="hazards-flashing">"flashing"</code> to <var>hazards</var>.</span>
+							</li>
+							<li>
+								<span><b>IF</b> <var>motion_simulation_hazard</var>:</span>
+								<span><b>THEN</b> <b>APPEND</b> <code id="hazards-motion">"motion"</code> to <var>hazards</var>.</span>
+							</li>
+							<li>
+								<span><b>IF</b> <var>sound_hazard</var>:</span>
+								<span><b>THEN</b> <b>APPEND</b> <code id="hazards-sound">"sound"</code> to <var>hazards</var>.</span>
+							</li>
+							<li><b>LET</b> <var>hazards_string</var> be the result of:
+								<ul class="condition">
+									<li>calling <a href="#join-array-to-comma-list">join array to comma list</a> given <var>hazards</var></li>
+									<li>uppercasing the first character</li>
+									<li>concatenating <code id="hazards-plural">" hazards"</code> to the end of the string <b>IF</b> (length of <var>hazards</var>) &gt; 1 <b>ELSE</b> concatenating <code id="hazards-singular">" hazard"</code> to the end of the string.</li>
+								</ul>
+							</li>
+							<li>display <var>hazards_string</var>.</li>
+						</ol>
+					</li>
+                    <li>
+						<span><b>ELSE IF</b> <var>unknown_if_contains_hazards</var>:</span>
+						<span><b>THEN</b> display <code id="hazards-unknown">"The presence of hazards is unknown"</code>.</span>
+                    </li>
+					<li>
+						<b>ELSE</b> either omit this key informtion if metadata is missing or display <code id="hazards-no-metadata">"No information about possible hazards"</code>.
+
+                    </li>
+				</ol>
+			</section></section>
+
+            
+			<section id="accessibility-summary"><div class="header-wrapper"><h3 id="x4-8-accessibility-summary"><bdi class="secno">4.8 </bdi>Accessibility summary</h3><a class="self-link" href="#accessibility-summary" aria-label="Permalink for Section 4.8"></a></div>
+				
+				<p>This technique relates to <a href="../../principles/#accessibility-summary">Accessibility summary key information</a>.</p>
+
+				<p>This algorithm takes the <var>package_document_as_text</var> argument: a UTF-8 string representing the Package document.</p>
+
+				<div class="note" role="note" id="issue-container-generatedID-3"><div role="heading" class="note-title marker" id="h-note-3" aria-level="4"><span>Note</span></div><p class="">
+					Being human-written, the accessibility summary will appear in the original language of the publication. Therefore it is necessary to take care of setting up the correct language tag information.
+				</p></div>
+
+				<div class="note" role="note" id="issue-container-generatedID-4"><div role="heading" class="note-title marker" id="h-note-4" aria-level="4"><span>Note</span></div><p class="">Accessibility summaries were necessary when no systems exposed computed accessibility metadata. With more systems now displaying this information, much of the accessibility summary may be redundant. Publishers should focus on adding information not provided within the computed metadata, such as specifying where in a video file a flashing hazard exists, or noting the reason why they failed to meet WCAG-AA due to color contrast issues in the Appendix.</p></div>
+
+				<section id="understanding-the-variables-6"><div class="header-wrapper"><h4 id="x4-8-1-understanding-the-variables"><bdi class="secno">4.8.1 </bdi>Understanding the variables</h4><a class="self-link" href="#understanding-the-variables-6" aria-label="Permalink for Section 4.8.1"></a></div>
+				<dl>
+					<dt><var>accessibility_summary</var></dt>
+					<dd>
+						<p>If true it indicates that the <i>accessibilitySummary</i> is present in the package document, otherwise if false it means that the metadata is not present.</p>
+						<p>This means there is a human-written text containing a short explanatory summary of the accessibility of the product or the URL of a web page comprising such a summary. Summarizes the already existent information and may add information that the publisher could not express with the other codes.</p>
+					</dd>
+					<dt><var>lang_attribute_accessibility_summary</var></dt>
+					<dd>
+						<p>Returns the lang attribute of the node containing the <var>accessibility_summary</var>, or the lang attribute of the nearest anchestor.</p>
+						<p>This is the language code in which the text of the Accessibility summary was written.</p>
+					</dd>
+					<dt><var>language_of_text</var></dt>
+					<dd>
+						<p>Returns the value of nearest "language" (Language of content) if present in the package document, otherwise if false it means that the metadata is not present.</p>
+						<p>This indicates the main language of the content and therefore the most probable language of accessibility summary.</p>
+					</dd>
+				</dl>
+				</section><section id="variables-setup-6"><div class="header-wrapper"><h4 id="x4-8-2-variables-setup"><bdi class="secno">4.8.2 </bdi>Variables setup</h4><a class="self-link" href="#variables-setup-6" aria-label="Permalink for Section 4.8.2"></a></div>
+				<ol class="condition">
+                    <li><b>LET</b> <var>package_document</var> be the result of calling <a href="#pre-processing">preprocessing</a> given <var>package_document_as_text</var>.</li>
+
+                    <li><b>LET</b> <var>accessibility_summary</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilitySummary</i>"]</code>.</li>
+
+                    <li><b>LET</b> <var>lang_attribute_accessibility_summary</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilitySummary</i>"]/(@lang|ancestor::*/@lang)[last()]</code>.</li>
+
+                    <li><b>LET</b> <var>language_of_text</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/dc:language[1]/text()</code>.</li>
+
+ 				</ol>
+				</section><section id="instructions-6"><div class="header-wrapper"><h4 id="x4-8-3-instructions"><bdi class="secno">4.8.3 </bdi>Instructions</h4><a class="self-link" href="#instructions-6" aria-label="Permalink for Section 4.8.3"></a></div>
+				<ol class="condition">
+                    <li>
+						<span><b>IF</b> <var>lang_attribute_accessibility_summary</var> is <b>NOT</b> empty:</span>
+						<span><b>THEN</b> <b>LET</b> <var>language_accessibility_summary</var> be the value of <var>lang_attribute_accessibility_summary</var>.</span>
+					</li>
+					<li>
+						<b>ELSE</b> <b>LET</b> <var>language_accessibility_summary</var> be the value of <var>language_of_text</var>.
+					</li>
+					<li>
+						<span><b>ELSE IF</b> <var>accessibility_summary</var> is <b>NOT</b> empty:</span>
+						<span><b>THEN</b> display the content of <var>accessibility_summary</var> with <var>language_accessibility_summary</var> as language.</span></li>
+					<li>
+						<b>ELSE</b> either omit this key informtion if metadata is missing or display <code id="accessibility-summary-no-metadata">"No accessibility summary"</code>.
+					</li>
+				</ol>
+			</section></section>
+
+            <section id="legal-considerations"><div class="header-wrapper"><h3 id="x4-9-legal-considerations"><bdi class="secno">4.9 </bdi>Legal considerations</h3><a class="self-link" href="#legal-considerations" aria-label="Permalink for Section 4.9"></a></div>
+				
+                <div class="issue" id="issue-container-number-350"><div role="heading" class="issue-title marker" id="h-issue" aria-level="4"><a href="https://github.com/w3c/publ-a11y/issues/350"><span class="issue-number">Issue 350</span></a><span class="issue-label">: Feedback requested on exceptions and exemptions from publishers <a class="respec-gh-label" href="https://github.com/w3c/publ-a11y/issues/?q=is%3Aissue+is%3Aopen+label%3A%22UX-Guide%22" style="background-color: rgb(34, 73, 175); color: rgb(255, 255, 255);" aria-label="GitHub label: UX-Guide">UX-Guide</a></span></div><div class="">We are actively seeking comments on this "legal consideration" section. If you are a publisher, we want your feedback! Please visit the GitHub Issue tracking linked above to leave a comment.</div></div>
+                
+				<p>This technique relates to <a href="../../principles/#legal-considerations">Legal considerations key information</a>.</p>
+	
+                 <p>This algorithm takes the <var>package_document_as_text</var> argument: a UTF-8 string representing the Package document.</p>
+            
+				<section id="understanding-the-variables-7"><div class="header-wrapper"><h4 id="x4-9-1-understanding-the-variables"><bdi class="secno">4.9.1 </bdi>Understanding the variables</h4><a class="self-link" href="#understanding-the-variables-7" aria-label="Permalink for Section 4.9.1"></a></div>
+				<dl>
+					<dt><var>eaa_exemption_micro_enterprises</var></dt>
+					<dd>
+						<p>If true it indicates that the <i><a href="https://www.w3.org/TR/epub-a11y-exemption/#exemption-property">a11y:exemption</a>="<a href="https://www.w3.org/TR/epub-a11y-exemption/#exemption-values">eaa-microenterprise</a>"</i> (EEA exception 1 – Micro-enterprises) is present in the package document, otherwise if false it means that the metadata is not present.</p>
+						<p>This means that the digital product falls under European Accessibility Act exemption for Micro-enterprises (as defined by current regulations). The product may not have to comply with requirements of the EAA if the publisher is a micro-enterprise.</p>
+					</dd>
+					<dt><var>eaa_exception_disproportionate_burden</var></dt>
+					<dd>
+						<p>If true it indicates that the <i><a href="https://www.w3.org/TR/epub-a11y-exemption/#exemption-property">a11y:exemption</a>="<a href="https://www.w3.org/TR/epub-a11y-exemption/#exemption-values">eaa_disproportionate_burden</a>"</i> (EAA exception 2 – Disproportionate burden) is present in the package document, otherwise if false it means that the metadata is not present.</p>
+						<p>This means that the digital product falls under European Accessibility Act exception for Disproportionate burden (as defined by current regulations). The product may not have to comply with requirements of the EAA if doing so would financially overburden the publisher.</p>
+					</dd>
+					<dt><var>eaa_exception_fundamental_modification</var></dt>
+					<dd>
+						<p>If true it indicates that the <i><a href="https://www.w3.org/TR/epub-a11y-exemption/#exemption-property">a11y:exemption</a>="<a href="https://www.w3.org/TR/epub-a11y-exemption/#exemption-values">eaa_fundamental_modification</a>"</i> (EAA exception 3 – Fundamental modification) is present in the package document, otherwise if false it means that the metadata is not present.</p>
+						<p>This means that the digital product falls under European Accessibility Act exception for Fundamental modification (as defined by current regulations). The product may not have to comply with requirements of the EAA if doing so requires a fundamental modification of the nature of the product or service.</p>
+					</dd>
+				</dl>
+				</section><section id="variables-setup-7"><div class="header-wrapper"><h4 id="x4-9-2-variables-setup"><bdi class="secno">4.9.2 </bdi>Variables setup</h4><a class="self-link" href="#variables-setup-7" aria-label="Permalink for Section 4.9.2"></a></div>
+				<ol class="condition">
+					<li><b>LET</b> <var>package_document</var> be the result of calling <a href="#pre-processing">preprocessing</a> given <var>package_document_as_text</var>.</li>
+					<li><b>LET</b> <var>eaa_exemption_micro_enterprises</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="a11y:<i>exemption</i>" and text()="<i>eaa-microenterprise</i>"]</code>.</li>
+					<li><b>LET</b> <var>eaa_exception_disproportionate_burden</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="a11y:<i>exemption</i>" and text()="<i>eaa-disproportionate-burden</i>"]</code>.</li>
+					<li><b>LET</b> <var>eaa_exception_fundamental_modification</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="a11y:<i>exemption</i>" and text()="<i>eaa-fundamental-alteration</i>"]</code>.</li>
+				</ol>
+				</section><section id="instructions-7"><div class="header-wrapper"><h4 id="x4-9-3-instructions"><bdi class="secno">4.9.3 </bdi>Instructions</h4><a class="self-link" href="#instructions-7" aria-label="Permalink for Section 4.9.3"></a></div>
+				<ol class="condition">
+					<li>
+						<span><b>IF</b> <var>eaa_exemption_micro_enterprises</var> <b>OR</b> <var>eaa_exception_disproportionate_burden</var> <b>OR</b> <var>eaa_exception_fundamental_modification</var>:</span>
+						<span><b>THEN</b> display <code id="tbd">"TBD"</code>.</span>
+					</li>
+					<li>
+						<b>ELSE</b> either omit this key informtion if metadata is missing or display <code id="legal-considerations-no-metadata">"No legal considerations"</code>.
+					</li>
+				</ol>
+			</section></section>
+            
+            
+			<section id="additional-accessibility-information"><div class="header-wrapper"><h3 id="x4-10-additional-accessibility-information"><bdi class="secno">4.10 </bdi>Additional accessibility information</h3><a class="self-link" href="#additional-accessibility-information" aria-label="Permalink for Section 4.10"></a></div>
+				
+				<p>This technique relates to <a href="../../principles/#additional-accessibility-information">Additional accessibility information key information</a>.</p>
+
+				<p>This algorithm takes the <var>package_document_as_text</var> argument: a UTF-8 string representing the Package document.</p>
+
+                <section id="additional-accessibility-information-adaptation"><div class="header-wrapper"><h4 id="x4-10-1-adaptation"><bdi class="secno">4.10.1 </bdi>Adaptation</h4><a class="self-link" href="#additional-accessibility-information-adaptation" aria-label="Permalink for Section 4.10.1"></a></div>
+					
+	
+					<section id="understanding-the-variables-8"><div class="header-wrapper"><h5 id="x4-10-1-1-understanding-the-variables"><bdi class="secno">4.10.1.1 </bdi>Understanding the variables</h5><a class="self-link" href="#understanding-the-variables-8" aria-label="Permalink for Section 4.10.1.1"></a></div>
+					<dl>
+						<dt><var>audio_descriptions</var></dt>
+						<dd>
+							<p>If true it indicates that the <i>accessibilityFeature="audioDescriptions"</i> (Audio Descriptions) is present in the package document, otherwise if false it means that the metadata is not present.</p>
+							<p>This means that there is an audio descriptions track available for video content.</p>
+						</dd>
+						<dt><var>braille</var></dt>
+						<dd>
+							<p>If true it indicates that the <i>accessibilityFeature="braille"</i> (Braille) is present in the package document, otherwise if false it means that the metadata is not present.</p>
+							<p>This means that there is braille available within the publication.</p>
+						</dd>
+						<dt><var>closed_captions</var></dt>
+						<dd>
+							<p>If true it indicates that the <i>accessibilityFeature="closedCaptions"</i> (Closed captions) is present in the package document, otherwise if false it means that the metadata is not present.</p>
+							<p>This means that the audio content of a video can be seen via closed captions that can be turned on or off  by the viewer and which will be a separate file from the video itself.</p>
+						</dd>
+						<dt><var>open_captions</var></dt>
+						<dd>
+							<p>If true it indicates that the <i>accessibilityFeature="openCaptions"</i> (Open captions) is present in the package document, otherwise if false it means that the metadata is not present.</p>
+							<p>This means that the audio content of a video can be seen via open captions, which means they cannot be turned off and are always visible when the video plays.</p>
+						</dd>
+						<dt><var>tactile_graphic</var></dt>
+						<dd>
+							<p>If true it indicates that the <i>accessibilityFeature="tactileGraphic"</i> (tactile 2D graphic) is present in the package document, otherwise if false it means that the metadata is not present.</p>
+							<p>This means that there is tactile graphic(s) contained within this publication.</p>
+						</dd>
+						<dt><var>tactile_object</var></dt>
+						<dd>
+							<p>If true it indicates that the <i>accessibilityFeature="tactileObject"</i> (tactile 3D object) is present in the package document, otherwise if false it means that the metadata is not present.</p>
+							<p>This means that there is tactile 3D object(s) contained within this publication.</p>
+						</dd>
+						<dt><var>transcript</var></dt>
+						<dd>
+							<p>If true it indicates that the <i>accessibilityFeature="transcript"</i> (transcript) is present in the package document, otherwise if false it means that the metadata is not present.</p>
+							<p>This means that a transcript of the audio content of the product is supplied with it.</p>
+						</dd>
+						<dt><var>sign_language</var></dt>
+						<dd>
+							<p>If true it indicates that the <i>accessibilityFeature="signLanguage"</i> (Sign language interpretation) is present in the package document, otherwise if false it means that the metadata is not present.</p>
+							<p>This means that a full signing of audio content of the product is supplied with the video file.</p>
+						</dd>
+					</dl>
+					
+					</section><section id="variables-setup-8"><div class="header-wrapper"><h5 id="x4-10-1-2-variables-setup"><bdi class="secno">4.10.1.2 </bdi>Variables setup</h5><a class="self-link" href="#variables-setup-8" aria-label="Permalink for Section 4.10.1.2"></a></div>
+					<ol class="condition">
+                        <li><b>LET</b> <var>package_document</var> be the result of calling <a href="#pre-processing">preprocessing</a> given <var>package_document_as_text</var>.</li>
+						<li><b>LET</b> <var>audio_descriptions</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>audioDescription</i>"]</code>.</li>
+						<li><b>LET</b> <var>braille</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>braille</i>"]</code>.</li>
+						<li><b>LET</b> <var>closed_captions</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>closedCaptions</i>"]</code>.</li>
+                        <li><b>LET</b> <var>open_captions</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>openCaptions</i>"]</code>.</li>
+                        <li><b>LET</b> <var>tactile_graphic</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>tactileGraphic</i>"]</code>.</li>
+                        <li><b>LET</b> <var>tactile_object</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>tactileObject</i>"]</code>.</li>
+                        <li><b>LET</b> <var>transcript</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>transcript</i>"]</code>.</li>
+                        <li><b>LET</b> <var>sign_language</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>signLanguage</i>"]</code>.</li>
+    				</ol>
+					
+					</section><section id="instructions-8"><div class="header-wrapper"><h5 id="x4-10-1-3-instructions"><bdi class="secno">4.10.1.3 </bdi>Instructions</h5><a class="self-link" href="#instructions-8" aria-label="Permalink for Section 4.10.1.3"></a></div>
+					<ol class="condition">
+						<li><b>LET</b> <var>adaptation</var> be  an empty array.</li>
+						<li>
+							<span><b>IF</b> <var>audio_descriptions</var>:</span>
+							<span><b>THEN</b> <b>APPEND</b> <code id="additional-accessibility-information-adaptation-audio-descriptions">"audio descriptions"</code> to <var>adaptation</var>.</span>
+						</li>
+						<li>
+							<span><b>IF</b> <var>braille</var>:</span>
+							<span><b>THEN</b> <b>APPEND</b> <code id="additional-accessibility-information-adaptation-braille">"braille"</code> to <var>adaptation</var>.</span>
+						</li>
+						<li>
+							<span><b>IF</b> <var>closed_captions</var>:</span>
+							<span><b>THEN</b> <b>APPEND</b> <code id="additional-accessibility-information-adaptation-closed-captions">"closed captions"</code> to <var>adaptation</var>.</span>
+						</li>
+						<li>
+							<span><b>IF</b> <var>open_captions</var>:</span>
+							<span><b>THEN</b> <b>APPEND</b> <code id="additional-accessibility-information-adaptation-open-captions">"open captions"</code> to <var>adaptation</var>.</span>
+						</li>
+						<li>
+							<span><b>IF</b> <var>tactile_graphic</var>:</span>
+							<span><b>THEN</b> <b>APPEND</b> <code id="additional-accessibility-information-adaptation-tactile_graphic">"tactile graphic"</code> to <var>adaptation</var>.</span>
+						</li>
+						<li>
+							<span><b>IF</b> <var>tactile_object</var>:</span>
+							<span><b>THEN</b> <b>APPEND</b> <code id="additional-accessibility-information-adaptation-tactile_object">"tactile 3D object"</code> to <var>adaptation</var>.</span>
+						</li>
+						<li>
+							<span><b>IF</b> <var>transcript</var>:</span>
+							<span><b>THEN</b> <b>APPEND</b> <code id="additional-accessibility-information-adaptation-transcript">"transcript"</code> to <var>adaptation</var>.</span>
+						</li>
+						<li>
+							<span><b>IF</b> <var>sign_language</var>:</span>
+							<span><b>THEN</b> <b>APPEND</b> <code id="additional-accessibility-information-adaptation-sign-language">"sign language"</code> to <var>adaptation</var>.</span>
+						</li>
+						<li><b>IF</b> <var>adaptation</var> is <b>NOT</b> empty:
+							<ol class="condition">
+								<li><b>LET</b> <var>adaptation_string</var> be the result of:
+									<ul class="condition">
+										<li>calling <a href="#join-array-to-comma-list">join array to comma list</a> given <var>adaptation</var></li>
+										<li>uppercasing the first character.</li>
+									</ul>
+								</li>
+								<li>display <var>adaptation_string</var>.</li>
+							</ol>
+						</li>
+					</ol>
+				</section></section>
+				
+				<section id="additional-accessibility-information-clarity"><div class="header-wrapper"><h4 id="x4-10-2-clarity"><bdi class="secno">4.10.2 </bdi>Clarity</h4><a class="self-link" href="#additional-accessibility-information-clarity" aria-label="Permalink for Section 4.10.2"></a></div>
+					
+	
+					<section id="understanding-the-variables-9"><div class="header-wrapper"><h5 id="x4-10-2-1-understanding-the-variables"><bdi class="secno">4.10.2.1 </bdi>Understanding the variables</h5><a class="self-link" href="#understanding-the-variables-9" aria-label="Permalink for Section 4.10.2.1"></a></div>
+					<dl>
+                         
+						<dt><var>aria</var></dt>
+						<dd>
+							<p>If true it indicates that the <i>accessibilityFeature="aria"</i>  (ARIA roles - semantic markup) is present in the package document, otherwise if false it means that the metadata is not present.</p>
+							<p>This means that the use of AIRA, including <a href="https://w3c.github.io/dpub-aria/">DPUB ARIA</a> is used to improve the semantic markup of the publication.</p>
+						</dd>
+  						<dt><var>full_ruby_annotations</var></dt>
+						<dd>
+							<p>If true it indicates that the <i>accessibilityFeature="fullRubyAnnotations"</i> (Full Ruby Annotations) is present in the package document, otherwise if false it means that the metadata is not present.</p>
+							<p>This means that ruby annotations are attached to every CJK ideographic character in the content. Ruby annotations are used as pronunciation guides for the logographic characters for languages like Chinese or Japanese. They make difficult CJK ideographic characters more accessible.</p>
+						</dd>  
+                   
+						<dt><var>text_to_speech_hinting</var></dt>
+						<dd>
+							<p>If true it indicates that the <i>accessibilityFeature="ttsMarkup"</i>  (Text-to-speech markup provided) is present in the package document, otherwise if false it means that the metadata is not present.</p>
+							<p>This means that text-to-speech has been optimised through provision of PLS lexicons, SSML or CSS Speech synthesis hints or other speech synthesis markup languages or hinting.</p>
+						</dd>
+						<dt><var>high_contrast_between_foreground_and_background_audio</var></dt>
+						<dd>
+							<p>If true it indicates that the <i>accessibilityFeature="highContrastAudio"</i> (Use of high contrast between foreground and background audio) is present in the package document, otherwise if false it means that the metadata is not present.</p>
+							<p>This means that foreground audio content (eg voice) is presented with no or low background noise (eg ambient sounds, music), at least 20dB below the level of the foreground, or background noise can be switched off (eg via an alternative audio track). Brief and occasional sound effects may be as loud as foreground voice so long as they are isolated from the foreground.</p>
+						</dd>  
+                        <dt><var>high_contrast_between_text_and_background</var></dt>
+						<dd>
+							<p>If true it indicates that the <i>accessibilityFeature="highContrastDisplay"</i> (Use of high contrast between text and background color) is present in the package document, otherwise if false it means that the metadata is not present.</p>
+							<p>This means that body text is presented with a contrast ratio of at least 4.5:1 (or 3:1 for large/heading text).</p>
+						</dd>                  
+						<dt><var>large_print</var></dt>
+						<dd>
+							<p>If true it indicates that the <i>accessibilityFeature="largePrint"</i> (Large Print) is present in the package document, otherwise if false it means that the metadata is not present.</p>
+							<p>This means that the e-publication has been formatted to meet large print guidelines.</p>
+						</dd>
+                        <dt><var>page_break_markers</var></dt>
+                        <dd>
+                            <p>If true it indicates that the <i>accessibilityFeature="pageBreakMarkers"</i> (Print-equivalent page numbering) is present in the package document, otherwise if false it means that the metadata is not present.</p>
+                            <p>This means that the publication contains references to the page numbering.</p>
+                        </dd>
+ 						<dt><var>ruby_annotations</var></dt>
+						<dd>
+							<p>If true it indicates that the <i>accessibilityFeature="rubyAnnotations"</i> (Ruby Annotations) is present in the package document, otherwise if false it means that the metadata is not present.</p>
+							<p>This means that ruby annotations are attached to some but not all CJK ideographic characters in the content.</p>
+						</dd>  
+                        
+					</dl>
+					
+					</section><section id="variables-setup-9"><div class="header-wrapper"><h5 id="x4-10-2-2-variables-setup"><bdi class="secno">4.10.2.2 </bdi>Variables setup</h5><a class="self-link" href="#variables-setup-9" aria-label="Permalink for Section 4.10.2.2"></a></div>
+					<ol class="condition">
+						<li><b>LET</b> <var>package_document</var> be the result of calling <a href="#pre-processing">preprocessing</a> given <var>package_document_as_text</var>.</li>
+						<li><b>LET</b> <var>aria</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>aria</i>"]</code>.</li>
+						<li><b>LET</b> <var>full_ruby_annotations</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>fullRubyAnnotations</i>"]</code>.</li>
+						<li><b>LET</b> <var>text_to_speech_hinting</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>ttsMarkup</i>"]</code>.</li>
+    				    <li><b>LET</b> <var>high_contrast_between_foreground_and_background_audio</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>highContrastAudio</i>"]</code>.</li>
+    				    <li><b>LET</b> <var>high_contrast_between_text_and_background</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>highContrastDisplay</i>"]</code>.</li>
+                        <li><b>LET</b> <var>large_print</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>largePrint</i>"]</code>.</li>
+                        <li><b>LET</b> <var>page_break_markers</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>pageBreakMarkers</i>"]</code>.</li>
+						<li><b>LET</b> <var>ruby_annotations</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>rubyAnnotations</i>"]</code>.</li>
+                    </ol>
+					
+					</section><section id="instructions-9"><div class="header-wrapper"><h5 id="x4-10-2-3-instructions"><bdi class="secno">4.10.2.3 </bdi>Instructions</h5><a class="self-link" href="#instructions-9" aria-label="Permalink for Section 4.10.2.3"></a></div>
+					<ol class="condition">
+						<li><b>LET</b> <var>clarity</var> be  an empty array.</li>
+						<li>
+							<span><b>IF</b> <var>aria</var>:</span>
+							<span><b>THEN</b> <b>APPEND</b> <code id="additional-accessibility-information-clarity-aria">"aria"</code> to <var>clarity</var>.</span>
+						</li>
+						<li>
+							<span><b>IF</b> <var>full_ruby_annotations</var>:</span>
+							<span><b>THEN</b> <b>APPEND</b> <code id="additional-accessibility-information-clarity-full-ruby-annotations">"full ruby annotations"</code> to <var>clarity</var>.</span>
+						</li>
+						<li>
+							<span><b>IF</b> <var>text_to_speech_hinting</var>:</span>
+							<span><b>THEN</b> <b>APPEND</b> <code id="additional-accessibility-information-clarity-text-to-speech-hinting">"text-to-speech hinting provided"</code> to <var>clarity</var>.</span>
+						</li>
+						<li>
+							<span><b>IF</b> <var>high_contrast_between_foreground_and_background_audio</var>:</span>
+							<span><b>THEN</b> <b>APPEND</b> <code id="additional-accessibility-information-clarity-high-contrast-between-foreground-and-background-audio">"high contrast between foreground and background audio"</code> to <var>clarity</var>.</span>
+						</li>
+						<li>
+							<span><b>IF</b> <var>high_contrast_between_text_and_background</var>:</span>
+							<span><b>THEN</b> <b>APPEND</b> <code id="additional-accessibility-information-clarity-high-contrast-between-text-and-background">"high contrast between text and background"</code> to <var>clarity</var>.</span>
+						</li>
+						<li>
+							<span><b>IF</b> <var>large_print</var>:</span>
+							<span><b>THEN</b> <b>APPEND</b> <code id="additional-accessibility-information-clarity-large-print">"large print"</code> to <var>clarity</var>.</span>
+						</li>
+                        <li>
+                            <span><b>IF</b> <var>page_break_markers</var>:</span>
+                            <span><b>THEN</b> <b>APPEND</b> <code id="additional-accessibility-information-clarity-page-breaks">"page breaks"</code> to <var>clarity</var>.</span>
+                        </li>
+						<li>
+							<span><b>IF</b> <var>ruby_annotations</var>:</span>
+							<span><b>THEN</b> <b>APPEND</b> <code id="additional-accessibility-information-clarity-ruby-annotations">"ruby annotations"</code> to <var>clarity</var>.</span>
+						</li>
+
+                        
+                        <li><b>IF</b> <var>clarity</var> is <b>NOT</b> empty:
+							<ol class="condition">
+								<li><b>LET</b> <var>clarity_string</var> be the result of:
+									<ul class="condition">
+										<li>calling <a href="#join-array-to-comma-list">join array to comma list</a> given <var>clarity</var></li>
+										<li>uppercasing the first character.</li>
+									</ul>
+								</li>
+								<li>display <var>clarity_string</var>.</li>
+							</ol>
+						</li>
+					</ol>
+				</section></section>
+                
+                
+			</section>
+			
+		</section>
+		<section id="app-acknowledgements" class="appendix informative"><div class="header-wrapper"><h2 id="acknowledgements"><bdi class="secno">A. </bdi>Acknowledgements</h2><a class="self-link" href="#acknowledgements" aria-label="Permalink for Appendix A."></a></div><p><em>This section is non-normative.</em></p>
+	
+	
+	<p>The leadership and editing contributions of the following individuals were central to producing this guide:</p>
+	
+	<ul>
+		<li>Avneesh Singh</li>
+		<li>Charles LaPierre</li>
+		<li>Chris Saynor</li>
+		<li>Gautier Chomel</li>
+		<li>George Kerscher</li>
+		<li>Gregorio Pellegrino</li>
+		<li>Madeleine Rothberg</li>
+		<li>Matt Garrish</li>
+	</ul>
+	
+	<p>The following members of the Publishing Community Group contributed to the development of this document:</p>
+	
+	<ul>
+		<li>Chris Oliver</li>
+		<li>Christopher Carr</li>
+		<li>Hadrien Gardeur</li>
+		<li>James Yanchak</li>
+		<li>Jason White</li>
+		<li>Jonas Lillqvist</li>
+		<li>Miia Kirsi</li>
+		<li>Naomi Kennedy</li>
+		<li>Rick Johnson</li>
+		<li>Simon Mellins</li>
+	</ul>
+</section>
+	
+	
+<section id="references" class="appendix"><div class="header-wrapper"><h2 id="b-references"><bdi class="secno">B. </bdi>References</h2><a class="self-link" href="#references" aria-label="Permalink for Appendix B."></a></div><section id="informative-references"><div class="header-wrapper"><h3 id="b-1-informative-references"><bdi class="secno">B.1 </bdi>Informative references</h3><a class="self-link" href="#informative-references" aria-label="Permalink for Appendix B.1"></a></div>
+    
+    <dl class="bibliography"><dt id="bib-epub-33">[EPUB-33]</dt><dd>
+      <a href="https://www.w3.org/TR/epub-33/"><cite>EPUB 3.3</cite></a>. Ivan Herman; Matt Garrish; Dave Cramer.  W3C. 25 May 2023. W3C Recommendation. URL: <a href="https://www.w3.org/TR/epub-33/">https://www.w3.org/TR/epub-33/</a>
+    </dd><dt id="bib-epub-a11y-11">[epub-a11y-11]</dt><dd>
+      <a href="https://www.w3.org/TR/epub-a11y-11/"><cite>EPUB Accessibility 1.1</cite></a>. George Kerscher; Matt Garrish; Charles LaPierre; Avneesh Singh; Gregorio Pellegrino.  W3C. 25 May 2023. W3C Recommendation. URL: <a href="https://www.w3.org/TR/epub-a11y-11/">https://www.w3.org/TR/epub-a11y-11/</a>
+    </dd></dl>
+  </section></section><p role="navigation" id="back-to-top">
+    <a href="#title"><abbr title="Back to Top">↑</abbr></a>
+  </p><script id="respec-dfn-panel">(() => {
+// @ts-check
+if (document.respec) {
+  document.respec.ready.then(setupPanel);
+} else {
+  setupPanel();
+}
+
+function setupPanel() {
+  const listener = panelListener();
+  document.body.addEventListener("keydown", listener);
+  document.body.addEventListener("click", listener);
+}
+
+function panelListener() {
+  /** @type {HTMLElement} */
+  let panel = null;
+  return event => {
+    const { target, type } = event;
+
+    if (!(target instanceof HTMLElement)) return;
+
+    // For keys, we only care about Enter key to activate the panel
+    // otherwise it's activated via a click.
+    if (type === "keydown" && event.key !== "Enter") return;
+
+    const action = deriveAction(event);
+
+    switch (action) {
+      case "show": {
+        hidePanel(panel);
+        /** @type {HTMLElement} */
+        const dfn = target.closest("dfn, .index-term");
+        panel = document.getElementById(`dfn-panel-for-${dfn.id}`);
+        const coords = deriveCoordinates(event);
+        displayPanel(dfn, panel, coords);
+        break;
+      }
+      case "dock": {
+        panel.style.left = null;
+        panel.style.top = null;
+        panel.classList.add("docked");
+        break;
+      }
+      case "hide": {
+        hidePanel(panel);
+        panel = null;
+        break;
+      }
+    }
+  };
+}
+
+/**
+ * @param {MouseEvent|KeyboardEvent} event
+ */
+function deriveCoordinates(event) {
+  const target = /** @type HTMLElement */ (event.target);
+
+  // We prevent synthetic AT clicks from putting
+  // the dialog in a weird place. The AT events sometimes
+  // lack coordinates, so they have clientX/Y = 0
+  const rect = target.getBoundingClientRect();
+  if (
+    event instanceof MouseEvent &&
+    event.clientX >= rect.left &&
+    event.clientY >= rect.top
+  ) {
+    // The event probably happened inside the bounding rect...
+    return { x: event.clientX, y: event.clientY };
+  }
+
+  // Offset to the middle of the element
+  const x = rect.x + rect.width / 2;
+  // Placed at the bottom of the element
+  const y = rect.y + rect.height;
+  return { x, y };
+}
+
+/**
+ * @param {Event} event
+ */
+function deriveAction(event) {
+  const target = /** @type {HTMLElement} */ (event.target);
+  const hitALink = !!target.closest("a");
+  if (target.closest("dfn:not([data-cite]), .index-term")) {
+    return hitALink ? "none" : "show";
+  }
+  if (target.closest(".dfn-panel")) {
+    if (hitALink) {
+      return target.classList.contains("self-link") ? "hide" : "dock";
+    }
+    const panel = target.closest(".dfn-panel");
+    return panel.classList.contains("docked") ? "hide" : "none";
+  }
+  if (document.querySelector(".dfn-panel:not([hidden])")) {
+    return "hide";
+  }
+  return "none";
+}
+
+/**
+ * @param {HTMLElement} dfn
+ * @param {HTMLElement} panel
+ * @param {{ x: number, y: number }} clickPosition
+ */
+function displayPanel(dfn, panel, { x, y }) {
+  panel.hidden = false;
+  // distance (px) between edge of panel and the pointing triangle (caret)
+  const MARGIN = 20;
+
+  const dfnRects = dfn.getClientRects();
+  // Find the `top` offset when the `dfn` can be spread across multiple lines
+  let closestTop = 0;
+  let minDiff = Infinity;
+  for (const rect of dfnRects) {
+    const { top, bottom } = rect;
+    const diffFromClickY = Math.abs((top + bottom) / 2 - y);
+    if (diffFromClickY < minDiff) {
+      minDiff = diffFromClickY;
+      closestTop = top;
+    }
+  }
+
+  const top = window.scrollY + closestTop + dfnRects[0].height;
+  const left = x - MARGIN;
+  panel.style.left = `${left}px`;
+  panel.style.top = `${top}px`;
+
+  // Find if the panel is flowing out of the window
+  const panelRect = panel.getBoundingClientRect();
+  const SCREEN_WIDTH = Math.min(window.innerWidth, window.screen.width);
+  if (panelRect.right > SCREEN_WIDTH) {
+    const newLeft = Math.max(MARGIN, x + MARGIN - panelRect.width);
+    const newCaretOffset = left - newLeft;
+    panel.style.left = `${newLeft}px`;
+    /** @type {HTMLElement} */
+    const caret = panel.querySelector(".caret");
+    caret.style.left = `${newCaretOffset}px`;
+  }
+
+  // As it's a dialog, we trap focus.
+  // TODO: when <dialog> becomes a implemented, we should really
+  // use that.
+  trapFocus(panel, dfn);
+}
+
+/**
+ * @param {HTMLElement} panel
+ * @param {HTMLElement} dfn
+ * @returns
+ */
+function trapFocus(panel, dfn) {
+  /** @type NodeListOf<HTMLAnchorElement> elements */
+  const anchors = panel.querySelectorAll("a[href]");
+  // No need to trap focus
+  if (!anchors.length) return;
+
+  // Move focus to first anchor element
+  const first = anchors.item(0);
+  first.focus();
+
+  const trapListener = createTrapListener(anchors, panel, dfn);
+  panel.addEventListener("keydown", trapListener);
+
+  // Hiding the panel releases the trap
+  const mo = new MutationObserver(records => {
+    const [record] = records;
+    const target = /** @type HTMLElement */ (record.target);
+    if (target.hidden) {
+      panel.removeEventListener("keydown", trapListener);
+      mo.disconnect();
+    }
+  });
+  mo.observe(panel, { attributes: true, attributeFilter: ["hidden"] });
+}
+
+/**
+ *
+ * @param {NodeListOf<HTMLAnchorElement>} anchors
+ * @param {HTMLElement} panel
+ * @param {HTMLElement} dfn
+ * @returns
+ */
+function createTrapListener(anchors, panel, dfn) {
+  const lastIndex = anchors.length - 1;
+  let currentIndex = 0;
+  return event => {
+    switch (event.key) {
+      // Hitting "Tab" traps us in a nice loop around elements.
+      case "Tab": {
+        event.preventDefault();
+        currentIndex += event.shiftKey ? -1 : +1;
+        if (currentIndex < 0) {
+          currentIndex = lastIndex;
+        } else if (currentIndex > lastIndex) {
+          currentIndex = 0;
+        }
+        anchors.item(currentIndex).focus();
+        break;
+      }
+
+      // Hitting "Enter" on an anchor releases the trap.
+      case "Enter":
+        hidePanel(panel);
+        break;
+
+      // Hitting "Escape" returns focus to dfn.
+      case "Escape":
+        hidePanel(panel);
+        dfn.focus();
+        return;
+    }
+  };
+}
+
+/** @param {HTMLElement} panel */
+function hidePanel(panel) {
+  if (!panel) return;
+  panel.hidden = true;
+  panel.classList.remove("docked");
+}
+})()</script><script src="https://www.w3.org/scripts/TR/2021/fixup.js"></script></body></html>
