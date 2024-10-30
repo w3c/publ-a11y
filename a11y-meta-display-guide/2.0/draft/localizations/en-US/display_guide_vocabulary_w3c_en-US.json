@@ -1,13 +1,13 @@
 {
- "metadata": { 
+    "metadata": {
         "author": "W3C Publishing Community Group Accessibility Task Force",
         "language": "en-US",
         "variant": "canonical",
         "audience": "general",
         "description": "Original wording discussed by a large group representing different actors of the English-speaking geographies. It has been improved after proof of concept implementations and panel testers"
- },
+    },
     "visual-adjustments": {
-      "visual-adjustments-title": "Visual adjustments",
+        "visual-adjustments-title": "Visual adjustments",
         "visual-adjustments-modifiable": {
             "descriptive": "Appearance of the text and page layout can be modified according to the capabilities of the reading system (font family and font size, spaces between paragraphs, sentences, words, and letters, as well as color of background and text)",
             "compact": "Appearance can be modified"
@@ -21,8 +21,8 @@
             "compact": "Appearance Modifiability not known"
         }
     },
-"nonvisual-reading": {
-    "nonvisual-reading-title": "Supports nonvisual reading",
+    "nonvisual-reading": {
+        "nonvisual-reading-title": "Supports nonvisual reading",
         "nonvisual-reading-readable": {
             "descriptive": "All content is available in generated read aloud speech and electronic braille",
             "compact": "Readable in read aloud and braille"
@@ -35,9 +35,9 @@
             "descriptive": "Not all of the content will be available in generated read aloud speech and electronic braille",
             "compact": "Not fully readable in read aloud and braille"
         }
-},
-"conformance": {
-    "conformance-title": "Conformance",
+    },
+    "conformance": {
+        "conformance-title": "Conformance",
         "conformance-aaa": {
             "descriptive": "The publication contains a conformance statement that it meets the EPUB Accessibility and WCAG 2 Level AAA standard",
             "compact": "This publication exceeds accepted accessibility standards"
@@ -61,28 +61,28 @@
         "detailed-Conformance": {
             "detailled-conformance-information": "Detailed Conformance Information:",
             "conformance-claim": "This publication claims to meet",
-            "conformance-epub-accessibility-1-0": " EPUB Accessibility 1.0 ", 
-            "conformance-epub-accessibility-1-1": " EPUB Accessibility 1.1 ", 
-            "conformance-wcag-2-2-compact": " WCAG 2.2 ", 
-            "conformance-wcag-2-1-compact": " WCAG 2.1 ", 
+            "conformance-epub-accessibility-1-0": " EPUB Accessibility 1.0 ",
+            "conformance-epub-accessibility-1-1": " EPUB Accessibility 1.1 ",
+            "conformance-wcag-2-2-compact": " WCAG 2.2 ",
+            "conformance-wcag-2-1-compact": " WCAG 2.1 ",
             "conformance-wcag-2-0-compact": " WCAG 2.0 ",
-            "conformance-wcag-2-2-descriptive": " Web Accessibility Content Guidelines (WCAG) 2.2 ", 
-            "conformance-wcag-2-1-descriptive": " Web Accessibility Content Guidelines (WCAG) 2.1 ", 
-            "conformance-wcag-2-0-descriptive": " Web Accessibility Content Guidelines (WCAG) 2.0 ", 
-            "conformance-level-aaa": " Level AAA", 
-            "conformance-level-aa": " Level AA", 
-            "conformance-level-a": " Level A", 
+            "conformance-wcag-2-2-descriptive": " Web Accessibility Content Guidelines (WCAG) 2.2 ",
+            "conformance-wcag-2-1-descriptive": " Web Accessibility Content Guidelines (WCAG) 2.1 ",
+            "conformance-wcag-2-0-descriptive": " Web Accessibility Content Guidelines (WCAG) 2.0 ",
+            "conformance-level-aaa": " Level AAA",
+            "conformance-level-aa": " Level AA",
+            "conformance-level-a": " Level A",
             "conformance-certification-info-compact": "The publication was certified",
             "conformance-certification-info-descriptive": "The publication was certified",
             "conformance-certification-date-prefix": " on ",
             "conformance-certifier-prefix-compact": " by ",
             "conformance-certifier-prefix-descriptive": " by ",
-			"conformance-certifier-credentials-prefix-compact": " The certifier's credential is ",
-			"conformance-certifier-credentials-prefix-descriptive": " with a credential of ",
+            "conformance-certifier-credentials-prefix-compact": " The certifier's credential is ",
+            "conformance-certifier-credentials-prefix-descriptive": " with a credential of ",
             "conformance-certifier-report": "For more information refer to the certifier's report."
         }
-},
-"pre-recorded-audio": {
+    },
+    "pre-recorded-audio": {
         "pre-recorded-audio-title": "Pre-recorded audio",
         "pre-recorded-audio-only": {
             "descriptive": "Audiobook with no text alternative",
@@ -100,9 +100,9 @@
             "descriptive": "No information about pre-recorded audio",
             "compact": "No information about pre-recorded audio"
         }
-},
-"navigation": {
-    "navigation-title": "Navigation",
+    },
+    "navigation": {
+        "navigation-title": "Navigation",
         "navigation-intro": {
             "compact": "Navigation by"
         },
@@ -111,7 +111,7 @@
             "compact": "Table of contents"
         },
         "navigation-index": {
-            "descriptive": "Index provides links to item references", 
+            "descriptive": "Index provides links to item references",
             "compact": "Index"
         },
         "navigation-landmarks": {
@@ -122,31 +122,31 @@
             "descriptive": "A page list enables users to coordinate their reading with a statically paginated version",
             "compact": "Page list"
         }
-},
-"charts-diagrams-formulas": {
+    },
+    "charts-diagrams-formulas": {
         "charts-diagrams-formulas-title": "Charts, diagrams, and formulas",
         "charts-diagrams-formulas-extended": {
-            "descriptive": "Charts and diagrams are present and described by extended descriptions", 
-            "compact": "Charts and diagrams have extended descriptions" 
+            "descriptive": "Charts and diagrams are present and described by extended descriptions",
+            "compact": "Charts and diagrams have extended descriptions"
         },
         "charts-diagrams-formulas-non-graphical-data": {
-            "descriptive": "Contains visual data available in accessible format", 
-            "compact": "Visualized data also available as non-graphical data" 
+            "descriptive": "Contains visual data available in accessible format",
+            "compact": "Visualized data also available as non-graphical data"
         },
         "charts-diagrams-formulas-accessible-chemistry": {
-            "descriptive": "Contains chemistry formulas in accessible format", 
-            "compact": "Accessible chemistry content" 
+            "descriptive": "Contains chemistry formulas in accessible format",
+            "compact": "Accessible chemistry content"
         },
         "charts-diagrams-formulas-accessible-math": {
-            "descriptive": "Contains math formulas in accessible format", 
-            "compact": "Accessible math content" 
+            "descriptive": "Contains math formulas in accessible format",
+            "compact": "Accessible math content"
         },
         "charts-diagrams-formulas-accessible-unknown": {
-            "descriptive": "Contains formulas, charts, and diagrams without any information about the accessibility of this content.", 
-            "compact": "Accessibility of formulas, charts, and diagrams unknown" 
+            "descriptive": "Contains formulas, charts, and diagrams without any information about the accessibility of this content.",
+            "compact": "Accessibility of formulas, charts, and diagrams unknown"
         }
-},
-"hazards": {
+    },
+    "hazards": {
         "hazards-title": "Hazards",
         "hazards-none": {
             "descriptive": "The publication contains no hazards",
@@ -165,11 +165,11 @@
             "compact": "sound"
         },
         "hasards-explanatory": {
-            "descriptive":"which can cause discomfort, distraction, photosensitive seizures, or motion sickness",
+            "descriptive": "which can cause discomfort, distraction, photosensitive seizures, or motion sickness",
             "compact": ""
         },
         "hazards-plural": " hazards",
-        "hazards-singular":" hazard",
+        "hazards-singular": " hazard",
         "hazards-unknown": {
             "descriptive": "The presence of hazards is unknown",
             "compact": "Hasards unknown"
@@ -178,86 +178,97 @@
             "descriptive": "No information about possible hazards",
             "compact": "No information about hazards"
         }
-},
-"accessibility-summary": {
-    "accessibility-summary-title": "Accessibility summary"
-},
-"additional-accessibility-information": {
+    },
+    "accessibility-summary": {
+        "accessibility-summary-title": "Accessibility summary"
+    },
+    "additional-accessibility-information": {
         "additional-accessibility-information-title": "Additional accessibility information",
-        "additional-accessibility-information-adaptation-title":"Adaptation",
-            "additional-accessibility-information-adaptation-dyslexia-readability":
-            {
+        "additional-accessibility-information-adaptation": {
+            "additional-accessibility-information-adaptation-title": "Adaptation",
+            "additional-accessibility-information-adaptation-dyslexia-readability": {
                 "descriptive": "",
                 "compact": "dyslexia readability"
             },
-            "additional-accessibility-information-adaptation-closed-captions":            {
+            "additional-accessibility-information-adaptation-closed-captions": {
                 "descriptive": "Videos included in publications have closed captions that can be turned off, selected and accessed as text",
                 "compact": "closed captions"
             },
-            "additional-accessibility-information-adaptation-open-captions":            {
+            "additional-accessibility-information-adaptation-open-captions": {
                 "descriptive": "Videos included in publications have open captions that are only visually accessible",
                 "compact": "open captions"
             },
-            "additional-accessibility-information-adaptation-full-transcript":            {
+            "additional-accessibility-information-adaptation-full-transcript": {
                 "descriptive": "",
                 "compact": "full transcript"
             },
-            "additional-accessibility-information-adaptation-sign-language":            {
+            "additional-accessibility-information-adaptation-sign-language": {
                 "descriptive": "",
                 "compact": "sign language"
-            },
-        "additional-accessibility-information-clarity-title":"Clarity",
-            "additional-accessibility-information-clarity-text-to-speech-hinting":            {
+            }
+        },
+        "additional-accessibility-information-clarity": {
+            "additional-accessibility-information-clarity-title": "Clarity",
+            "additional-accessibility-information-clarity-text-to-speech-hinting": {
                 "descriptive": "",
                 "compact": "text-to-speech hinting provided"
             },
-            "additional-accessibility-information-clarity-color-not-sole-means-of-conveying-information":            {
+            "additional-accessibility-information-clarity-color-not-sole-means-of-conveying-information": {
                 "descriptive": "",
                 "compact": "color is not the sole means of conveying information"
             },
-            "additional-accessibility-information-clarity-high-contrast-between-text-and-background":            {
+            "additional-accessibility-information-clarity-high-contrast-between-text-and-background": {
                 "descriptive": "",
                 "compact": "high contrast between text and background"
             },
-            "additional-accessibility-information-clarity-ultra-high-contrast-between-text-and-background":            {
+            "additional-accessibility-information-clarity-ultra-high-contrast-between-text-and-background": {
                 "descriptive": "",
                 "compact": "ultra high contrast between text and background"
             },
-            "additional-accessibility-information-clarity-visible-page-numbering":            {
+            "additional-accessibility-information-clarity-visible-page-numbering": {
                 "descriptive": "Visible page breaks included from the original print source",
                 "compact": "visible page numbering"
             },
-            "additional-accessibility-information-clarity-high-contrast-between-foreground-and-background-audio":            {
+            "additional-accessibility-information-clarity-high-contrast-between-foreground-and-background-audio": {
                 "descriptive": "",
                 "compact": "high contrast between foreground and background audio"
             },
-            "additional-accessibility-information-clarity-without-background-sounds":            {
+            "additional-accessibility-information-clarity-without-background-sounds": {
                 "descriptive": "",
                 "compact": "without background sounds"
+            }
+        },
+        "additional-accessibility-information-structure": {
+            "additional-accessibility-information-structure-title": "Structure",
+            "aria-roles": {
+                "descriptive": "Content is enhanced with ARIA roles to optimize organization and facilitate navigation",
+                "compact": "ARIA roles included"
+            }
+        },
+        "additional-accessibility-information-content": {
+            "additional-accessibility-information-content-title": "Contents",
+            "video-captions": {
+                "descriptive": "Videos included in publications have closed captions and sign language representation",
+                "compact": "Closed captions and sign languages for videos"
             },
-
-        "aria-roles": {
-            "descriptive": "Content is enhanced with ARIA roles to optimize organization and facilitate navigation",
-            "compact": "ARIA roles included"
+            "music-visual": {
+                "descriptive": "Music scores are provided that are visually accessible",
+                "compact": "Music scores visually presented"
+            },
+            "information-through-colors": {
+                "descriptive": "Content contains information encoded through colors, which may be imperceptible to those who cannot distinguish colors",
+                "compact": "Information encoded through colors"
+            }
         },
-        "video-captions": {
-            "descriptive": "Videos included in publications have closed captions and sign language representation", 
-            "compact": "Closed captions and sign languages for videos"
-        },
-        "tactile-graphics": {
-            "descriptive": "Tactile graphics have been integrated to facilitate access to visual elements by blind people",
-            "compact": "Tactile graphics attached"
-        },
-        "music-visual": {
-            "descriptive": "Music scores are provided that are visually accessible",
-            "compact": "Music scores visually presented"
-        },
-        "information-through-colors": {
-            "descriptive": "Content contains information encoded through colors, which may be imperceptible to those who cannot distinguish colors",
-            "compact": "Information encoded through colors"
+        "additional-accessibility-information-tactile": {
+            "additional-accessibility-information-contents-title": "Tactile",
+            "tactile-graphics": {
+                "descriptive": "Tactile graphics have been integrated to facilitate access to visual elements by blind people",
+                "compact": "Tactile graphics attached"
+            }
         }
-},
-"common-arrays": {
+    },
+    "common-arrays": {
         "join-array-to-comma-list": ", and"
     }
 }
