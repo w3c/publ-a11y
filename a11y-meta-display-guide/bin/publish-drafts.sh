@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Script for creating static version for the UX-Guide-Metadata documents
-# It starts from the published draft (in the main branch): https://w3c.github.io/publ-a11y/a11y-meta-display-guide/draft/guidelines/
+# It starts from the published draft (in the main branch): https://w3c.github.io/publ-a11y/a11y-meta-display-guide/2.0/draft/guidelines/
 # It generates the static version
 # It runs nuchecker and link checker
 # The output is a zip folder that can be sent to W3C staff for publishing on the website
