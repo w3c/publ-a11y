@@ -20,13 +20,13 @@ Task force meetings are announced on the Publishing Community Group's [public ma
 The Accessibility Task Force maintains the following documents in this repository:
 
 - Accessibility Metadata Display Guide for Digital Publications
-  - [Editor's Draft](https://w3c.github.io/publ-a11y/UX-Guide-Metadata/draft/principles/)
+  - [Editor's Draft](https://w3c.github.io/publ-a11y/a11y-meta-display-guide/2.0/draft/principles/)
   - [Latest Version](https://www.w3.org/2021/09/UX-Guide-metadata-1.0/principles/)
   - EPUB Techniques
-    - [Editor's Draft](https://w3c.github.io/publ-a11y/UX-Guide-Metadata/draft/techniques/epub-metadata/)
+    - [Editor's Draft](https://w3c.github.io/publ-a11y/a11y-meta-display-guide/2.0/draft/techniques/epub-metadata/)
     - [Latest Version](https://www.w3.org/publishing/a11y/UX-Guide-metadata/techniques/epub-metadata/)
   - ONIX Techniques
-    - [Editor's Draft](https://w3c.github.io/publ-a11y/UX-Guide-Metadata/draft/techniques/onix-metadata/)
+    - [Editor's Draft](https://w3c.github.io/publ-a11y/a11y-meta-display-guide/2.0/draft/techniques/onix-metadata/)
     - [Latest Version](https://www.w3.org/publishing/a11y/UX-Guide-metadata/techniques/onix-metadata/)
 - Accessibility Properties Crosswalk
   - [Editor's Draft](https://w3c.github.io/publ-a11y/drafts/a11y-crosswalk-MARC/)
