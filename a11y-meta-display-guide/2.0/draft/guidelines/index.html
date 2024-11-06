@@ -150,28 +150,44 @@
 				accessible from the outset, not fixed later) and getting the accessibility validation or audit done by
 				independent organizations.</p>
 		
-<section id="terminology">
-   <h3>Terminology</h3>
-   
-<p>There are several terms used in these guidelines that should   be defined  for clarity:</p>
-   <dl>
-      <dt><dfn>digital publication</dfn></dt>
-           <dd>
-         <p>The term digital publication is used in this document to refer to publications produced in any number of digital formats. Digital publications are not limited to books, but encompass any written, visual, or audio work distributed and read in digital form.</p>
-         <p>Some examples of digital publications include ebooks, audiobooks, manga, comic books, journals, digital textbooks, picture books, and children's picture books with accompanying audio. The formats they come in include EPUB, PDF, and Digital Talking Books (DTB).</p>
-      </dd>
-      <dt><dfn>reading system</dfn></dt>
-<dd>
-<p>All digital publications require a reading system to present the publication to the end user. Reading Systems may be Apps that run on a smart phone or tablet. There are Reading Systems which are  applications  that run on  personal computers. There are also Reading Systems that are integrated in to dedicated devices devoted to a single purpose, for presenting a publication. There are even skills   that run on smart speakers that can be considered Reading Systems.</p>
-</dd>
-<dt><dfn>electronic braille</dfn></dt>
-<dt><dfn>refreshable braille</dfn></dt>
-<dd>
-<p>The terms "electronic braille" and "refreshable braille" can be  used interchangeably, which denotes a device with pop-up pins to present the braille on a tactile screen. These devices can be used as a display attached to  a personal computer, or they may be a self-contained multipurpose note taker with a refreshable braille display. </p>
-</dd>
-   </dl>
-</section>
-</section>
+		<section id="terminology">
+			<h3>Terminology</h3>
+		
+			<p>There are several terms used in these guidelines that should   be defined  for clarity:</p>
+			
+			<dl>
+				<dt><dfn>digital publication</dfn></dt>
+				<dd>
+					<p>The term digital publication is used in this document to refer to publications produced in any number of digital formats. Digital publications are not limited to books, but encompass any written, visual, or audio work distributed and read in digital form.</p>
+					<p>Some examples of digital publications include ebooks, audiobooks, manga, comic books, journals, digital textbooks, picture books, and children's picture books with accompanying audio. The formats they come in include EPUB, PDF, and Digital Talking Books (DTB).</p>
+				</dd>
+				
+				<dt><dfn>dynamic braille</dfn></dt>
+				<dd>
+					<p>The term dynamic braille is used to denote content that is generated as braille on the fly,
+						as opposed to preformatted digital braille formats. This dynamic rendering of
+						content is sometimes referred to as electronic braille or refreshable braille.</p>
+					
+					<p>Dynamic braille is typically rendered on a separate device from the reading system, one with
+						pop-up pins to present the braille on a tactile screen. These devices, commonly referred to as
+						refreshable braille displays, can be attached to a personal computer, or they may be a
+						self-contained multipurpose note taker with a refreshable braille display.</p>
+				</dd>
+				
+				<dt><dfn>read aloud speech</dfn></dt>
+				<dd>
+					<p>The term read aloud speech is used to denote content that is generated into synthetic speech
+						on the fly, as opposed to prerecorded narration. Read aloud functionality is often a feature
+						of reading systems, but can be provided by a separate assistive technology.</p>
+				</dd>
+				
+				<dt><dfn>reading system</dfn></dt>
+				<dd>
+					<p>All digital publications require a reading system to present the publication to the end user. Reading Systems may be Apps that run on a smart phone or tablet. There are Reading Systems which are  applications  that run on  personal computers. There are also Reading Systems that are integrated in to dedicated devices devoted to a single purpose, for presenting a publication. There are even skills   that run on smart speakers that can be considered Reading Systems.</p>
+				</dd>
+			</dl>
+			</section>
+		</section>
 		<section id="general-overview">
 			<h2>General overview</h2>
 
@@ -463,7 +479,7 @@
 				</div>
 
 				<p>Indicates whether all content required for comprehension can be consumed in text and therefore is
-					available  to reading systems with text-to-speech or refreshable braille capabilities</p>
+					available to reading systems with [=read aloud speech=] or [=dynamic braille=] capabilities.</p>
 
 				<p>This field answers whether nonvisual reading is possible, not possible, or unknown.</p>
 
@@ -482,24 +498,23 @@
 					<aside class="example" title="Descriptive explanations">
 						<ul>
 							<li data-localization-id="nonvisual-reading-readable" data-localization-mode="descriptive"
-								>All content is available in generated read aloud speech and generated refreshable  braille</li>
+								>All content can be read as read aloud speech or dynamic braille</li>
 							<li data-localization-id="nonvisual-reading-may-not-fully"
-								data-localization-mode="descriptive">Portions of the content may not be available in
-								generated read aloud speech and generated refreshable  braille</li>
+								data-localization-mode="descriptive">Portions of the content may not be readable
+								as read aloud speech or dynamic braille</li>
 							<li data-localization-id="nonvisual-reading-not-fully" data-localization-mode="descriptive"
-								>Not all of the content will be available in generated read aloud speech and generated refreshable 
-								braille</li>
-													</ul>
+								>Not all of the content will be readable as read aloud speech or dynamic braille</li>
+						</ul>
 					</aside>
 
 					<aside class="example" title="Compact explanations">
 						<ul>
 							<li data-localization-id="nonvisual-reading-readable" data-localization-mode="compact"
-								>Readable in read aloud and braille</li>
+								>Readable in read aloud or dynamic braille</li>
 							<li data-localization-id="nonvisual-reading-may-not-fully" data-localization-mode="compact"
-								>May not be fully readable in read aloud and braille</li>
+								>May not be fully readable in read aloud or dynamic braille</li>
 							<li data-localization-id="nonvisual-reading-not-fully" data-localization-mode="compact">Not
-								fully readable in read aloud and braille</li>
+								fully readable in read aloud or dynamic braille</li>
 							<!--To be Confirmed (see https://github.com/w3c/publ-a11y/issues/367)<li data-localization-id="nonvisual-reading-unknown" data-localization-mode="compact">Not known if readable in read aloud and braille</li>-->
 						</ul>
 					</aside>
