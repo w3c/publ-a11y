@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+
+
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
 	<head>
 		<meta charset="utf-8" />
@@ -30,13 +32,13 @@
 					"name": "Gautier Chomel",
 					"company": "EDRLab ",
 					"companyURL": "https://www.edrlab.org",
-					"w3cid": 136660 
+					"w3cid": 136660
 				},
 				{
 					"name": "George Kerscher",
 					"company": "DAISY Consortium",
 					"companyURL": "https://daisy.org/",
-					"w3cid": 1460 
+					"w3cid": 1460
 				}
 			],
 			processVersion: 2020,
@@ -72,8 +74,8 @@
 				width: 100%;
 				height: auto;
 			}
-			
-			
+
+
 			.fake-issue {
 				padding: .5em;
 				border: .5em;
@@ -81,7 +83,7 @@
 				page-break-inside: avoid;
 				margin: 1em auto;
 			}
-			
+
 			.fake-issue {
 				border-color: #e05252;
 				border-color: var(--issue-border);
@@ -92,19 +94,19 @@
 				counter-increment: issue;
 				overflow: auto;
 			}
-			
+
 			.fake-issue::before,
 			.fake-issue > .marker {
 				color: #831616;
 				color: var(--issueheading-text);
 			}
-			
+
 			.fake-issue::before,
 			.fake-issue > .marker {
 				text-transform: uppercase;
 				padding-right: 1em;
 			}
-			
+
 			.fake-issue a.respec-gh-label {
 				padding: 5px;
 				margin: 0 2px 0 2px;
@@ -124,7 +126,7 @@
 		<section id="abstract">
 			<p>The accessibility of a publication is useful to know regardless of a person's abilities, as features such
 				as the ability to make visual adjustments make for a better reading experience for everybody. These guidelines
-				document proposes a shared framework for presenting publication accessibility metadata declarations in a
+				document a shared framework for presenting publication accessibility metadata declarations in a
 				user-friendly manner — to offer the information to end users in a way that is easy to understand
 				regardless of their technical knowledge and is consistent across different publications and different
 				digital catalogs. </p>
@@ -134,53 +136,51 @@
 			<h2>Introduction</h2>
 
 			<p>Reading a digital publication is a very personal experience. For most people this is routine, and little
-				consideration is given to how the title was obtained before it is read. Users may go to a bookstore,
+				consideration is given to how the title was obtained before it is read. Users may go to a bookstore or library,
 				search for the title to purchase online, or have the title selected for them by an instructor for a
 				class.</p>
 
 			<p>Now consider that the person is blind and relies on assistive technology. The user needs that technology
 				to assist them in the purchase process as well as to read the e-book. The person may wonder: will
 				the screen reader work with this title; are there image descriptions that will be spoken to describe
-				these images; are there page numbers which are accessible; is the reading order correct so a caution
-				after reading a paragraph which could be dangerous will be announced? All of these, and more
-				accessibility concerns are potential issues consumers have when trying to purchase and ultimately read a
+				these images; are there page numbers which are accessible; is the reading order correct so a caution will be announced before reading the paragraph which could be dangerous? All of these accessibility concerns are potential issues consumers have when trying to purchase and ultimately read a
 				digital publication in any format.</p>
 
 			<p>The good news is more and more publishers are creating digital publications that are Born Accessible (i.e.,
 				accessible from the outset, not fixed later) and getting the accessibility validation or audit done by
 				independent organizations.</p>
-		
+
 		<section id="terminology">
 			<h3>Terminology</h3>
-		
+
 			<p>There are several terms used in these guidelines that should   be defined  for clarity:</p>
-			
+
 			<dl>
 				<dt><dfn>digital publication</dfn></dt>
 				<dd>
 					<p>The term digital publication is used in this document to refer to publications produced in any number of digital formats. Digital publications are not limited to books, but encompass any written, visual, or audio work distributed and read in digital form.</p>
 					<p>Some examples of digital publications include ebooks, audiobooks, manga, comic books, journals, digital textbooks, picture books, and children's picture books with accompanying audio. The formats they come in include EPUB, PDF, and Digital Talking Books (DTB).</p>
 				</dd>
-				
+
 				<dt><dfn>dynamic braille</dfn></dt>
 				<dd>
 					<p>The term dynamic braille is used to denote content that is generated as braille on the fly,
 						as opposed to preformatted digital braille formats. This dynamic rendering of
 						content is sometimes referred to as electronic braille or refreshable braille.</p>
-					
+
 					<p>Dynamic braille is typically rendered on a separate device from the reading system, one with
 						pop-up pins to present the braille on a tactile screen. These devices, commonly referred to as
 						refreshable braille displays, can be attached to a personal computer, or they may be a
 						self-contained multipurpose note taker with a refreshable braille display.</p>
 				</dd>
-				
+
 				<dt><dfn>read aloud speech</dfn></dt>
 				<dd>
 					<p>The term read aloud speech is used to denote content that is generated into synthetic speech
 						on the fly, as opposed to prerecorded narration. Read aloud functionality is often a feature
 						of reading systems, but can be provided by a separate assistive technology.</p>
 				</dd>
-				
+
 				<dt><dfn>reading system</dfn></dt>
 				<dd>
 					<p>All digital publications require a reading system to present the publication to the end user. Reading Systems may be Apps that run on a smart phone or tablet. There are Reading Systems which are  applications  that run on  personal computers. There are also Reading Systems that are integrated in to dedicated devices devoted to a single purpose, for presenting a publication. There are even skills   that run on smart speakers that can be considered Reading Systems.</p>
@@ -194,7 +194,7 @@
 			<p>These guidelines   help those who wish to render accessibility metadata directly to users understand how to
 				represent the accessibility claims inherent in machine-readable accessibility metadata in a
 				user-friendly User Interface / User Experience (UI/UX). This document targets implementers such as
-				bookstores, retailers, distributors etc. Content creators will benefit from reading these guidelines and
+				bookstores, libraries, retailers, distributors etc. Content creators will benefit from reading these guidelines and
 				are encouraged to follow <a href="https://www.w3.org/TR/epub-a11y-11/">EPUB Accessibility 1.1
 					Conformance and Discoverability Requirements section and its techniques.</a></p>
 
@@ -206,12 +206,10 @@
 			</div>
 
 			<p>Metadata found either inside a digital publication or in a corresponding external record may have
-				important accessibility claims that helps end users find and determine if the publication can meet their
+				important accessibility claims that help end users find and determine if the publication can meet their
 				specific accessibility needs.</p>
 
-			<p>All accessibility metadata is meant to be machine-readable – except for the accessibility summary - in
-				this way accessibility metadata can be extracted and displayed uniformly across different publications
-				and localized to different user interface languages.</p>
+			<p>This accessibility metadata uses controlled vocabularies to allow it to be extracted and displayed uniformly across different publications and localized to different user interface languages. The one exception is the accessibility summary, which allows accessibility statements that are unique to a publication and that adds information not covered by other metadata entries.</p>
 
 			<p>One important aspect is that the role of the Accessibility Summary metadata has changed in the latest
 				version of the EPUB Accessibility specification, so a more in-depth analysis in the <a
@@ -220,7 +218,7 @@
 			<p>This document offers guidance on how to aggregate and display claims inherent in metadata to end users;
 				these are not strict guidelines, but suggestions for providing a consistent experience for users through
 				different portals. Different implementers may choose to implement these guidelines in a slightly
-				different way, some examples can be seen in the <a href="#implementations">Implementations</a> section
+				different way. Some examples can be seen in the <a href="#implementations">Implementations</a> section
 				of the document.</p>
 
 			<section id="accessibility-claims">
@@ -251,16 +249,15 @@
 					external metadata record formats (ONIX and MARC) that accompany a digital publication as it moves
 					through the supply chain.</p>
 
-				<p>In some cases, digital publication may include both internal and external metadata (e.g., an EPUB
+				<p>In some cases, a digital publication may include both internal and external metadata (e.g., an EPUB
 					could have accessibility metadata in it package document and also be provided to a vendor with an
 					ONIX record). In these cases, vendors and reading system developers determine for themselves which
 					set of metadata they will use to display to users.</p>
 
 				<div class="note">
 					<p>This guide assumes the metadata is already in one of the formats described in the diagram, but
-						depending on how the metadata is submitted it may need to be transformed (e.g.	, if a vendor
-						prefers to handle only ONIX metadata for display they would need to preprocess the metadata
-						embedded in an EPUB or PDF file).</p>
+						depending on how the metadata is submitted it may need to be transformed. For example, if a vendor
+						prefers to handle only ONIX metadata for display Then they would need to preprocess the metadata embedded in an EPUB or PDF to create the ONIX.</p>
 					<p>The process of transforming metadata is not it scope for this document nor is how to reconcile
 						metadata when it is provided in multiple forms. The guide assumes any processing has already
 						occurred. For information on mapping between formats, refer to the <a
@@ -356,7 +353,7 @@
 		</section>
 		<section id="order-of-key-information">
 			<h2>Key accessibility information</h2>
-			
+
 			<section id="intro-key-info" class="introductory">
 				<h3>Introduction to key accessibility information</h3>
 
@@ -372,7 +369,7 @@
 						to them. When images have text descriptions (alt text), they are assured that they will be not
 						missing out on essential information. Blind users will greatly benefit from this information as
 						well as individuals who use the read aloud feature in Reading Systems.</li>
-					<li> People who are selecting materials for public institutions such as libraries or schools, need
+					<li> People who are selecting materials for public institutions such as libraries or schools need
 						to know if the content conforms to accepted standards.</li>
 				</ul>
 
@@ -708,7 +705,7 @@
 							</span>Foo's Accessibility Testing </p>
 						<p><span data-localization-id="conformance-certifier-credentials">The certifier's credential is</span>"Enterprise Accessibility Rating."</p>
 
-						
+
 <p data-localization-id="conformance-details">Detailed conformance information</p>
 						<p>This publication reports (Publisher's in-house specification.)</p>
 <p> The publication was certified
@@ -1110,7 +1107,7 @@
 
 				<section id="legal-examples">
 					<h4>Example</h4>
-		<aside class="example" title="Exception or exemption ">
+		<aside class="example" title="Exception or exemption">
 <p> In many cases no legal exception or exemption information will be presented. The following example is provided as a possible descriptive explanation when legal exception or exemption information needs to be presented.</p>
 <p data-localization-id="legal-considerations-exempt"
 
@@ -1316,58 +1313,58 @@
 			<h2>Localization</h2>
 
 			<p>
-				An ebook can be purchased in any country without limited availability or additional delivery costs. 
+				An ebook can be purchased in any country without limited availability or additional delivery costs.
 				Readers want consistent display of accessibility information, and that’s the primary role of the display guide.
 				The wording proposed in this guide has been widely discussed by a large group representing different
 				actors of the English-speaking geographies. It has been improved after proof-of-concept implementations
 				and reviewed by panels of testers. </p>
 
 			<p>
-				We understand that different countries or different target audience services may want to use specific language, and we have provided flexibility in the guide to accommodate this while maintaining a high level of understanding and similar quality to help users in a country find likewise information between two bookstores or libraries in the same language area. 
+				We understand that different countries or different target audience services may want to use specific language, and we have provided flexibility in the guide to accommodate this while maintaining a high level of understanding and similar quality to help users in a country find likewise information between two bookstores or libraries in the same language area.
 				Simply translating the strings is not enough; the subtle meaning of the words and phrases of accessibility concepts must be localized for maximum understanding. Therefore, we intend to provide a mechanism for the publishing community to provide translations that localizes the strings for equally effective communication in many languages.</p>
 
 				<p>The <a href="../localizations">Display guide localization strings page</a> list translations with contextualization of the localization process.</p>
 
 				<p>The following subsections proposes a localization framework to help establishing linguistic areas wordings agreed between actors of the concerned geographical area. </p>
-				
+
 			<section>
 				<h3>Localization strategy</h3>
-			   
+
 					<p>
-						With the rapidly evolving landscape of accessible ebooks available, most concerned persons are discovering a new world. To ensure the information is widely spread and understood, the implication of local actors like NGOs libraries serving persons with disabilities and other local actors in the fight to end the book famine for readers with print disabilities is crucial and should be highlighted.  
+						With the rapidly evolving landscape of accessible ebooks available, most concerned persons are discovering a new world. To ensure the information is widely spread and understood, the implementation by local actors like  libraries serving persons with disabilities and other local actors in the fight to end the book famine for readers with print disabilities is crucial and should be highlighted.
 					</p>
-					<p>	
-						The localization of the display guide is a good opportunity to make known the rich accessibility features offered by modern formats like EPUB. Reversely, having a local project scale to write an understandable vocabulary to describe such features is a precious qualitative approach that will benefit to every player in the value chain. 
+					<p>
+						The localization of the display guide is a good opportunity to make known the rich accessibility features offered by modern formats like EPUB. In addition, having a local project scale to write an understandable vocabulary to describe such features is a precious qualitative approach that will benefit  every player in the value chain.
 					</p>
-					<p>	
-						To build a local project and facilitate feedback comparisons, you can use open source methodology, resources, and prototypes published by EDRLab for the original <a href="https://edition-accessible.github.io/signalement/en/index-en.html">Signposting accessible digital books project</a> that led to the initial <a href="https://edition-accessible.github.io/signalement/documents/EDRLab-Signalement_lettreW3C_EN.pdf">Feedback letter (PDF)</a> addressed in early 2022. And has already been used and adapted in various places. 
+					<p>
+						To build a local project and facilitate feedback comparisons, you can use open source methodology, resources, and prototypes published by EDRLab for the original <a href="https://edition-accessible.github.io/signalement/en/index-en.html">Signposting accessible digital books project</a> that led to the initial <a href="https://edition-accessible.github.io/signalement/documents/EDRLab-Signalement_lettreW3C_EN.pdf">Feedback letter (PDF)</a> addressed in early 2022, and has already been used and adapted in various places.
 					</p>
-					<p>	
+					<p>
 						In these projects, emphasis was placed on the implications for the end users. For instance, the French wording proposed by EDRLab resulted from a quantitative survey of different reader groups, carefully selected panels of individual observations, and an extended feedback process through a dedicated formula available on the 140 first implementation platforms.
 					</p>
-					<p>	
-						Additionally, companies like VitalSource that need wide localization have offered to open-source their professional translation work, which has produced the needed quantity and that is better to use than nothing when no national project has issued a handcrafted vocabulary.  
+					<p>
+						Additionally, companies like VitalSource that need wide localization have offered to open-source their professional translation work, which has produced the needed quantity and that is better to use than nothing when no national project has issued a handcrafted vocabulary.
 					</p>
-					<p>	
-						To reconcile both sources of provided localization materials, we propose a collection mechanism based on a detailed identification of the provenance. Because persons and organizations with different levels of technicality must be able to contribute, we accept both raw files via Pull requests and also propose a friendly localization user interface through GitLocalize. 
+					<p>
+						To reconcile both sources of provided localization materials, we propose a collection mechanism based on a detailed identification of the provenance. Because persons and organizations with different levels of technicality must be able to contribute, we accept both raw files via Pull requests and also propose a friendly localization user interface through GitLocalize.
 					</p>
-	
+
 				</section>
 				<section>
 					<h3 id="How-to-contribute">How to contribute?</h3>
 					<p>First let us know as soon as possible that you are working on a localization and wish to submit it. That allows us to prepare a placeholder for your work. This is not mandatory but we invite you to contact the group and participate to a regular call of the working group as those are open to anyone. </p>
-					<p>When you are ready to publish your work, two options are possible: 
+					<p>When you are ready to publish your work, two options are possible:
 						<ul>
 							<li>If you don’t know what a JSON or a Pull Request is, you are welcome to contact us so we can attribute a translator role at the <a href="https://gitlocalize.com/repo/9555">Gitlocalize dedicated project page</a>.</li>
 							<li>If you feel technically ready or have a collaborator that can push a pull request, the process is to duplicate the canonical original file UX-Guide-Metadata/draft/localizations/en-US/display_guide_vocabulary_w3c_en-US.json, modify it by changing the values in front of each key, and open a pull request so we can review it. Please be aware that we could have questions or ask for precision in the process before accepting and merging your contribution.</li>
 						</ul>
 						</p>
-	
+
 				</section>
 				<section>
 					<h3 id="How-to-choose-between-localization-files">How to choose between localization files?</h3>
-	
-					<p>The first keys of each JSON files contains descriptive information about it, including 
+
+					<p>The first keys of each JSON files contains descriptive information about it, including
 						<ul>
 							<li>Author, name of the organisation responsible for the establishment and maintenance of this localization</li>
 							<li>Language, is a 4 letters code where the two first letters specifies the language as per ISO 639-1 and the two others the country as per ISO 3166-1 alpha-2 </li>
