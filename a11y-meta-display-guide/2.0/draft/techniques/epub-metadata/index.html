@@ -346,37 +346,37 @@
 					</dd>
 					<dt><var>epub_accessibility_1_1</var></dt>
 					<dd>
-                        <p>If true it indicates that the <i>conformsTo</i> contains "EPUB Accessibility 1.1"  (EPUB Accessibility Specification 1.1) is present in the package document, otherwise if false it means that the metadata is not present.</p>
+                        <p>If true it indicates that an approved <i>conformsTo</i> claim contains "EPUB Accessibility 1.1"  (EPUB Accessibility Specification 1.1) is present in the package document, otherwise if false it means that the metadata is not present.</p>
 						<p>This means that the publication conforms with the requirements of EPUB Accessibility Spec 1.1.</p>
 					</dd>
 					<dt><var>wcag_20</var></dt>
 					<dd>
-                        <p>If true it indicates that the <i>conformsTo</i> contains "WCAG 2.0" or <i>conformsTo="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-a"</i> (EPUB Accessibility Specification 1.0 A) or the <i>conformsTo="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aa"</i> (EPUB Accessibility Specification 1.0 AA) or the <i>conformsTo="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aaa"</i> (EPUB Accessibility Specification 1.0 AAA) are present in the package document, otherwise if false it means that the metadata is not present.</p>
+                        <p>If true it indicates that an approved <i>conformsTo</i> claim contains "WCAG 2.0" or <i>conformsTo="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-a"</i> (EPUB Accessibility Specification 1.0 A) or the <i>conformsTo="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aa"</i> (EPUB Accessibility Specification 1.0 AA) or the <i>conformsTo="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aaa"</i> (EPUB Accessibility Specification 1.0 AAA) are present in the package document, otherwise if false it means that the metadata is not present.</p>
 						<p>This means that the publication conforms with the requirements of WCAG version 2.0 or with the requirements of EPUB Accessibility Spec 1.0 (at level A, AA, or AAA). This is because being compliant with EPUB Accessibility 1.0 specification means at least being compliant with WCAG 2.0 specification.</p>
 					</dd>
 					<dt><var>wcag_21</var></dt>
 					<dd>
-						 <p>If true it indicates that the <i>conformsTo</i> contains "WCAG 2.1" is present in the package document, otherwise if false it means that the metadata is not present.</p>
+						 <p>If true it indicates that an approved <i>conformsTo</i> claim contains "WCAG 2.1" is present in the package document, otherwise if false it means that the metadata is not present.</p>
 						<p>This means that the publication conforms with the requirements of WCAG version 2.1.</p>
 					</dd>
 					<dt><var>wcag_22</var></dt>
 					<dd>
-				        <p>If true it indicates that the <i>conformsTo</i> contains "WCAG 2.2" is present in the package document, otherwise if false it means that the metadata is not present.</p>
+				        <p>If true it indicates that an approved <i>conformsTo</i> claim contains "WCAG 2.2" is present in the package document, otherwise if false it means that the metadata is not present.</p>
 						<p>This means that the publication conforms with the requirements of WCAG version 2.2.</p>
 					</dd>
 					<dt><var>level_a</var></dt>
 					<dd>
-						<p>If true it indicates that the <i>conformsTo</i> contains "Level A" or the <i>conformsTo="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-a"</i> (EPUB Accessibility Specification 1.0 A) are present in the package document, otherwise if false it means that the metadata is not present.</p>
+						<p>If true it indicates that an approved <i>conformsTo</i> claim contains "Level A" or the <i>conformsTo="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-a"</i> (EPUB Accessibility Specification 1.0 A) are present in the package document, otherwise if false it means that the metadata is not present.</p>
 						<p>This means that the publication conforms with the requirements of WCAG level A or with the requirements of EPUB Accessibility Spec 1.0 level A.</p>
 					</dd>
 					<dt><var>level_aa</var></dt>
 					<dd>
-						<p>If true it indicates that the <i>conformsTo</i> contains "Level AA" or the <i>conformsTo="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aa"</i> (EPUB Accessibility Specification 1.0 AA) are present in the package document, otherwise if false it means that the metadata is not present.</p>
+						<p>If true it indicates that an approved <i>conformsTo</i> claim contains "Level AA" or the <i>conformsTo="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aa"</i> (EPUB Accessibility Specification 1.0 AA) are present in the package document, otherwise if false it means that the metadata is not present.</p>
 						<p>This means that the publication conforms with the requirements of WCAG level AA or with the requirements of EPUB Accessibility Spec 1.0 level AA.</p>
 					</dd>
 					<dt><var>level_aaa</var></dt>
 					<dd>
-						<p>If true it indicates that the <i>conformsTo</i> contains "Level AAA" or the <i>conformsTo="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aaa"</i> (EPUB Accessibility Specification 1.0 A) are present in the package document, otherwise if false it means that the metadata is not present.</p>
+						<p>If true it indicates that an approved <i>conformsTo</i> claim contains "Level AAA" or the <i>conformsTo="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aaa"</i> (EPUB Accessibility Specification 1.0 A) are present in the package document, otherwise if false it means that the metadata is not present.</p>
 						<p>This means that the publication conforms with the requirements of WCAG level AAA or with the requirements of EPUB Accessibility Spec 1.0 level AAA.</p>
 					</dd>
 					<dt><var>certifier</var></dt>
@@ -411,21 +411,117 @@
 				<ol class="condition">
 					<li><b>LET</b> <var>package_document</var> be the result of calling <a href="#pre-processing">preprocessing</a> given <var>package_document_as_text</var>.</li>
                     
-					<li><b>LET</b> <var>epub_accessibility_1_0</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="dcterms:<i>conformsTo</i>" and contains(text(), <i>http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-</i>"]</code>.</li>
+                <!-- EPUB Accessibility 1.0 WCAG 2.0 (A/AA/AAA) -->
+                 <li>
+                       <span><b>IF</b> the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="dcterms:<i>conformsTo</i>" and text() = <i>http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-a</i>"]</code> :</span>
+                       <span>
+                            <b>THEN</b> <b>LET</b> <var>epub_accessibility_1_0</var> = TRUE, 
+                            <b>LET</b> <var>wcag_20</var> = TRUE, 
+                            and <b>LET</b> <var>level_a</var> = TRUE.
+                       </span>
+                    </li>
+
+                  <li>
+                       <span><b>IF</b> the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="dcterms:<i>conformsTo</i>" and text() = <i>http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aa</i>"]</code>:</span>
+                       <span>
+                            <b>THEN</b> <b>LET</b> <var>epub_accessibility_1_0</var> = TRUE, 
+                            <b>LET</b> <var>wcag_20</var> = TRUE, 
+                            and <b>LET</b> <var>level_aa</var> = TRUE.
+                       </span>
+                    </li>
+
+                  <li>
+                       <span><b>IF</b> the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="dcterms:<i>conformsTo</i>" and text() = <i>http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aaa</i>"]</code>:</span>
+                       <span>
+                            <b>THEN</b> <b>LET</b> <var>epub_accessibility_1_0</var> = TRUE, 
+                            <b>LET</b> <var>wcag_20</var> = TRUE, 
+                            and <b>LET</b> <var>level_aaa</var> = TRUE.
+                       </span>
+                    </li>
+
+                  <!-- EPUB Accessibility 1.1 WCAG 2.0 (A/AA/AAA) -->
+                  <li>
+                       <span><b>IF</b> the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="dcterms:<i>conformsTo</i>" and text() = <i>EPUB Accessibility 1.1 - WCAG 2.0 Level A</i>"]</code> :</span>
+                       <span>
+                            <b>THEN</b> <b>LET</b> <var>epub_accessibility_1_1</var> = TRUE, 
+                            <b>LET</b> <var>wcag_20</var> = TRUE, 
+                            and <b>LET</b> <var>level_a</var> = TRUE.
+                       </span>
+                    </li>
+
+                  <li>
+                       <span><b>IF</b> the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="dcterms:<i>conformsTo</i>" and text() = <i>EPUB Accessibility 1.1 - WCAG 2.0 Level AA</i>"]</code> :</span>
+                       <span>
+                            <b>THEN</b> <b>LET</b> <var>epub_accessibility_1_1</var> = TRUE, 
+                            <b>LET</b> <var>wcag_20</var> = TRUE, 
+                            and <b>LET</b> <var>level_aa</var> = TRUE.
+                       </span>
+                    </li>
+
+                  <li>
+                       <span><b>IF</b> the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="dcterms:<i>conformsTo</i>" and text() = <i>EPUB Accessibility 1.1 - WCAG 2.0 Level AAA</i>"]</code> :</span>
+                       <span>
+                            <b>THEN</b> <b>LET</b> <var>epub_accessibility_1_1</var> = TRUE, 
+                            <b>LET</b> <var>wcag_20</var> = TRUE, 
+                            and <b>LET</b> <var>level_aaa</var> = TRUE.
+                       </span>
+                    </li>
+
+                  <!-- EPUB Accessibility 1.1 WCAG 2.1 (A/AA/AAA) -->
+                  <li>
+                       <span><b>IF</b> the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="dcterms:<i>conformsTo</i>" and text() = <i>EPUB Accessibility 1.1 - WCAG 2.1 Level A</i>"]</code> :</span>
+                       <span>
+                            <b>THEN</b> <b>LET</b> <var>epub_accessibility_1_1</var> = TRUE, 
+                            <b>LET</b> <var>wcag_21</var> = TRUE, 
+                            and <b>LET</b> <var>level_a</var> = TRUE.
+                       </span>
+                    </li>
+
+                  <li>
+                       <span><b>IF</b> the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="dcterms:<i>conformsTo</i>" and text() = <i>EPUB Accessibility 1.1 - WCAG 2.1 Level AA</i>"]</code> :</span>
+                       <span>
+                            <b>THEN</b> <b>LET</b> <var>epub_accessibility_1_1</var> = TRUE, 
+                            <b>LET</b> <var>wcag_21</var> = TRUE, 
+                            and <b>LET</b> <var>level_aa</var> = TRUE.
+                       </span>
+                    </li>
+
+                  <li>
+                       <span><b>IF</b> the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="dcterms:<i>conformsTo</i>" and text() = <i>EPUB Accessibility 1.1 - WCAG 2.1 Level AAA</i>"]</code> :</span>
+                       <span>
+                            <b>THEN</b> <b>LET</b> <var>epub_accessibility_1_1</var> = TRUE, 
+                            <b>LET</b> <var>wcag_21</var> = TRUE, 
+                            and <b>LET</b> <var>level_aaa</var> = TRUE.
+                       </span>
+                    </li>
                     
-                    <li><b>LET</b> <var>epub_accessibility_1_1</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="dcterms:<i>conformsTo</i>" and contains(text(), <i>"EPUB Accessibility 1.1"</i>)]</code>.</li>
-                    
-					<li><b>LET</b> <var>wcag_20</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="dcterms:<i>conformsTo</i>" and contains(text(), <i>"http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-"</i>)]</code> <b>OR</b> calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="dcterms:<i>conformsTo</i>" and contains(text(), <i>"WCAG 2.0"</i>)]</code></li>
-                    
-                    <li><b>LET</b> <var>wcag_21</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="dcterms:<i>conformsTo</i>" and contains(text(), <i>WCAG 2.1"</i>)]</code>.</li>
-            
-					<li><b>LET</b> <var>wcag_22</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="dcterms:<i>conformsTo</i>" and contains(text(), <i>WCAG 2.2"</i>)]</code>.</li>
-    
-					<li><b>LET</b> <var>level_a</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="dcterms:<i>conformsTo</i>" and contains(text(), <i>Level A"</i>)]</code> <b>OR</b> calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="dcterms:<i>conformsTo</i>" and text()=<i>http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-a</i>"]</code>.</li>
-                    
-					<li><b>LET</b> <var>level_aa</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="dcterms:<i>conformsTo</i>" and contains(text(), <i>Level AA"</i>)]</code> <b>OR</b> calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="dcterms:<i>conformsTo</i>" and text()=<i>http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aa</i>"]</code>.</li>
-                    
-                    <li><b>LET</b> <var>level_aaa</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="dcterms:<i>conformsTo</i>" and contains(text(), <i>Level AAA"</i>)]</code> <b>OR</b> calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="dcterms:<i>conformsTo</i>" and text()=<i>http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aaa</i>"]</code>.</li>
+                  <!-- EPUB Accessibility 1.1 WCAG 2.2 (A/AA/AAA) -->
+                  <li>
+                       <span><b>IF</b> the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="dcterms:<i>conformsTo</i>" and text() = <i>EPUB Accessibility 1.1 - WCAG 2.2 Level A</i>"]</code> :</span>
+                       <span>
+                            <b>THEN</b> <b>LET</b> <var>epub_accessibility_1_1</var> = TRUE, 
+                            <b>LET</b> <var>wcag_22</var> = TRUE, 
+                            and <b>LET</b> <var>level_a</var> = TRUE.
+                       </span>
+                    </li>
+
+                  <li>
+                       <span><b>IF</b> the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="dcterms:<i>conformsTo</i>" and text() = <i>EPUB Accessibility 1.1 - WCAG 2.2 Level AA</i>"]</code> :</span>
+                       <span>
+                            <b>THEN</b> <b>LET</b> <var>epub_accessibility_1_1</var> = TRUE, 
+                            <b>LET</b> <var>wcag_22</var> = TRUE, 
+                            and <b>LET</b> <var>level_aa</var> = TRUE.
+                       </span>
+                    </li>
+
+                  <li>
+                       <span><b>IF</b> the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="dcterms:<i>conformsTo</i>" and text() = <i>EPUB Accessibility 1.1 - WCAG 2.2 Level AAA</i>"]</code> :</span>
+                       <span>
+                            <b>THEN</b> <b>LET</b> <var>epub_accessibility_1_1</var> = TRUE, 
+                            <b>LET</b> <var>wcag_22</var> = TRUE, 
+                            and <b>LET</b> <var>level_aaa</var> = TRUE.
+                       </span>
+                    </li>
                     
 					
                     <li><b>LET</b> <var>certifier</var> be the value of the node extracted from <var>package_document</var>, using the xpath <code class="xpath">/package/metadata/meta[@property="a11y:<i>certifiedBy</i>"]/text()</code>.</li>
