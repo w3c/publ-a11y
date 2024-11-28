@@ -1,23 +1,23 @@
 
 'use strict';
 
-var packageProcessor = (function() {
+var onixProcessor = (function() {
 
 	var result = document.getElementById('result');
 	
-	function processPackageDoc(package_document_as_text) {
+	function processOnixRecord(onix_record_as_text) {
 	
 		console.clear();
 		result.textContent = '';
 		
 		/* 
 		 * The specification calls the preprocessing step for every technique but that's
-		 * omitted from this code. The package_document variable is only configured once
+		 * omitted from this code. The onix variable is only configured once
 		 */  
 		
-		var package_document = preprocessing(package_document_as_text);
+		var onix = preprocessing(onix_record_as_text);
 		
-		if (!package_document) {
+		if (!onix) {
 			return;
 		}
 		
@@ -26,8 +26,8 @@ var packageProcessor = (function() {
 		 */
 		 
 		 // 4.1.2 Variables setup
-		 var all_textual_content_can_be_modified = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="displayTransformability"]');
-		 var is_fixed_layout = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="rendition:layout" and text()="pre-paginated"]');
+		 var all_textual_content_can_be_modified = checkForNode(onix, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="displayTransformability"]');
+		 var is_fixed_layout = checkForNode(onix, '/opf:package/opf:metadata/opf:meta[@property="rendition:layout" and text()="pre-paginated"]');
 		
 		// 4.1.3 Instructions
 		
@@ -57,9 +57,9 @@ var packageProcessor = (function() {
 		 */
 		 
 		 // 4.2.2 Variables setup
-		 var all_necessary_content_textual = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="schema:accessModeSufficient" and text()="textual"]');
-		 var non_textual_content_images = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and (text()="chartOnVisual" or text()="chemOnVisual" or text()="diagramOnVisual" or text()="mathOnVisual" or text()="musicOnVisual" or text()="textOnVisual")]');
-		 var textual_alternative_images = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and (text()="longDescription" or text()="alternativeText" or text()="describedMath")]');
+		 var all_necessary_content_textual = checkForNode(onix, '/opf:package/opf:metadata/opf:meta[@property="schema:accessModeSufficient" and text()="textual"]');
+		 var non_textual_content_images = checkForNode(onix, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and (text()="chartOnVisual" or text()="chemOnVisual" or text()="diagramOnVisual" or text()="mathOnVisual" or text()="musicOnVisual" or text()="textOnVisual")]');
+		 var textual_alternative_images = checkForNode(onix, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and (text()="longDescription" or text()="alternativeText" or text()="describedMath")]');
 		
 		// 4.2.3 Instructions
 		
@@ -92,17 +92,17 @@ var packageProcessor = (function() {
 		var conformance_string = '';
 		var wcag_level = '';
 		
-		if (checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="dcterms:conformsTo" and text() = "http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-a"] | /opf:package/opf:metadata/opf:link[@rel="dcterms:conformsTo" and @href="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-a"]')) {
+		if (checkForNode(onix, '/opf:package/opf:metadata/opf:meta[@property="dcterms:conformsTo" and text() = "http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-a"] | /opf:package/opf:metadata/opf:link[@rel="dcterms:conformsTo" and @href="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-a"]')) {
 			conformance_string = 'EPUB Accessibility 1.0 WCAG 2.0 Level A';
 			wcag_level = 'A';
 		}
 		
-		if (checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="dcterms:conformsTo" and text() = "http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aa"] | /opf:package/opf:metadata/opf:link[@rel="dcterms:conformsTo" and @href="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aa"]')) {
+		if (checkForNode(onix, '/opf:package/opf:metadata/opf:meta[@property="dcterms:conformsTo" and text() = "http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aa"] | /opf:package/opf:metadata/opf:link[@rel="dcterms:conformsTo" and @href="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aa"]')) {
 			conformance_string = 'EPUB Accessibility 1.0 WCAG 2.0 Level AA';
 			wcag_level = 'AA';
 		}
 		
-		if (checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="dcterms:conformsTo" and text() = "http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aaa"] | /opf:package/opf:metadata/opf:link[@rel="dcterms:conformsTo" and @href="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aaa"]')) {
+		if (checkForNode(onix, '/opf:package/opf:metadata/opf:meta[@property="dcterms:conformsTo" and text() = "http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aaa"] | /opf:package/opf:metadata/opf:link[@rel="dcterms:conformsTo" and @href="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aaa"]')) {
 			conformance_string = 'EPUB Accessibility 1.0 WCAG 2.0 Level AAA';
 			wcag_level = 'AAA';
 		}
@@ -110,17 +110,17 @@ var packageProcessor = (function() {
 		// js evaluate() can't handle this expression /opf:package/opf:metadata/opf:meta[@property="dcterms:conformsTo" and matches(text(), "EPUB Accessibility 1\.1 - WCAG 2\.[0-2] Level [A]+")]
 		// using contains() instead to match most of it
 		
-		var conformance = package_document.evaluate('/opf:package/opf:metadata/opf:meta[@property="dcterms:conformsTo" and contains(text(), "EPUB Accessibility 1.1 - WCAG 2.")]', package_document, nsResolver, XPathResult.STRING_TYPE, null).stringValue;
+		var conformance = onix.evaluate('/opf:package/opf:metadata/opf:meta[@property="dcterms:conformsTo" and contains(text(), "EPUB Accessibility 1.1 - WCAG 2.")]', onix, nsResolver, XPathResult.STRING_TYPE, null).stringValue;
 		
 		if (conformance) {
 			conformance_string = conformance.replace(' - ', ' ');
 			wcag_level = conformance.replace('EPUB Accessibility 1\.1 - WCAG 2\.[0-2] Level ', '');
 		}
 		
-		var certifier = package_document.evaluate('/opf:package/opf:metadata/opf:meta[@property="a11y:certifiedBy"]/text()', package_document, nsResolver, XPathResult.STRING_TYPE, null).stringValue;
-		var certifier_credentials = package_document.evaluate('/opf:package/opf:metadata/opf:meta[@property="a11y:certifierCredential"]/text()', package_document, nsResolver, XPathResult.STRING_TYPE, null).stringValue;
-		var certification_date = package_document.evaluate('/opf:package/opf:metadata/opf:meta[@property="dcterms:date" and @refines=//opf:meta[@property="a11y:certifiedBy"]/@id]', package_document, nsResolver, XPathResult.STRING_TYPE, null).stringValue;
-		var certifier_report = package_document.evaluate('/opf:package/opf:metadata/opf:meta[@property="a11y:certifierReport"]/text()', package_document, nsResolver, XPathResult.STRING_TYPE, null).stringValue;
+		var certifier = onix.evaluate('/opf:package/opf:metadata/opf:meta[@property="a11y:certifiedBy"]/text()', onix, nsResolver, XPathResult.STRING_TYPE, null).stringValue;
+		var certifier_credentials = onix.evaluate('/opf:package/opf:metadata/opf:meta[@property="a11y:certifierCredential"]/text()', onix, nsResolver, XPathResult.STRING_TYPE, null).stringValue;
+		var certification_date = onix.evaluate('/opf:package/opf:metadata/opf:meta[@property="dcterms:date" and @refines=//opf:meta[@property="a11y:certifiedBy"]/@id]', onix, nsResolver, XPathResult.STRING_TYPE, null).stringValue;
+		var certifier_report = onix.evaluate('/opf:package/opf:metadata/opf:meta[@property="a11y:certifierReport"]/text()', onix, nsResolver, XPathResult.STRING_TYPE, null).stringValue;
 		
 		// 4.3.3 Instructions
 		
@@ -253,9 +253,9 @@ var packageProcessor = (function() {
 		 */
 		 
 		 // 4.4.2 Variables setup
-		 var all_content_audio = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="schema:accessModeSufficient" and text()="auditory"]');
-		 var synchronised_pre_recorded_audio = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="sychronizedAudioText"]');
-		 var audio_content = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="schema:accessMode" and text()="auditory"]');
+		 var all_content_audio = checkForNode(onix, '/opf:package/opf:metadata/opf:meta[@property="schema:accessModeSufficient" and text()="auditory"]');
+		 var synchronised_pre_recorded_audio = checkForNode(onix, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="sychronizedAudioText"]');
+		 var audio_content = checkForNode(onix, '/opf:package/opf:metadata/opf:meta[@property="schema:accessMode" and text()="auditory"]');
 		
 		// 4.4.3 Instructions
 		
@@ -289,10 +289,10 @@ var packageProcessor = (function() {
 		 */
 		 
 		 // 4.5.2 Variables setup
-		 var table_of_contents_navigation = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="tableOfContents"]');
-		 var index_navigation = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="index"]');
-		 var page_navigation = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="pageNavigation"]');
-		 var next_previous_structural_navigation = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="structuralNavigation"]');
+		 var table_of_contents_navigation = checkForNode(onix, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="tableOfContents"]');
+		 var index_navigation = checkForNode(onix, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="index"]');
+		 var page_navigation = checkForNode(onix, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="pageNavigation"]');
+		 var next_previous_structural_navigation = checkForNode(onix, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="structuralNavigation"]');
 		
 		// 4.5.3 Instructions
 		
@@ -340,13 +340,13 @@ var packageProcessor = (function() {
 		 */
 		 
 		 // 4.6.2 Variables setup
-		var contains_charts_diagrams  = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="chartOnVisual"]');
-		var long_text_descriptions  = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="longDescriptions"]');
-		var contains_chemical_formula  = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="chemOnVisual"]');
-		var chemical_formula_as_chemml  = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="ChemML"]');
-		var contains_math_formula  = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="describedMath"]');
-		var math_formula_as_latex  = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="latex"]');
-		var math_formula_as_mathml  = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="MathML"]');
+		var contains_charts_diagrams  = checkForNode(onix, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="chartOnVisual"]');
+		var long_text_descriptions  = checkForNode(onix, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="longDescriptions"]');
+		var contains_chemical_formula  = checkForNode(onix, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="chemOnVisual"]');
+		var chemical_formula_as_chemml  = checkForNode(onix, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="ChemML"]');
+		var contains_math_formula  = checkForNode(onix, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="describedMath"]');
+		var math_formula_as_latex  = checkForNode(onix, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="latex"]');
+		var math_formula_as_mathml  = checkForNode(onix, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="MathML"]');
 		
 		// 4.6.3 Instructions
 		
@@ -380,14 +380,14 @@ var packageProcessor = (function() {
 		 */
 		 
 		 // 4.7.2 Variables setup
-		var no_hazards_or_warnings_confirmed = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityHazard" and text()="none"]');
-		var flashing_hazard = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityHazard" and text()="flashing"]');
-		var no_flashing_hazards = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityHazard" and text()="noFlashingHazard"]');
-		var motion_simulation_hazard = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityHazard" and text()="motionSimulation"]');
-		var no_motion_hazards = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityHazard" and text()="noMotionSimulation"]');
-		var sound_hazard = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityHazard" and text()="sound"]');
-		var no_sound_hazards = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityHazard" and text()="noSoundHazard"]');
-		var unknown_if_contains_hazards = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityHazard" and text()="unknown"]');
+		var no_hazards_or_warnings_confirmed = checkForNode(onix, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityHazard" and text()="none"]');
+		var flashing_hazard = checkForNode(onix, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityHazard" and text()="flashing"]');
+		var no_flashing_hazards = checkForNode(onix, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityHazard" and text()="noFlashingHazard"]');
+		var motion_simulation_hazard = checkForNode(onix, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityHazard" and text()="motionSimulation"]');
+		var no_motion_hazards = checkForNode(onix, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityHazard" and text()="noMotionSimulation"]');
+		var sound_hazard = checkForNode(onix, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityHazard" and text()="sound"]');
+		var no_sound_hazards = checkForNode(onix, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityHazard" and text()="noSoundHazard"]');
+		var unknown_if_contains_hazards = checkForNode(onix, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityHazard" and text()="unknown"]');
 		
 		// 4.7.3 Instructions
 		
@@ -446,9 +446,9 @@ var packageProcessor = (function() {
 		 */
 		 
 		 // 4.8.2 Variables setup
-		var accessibility_summary =  package_document.evaluate('/opf:package/opf:metadata/opf:meta[@property="schema:accessibilitySummary"]', package_document, nsResolver, XPathResult.STRING_TYPE, null).stringValue;
-		var lang_attribute_accessibility_summary = package_document.evaluate('(/opf:package/opf:metadata/opf:meta[@property="schema:accessibilitySummary"]/@xml:lang | /opf:package/@xml:lang)[last()]', package_document, nsResolver, XPathResult.STRING_TYPE, null).stringValue;
-		var language_of_text = package_document.evaluate('/opf:package/opf:metadata/dc:language[1]/text()', package_document, nsResolver, XPathResult.STRING_TYPE, null).stringValue;
+		var accessibility_summary =  onix.evaluate('/opf:package/opf:metadata/opf:meta[@property="schema:accessibilitySummary"]', onix, nsResolver, XPathResult.STRING_TYPE, null).stringValue;
+		var lang_attribute_accessibility_summary = onix.evaluate('(/opf:package/opf:metadata/opf:meta[@property="schema:accessibilitySummary"]/@xml:lang | /opf:package/@xml:lang)[last()]', onix, nsResolver, XPathResult.STRING_TYPE, null).stringValue;
+		var language_of_text = onix.evaluate('/opf:package/opf:metadata/dc:language[1]/text()', onix, nsResolver, XPathResult.STRING_TYPE, null).stringValue;
 		
 		// 4.8.3 Instructions
 		
@@ -485,9 +485,9 @@ var packageProcessor = (function() {
 		 */
 		 
 		 // 4.9.2 Variables setup
-		var eaa_exemption_micro_enterprises = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="a11y:exemption" and text()="eaa-microenterprise"]');
-		var eaa_exception_disproportionate_burden = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="a11y:exemption" and text()="eaa-disproportionate-burden"]');
-		var eaa_exception_fundamental_modification = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="a11y:exemption" and text()="eaa-fundamental-alteration"]');
+		var eaa_exemption_micro_enterprises = checkForNode(onix, '/opf:package/opf:metadata/opf:meta[@property="a11y:exemption" and text()="eaa-microenterprise"]');
+		var eaa_exception_disproportionate_burden = checkForNode(onix, '/opf:package/opf:metadata/opf:meta[@property="a11y:exemption" and text()="eaa-disproportionate-burden"]');
+		var eaa_exception_fundamental_modification = checkForNode(onix, '/opf:package/opf:metadata/opf:meta[@property="a11y:exemption" and text()="eaa-fundamental-alteration"]');
 		
 		// 4.9.3 Instructions
 		
@@ -520,14 +520,14 @@ var packageProcessor = (function() {
 		
 		// 4.10.1 Adaptation
 		// 4.10.1.2 Variables setup
-		var audio_descriptions = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="audioDescription"]');
-		var braille = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="braille"]');
-		var closed_captions = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="closedCaptions"]');
-		var open_captions = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="openCaptions"]');
-		var tactile_graphic = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="tactileGraphic"]');
-		var tactile_object = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="tactileObject"]');
-		var transcript = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="transcript"]');
-		var sign_language = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="signLanguage"]');
+		var audio_descriptions = checkForNode(onix, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="audioDescription"]');
+		var braille = checkForNode(onix, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="braille"]');
+		var closed_captions = checkForNode(onix, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="closedCaptions"]');
+		var open_captions = checkForNode(onix, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="openCaptions"]');
+		var tactile_graphic = checkForNode(onix, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="tactileGraphic"]');
+		var tactile_object = checkForNode(onix, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="tactileObject"]');
+		var transcript = checkForNode(onix, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="transcript"]');
+		var sign_language = checkForNode(onix, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="signLanguage"]');
 		
 		// 4.10.1.3 Instructions
 		
@@ -574,14 +574,14 @@ var packageProcessor = (function() {
 		
 		// 4.10.2 Clarity
 		// 4.10.2.2 Variables setup
-		var aria = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="aria"]');
-		var full_ruby_annotations = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="fullRubyAnnotations"]');
-		var text_to_speech_hinting = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="ttsMarkup"]');
-		var high_contrast_between_foreground_and_background_audio = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="highContrastAudio"]');
-		var high_contrast_between_text_and_background = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="highContrastDisplay"]');
-		var large_print = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="largePrint"]');
-		var page_break_markers = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="pageBreakMarkers"]');
-		var ruby_annotations = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="rubyAnnotations"]');
+		var aria = checkForNode(onix, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="aria"]');
+		var full_ruby_annotations = checkForNode(onix, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="fullRubyAnnotations"]');
+		var text_to_speech_hinting = checkForNode(onix, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="ttsMarkup"]');
+		var high_contrast_between_foreground_and_background_audio = checkForNode(onix, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="highContrastAudio"]');
+		var high_contrast_between_text_and_background = checkForNode(onix, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="highContrastDisplay"]');
+		var large_print = checkForNode(onix, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="largePrint"]');
+		var page_break_markers = checkForNode(onix, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="pageBreakMarkers"]');
+		var ruby_annotations = checkForNode(onix, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="rubyAnnotations"]');
 		
 		// 4.10.2.3 Instructions
 		
@@ -629,28 +629,28 @@ var packageProcessor = (function() {
 	
 	// 3.1 Preprocessing
 	
-	function preprocessing(package_document_as_text) {
+	function preprocessing(onix_record_as_text) {
 		
-		var package_document;
+		var onix;
 		
 		try {
 			var parser = new DOMParser();
-			package_document = parser.parseFromString(package_document_as_text, "text/xml");
+			onix = parser.parseFromString(onix_record_as_text, "text/xml");
 		}
 		
 		catch (e) {
-			alert('Error parsing package document: ' + e);
-			package_document = null;
+			alert('Error parsing onix record: ' + e);
+			onix = null;
 		}
 		
-		return package_document;
+		return onix;
 	}
 	
 	
 	// 3.2 Check for node
 	
-	function checkForNode(package_document, path) {
-		var result = package_document.evaluate(path, package_document, nsResolver, XPathResult.BOOLEAN_TYPE, null);
+	function checkForNode(onix, path) {
+		var result = onix.evaluate(path, onix, nsResolver, XPathResult.BOOLEAN_TYPE, null);
 		return result.booleanValue;
 	}
 	
@@ -672,8 +672,8 @@ var packageProcessor = (function() {
 	}
 	
 	return {
-		processPackageDoc: function(packageDoc) {
-			return processPackageDoc(packageDoc);
+		processOnixRecord: function(onixRecord) {
+			return processOnixRecord(onixRecord);
 		}
 	}
 

@@ -39,16 +39,38 @@
 	<body>
 		<h1>Accessibility Metadata Display Processor</h1>
 		
-		<p>Type or paste a package document to generate the resulting accessibility statements.</p>
+		<p>Type or paste a package document or onix record to generate the resulting accessibility statements.</p>
 		
 		<textarea id="input_packagedoc" rows="15" autocomplete="off"></textarea>
 
-		<div><input type="button" onclick="packageProcessor.processPackageDoc()" value="Process"/></div>
+		<div><input type="button" onclick="processXML()" value="Process"/></div>
 
 		<h2>Result of Processing:</h2>
 
 		<dl id="result"></dl>
+		
+		<script>
+			function processXML() {
+			
+				var xml = document.getElementById('input_packagedoc').value;
+				/* the following test is not in the spec */
+				
+				if (xml.match('<package ')) {
+					packageProcessor.processPackageDoc(xml)
+				}
+				
+				else if (xml.match('<ONIXMessage ')) {
+					onixProcessor.processOnixRecord(xml)
+				}
+				
+				else {
+					alert('Invalid xml document - package or onix root element not found');
+					return;
+				}
+			}
+		</script>
 
 		<script src="packageProcessor.js"></script>
+		<script src="onixProcessor.js"></script>
 	</body>
 </html>
