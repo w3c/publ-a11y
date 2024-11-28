@@ -962,16 +962,17 @@
 							information about possible hazards is available.</span></p>
 				</div>
 
-				<p>Identifies any potential hazards (e.g., flashing elements, background sounds, and motion simulation)
+				<p>Identifies any potential hazards (e.g., flashing elements, loud sounds, and motion simulation)
 					that could afflict physiologically sensitive users.</p>
 
-				<p>Unlike other accessibility properties, the presence of hazards can be expressed either positively or
+<div> class="note" <p> Research has not identified a source for clarification on what constitutes a sound hazard in digital publications. When a best practice      is available, it will be included in these guidelines. It is left to the discretion of the publisher on what to include in the metadata. If there is a possible sound hazard,one option is to add information  in the accessibility summary.</p></div>
+<p>Unlike other accessibility properties, the presence of hazards can be expressed either positively or
 					negatively. This is because users search for content that is safe for them as well as want to know
 					when content is potentially dangerous to them.</p>
 
 				<p>The hazards property vocabulary includes a value of unknown, which means the content creator of the
 					metadata explicitly acknowledges that the resource has not been checked for hazards. This is
-					different than providing no metadata for this property which does not carry any meaning. </p>
+					different than providing no metadata for this property which does not carry any meaning. In either case,  the information  to the end           user is    "not known."</p>
 
 				<section id="hazards-examples">
 					<h4>Examples</h4>
@@ -982,17 +983,10 @@
 					<aside class="example" title="Descriptive explanations">
 						<ul>
 							<li><span data-localization-id="hazards-none" data-localization-mode="descriptive">No hazards</span></li>
-							<li><span data-localization-id="hazards-flashing" data-localization-mode="descriptive">The
-									publication contains </span>
-								<span data-localization-id="hazards-sound" data-localization-mode="descriptive">rapidly
-									changing lights,</span>
-								<span data-localization-id="hazards-motion" data-localization-mode="descriptive">visual
-									stimuli or simulated movements, </span>
-								<span data-localization-id="hasards-explanatory" data-localization-mode="descriptive"
-									>which can cause discomfort, distraction, photosensitive seizures, or motion
-									sickness</span></li>
-							<li><span data-localization-id="hazards-unknown" data-localization-mode="descriptive">The
-									presence of hazards is unknown</span></li>
+							<li><span data-localization-id="hazards-flashing" data-localization-mode="descriptive">The publication contains flashing content which can cause photosensitive seizures</span></li>
+								<li><span data-localization-id="hazards-sound" data-localization-mode="descriptive">The publication contains loud sounds which can be uncomfortable</span></li>
+								<li><span data-localization-id="hazards-motion" data-localization-mode="descriptive">The publication contains motion simulations that can cause motion sickness</span></li>
+							<li><span data-localization-id="hazards-unknown" data-localization-mode="descriptive">Presents of hazards is not known</span></li>
 						</ul>
 					</aside>
 
@@ -1000,14 +994,12 @@
 						<ul>
 							<li>
 								<span data-localization-id="hazards-none" data-localization-mode="compact">No hazards</span></li>
-							<li>
-								<span data-localization-id="hazards-flashing" data-localization-mode="compact"
-									>Flashing</span>
-								<span data-localization-id="join-array-and">, and </span>
-								<span data-localization-id="hazards-motion" data-localization-mode="compact">motion simulation</span><span data-localization-id="hazards-plural"> hazards</span></li>
-							<li>
-								<span data-localization-id="hazards-unknown" data-localization-mode="compact">The
-									presence of hazards is unknown</span></li>
+							<li><span data-localization-id="hazards-flashing" data-localization-mode="compact"
+									>Flashing content</span></li>
+<li><span data-localization-id="hazards-sound" data-localization-mode="compact"
+									>Loud sounds</span></li>
+								<li><span data-localization-id="hazards-motion" data-localization-mode="compact">Motion simulation</span></li>
+							<li><span data-localization-id="hazards-no-metadata" data-localization-mode="compact">Not known</span></li>
 						</ul>
 					</aside>
 				</section>
@@ -1350,18 +1342,15 @@
 				<section>
 					<h3 id="How-to-contribute">How to contribute?</h3>
 					<p>First let us know as soon as possible that you are working on a localization and wish to submit it. That allows us to prepare a placeholder for your work. This is not mandatory but we invite you to contact the group and participate to a regular call of the working group as those are open to anyone. </p>
-					<p>When you are ready to publish your work, two options are possible:
+					<p>When you are ready to publish your work, two options are possible:</p>
 						<ul>
 							<li>If you don’t know what a JSON or a Pull Request is, you are welcome to contact us so we can attribute a translator role at the <a href="https://gitlocalize.com/repo/9555">Gitlocalize dedicated project page</a>.</li>
 							<li>If you feel technically ready or have a collaborator that can push a pull request, the process is to duplicate the canonical original file UX-Guide-Metadata/draft/localizations/en-US/display_guide_vocabulary_w3c_en-US.json, modify it by changing the values in front of each key, and open a pull request so we can review it. Please be aware that we could have questions or ask for precision in the process before accepting and merging your contribution.</li>
-						</ul>
-						</p>
-
-				</section>
+						</ul>				</section>
 				<section>
 					<h3 id="How-to-choose-between-localization-files">How to choose between localization files?</h3>
 
-					<p>The first keys of each JSON files contains descriptive information about it, including
+					<p>The first keys of each JSON files contains descriptive information about it, including:</p>
 						<ul>
 							<li>Author, name of the organisation responsible for the establishment and maintenance of this localization</li>
 							<li>Language, is a 4 letters code where the two first letters specifies the language as per ISO 639-1 and the two others the country as per ISO 3166-1 alpha-2 </li>
@@ -1369,7 +1358,7 @@
 							<li>Audience describes the public. We recommend to use any vocabulary from the <a href="https://ns.editeur.org/onix/en/28/">ONIX list 28</a>. More than one audience can be informed with a comma separating each.</li>
 							<li>Description, a free field including a short description of how this localization was obtained </li>
 						</ul>
-						</p>
+
 				</section>
 		</section>
 		<section id="implementations">
