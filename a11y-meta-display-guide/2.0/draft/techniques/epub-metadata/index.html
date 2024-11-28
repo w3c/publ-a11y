@@ -339,7 +339,7 @@
                  
 				<h4>Understanding the variables</h4>
 				<dl>
-					<dt><var>conformance_str</var></dt>
+					<dt><var>conformance_string</var></dt>
 					<dd>
                         <p>If set, provides the full conformance claim statement.</p>
 					</dd>
@@ -381,37 +381,39 @@
                     
                 <!-- EPUB Accessibility 1.0 WCAG 2.0 (A/AA/AAA) -->
                  <li>
-                       <span><b>IF</b> the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="dcterms:<i>conformsTo</i>" and text() = <i>http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-a</i>"]</code> :</span>
+                       <span><b>IF</b> the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="dcterms:<i>conformsTo</i>" and text() = "<i>http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-a</i>"]</code> :</span>
                        <span>
-                       	<b>THEN</b> <b>LET</b> <var>conformance_str</var> = 'EPUB Accessibility 1.0 WCAG 2.0 Level A', 
+                       	<b>THEN</b> <b>LET</b> <var>conformance_string</var> = 'EPUB Accessibility 1.0 WCAG 2.0 Level A', 
                             and <b>LET</b> <var>wcag_level</var> = 'A'.
                        </span>
                     </li>
 
                   <li>
-                       <span><b>IF</b> the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="dcterms:<i>conformsTo</i>" and text() = <i>http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aa</i>"]</code>:</span>
+                       <span><b>IF</b> the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="dcterms:<i>conformsTo</i>" and text() = "<i>http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aa</i>"]</code>:</span>
                        <span>
-                            <b>THEN</b> <b>LET</b> <var>conformance_str</var> = 'EPUB Accessibility 1.0 WCAG 2.0 Level AA', 
+                            <b>THEN</b> <b>LET</b> <var>conformance_string</var> = 'EPUB Accessibility 1.0 WCAG 2.0 Level AA', 
                             and <b>LET</b> <var>wcag_level</var> = 'AA'.
                        </span>
                     </li>
 
                   <li>
-                       <span><b>IF</b> the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="dcterms:<i>conformsTo</i>" and text() = <i>http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aaa</i>"]</code>:</span>
+                       <span><b>IF</b> the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="dcterms:<i>conformsTo</i>" and text() = "<i>http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aaa</i>"]</code>:</span>
                        <span>
-                       	<b>THEN</b> <b>LET</b> <var>conformance_str</var> = 'EPUB Accessibility 1.0 WCAG 2.0 Level AAA', 
+                       	<b>THEN</b> <b>LET</b> <var>conformance_string</var> = 'EPUB Accessibility 1.0 WCAG 2.0 Level AAA', 
                             and <b>LET</b> <var>wcag_level</var> = 'AAA'.
                        </span>
                     </li>
 
-                  <!-- EPUB Accessibility 1.1 WCAG 2.X (A/AA/AAA) -->
-                  <li>
-                  	<span><b>IF</b> the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="dcterms:<i>conformsTo</i>" and matches(normalize-space(.), 'EPUB Accessibility 1\.1 - WCAG 2\.[0-2] Level [A]+')</code> :</span>
+                   <!-- EPUB Accessibility 1.1 WCAG 2.X (A/AA/AAA) -->
+					<li><b>LET</b> <var>conformance</var> be the value of the node extracted from <var>package_document</var>, using the xpath <code class="xpath">/package/metadata/meta[@property="dcterms:<i>conformsTo</i>" and matches(normalize-space(.), 'EPUB Accessibility 1\.1 - WCAG 2\.[0-2] Level [A]+')</code>.</li>
+					
+				   <li>
+                  	<span><b>IF</b> <var>conformance</var> is <b>NOT</b> empty:</span>
                        <span>
-                       	<b>THEN LET</b> <var>conformance_str</var> = replace(normalize-space(.), ' - ', ' '),
-                       	and <b>LET</b> <var>wcag_level</var> = replace(normalize-space(.), 'EPUB Accessibility 1\.1 - WCAG 2\.[0-2] Level ', '').
+                       	<b>THEN LET</b> <var>conformance_string</var> = replace(<var>conformance</var>, ' - ', ' '),
+                       	and <b>LET</b> <var>wcag_level</var> = replace(<var>conformance</var>, 'EPUB Accessibility 1\.1 - WCAG 2\.[0-2] Level ', '').
                        </span>
-                  </li>
+                    </li>
 					
                     <li><b>LET</b> <var>certifier</var> be the value of the node extracted from <var>package_document</var>, using the xpath <code class="xpath">/package/metadata/meta[@property="a11y:<i>certifiedBy</i>"]/text()</code>.</li>
 					
@@ -425,78 +427,84 @@
 				<h4>Instructions</h4>
 				<ol class="condition">
 					<li>Display <code id="conformance-title">"Conformance"</code> as heading.</li>
-					<li>
-						<span><b>IF</b> <var>wcag_level</var> == 'AAA':</span>
-						<span><b>THEN</b> display <code id="conformance-aaa">"This publication exceeds accepted accessibility standards"</code>.</span>
-					</li>
-					<li>
-						<span><b>ELSE IF</b> <var>wcag_level</var> == 'AA':</span>
-						<span><b>THEN</b> display <code id="conformance-aa">"This publication meets accepted accessibility standards"</code>.</span>
-					</li>
-					<li>
-						<span><b>ELSE IF</b> <var>wcag_level</var> == 'A':</span>
-						<span><b>THEN</b> display <code id="conformance-a">"This publication meets minimum accessibility standards"</code>.</span>
+					
+					<li><span><b>IF</b> <var>conformance_string</var> is empty:</span>
+						<span><b>THEN</b> display <code id="conformance-no">"The publication does not include a conformance statement"</code>.</span>
 					</li>
 					<li>
 						<span><b>ELSE</b>:</span>
-						<span><b>THEN</b> display <code id="conformance-no">"The publication does not include a conformance statement"</code>.</span>
-						<span>AND end processing of conformance statement.</span>
-					</li>
-					<li>
-						<span><b>IF</b> <var>certifier</var> is <b>NOT</b> empty:</span>
-						<span><b>THEN</b></span>
 						<ul class="condition">
-							<li>display <code id="conformance-certifier">"This publication is certified by "</code></li>
-							<li>display <var>certifier</var>.</li>
-						</ul>
-					</li>
-					<li>
-						<span><b>IF</b> <var>certifier_credentials</var> is <b>NOT</b> empty:</span>
-						<span><b>THEN</b></span>
-						<ul class="condition">
-							<li>display <code id="conformance-certifier-credentials">"The certifier's credential is "</code></li>
-							<li>display <var>certifier_credentials</var> as link <b>IF</b> <var>certifier_credentials</var> is an URL.</li>
-						</ul>
-					</li>
-					<li>
-						<span>display <code id="conformance-details">"Detailed Conformance Information"</code> as heading.</span>
-						<span>display <code id="conformance-claim">"This publication claims to meet "</code>.</span>
-						<span>display <var>conformance_str</var>.</span>
-					</li>
-					<li>
-						<span><b>IF</b> <var>certification_date</var> <b>OR</b> <var>certifier</var> <b>OR</b> <var>certifier_credentials</var>:</span>
-						<span><b>THEN</b> display <code id="conformance-certification-info">"The publication was certified "</code>.</span>
-					</li>
-					<li>
-						<span><b>IF</b> <var>certification_date</var>:</span>
-						<span><b>THEN</b></span>
-						<ul class="condition">
-							<li>display <code id="conformance-certification-date-prefix">" on "</code></li>
-							<li>display <var>certification_date</var>.</li>
-						</ul>
-					</li>
-					<li>
-						<span><b>IF</b> <var>certifier</var>:</span>
-						<span><b>THEN</b></span>
-						<ul class="condition">
-							<li>display <code id="conformance-certifier-prefix">" by "</code></li>
-							<li>display <var>certifier</var>.</li>
-						</ul>
-					</li>
-					<li>
-						<span><b>IF</b> <var>certifier_credentials</var>:</span>
-						<span><b>THEN</b></span>
-						<ul class="condition">
-							<li>display <code id="conformance-certifier-credentials-prefix">" with a credential of "</code></li>
-							<li>display <var>certifier_credentials</var> as link <b>IF</b> <var>certifier_credentials</var> is an URL.</li>
-						</ul>
-					</li>
-					<li>
-						<span><b>IF</b> <var>certifier_report</var>:</span>
-						<span><b>THEN</b></span>
-						<ul class="condition">
-							<li>display <code id="conformance-certifier-report">"For more information refer to the certifier's report"</code></li>
-							<li>with <var>certifier_report</var> as link.</li>
+							<li>
+								<span><b>IF</b> <var>wcag_level</var> == 'AAA':</span>
+								<span><b>THEN</b> display <code id="conformance-aaa">"This publication exceeds accepted accessibility standards"</code>.</span>
+							</li>
+							<li>
+								<span><b>ELSE IF</b> <var>wcag_level</var> == 'AA':</span>
+								<span><b>THEN</b> display <code id="conformance-aa">"This publication meets accepted accessibility standards"</code>.</span>
+							</li>
+							<li>
+								<span><b>ELSE IF</b> <var>wcag_level</var> == 'A':</span>
+								<span><b>THEN</b> display <code id="conformance-a">"This publication meets minimum accessibility standards"</code>.</span>
+							</li>
+							<li>
+								<span><b>IF</b> <var>certifier</var> is <b>NOT</b> empty:</span>
+								<span><b>THEN</b></span>
+								<ul class="condition">
+									<li>display <code id="conformance-certifier">"This publication is certified by "</code></li>
+									<li>display <var>certifier</var>.</li>
+								</ul>
+							</li>
+							<li>
+								<span><b>IF</b> <var>certifier_credentials</var> is <b>NOT</b> empty:</span>
+								<span><b>THEN</b></span>
+								<ul class="condition">
+									<li>display <code id="conformance-certifier-credentials">"The certifier's credential is "</code></li>
+									<li>display <var>certifier_credentials</var> as link <b>IF</b> <var>certifier_credentials</var> is an URL.</li>
+								</ul>
+							</li>
+							<li>
+								<span>Display <code id="conformance-details">"Detailed Conformance Information"</code> as heading.</span>
+								<ul class="condition">
+									<li>display <code id="conformance-claim">"This publication claims to meet "</code>.</li>
+									<li>display <var>conformance_string</var>.</li>
+								</ul>
+							</li>
+							<li>
+								<span><b>IF</b> <var>certification_date</var> <b>OR</b> <var>certifier</var> <b>OR</b> <var>certifier_credentials</var>:</span>
+								<span><b>THEN</b> display <code id="conformance-certification-info">"The publication was certified "</code>.</span>
+							</li>
+							<li>
+								<span><b>IF</b> <var>certification_date</var>:</span>
+								<span><b>THEN</b></span>
+								<ul class="condition">
+									<li>display <code id="conformance-certification-date-prefix">" on "</code></li>
+									<li>display <var>certification_date</var>.</li>
+								</ul>
+							</li>
+							<li>
+								<span><b>IF</b> <var>certifier</var>:</span>
+								<span><b>THEN</b></span>
+								<ul class="condition">
+									<li>display <code id="conformance-certifier-prefix">" by "</code></li>
+									<li>display <var>certifier</var>.</li>
+								</ul>
+							</li>
+							<li>
+								<span><b>IF</b> <var>certifier_credentials</var>:</span>
+								<span><b>THEN</b></span>
+								<ul class="condition">
+									<li>display <code id="conformance-certifier-credentials-prefix">" with a credential of "</code></li>
+									<li>display <var>certifier_credentials</var> as link <b>IF</b> <var>certifier_credentials</var> is an URL.</li>
+								</ul>
+							</li>
+							<li>
+								<span><b>IF</b> <var>certifier_report</var>:</span>
+								<span><b>THEN</b></span>
+								<ul class="condition">
+									<li>display <code id="conformance-certifier-report">"For more information refer to the certifier's report"</code></li>
+									<li>with <var>certifier_report</var> as link.</li>
+								</ul>
+							</li>
 						</ul>
 					</li>
 				</ol>
