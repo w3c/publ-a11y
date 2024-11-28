@@ -3,10 +3,6 @@
 
 var packageProcessor = (function() {
 
-	// var bcp47 = new RegExp('^((?:(en-GB-oed|i-ami|i-bnn|i-default|i-enochian|i-hak|i-klingon|i-lux|i-mingo|i-navajo|i-pwn|i-tao|i-tay|i-tsu|sgn-BE-FR|sgn-BE-NL|sgn-CH-DE)|(art-lojban|cel-gaulish|no-bok|no-nyn|zh-guoyu|zh-hakka|zh-min|zh-min-nan|zh-xiang))|((?:([A-Za-z]{2,3}(-(?:[A-Za-z]{3}(-[A-Za-z]{3}){0,2}))?)|[A-Za-z]{4}|[A-Za-z]{5,8})(-(?:[A-Za-z]{4}))?(-(?:[A-Za-z]{2}|[0-9]{3}))?(-(?:[A-Za-z0-9]{5,8}|[0-9][A-Za-z0-9]{3}))*(-(?:[0-9A-WY-Za-wy-z](-[A-Za-z0-9]{2,8})+))*(-(?:x(-[A-Za-z0-9]{1,8})+))?)|(?:x(-[A-Za-z0-9]{1,8})+))$');
-	// regex works for general cases, but haven't tested in depth 
-	// var dateTime = new RegExp('^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[01]|0[1-9]|[12][0-9])(T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]{3})?(Z)?)?$');
-	
 	var result = document.getElementById('result');
 	
 	function processPackageDoc() {
@@ -22,27 +18,12 @@ var packageProcessor = (function() {
 		var package_document_as_text = document.getElementById('input_packagedoc').value;
 		var package_document = preprocessing(package_document_as_text);
 		
-		/* 
-		 * the following tests are not in the spec but are added to make sure the input is actually a package document
-		 */
+		/* the following test is not in the spec */
 		
 		if (package_document.documentElement.nodeName !== 'package') {
 			console.error('Invalid package document - root element is not package');
 			return;
 		}
-		
-		var meta_xml = package_document.documentElement.childNodes[0];
-		
-		if (package_document.documentElement.childNodes[0].nodeType === Node.TEXT_NODE) {
-			meta_xml = package_document.documentElement.childNodes[1];
-		} 
-		
-		if (!meta_xml || meta_xml.nodeName !== 'metadata') {
-			console.error('Invalid package document - metadata element not found or is not the first child');
-			return;
-		}
-		
-		/* end of app-specific validation */
 		 
 		 
 		/* 
@@ -81,9 +62,9 @@ var packageProcessor = (function() {
 		 */
 		 
 		 // 4.2.2 Variables setup
-		 var all_necessary_content_textual = checkForNode(package_document, '/package/metadata/meta[@property="schema:accessModeSufficient" and text()="textual"]');
-		 var non_textual_content_images = checkForNode(package_document, '/package/metadata/meta[@property="schema:accessibilityFeature" and (text()="chartOnVisual" or text()="chemOnVisual" or text()="diagramOnVisual" or text()="mathOnVisual" or text()="musicOnVisual" or text()="textOnVisual")]');
-		 var textual_alternative_images = checkForNode(package_document, '/package/metadata/meta[@property="schema:accessibilityFeature" and (text()="longDescription" or text()="alternativeText" or text()="describedMath")]');
+		 var all_necessary_content_textual = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="schema:accessModeSufficient" and text()="textual"]');
+		 var non_textual_content_images = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and (text()="chartOnVisual" or text()="chemOnVisual" or text()="diagramOnVisual" or text()="mathOnVisual" or text()="musicOnVisual" or text()="textOnVisual")]');
+		 var textual_alternative_images = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and (text()="longDescription" or text()="alternativeText" or text()="describedMath")]');
 		
 		// 4.2.3 Instructions
 		
@@ -112,17 +93,174 @@ var packageProcessor = (function() {
 		 * 4.3 Conformance
 		 */
 		 
-		 // Todo
-
+		// 4.3.2 Variables setup
+		var conformance_string = '';
+		var wcag_level = '';
 		
+		if (checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="dcterms:conformsTo" and text() = "http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-a"] | /opf:package/opf:metadata/opf:link[@rel="dcterms:conformsTo" and @href="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-a"]')) {
+			conformance_string = 'EPUB Accessibility 1.0 WCAG 2.0 Level A';
+			wcag_level = 'A';
+		}
+		
+		if (checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="dcterms:conformsTo" and text() = "http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aa"] | /opf:package/opf:metadata/opf:link[@rel="dcterms:conformsTo" and @href="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aa"]')) {
+			conformance_string = 'EPUB Accessibility 1.0 WCAG 2.0 Level AA';
+			wcag_level = 'AA';
+		}
+		
+		if (checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="dcterms:conformsTo" and text() = "http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aaa"] | /opf:package/opf:metadata/opf:link[@rel="dcterms:conformsTo" and @href="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aaa"]')) {
+			conformance_string = 'EPUB Accessibility 1.0 WCAG 2.0 Level AAA';
+			wcag_level = 'AAA';
+		}
+		
+		// js evaluate() can't handle this expression /opf:package/opf:metadata/opf:meta[@property="dcterms:conformsTo" and matches(text(), "EPUB Accessibility 1\.1 - WCAG 2\.[0-2] Level [A]+")]
+		// using contains() instead to match most of it
+		
+		var conformance = package_document.evaluate('/opf:package/opf:metadata/opf:meta[@property="dcterms:conformsTo" and contains(text(), "EPUB Accessibility 1.1 - WCAG 2.")]', package_document, nsResolver, XPathResult.STRING_TYPE, null).stringValue;
+		
+		if (conformance) {
+			conformance_string = conformance.replace(' - ', ' ');
+			wcag_level = conformance.replace('EPUB Accessibility 1\.1 - WCAG 2\.[0-2] Level ', '');
+		}
+		
+		var certifier = package_document.evaluate('/opf:package/opf:metadata/opf:meta[@property="a11y:certifiedBy"]/text()', package_document, nsResolver, XPathResult.STRING_TYPE, null).stringValue;
+		var certifier_credentials = package_document.evaluate('/opf:package/opf:metadata/opf:meta[@property="a11y:certifierCredential"]/text()', package_document, nsResolver, XPathResult.STRING_TYPE, null).stringValue;
+		var certification_date = package_document.evaluate('/opf:package/opf:metadata/opf:meta[@property="dcterms:date" and @refines=//opf:meta[@property="a11y:certifiedBy"]/@id]', package_document, nsResolver, XPathResult.STRING_TYPE, null).stringValue;
+		var certifier_report = package_document.evaluate('/opf:package/opf:metadata/opf:meta[@property="a11y:certifierReport"]/text()', package_document, nsResolver, XPathResult.STRING_TYPE, null).stringValue;
+		
+		// 4.3.3 Instructions
+		
+		var conf_hd = document.createElement('dt');
+			conf_hd.appendChild(document.createTextNode('Conformance'));
+		result.appendChild(conf_hd);
+		
+		var conf_result = document.createElement('dd');
+		
+		if (conformance_string) {
+			
+			var conf_p = document.createElement('p');
+			
+			if (wcag_level == 'AAA') {
+				conf_p.appendChild(document.createTextNode('This publication exceeds accepted accessibility standards'));
+			}
+			
+			else if (wcag_level == 'AA') {
+				conf_p.appendChild(document.createTextNode('This publication meets accepted accessibility standards'));
+			}
+			
+			else if (wcag_level == 'A') {
+				conf_p.appendChild(document.createTextNode('This publication meets minimum accessibility standards'));
+			}
+			
+			conf_result.appendChild(conf_p);
+			
+			
+			
+			if (certifier) {
+				var cert_p = document.createElement('p');
+				cert_p.appendChild(document.createTextNode('This publication is certified by '));
+				cert_p.appendChild(document.createTextNode(certifier));
+				conf_result.appendChild(cert_p);
+			}
+			
+			if (certifier_credentials) {
+				
+				var cred_p = document.createElement('p');
+				
+				cred_p.appendChild(document.createTextNode('The certifier\'s credential is '));
+				
+				if (matches(certifier_credentials, '^http')) {
+					var cert_link = document.createElement('a');
+						cert_link.href = certifier_credentials;
+						cert_link.appendChild(document.createTextNode(certifier_credentials));
+					cred_p.appendChild(cert_link);
+				}
+				
+				else {
+					cred_p.appendChild(document.createTextNode(certifier_credentials));
+				}
+				
+				conf_result.appendChild(cred_p);
+			}
+			
+			result.appendChild(conf_result);
+			
+			var detconf_hd = document.createElement('dt');
+				detconf_hd.appendChild(document.createTextNode('Detailed Conformance Information'));
+			result.appendChild(detconf_hd);
+			
+			var detconf_result = document.createElement('dd');
+			
+			var conf_p = document.createElement('p');
+				conf_p.appendChild(document.createTextNode('This publication claims to meet '));
+				conf_p.appendChild(document.createTextNode(conformance_string));
+			
+			detconf_result.appendChild(conf_p);
+			
+			var cert_p = document.createElement('p');
+			
+			if (certification_date || certifier || certifier_credentials) {
+				cert_p.appendChild(document.createTextNode('The publication was certified '));
+			}
+			
+			if (certification_date) {
+				cert_p.appendChild(document.createTextNode(' on '));
+				cert_p.appendChild(document.createTextNode(certification_date));
+			}
+			
+			if (certifier) {
+				cert_p.appendChild(document.createTextNode(' by '));
+				cert_p.appendChild(document.createTextNode(certifier));
+			}
+			
+			if (certifier_credentials) {
+				cert_p.appendChild(document.createTextNode(' with a credential of '));
+				
+				if (matches(certifier_credentials, '^http')) {
+					var cert_link = document.createElement('a');
+						cert_link.href = certifier_credentials;
+						cert_link.appendChild(document.createTextNode(certifier_credentials));
+					cert_p.appendChild(cert_link);
+				}
+				
+				else {
+					cert_p.appendChild(document.createTextNode(certifier_credentials));
+				}
+			}
+			
+			detconf_result.appendChild(cert_p);
+			
+			if (certifier_report) {
+				
+				var rep_p = document.createElement('p');
+				
+				rep_p.appendChild(document.createTextNode('For more information refer to the certifier\'s report '));
+				
+				var rep_link = document.createElement('a');
+					rep_link.href = certifier_credentials;
+					rep_link.appendChild(document.createTextNode(certifier_report));
+				rep_p.appendChild(rep_link);
+				
+				detconf_result.appendChild(rep_p);
+			}
+			
+			result.appendChild(detconf_result);
+		}
+		
+		
+		else {
+			conf_result.appendChild(document.createTextNode('The publication does not include a conformance statement'));
+			result.appendChild(conf_result);
+		}
+		
+
 		/* 
 		 * 4.4 Pre-recorded audio
 		 */
 		 
 		 // 4.4.2 Variables setup
-		 var all_content_audio = checkForNode(package_document, '/package/metadata/meta[@property="schema:accessModeSufficient" and text()="auditory"]');
-		 var synchronised_pre_recorded_audio = checkForNode(package_document, '/package/metadata/meta[@property="schema:accessibilityFeature" and text()="sychronizedAudioText"]');
-		 var audio_content = checkForNode(package_document, '/package/metadata/meta[@property="schema:accessMode" and text()="auditory"]');
+		 var all_content_audio = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="schema:accessModeSufficient" and text()="auditory"]');
+		 var synchronised_pre_recorded_audio = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="sychronizedAudioText"]');
+		 var audio_content = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="schema:accessMode" and text()="auditory"]');
 		
 		// 4.4.3 Instructions
 		
@@ -156,10 +294,10 @@ var packageProcessor = (function() {
 		 */
 		 
 		 // 4.5.2 Variables setup
-		 var table_of_contents_navigation = checkForNode(package_document, '/package/metadata/meta[@property="schema:accessibilityFeature" and text()="tableOfContents"]');
-		 var index_navigation = checkForNode(package_document, '/package/metadata/meta[@property="schema:accessibilityFeature" and text()="index"]');
-		 var page_navigation = checkForNode(package_document, '/package/metadata/meta[@property="schema:accessibilityFeature" and text()="pageNavigation"]');
-		 var next_previous_structural_navigation = checkForNode(package_document, '/package/metadata/meta[@property="schema:accessibilityFeature" and text()="structuralNavigation"]');
+		 var table_of_contents_navigation = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="tableOfContents"]');
+		 var index_navigation = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="index"]');
+		 var page_navigation = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="pageNavigation"]');
+		 var next_previous_structural_navigation = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="structuralNavigation"]');
 		
 		// 4.5.3 Instructions
 		
@@ -174,19 +312,19 @@ var packageProcessor = (function() {
 			var navigation = [];
 			
 			if (table_of_contents_navigation) {
-				navigation.append("table of contents");
+				navigation.push("table of contents");
 			}
 			
 			if (index_navigation) {
-				navigation.append("index");
+				navigation.push("index");
 			}
 			
 			if (page_navigation) {
-				navigation.append("supports page navigation");
+				navigation.push("supports page navigation");
 			}
 			
 			if (next_previous_structural_navigation) {
-				navigation.append("headings");
+				navigation.push("headings");
 			}
 			
 			var navigation_string = joinArray(navigation);
@@ -207,13 +345,13 @@ var packageProcessor = (function() {
 		 */
 		 
 		 // 4.6.2 Variables setup
-		var contains_charts_diagrams  = checkForNode(package_document, '/package/metadata/meta[@property="schema:accessibilityFeature" and text()="chartOnVisual"]');
-		var long_text_descriptions  = checkForNode(package_document, '/package/metadata/meta[@property="schema:accessibilityFeature" and text()="longDescriptions"]');
-		var contains_chemical_formula  = checkForNode(package_document, '/package/metadata/meta[@property="schema:accessibilityFeature" and text()="chemOnVisual"]');
-		var chemical_formula_as_chemml  = checkForNode(package_document, '/package/metadata/meta[@property="schema:accessibilityFeature" and text()="ChemML"]');
-		var contains_math_formula  = checkForNode(package_document, '/package/metadata/meta[@property="schema:accessibilityFeature" and text()="describedMath"]');
-		var math_formula_as_latex  = checkForNode(package_document, '/package/metadata/meta[@property="schema:accessibilityFeature" and text()="latex"]');
-		var math_formula_as_mathml  = checkForNode(package_document, '/package/metadata/meta[@property="schema:accessibilityFeature" and text()="MathML"]');
+		var contains_charts_diagrams  = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="chartOnVisual"]');
+		var long_text_descriptions  = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="longDescriptions"]');
+		var contains_chemical_formula  = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="chemOnVisual"]');
+		var chemical_formula_as_chemml  = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="ChemML"]');
+		var contains_math_formula  = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="describedMath"]');
+		var math_formula_as_latex  = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="latex"]');
+		var math_formula_as_mathml  = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="MathML"]');
 		
 		// 4.6.3 Instructions
 		
@@ -247,14 +385,14 @@ var packageProcessor = (function() {
 		 */
 		 
 		 // 4.7.2 Variables setup
-		var no_hazards_or_warnings_confirmed = checkForNode(package_document, '/package/metadata/meta[@property="schema:accessibilityHazard" and text()="none"]');
-		var flashing_hazard = checkForNode(package_document, '/package/metadata/meta[@property="schema:accessibilityHazard" and text()="flashing"]');
-		var no_flashing_hazards = checkForNode(package_document, '/package/metadata/meta[@property="schema:accessibilityHazard" and text()="noFlashingHazard"]');
-		var motion_simulation_hazard = checkForNode(package_document, '/package/metadata/meta[@property="schema:accessibilityHazard" and text()="motionSimulation"]');
-		var no_motion_hazards = checkForNode(package_document, '/package/metadata/meta[@property="schema:accessibilityHazard" and text()="noMotionSimulation"]');
-		var sound_hazard = checkForNode(package_document, '/package/metadata/meta[@property="schema:accessibilityHazard" and text()="sound"]');
-		var no_sound_hazards = checkForNode(package_document, '/package/metadata/meta[@property="schema:accessibilityHazard" and text()="noSoundHazard"]');
-		var unknown_if_contains_hazards = checkForNode(package_document, '/package/metadata/meta[@property="schema:accessibilityHazard" and text()="unknown"]');
+		var no_hazards_or_warnings_confirmed = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityHazard" and text()="none"]');
+		var flashing_hazard = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityHazard" and text()="flashing"]');
+		var no_flashing_hazards = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityHazard" and text()="noFlashingHazard"]');
+		var motion_simulation_hazard = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityHazard" and text()="motionSimulation"]');
+		var no_motion_hazards = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityHazard" and text()="noMotionSimulation"]');
+		var sound_hazard = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityHazard" and text()="sound"]');
+		var no_sound_hazards = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityHazard" and text()="noSoundHazard"]');
+		var unknown_if_contains_hazards = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityHazard" and text()="unknown"]');
 		
 		// 4.7.3 Instructions
 		
@@ -273,15 +411,15 @@ var packageProcessor = (function() {
 			var hazards = [];
 		
 			if (flashing_hazard) {
-				hazards.append('flashing');
+				hazards.push('flashing');
 			}
 			
 			if (motion_simulation_hazard) {
-				hazards.append('motion simulation');
+				hazards.push('motion simulation');
 			}
 			
 			if (sound_hazard) {
-				hazards.append('sound');
+				hazards.push('sound');
 			}
 			
 			var hazards_string = joinArray(hazards);
@@ -313,9 +451,9 @@ var packageProcessor = (function() {
 		 */
 		 
 		 // 4.8.2 Variables setup
-		var accessibility_summary = checkForNode(package_document, '/package/metadata/meta[@property="schema:accessibilitySummary"]');
-		var lang_attribute_accessibility_summary = checkForNode(package_document, '/package/metadata/meta[@property="schema:accessibilitySummary"]/@lang|/package/metadata/meta[@property="schema:accessibilitySummary"]/ancestor::*/@lang[last()]');
-		var language_of_text = checkForNode(package_document, '/package/metadata/dc:language[1]/text()');
+		var accessibility_summary =  package_document.evaluate('/opf:package/opf:metadata/opf:meta[@property="schema:accessibilitySummary"]', package_document, nsResolver, XPathResult.STRING_TYPE, null).stringValue;
+		var lang_attribute_accessibility_summary = package_document.evaluate('(/opf:package/opf:metadata/opf:meta[@property="schema:accessibilitySummary"]/@xml:lang | /opf:package/@xml:lang)[last()]', package_document, nsResolver, XPathResult.STRING_TYPE, null).stringValue;
+		var language_of_text = package_document.evaluate('/opf:package/opf:metadata/dc:language[1]/text()', package_document, nsResolver, XPathResult.STRING_TYPE, null).stringValue;
 		
 		// 4.8.3 Instructions
 		
@@ -325,7 +463,7 @@ var packageProcessor = (function() {
 		
 		var sum_result = document.createElement('dd');
 		
-		var language_accessibility_summary
+		var language_accessibility_summary;
 		
 		if (lang_attribute_accessibility_summary) {
 			language_accessibility_summary = lang_attribute_accessibility_summary;
@@ -352,9 +490,9 @@ var packageProcessor = (function() {
 		 */
 		 
 		 // 4.9.2 Variables setup
-		var eaa_exemption_micro_enterprises = checkForNode(package_document, '/package/metadata/meta[@property="a11y:exemption" and text()="eaa-microenterprise"]');
-		var eaa_exception_disproportionate_burden = checkForNode(package_document, '/package/metadata/meta[@property="a11y:exemption" and text()="eaa-disproportionate-burden"]');
-		var eaa_exception_fundamental_modification = checkForNode(package_document, '/package/metadata/meta[@property="a11y:exemption" and text()="eaa-fundamental-alteration"]');
+		var eaa_exemption_micro_enterprises = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="a11y:exemption" and text()="eaa-microenterprise"]');
+		var eaa_exception_disproportionate_burden = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="a11y:exemption" and text()="eaa-disproportionate-burden"]');
+		var eaa_exception_fundamental_modification = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="a11y:exemption" and text()="eaa-fundamental-alteration"]');
 		
 		// 4.9.3 Instructions
 		
@@ -387,49 +525,49 @@ var packageProcessor = (function() {
 		
 		// 4.10.1 Adaptation
 		// 4.10.1.2 Variables setup
-		var audio_descriptions = checkForNode(package_document, '/package/metadata/meta[@property="schema:accessibilityFeature" and text()="audioDescription"]');
-		var braille = checkForNode(package_document, '/package/metadata/meta[@property="schema:accessibilityFeature" and text()="braille"]');
-		var closed_captions = checkForNode(package_document, '/package/metadata/meta[@property="schema:accessibilityFeature" and text()="closedCaptions"]');
-		var open_captions = checkForNode(package_document, '/package/metadata/meta[@property="schema:accessibilityFeature" and text()="openCaptions"]');
-		var tactile_graphic = checkForNode(package_document, '/package/metadata/meta[@property="schema:accessibilityFeature" and text()="tactileGraphic"]');
-		var tactile_object = checkForNode(package_document, '/package/metadata/meta[@property="schema:accessibilityFeature" and text()="tactileObject"]');
-		var transcript = checkForNode(package_document, '/package/metadata/meta[@property="schema:accessibilityFeature" and text()="transcript"]');
-		var sign_language = checkForNode(package_document, '/package/metadata/meta[@property="schema:accessibilityFeature" and text()="signLanguage"]');
+		var audio_descriptions = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="audioDescription"]');
+		var braille = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="braille"]');
+		var closed_captions = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="closedCaptions"]');
+		var open_captions = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="openCaptions"]');
+		var tactile_graphic = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="tactileGraphic"]');
+		var tactile_object = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="tactileObject"]');
+		var transcript = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="transcript"]');
+		var sign_language = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="signLanguage"]');
 		
 		// 4.10.1.3 Instructions
 		
 		var adaptation = [];
 		
 		if (audio_descriptions) {
-			adaptation.append('audio descriptions');
+			adaptation.push('audio descriptions');
 		}
 		
 		if (braille) {
-			adaptation.append('braille');
+			adaptation.push('braille');
 		}
 		
 		if (closed_captions) {
-			adaptation.append('closed captions');
+			adaptation.push('closed captions');
 		}
 		
 		if (open_captions) {
-			adaptation.append('open captions');
+			adaptation.push('open captions');
 		}
 		
 		if (tactile_graphic) {
-			adaptation.append('tactile graphic');
+			adaptation.push('tactile graphic');
 		}
 		
 		if (tactile_object) {
-			adaptation.append('tactile 3D object');
+			adaptation.push('tactile 3D object');
 		}
 		
 		if (transcript) {
-			adaptation.append('transcript');
+			adaptation.push('transcript');
 		}
 		
 		if (sign_language) {
-			adaptation.append('sign language');
+			adaptation.push('sign language');
 		}
 		
 		if (adaptation.length) {
@@ -441,49 +579,49 @@ var packageProcessor = (function() {
 		
 		// 4.10.2 Clarity
 		// 4.10.2.2 Variables setup
-		var aria = checkForNode(package_document, '/package/metadata/meta[@property="schema:accessibilityFeature" and text()="aria"]');
-		var full_ruby_annotations = checkForNode(package_document, '/package/metadata/meta[@property="schema:accessibilityFeature" and text()="fullRubyAnnotations"]');
-		var text_to_speech_hinting = checkForNode(package_document, '/package/metadata/meta[@property="schema:accessibilityFeature" and text()="ttsMarkup"]');
-		var high_contrast_between_foreground_and_background_audio = checkForNode(package_document, '/package/metadata/meta[@property="schema:accessibilityFeature" and text()="highContrastAudio"]');
-		var high_contrast_between_text_and_background = checkForNode(package_document, '/package/metadata/meta[@property="schema:accessibilityFeature" and text()="highContrastDisplay"]');
-		var large_print = checkForNode(package_document, '/package/metadata/meta[@property="schema:accessibilityFeature" and text()="largePrint"]');
-		var page_break_markers = checkForNode(package_document, '/package/metadata/meta[@property="schema:accessibilityFeature" and text()="pageBreakMarkers"]');
-		var ruby_annotations = checkForNode(package_document, '/package/metadata/meta[@property="schema:accessibilityFeature" and text()="rubyAnnotations"]');
+		var aria = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="aria"]');
+		var full_ruby_annotations = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="fullRubyAnnotations"]');
+		var text_to_speech_hinting = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="ttsMarkup"]');
+		var high_contrast_between_foreground_and_background_audio = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="highContrastAudio"]');
+		var high_contrast_between_text_and_background = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="highContrastDisplay"]');
+		var large_print = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="largePrint"]');
+		var page_break_markers = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="pageBreakMarkers"]');
+		var ruby_annotations = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="rubyAnnotations"]');
 		
 		// 4.10.2.3 Instructions
 		
 		var clarity = [];
 		
 		if (aria) {
-			clarity.append('aria" to clarity');
+			clarity.push('aria" to clarity');
 		}
 		
 		if (full_ruby_annotations) {
-			clarity.append('full ruby annotations" to clarity');
+			clarity.push('full ruby annotations" to clarity');
 		}
 		
 		if (text_to_speech_hinting) {
-			clarity.append('text-to-speech hinting provided" to clarity');
+			clarity.push('text-to-speech hinting provided" to clarity');
 		}
 		
 		if (high_contrast_between_foreground_and_background_audio) {
-			clarity.append('high contrast between foreground and background audio" to clarity');
+			clarity.push('high contrast between foreground and background audio" to clarity');
 		}
 		
 		if (high_contrast_between_text_and_background) {
-			clarity.append('high contrast between text and background" to clarity');
+			clarity.push('high contrast between text and background" to clarity');
 		}
 		
 		if (large_print) {
-			clarity.append('large print" to clarity');
+			clarity.push('large print" to clarity');
 		}
 		
 		if (page_break_markers) {
-			clarity.append('page breaks" to clarity');
+			clarity.push('page breaks" to clarity');
 		}
 		
 		if (ruby_annotations) {
-			clarity.append('ruby annotations" to clarity');
+			clarity.push('ruby annotations" to clarity');
 		}
 		
 		if (clarity.length) {
@@ -521,13 +659,19 @@ var packageProcessor = (function() {
 		return result.booleanValue;
 	}
 	
-	function nsResolver() { return "http://www.idpf.org/2007/opf"; }
-	
+	function nsResolver(prefix) {
+		switch (prefix) {
+			case 'xml':
+				return 'http://www.w3.org/XML/1998/namespace';
+			default:
+				return "http://www.idpf.org/2007/opf";
+		}
+	}	
 	
 	// 3.3 Join array to comma list
 	
 	function joinArray(string_array) {
-		var output_string = join(string_array, ', ');
+		var output_string = string_array.join(', ');
 			output_string = output_string.replace(/, ([^,]+)$/, ', and $1');
 			return output_string;
 	}
