@@ -163,7 +163,7 @@ var packageProcessor = (function() {
 				
 				cred_p.appendChild(document.createTextNode('The certifier\'s credential is '));
 				
-				if (matches(certifier_credentials, '^http')) {
+				if (certifier_credentials.match('^http')) {
 					var cert_link = document.createElement('a');
 						cert_link.href = certifier_credentials;
 						cert_link.appendChild(document.createTextNode(certifier_credentials));
@@ -210,7 +210,7 @@ var packageProcessor = (function() {
 			if (certifier_credentials) {
 				cert_p.appendChild(document.createTextNode(' with a credential of '));
 				
-				if (matches(certifier_credentials, '^http')) {
+				if (certifier_credentials.match('^http')) {
 					var cert_link = document.createElement('a');
 						cert_link.href = certifier_credentials;
 						cert_link.appendChild(document.createTextNode(certifier_credentials));
