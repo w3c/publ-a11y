@@ -362,19 +362,27 @@ var packageProcessor = (function() {
 		var cdmf_result = document.createElement('dd');
 		
 		if (contains_charts_diagrams && long_text_descriptions) {
-			cdmf_result.appendChild(document.createTextNode('Charts and diagrams have extended descriptions'));
+			var p = document.createElement('p');
+				p.appendChild(document.createTextNode('Charts and diagrams have extended descriptions'));
+			cdmf_result.appendChild(p);
 		}
 		
 		if (chemical_formula_as_chemml) {
-			cdmf_result.appendChild(document.createTextNode('Accessible chemistry content'));
+			var p = document.createElement('p');
+				P.appendChild(document.createTextNode('Accessible chemistry content'));
+			cdmf_result.appendChild(p);
 		}
 		
 		if (math_formula_as_latex || math_formula_as_mathml) {
-			cdmf_result.appendChild(document.createTextNode('Accessible math content'));
+			var p = document.createElement('p');
+				p.appendChild(document.createTextNode('Accessible math content'));
+			cdmf_result.appendChild(p);
 		}
 		
 		if ((contains_charts_diagrams || contains_chemical_formula || contains_math_formula) && !(long_text_descriptions || chemical_formula_as_chemml || math_formula_as_latex || math_formula_as_mathml)) {
-			cdmf_result.appendChild(document.createTextNode('accessibility of formulas, charts, math, and diagrams not identified as being accessible'));
+			var p = document.createElement('p');
+				p.appendChild(document.createTextNode('accessibility of formulas, charts, math, and diagrams not identified as being accessible'));
+			cdmf_result.appendChild(p);
 		}
 		
 		result.appendChild(cdmf_result);
