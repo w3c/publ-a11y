@@ -90,38 +90,18 @@ var onixProcessor = (function() {
 		 */
 		 
 		// 4.3.2 Variables setup
-		var conformance_string = '';
-		var wcag_level = '';
-		
-		if (checkForNode(onix, '/opf:package/opf:metadata/opf:meta[@property="dcterms:conformsTo" and text() = "http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-a"] | /opf:package/opf:metadata/opf:link[@rel="dcterms:conformsTo" and @href="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-a"]')) {
-			conformance_string = 'EPUB Accessibility 1.0 WCAG 2.0 Level A';
-			wcag_level = 'A';
-		}
-		
-		if (checkForNode(onix, '/opf:package/opf:metadata/opf:meta[@property="dcterms:conformsTo" and text() = "http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aa"] | /opf:package/opf:metadata/opf:link[@rel="dcterms:conformsTo" and @href="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aa"]')) {
-			conformance_string = 'EPUB Accessibility 1.0 WCAG 2.0 Level AA';
-			wcag_level = 'AA';
-		}
-		
-		if (checkForNode(onix, '/opf:package/opf:metadata/opf:meta[@property="dcterms:conformsTo" and text() = "http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aaa"] | /opf:package/opf:metadata/opf:link[@rel="dcterms:conformsTo" and @href="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aaa"]')) {
-			conformance_string = 'EPUB Accessibility 1.0 WCAG 2.0 Level AAA';
-			wcag_level = 'AAA';
-		}
-		
-		// js evaluate() can't handle this expression /opf:package/opf:metadata/opf:meta[@property="dcterms:conformsTo" and matches(text(), "EPUB Accessibility 1\.1 - WCAG 2\.[0-2] Level [A]+")]
-		// using contains() instead to match most of it
-		
-		var conformance = onix.evaluate('/opf:package/opf:metadata/opf:meta[@property="dcterms:conformsTo" and contains(text(), "EPUB Accessibility 1.1 - WCAG 2.")]', onix, nsResolver, XPathResult.STRING_TYPE, null).stringValue;
-		
-		if (conformance) {
-			conformance_string = conformance.replace(' - ', ' ');
-			wcag_level = conformance.replace('EPUB Accessibility 1\.1 - WCAG 2\.[0-2] Level ', '');
-		}
-		
-		var certifier = onix.evaluate('/opf:package/opf:metadata/opf:meta[@property="a11y:certifiedBy"]/text()', onix, nsResolver, XPathResult.STRING_TYPE, null).stringValue;
-		var certifier_credentials = onix.evaluate('/opf:package/opf:metadata/opf:meta[@property="a11y:certifierCredential"]/text()', onix, nsResolver, XPathResult.STRING_TYPE, null).stringValue;
-		var certification_date = onix.evaluate('/opf:package/opf:metadata/opf:meta[@property="dcterms:date" and @refines=//opf:meta[@property="a11y:certifiedBy"]/@id]', onix, nsResolver, XPathResult.STRING_TYPE, null).stringValue;
-		var certifier_report = onix.evaluate('/opf:package/opf:metadata/opf:meta[@property="a11y:certifierReport"]/text()', onix, nsResolver, XPathResult.STRING_TYPE, null).stringValue;
+		var epub_accessibility_10 = checkForNode(onix, '/onix:ONIXMessage/onix:Product/onix:DescriptiveDetail/onix:ProductFormFeature[onix:ProductFormFeatureType = "09" and onix:ProductFormFeatureValue = "02"]')  || checkForNode(onix, '/onix:ONIXMessage/onix:Product/onix:DescriptiveDetail/onix:ProductFormFeature[onix:ProductFormFeatureType = "09" and onix:ProductFormFeatureValue = "03"]');
+		var epub_accessibility_11 = checkForNode(onix, '/onix:ONIXMessage/onix:Product/onix:DescriptiveDetail/onix:ProductFormFeature[onix:ProductFormFeatureType = "09" and onix:ProductFormFeatureValue = "04"]');
+		var wcag_20 = checkForNode(onix, '/onix:ONIXMessage/onix:Product/onix:DescriptiveDetail/onix:ProductFormFeature[onix:ProductFormFeatureType = "09" and onix:ProductFormFeatureValue = "80"]') || checkForNode(onix, '/onix:ONIXMessage/onix:Product/onix:DescriptiveDetail/onix:ProductFormFeature[onix:ProductFormFeatureType = "09" and onix:ProductFormFeatureValue = "02"]') || checkForNode(onix, '/onix:ONIXMessage/onix:Product/onix:DescriptiveDetail/onix:ProductFormFeature[onix:ProductFormFeatureType = "09" and onix:ProductFormFeatureValue = "03"]');
+		var wcag_21 = checkForNode(onix, '/onix:ONIXMessage/onix:Product/onix:DescriptiveDetail/onix:ProductFormFeature[onix:ProductFormFeatureType = "09" and onix:ProductFormFeatureValue = "81"]');
+		var wcag_22 = checkForNode(onix, '/onix:ONIXMessage/onix:Product/onix:DescriptiveDetail/onix:ProductFormFeature[onix:ProductFormFeatureType = "09" and onix:ProductFormFeatureValue = "82"]');
+		var level_a = checkForNode(onix, '/onix:ONIXMessage/onix:Product/onix:DescriptiveDetail/onix:ProductFormFeature[onix:ProductFormFeatureType = "09" and onix:ProductFormFeatureValue = "84"]') || checkForNode(onix, '/onix:ONIXMessage/onix:Product/onix:DescriptiveDetail/onix:ProductFormFeature[onix:ProductFormFeatureType = "09" and onix:ProductFormFeatureValue = "02"]');
+		var level_aa = checkForNode(onix, '/onix:ONIXMessage/onix:Product/onix:DescriptiveDetail/onix:ProductFormFeature[onix:ProductFormFeatureType = "09" and onix:ProductFormFeatureValue = "85"]') || checkForNode(onix, '/onix:ONIXMessage/onix:Product/onix:DescriptiveDetail/onix:ProductFormFeature[onix:ProductFormFeatureType = "09" and onix:ProductFormFeatureValue = "03"]');
+		var level_aaa = checkForNode(onix, '/onix:ONIXMessage/onix:Product/onix:DescriptiveDetail/onix:ProductFormFeature[onix:ProductFormFeatureType = "09" and onix:ProductFormFeatureValue = "86"]');
+		var certifier  = onix.evaluate('/onix:ONIXMessage/onix:Product/onix:DescriptiveDetail/onix:ProductFormFeature[onix:ProductFormFeatureType = "09" and onix:ProductFormFeatureValue = "90"]/onix:ProductFormFeatureDescription', onix, nsResolver, XPathResult.STRING_TYPE, null).stringValue;
+		var certifier_credentials  = onix.evaluate('/onix:ONIXMessage/onix:Product/onix:DescriptiveDetail/onix:ProductFormFeature[onix:ProductFormFeatureType = "09" and onix:ProductFormFeatureValue = "93"]/onix:ProductFormFeatureDescription', onix, nsResolver, XPathResult.STRING_TYPE, null).stringValue;
+		var certification_date  = onix.evaluate('/onix:ONIXMessage/onix:Product/onix:DescriptiveDetail/onix:ProductFormFeature[onix:ProductFormFeatureType = "09" and onix:ProductFormFeatureValue = "91"]/onix:ProductFormFeatureDescription', onix, nsResolver, XPathResult.STRING_TYPE, null).stringValue;
+		var certifier_report  = onix.evaluate('/onix:ONIXMessage/onix:Product/onix:DescriptiveDetail/onix:ProductFormFeature[onix:ProductFormFeatureType = "09" and onix:ProductFormFeatureValue = "94"]/onix:ProductFormFeatureDescription', onix, nsResolver, XPathResult.STRING_TYPE, null).stringValue;
 		
 		// 4.3.3 Instructions
 		
@@ -131,122 +111,149 @@ var onixProcessor = (function() {
 		
 		var conf_result = document.createElement('dd');
 		
-		if (conformance_string) {
-			
-			var conf_p = document.createElement('p');
-			
-			if (wcag_level == 'AAA') {
-				conf_p.appendChild(document.createTextNode('This publication exceeds accepted accessibility standards'));
-			}
-			
-			else if (wcag_level == 'AA') {
-				conf_p.appendChild(document.createTextNode('This publication meets accepted accessibility standards'));
-			}
-			
-			else if (wcag_level == 'A') {
-				conf_p.appendChild(document.createTextNode('This publication meets minimum accessibility standards'));
-			}
-			
-			conf_result.appendChild(conf_p);
-			
-			
-			
-			if (certifier) {
-				var cert_p = document.createElement('p');
-				cert_p.appendChild(document.createTextNode('This publication is certified by '));
-				cert_p.appendChild(document.createTextNode(certifier));
-				conf_result.appendChild(cert_p);
-			}
-			
-			if (certifier_credentials) {
-				
-				var cred_p = document.createElement('p');
-				
-				cred_p.appendChild(document.createTextNode('The certifier\'s credential is '));
-				
-				if (certifier_credentials.match('^http')) {
-					var cert_link = document.createElement('a');
-						cert_link.href = certifier_credentials;
-						cert_link.appendChild(document.createTextNode(certifier_credentials));
-					cred_p.appendChild(cert_link);
-				}
-				
-				else {
-					cred_p.appendChild(document.createTextNode(certifier_credentials));
-				}
-				
-				conf_result.appendChild(cred_p);
-			}
-			
-			result.appendChild(conf_result);
-			
-			var detconf_hd = document.createElement('dt');
-				detconf_hd.appendChild(document.createTextNode('Detailed Conformance Information'));
-			result.appendChild(detconf_hd);
-			
-			var detconf_result = document.createElement('dd');
-			
-			var conf_p = document.createElement('p');
-				conf_p.appendChild(document.createTextNode('This publication claims to meet '));
-				conf_p.appendChild(document.createTextNode(conformance_string));
-			
-			detconf_result.appendChild(conf_p);
-			
-			var cert_p = document.createElement('p');
-			
-			if (certification_date || certifier || certifier_credentials) {
-				cert_p.appendChild(document.createTextNode('The publication was certified '));
-			}
-			
-			if (certification_date) {
-				cert_p.appendChild(document.createTextNode(' on '));
-				cert_p.appendChild(document.createTextNode(certification_date));
-			}
-			
-			if (certifier) {
-				cert_p.appendChild(document.createTextNode(' by '));
-				cert_p.appendChild(document.createTextNode(certifier));
-			}
-			
-			if (certifier_credentials) {
-				cert_p.appendChild(document.createTextNode(' with a credential of '));
-				
-				if (certifier_credentials.match('^http')) {
-					var cert_link = document.createElement('a');
-						cert_link.href = certifier_credentials;
-						cert_link.appendChild(document.createTextNode(certifier_credentials));
-					cert_p.appendChild(cert_link);
-				}
-				
-				else {
-					cert_p.appendChild(document.createTextNode(certifier_credentials));
-				}
-			}
-			
-			detconf_result.appendChild(cert_p);
-			
-			if (certifier_report) {
-				
-				var rep_p = document.createElement('p');
-				
-				rep_p.appendChild(document.createTextNode('For more information refer to the certifier\'s report '));
-				
-				var rep_link = document.createElement('a');
-					rep_link.href = certifier_credentials;
-					rep_link.appendChild(document.createTextNode(certifier_report));
-				rep_p.appendChild(rep_link);
-				
-				detconf_result.appendChild(rep_p);
-			}
-			
-			result.appendChild(detconf_result);
+		var conf_p = document.createElement('p');
+		
+		if (level_aaa) {
+			conf_p.appendChild(document.createTextNode('This publication exceeds accepted accessibility standards'));
 		}
 		
+		else if (level_aa) {
+			conf_p.appendChild(document.createTextNode('This publication meets accepted accessibility standards'));
+		}
+		
+		else if (level_a) {
+			conf_p.appendChild(document.createTextNode('This publication meets minimum accessibility standards'));
+		}
 		
 		else {
-			conf_result.appendChild(document.createTextNode('The publication does not include a conformance statement'));
-			result.appendChild(conf_result);
+			conf_p.appendChild(document.createTextNode('The publication does not include a conformance statement'));
 		}
+		
+		conf_result.appendChild(conf_p);
+		
+		if (certifier) {
+			var cert_p = document.createElement('p');
+				cert_p.appendChild(document.createTextNode('This publication is certified by '));
+				cert_p.appendChild(document.createTextNode(certifier));
+			conf_result.appendChild(cert_p);
+		}
+		
+		if (certifier_credentials) {
+			
+			var cred_p = document.createElement('p');
+			
+			cred_p.appendChild(document.createTextNode('The certifier\'s credential is '));
+			
+			if (certifier_credentials.match('^http')) {
+				var cert_link = document.createElement('a');
+					cert_link.href = certifier_credentials;
+					cert_link.appendChild(document.createTextNode(certifier_credentials));
+				cred_p.appendChild(cert_link);
+			}
+			
+			else {
+				cred_p.appendChild(document.createTextNode(certifier_credentials));
+			}
+			
+			conf_result.appendChild(cred_p);
+		}
+		
+		result.appendChild(conf_result);
+		
+		var detconf_hd = document.createElement('dt');
+			detconf_hd.appendChild(document.createTextNode('Detailed Conformance Information'));
+		result.appendChild(detconf_hd);
+		
+		var detconf_result = document.createElement('dd');
+		
+		var conf_p = document.createElement('p');
+		
+		if (epub_accessibility_10 || epub_accessibility_11 || wcag_20 || wcag_21 || wcag_22 || level_aaa || level_aa || level_a) {
+			conf_p.appendChild(document.createTextNode('This publication claims to meet '));
+		}
+		
+		if (epub_accessibility_10) {
+			conf_p.appendChild(document.createTextNode(' EPUB Accessibility 1.0 '));
+		}
+		
+		else if (epub_accessibility_11) {
+			conf_p.appendChild(document.createTextNode(' EPUB Accessibility 1.1 '));
+		}
+		
+		if (wcag_22) {
+			conf_p.appendChild(document.createTextNode(' WCAG 2.2 '));
+		}
+		
+		else if (wcag_21) {
+			conf_p.appendChild(document.createTextNode(' WCAG 2.1 '));
+		}
+		
+		else if (wcag_20) {
+			conf_p.appendChild(document.createTextNode(' WCAG 2.0 '));
+		}
+		
+		if (level_aaa) {
+			conf_p.appendChild(document.createTextNode(' Level AAA'));
+		}
+			
+		else if (level_aa) {
+			conf_p.appendChild(document.createTextNode(' Level AA'));
+		}
+		
+		else if (level_a) {
+			conf_p.appendChild(document.createTextNode(' Level A'));
+		}
+		
+		detconf_result.appendChild(conf_p);
+		
+		var cert_p = document.createElement('p');
+		
+		if (certification_date || certifier || certifier_credentials) {
+			cert_p.appendChild(document.createTextNode('The publication was certified '));
+		}
+		
+		if (certification_date) {
+			cert_p.appendChild(document.createTextNode(' on '));
+			cert_p.appendChild(document.createTextNode(certification_date));
+		}
+		
+		if (certifier) {
+			cert_p.appendChild(document.createTextNode(' by '));
+			cert_p.appendChild(document.createTextNode(certifier));
+		}
+		
+		if (certifier_credentials) {
+			cert_p.appendChild(document.createTextNode(' with a credential of '));
+			
+			if (certifier_credentials.match('^http')) {
+				var cert_link = document.createElement('a');
+					cert_link.href = certifier_credentials;
+					cert_link.appendChild(document.createTextNode(certifier_credentials));
+				cert_p.appendChild(cert_link);
+			}
+			
+			else {
+				cert_p.appendChild(document.createTextNode(certifier_credentials));
+			}
+		}
+		
+		detconf_result.appendChild(cert_p);
+		
+		if (certifier_report) {
+			
+			var rep_p = document.createElement('p');
+			
+			rep_p.appendChild(document.createTextNode('For more information refer to the certifier\'s report '));
+			
+			var rep_link = document.createElement('a');
+				rep_link.href = certifier_credentials;
+				rep_link.appendChild(document.createTextNode(certifier_report));
+			rep_p.appendChild(rep_link);
+			
+			detconf_result.appendChild(rep_p);
+		}
+		
+		result.appendChild(detconf_result);
 		
 
 		/* 
@@ -254,28 +261,31 @@ var onixProcessor = (function() {
 		 */
 		 
 		 // 4.4.2 Variables setup
-		 var all_content_audio = checkForNode(onix, '/opf:package/opf:metadata/opf:meta[@property="schema:accessModeSufficient" and text()="auditory"]');
-		 var synchronised_pre_recorded_audio = checkForNode(onix, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="sychronizedAudioText"]');
-		 var audio_content = checkForNode(onix, '/opf:package/opf:metadata/opf:meta[@property="schema:accessMode" and text()="auditory"]');
+		 var audiobook = checkForNode(onix, '/onix:ONIXMessage/onix:Product/onix:DescriptiveDetail/onix:DescriptiveDetail[onix:PrimaryContentType = "81" or onix:ContentType = "81"]');
+		 var all_content_audio = checkForNode(onix, '/onix:ONIXMessage/onix:Product/onix:DescriptiveDetail/onix:ProductFormFeature[onix:ProductFormFeatureType = "09" and onix:ProductFormFeatureValue = "39"]');
+		 var all_content_pre_recorded = checkForNode(onix, '/onix:ONIXMessage/onix:Product/onix:DescriptiveDetail/onix:ProductFormFeature[onix:ProductFormFeatureType = "09" and onix:ProductFormFeatureValue = "51"]');
+		 var synchronised_pre_recorded_audio = checkForNode(onix, '/onix:ONIXMessage/onix:Product/onix:DescriptiveDetail/onix:ProductFormFeature[onix:ProductFormFeatureType = "09" and onix:ProductFormFeatureValue = "20"]') && checkForNode(onix, '/onix:ONIXMessage/onix:Product/onix:DescriptiveDetail/onix:ProductFormDetail[text() = "A305"]');
+		 var non_textual_content_audio = checkForNode(onix, '/onix:ONIXMessage/onix:Product/onix:DescriptiveDetail/onix:DescriptiveDetail[onix:ContentType = "21" or onix:ContentType = "22"]');
+		 var non_textual_content_audio_in_video = checkForNode(onix, '/onix:ONIXMessage/onix:Product/onix:DescriptiveDetail/onix:DescriptiveDetail[onix:ContentType = "06" or onix:ContentType = "25" or onix:ContentType = "26" or onix:ContentType = "27" or onix:ContentType = "28" or onix:ContentType = "29" or onix:ContentType = "30"]');
 		
 		// 4.4.3 Instructions
 		
 		var prerec_hd = document.createElement('dt');
-			prerec_hd.appendChild(document.createTextNode('Pre-recorded audio'));
+			prerec_hd.appendChild(document.createTextNode('Prerecorded audio'));
 		result.appendChild(prerec_hd);
 		
 		var prerec_result = document.createElement('dd');
 		
-		if ( all_content_audio) {
+		if (all_content_audio && !synchronised_pre_recorded_audio) {
 			prerec_result.appendChild(document.createTextNode('Audio only'));
 		}
 		
-		else if (synchronised_pre_recorded_audio) {
-			prerec_result.appendChild(document.createTextNode('Synchronized audio and text'));
+		else if ((audiobook || non_textual_content_audio || non_textual_content_audio_in_video) && !all_content_pre_recorded) {
+			prerec_result.appendChild(document.createTextNode('Complementary audio and text'));
 		}
 		
-		else if (audio_content) {
-			prerec_result.appendChild(document.createTextNode('Complementary audio and text'));
+		else if (all_content_pre_recorded && synchronised_pre_recorded_audio) {
+			prerec_result.appendChild(document.createTextNode('Synchronized audio and text'));
 		}
 		
 		else {
@@ -289,11 +299,11 @@ var onixProcessor = (function() {
 		 * 4.5 Navigation
 		 */
 		 
-		 // 4.5.2 Variables setup
-		 var table_of_contents_navigation = checkForNode(onix, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="tableOfContents"]');
-		 var index_navigation = checkForNode(onix, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="index"]');
-		 var page_navigation = checkForNode(onix, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="pageNavigation"]');
-		 var next_previous_structural_navigation = checkForNode(onix, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="structuralNavigation"]');
+		// 4.5.2 Variables setup
+		var table_of_contents_navigation = checkForNode(onix, '/onix:ONIXMessage/onix:Product/onix:DescriptiveDetail/onix:ProductFormFeature[onix:ProductFormFeatureType = "09" and onix:ProductFormFeatureValue = "11"]');
+		var index_navigation = checkForNode(onix, '/onix:ONIXMessage/onix:Product/onix:DescriptiveDetail/onix:ProductFormFeature[onix:ProductFormFeatureType = "09" and onix:ProductFormFeatureValue = "12"]');
+		var print_equivalent_page_numbering = checkForNode(onix, '/onix:ONIXMessage/onix:Product/onix:DescriptiveDetail/onix:ProductFormFeature[onix:ProductFormFeatureType = "09" and onix:ProductFormFeatureValue = "19"]');
+		var next_previous_structural_navigation = checkForNode(onix, '/onix:ONIXMessage/onix:Product/onix:DescriptiveDetail/onix:ProductFormFeature[onix:ProductFormFeatureType = "09" and onix:ProductFormFeatureValue = "29"]');
 		
 		// 4.5.3 Instructions
 		
@@ -315,7 +325,7 @@ var onixProcessor = (function() {
 				navigation.push("index");
 			}
 			
-			if (page_navigation) {
+			if (print_equivalent_page_numbering) {
 				navigation.push("supports page navigation");
 			}
 			
@@ -341,13 +351,15 @@ var onixProcessor = (function() {
 		 */
 		 
 		 // 4.6.2 Variables setup
-		var contains_charts_diagrams  = checkForNode(onix, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="chartOnVisual"]');
-		var long_text_descriptions  = checkForNode(onix, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="longDescriptions"]');
-		var contains_chemical_formula  = checkForNode(onix, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="chemOnVisual"]');
-		var chemical_formula_as_chemml  = checkForNode(onix, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="ChemML"]');
-		var contains_math_formula  = checkForNode(onix, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="describedMath"]');
-		var math_formula_as_latex  = checkForNode(onix, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="latex"]');
-		var math_formula_as_mathml  = checkForNode(onix, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="MathML"]');
+		var contains_charts_diagrams  = checkForNode(onix, '/onix:ONIXMessage/onix:Product/onix:DescriptiveDetail/onix:DescriptiveDetail[onix:PrimaryContentType = "19" or onix:ContentType = "19"]');
+		var charts_diagrams_as_non_graphical_data = checkForNode(onix, '/onix:ONIXMessage/onix:Product/onix:DescriptiveDetail/onix:ProductFormFeature[onix:ProductFormFeatureType = "09" and onix:ProductFormFeatureValue = "16"]');
+		var charts_diagrams_diagrams_as_long_text = checkForNode(onix, '/onix:ONIXMessage/onix:Product/onix:DescriptiveDetail/onix:ProductFormFeature[onix:ProductFormFeatureType = "09" and onix:ProductFormFeatureValue = "15"]');
+		var contains_chemical_formula = checkForNode(onix, '/onix:ONIXMessage/onix:Product/onix:DescriptiveDetail/onix:DescriptiveDetail[onix:PrimaryContentType = "47" or onix:ContentType = "47"]');
+		var chemical_formula_as_chemml = checkForNode(onix, '/onix:ONIXMessage/onix:Product/onix:DescriptiveDetail/onix:ProductFormFeature[onix:ProductFormFeatureType = "09" and onix:ProductFormFeatureValue = "18"]');
+		var chemical_formula_as_mathml = checkForNode(onix, '/onix:ONIXMessage/onix:Product/onix:DescriptiveDetail/onix:ProductFormFeature[onix:ProductFormFeatureType = "09" and onix:ProductFormFeatureValue = "34"]');
+		var contains_math_formula = checkForNode(onix, '/onix:ONIXMessage/onix:Product/onix:DescriptiveDetail/onix:DescriptiveDetail[onix:PrimaryContentType = "48" or onix:ContentType = "48"]');
+		var math_formula_as_latex = checkForNode(onix, '/onix:ONIXMessage/onix:Product/onix:DescriptiveDetail/onix:ProductFormFeature[onix:ProductFormFeatureType = "09" and onix:ProductFormFeatureValue = "35"]');
+		var math_formula_as_mathml = checkForNode(onix, '/onix:ONIXMessage/onix:Product/onix:DescriptiveDetail/onix:ProductFormFeature[onix:ProductFormFeatureType = "09" and onix:ProductFormFeatureValue = "17"]');
 		
 		// 4.6.3 Instructions
 		
@@ -357,20 +369,34 @@ var onixProcessor = (function() {
 		
 		var cdmf_result = document.createElement('dd');
 		
-		if (contains_charts_diagrams && long_text_descriptions) {
-			cdmf_result.appendChild(document.createTextNode('Charts and diagrams have extended descriptions'));
+		if (contains_charts_diagrams && charts_diagrams_diagrams_as_long_text) {
+			var p = document.createElement('p');
+				p.appendChild(document.createTextNode('Charts and diagrams have extended descriptions'));
+			cdmf_result.appendChild(p);
 		}
 		
-		if (chemical_formula_as_chemml) {
-			cdmf_result.appendChild(document.createTextNode('Accessible chemistry content'));
+		if (contains_charts_diagrams && charts_diagrams_as_non_graphical_data) {
+			var p = document.createElement('p');
+				p.appendChild(document.createTextNode('Visualized data also available as non-graphical data'));
+			cdmf_result.appendChild(p);
+		}
+		
+		if (chemical_formula_as_chemml || chemical_formula_as_mathml) {
+			var p = document.createElement('p');
+				p.appendChild(document.createTextNode('Accessible chemistry content'));
+			cdmf_result.appendChild(p);
 		}
 		
 		if (math_formula_as_latex || math_formula_as_mathml) {
-			cdmf_result.appendChild(document.createTextNode('Accessible math content'));
+			var p = document.createElement('p');
+				p.appendChild(document.createTextNode('Accessible math content'));
+			cdmf_result.appendChild(p);
 		}
 		
-		if ((contains_charts_diagrams || contains_chemical_formula || contains_math_formula) && !(long_text_descriptions || chemical_formula_as_chemml || math_formula_as_latex || math_formula_as_mathml)) {
-			cdmf_result.appendChild(document.createTextNode('accessibility of formulas, charts, math, and diagrams not identified as being accessible'));
+		if ((contains_charts_diagrams || contains_chemical_formula || contains_math_formula) && !(charts_diagrams_diagrams_as_long_text || charts_diagrams_as_non_graphical_data || chemical_formula_as_chemml || chemical_formula_as_mathml || math_formula_as_latex || math_formula_as_mathml)) {
+			var p = document.createElement('p');
+				p.appendChild(document.createTextNode('accessibility of formulas, charts, math, and diagrams not identified as being accessible'));
+			cdmf_result.appendChild(p);
 		}
 		
 		result.appendChild(cdmf_result);
@@ -381,14 +407,14 @@ var onixProcessor = (function() {
 		 */
 		 
 		 // 4.7.2 Variables setup
-		var no_hazards_or_warnings_confirmed = checkForNode(onix, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityHazard" and text()="none"]');
-		var flashing_hazard = checkForNode(onix, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityHazard" and text()="flashing"]');
-		var no_flashing_hazards = checkForNode(onix, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityHazard" and text()="noFlashingHazard"]');
-		var motion_simulation_hazard = checkForNode(onix, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityHazard" and text()="motionSimulation"]');
-		var no_motion_hazards = checkForNode(onix, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityHazard" and text()="noMotionSimulation"]');
-		var sound_hazard = checkForNode(onix, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityHazard" and text()="sound"]');
-		var no_sound_hazards = checkForNode(onix, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityHazard" and text()="noSoundHazard"]');
-		var unknown_if_contains_hazards = checkForNode(onix, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityHazard" and text()="unknown"]');
+		var no_hazards_or_warnings_confirmed = checkForNode(onix, '/onix:ONIXMessage/onix:Product/onix:DescriptiveDetail/onix:ProductFormFeature[onix:ProductFormFeatureType = "12" and onix:ProductFormFeatureValue = "00"]');
+		var flashing_hazard = checkForNode(onix, '/onix:ONIXMessage/onix:Product/onix:DescriptiveDetail/onix:ProductFormFeature[onix:ProductFormFeatureType = "12" and onix:ProductFormFeatureValue = "13"]');
+		var no_flashing_hazards = checkForNode(onix, '/onix:ONIXMessage/onix:Product/onix:DescriptiveDetail/onix:ProductFormFeature[onix:ProductFormFeatureType = "12" and onix:ProductFormFeatureValue = "14"]');
+		var motion_simulation_hazard = checkForNode(onix, '/onix:ONIXMessage/onix:Product/onix:DescriptiveDetail/onix:ProductFormFeature[onix:ProductFormFeatureType = "12" and onix:ProductFormFeatureValue = "17"]');
+		var no_motion_hazards = checkForNode(onix, '/onix:ONIXMessage/onix:Product/onix:DescriptiveDetail/onix:ProductFormFeature[onix:ProductFormFeatureType = "12" and onix:ProductFormFeatureValue = "18"]');
+		var sound_hazard = checkForNode(onix, '/onix:ONIXMessage/onix:Product/onix:DescriptiveDetail/onix:ProductFormFeature[onix:ProductFormFeatureType = "12" and onix:ProductFormFeatureValue = "15"]');
+		var no_sound_hazards = checkForNode(onix, '/onix:ONIXMessage/onix:Product/onix:DescriptiveDetail/onix:ProductFormFeature[onix:ProductFormFeatureType = "12" and onix:ProductFormFeatureValue = "16"]');
+		var unknown_if_contains_hazards = checkForNode(onix, '/onix:ONIXMessage/onix:Product/onix:DescriptiveDetail/onix:ProductFormFeature[onix:ProductFormFeatureType = "09" and onix:ProductFormFeatureValue = "08"]');
 		
 		// 4.7.3 Instructions
 		
@@ -446,10 +472,18 @@ var onixProcessor = (function() {
 		 * 4.8 Accessibility summary
 		 */
 		 
+		 // Note xpaths in the techniques that end in /(@lang|ancestor::*/@lang)[last()]
+		 // had to be made two separate selections (.../@lang | .../ancestor::*/@lang)
+		 // for compatibility with xpath 1.0 processing
+		 
 		 // 4.8.2 Variables setup
-		var accessibility_summary =  onix.evaluate('/opf:package/opf:metadata/opf:meta[@property="schema:accessibilitySummary"]', onix, nsResolver, XPathResult.STRING_TYPE, null).stringValue;
-		var lang_attribute_accessibility_summary = onix.evaluate('(/opf:package/opf:metadata/opf:meta[@property="schema:accessibilitySummary"]/@xml:lang | /opf:package/@xml:lang)[last()]', onix, nsResolver, XPathResult.STRING_TYPE, null).stringValue;
-		var language_of_text = onix.evaluate('/opf:package/opf:metadata/dc:language[1]/text()', onix, nsResolver, XPathResult.STRING_TYPE, null).stringValue;
+		var accessibility_addendum  = onix.evaluate('/onix:ONIXMessage/onix:Product/onix:DescriptiveDetail/onix:ProductFormFeature[onix:ProductFormFeatureType = "09" and onix:ProductFormFeatureValue = "92"]/onix:ProductFormFeatureDescription', onix, nsResolver, XPathResult.STRING_TYPE, null).stringValue;
+		var lang_attribute_accessibility_addendum = onix.evaluate('(/onix:ONIXMessage/onix:Product/onix:DescriptiveDetail/onix:ProductFormFeature[onix:ProductFormFeatureType = "09" and onix:ProductFormFeatureValue = "92"]/onix:ProductFormFeatureDescription/@lang | /onix:ONIXMessage/onix:Product/onix:DescriptiveDetail/onix:ProductFormFeature[onix:ProductFormFeatureType = "09" and onix:ProductFormFeatureValue = "92"]/onix:ProductFormFeatureDescription/ancestor::*/@lang)[last()]', onix, nsResolver, XPathResult.STRING_TYPE, null).stringValue;
+		var known_limited_accessibility  = onix.evaluate('/onix:ONIXMessage/onix:Product/onix:DescriptiveDetail/onix:ProductFormFeature[onix:ProductFormFeatureType = "09" and onix:ProductFormFeatureValue = "09"]/onix:ProductFormFeatureDescription', onix, nsResolver, XPathResult.STRING_TYPE, null).stringValue;
+		var lang_known_limited_accessibility = onix.evaluate('(/onix:ONIXMessage/onix:Product/onix:DescriptiveDetail/onix:ProductFormFeature[onix:ProductFormFeatureType = "09" and onix:ProductFormFeatureValue = "09"]/onix:ProductFormFeatureDescription/@lang | /onix:ONIXMessage/onix:Product/onix:DescriptiveDetail/onix:ProductFormFeature[onix:ProductFormFeatureType = "09" and onix:ProductFormFeatureValue = "09"]/onix:ProductFormFeatureDescription/ancestor::*/@lang)[last()]', onix, nsResolver, XPathResult.STRING_TYPE, null).stringValue;
+		var accessibility_summary  = onix.evaluate('/onix:ONIXMessage/onix:Product/onix:DescriptiveDetail/onix:ProductFormFeature[onix:ProductFormFeatureType = "09" and onix:ProductFormFeatureValue = "00"]/onix:ProductFormFeatureDescription', onix, nsResolver, XPathResult.STRING_TYPE, null).stringValue;
+		var lang_attribute_accessibility_summary = onix.evaluate('(/onix:ONIXMessage/onix:Product/onix:DescriptiveDetail/onix:ProductFormFeature[onix:ProductFormFeatureType = "09" and onix:ProductFormFeatureValue = "00"]/onix:ProductFormFeatureDescription/@lang | /onix:ONIXMessage/onix:Product/onix:DescriptiveDetail/onix:ProductFormFeature[onix:ProductFormFeatureType = "09" and onix:ProductFormFeatureValue = "00"]/onix:ProductFormFeatureDescription/ancestor::*/@lang)[last()]', onix, nsResolver, XPathResult.STRING_TYPE, null).stringValue;
+		var language_of_text  = onix.evaluate('/onix:ONIXMessage/onix:Product/onix:DescriptiveDetail/onix:Language[onix:LanguageRole="01"]/onix:LanguageCode', onix, nsResolver, XPathResult.STRING_TYPE, null).stringValue;
 		
 		// 4.8.3 Instructions
 		
@@ -459,7 +493,25 @@ var onixProcessor = (function() {
 		
 		var sum_result = document.createElement('dd');
 		
+		var language_accessibility_addendum;
+		var language_known_limited_accessibility;
 		var language_accessibility_summary;
+		
+		if (lang_attribute_accessibility_addendum) {
+			language_accessibility_addendum = lang_attribute_accessibility_addendum;
+		}
+		
+		else {
+			language_accessibility_addendum = language_of_text;
+		}
+		
+		if (lang_known_limited_accessibility) {
+			language_known_limited_accessibility = lang_known_limited_accessibility;
+		}
+		
+		else {
+			language_known_limited_accessibility = language_of_text;
+		}
 		
 		if (lang_attribute_accessibility_summary) {
 			language_accessibility_summary = lang_attribute_accessibility_summary;
@@ -469,13 +521,31 @@ var onixProcessor = (function() {
 			language_accessibility_summary = language_of_text;
 		}
 		
-		if (accessibility_summary) {
-			sum_result.appendChild(document.createTextNode(accessibility_summary));
-			sum_result.lang = language_accessibility_summary;
+		if (known_limited_accessibility) {
+			var p = document.createElement('p');
+				p.appendChild(document.createTextNode(known_limited_accessibility));
+				p.lang = language_known_limited_accessibility;
+			sum_result.appendChild(p);
+		}
+		
+		if (accessibility_addendum) {
+			var p = document.createElement('p');
+				P.appendChild(document.createTextNode(accessibility_addendum));
+				P.lang = language_accessibility_addendum;
+			sum_result.appendChild(p);
+		}
+		
+		else if (accessibility_summary) {
+			var p = document.createElement('p');
+				p.appendChild(document.createTextNode(accessibility_summary));
+				p.lang = language_accessibility_summary;
+			sum_result.appendChild(p);
 		}
 		
 		else {
-			sum_result.appendChild(document.createTextNode('No accessibility summary is available'));
+			var p = document.createElement('p');
+				P.appendChild(document.createTextNode('No accessibility summary is available'));
+			sum_result.appendChild(p);
 		}
 		
 		result.appendChild(sum_result);
@@ -486,9 +556,9 @@ var onixProcessor = (function() {
 		 */
 		 
 		 // 4.9.2 Variables setup
-		var eaa_exemption_micro_enterprises = checkForNode(onix, '/opf:package/opf:metadata/opf:meta[@property="a11y:exemption" and text()="eaa-microenterprise"]');
-		var eaa_exception_disproportionate_burden = checkForNode(onix, '/opf:package/opf:metadata/opf:meta[@property="a11y:exemption" and text()="eaa-disproportionate-burden"]');
-		var eaa_exception_fundamental_modification = checkForNode(onix, '/opf:package/opf:metadata/opf:meta[@property="a11y:exemption" and text()="eaa-fundamental-alteration"]');
+		var eaa_exemption_micro_enterprises = checkForNode(onix, '/onix:ONIXMessage/onix:Product/onix:DescriptiveDetail/onix:ProductFormFeature[onix:ProductFormFeatureType = "09" and onix:ProductFormFeatureValue = "75"]');
+		var eaa_exception_disproportionate_burden = checkForNode(onix, '/onix:ONIXMessage/onix:Product/onix:DescriptiveDetail/onix:ProductFormFeature[onix:ProductFormFeatureType = "09" and onix:ProductFormFeatureValue = "76"]');
+		var eaa_exception_fundamental_modification = checkForNode(onix, '/onix:ONIXMessage/onix:Product/onix:DescriptiveDetail/onix:ProductFormFeature[onix:ProductFormFeatureType = "09" and onix:ProductFormFeatureValue = "77"]');
 		
 		// 4.9.3 Instructions
 		
@@ -521,25 +591,18 @@ var onixProcessor = (function() {
 		
 		// 4.10.1 Adaptation
 		// 4.10.1.2 Variables setup
-		var audio_descriptions = checkForNode(onix, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="audioDescription"]');
-		var braille = checkForNode(onix, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="braille"]');
-		var closed_captions = checkForNode(onix, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="closedCaptions"]');
-		var open_captions = checkForNode(onix, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="openCaptions"]');
-		var tactile_graphic = checkForNode(onix, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="tactileGraphic"]');
-		var tactile_object = checkForNode(onix, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="tactileObject"]');
-		var transcript = checkForNode(onix, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="transcript"]');
-		var sign_language = checkForNode(onix, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="signLanguage"]');
+		var dyslexia_readability = checkForNode(onix, '/onix:ONIXMessage/onix:Product/onix:DescriptiveDetail/onix:ProductFormFeature[onix:ProductFormFeatureType = "09" and onix:ProductFormFeatureValue = "24"]');
+		var closed_captions = checkForNode(onix, '/onix:ONIXMessage/onix:Product/onix:DescriptiveDetail[onix:ProductFormDetail = "V210"]');
+		var open_captions = checkForNode(onix, '/onix:ONIXMessage/onix:Product/onix:DescriptiveDetail[onix:ProductFormDetail = "V211"]');
+		var full_transcript = checkForNode(onix, '/onix:ONIXMessage/onix:Product/onix:DescriptiveDetail[onix:ProductFormDetail = "V212"]');
+		var sign_language = checkForNode(onix, '/onix:ONIXMessage/onix:Product/onix:DescriptiveDetail[onix:ProductFormDetail = "V213"]');
 		
 		// 4.10.1.3 Instructions
 		
 		var adaptation = [];
 		
-		if (audio_descriptions) {
-			adaptation.push('audio descriptions');
-		}
-		
-		if (braille) {
-			adaptation.push('braille');
+		if (dyslexia_readability) {
+			adaptation.push('dyslexia readability');
 		}
 		
 		if (closed_captions) {
@@ -550,16 +613,8 @@ var onixProcessor = (function() {
 			adaptation.push('open captions');
 		}
 		
-		if (tactile_graphic) {
-			adaptation.push('tactile graphic');
-		}
-		
-		if (tactile_object) {
-			adaptation.push('tactile 3D object');
-		}
-		
-		if (transcript) {
-			adaptation.push('transcript');
+		if (full_transcript) {
+			adaptation.push('full transcript');
 		}
 		
 		if (sign_language) {
@@ -575,49 +630,44 @@ var onixProcessor = (function() {
 		
 		// 4.10.2 Clarity
 		// 4.10.2.2 Variables setup
-		var aria = checkForNode(onix, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="aria"]');
-		var full_ruby_annotations = checkForNode(onix, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="fullRubyAnnotations"]');
-		var text_to_speech_hinting = checkForNode(onix, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="ttsMarkup"]');
-		var high_contrast_between_foreground_and_background_audio = checkForNode(onix, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="highContrastAudio"]');
-		var high_contrast_between_text_and_background = checkForNode(onix, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="highContrastDisplay"]');
-		var large_print = checkForNode(onix, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="largePrint"]');
-		var page_break_markers = checkForNode(onix, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="pageBreakMarkers"]');
-		var ruby_annotations = checkForNode(onix, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="rubyAnnotations"]');
-		
+		var text_to_speech_hinting = checkForNode(onix, '/onix:ONIXMessage/onix:Product/onix:DescriptiveDetail/onix:ProductFormFeature[onix:ProductFormFeatureType = "09" and onix:ProductFormFeatureValue = "21"]');
+		var color_not_sole_means_of_conveying_information = checkForNode(onix, '/onix:ONIXMessage/onix:Product/onix:DescriptiveDetail/onix:ProductFormFeature[onix:ProductFormFeatureType = "09" and onix:ProductFormFeatureValue = "25"]');
+		var high_contrast_between_text_and_background = checkForNode(onix, '/onix:ONIXMessage/onix:Product/onix:DescriptiveDetail/onix:ProductFormFeature[onix:ProductFormFeatureType = "09" and onix:ProductFormFeatureValue = "26"]');
+		var ultra_high_contrast_between_text_and_background = checkForNode(onix, '/onix:ONIXMessage/onix:Product/onix:DescriptiveDetail/onix:ProductFormFeature[onix:ProductFormFeatureType = "09" and onix:ProductFormFeatureValue = "37"]');
+		var visible_page_numbering = checkForNode(onix, '/onix:ONIXMessage/onix:Product/onix:DescriptiveDetail[onix:ProductFormDetail = "E205"]');
+		var high_contrast_between_foreground_and_background_audio = checkForNode(onix, '/onix:ONIXMessage/onix:Product/onix:DescriptiveDetail/onix:ProductFormFeature[onix:ProductFormFeatureType = "09" and onix:ProductFormFeatureValue = "27"]');
+		var without_background_sounds = checkForNode(onix, '/onix:ONIXMessage/onix:Product/onix:DescriptiveDetail[onix:ProductFormDetail = "A312"]');
+
 		// 4.10.2.3 Instructions
 		
 		var clarity = [];
 		
-		if (aria) {
-			clarity.push('aria" to clarity');
-		}
-		
-		if (full_ruby_annotations) {
-			clarity.push('full ruby annotations" to clarity');
-		}
-		
 		if (text_to_speech_hinting) {
-			clarity.push('text-to-speech hinting provided" to clarity');
+			clarity.push('text-to-speech hinting provided');
 		}
 		
-		if (high_contrast_between_foreground_and_background_audio) {
-			clarity.push('high contrast between foreground and background audio" to clarity');
+		if (color_not_sole_means_of_conveying_information) {
+			clarity.push('color is not the sole means of conveying information');
 		}
 		
 		if (high_contrast_between_text_and_background) {
-			clarity.push('high contrast between text and background" to clarity');
+			clarity.push('high contrast between text and background');
 		}
 		
-		if (large_print) {
-			clarity.push('large print" to clarity');
+		if (ultra_high_contrast_between_text_and_background) {
+			clarity.push('ultra high contrast between text and background');
 		}
 		
-		if (page_break_markers) {
-			clarity.push('page breaks" to clarity');
+		if (visible_page_numbering) {
+			clarity.push('visible page numbering');
 		}
 		
-		if (ruby_annotations) {
-			clarity.push('ruby annotations" to clarity');
+		if (high_contrast_between_foreground_and_background_audio) {
+			clarity.push('high contrast between foreground and background audio');
+		}
+		
+		if (without_background_sounds) {
+			clarity.push('without background sounds');
 		}
 		
 		if (clarity.length) {

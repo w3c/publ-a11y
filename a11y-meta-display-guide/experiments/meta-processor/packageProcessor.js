@@ -249,23 +249,23 @@ var packageProcessor = (function() {
 		
 
 		/* 
-		 * 4.4 Pre-recorded audio
+		 * 4.4 Prerecorded audio
 		 */
 		 
-		 // 4.4.2 Variables setup
-		 var all_content_audio = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="schema:accessModeSufficient" and text()="auditory"]');
-		 var synchronised_pre_recorded_audio = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="sychronizedAudioText"]');
-		 var audio_content = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="schema:accessMode" and text()="auditory"]');
+		// 4.4.2 Variables setup
+		var all_content_audio = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="schema:accessModeSufficient" and text()="auditory"]');
+		var synchronised_pre_recorded_audio = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="sychronizedAudioText"]');
+		var audio_content = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="schema:accessMode" and text()="auditory"]');
 		
 		// 4.4.3 Instructions
 		
 		var prerec_hd = document.createElement('dt');
-			prerec_hd.appendChild(document.createTextNode('Pre-recorded audio'));
+			prerec_hd.appendChild(document.createTextNode('Prerecorded audio'));
 		result.appendChild(prerec_hd);
 		
 		var prerec_result = document.createElement('dd');
 		
-		if ( all_content_audio) {
+		if (all_content_audio) {
 			prerec_result.appendChild(document.createTextNode('Audio only'));
 		}
 		
@@ -288,11 +288,11 @@ var packageProcessor = (function() {
 		 * 4.5 Navigation
 		 */
 		 
-		 // 4.5.2 Variables setup
-		 var table_of_contents_navigation = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="tableOfContents"]');
-		 var index_navigation = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="index"]');
-		 var page_navigation = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="pageNavigation"]');
-		 var next_previous_structural_navigation = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="structuralNavigation"]');
+		// 4.5.2 Variables setup
+		var table_of_contents_navigation = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="tableOfContents"]');
+		var index_navigation = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="index"]');
+		var page_navigation = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="pageNavigation"]');
+		var next_previous_structural_navigation = checkForNode(package_document, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="structuralNavigation"]');
 		
 		// 4.5.3 Instructions
 		
@@ -357,19 +357,27 @@ var packageProcessor = (function() {
 		var cdmf_result = document.createElement('dd');
 		
 		if (contains_charts_diagrams && long_text_descriptions) {
-			cdmf_result.appendChild(document.createTextNode('Charts and diagrams have extended descriptions'));
+			var p = document.createElement('p');
+				p.appendChild(document.createTextNode('Charts and diagrams have extended descriptions'));
+			cdmf_result.appendChild(p);
 		}
 		
 		if (chemical_formula_as_chemml) {
-			cdmf_result.appendChild(document.createTextNode('Accessible chemistry content'));
+			var p = document.createElement('p');
+				p.appendChild(document.createTextNode('Accessible chemistry content'));
+			cdmf_result.appendChild(p);
 		}
 		
 		if (math_formula_as_latex || math_formula_as_mathml) {
-			cdmf_result.appendChild(document.createTextNode('Accessible math content'));
+			var p = document.createElement('p');
+				p.appendChild(document.createTextNode('Accessible math content'));
+			cdmf_result.appendChild(p);
 		}
 		
 		if ((contains_charts_diagrams || contains_chemical_formula || contains_math_formula) && !(long_text_descriptions || chemical_formula_as_chemml || math_formula_as_latex || math_formula_as_mathml)) {
-			cdmf_result.appendChild(document.createTextNode('accessibility of formulas, charts, math, and diagrams not identified as being accessible'));
+			var p = document.createElement('p');
+				p.appendChild(document.createTextNode('accessibility of formulas, charts, math, and diagrams not identified as being accessible'));
+			cdmf_result.appendChild(p);
 		}
 		
 		result.appendChild(cdmf_result);
@@ -588,35 +596,35 @@ var packageProcessor = (function() {
 		var clarity = [];
 		
 		if (aria) {
-			clarity.push('aria" to clarity');
+			clarity.push('aria');
 		}
 		
 		if (full_ruby_annotations) {
-			clarity.push('full ruby annotations" to clarity');
+			clarity.push('full ruby annotations');
 		}
 		
 		if (text_to_speech_hinting) {
-			clarity.push('text-to-speech hinting provided" to clarity');
+			clarity.push('text-to-speech hinting provided');
 		}
 		
 		if (high_contrast_between_foreground_and_background_audio) {
-			clarity.push('high contrast between foreground and background audio" to clarity');
+			clarity.push('high contrast between foreground and background audio');
 		}
 		
 		if (high_contrast_between_text_and_background) {
-			clarity.push('high contrast between text and background" to clarity');
+			clarity.push('high contrast between text and background');
 		}
 		
 		if (large_print) {
-			clarity.push('large print" to clarity');
+			clarity.push('large print');
 		}
 		
 		if (page_break_markers) {
-			clarity.push('page breaks" to clarity');
+			clarity.push('page breaks');
 		}
 		
 		if (ruby_annotations) {
-			clarity.push('ruby annotations" to clarity');
+			clarity.push('ruby annotations');
 		}
 		
 		if (clarity.length) {
