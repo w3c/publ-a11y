@@ -26,8 +26,8 @@ var onixProcessor = (function() {
 		 */
 		 
 		 // 4.1.2 Variables setup
-		 var all_textual_content_can_be_modified = checkForNode(onix, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and text()="displayTransformability"]');
-		 var is_fixed_layout = checkForNode(onix, '/opf:package/opf:metadata/opf:meta[@property="rendition:layout" and text()="pre-paginated"]');
+		 var all_textual_content_can_be_modified = checkForNode(onix, '/onix:ONIXMessage/onix:Product/onix:DescriptiveDetail/onix:ProductFormFeature[onix:ProductFormFeatureType = "09" and onix:ProductFormFeatureValue = "36"]');
+		 var is_fixed_layout = checkForNode(onix, '/onix:ONIXMessage/onix:Product/onix:DescriptiveDetail/onix:ProductFormDetail[text() = "E201"]') && !checkForNode(onix, '/onix:ONIXMessage/onix:Product/onix:DescriptiveDetail/onix:ProductFormDetail[text() = "E200"]');
 		
 		// 4.1.3 Instructions
 		
@@ -57,9 +57,10 @@ var onixProcessor = (function() {
 		 */
 		 
 		 // 4.2.2 Variables setup
-		 var all_necessary_content_textual = checkForNode(onix, '/opf:package/opf:metadata/opf:meta[@property="schema:accessModeSufficient" and text()="textual"]');
-		 var non_textual_content_images = checkForNode(onix, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and (text()="chartOnVisual" or text()="chemOnVisual" or text()="diagramOnVisual" or text()="mathOnVisual" or text()="musicOnVisual" or text()="textOnVisual")]');
-		 var textual_alternative_images = checkForNode(onix, '/opf:package/opf:metadata/opf:meta[@property="schema:accessibilityFeature" and (text()="longDescription" or text()="alternativeText" or text()="describedMath")]');
+		 var all_necessary_content_textual = checkForNode(onix, '/onix:ONIXMessage/onix:Product/onix:DescriptiveDetail/onix:ProductFormFeature[onix:ProductFormFeatureType = "09" and onix:ProductFormFeatureValue = "52"]');
+		 var real_text = checkForNode(onix, '/onix:ONIXMessage/onix:Product/onix:DescriptiveDetail[onix:PrimaryContentType = "10" or onix:ProductContentType = "10"]');
+		 var non_textual_content_images = checkForNode(onix, '/onix:ONIXMessage/onix:Product/onix:DescriptiveDetail[onix:PrimaryContentType = "07" or onix:PrimaryContentType = "18" or onix:PrimaryContentType = "19" or onix:PrimaryContentType = "12" or onix:PrimaryContentType = "49" or onix:PrimaryContentType = "20" or onix:ProductContentType = "07" or onix:ProductContentType = "18" or onix:ProductContentType = "19" or onix:ProductContentType = "12" or onix:ProductContentType = "49" or onix:ProductContentType = "20"]');
+		 var textual_alternative_images = checkForNode(onix, '/onix:ONIXMessage/onix:Product/onix:DescriptiveDetail/onix:ProductFormFeature[onix:ProductFormFeatureType = "09" and (onix:ProductFormFeatureValue = "14" or onix:ProductFormFeatureValue = "15" or onix:ProductFormFeatureValue = "16")]');
 		
 		// 4.2.3 Instructions
 		
@@ -73,7 +74,7 @@ var onixProcessor = (function() {
 			nonvis_result.appendChild(document.createTextNode('Readable in read aloud or dynamic braille'));
 		}
 		
-		else if (non_textual_content_images && !textual_alternative_images) {
+		else if (real_text && non_textual_content_images && !textual_alternative_images) {
 			nonvis_result.appendChild(document.createTextNode('Not fully readable in read aloud or dynamic braille'));
 		}
 		
@@ -659,7 +660,7 @@ var onixProcessor = (function() {
 			case 'xml':
 				return 'http://www.w3.org/XML/1998/namespace';
 			default:
-				return "http://www.idpf.org/2007/opf";
+				return "http://ns.editeur.org/onix/3.0/reference";
 		}
 	}	
 	
