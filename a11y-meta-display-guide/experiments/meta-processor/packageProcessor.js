@@ -369,7 +369,7 @@ var packageProcessor = (function() {
 		
 		if (chemical_formula_as_chemml) {
 			var p = document.createElement('p');
-				P.appendChild(document.createTextNode('Accessible chemistry content'));
+				p.appendChild(document.createTextNode('Accessible chemistry content'));
 			cdmf_result.appendChild(p);
 		}
 		
