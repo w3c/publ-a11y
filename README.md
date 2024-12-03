@@ -19,7 +19,7 @@ Task force meetings are announced on the Publishing Community Group's [public ma
 
 The Accessibility Task Force maintains the following documents in this repository:
 
-- Accessibility Metadata Display Guide for Digital Publications
+- Accessibility Metadata Display Guide for Digital Publications ([Project Page]([url](https://github.com/w3c/publ-a11y/tree/main/a11y-meta-display-guide/2.0)))
   - [Editor's Draft](https://w3c.github.io/publ-a11y/a11y-meta-display-guide/2.0/draft/guidelines/)
   - [Latest Version](https://www.w3.org/2021/09/UX-Guide-metadata-1.0/principles/)
   - EPUB Techniques
