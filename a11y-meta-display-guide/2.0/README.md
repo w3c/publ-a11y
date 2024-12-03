@@ -1,4 +1,4 @@
-# User Experience Guide for Displaying Accessibility Metadata 2.0
+# Accessibility Metadata Display Guide for Digital Publications 2.0
 
 ## Latest published drafts
  
