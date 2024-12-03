@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+	<head>
+		<meta charset="utf-8">
+		<title>Accessibility Metadata Display Processor</title>
+		<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+		<style>
+			body {
+				font-family: Arial,sans-serif;
+				font-size: 62.5%;
+				background-color: rgb(245,245,245);
+			}
+			h1 {
+				font-size: 1.6rem;
+			}
+			h2 {
+				font-size: 1.3rem;
+				margin-top: 2rem;
+				margin-bottom: 2rem;
+			}
+			textarea {
+				width: 60%;
+			}
+			p {
+				font-size: 1.1rem;
+			}
+			dt, dd {
+				font-size: 1.1rem;
+				margin: 0.5rem;
+			}
+			dt {
+				font-weight: bold;
+			}
+			dd {
+				margin-left: 5rem;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>Accessibility Metadata Display Processor</h1>
+		
+		<p>Type or paste a package document or onix record to generate the resulting accessibility statements.</p>
+		
+		<textarea id="input_packagedoc" rows="15" autocomplete="off"></textarea>
+
+		<div><input type="button" onclick="processXML()" value="Process"/></div>
+
+		<h2>Result of Processing:</h2>
+
+		<dl id="result"></dl>
+		
+		<script>
+			function processXML() {
+			
+				var xml = document.getElementById('input_packagedoc').value;
+				/* the following test is not in the spec */
+				
+				if (xml.match('<package ')) {
+					packageProcessor.processPackageDoc(xml)
+				}
+				
+				else if (xml.match('<ONIXMessage ')) {
+					onixProcessor.processOnixRecord(xml)
+				}
+				
+				else {
+					alert('Invalid xml document - package or onix root element not found');
+					return;
+				}
+			}
+		</script>
+
+		<script src="packageProcessor.js"></script>
+		<script src="onixProcessor.js"></script>
+	</body>
+</html>
