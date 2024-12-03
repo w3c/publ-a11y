@@ -1,8 +1,9 @@
 # User Experience Guide for Displaying Accessibility Metadata 2.0
- 
-[Guidelines public draft](https://w3c.github.io/publ-a11y/a11y-meta-display-guide/2.0/guidelines/)
 
-* Techniques public draft:
+## Latest published drafts
+ 
+* [Guidelines](https://w3c.github.io/publ-a11y/a11y-meta-display-guide/2.0/guidelines/)
+* Techniques:
 	* [Display Techniques for EPUB Accessibility Metadata 2.0](https://w3c.github.io/publ-a11y/a11y-meta-display-guide/2.0/techniques/epub-metadata/)
 	* [Display Techniques for ONIX Accessibility Metadata 2.0](https://w3c.github.io/publ-a11y/a11y-meta-display-guide/2.0/techniques/onix-metadata/)
 
@@ -13,3 +14,7 @@
 * Techniques:
 	* [Display Techniques for EPUB Accessibility Metadata 2.0](https://w3c.github.io/publ-a11y/a11y-meta-display-guide/2.0/draft/techniques/epub-metadata/)
 	* [Display Techniques for ONIX Accessibility Metadata 2.0](https://w3c.github.io/publ-a11y/a11y-meta-display-guide/2.0/draft/techniques/onix-metadata/)
+
+## Experiments
+
+- [Metadata processor](https://w3c.github.io/publ-a11y/a11y-meta-display-guide/2.0/experiments/meta-processor/) - processes a package document or onix record according to the algorithms in the techniques
