@@ -17,4 +17,4 @@
 
 ## Experiments
 
-- [Metadata processor](https://w3c.github.io/publ-a11y/a11y-meta-display-guide/2.0/experiments/meta-processor/) - processes a package document or onix record according to the algorithms in the techniques
+- [Accessibility metadata display processor](https://w3c.github.io/publ-a11y/a11y-meta-display-guide/2.0/experiments/meta-processor/) - processes a package document or onix record according to the algorithms in the techniques
