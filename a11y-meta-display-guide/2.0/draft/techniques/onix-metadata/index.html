@@ -423,16 +423,22 @@
 				<ol class="condition">
 					<li>Display <code id="conformance-title">"Conformance"</code> as heading.</li>
 					<li>
-						<span><b>IF</b> <var>level_aaa</var>:</span>
-						<span><b>THEN</b> display <code id="conformance-aaa">"This publication exceeds accepted accessibility standards"</code>.</span>
-					</li>
-					<li>
-						<span><b>ELSE IF</b> <var>level_aa</var>:</span>
-						<span><b>THEN</b> display <code id="conformance-aa">"This publication meets accepted accessibility standards"</code>.</span>
-					</li>
-					<li>
-						<span><b>ELSE IF</b> <var>level_a</var>:</span>
-						<span><b>THEN</b> display <code id="conformance-a">"This publication meets minimum accessibility standards"</code>.</span>
+						<span><b>IF</b> (<var>epub_accessibility_10</var> <b>OR</b> <var>epub_accessibility_11</var> <b>OR</b> <var>wcag_20</var> <b>OR</b> <var>wcag_21</var> <b>OR</b> <var>wcag_22</var>) <b>AND</b> (<var>level_a</var> <b>OR</b> <var>level_aa</var> <b>OR</b> <var>level_aaa</var>):</span>
+						<span><b>THEN</b></span>
+						<ol class="condition">
+							<li>
+								<span><b>IF</b> <var>level_aaa</var>:</span>
+								<span><b>THEN</b> display <code id="conformance-aaa">"This publication exceeds accepted accessibility standards"</code>.</span>
+							</li>
+							<li>
+								<span><b>ELSE IF</b> <var>level_aa</var>:</span>
+								<span><b>THEN</b> display <code id="conformance-aa">"This publication meets accepted accessibility standards"</code>.</span>
+							</li>
+							<li>
+								<span><b>ELSE IF</b> <var>level_a</var>:</span>
+								<span><b>THEN</b> display <code id="conformance-a">"This publication meets minimum accessibility standards"</code>.</span>
+							</li>
+						</ol>
 					</li>
 					<li>
 						<span><b>ELSE</b>:</span>
@@ -442,7 +448,7 @@
 						<span><b>IF</b> <var>certifier</var> is <b>NOT</b> empty:</span>
 						<span><b>THEN</b></span>
 						<ul class="condition">
-							<li>display <code id="conformance-certifier">"This publication is certified by "</code></li>
+							<li>display <code id="conformance-certifier">"The publication was certified by "</code></li>
 							<li>display <var>certifier</var>.</li>
 						</ul>
 					</li>
@@ -450,7 +456,7 @@
 						<span><b>IF</b> <var>certifier_credentials</var> is <b>NOT</b> empty:</span>
 						<span><b>THEN</b></span>
 						<ul class="condition">
-							<li>display <code id="conformance-certifier-credentials">"The certifier's credential is "</code></li>
+							<li>display <code id="conformance-certifier-credentials">"The certifier 's credential is "</code></li>
 							<li>display <var>certifier_credentials</var> as link <b>IF</b> <var>certifier_credentials</var> is an URL.</li>
 						</ul>
 					</li>
@@ -494,39 +500,18 @@
 						<span><b>THEN</b> display <code id="conformance-level-a">" Level A"</code>.</span>
 					</li>
 					<li>
-						<span><b>IF</b> <var>certification_date</var> <b>OR</b> <var>certifier</var> <b>OR</b> <var>certifier_credentials</var>:</span>
-						<span><b>THEN</b> display <code id="conformance-certification-info">"The publication was certified "</code>.</span>
-					</li>
-					<li>
 						<span><b>IF</b> <var>certification_date</var>:</span>
 						<span><b>THEN</b></span>
 						<ul class="condition">
-							<li>display <code id="conformance-certification-date-prefix">" on "</code></li>
+							<li>display <code id="conformance-certification-info">"The publication was certified on"</code></li>
 							<li>display <var>certification_date</var>.</li>
-						</ul>
-					</li>
-					<li>
-						<span><b>IF</b> <var>certifier</var>:</span>
-						<span><b>THEN</b></span>
-						<ul class="condition">
-							<li>display <code id="conformance-certifier-prefix">" by "</code></li>
-							<li>display <var>certifier</var>.</li>
-						</ul>
-					</li>
-					<li>
-						<span><b>IF</b> <var>certifier_credentials</var>:</span>
-						<span><b>THEN</b></span>
-						<ul class="condition">
-							<li>display <code id="conformance-certifier-credentials-prefix">" with a credential of "</code></li>
-							<li>display <var>certifier_credentials</var> as link <b>IF</b> <var>certifier_credentials</var> is an URL.</li>
 						</ul>
 					</li>
 					<li>
 						<span><b>IF</b> <var>certifier_report</var>:</span>
 						<span><b>THEN</b></span>
 						<ul class="condition">
-							<li>display <code id="conformance-certifier-report">"For more information refer to the certifier's report"</code></li>
-
+							<li>display <code id="conformance-certifier-report">"For more information refer to the certifier's report "</code></li>
 							<li>with <var>certifier_report</var> as link.</li>
 						</ul>
 					</li>
