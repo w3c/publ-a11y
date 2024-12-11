@@ -673,31 +673,24 @@
 					</li>
 					<li>
 						<span><b>IF</b> <var>table_of_contents_navigation</var> <b>OR</b> <var>index_navigation</var> <b>OR</b> <var>print_equivalent_page_numbering</var> <b>OR</b> <var>next_previous_structural_navigation</var>:</span>
-						<span><b>THEN</b> <b>LET</b> <var>navigation</var> be  an empty array.</span>
+						<span><b>THEN</b> display <code id="navigation-intro">"Navigation by:"</code>.</span>
 						<ol class="condition">
 							<li>
 								<span><b>IF</b> <var>table_of_contents_navigation</var>:</span>
-								<span><b>THEN</b> <b>APPEND</b> <code id="navigation-toc">"table of contents"</code> to <var>navigation</var>.</span>
+								<span><b>THEN</b> display <code id="navigation-toc">"table of contents"</code>.</span>
 							</li>
 							<li>
 								<span><b>IF</b> <var>index_navigation</var>:</span>
-								<span><b>THEN</b> <b>APPEND</b> <code id="navigation-index">"index"</code> to <var>navigation</var>.</span>
+								<span><b>THEN</b> display <code id="navigation-index">"index"</code>.</span>
 							</li>
 							<li>
 								<span><b>IF</b> <var>print_equivalent_page_numbering</var>:</span>
-								<span><b>THEN</b> <b>APPEND</b> <code id="navigation-page-navigation">"supports page navigation"</code> to <var>navigation</var>.</span>
+								<span><b>THEN</b> display <code id="navigation-page-navigation">"go to page"</code>.</span>
 							</li>
 							<li>
 								<span><b>IF</b> <var>next_previous_structural_navigation</var>:</span>
-								<span><b>THEN</b> <b>APPEND</b> <code id="navigation-structural">"headings"</code> to <var>navigation</var>.</span>
+								<span><b>THEN</b> display <code id="navigation-structural">"headings"</code>.</span>
 							</li>
-							<li><b>LET</b> <var>navigation_string</var> be the result of:
-								<ul class="condition">
-									<li>calling <a href="#join-array-to-comma-list">join array to comma list</a> given <var>navigation</var></li>
-									<li>concatenating <code id="navigation-intro">"Navigation by "</code> to the beginning of the string.</li>
-								</ul>
-							</li>
-							<li>display <var>navigation_string</var>.</li>
 						</ol>
 					</li>
 					<li>
