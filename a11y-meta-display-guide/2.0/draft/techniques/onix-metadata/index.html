@@ -850,28 +850,20 @@
 					</li>
 					<li>
 						<span><b>ELSE IF</b> <var>flashing_hazard</var> <b>OR</b> <var>motion_simulation_hazard</var> <b>OR</b> <var>sound_hazard</var>:</span>
-						<span><b>THEN</b> <b>LET</b> <var>hazards</var> be  an empty array.</span>
+						<span><b>THEN</b></span>
 						<ol class="condition">
 							<li>
 								<span><b>IF</b> <var>flashing_hazard</var>:</span>
-								<span><b>THEN</b> <b>APPEND</b> <code id="hazards-flashing">"flashing"</code> to <var>hazards</var>.</span>
+								<span><b>THEN</b> display <code id="hazards-flashing">"Flashing content"</code>.</span>
 							</li>
 							<li>
 								<span><b>IF</b> <var>motion_simulation_hazard</var>:</span>
-								<span><b>THEN</b> <b>APPEND</b> <code id="hazards-motion">"motion simulation"</code> to <var>hazards</var>.</span>
+								<span><b>THEN</b> display <code id="hazards-motion">"Motion simulation"</code>.</span>
 							</li>
 							<li>
 								<span><b>IF</b> <var>sound_hazard</var>:</span>
-								<span><b>THEN</b> <b>APPEND</b> <code id="hazards-sound">"sound"</code> to <var>hazards</var>.</span>
+								<span><b>THEN</b> display <code id="hazards-sound">"Loud sounds"</code>.</span>
 							</li>
-							<li><b>LET</b> <var>hazards_string</var> be the result of:
-								<ul class="condition">
-									<li>calling <a href="#join-array-to-comma-list">join array to comma list</a> given <var>hazards</var></li>
-									<li>uppercasing the first character</li>
-									<li>concatenating <code id="hazards-plural">" hazards"</code> to the end of the string <b>IF</b> (length of <var>hazards</var>) 1 <b>ELSE</b> concatenating <code id="hazards-singular">" hazard"</code> to the end of the string.</li>
-								</ul>
-							</li>
-							<li>display <var>hazards_string</var>.</li>
 						</ol>
 					</li>
 					<li>
@@ -879,7 +871,7 @@
 						<span><b>THEN</b> display <code id="hazards-unknown">"The presence of hazards is unknown"</code>.</span>
 					</li>
 					<li>
-						<b>ELSE</b> display <code id="hazards-no-metadata">"No information about possible hazards is available."</code>.
+						<b>ELSE</b> display <code id="hazards-no-metadata">"No information is available"</code>.
 						<p class="note">This key information can be hidden if metadata is missing.</p>
 					</li>
 				</ol>
