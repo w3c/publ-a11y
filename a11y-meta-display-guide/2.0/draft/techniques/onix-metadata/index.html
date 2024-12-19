@@ -380,6 +380,11 @@
 						<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/196/86">code 86 of codelist 196</a> (WCAG level AAA) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
 						<p>This means that the publication conforms with the requirements of WCAG level AAA.</p>
 					</dd>
+					<dt><var>lia_compliant</var></dt>
+					<dd>
+						<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/196/01">code 01 of codelist 196</a> (LIA Compliance Scheme) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+						<p>This means that the publication conforms with the requirements of Fondazione LIA.</p>
+					</dd>
 					<dt><var>certifier</var></dt>
 					<dd>
 						<p>Returns the description of <a href="https://ns.editeur.org/onix/en/196/90">code 90 of codelist 196</a> (Compliance certification by (name)) if present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
@@ -413,6 +418,7 @@
 					<li><b>LET</b> <var>level_a</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "84"]</code> <b>OR</b> calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "02"]</code>.</li>
 					<li><b>LET</b> <var>level_aa</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "85"]</code> <b>OR</b> calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "03"]</code>.</li>
 					<li><b>LET</b> <var>level_aaa</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "86"]</code>.</li>
+					<li><b>LET</b> <var>lia_compliant</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "01"]</code>.</li>
 					<li><b>LET</b> <var>certifier</var> be the value of the node extracted from <var>onix</var>, using the xpath <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "90"]/ProductFormFeatureDescription</code>.</li>
 					<li><b>LET</b> <var>certifier_credentials</var> be the value of the node extracted from <var>onix</var>, using the xpath <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "93"]/ProductFormFeatureDescription</code>.</li>
 					<li><b>LET</b> <var>certification_date</var> be the value of the node extracted from <var>onix</var>, using the xpath <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "91"]/ProductFormFeatureDescription</code>.</li>
@@ -423,7 +429,7 @@
 				<ol class="condition">
 					<li>Display <code id="conformance-title">"Conformance"</code> as heading.</li>
 					<li>
-						<span><b>IF</b> (<var>epub_accessibility_10</var> <b>OR</b> <var>epub_accessibility_11</var> <b>OR</b> <var>wcag_20</var> <b>OR</b> <var>wcag_21</var> <b>OR</b> <var>wcag_22</var>) <b>AND</b> (<var>level_a</var> <b>OR</b> <var>level_aa</var> <b>OR</b> <var>level_aaa</var>):</span>
+						<span><b>IF</b> ((<var>epub_accessibility_10</var> <b>OR</b> <var>epub_accessibility_11</var> <b>OR</b> <var>wcag_20</var> <b>OR</b> <var>wcag_21</var> <b>OR</b> <var>wcag_22</var>) <b>AND</b> (<var>level_a</var> <b>OR</b> <var>level_aa</var> <b>OR</b> <var>level_aaa</var>)) <b>OR</b> <var>lia_compliant</var>:</span>
 						<span><b>THEN</b></span>
 						<ol class="condition">
 							<li>
@@ -431,7 +437,7 @@
 								<span><b>THEN</b> display <code id="conformance-aaa">"This publication exceeds accepted accessibility standards"</code>.</span>
 							</li>
 							<li>
-								<span><b>ELSE IF</b> <var>level_aa</var>:</span>
+								<span><b>ELSE IF</b> <var>level_aa</var> <b>OR</b> <var>lia_compliant</var>:</span>
 								<span><b>THEN</b> display <code id="conformance-aa">"This publication meets accepted accessibility standards"</code>.</span>
 							</li>
 							<li>
