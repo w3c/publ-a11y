@@ -452,7 +452,7 @@
 								<span><b>IF</b> <var>certifier</var> is <b>NOT</b> empty:</span>
 								<span><b>THEN</b></span>
 								<ul class="condition">
-									<li>display <code id="conformance-certifier">"This publication is certified by "</code></li>
+									<li>display <code id="conformance-certifier">"This publication was certified by "</code></li>
 									<li>display <var>certifier</var>.</li>
 								</ul>
 							</li>
@@ -503,31 +503,11 @@
 								</ul>
 							</li>
 							<li>
-								<span><b>IF</b> <var>certification_date</var> <b>OR</b> <var>certifier</var> <b>OR</b> <var>certifier_credentials</var>:</span>
-								<span><b>THEN</b> display <code id="conformance-certification-info">"The publication was certified "</code>.</span>
-							</li>
-							<li>
 								<span><b>IF</b> <var>certification_date</var>:</span>
-								<span><b>THEN</b></span>
+								<span><b>THEN</b> display <code id="conformance-certification-info">"The publication was certified "</code>.</span>
 								<ul class="condition">
 									<li>display <code id="conformance-certification-date-prefix">" on "</code></li>
 									<li>display <var>certification_date</var>.</li>
-								</ul>
-							</li>
-							<li>
-								<span><b>IF</b> <var>certifier</var>:</span>
-								<span><b>THEN</b></span>
-								<ul class="condition">
-									<li>display <code id="conformance-certifier-prefix">" by "</code></li>
-									<li>display <var>certifier</var>.</li>
-								</ul>
-							</li>
-							<li>
-								<span><b>IF</b> <var>certifier_credentials</var>:</span>
-								<span><b>THEN</b></span>
-								<ul class="condition">
-									<li>display <code id="conformance-certifier-credentials-prefix">" with a credential of "</code></li>
-									<li>display <var>certifier_credentials</var> as link <b>IF</b> <var>certifier_credentials</var> is an URL.</li>
 								</ul>
 							</li>
 							<li>
