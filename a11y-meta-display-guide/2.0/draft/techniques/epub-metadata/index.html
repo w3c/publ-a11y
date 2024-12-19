@@ -356,7 +356,7 @@
 					</dd>
 					<dt><var>certifier_credentials</var></dt>
 					<dd>
-						<p>Returns the description of <i>a11y:certifierCredential</i> (Compliance certification by (URL)) if present in the package document, otherwise if false it means that the metadata is not present.</p> 
+						<p>Returns the description of <i>a11y:certifierCredential</i> (Compliance certification by (URL) or text) if present in the package document, otherwise if false it means that the metadata is not present.</p> 
 						<p>This means that the the URL of a web page belonging to an organization responsible for compliance testing and certification of the product is present – typically a ‘home page’ or a page describing the certification scheme itself.</p>
 					</dd>
 					<dt><var>certification_date</var></dt>
@@ -461,7 +461,14 @@
 								<span><b>THEN</b></span>
 								<ul class="condition">
 									<li>display <code id="conformance-certifier-credentials">"The certifier's credential is "</code></li>
-									<li>display <var>certifier_credentials</var> as link <b>IF</b> <var>certifier_credentials</var> is an URL.</li>
+									<li>
+                                        <span><b>IF</b> <var>certifier_credentials</var> is a URL.</span>
+                                        <span><b>THEN</b> display <var>certifier_credentials</var> as link.</span>
+                                    </li>
+									<li>
+                                        <span><b>ELSE</b> display <var>certifier_credentials</var> as text.</span>
+                                    </li>
+                                    
 								</ul>
 							</li>
 							<li>
