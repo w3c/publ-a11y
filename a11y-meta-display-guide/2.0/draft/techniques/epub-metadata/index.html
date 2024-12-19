@@ -72,7 +72,7 @@
             <p>This metadata as outlined in EPUB Accessibility 1.1 [[epub-a11y-11]], can be found in the EPUB package document [[EPUB-33]].</p>
 			
             <aside class="note">
-                Techniques for displaying accessibility metadata in other metadata formats can be found in the User Experience Guide for Displaying Accessibility Metadata document.
+                Techniques for displaying accessibility metadata in other metadata formats can be found in the <a href="../../guidelines/#techniques">Display Techniques for Displaying Accessibility Metadata</a>
             </aside>
             
  			<aside class="note">
@@ -156,17 +156,19 @@
 		<section id="common-functions">
 			<h2>Common Functions</h2>
 			<p>In this section we define the functions common to all techniques, which are called by them during execution.</p>
-			<section id="pre-processing">
+
+            <section id="pre-processing">
 				<h3>Preprocessing</h3>
 				<p>Before working directly with the metadata we must read the metadata in the Package document (package document) inside the EPUB. This is a common starting point for all techniques that allows us to query the metadata directly.</p>
+                
 				<aside class="note">
 					<p>This algorithm does not describe how the Package document is discovered and extracted within an EPUB.</p>
 				</aside>
+                
 				<p>This algorithm takes the <var>package_document_as_text</var> argument: a UTF-8 string representing the Package document.</p>
 				<p>To generate the internal representation, run the following steps:</p>
 				<ol class="condition">
-					<li><b>LET</b> <var>package_document_content</var> be textual representation of the Package document for the publication given <var>package_document_as_text</var>.</li>
-					<li><b>LET</b> <var>package_document</var> be the DOM tree that results from parsing <var>package_document_content</var> using an XML DOM parser.</li>
+					<li><b>LET</b> <var>package_document</var> be the DOM tree that results from parsing <var>package_document_as_text</var> using an XML DOM parser.</li>
 					<li>Return <var>package_document</var>.</li>
 				</ol>
 			</section>
