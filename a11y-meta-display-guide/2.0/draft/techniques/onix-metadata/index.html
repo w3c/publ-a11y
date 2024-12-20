@@ -256,7 +256,6 @@
 				</ol>
 				<h4>Instructions</h4>
 				<ol class="condition">
-					<li>Display <code id="visual-adjustments-title">"Visual adjustments"</code> as heading.</li>
 					<li>
 						<span><b>IF</b> <var>all_textual_content_can_be_modified</var>:</span>
 						<span><b>THEN</b> display <code id="visual-adjustments-modifiable">"Appearance can be modified"</code>.</span>
@@ -321,7 +320,6 @@
 				</ol>
 				<h4>Instructions</h4>
 				<ol class="condition">
-					<li>Display <code id="nonvisual-reading-title">"Supports nonvisual reading"</code> as heading.</li>
 					<li>
 						<span><b>IF</b> <var>all_necessary_content_textual</var>:</span>
 						<span><b>THEN</b> display <code id="nonvisual-reading-readable">"read aloud or dynamic braille"</code>.</span>
@@ -427,7 +425,6 @@
 				
 				<h4>Instructions</h4>
 				<ol class="condition">
-					<li>Display <code id="conformance-title">"Conformance"</code> as heading.</li>
 					<li>
 						<span><b>IF</b> ((<var>epub_accessibility_10</var> <b>OR</b> <var>epub_accessibility_11</var> <b>OR</b> <var>wcag_20</var> <b>OR</b> <var>wcag_21</var> <b>OR</b> <var>wcag_22</var>) <b>AND</b> (<var>level_a</var> <b>OR</b> <var>level_aa</var> <b>OR</b> <var>level_aaa</var>)) <b>OR</b> <var>lia_compliant</var>:</span>
 						<span><b>THEN</b></span>
@@ -599,10 +596,6 @@
 				<h4>Instructions</h4>
 				<ol class="condition">
 					<li>
-						Display <code id="pre-recorded-audio-title">"Pre-recorded audio"</code> as heading.
-						<p class="note">This heading can be hidden if metadata is missing.</p>
-					</li>
-					<li>
 						<span><b>IF</b> <var>all_content_audio</var> <b>AND</b> <b>NOT</b> <var>synchronised_pre_recorded_audio</var>:</span>
 						<span><b>THEN</b> display <code id="pre-recorded-audio-only">"Audio only"</code>.</span>
 					</li>
@@ -658,10 +651,6 @@
 				</ol>
 				<h4>Instructions</h4>
 				<ol class="condition">
-					<li>
-						Display <code id="navigation-title">"Navigation"</code> as heading.
-						<p class="note">This heading can be hidden if metadata is missing.</p>
-					</li>
 					<li>
 						<span><b>IF</b> <var>table_of_contents_navigation</var> <b>OR</b> <var>index_navigation</var> <b>OR</b> <var>print_equivalent_page_numbering</var> <b>OR</b> <var>next_previous_structural_navigation</var>:</span>
 						<ol class="condition">
@@ -758,10 +747,6 @@
 				<h4>Instructions</h4>
 				<ol class="condition">
 					<li>
-						Display <code id="charts-diagrams-formulas-title">"Charts, diagrams, math, and formulas"</code> as heading.
-						<p class="note">This heading can be hidden if metadata is missing.</p>
-					</li>
-					<li>
 						<span><b>IF</b> <var>contains_charts_diagrams</var> <b>AND</b>  <var>charts_diagrams_diagrams_as_long_text</var>:</span>
 						<span><b>THEN</b> display <code id="charts-diagrams-formulas-extended">"Charts and diagrams have extended descriptions"</code>.</span>
 					</li>
@@ -845,10 +830,6 @@
 				</ol>
 				<h4>Instructions</h4>
 				<ol class="condition">
-					<li>
-						Display <code id="hazards-title">"Hazards"</code> as heading.
-						<p class="note">This heading can be hidden if metadata is missing.</p>
-					</li>
 					<li>
 						<span><b>IF</b> <var>no_hazards_or_warnings_confirmed</var> <b>OR</b> (<var>no_flashing_hazards</var> <b>AND</b> <var>no_motion_hazards</var> <b>AND</b> <var>no_sound_hazards</var>):</span>
 						<span><b>THEN</b> display <code id="hazards-none">"No hazards"</code>.</span>
@@ -944,10 +925,6 @@
 				<h4>Instructions</h4>
 				<ol class="condition">
 					<li>
-						Display <code id="accessibility-summary-title">"Accessibility summary"</code> as heading.
-						<p class="note">This heading can be hidden if metadata is missing.</p>
-					</li>
-					<li>
 						<span><b>IF</b> <var>lang_attribute_accessibility_addendum</var> is <b>NOT</b> empty:</span>
 						<span><b>THEN</b> <b>LET</b> <var>language_accessibility_addendum</var> be the value of <var>lang_attribute_accessibility_addendum</var>.</span>
 					</li>
@@ -1019,10 +996,6 @@
 				</ol>
 				<h4>Instructions</h4>
 				<ol class="condition">
-					<li>
-						Display <code id="legal-considerations-title">"Legal considerations"</code> as heading.
-						<p class="note">This heading can be hidden if metadata is missing.</p>
-					</li>
 					<li>
 						<span><b>IF</b> <var>eaa_exemption_micro_enterprises</var> <b>OR</b> <var>eaa_exception_disproportionate_burden</var> <b>OR</b> <var>eaa_exception_fundamental_modification</var>:</span>
 						<span><b>THEN</b> display <code id="tbd">"TBD"</code>.</span>
