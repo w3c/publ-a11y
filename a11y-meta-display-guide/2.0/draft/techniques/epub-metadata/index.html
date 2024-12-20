@@ -672,9 +672,9 @@
 				</ol>
 			</section>
                 
-			<section id="charts-diagrams-and-formulas">
+			<section id="rich-content">
 				<h3>Charts, diagrams, math, and formulas</h3>
-				<p>This technique relates to <a href="../../guidelines/#charts-diagrams-and-formulas">Charts, diagrams, math, and formulas key information</a>.</p>
+				<p>This technique relates to <a href="../../guidelines/#rich-content">Charts, diagrams, math, and formulas key information</a>.</p>
                 
                 <p>This algorithm takes the <var>package_document_as_text</var> argument: a UTF-8 string representing the Package document.</p>
 				<h4>Understanding the variables</h4>
@@ -737,24 +737,24 @@
 				<h4>Instructions</h4>
 				<ol class="condition">
 					<li>
-						Display <code id="charts-diagrams-formulas-title">"Charts, diagrams, math, and formulas"</code> as heading.
+						Display <code id="rich-content-title">"Charts, diagrams, math, and formulas"</code> as heading.
 						<p class="note">This heading can be hidden if metadata is missing.</p>
 					</li>
 					<li>
 						<span><b>IF</b> (<var>contains_charts_diagrams</var> <b>AND</b> <var>long_text_descriptions</var>):</span>
-						<span><b>THEN</b> display <code id="charts-diagrams-formulas-extended">"Charts and diagrams have extended descriptions"</code>.</span>
+						<span><b>THEN</b> display <code id="rich-content-extended">"Charts and diagrams have extended descriptions"</code>.</span>
 					</li>
 					<li>
 						<span><b>IF</b> <var>chemical_formula_as_chemml</var>:</span>
-						<span><b>THEN</b> display <code id="charts-diagrams-formulas-accessible-chemistry">"Accessible chemistry content"</code>.</span>
+						<span><b>THEN</b> display <code id="rich-content-accessible-chemistry">"Accessible chemistry content"</code>.</span>
 					</li>
 					<li>
 						<span><b>IF</b> <var>math_formula_as_latex</var> <b>OR</b> <var>math_formula_as_mathml</var>:</span>
-						<span><b>THEN</b> display <code id="charts-diagrams-formulas-accessible-math">"Accessible math content"</code>.</span>
+						<span><b>THEN</b> display <code id="rich-content-accessible-math">"Accessible math content"</code>.</span>
 					</li>
 					<li>
 						<span><b>IF</b> (<var>contains_charts_diagrams</var> <b>OR</b> <var>contains_chemical_formula</var> <b>OR</b> <var>contains_math_formula</var>) <b>AND</b> <b>NOT</b> (<var>long_text_descriptions</var> <b>OR</b> <var>chemical_formula_as_chemml</var> <b>OR</b> <var>math_formula_as_latex</var> <b>OR</b> <var>math_formula_as_mathml</var>):</span>
-						<span><b>THEN</b> display <code id="charts-diagrams-formulas-unknown">"accessibility of formulas, charts, math, and diagrams not identified as being accessible"</code>.</span>
+						<span><b>THEN</b> display <code id="rich-content-unknown">"accessibility of formulas, charts, math, and diagrams not identified as being accessible"</code>.</span>
 					</li>
 				</ol>
 
