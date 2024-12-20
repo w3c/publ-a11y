@@ -524,9 +524,9 @@
 			</section>
 			
 		
-			<section id="pre-recorded-audio">
-				<h3>Pre-recorded audio</h3>
-				<p>This technique relates to <a href="../../guidelines/#pre-recorded-audio">Pre-recorded audio key information</a>.</p>
+			<section id="prerecorded-audio">
+				<h3>Prerecorded audio</h3>
+				<p>This technique relates to <a href="../../guidelines/#prerecorded-audio">Prerecorded audio key information</a>.</p>
                 
                 <p>This algorithm takes the <var>package_document_as_text</var> argument: a UTF-8 string representing the Package document.</p>
 
@@ -539,14 +539,14 @@
                     <dt><var>synchronised_pre_recorded_audio</var></dt>
 					<dd>
                         <p>If true it indicates that the <i>accessibilityFeature="sychronizedAudioText"</i> is present in the package document, otherwise, if false, it means that the metadata is not present.</p>
-						<p>This indicates that text-synchronised pre-recorded audio narration (natural or synthesised voice) is included for substantially all textual matter, including all alternative descriptions, e.g. via a SMIL media overlay.</p>
+						<p>This indicates that text-synchronised prerecorded audio narration (natural or synthesised voice) is included for substantially all textual matter, including all alternative descriptions, e.g. via a SMIL media overlay.</p>
 					</dd>
                     
   					<dt><var>audio_content</var></dt>
 					<dd>
                         <p>If true it indicates that the <i>accessMode="auditory"</i> is present in the package document, otherwise, if false, it means that the metadata is not present.</p>
 
-						<p>This indicates that pre-recorded audio content is included as part of the work.</p>
+						<p>This indicates that prerecorded audio content is included as part of the work.</p>
 					</dd>
                   
                     
@@ -565,24 +565,24 @@
 				<h4>Instructions</h4>
 				<ol class="condition">
 					<li>
-						Display <code id="pre-recorded-audio-title">"Pre-recorded audio"</code> as heading.
+						Display <code id="prerecorded-audio-title">"Prerecorded audio"</code> as heading.
 						<p class="note">This heading can be hidden if metadata is missing.</p>
 					</li>
 					<li>
 						<span><b>IF</b> <var>all_content_audio</var>:</span>
-						<span><b>THEN</b> display <code id="pre-recorded-audio-only">"Audio only"</code>.</span>
+						<span><b>THEN</b> display <code id="prerecorded-audio-only">"Audio only"</code>.</span>
 					</li>
 					<li>
 						<span><b>ELSE IF</b> <var>synchronised_pre_recorded_audio</var>:</span>
-						<span><b>THEN</b> display <code id="pre-recorded-audio-synchronized">"Synchronized audio and text"</code>.</span>
+						<span><b>THEN</b> display <code id="prerecorded-audio-synchronized">"Synchronized audio and text"</code>.</span>
 					</li>					
 					<li>
 						<span><b>ELSE IF</b> <var>audio_content</var>:</span>
-						<span><b>THEN</b> display <code id="pre-recorded-audio-complementary">"Complementary audio and text"</code>.</span>
+						<span><b>THEN</b> display <code id="prerecorded-audio-complementary">"Complementary audio and text"</code>.</span>
 					</li>		
 
 					<li>
-						<b>ELSE</b> either omit this key informtion if metadata is missing or display <code id="pre-recorded-audio-no-metadata">"No information about pre-recorded audio is available"</code>.
+						<b>ELSE</b> either omit this key informtion if metadata is missing or display <code id="prerecorded-audio-no-metadata">"No information about prerecorded audio is available"</code>.
 					</li>
 				</ol>
 			</section>
