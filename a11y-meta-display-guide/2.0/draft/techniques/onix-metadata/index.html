@@ -525,8 +525,8 @@
 
 			</section>
 			
-			<section id="pre-recorded-audio">
-				<h3>Pre-recorded audio</h3>
+			<section id="prerecorded-audio">
+				<h3>Prerecorded audio</h3>
 				<p>This technique relates to <a href="../../guidelines/#pre-recorded-audio">Pre-recorded audio key information</a>.</p>
 				<p>This algorithm takes the <var>onix_record_as_text</var> argument: a UTF-8 string representing the ONIX record.</p>
 				<h4>Understanding the variables</h4>
@@ -599,23 +599,23 @@
 				<h4>Instructions</h4>
 				<ol class="condition">
 					<li>
-						Display <code id="pre-recorded-audio-title">"Pre-recorded audio"</code> as heading.
+						Display <code id="prerecorded-audio-title">"Pre-recorded audio"</code> as heading.
 						<p class="note">This heading can be hidden if metadata is missing.</p>
 					</li>
 					<li>
 						<span><b>IF</b> <var>all_content_audio</var> <b>AND</b> <b>NOT</b> <var>synchronised_pre_recorded_audio</var>:</span>
-						<span><b>THEN</b> display <code id="pre-recorded-audio-only">"Audio only"</code>.</span>
+						<span><b>THEN</b> display <code id="prerecorded-audio-only">"Audio only"</code>.</span>
 					</li>
 					<li>
 						<span><b>ELSE IF</b> <var>audiobook</var> OR <var>non_textual_content_audio</var> OR <var>non_textual_content_audio_in_video</var> <b>AND</b> <b>NOT</b> <var>all_content_pre_recorded</var>:</span>
-						<span><b>THEN</b> display <code id="pre-recorded-audio-complementary">"Complementary audio and text"</code>.</span>
+						<span><b>THEN</b> display <code id="prerecorded-audio-complementary">"Complementary audio and text"</code>.</span>
 					</li>		
 					<li>
 						<span><b>ELSE IF</b> <var>all_content_pre_recorded</var> <b>AND</b> <var>synchronised_pre_recorded_audio</var>:</span>
-						<span><b>THEN</b> display <code id="pre-recorded-audio-synchronized">"Synchronized audio and text"</code>.</span>
+						<span><b>THEN</b> display <code id="prerecorded-audio-synchronized">"Synchronized audio and text"</code>.</span>
 					</li>
 					<li>
-						<b>ELSE</b> display <code id="pre-recorded-audio-no-metadata">"No information about pre-recorded audio is available."</code>.
+						<b>ELSE</b> display <code id="prerecorded-audio-no-metadata">"No information is available"</code>.
 						<p class="note">This key information can be hidden if metadata is missing.</p>
 					</li>
 				</ol>
