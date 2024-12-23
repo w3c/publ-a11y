@@ -551,8 +551,7 @@
 			<div class="note">
 				<p>This document does not define the order in which to
 					show the key accessibility information; each
-					implementer can decide the preferred order for
-					showing the accessibility information that
+					implementer can decide the preferred order and appropriate headings to use to show the accessibility information that
 					follows.</p>
 				<p>In this document are examples of important metadata
 					that is expected to be in a wide range of
@@ -585,7 +584,7 @@
 				font size used, as well as spacing between
 				letters, words, sentences, or paragraphs.</p>
 
-			<p><!--this one might be moved to the techniques-->Knowing
+			<p>Knowing
 				that a publication can reflow to fit the
 				reading system's display area is not sufficient to know
 				that modifications to the font, spacing, and
@@ -737,7 +736,7 @@
 							data-localization-mode="compact">Not
 							fully readable in read aloud or dynamic
 							braille</li>
-						<!--To be Confirmed (see https://github.com/w3c/publ-a11y/issues/367)<li data-localization-id="nonvisual-reading-unknown" data-localization-mode="compact">Not known if readable in read aloud and braille</li>-->
+
 <li>No information is available</li>
 </ul>
 				</aside>
@@ -830,7 +829,6 @@
 							Accessibility and
 							WCAG 2 Level A standard</p>
 					</dd>
-					<!--To be Confirmed (see https://github.com/w3c/publ-a11y/issues/368)-->
 
 					<dt data-localization-id="conformance-no"
 						data-localization-mode="compact">No information is available</dt>
@@ -1048,10 +1046,7 @@
 					<p data-localization-id="conformance-no"
 						data-localization-mode="compact">No information is available</p>
 
-<!-- It does not make sense to have detailed information when we already know that no conformance information was provided.
 
-					<p>Detailed conformance information:</p>
-					<p>No information is available</p> -->
 
 
 				</aside>
@@ -1078,14 +1073,14 @@
 		</section>
 
 
-		<section id="pre-recorded-audio">
-			<h3 data-localization-id="pre-recorded-audio-title">Prerecorded audio</h3>
+		<section id="prerecorded-audio">
+			<h3 data-localization-id="prerecorded-audio-title">Prerecorded audio</h3>
 
 			<div class="note">
 				<p>This key information can be hidden if metadata is
 					missing. Alternatively it can be stated that
 					<span
-						data-localization-id="pre-recorded-audio-no-metadata"
+						data-localization-id="prerecorded-audio-no-metadata"
 						data-localization-mode="descriptive">No information is available</span>
 				</p>
 			</div>
@@ -1098,17 +1093,14 @@
 				popularity, audiobooks may provide more
 				accessibility options in the future.</p>
 
-			<!-- <p>Some publications provide audio (including audio in
-				video) in addition to text. In this case, it is
-				important that the user is informed that they may not be
-				able to access all content in the book. </p> -->
+
 
 			<p>Some publications provide prerecorded audio with text
 				synchronization. Users with hearing
 				impairments still can access the full content of these
 				books.</p>
 
-			<section id="pre-recorded-audio-examples">
+			<section id="prerecorded-audio-examples">
 				<h4>Examples</h4>
 
 				<p>The examples are provided as lists of possible
@@ -1117,19 +1109,15 @@
 
 				<aside class="example" title="Descriptive explanations">
 					<ul>
-						<li data-localization-id="pre-recorded-audio-only"
+						<li data-localization-id="prerecorded-audio-only"
 							data-localization-mode="descriptive">
 							Audiobook with no text alternative</li>
-						<!-- <li data-localization-id="pre-recorded-audio-complementary"
-							data-localization-mode="descriptive">
-							Contents available as complementary audio
-							and
-							text</li> -->
-						<li data-localization-id="pre-recorded-audio-synchronized"
+
+						<li data-localization-id="prerecorded-audio-synchronized"
 							data-localization-mode="descriptive">All the
 							content is available as prerecorded audio
 							synchronized with text</li>
-<li data-localization-id="pre-recorded-audio-no-metadata"
+<li data-localization-id="prerecorded-audio-no-metadata"
 							data-localization-mode="descriptive">
 							No information is available</li>
 					</ul>
@@ -1137,29 +1125,29 @@
 
 				<aside class="example" title="Compact explanations">
 					<ul>
-						<li data-localization-id="pre-recorded-audio-only"
+						<li data-localization-id="prerecorded-audio-only"
 							data-localization-mode="compact">Audiobook</li>
-						<li data-localization-id="pre-recorded-audio-synchronized"
+						<li data-localization-id="prerecorded-audio-synchronized"
 							data-localization-mode="compact">Prerecorded audio synchronized with text</li>
-<li data-localization-id="pre-recorded-audio-no-metadata"
+<li data-localization-id="prerecorded-audio-no-metadata"
 							data-localization-mode="compact">
 							No information is available</li>
 					</ul>
 				</aside>
 			</section>
 
-			<section id="pre-recorded-audio-techniques">
+			<section id="prerecorded-audio-techniques">
 				<h4>Display techniques for prerecorded audio support
 				</h4>
 				<p>Specific techniques for meeting this principle are
 					defined in the following documents:</p>
 				<ul>
 					<li><a
-							href="../techniques/epub-metadata/index.html#pre-recorded-audio">EPUB
+							href="../techniques/epub-metadata/index.html#prerecorded-audio">EPUB
 							Accessibility: Full
 							audio</a></li>
 					<li><a
-							href="../techniques/onix-metadata/index.html#pre-recorded-audio">ONIX:
+							href="../techniques/onix-metadata/index.html#prerecorded-audio">ONIX:
 							Full
 							audio</a></li>
 				</ul>
@@ -1198,6 +1186,8 @@
 						href="https://www.w3.org/TR/WCAG21/#multiple-ways">Success
 						Criterion 2.4.5 Multiple
 						Ways</a></cite>).</p>
+<div class="note"><p>While not required if available, it may be helpful to identify the bibliographic information about the page break source identified in metadata of the digital publication. Having sufficient information to identify the print source would assure students and educators that the digital version they are using is correctly associated with the print version used in the classroom. The goal is to have the go to page function take the digital user to the same page as the print version user.
+</p></div>
 
 			<section id="nav-examples">
 				<h4>Examples</h4>
@@ -1207,9 +1197,7 @@
 					adoption.</p>
 
 				<aside class="example" title="Descriptive explanations">
-					<!-- <p><span data-localization-id="navigation-intro"
-							data-localization-mode="descriptive">Navigation
-							features contain:</span></p> -->
+
 					<ul>
 						<li data-localization-id="navigation-toc"
 							data-localization-mode="descriptive">Table
@@ -1225,7 +1213,8 @@
 							data-localization-mode="descriptive">Page list to go to pages from the print
 							source
 							version</li>
-<li>No information is available</li>
+						<li data-localization-id="navigation-no-metadata"
+							data-localization-mode="descriptive">No information is available</li>
 					</ul>
 				</aside>
 
@@ -1233,22 +1222,21 @@
 
 					<ul>
 						<li><span data-localization-id="navigation-toc"
-								data-localization-mode="compact">table
-								of
-								contents</span></li>
+								data-localization-mode="compact">Table
+								of contents</span></li>
 						<li><span
 								data-localization-id="navigation-index"
-								data-localization-mode="compact">index</span>
+								data-localization-mode="compact">Index</span>
 						</li>
 						<li><span
 								data-localization-id="navigation-structural"
-								data-localization-mode="compact">headings</span>
+								data-localization-mode="compact">Headings</span>
 						</li>
 						<li><span
 								data-localization-id="navigation-page-navigation"
-								data-localization-mode="compact">go to
-								page </span></li>
-<li>No information is available</li>
+								data-localization-mode="compact">Go to page </span></li>
+						<li data-localization-id="navigation-no-metadata"
+							data-localization-mode="compact">No information is available</li>
 					</ul>
 				</aside>
 			</section>
@@ -1270,22 +1258,22 @@
 				</ul>
 			</section>
 		</section>
-		<section id="charts-diagrams-and-formulas">
-			<h3 data-localization-id="charts-diagrams-formulas-title">Rich content</h3>
+		<section id="rich-content">
+			<h3 data-localization-id="Rich-content-title">Rich content</h3>
 
 			<div class="note">
 				<p>This key information can be hidden if metadata is
 					missing. Alternatively it can be stated that
 					<span
-						data-localization-id="charts-diagrams-formulas-unknown"
+						data-localization-id="rich-content-unknown"
 						data-localization-mode="descriptive">No information is available</span>
 				</p>
 			</div>
 
-			<p>Indicates the presence of math, chemical formulas, charts, diagrams, figures or graphs within the title and whether these are in an accessible format or available in an alternative form, e.g., whether math and chemical formulas are navigable with assistive technologies, or whether extended descriptions are available for complex images. In addition, it indicates the presence of videos and prerecorded audio, and if closed captions, open captions, or transcripts are available.</p>
+			<p>Indicates the presence of math, chemical formulas, charts, diagrams, figures or graphs within the title and whether these are in an accessible format or available in an alternative form, e.g., whether math and chemical formulas are navigable with assistive technologies, or whether extended descriptions are available for information-rich images. In addition, it indicates the presence of videos and if closed captions, open captions, or transcripts for prerecorded audio are available.</p>
 
 			<p>This group should be displayed only if the metadata
-				indicates the presence of math, chemical formulas, charts, diagrams, figures, graphs, videos, or audio within the title, otherwise it can be hidden.</p>
+				indicates the presence of math, chemical formulas, charts, diagrams, figures, graphs, videos, or transcripts of audio within the title, otherwise it can be hidden.</p>
 
 			<section id="cdf-examples">
 				<h4>Examples</h4>
@@ -1297,26 +1285,26 @@
 				<aside class="example" title="Descriptive explanations">
 
 					<ul>
-<li><span data-localization-id="charts-diagrams-formulas-accessible-math-as-mathml"
+<li><span data-localization-id="rich-content-accessible-math-as-mathml"
 								data-localization-mode="descriptive">Math formulas in accessible format (MathML)</span>
 						</li>
-<li><span data-localization-id="charts-diagrams-formulas-accessible-math-as-latex"
+<li><span data-localization-id="rich-content-accessible-math-as-latex"
 								data-localization-mode="descriptive">Math formulas in accessible format (LaTex)</span>
 						</li>
 						<li><span
-								data-localization-id="charts-diagrams-formulas-accessible-math-described"
+								data-localization-id="rich-content-accessible-math-described"
 								data-localization-mode="descriptive">Math formulas in accessible format (formulas as images with textual description)</span>
 						</li>
-<li><span data-localization-id="charts-diagrams-formulas-accessible-chemistry-as-mathml"
+<li><span data-localization-id="rich-content-accessible-chemistry-as-mathml"
 								data-localization-mode="descriptive">Chemical formulas in accessible format (MathML)</span>
 						</li>
-<li><span data-localization-id="charts-diagrams-formulas-accessible-chemistry-as-latex"
+<li><span data-localization-id="rich-content-accessible-chemistry-as-latex"
 								data-localization-mode="descriptive">Chemical formulas in accessible format (LaTex)</span>
 						</li>
 						<li>
 							<span
-								data-localization-id="charts-diagrams-formulas-extended"
-								data-localization-mode="descriptive">Charts, diagrams, figures, and graphs have extended descriptions</span>
+								data-localization-id="rich-content-extended"
+								data-localization-mode="descriptive">Information-rich images are described by extended descriptions</span>
 						</li>
 <li><span data-localization-id="additional-accessibility-information-adaptation-closed-captions" data-localization-mode="descriptive">
 Videos included in publications have closed
@@ -1324,16 +1312,9 @@ Videos included in publications have closed
 
 <li><span data-localization-id="additional-accessibility-information-adaptation-open-captions" data-localization-mode="descriptive">
 Videos included in publications have open captions </span></li>
-<li><span data-localization-id="pre-recorded-audio-complementary" data-localization-mode="descriptive">
-Prerecorded audio is present in the publication</span></li>
 <li><span data-localization-id="additional-accessibility-information-adaptation-full-transcript" data-localization-mode="descriptive">
-Prerecorded audio has a full transcript</span></li>
-<li>
-							<span data-localization-id="charts-diagrams-formulas-unknown"
-								data-localization-mode="descriptive">
-								Math, chemical formulas, charts, diagrams, figures, graphs, videos, or audio content  not identified as being accessible</span>
-						</li>
-<li>No information is available</li>
+Has a transcript</span></li>
+<li><span data-localization-id="rich-content-unknown" data-localization-mode="descriptive">No information is available</span></li>
 					</ul>
 				</aside>
 
@@ -1341,25 +1322,25 @@ Prerecorded audio has a full transcript</span></li>
 
 					<ul>
 						<li>
-<span  data-localization-id="charts-diagrams-formulas-accessible-math-as-mathml"
+<span  data-localization-id="rich-content-accessible-math-as-mathml"
 								data-localization-mode="compact">Math as MathML</span></li>
 <li>
-<span data-localization-id="charts-diagrams-formulas-accessible-math-as-latex"
+<span data-localization-id="rich-content-accessible-math-as-latex"
 								data-localization-mode="compact">Math as LaTex</span></li>
 <li>
-<span data-localization-id="charts-diagrams-formulas-accessible-math-described"
+<span data-localization-id="rich-content-accessible-math-described"
 								data-localization-mode="compact">Math as images with text description</span></li>
-<li><span data-localization-id="charts-diagrams-formulas-accessible-chemistry-as-mathml"
+<li><span data-localization-id="rich-content-accessible-chemistry-as-mathml"
 								data-localization-mode="compact">Chemical formulas in MathML</span>
 						</li>
-<li><span data-localization-id="charts-diagrams-formulas-accessible-chemistry-as-latex"
+<li><span data-localization-id="rich-content-accessible-chemistry-as-latex"
 								data-localization-mode="compact">Chemical formulas in LaTex</span>
 						</li>
 
 <li>
 							<span
-								data-localization-id="charts-diagrams-formulas-extended"
-								data-localization-mode="compact">Complex images are described by extended descriptions</span>
+								data-localization-id="rich-content-extended"
+								data-localization-mode="compact">Information-rich images are described by extended descriptions</span>
 </li>
 <li><span data-localization-id="additional-accessibility-information-adaptation-closed-captions" data-localization-mode="compact">
 Videos have closed
@@ -1367,16 +1348,9 @@ Videos have closed
 						<li>
 <span data-localization-id="additional-accessibility-information-adaptation-open-captions" data-localization-mode="compact">
 Videos have open captions </span></li>
-<li><span data-localization-id="pre-recorded-audio-complementary" data-localization-mode="compact">
-Prerecorded audio is present</span></li>
 <li><span data-localization-id="additional-accessibility-information-adaptation-full-transcript" data-localization-mode="compact">
-Prerecorded audio has transcript</span></li>
-
-						<li> <span
-								data-localization-id="charts-diagrams-formulas-unknown"
-								data-localization-mode="compact">Rich content not identified as being accessible</span>
-						</li>
-<li>No information is available</li>
+Has transcript</span></li>
+<li><span data-localization-id="rich-content-unknown" data-localization-mode="compact">No information is available</span></li>
 					</ul>
 				</aside>
 			</section>
@@ -1390,11 +1364,11 @@ Prerecorded audio has transcript</span></li>
 
 				<ul>
 					<li><a
-							href="../techniques/epub-metadata/index.html#charts-diagrams-and-formulas">EPUB
+							href="../techniques/epub-metadata/index.html#rich-content">EPUB
 							Accessibility: Rich content</a>
 					</li>
 					<li><a
-							href="../techniques/onix-metadata/index.html#charts-diagrams-and-formulas">ONIX:
+							href="../techniques/onix-metadata/index.html#rich-content">ONIX:
 							Rich content</a></li>
 				</ul>
 			</section>
@@ -1719,7 +1693,7 @@ Prerecorded audio has transcript</span></li>
 
 				</dd>
 
-				<!-- maybe we can remove High Contrast Display -->
+
 				<dt>Clarity</dt>
 				<dd>
 					<p>For information on ways that the content has been

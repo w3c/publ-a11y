@@ -256,7 +256,6 @@
 				</ol>
 				<h4>Instructions</h4>
 				<ol class="condition">
-					<li>Display <code id="visual-adjustments-title">"Visual adjustments"</code> as heading.</li>
 					<li>
 						<span><b>IF</b> <var>all_textual_content_can_be_modified</var>:</span>
 						<span><b>THEN</b> display <code id="visual-adjustments-modifiable">"Appearance can be modified"</code>.</span>
@@ -321,7 +320,6 @@
 				</ol>
 				<h4>Instructions</h4>
 				<ol class="condition">
-					<li>Display <code id="nonvisual-reading-title">"Supports nonvisual reading"</code> as heading.</li>
 					<li>
 						<span><b>IF</b> <var>all_necessary_content_textual</var>:</span>
 						<span><b>THEN</b> display <code id="nonvisual-reading-readable">"read aloud or dynamic braille"</code>.</span>
@@ -380,6 +378,11 @@
 						<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/196/86">code 86 of codelist 196</a> (WCAG level AAA) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
 						<p>This means that the publication conforms with the requirements of WCAG level AAA.</p>
 					</dd>
+					<dt><var>lia_compliant</var></dt>
+					<dd>
+						<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/196/01">code 01 of codelist 196</a> (LIA Compliance Scheme) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+						<p>This means that the publication conforms with the requirements of Fondazione LIA.</p>
+					</dd>
 					<dt><var>certifier</var></dt>
 					<dd>
 						<p>Returns the description of <a href="https://ns.editeur.org/onix/en/196/90">code 90 of codelist 196</a> (Compliance certification by (name)) if present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
@@ -413,6 +416,7 @@
 					<li><b>LET</b> <var>level_a</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "84"]</code> <b>OR</b> calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "02"]</code>.</li>
 					<li><b>LET</b> <var>level_aa</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "85"]</code> <b>OR</b> calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "03"]</code>.</li>
 					<li><b>LET</b> <var>level_aaa</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "86"]</code>.</li>
+					<li><b>LET</b> <var>lia_compliant</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "01"]</code>.</li>
 					<li><b>LET</b> <var>certifier</var> be the value of the node extracted from <var>onix</var>, using the xpath <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "90"]/ProductFormFeatureDescription</code>.</li>
 					<li><b>LET</b> <var>certifier_credentials</var> be the value of the node extracted from <var>onix</var>, using the xpath <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "93"]/ProductFormFeatureDescription</code>.</li>
 					<li><b>LET</b> <var>certification_date</var> be the value of the node extracted from <var>onix</var>, using the xpath <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "91"]/ProductFormFeatureDescription</code>.</li>
@@ -421,9 +425,8 @@
 				
 				<h4>Instructions</h4>
 				<ol class="condition">
-					<li>Display <code id="conformance-title">"Conformance"</code> as heading.</li>
 					<li>
-						<span><b>IF</b> (<var>epub_accessibility_10</var> <b>OR</b> <var>epub_accessibility_11</var> <b>OR</b> <var>wcag_20</var> <b>OR</b> <var>wcag_21</var> <b>OR</b> <var>wcag_22</var>) <b>AND</b> (<var>level_a</var> <b>OR</b> <var>level_aa</var> <b>OR</b> <var>level_aaa</var>):</span>
+						<span><b>IF</b> ((<var>epub_accessibility_10</var> <b>OR</b> <var>epub_accessibility_11</var> <b>OR</b> <var>wcag_20</var> <b>OR</b> <var>wcag_21</var> <b>OR</b> <var>wcag_22</var>) <b>AND</b> (<var>level_a</var> <b>OR</b> <var>level_aa</var> <b>OR</b> <var>level_aaa</var>)) <b>OR</b> <var>lia_compliant</var>:</span>
 						<span><b>THEN</b></span>
 						<ol class="condition">
 							<li>
@@ -431,7 +434,7 @@
 								<span><b>THEN</b> display <code id="conformance-aaa">"This publication exceeds accepted accessibility standards"</code>.</span>
 							</li>
 							<li>
-								<span><b>ELSE IF</b> <var>level_aa</var>:</span>
+								<span><b>ELSE IF</b> <var>level_aa</var> <b>OR</b> <var>lia_compliant</var>:</span>
 								<span><b>THEN</b> display <code id="conformance-aa">"This publication meets accepted accessibility standards"</code>.</span>
 							</li>
 							<li>
@@ -519,8 +522,8 @@
 
 			</section>
 			
-			<section id="pre-recorded-audio">
-				<h3>Pre-recorded audio</h3>
+			<section id="prerecorded-audio">
+				<h3>Prerecorded audio</h3>
 				<p>This technique relates to <a href="../../guidelines/#pre-recorded-audio">Pre-recorded audio key information</a>.</p>
 				<p>This algorithm takes the <var>onix_record_as_text</var> argument: a UTF-8 string representing the ONIX record.</p>
 				<h4>Understanding the variables</h4>
@@ -579,37 +582,33 @@
 				<h4>Variables setup</h4>
 				<ol class="condition">
 					<li><b>LET</b> <var>onix</var> be the result of calling <a href="#preprocessing">preprocessing</a> given <var>onix_record_as_text</var>.</li>
-					<li><b>LET</b> <var>audiobook</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/DescriptiveDetail[PrimaryContentType = "81" or ContentType = "81"] </code>.</li>
+					<li><b>LET</b> <var>audiobook</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/DescriptiveDetail[PrimaryContentType = "81" or ProductContentType = "81"] </code>.</li>
 					<li><b>LET</b> <var>all_content_audio</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "39"]</code>.</li>
 					<li><b>LET</b> <var>all_content_pre_recorded</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "51"]</code>.</li>
 					<li><b>LET</b> <var>synchronised_pre_recorded_audio</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "20"]</code> 
 					AND calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormDetail[text() = "A305"]</code>.
 					</li>
-					<li><b>LET</b> <var>non_textual_content_audio</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/DescriptiveDetail[ContentType = "21" or ContentType = "22"] </code>. 
+					<li><b>LET</b> <var>non_textual_content_audio</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/DescriptiveDetail[PrimaryContentType = "21" or ProductContentType = "22" or ProductContentType = "21" or ProductContentType = "22"] </code>. 
 					</li>
-					<li><b>LET</b> <var>non_textual_content_audio_in_video</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/DescriptiveDetail[ContentType = "06" or ContentType = "25" or ContentType = "26" or ContentType = "27" or ContentType = "28" or ContentType = "29" or ContentType = "30"] </code>. 
+					<li><b>LET</b> <var>non_textual_content_audio_in_video</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/DescriptiveDetail[PrimaryContentType = "06" or PrimaryContentType = "25" or PrimaryContentType = "26" or PrimaryContentType = "27" or PrimaryContentType = "28" or PrimaryContentType = "29" or PrimaryContentType = "30" or ProductContentType = "06" or ProductContentType = "25" or ProductContentType = "26" or ProductContentType = "27" or ProductContentType = "28" or ProductContentType = "29" or ProductContentType = "30"] </code>. 
 					</li>
 				</ol>
 				<h4>Instructions</h4>
 				<ol class="condition">
 					<li>
-						Display <code id="pre-recorded-audio-title">"Pre-recorded audio"</code> as heading.
-						<p class="note">This heading can be hidden if metadata is missing.</p>
-					</li>
-					<li>
 						<span><b>IF</b> <var>all_content_audio</var> <b>AND</b> <b>NOT</b> <var>synchronised_pre_recorded_audio</var>:</span>
-						<span><b>THEN</b> display <code id="pre-recorded-audio-only">"Audio only"</code>.</span>
+						<span><b>THEN</b> display <code id="prerecorded-audio-only">"Audio only"</code>.</span>
 					</li>
 					<li>
 						<span><b>ELSE IF</b> <var>audiobook</var> OR <var>non_textual_content_audio</var> OR <var>non_textual_content_audio_in_video</var> <b>AND</b> <b>NOT</b> <var>all_content_pre_recorded</var>:</span>
-						<span><b>THEN</b> display <code id="pre-recorded-audio-complementary">"Complementary audio and text"</code>.</span>
+						<span><b>THEN</b> display <code id="prerecorded-audio-complementary">"Complementary audio and text"</code>.</span>
 					</li>		
 					<li>
 						<span><b>ELSE IF</b> <var>all_content_pre_recorded</var> <b>AND</b> <var>synchronised_pre_recorded_audio</var>:</span>
-						<span><b>THEN</b> display <code id="pre-recorded-audio-synchronized">"Synchronized audio and text"</code>.</span>
+						<span><b>THEN</b> display <code id="prerecorded-audio-synchronized">"Synchronized audio and text"</code>.</span>
 					</li>
 					<li>
-						<b>ELSE</b> display <code id="pre-recorded-audio-no-metadata">"No information about pre-recorded audio is available."</code>.
+						<b>ELSE</b> display <code id="prerecorded-audio-no-metadata">"No information is available"</code>.
 						<p class="note">This key information can be hidden if metadata is missing.</p>
 					</li>
 				</ol>
@@ -652,10 +651,6 @@
 				</ol>
 				<h4>Instructions</h4>
 				<ol class="condition">
-					<li>
-						Display <code id="navigation-title">"Navigation"</code> as heading.
-						<p class="note">This heading can be hidden if metadata is missing.</p>
-					</li>
 					<li>
 						<span><b>IF</b> <var>table_of_contents_navigation</var> <b>OR</b> <var>index_navigation</var> <b>OR</b> <var>print_equivalent_page_numbering</var> <b>OR</b> <var>next_previous_structural_navigation</var>:</span>
 						<ol class="condition">
@@ -763,10 +758,6 @@
 				<h4>Instructions</h4>
 				<ol class="condition">
 					<li>
-						Display <code id="rich-content-title">"Rich content"</code> as heading.
-						<p class="note">This heading can be hidden if metadata is missing.</p>
-					</li>
-					<li>
 						<span><b>IF</b> <var>math_formula_as_mathml</var>:</span>
 						<span><b>THEN</b> display <code id="rich-content-accessible-math-as-mathml">"Math as MathML"</code>.</span>
 					</li>
@@ -867,10 +858,6 @@
 				<h4>Instructions</h4>
 				<ol class="condition">
 					<li>
-						Display <code id="hazards-title">"Hazards"</code> as heading.
-						<p class="note">This heading can be hidden if metadata is missing.</p>
-					</li>
-					<li>
 						<span><b>IF</b> <var>no_hazards_or_warnings_confirmed</var> <b>OR</b> (<var>no_flashing_hazards</var> <b>AND</b> <var>no_motion_hazards</var> <b>AND</b> <var>no_sound_hazards</var>):</span>
 						<span><b>THEN</b> display <code id="hazards-none">"No hazards"</code>.</span>
 					</li>
@@ -965,10 +952,6 @@
 				<h4>Instructions</h4>
 				<ol class="condition">
 					<li>
-						Display <code id="accessibility-summary-title">"Accessibility summary"</code> as heading.
-						<p class="note">This heading can be hidden if metadata is missing.</p>
-					</li>
-					<li>
 						<span><b>IF</b> <var>lang_attribute_accessibility_addendum</var> is <b>NOT</b> empty:</span>
 						<span><b>THEN</b> <b>LET</b> <var>language_accessibility_addendum</var> be the value of <var>lang_attribute_accessibility_addendum</var>.</span>
 					</li>
@@ -1040,10 +1023,6 @@
 				</ol>
 				<h4>Instructions</h4>
 				<ol class="condition">
-					<li>
-						Display <code id="legal-considerations-title">"Legal considerations"</code> as heading.
-						<p class="note">This heading can be hidden if metadata is missing.</p>
-					</li>
 					<li>
 						<span><b>IF</b> <var>eaa_exemption_micro_enterprises</var> <b>OR</b> <var>eaa_exception_disproportionate_burden</var> <b>OR</b> <var>eaa_exception_fundamental_modification</var>:</span>
 						<span><b>THEN</b> display <code id="tbd">"TBD"</code>.</span>
