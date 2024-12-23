@@ -1,4 +1,4 @@
-	<!DOCTYPE html>
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
 	<head>
 		<meta charset="utf-8" />
@@ -80,13 +80,13 @@
 		<section id="onix-metadata">
 			<h2>ONIX Metadata</h2>
 			
-			<p class="note">
+			<aside class="note">
 				Techniques for displaying accessibility metadata in other metadata formats can be found in the <a href="../../guidelines/#techniques">Display Techniques for Displaying Accessibility Metadata</a>
-			</p>
+			</aside>
             
- 			<p class="note">
- 				This document provides techniques for meeting the guidelines of the <a href="../../guidelines/">User Experience Guide for Displaying Accessibility Metadata</a>. It provides practical examples for extracting information from the ONIX metadata for showing it to the end users.
-			</p>
+ 			<aside class="note">
+ 				This document provides techniques for meeting the guidelines of the <a href="../../guidelines/">Accessibility Metadata Display Guide for Digital Publications 2.0</a>. It provides practical examples for extracting information from the ONIX metadata for showing it to the end users.
+			</aside>
 			
 			<aside class="note">
  			    The examples provided in this document demonstrate the "compact" version of what is to be displayed.
@@ -116,7 +116,7 @@
                 
 			 </aside>
 			
-			<p class="note">
+			<aside class="note">
 				ONIX messages describe products for the global book supply chain and will be sent from publisher or creator of the EPUB or digital books with full audio to those who will make the products available for sale, lending or subscription.
 				These platforms may not yet have the actual files, as they may not yet be ready, or may only choose to list them for sale if they have certain accessibility features.
 				ONIX also only describes a product, it cannot describe the features of the reading systems on which a product may be accessed.
@@ -124,11 +124,11 @@
 				An ONIX file can be used to display accessibility information in advance of publication or when you do not have access to the metadata in the digital file itself.
 				Some accessibility information may only be available when you have access to the file itself.
 				If you are unfamiliar with ONIX, then there is more documentation available from <a href="https://www.editeur.org/83/Overview/">EDItEUR.org</a>.
-			</p>
+			</aside>
 			
-			<p class="note">
+			<aside class="note">
 				It is important to note that ONIX 3.0 includes a number of new accessibility metadata codes, some of which may not be expressible in earlier versions of ONIX.
-			</p>
+			</aside>
 				
 			<section id="onix-record-examples">
 				<h3>ONIX record examples</h3>
@@ -264,7 +264,7 @@
 						<span><b>ELSE IF</b> <var>is_fixed_layout</var>:</span>
 						<span><b>THEN</b> display <code id="visual-adjustments-unmodifiable">"Appearance cannot be modified"</code>.</span>
 					</li>
-					<li><b>ELSE</b> display <code id="visual-adjustments-unknown">"Appearance modifiability not known"</code>.</li>
+					<li><b>ELSE</b> display <code id="visual-adjustments-unknown">"No information is available"</code>.</li>
 				</ol>
 			</section>
 						
@@ -322,7 +322,7 @@
 				<ol class="condition">
 					<li>
 						<span><b>IF</b> <var>all_necessary_content_textual</var>:</span>
-						<span><b>THEN</b> display <code id="nonvisual-reading-readable">"read aloud or dynamic braille"</code>.</span>
+						<span><b>THEN</b> display <code id="nonvisual-reading-readable">"Read aloud or dynamic braille"</code>.</span>
 					</li>
 					<li>
 						<span><b>ELSE IF</b> <var>real_text</var> <b>AND</b> <var>non_textual_content_images</var> <b>AND</b> <b>NOT</b> <var>textual_alternative_images</var>:</span>
@@ -445,7 +445,7 @@
 					</li>
 					<li>
 						<span><b>ELSE</b>:</span>
-						<span><b>THEN</b> display <code id="conformance-no">"The publication does not include a conformance statement"</code>.</span>
+						<span><b>THEN</b> display <code id="conformance-no">"No information is available"</code>.</span>
 					</li>
 					<li>
 						<span><b>IF</b> <var>certifier</var> is <b>NOT</b> empty:</span>
@@ -605,11 +605,10 @@
 					</li>		
 					<li>
 						<span><b>ELSE IF</b> <var>all_content_pre_recorded</var> <b>AND</b> <var>synchronised_pre_recorded_audio</var>:</span>
-						<span><b>THEN</b> display <code id="prerecorded-audio-synchronized">"Synchronized audio and text"</code>.</span>
+						<span><b>THEN</b> display <code id="prerecorded-audio-synchronized">"Prerecorded audio synchronized with text"</code>.</span>
 					</li>
 					<li>
-						<b>ELSE</b> display <code id="prerecorded-audio-no-metadata">"No information is available"</code>.
-						<p class="note">This key information can be hidden if metadata is missing.</p>
+						<b>ELSE</b> either omit this key informtion if metadata is missing or display <code id="prerecorded-audio-no-metadata">"No information is available"</code>.
 					</li>
 				</ol>
 			</section>
@@ -656,25 +655,24 @@
 						<ol class="condition">
 							<li>
 								<span><b>IF</b> <var>table_of_contents_navigation</var>:</span>
-								<span><b>THEN</b> display <code id="navigation-toc">"table of contents"</code>.</span>
+								<span><b>THEN</b> display <code id="navigation-toc">"Table of contents"</code>.</span>
 							</li>
 							<li>
 								<span><b>IF</b> <var>index_navigation</var>:</span>
-								<span><b>THEN</b> display <code id="navigation-index">"index"</code>.</span>
+								<span><b>THEN</b> display <code id="navigation-index">"Index"</code>.</span>
 							</li>
 							<li>
 								<span><b>IF</b> <var>print_equivalent_page_numbering</var>:</span>
-								<span><b>THEN</b> display <code id="navigation-page-navigation">"go to page"</code>.</span>
+								<span><b>THEN</b> display <code id="navigation-page-navigation">"Go to page"</code>.</span>
 							</li>
 							<li>
 								<span><b>IF</b> <var>next_previous_structural_navigation</var>:</span>
-								<span><b>THEN</b> display <code id="navigation-structural">"headings"</code>.</span>
+								<span><b>THEN</b> display <code id="navigation-structural">"Headings"</code>.</span>
 							</li>
 						</ol>
 					</li>
 					<li>
-						<b>ELSE</b> display <code id="navigation-no-metadata">"No information is available"</code>.
-						<p class="note">This key information can be hidden if metadata is missing.</p>
+						<b>ELSE</b> either omit this key informtion if metadata is missing or display <code id="navigation-no-metadata">"No information is available"</code>.
 					</li>
 				</ol>
 			</section>
@@ -767,7 +765,7 @@
 					</li>
 					<li>
 						<span><b>ELSE IF</b> <var>contains_math_formula</var> <b>AND</b> <var>short_textual_alternative_images</var>:</span>
-						<span><b>THEN</b> display <code id="rich-content-described-math">"Math as images with text description"</code>.</span>
+						<span><b>THEN</b> display <code id="rich-content-accessible-math-described">"Math as images with text description"</code>.</span>
 					</li>
 					<li>
 						<span><b>IF</b> <var>chemical_formula_as_mathml</var>:</span>
@@ -775,7 +773,7 @@
 					</li>
 					<li>
 						<span><b>IF</b> <var>charts_diagrams_as_non_graphical_data</var> <b>OR</b> <var>full_alternative_textual_descriptions</var>:</span>
-						<span><b>THEN</b> display <code id="rich-content-extended">"Complex images are described by extended descriptions"</code>.</span>
+						<span><b>THEN</b> display <code id="rich-content-extended">"Information-rich images are described by extended descriptions"</code>.</span>
 					</li>
 					<li>
 						<span><b>IF</b> <var>closed_captions</var>:</span>
@@ -791,7 +789,7 @@
 					</li>
 					<li>
 						<span><b>IF</b> <b>NOT</b> (<var>math_formula_as_mathml</var> <b>OR</b> <var>math_formula_as_latex</var> <b>OR</b> (<var>contains_math_formula</var> <b>AND</b> <var>short_textual_alternative_images</var>) <b>OR</b> <var>chemical_formula_as_mathml</var> <b>OR</b> <var>charts_diagrams_as_non_graphical_data</var> <b>OR</b> <var>full_alternative_textual_descriptions</var> <b>OR</b> <var>closed_captions</var> <b>OR</b> <var>open_captions</var> <b>OR</b> <var>transcript</var>):</span>
-						<span><b>THEN</b> display <code id="rich-content-unknown">"No information is available"</code>.</span>
+						<span><b>THEN</b> either omit this key informtion if metadata is missing or display <code id="rich-content-unknown">"No information is available"</code>.</span>
 					</li>
 				</ol>
 			</section>
@@ -885,7 +883,7 @@
 					</li>
 					<li>
 						<b>ELSE</b> display <code id="hazards-no-metadata">"No information is available"</code>.
-						<p class="note">This key information can be hidden if metadata is missing.</p>
+						<aside class="note">This key information can be hidden if metadata is missing.</aside>
 					</li>
 				</ol>
 			</section>
@@ -894,11 +892,11 @@
 				<h3>Accessibility summary</h3>
 				<p>This technique relates to <a href="../../guidelines/#accessibility-summary">Accessibility summary key information</a>.</p>
 				<p>This algorithm takes the <var>onix_record_as_text</var> argument: a UTF-8 string representing the ONIX record.</p>
-				<p class="note">
+				<aside class="note">
 					Being human-written, the accessibility summary and addendum will appear in the original language of the publication. Therefore it is necessary of take care of setting up the correct language tag information.
-				</p>
+				</aside>
 
-				<p class="note">Accessibility summary existed when no system exposed the computed accessibility metadata. With more and more systems displaying this information, most of the accessibility summary may be redundant. It may be advised to display only the accessibility addendum. </p>
+				<aside class="note">Accessibility summary existed when no system exposed the computed accessibility metadata. With more and more systems displaying this information, most of the accessibility summary may be redundant. It may be advised to display only the accessibility addendum.</aside>
 
 				<h4>Understanding the variables</h4>
 				<dl>
@@ -985,8 +983,7 @@
 						<span><b>THEN</b> display the content of <var>accessibility_summary</var> with <var>language_accessibility_summary</var> as language.</span>
 					</li>
 					<li>
-						<b>ELSE</b> display <code id="accessibility-summary-no-metadata">"No accessibility summary is available."</code>.
-						<p class="note">This key information can be hidden if metadata is missing.</p>
+						<b>ELSE</b> either omit this key informtion if metadata is missing or display <code id="accessibility-summary-no-metadata">"No accessibility summary is available."</code>.
 					</li>
 				</ol>
 			</section>
@@ -1028,8 +1025,7 @@
 						<span><b>THEN</b> display <code id="tbd">"TBD"</code>.</span>
 					</li>
 					<li>
-						<b>ELSE</b> display <code id="legal-considerations-no-metadata">"No legal considerations"</code>.
-						<p class="note">This key information can be hidden if metadata is missing.</p>
+						<b>ELSE</b> either omit this key informtion if metadata is missing or display <code id="legal-considerations-no-metadata">"No legal considerations"</code>.
 					</li>
 				</ol>
 			</section>
