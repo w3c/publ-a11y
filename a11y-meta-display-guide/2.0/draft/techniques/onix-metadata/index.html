@@ -1,4 +1,4 @@
-	<!DOCTYPE html>
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
 	<head>
 		<meta charset="utf-8" />
@@ -608,8 +608,7 @@
 						<span><b>THEN</b> display <code id="prerecorded-audio-synchronized">"Synchronized audio and text"</code>.</span>
 					</li>
 					<li>
-						<b>ELSE</b> display <code id="prerecorded-audio-no-metadata">"No information is available"</code>.
-						<aside class="note">This key information can be hidden if metadata is missing.</aside>
+						<b>ELSE</b> either omit this key informtion if metadata is missing or display <code id="prerecorded-audio-no-metadata">"No information is available"</code>.
 					</li>
 				</ol>
 			</section>
@@ -673,8 +672,7 @@
 						</ol>
 					</li>
 					<li>
-						<b>ELSE</b> display <code id="navigation-no-metadata">"No information is available"</code>.
-						<aside class="note">This key information can be hidden if metadata is missing.</aside>
+						<b>ELSE</b> either omit this key informtion if metadata is missing or display <code id="navigation-no-metadata">"No information is available"</code>.
 					</li>
 				</ol>
 			</section>
@@ -791,7 +789,7 @@
 					</li>
 					<li>
 						<span><b>IF</b> <b>NOT</b> (<var>math_formula_as_mathml</var> <b>OR</b> <var>math_formula_as_latex</var> <b>OR</b> (<var>contains_math_formula</var> <b>AND</b> <var>short_textual_alternative_images</var>) <b>OR</b> <var>chemical_formula_as_mathml</var> <b>OR</b> <var>charts_diagrams_as_non_graphical_data</var> <b>OR</b> <var>full_alternative_textual_descriptions</var> <b>OR</b> <var>closed_captions</var> <b>OR</b> <var>open_captions</var> <b>OR</b> <var>transcript</var>):</span>
-						<span><b>THEN</b> display <code id="rich-content-unknown">"No information is available"</code>.</span>
+						<span><b>THEN</b> either omit this key informtion if metadata is missing or display <code id="rich-content-unknown">"No information is available"</code>.</span>
 					</li>
 				</ol>
 			</section>
@@ -985,8 +983,7 @@
 						<span><b>THEN</b> display the content of <var>accessibility_summary</var> with <var>language_accessibility_summary</var> as language.</span>
 					</li>
 					<li>
-						<b>ELSE</b> display <code id="accessibility-summary-no-metadata">"No accessibility summary is available."</code>.
-						<aside class="note">This key information can be hidden if metadata is missing.</aside>
+						<b>ELSE</b> either omit this key informtion if metadata is missing or display <code id="accessibility-summary-no-metadata">"No accessibility summary is available."</code>.
 					</li>
 				</ol>
 			</section>
@@ -1028,8 +1025,7 @@
 						<span><b>THEN</b> display <code id="tbd">"TBD"</code>.</span>
 					</li>
 					<li>
-						<b>ELSE</b> display <code id="legal-considerations-no-metadata">"No legal considerations"</code>.
-						<aside class="note">This key information can be hidden if metadata is missing.</aside>
+						<b>ELSE</b> either omit this key informtion if metadata is missing or display <code id="legal-considerations-no-metadata">"No legal considerations"</code>.
 					</li>
 				</ol>
 			</section>
