@@ -72,7 +72,7 @@
             <p>This metadata as outlined in EPUB Accessibility 1.1 [[epub-a11y-11]], can be found in the EPUB package document [[EPUB-33]].</p>
 			
             <aside class="note">
-                Techniques for displaying accessibility metadata in other metadata formats can be found in the User Experience Guide for Displaying Accessibility Metadata document.
+                Techniques for displaying accessibility metadata in other metadata formats can be found in the <a href="../../guidelines/#techniques">Display Techniques for Displaying Accessibility Metadata</a>
             </aside>
             
  			<aside class="note">
@@ -156,17 +156,19 @@
 		<section id="common-functions">
 			<h2>Common Functions</h2>
 			<p>In this section we define the functions common to all techniques, which are called by them during execution.</p>
-			<section id="pre-processing">
+
+            <section id="pre-processing">
 				<h3>Preprocessing</h3>
 				<p>Before working directly with the metadata we must read the metadata in the Package document (package document) inside the EPUB. This is a common starting point for all techniques that allows us to query the metadata directly.</p>
+                
 				<aside class="note">
 					<p>This algorithm does not describe how the Package document is discovered and extracted within an EPUB.</p>
 				</aside>
+                
 				<p>This algorithm takes the <var>package_document_as_text</var> argument: a UTF-8 string representing the Package document.</p>
 				<p>To generate the internal representation, run the following steps:</p>
 				<ol class="condition">
-					<li><b>LET</b> <var>package_document_content</var> be textual representation of the Package document for the publication given <var>package_document_as_text</var>.</li>
-					<li><b>LET</b> <var>package_document</var> be the DOM tree that results from parsing <var>package_document_content</var> using an XML DOM parser.</li>
+					<li><b>LET</b> <var>package_document</var> be the DOM tree that results from parsing <var>package_document_as_text</var> using an XML DOM parser.</li>
 					<li>Return <var>package_document</var>.</li>
 				</ol>
 			</section>
@@ -354,7 +356,7 @@
 					</dd>
 					<dt><var>certifier_credentials</var></dt>
 					<dd>
-						<p>Returns the description of <i>a11y:certifierCredential</i> (Compliance certification by (URL)) if present in the package document, otherwise if false it means that the metadata is not present.</p> 
+						<p>Returns the description of <i>a11y:certifierCredential</i> (Compliance certification by (URL) or text) if present in the package document, otherwise if false it means that the metadata is not present.</p> 
 						<p>This means that the the URL of a web page belonging to an organization responsible for compliance testing and certification of the product is present – typically a ‘home page’ or a page describing the certification scheme itself.</p>
 					</dd>
 					<dt><var>certification_date</var></dt>
@@ -381,7 +383,7 @@
                     
                 <!-- EPUB Accessibility 1.0 WCAG 2.0 (A/AA/AAA) -->
                  <li>
-                       <span><b>IF</b> the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="dcterms:<i>conformsTo</i>" and text() = "<i>http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-a</i>"]</code> :</span>
+                     <span><b>IF</b> the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/link[@rel="dcterms:<i>conformsTo</i>" and @href="<i>http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-a</i>"] | /package/metadata/meta[@property="dcterms:conformsTo" and text() = "http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-a"]</code> :</span>
                        <span>
                        	<b>THEN</b> <b>LET</b> <var>conformance_string</var> = 'EPUB Accessibility 1.0 WCAG 2.0 Level A', 
                             and <b>LET</b> <var>wcag_level</var> = 'A'.
@@ -389,7 +391,7 @@
                     </li>
 
                   <li>
-                       <span><b>IF</b> the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="dcterms:<i>conformsTo</i>" and text() = "<i>http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aa</i>"]</code>:</span>
+                       <span><b>IF</b> the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/link[@rel="dcterms:<i>conformsTo</i>" and @href="<i>http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aa</i>"] | /package/metadata/meta[@property="dcterms:conformsTo" and text() = "http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aa"]</code>:</span>
                        <span>
                             <b>THEN</b> <b>LET</b> <var>conformance_string</var> = 'EPUB Accessibility 1.0 WCAG 2.0 Level AA', 
                             and <b>LET</b> <var>wcag_level</var> = 'AA'.
@@ -397,7 +399,7 @@
                     </li>
 
                   <li>
-                       <span><b>IF</b> the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="dcterms:<i>conformsTo</i>" and text() = "<i>http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aaa</i>"]</code>:</span>
+                       <span><b>IF</b> the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/link[@rel="dcterms:<i>conformsTo</i>" and @href="<i>http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aaa</i>"] | /package/metadata/meta[@property="dcterms:conformsTo" and text() = "http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aaa"]</code>:</span>
                        <span>
                        	<b>THEN</b> <b>LET</b> <var>conformance_string</var> = 'EPUB Accessibility 1.0 WCAG 2.0 Level AAA', 
                             and <b>LET</b> <var>wcag_level</var> = 'AAA'.
@@ -450,7 +452,7 @@
 								<span><b>IF</b> <var>certifier</var> is <b>NOT</b> empty:</span>
 								<span><b>THEN</b></span>
 								<ul class="condition">
-									<li>display <code id="conformance-certifier">"This publication is certified by "</code></li>
+									<li>display <code id="conformance-certifier">"This publication was certified by "</code></li>
 									<li>display <var>certifier</var>.</li>
 								</ul>
 							</li>
@@ -459,7 +461,14 @@
 								<span><b>THEN</b></span>
 								<ul class="condition">
 									<li>display <code id="conformance-certifier-credentials">"The certifier's credential is "</code></li>
-									<li>display <var>certifier_credentials</var> as link <b>IF</b> <var>certifier_credentials</var> is an URL.</li>
+									<li>
+                                        <span><b>IF</b> <var>certifier_credentials</var> is a URL.</span>
+                                        <span><b>THEN</b> display <var>certifier_credentials</var> as link.</span>
+                                    </li>
+									<li>
+                                        <span><b>ELSE</b> display <var>certifier_credentials</var> as text.</span>
+                                    </li>
+                                    
 								</ul>
 							</li>
 							<li>
@@ -494,39 +503,18 @@
 								</ul>
 							</li>
 							<li>
-								<span><b>IF</b> <var>certification_date</var> <b>OR</b> <var>certifier</var> <b>OR</b> <var>certifier_credentials</var>:</span>
-								<span><b>THEN</b> display <code id="conformance-certification-info">"The publication was certified "</code>.</span>
-							</li>
-							<li>
 								<span><b>IF</b> <var>certification_date</var>:</span>
-								<span><b>THEN</b></span>
+								<span><b>THEN</b> display <code id="conformance-certification-info">"The publication was certified "</code>.</span>
 								<ul class="condition">
 									<li>display <code id="conformance-certification-date-prefix">" on "</code></li>
 									<li>display <var>certification_date</var>.</li>
 								</ul>
 							</li>
 							<li>
-								<span><b>IF</b> <var>certifier</var>:</span>
-								<span><b>THEN</b></span>
-								<ul class="condition">
-									<li>display <code id="conformance-certifier-prefix">" by "</code></li>
-									<li>display <var>certifier</var>.</li>
-								</ul>
-							</li>
-							<li>
-								<span><b>IF</b> <var>certifier_credentials</var>:</span>
-								<span><b>THEN</b></span>
-								<ul class="condition">
-									<li>display <code id="conformance-certifier-credentials-prefix">" with a credential of "</code></li>
-									<li>display <var>certifier_credentials</var> as link <b>IF</b> <var>certifier_credentials</var> is an URL.</li>
-								</ul>
-							</li>
-							<li>
 								<span><b>IF</b> <var>certifier_report</var>:</span>
 								<span><b>THEN</b></span>
 								<ul class="condition">
-									<li>display <code id="conformance-certifier-report">"For more information refer to the certifier's report"</code></li>
-									<li>with <var>certifier_report</var> as link.</li>
+									<li>display <code id="conformance-certifier-report">"For more information refer to the certifier's report"</code> as a named link with <var>certifier_report</var> as the URL used.</li>
 								</ul>
 							</li>
 						</ul>
@@ -536,9 +524,9 @@
 			</section>
 			
 		
-			<section id="pre-recorded-audio">
-				<h3>Pre-recorded audio</h3>
-				<p>This technique relates to <a href="../../guidelines/#pre-recorded-audio">Pre-recorded audio key information</a>.</p>
+			<section id="prerecorded-audio">
+				<h3>Prerecorded audio</h3>
+				<p>This technique relates to <a href="../../guidelines/#prerecorded-audio">Prerecorded audio key information</a>.</p>
                 
                 <p>This algorithm takes the <var>package_document_as_text</var> argument: a UTF-8 string representing the Package document.</p>
 
@@ -551,14 +539,14 @@
                     <dt><var>synchronised_pre_recorded_audio</var></dt>
 					<dd>
                         <p>If true it indicates that the <i>accessibilityFeature="sychronizedAudioText"</i> is present in the package document, otherwise, if false, it means that the metadata is not present.</p>
-						<p>This indicates that text-synchronised pre-recorded audio narration (natural or synthesised voice) is included for substantially all textual matter, including all alternative descriptions, e.g. via a SMIL media overlay.</p>
+						<p>This indicates that text-synchronised prerecorded audio narration (natural or synthesised voice) is included for substantially all textual matter, including all alternative descriptions, e.g. via a SMIL media overlay.</p>
 					</dd>
                     
   					<dt><var>audio_content</var></dt>
 					<dd>
                         <p>If true it indicates that the <i>accessMode="auditory"</i> is present in the package document, otherwise, if false, it means that the metadata is not present.</p>
 
-						<p>This indicates that pre-recorded audio content is included as part of the work.</p>
+						<p>This indicates that prerecorded audio content is included as part of the work.</p>
 					</dd>
                   
                     
@@ -577,24 +565,24 @@
 				<h4>Instructions</h4>
 				<ol class="condition">
 					<li>
-						Display <code id="pre-recorded-audio-title">"Pre-recorded audio"</code> as heading.
+						Display <code id="prerecorded-audio-title">"Prerecorded audio"</code> as heading.
 						<p class="note">This heading can be hidden if metadata is missing.</p>
 					</li>
 					<li>
 						<span><b>IF</b> <var>all_content_audio</var>:</span>
-						<span><b>THEN</b> display <code id="pre-recorded-audio-only">"Audio only"</code>.</span>
+						<span><b>THEN</b> display <code id="prerecorded-audio-only">"Audio only"</code>.</span>
 					</li>
 					<li>
 						<span><b>ELSE IF</b> <var>synchronised_pre_recorded_audio</var>:</span>
-						<span><b>THEN</b> display <code id="pre-recorded-audio-synchronized">"Synchronized audio and text"</code>.</span>
+						<span><b>THEN</b> display <code id="prerecorded-audio-synchronized">"Synchronized audio and text"</code>.</span>
 					</li>					
 					<li>
 						<span><b>ELSE IF</b> <var>audio_content</var>:</span>
-						<span><b>THEN</b> display <code id="pre-recorded-audio-complementary">"Complementary audio and text"</code>.</span>
+						<span><b>THEN</b> display <code id="prerecorded-audio-complementary">"Complementary audio and text"</code>.</span>
 					</li>		
 
 					<li>
-						<b>ELSE</b> either omit this key informtion if metadata is missing or display <code id="pre-recorded-audio-no-metadata">"No information about pre-recorded audio is available."</code>.
+						<b>ELSE</b> either omit this key informtion if metadata is missing or display <code id="prerecorded-audio-no-metadata">"No information about prerecorded audio is available"</code>.
 					</li>
 				</ol>
 			</section>
@@ -650,7 +638,7 @@
 						<p class="note">This heading can be hidden if metadata is missing.</p>
 					</li>
 					<li>
-						<span><b>IF</b> <var>table_of_contents_navigation</var> <b>OR</b> <var>index_navigation</var> <b>OR</b> <var>print_equivalent_page_numbering</var> <b>OR</b> <var>next_previous_structural_navigation</var>:</span>
+						<span><b>IF</b> <var>table_of_contents_navigation</var> <b>OR</b> <var>index_navigation</var> <b>OR</b> <var>page_navigation</var> <b>OR</b> <var>next_previous_structural_navigation</var>:</span>
 						<span><b>THEN</b> <b>LET</b> <var>navigation</var> be  an empty array.</span>
 						<ol class="condition">
 							<li>
@@ -679,14 +667,14 @@
 						</ol>
 					</li>
 					<li>
-						<b>ELSE</b> either omit this key informtion if metadata is missing or display <code id="navigation-no-metadata">"No information about navigation is available."</code>.
+						<b>ELSE</b> either omit this key informtion if metadata is missing or display <code id="navigation-no-metadata">"No information about navigation is available"</code>.
 					</li>
 				</ol>
 			</section>
                 
-			<section id="charts-diagrams-and-formulas">
+			<section id="rich-content">
 				<h3>Charts, diagrams, math, and formulas</h3>
-				<p>This technique relates to <a href="../../guidelines/#charts-diagrams-and-formulas">Charts, diagrams, math, and formulas key information</a>.</p>
+				<p>This technique relates to <a href="../../guidelines/#rich-content">Charts, diagrams, math, and formulas key information</a>.</p>
                 
                 <p>This algorithm takes the <var>package_document_as_text</var> argument: a UTF-8 string representing the Package document.</p>
 				<h4>Understanding the variables</h4>
@@ -749,24 +737,24 @@
 				<h4>Instructions</h4>
 				<ol class="condition">
 					<li>
-						Display <code id="charts-diagrams-formulas-title">"Charts, diagrams, math, and formulas"</code> as heading.
+						Display <code id="rich-content-title">"Charts, diagrams, math, and formulas"</code> as heading.
 						<p class="note">This heading can be hidden if metadata is missing.</p>
 					</li>
 					<li>
 						<span><b>IF</b> (<var>contains_charts_diagrams</var> <b>AND</b> <var>long_text_descriptions</var>):</span>
-						<span><b>THEN</b> display <code id="charts-diagrams-formulas-extended">"Charts and diagrams have extended descriptions"</code>.</span>
+						<span><b>THEN</b> display <code id="rich-content-extended">"Charts and diagrams have extended descriptions"</code>.</span>
 					</li>
 					<li>
 						<span><b>IF</b> <var>chemical_formula_as_chemml</var>:</span>
-						<span><b>THEN</b> display <code id="charts-diagrams-formulas-accessible-chemistry">"Accessible chemistry content"</code>.</span>
+						<span><b>THEN</b> display <code id="rich-content-accessible-chemistry">"Accessible chemistry content"</code>.</span>
 					</li>
 					<li>
 						<span><b>IF</b> <var>math_formula_as_latex</var> <b>OR</b> <var>math_formula_as_mathml</var>:</span>
-						<span><b>THEN</b> display <code id="charts-diagrams-formulas-accessible-math">"Accessible math content"</code>.</span>
+						<span><b>THEN</b> display <code id="rich-content-accessible-math">"Accessible math content"</code>.</span>
 					</li>
 					<li>
 						<span><b>IF</b> (<var>contains_charts_diagrams</var> <b>OR</b> <var>contains_chemical_formula</var> <b>OR</b> <var>contains_math_formula</var>) <b>AND</b> <b>NOT</b> (<var>long_text_descriptions</var> <b>OR</b> <var>chemical_formula_as_chemml</var> <b>OR</b> <var>math_formula_as_latex</var> <b>OR</b> <var>math_formula_as_mathml</var>):</span>
-						<span><b>THEN</b> display <code id="charts-diagrams-formulas-unknown">"accessibility of formulas, charts, math, and diagrams not identified as being accessible"</code>.</span>
+						<span><b>THEN</b> display <code id="rich-content-unknown">"accessibility of formulas, charts, math, and diagrams not identified as being accessible"</code>.</span>
 					</li>
 				</ol>
 
@@ -890,7 +878,7 @@
 						<span><b>THEN</b> display <code id="hazards-unknown">"The presence of hazards is unknown"</code>.</span>
                     </li>
 					<li>
-						<b>ELSE</b> either omit this key informtion if metadata is missing or display <code id="hazards-no-metadata">"No information about possible hazards is available."</code>.
+						<b>ELSE</b> either omit this key informtion if metadata is missing or display <code id="hazards-no-metadata">"No information about possible hazards is available"</code>.
 
                     </li>
 				</ol>
@@ -913,7 +901,7 @@
 				<dl>
 					<dt><var>accessibility_summary</var></dt>
 					<dd>
-						<p>If true it indicates that the <i>accessibilitySummary</i> is present in the package document, otherwise if false it means that the metadata is not present.</p>
+						<p>Contains the <i>accessibilitySummary</i> from the package document if it exists, otherwise it will be blank.</p>
 						<p>This means there is a human-written text containing a short explanatory summary of the accessibility of the product or the URL of a web page comprising such a summary. Summarizes the already existent information and may add information that the publisher could not express with the other codes.</p>
 					</dd>
 					<dt><var>lang_attribute_accessibility_summary</var></dt>
@@ -931,7 +919,7 @@
 				<ol class="condition">
                     <li><b>LET</b> <var>package_document</var> be the result of calling <a href="#pre-processing">preprocessing</a> given <var>package_document_as_text</var>.</li>
 
-                    <li><b>LET</b> <var>accessibility_summary</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilitySummary</i>"]</code>.</li>
+                    <li><b>LET</b> <var>accessibility_summary</var> be the value of the node extracted from <var>package_document</var>, using the xpath <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilitySummary</i>"]</code>.</li>
 
                     <li><b>LET</b> <var>lang_attribute_accessibility_summary</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilitySummary</i>"]/(@lang|ancestor::*/@lang)[last()]</code>.</li>
 
@@ -952,7 +940,7 @@
 						<b>ELSE</b> <b>LET</b> <var>language_accessibility_summary</var> be the value of <var>language_of_text</var>.
 					</li>
 					<li>
-						<span><b>ELSE IF</b> <var>accessibility_summary</var> is <b>NOT</b> empty:</span>
+						<span><b>IF</b> <var>accessibility_summary</var> is <b>NOT</b> empty:</span>
 						<span><b>THEN</b> display the content of <var>accessibility_summary</var> with <var>language_accessibility_summary</var> as language.</span></li>
 					<li>
 						<b>ELSE</b> either omit this key informtion if metadata is missing or display <code id="accessibility-summary-no-metadata">"No accessibility summary is available."</code>.
