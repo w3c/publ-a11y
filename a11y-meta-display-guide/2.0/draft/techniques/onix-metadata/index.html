@@ -80,13 +80,13 @@
 		<section id="onix-metadata">
 			<h2>ONIX Metadata</h2>
 			
-			<p class="note">
+			<aside class="note">
 				Techniques for displaying accessibility metadata in other metadata formats can be found in the <a href="../../guidelines/#techniques">Display Techniques for Displaying Accessibility Metadata</a>
-			</p>
+			</aside>
             
- 			<p class="note">
+ 			<aside class="note">
  				This document provides techniques for meeting the guidelines of the <a href="../../guidelines/">Accessibility Metadata Display Guide for Digital Publications 2.0</a>. It provides practical examples for extracting information from the ONIX metadata for showing it to the end users.
-			</p>
+			</aside>
 			
 			<aside class="note">
  			    The examples provided in this document demonstrate the "compact" version of what is to be displayed.
@@ -116,7 +116,7 @@
                 
 			 </aside>
 			
-			<p class="note">
+			<aside class="note">
 				ONIX messages describe products for the global book supply chain and will be sent from publisher or creator of the EPUB or digital books with full audio to those who will make the products available for sale, lending or subscription.
 				These platforms may not yet have the actual files, as they may not yet be ready, or may only choose to list them for sale if they have certain accessibility features.
 				ONIX also only describes a product, it cannot describe the features of the reading systems on which a product may be accessed.
@@ -124,11 +124,11 @@
 				An ONIX file can be used to display accessibility information in advance of publication or when you do not have access to the metadata in the digital file itself.
 				Some accessibility information may only be available when you have access to the file itself.
 				If you are unfamiliar with ONIX, then there is more documentation available from <a href="https://www.editeur.org/83/Overview/">EDItEUR.org</a>.
-			</p>
+			</aside>
 			
-			<p class="note">
+			<aside class="note">
 				It is important to note that ONIX 3.0 includes a number of new accessibility metadata codes, some of which may not be expressible in earlier versions of ONIX.
-			</p>
+			</aside>
 				
 			<section id="onix-record-examples">
 				<h3>ONIX record examples</h3>
@@ -609,7 +609,7 @@
 					</li>
 					<li>
 						<b>ELSE</b> display <code id="prerecorded-audio-no-metadata">"No information is available"</code>.
-						<p class="note">This key information can be hidden if metadata is missing.</p>
+						<aside class="note">This key information can be hidden if metadata is missing.</aside>
 					</li>
 				</ol>
 			</section>
@@ -674,7 +674,7 @@
 					</li>
 					<li>
 						<b>ELSE</b> display <code id="navigation-no-metadata">"No information is available"</code>.
-						<p class="note">This key information can be hidden if metadata is missing.</p>
+						<aside class="note">This key information can be hidden if metadata is missing.</aside>
 					</li>
 				</ol>
 			</section>
@@ -858,7 +858,7 @@
 					</li>
 					<li>
 						<b>ELSE</b> display <code id="hazards-no-metadata">"No information is available"</code>.
-						<p class="note">This key information can be hidden if metadata is missing.</p>
+						<aside class="note">This key information can be hidden if metadata is missing.</aside>
 					</li>
 				</ol>
 			</section>
@@ -867,11 +867,11 @@
 				<h3>Accessibility summary</h3>
 				<p>This technique relates to <a href="../../guidelines/#accessibility-summary">Accessibility summary key information</a>.</p>
 				<p>This algorithm takes the <var>onix_record_as_text</var> argument: a UTF-8 string representing the ONIX record.</p>
-				<p class="note">
+				<aside class="note">
 					Being human-written, the accessibility summary and addendum will appear in the original language of the publication. Therefore it is necessary of take care of setting up the correct language tag information.
-				</p>
+				</aside>
 
-				<p class="note">Accessibility summary existed when no system exposed the computed accessibility metadata. With more and more systems displaying this information, most of the accessibility summary may be redundant. It may be advised to display only the accessibility addendum. </p>
+				<aside class="note">Accessibility summary existed when no system exposed the computed accessibility metadata. With more and more systems displaying this information, most of the accessibility summary may be redundant. It may be advised to display only the accessibility addendum.</aside>
 
 				<h4>Understanding the variables</h4>
 				<dl>
@@ -959,7 +959,7 @@
 					</li>
 					<li>
 						<b>ELSE</b> display <code id="accessibility-summary-no-metadata">"No accessibility summary is available."</code>.
-						<p class="note">This key information can be hidden if metadata is missing.</p>
+						<aside class="note">This key information can be hidden if metadata is missing.</aside>
 					</li>
 				</ol>
 			</section>
@@ -1002,7 +1002,7 @@
 					</li>
 					<li>
 						<b>ELSE</b> display <code id="legal-considerations-no-metadata">"No legal considerations"</code>.
-						<p class="note">This key information can be hidden if metadata is missing.</p>
+						<aside class="note">This key information can be hidden if metadata is missing.</aside>
 					</li>
 				</ol>
 			</section>
