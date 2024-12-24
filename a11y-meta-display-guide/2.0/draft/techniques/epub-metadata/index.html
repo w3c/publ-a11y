@@ -258,7 +258,7 @@
 						<span><b>ELSE IF</b> <var>is_fixed_layout</var>:</span>
 						<span><b>THEN</b> display <code id="visual-adjustments-unmodifiable">"Appearance cannot be modified"</code>.</span>
 					</li>
-					<li><b>ELSE</b> display <code id="visual-adjustments-unknown">"Appearance modifiability not known"</code>.</li>
+					<li><b>ELSE</b> display <code id="visual-adjustments-unknown">"No information is available"</code>.</li>
 				</ol>
 			</section>
 	            
@@ -431,7 +431,7 @@
 					<li>Display <code id="conformance-title">"Conformance"</code> as heading.</li>
 					
 					<li><span><b>IF</b> <var>conformance_string</var> is empty:</span>
-						<span><b>THEN</b> display <code id="conformance-no">"The publication does not include a conformance statement"</code>.</span>
+						<span><b>THEN</b> display <code id="conformance-no">"No information is available"</code>.</span>
 					</li>
 					<li>
 						<span><b>ELSE</b>:</span>
@@ -574,7 +574,7 @@
 					</li>
 					<li>
 						<span><b>ELSE IF</b> <var>synchronised_pre_recorded_audio</var>:</span>
-						<span><b>THEN</b> display <code id="prerecorded-audio-synchronized">"Synchronized audio and text"</code>.</span>
+						<span><b>THEN</b> display <code id="prerecorded-audio-synchronized">"Prerecorded audio synchronized with text"</code>.</span>
 					</li>					
 					<li>
 						<span><b>ELSE IF</b> <var>audio_content</var>:</span>
@@ -582,7 +582,7 @@
 					</li>		
 
 					<li>
-						<b>ELSE</b> either omit this key informtion if metadata is missing or display <code id="prerecorded-audio-no-metadata">"No information about prerecorded audio is available"</code>.
+						<b>ELSE</b> either omit this key informtion if metadata is missing or display <code id="prerecorded-audio-no-metadata">"No information is available"</code>.
 					</li>
 				</ol>
 			</section>
@@ -651,7 +651,7 @@
 							</li>
                             <li>
 							     <span><b>IF</b> <var>page_navigation</var>:</span>
-							     <span><b>THEN</b> <b>APPEND</b> <code id="navigation-page-navigation">"supports page navigation"</code> to <var>navigation</var>.</span>
+							     <span><b>THEN</b> <b>APPEND</b> <code id="navigation-page-navigation">"Go to page"</code> to <var>navigation</var>.</span>
                             </li>
  							<li>
 								<span><b>IF</b> <var>next_previous_structural_navigation</var>:</span>
@@ -667,7 +667,7 @@
 						</ol>
 					</li>
 					<li>
-						<b>ELSE</b> either omit this key informtion if metadata is missing or display <code id="navigation-no-metadata">"No information about navigation is available"</code>.
+						<b>ELSE</b> either omit this key informtion if metadata is missing or display <code id="navigation-no-metadata">"No information is available"</code>.
 					</li>
 				</ol>
 			</section>
@@ -742,7 +742,7 @@
 					</li>
 					<li>
 						<span><b>IF</b> (<var>contains_charts_diagrams</var> <b>AND</b> <var>long_text_descriptions</var>):</span>
-						<span><b>THEN</b> display <code id="rich-content-extended">"Charts and diagrams have extended descriptions"</code>.</span>
+						<span><b>THEN</b> display <code id="rich-content-extended">"Information-rich images are described by extended descriptions"</code>.</span>
 					</li>
 					<li>
 						<span><b>IF</b> <var>chemical_formula_as_chemml</var>:</span>
@@ -754,7 +754,7 @@
 					</li>
 					<li>
 						<span><b>IF</b> (<var>contains_charts_diagrams</var> <b>OR</b> <var>contains_chemical_formula</var> <b>OR</b> <var>contains_math_formula</var>) <b>AND</b> <b>NOT</b> (<var>long_text_descriptions</var> <b>OR</b> <var>chemical_formula_as_chemml</var> <b>OR</b> <var>math_formula_as_latex</var> <b>OR</b> <var>math_formula_as_mathml</var>):</span>
-						<span><b>THEN</b> display <code id="rich-content-unknown">"accessibility of formulas, charts, math, and diagrams not identified as being accessible"</code>.</span>
+						<span><b>THEN</b> display <code id="rich-content-unknown">"No information is available"</code>.</span>
 					</li>
 				</ol>
 
@@ -878,7 +878,7 @@
 						<span><b>THEN</b> display <code id="hazards-unknown">"The presence of hazards is unknown"</code>.</span>
                     </li>
 					<li>
-						<b>ELSE</b> either omit this key informtion if metadata is missing or display <code id="hazards-no-metadata">"No information about possible hazards is available"</code>.
+						<b>ELSE</b> either omit this key informtion if metadata is missing or display <code id="hazards-no-metadata">"No information is available"</code>.
 
                     </li>
 				</ol>
