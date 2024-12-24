@@ -249,7 +249,6 @@
 				</ol>
 				<h4>Instructions</h4>
 				<ol class="condition">
-					<li>Display <code id="visual-adjustments-title">"Visual adjustments"</code> as heading.</li>
 					<li>
 						<span><b>IF</b> <var>all_textual_content_can_be_modified</var>:</span>
 						<span><b>THEN</b> display <code id="visual-adjustments-modifiable">"Appearance can be modified"</code>.</span>
@@ -317,7 +316,6 @@
 				</ol>
 				<h4>Instructions</h4>
 				<ol class="condition">
-					<li>Display <code id="nonvisual-reading-title">"Supports nonvisual reading"</code> as heading.</li>
 					<li>
 						<span><b>IF</b> <var>all_necessary_content_textual</var>:</span>
 						<span><b>THEN</b> display <code id="nonvisual-reading-readable">"Readable in read aloud or  dynamic braille"</code>.</span>
@@ -428,8 +426,6 @@
 				
 				<h4>Instructions</h4>
 				<ol class="condition">
-					<li>Display <code id="conformance-title">"Conformance"</code> as heading.</li>
-					
 					<li><span><b>IF</b> <var>conformance_string</var> is empty:</span>
 						<span><b>THEN</b> display <code id="conformance-no">"No information is available"</code>.</span>
 					</li>
@@ -565,10 +561,6 @@
 				<h4>Instructions</h4>
 				<ol class="condition">
 					<li>
-						Display <code id="prerecorded-audio-title">"Prerecorded audio"</code> as heading.
-						<p class="note">This heading can be hidden if metadata is missing.</p>
-					</li>
-					<li>
 						<span><b>IF</b> <var>all_content_audio</var>:</span>
 						<span><b>THEN</b> display <code id="prerecorded-audio-only">"Audio only"</code>.</span>
 					</li>
@@ -633,10 +625,6 @@
   				</ol>
 				<h4>Instructions</h4>
 				<ol class="condition">
-					<li>
-						Display <code id="navigation-title">"Navigation"</code> as heading.
-						<p class="note">This heading can be hidden if metadata is missing.</p>
-					</li>
 					<li>
 						<span><b>IF</b> <var>table_of_contents_navigation</var> <b>OR</b> <var>index_navigation</var> <b>OR</b> <var>page_navigation</var> <b>OR</b> <var>next_previous_structural_navigation</var>:</span>
 						<span><b>THEN</b> <b>LET</b> <var>navigation</var> be  an empty array.</span>
@@ -737,10 +725,6 @@
 				<h4>Instructions</h4>
 				<ol class="condition">
 					<li>
-						Display <code id="rich-content-title">"Charts, diagrams, math, and formulas"</code> as heading.
-						<p class="note">This heading can be hidden if metadata is missing.</p>
-					</li>
-					<li>
 						<span><b>IF</b> (<var>contains_charts_diagrams</var> <b>AND</b> <var>long_text_descriptions</var>):</span>
 						<span><b>THEN</b> display <code id="rich-content-extended">"Information-rich images are described by extended descriptions"</code>.</span>
 					</li>
@@ -840,10 +824,6 @@
 				<h4>Instructions</h4>
 				<ol class="condition">
 					<li>
-						Display <code id="hazards-title">"Hazards"</code> as heading.
-						<p class="note">This heading can be hidden if metadata is missing.</p>
-					</li>
-					<li>
 						<span><b>IF</b> <var>no_hazards_or_warnings_confirmed</var> <b>OR</b> (<var>no_flashing_hazards</var> <b>AND</b> <var>no_motion_hazards</var> <b>AND</b> <var>no_sound_hazards</var>):</span>
 						<span><b>THEN</b> display <code id="hazards-none">"No hazards"</code>.</span>
 					</li>
@@ -853,15 +833,15 @@
 						<ol class="condition">
 							<li>
 								<span><b>IF</b> <var>flashing_hazard</var>:</span>
-								<span><b>THEN</b> <b>APPEND</b> <code id="hazards-flashing">"flashing"</code> to <var>hazards</var>.</span>
+								<span><b>THEN</b> <b>APPEND</b> <code id="hazards-flashing">"Flashing content"</code> to <var>hazards</var>.</span>
 							</li>
 							<li>
 								<span><b>IF</b> <var>motion_simulation_hazard</var>:</span>
-								<span><b>THEN</b> <b>APPEND</b> <code id="hazards-motion">"motion simulation"</code> to <var>hazards</var>.</span>
+								<span><b>THEN</b> <b>APPEND</b> <code id="hazards-motion">"Motion simulation"</code> to <var>hazards</var>.</span>
 							</li>
 							<li>
 								<span><b>IF</b> <var>sound_hazard</var>:</span>
-								<span><b>THEN</b> <b>APPEND</b> <code id="hazards-sound">"sound"</code> to <var>hazards</var>.</span>
+								<span><b>THEN</b> <b>APPEND</b> <code id="hazards-sound">"Loud sounds"</code> to <var>hazards</var>.</span>
 							</li>
 							<li><b>LET</b> <var>hazards_string</var> be the result of:
 								<ul class="condition">
@@ -928,10 +908,6 @@
  				</ol>
 				<h4>Instructions</h4>
 				<ol class="condition">
- 					<li>
-						Display <code id="accessibility-summary-title">"Accessibility summary"</code> as heading.
-						<p class="note">This heading can be hidden if metadata is missing.</p>
-					</li>
                    <li>
 						<span><b>IF</b> <var>lang_attribute_accessibility_summary</var> is <b>NOT</b> empty:</span>
 						<span><b>THEN</b> <b>LET</b> <var>language_accessibility_summary</var> be the value of <var>lang_attribute_accessibility_summary</var>.</span>
@@ -983,10 +959,6 @@
 				</ol>
 				<h4>Instructions</h4>
 				<ol class="condition">
-					<li>
-						Display <code id="legal-considerations-title">"Legal considerations"</code> as heading.
-						<p class="note">This heading can be hidden if metadata is missing.</p>
-					</li>
 					<li>
 						<span><b>IF</b> <var>eaa_exemption_micro_enterprises</var> <b>OR</b> <var>eaa_exception_disproportionate_burden</var> <b>OR</b> <var>eaa_exception_fundamental_modification</var>:</span>
 						<span><b>THEN</b> display <code id="tbd">"TBD"</code>.</span>
