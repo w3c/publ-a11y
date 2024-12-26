@@ -322,7 +322,13 @@
 				<ol class="condition">
 					<li>
 						<span><b>IF</b> <var>all_necessary_content_textual</var>:</span>
-						<span><b>THEN</b> display <code id="nonvisual-reading-readable">"Read aloud or dynamic braille"</code>.</span>
+						<span><b>THEN</b> display <code id="nonvisual-reading-readable">"Readable in read aloud or dynamic braille"</code>.</span>
+						<ol class="condition">
+							<li>
+								<span><b>IF</b> <var>textual_alternative_images</var>:</span>
+								<span><b>THEN</b> display <code id="nonvisual-reading-alt-text">"Has alt text"</code>.</span>
+							</li>
+						</ol>
 					</li>
 					<li>
 						<span><b>ELSE IF</b> <var>real_text</var> <b>AND</b> <var>non_textual_content_images</var> <b>AND</b> <b>NOT</b> <var>textual_alternative_images</var>:</span>
@@ -459,7 +465,7 @@
 						<span><b>IF</b> <var>certifier_credentials</var> is <b>NOT</b> empty:</span>
 						<span><b>THEN</b></span>
 						<ul class="condition">
-							<li>display <code id="conformance-certifier-credentials">"The certifier 's credential is "</code></li>
+							<li>display <code id="conformance-certifier-credentials">"The certifier's credential is"</code></li>
 							<li>display <var>certifier_credentials</var> as link <b>IF</b> <var>certifier_credentials</var> is an URL.</li>
 						</ul>
 					</li>
@@ -1022,10 +1028,10 @@
 				<ol class="condition">
 					<li>
 						<span><b>IF</b> <var>eaa_exemption_micro_enterprises</var> <b>OR</b> <var>eaa_exception_disproportionate_burden</var> <b>OR</b> <var>eaa_exception_fundamental_modification</var>:</span>
-						<span><b>THEN</b> display <code id="tbd">"TBD"</code>.</span>
+						<span><b>THEN</b> display <code id="legal-considerations-exempt">"This publication claims an accessibility exemption in some jurisdictions"</code>.</span>
 					</li>
 					<li>
-						<b>ELSE</b> either omit this key informtion if metadata is missing or display <code id="legal-considerations-no-metadata">"No legal considerations"</code>.
+						<b>ELSE</b> either omit this key informtion if metadata is missing or display <code id="legal-considerations-no-metadata">"No information is available"</code>.
 					</li>
 				</ol>
 			</section>
@@ -1044,21 +1050,6 @@
 							<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/196/24">code 24 of codelist 196</a> (Dyslexia readability) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
 							<p>This means that the product has been specifically adapted or has features specifically to improve readability for dyslexic readers, for example specialised font, character and/or line spacing, justification and paragraph spacing, coloring and other options provided specifically to improve readability for dyslexic readers.</p>
 						</dd>
-						<dt><var>closed_captions</var></dt>
-						<dd>
-							<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/175/V210">code V210 of codelist 175</a> (Closed captions) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
-							<p>This means that the audio content of a video can be seen via closed captions that can be turned on or off  by the viewer and which will be a separate file from the video itself.</p>
-						</dd>
-						<dt><var>open_captions</var></dt>
-						<dd>
-							<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/175/V211">code V211 of codelist 175</a> (Open captions) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
-							<p>This means that the audio content of a video can be seen via open captions, which means they cannot be turned off and are always visible when the video plays.</p>
-						</dd>
-						<dt><var>full_transcript</var></dt>
-						<dd>
-							<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/175/V212">code V212 of codelist 175</a> (Full transcript) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
-							<p>This means that a full transcript of the audio content of the product is supplied with it.</p>
-						</dd>
 						<dt><var>sign_language</var></dt>
 						<dd>
 							<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/175/V213">code V213 of codelist 175</a> (Sign language interpretation) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
@@ -1070,45 +1061,18 @@
 					<ol class="condition">
 						<li><b>LET</b> <var>onix</var> be the result of calling <a href="#preprocessing">preprocessing</a> given <var>onix_record_as_text</var>.</li>
 						<li><b>LET</b> <var>dyslexia_readability</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "24"]</code>.</li>
-						<li><b>LET</b> <var>closed_captions</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail[ProductFormDetail = "V210"]</code>.</li>
-						<li><b>LET</b> <var>open_captions</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail[ProductFormDetail = "V211"]</code>.</li>
-						<li><b>LET</b> <var>full_transcript</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail[ProductFormDetail = "V212"]</code>.</li>
 						<li><b>LET</b> <var>sign_language</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail[ProductFormDetail = "V213"]</code>.</li>
 					</ol>
 					
 					<h5>Instructions</h5>
 					<ol class="condition">
-						<li><b>LET</b> <var>adaptation</var> be  an empty array.</li>
 						<li>
 							<span><b>IF</b> <var>dyslexia_readability</var>:</span>
-							<span><b>THEN</b> <b>APPEND</b> <code id="additional-accessibility-information-adaptation-dyslexia-readability">"dyslexia readability"</code> to <var>adaptation</var>.</span>
-						</li>
-						<li>
-							<span><b>IF</b> <var>closed_captions</var>:</span>
-							<span><b>THEN</b> <b>APPEND</b> <code id="additional-accessibility-information-adaptation-closed-captions">"closed captions"</code> to <var>adaptation</var>.</span>
-						</li>
-						<li>
-							<span><b>IF</b> <var>open_captions</var>:</span>
-							<span><b>THEN</b> <b>APPEND</b> <code id="additional-accessibility-information-adaptation-open-captions">"open captions"</code> to <var>adaptation</var>.</span>
-						</li>
-						<li>
-							<span><b>IF</b> <var>full_transcript</var>:</span>
-							<span><b>THEN</b> <b>APPEND</b> <code id="additional-accessibility-information-adaptation-full-transcript">"full transcript"</code> to <var>adaptation</var>.</span>
+							<span><b>THEN</b> display <code id="additional-accessibility-information-adaptation-dyslexia-readability">"Dyslexia readability"</code>.</span>
 						</li>
 						<li>
 							<span><b>IF</b> <var>sign_language</var>:</span>
-							<span><b>THEN</b> <b>APPEND</b> <code id="additional-accessibility-information-adaptation-sign-language">"sign language"</code> to <var>adaptation</var>.</span>
-						</li>
-						<li><b>IF</b> <var>adaptation</var> is <b>NOT</b> empty:
-							<ol class="condition">
-								<li><b>LET</b> <var>adaptation_string</var> be the result of:
-									<ul class="condition">
-										<li>calling <a href="#join-array-to-comma-list">join array to comma list</a> given <var>adaptation</var></li>
-										<li>uppercasing the first character.</li>
-									</ul>
-								</li>
-								<li>display <var>adaptation_string</var>.</li>
-							</ol>
+							<span><b>THEN</b> display <code id="additional-accessibility-information-adaptation-sign-language">"Sign language"</code>.</span>
 						</li>
 					</ol>
 				</section>
@@ -1169,45 +1133,33 @@
 					
 					<h5>Instructions</h5>
 					<ol class="condition">
-						<li><b>LET</b> <var>clarity</var> be  an empty array.</li>
 						<li>
 							<span><b>IF</b> <var>text_to_speech_hinting</var>:</span>
-							<span><b>THEN</b> <b>APPEND</b> <code id="additional-accessibility-information-clarity-text-to-speech-hinting">"text-to-speech hinting provided"</code> to <var>clarity</var>.</span>
+							<span><b>THEN</b> display <code id="additional-accessibility-information-clarity-text-to-speech-hinting">"Text-to-speech hinting provided"</code>.</span>
 						</li>
 						<li>
 							<span><b>IF</b> <var>color_not_sole_means_of_conveying_information</var>:</span>
-							<span><b>THEN</b> <b>APPEND</b> <code id="additional-accessibility-information-clarity-color-not-sole-means-of-conveying-information">"color is not the sole means of conveying information"</code> to <var>clarity</var>.</span>
+							<span><b>THEN</b> display <code id="additional-accessibility-information-clarity-color-not-sole-means-of-conveying-information">"Color is not the sole means of conveying information"</code>.</span>
 						</li>
 						<li>
 							<span><b>IF</b> <var>high_contrast_between_text_and_background</var>:</span>
-							<span><b>THEN</b> <b>APPEND</b> <code id="additional-accessibility-information-clarity-high-contrast-between-text-and-background">"high contrast between text and background"</code> to <var>clarity</var>.</span>
+							<span><b>THEN</b> display <code id="additional-accessibility-information-clarity-high-contrast-between-text-and-background">"High contrast between text and background"</code>.</span>
 						</li>
 						<li>
 							<span><b>IF</b> <var>ultra_high_contrast_between_text_and_background</var>:</span>
-							<span><b>THEN</b> <b>APPEND</b> <code id="additional-accessibility-information-clarity-ultra-high-contrast-between-text-and-background">"ultra high contrast between text and background"</code> to <var>clarity</var>.</span>
+							<span><b>THEN</b> display <code id="additional-accessibility-information-clarity-ultra-high-contrast-between-text-and-background">"Ultra high contrast between text and background"</code>.</span>
 						</li>
 						<li>
 							<span><b>IF</b> <var>visible_page_numbering</var>:</span>
-							<span><b>THEN</b> <b>APPEND</b> <code id="additional-accessibility-information-clarity-visible-page-numbering">"visible page numbering "</code> to <var>clarity</var>.</span>
+							<span><b>THEN</b> display <code id="additional-accessibility-information-clarity-visible-page-numbering">"Visible page numbering "</code>.</span>
 						</li>
 						<li>
 							<span><b>IF</b> <var>high_contrast_between_foreground_and_background_audio</var>:</span>
-							<span><b>THEN</b> <b>APPEND</b> <code id="additional-accessibility-information-clarity-high-contrast-between-foreground-and-background-audio">"high contrast between foreground and background audio"</code> to <var>clarity</var>.</span>
+							<span><b>THEN</b> display <code id="additional-accessibility-information-clarity-high-contrast-between-foreground-and-background-audio">"High contrast between foreground and background audio"</code>.</span>
 						</li>
 						<li>
 							<span><b>IF</b> <var>without_background_sounds</var>:</span>
-							<span><b>THEN</b> <b>APPEND</b> <code id="additional-accessibility-information-clarity-without-background-sounds">"without background sounds"</code> to <var>clarity</var>.</span>
-						</li>
-						<li><b>IF</b> <var>clarity</var> is <b>NOT</b> empty:
-							<ol class="condition">
-								<li><b>LET</b> <var>clarity_string</var> be the result of:
-									<ul class="condition">
-										<li>calling <a href="#join-array-to-comma-list">join array to comma list</a> given <var>clarity</var></li>
-										<li>uppercasing the first character.</li>
-									</ul>
-								</li>
-								<li>display <var>clarity_string</var>.</li>
-							</ol>
+							<span><b>THEN</b> display <code id="additional-accessibility-information-clarity-without-background-sounds">"Without background sounds"</code>.</span>
 						</li>
 					</ol>
 				</section>
