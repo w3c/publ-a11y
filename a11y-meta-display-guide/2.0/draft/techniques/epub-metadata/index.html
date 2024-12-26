@@ -1028,11 +1028,8 @@
                         <li><b>LET</b> <var>package_document</var> be the result of calling <a href="#pre-processing">preprocessing</a> given <var>package_document_as_text</var>.</li>
 						<li><b>LET</b> <var>audio_descriptions</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>audioDescription</i>"]</code>.</li>
 						<li><b>LET</b> <var>braille</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>braille</i>"]</code>.</li>
-						<li><b>LET</b> <var>closed_captions</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>closedCaptions</i>"]</code>.</li>
-                        <li><b>LET</b> <var>open_captions</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>openCaptions</i>"]</code>.</li>
                         <li><b>LET</b> <var>tactile_graphic</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>tactileGraphic</i>"]</code>.</li>
                         <li><b>LET</b> <var>tactile_object</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>tactileObject</i>"]</code>.</li>
-                        <li><b>LET</b> <var>transcript</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>transcript</i>"]</code>.</li>
                         <li><b>LET</b> <var>sign_language</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>signLanguage</i>"]</code>.</li>
     				</ol>
 					
@@ -1048,24 +1045,12 @@
 							<span><b>THEN</b> <b>APPEND</b> <code id="additional-accessibility-information-adaptation-braille">"braille"</code> to <var>adaptation</var>.</span>
 						</li>
 						<li>
-							<span><b>IF</b> <var>closed_captions</var>:</span>
-							<span><b>THEN</b> <b>APPEND</b> <code id="additional-accessibility-information-adaptation-closed-captions">"closed captions"</code> to <var>adaptation</var>.</span>
-						</li>
-						<li>
-							<span><b>IF</b> <var>open_captions</var>:</span>
-							<span><b>THEN</b> <b>APPEND</b> <code id="additional-accessibility-information-adaptation-open-captions">"open captions"</code> to <var>adaptation</var>.</span>
-						</li>
-						<li>
 							<span><b>IF</b> <var>tactile_graphic</var>:</span>
 							<span><b>THEN</b> <b>APPEND</b> <code id="additional-accessibility-information-adaptation-tactile_graphic">"tactile graphic"</code> to <var>adaptation</var>.</span>
 						</li>
 						<li>
 							<span><b>IF</b> <var>tactile_object</var>:</span>
 							<span><b>THEN</b> <b>APPEND</b> <code id="additional-accessibility-information-adaptation-tactile_object">"tactile 3D object"</code> to <var>adaptation</var>.</span>
-						</li>
-						<li>
-							<span><b>IF</b> <var>transcript</var>:</span>
-							<span><b>THEN</b> <b>APPEND</b> <code id="additional-accessibility-information-adaptation-transcript">"transcript"</code> to <var>adaptation</var>.</span>
 						</li>
 						<li>
 							<span><b>IF</b> <var>sign_language</var>:</span>

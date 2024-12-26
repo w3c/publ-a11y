@@ -1050,21 +1050,6 @@
 							<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/196/24">code 24 of codelist 196</a> (Dyslexia readability) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
 							<p>This means that the product has been specifically adapted or has features specifically to improve readability for dyslexic readers, for example specialised font, character and/or line spacing, justification and paragraph spacing, coloring and other options provided specifically to improve readability for dyslexic readers.</p>
 						</dd>
-						<dt><var>closed_captions</var></dt>
-						<dd>
-							<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/175/V210">code V210 of codelist 175</a> (Closed captions) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
-							<p>This means that the audio content of a video can be seen via closed captions that can be turned on or off  by the viewer and which will be a separate file from the video itself.</p>
-						</dd>
-						<dt><var>open_captions</var></dt>
-						<dd>
-							<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/175/V211">code V211 of codelist 175</a> (Open captions) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
-							<p>This means that the audio content of a video can be seen via open captions, which means they cannot be turned off and are always visible when the video plays.</p>
-						</dd>
-						<dt><var>full_transcript</var></dt>
-						<dd>
-							<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/175/V212">code V212 of codelist 175</a> (Full transcript) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
-							<p>This means that a full transcript of the audio content of the product is supplied with it.</p>
-						</dd>
 						<dt><var>sign_language</var></dt>
 						<dd>
 							<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/175/V213">code V213 of codelist 175</a> (Sign language interpretation) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
@@ -1076,9 +1061,6 @@
 					<ol class="condition">
 						<li><b>LET</b> <var>onix</var> be the result of calling <a href="#preprocessing">preprocessing</a> given <var>onix_record_as_text</var>.</li>
 						<li><b>LET</b> <var>dyslexia_readability</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "24"]</code>.</li>
-						<li><b>LET</b> <var>closed_captions</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail[ProductFormDetail = "V210"]</code>.</li>
-						<li><b>LET</b> <var>open_captions</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail[ProductFormDetail = "V211"]</code>.</li>
-						<li><b>LET</b> <var>full_transcript</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail[ProductFormDetail = "V212"]</code>.</li>
 						<li><b>LET</b> <var>sign_language</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail[ProductFormDetail = "V213"]</code>.</li>
 					</ol>
 					
@@ -1088,18 +1070,6 @@
 						<li>
 							<span><b>IF</b> <var>dyslexia_readability</var>:</span>
 							<span><b>THEN</b> <b>APPEND</b> <code id="additional-accessibility-information-adaptation-dyslexia-readability">"dyslexia readability"</code> to <var>adaptation</var>.</span>
-						</li>
-						<li>
-							<span><b>IF</b> <var>closed_captions</var>:</span>
-							<span><b>THEN</b> <b>APPEND</b> <code id="additional-accessibility-information-adaptation-closed-captions">"closed captions"</code> to <var>adaptation</var>.</span>
-						</li>
-						<li>
-							<span><b>IF</b> <var>open_captions</var>:</span>
-							<span><b>THEN</b> <b>APPEND</b> <code id="additional-accessibility-information-adaptation-open-captions">"open captions"</code> to <var>adaptation</var>.</span>
-						</li>
-						<li>
-							<span><b>IF</b> <var>full_transcript</var>:</span>
-							<span><b>THEN</b> <b>APPEND</b> <code id="additional-accessibility-information-adaptation-full-transcript">"full transcript"</code> to <var>adaptation</var>.</span>
 						</li>
 						<li>
 							<span><b>IF</b> <var>sign_language</var>:</span>
