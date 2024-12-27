@@ -249,7 +249,6 @@
 				</ol>
 				<h4>Instructions</h4>
 				<ol class="condition">
-					<li>Display <code id="visual-adjustments-title">"Visual adjustments"</code> as heading.</li>
 					<li>
 						<span><b>IF</b> <var>all_textual_content_can_be_modified</var>:</span>
 						<span><b>THEN</b> display <code id="visual-adjustments-modifiable">"Appearance can be modified"</code>.</span>
@@ -258,7 +257,7 @@
 						<span><b>ELSE IF</b> <var>is_fixed_layout</var>:</span>
 						<span><b>THEN</b> display <code id="visual-adjustments-unmodifiable">"Appearance cannot be modified"</code>.</span>
 					</li>
-					<li><b>ELSE</b> display <code id="visual-adjustments-unknown">"Appearance modifiability not known"</code>.</li>
+					<li><b>ELSE</b> display <code id="visual-adjustments-unknown">"No information is available"</code>.</li>
 				</ol>
 			</section>
 	            
@@ -317,7 +316,6 @@
 				</ol>
 				<h4>Instructions</h4>
 				<ol class="condition">
-					<li>Display <code id="nonvisual-reading-title">"Supports nonvisual reading"</code> as heading.</li>
 					<li>
 						<span><b>IF</b> <var>all_necessary_content_textual</var>:</span>
 						<span><b>THEN</b> display <code id="nonvisual-reading-readable">"Readable in read aloud or  dynamic braille"</code>.</span>
@@ -428,10 +426,8 @@
 				
 				<h4>Instructions</h4>
 				<ol class="condition">
-					<li>Display <code id="conformance-title">"Conformance"</code> as heading.</li>
-					
 					<li><span><b>IF</b> <var>conformance_string</var> is empty:</span>
-						<span><b>THEN</b> display <code id="conformance-no">"The publication does not include a conformance statement"</code>.</span>
+						<span><b>THEN</b> display <code id="conformance-no">"No information is available"</code>.</span>
 					</li>
 					<li>
 						<span><b>ELSE</b>:</span>
@@ -565,16 +561,12 @@
 				<h4>Instructions</h4>
 				<ol class="condition">
 					<li>
-						Display <code id="prerecorded-audio-title">"Prerecorded audio"</code> as heading.
-						<p class="note">This heading can be hidden if metadata is missing.</p>
-					</li>
-					<li>
 						<span><b>IF</b> <var>all_content_audio</var>:</span>
 						<span><b>THEN</b> display <code id="prerecorded-audio-only">"Audio only"</code>.</span>
 					</li>
 					<li>
 						<span><b>ELSE IF</b> <var>synchronised_pre_recorded_audio</var>:</span>
-						<span><b>THEN</b> display <code id="prerecorded-audio-synchronized">"Synchronized audio and text"</code>.</span>
+						<span><b>THEN</b> display <code id="prerecorded-audio-synchronized">"Prerecorded audio synchronized with text"</code>.</span>
 					</li>					
 					<li>
 						<span><b>ELSE IF</b> <var>audio_content</var>:</span>
@@ -582,7 +574,7 @@
 					</li>		
 
 					<li>
-						<b>ELSE</b> either omit this key informtion if metadata is missing or display <code id="prerecorded-audio-no-metadata">"No information about prerecorded audio is available"</code>.
+						<b>ELSE</b> either omit this key informtion if metadata is missing or display <code id="prerecorded-audio-no-metadata">"No information is available"</code>.
 					</li>
 				</ol>
 			</section>
@@ -634,28 +626,24 @@
 				<h4>Instructions</h4>
 				<ol class="condition">
 					<li>
-						Display <code id="navigation-title">"Navigation"</code> as heading.
-						<p class="note">This heading can be hidden if metadata is missing.</p>
-					</li>
-					<li>
 						<span><b>IF</b> <var>table_of_contents_navigation</var> <b>OR</b> <var>index_navigation</var> <b>OR</b> <var>page_navigation</var> <b>OR</b> <var>next_previous_structural_navigation</var>:</span>
 						<span><b>THEN</b> <b>LET</b> <var>navigation</var> be  an empty array.</span>
 						<ol class="condition">
 							<li>
 								<span><b>IF</b> <var>table_of_contents_navigation</var>:</span>
-								<span><b>THEN</b> <b>APPEND</b> <code id="navigation-toc">"table of contents"</code> to <var>navigation</var>.</span>
+								<span><b>THEN</b> <b>APPEND</b> <code id="navigation-toc">"Table of contents"</code> to <var>navigation</var>.</span>
 							</li>
 							<li>
 								<span><b>IF</b> <var>index_navigation</var>:</span>
-								<span><b>THEN</b> <b>APPEND</b> <code id="navigation-index">"index"</code> to <var>navigation</var>.</span>
+								<span><b>THEN</b> <b>APPEND</b> <code id="navigation-index">"Index"</code> to <var>navigation</var>.</span>
 							</li>
                             <li>
 							     <span><b>IF</b> <var>page_navigation</var>:</span>
-							     <span><b>THEN</b> <b>APPEND</b> <code id="navigation-page-navigation">"supports page navigation"</code> to <var>navigation</var>.</span>
+							     <span><b>THEN</b> <b>APPEND</b> <code id="navigation-page-navigation">"Go to page"</code> to <var>navigation</var>.</span>
                             </li>
  							<li>
 								<span><b>IF</b> <var>next_previous_structural_navigation</var>:</span>
-								<span><b>THEN</b> <b>APPEND</b> <code id="navigation-structural">"headings"</code> to <var>navigation</var>.</span>
+								<span><b>THEN</b> <b>APPEND</b> <code id="navigation-structural">"Headings"</code> to <var>navigation</var>.</span>
 							</li>
 							<li><b>LET</b> <var>navigation_string</var> be the result of:
 								<ul class="condition">
@@ -667,7 +655,7 @@
 						</ol>
 					</li>
 					<li>
-						<b>ELSE</b> either omit this key informtion if metadata is missing or display <code id="navigation-no-metadata">"No information about navigation is available"</code>.
+						<b>ELSE</b> either omit this key informtion if metadata is missing or display <code id="navigation-no-metadata">"No information is available"</code>.
 					</li>
 				</ol>
 			</section>
@@ -737,12 +725,8 @@
 				<h4>Instructions</h4>
 				<ol class="condition">
 					<li>
-						Display <code id="rich-content-title">"Charts, diagrams, math, and formulas"</code> as heading.
-						<p class="note">This heading can be hidden if metadata is missing.</p>
-					</li>
-					<li>
 						<span><b>IF</b> (<var>contains_charts_diagrams</var> <b>AND</b> <var>long_text_descriptions</var>):</span>
-						<span><b>THEN</b> display <code id="rich-content-extended">"Charts and diagrams have extended descriptions"</code>.</span>
+						<span><b>THEN</b> display <code id="rich-content-extended">"Information-rich images are described by extended descriptions"</code>.</span>
 					</li>
 					<li>
 						<span><b>IF</b> <var>chemical_formula_as_chemml</var>:</span>
@@ -754,7 +738,7 @@
 					</li>
 					<li>
 						<span><b>IF</b> (<var>contains_charts_diagrams</var> <b>OR</b> <var>contains_chemical_formula</var> <b>OR</b> <var>contains_math_formula</var>) <b>AND</b> <b>NOT</b> (<var>long_text_descriptions</var> <b>OR</b> <var>chemical_formula_as_chemml</var> <b>OR</b> <var>math_formula_as_latex</var> <b>OR</b> <var>math_formula_as_mathml</var>):</span>
-						<span><b>THEN</b> display <code id="rich-content-unknown">"accessibility of formulas, charts, math, and diagrams not identified as being accessible"</code>.</span>
+						<span><b>THEN</b> display <code id="rich-content-unknown">"No information is available"</code>.</span>
 					</li>
 				</ol>
 
@@ -840,10 +824,6 @@
 				<h4>Instructions</h4>
 				<ol class="condition">
 					<li>
-						Display <code id="hazards-title">"Hazards"</code> as heading.
-						<p class="note">This heading can be hidden if metadata is missing.</p>
-					</li>
-					<li>
 						<span><b>IF</b> <var>no_hazards_or_warnings_confirmed</var> <b>OR</b> (<var>no_flashing_hazards</var> <b>AND</b> <var>no_motion_hazards</var> <b>AND</b> <var>no_sound_hazards</var>):</span>
 						<span><b>THEN</b> display <code id="hazards-none">"No hazards"</code>.</span>
 					</li>
@@ -853,15 +833,15 @@
 						<ol class="condition">
 							<li>
 								<span><b>IF</b> <var>flashing_hazard</var>:</span>
-								<span><b>THEN</b> <b>APPEND</b> <code id="hazards-flashing">"flashing"</code> to <var>hazards</var>.</span>
+								<span><b>THEN</b> <b>APPEND</b> <code id="hazards-flashing">"Flashing content"</code> to <var>hazards</var>.</span>
 							</li>
 							<li>
 								<span><b>IF</b> <var>motion_simulation_hazard</var>:</span>
-								<span><b>THEN</b> <b>APPEND</b> <code id="hazards-motion">"motion simulation"</code> to <var>hazards</var>.</span>
+								<span><b>THEN</b> <b>APPEND</b> <code id="hazards-motion">"Motion simulation"</code> to <var>hazards</var>.</span>
 							</li>
 							<li>
 								<span><b>IF</b> <var>sound_hazard</var>:</span>
-								<span><b>THEN</b> <b>APPEND</b> <code id="hazards-sound">"sound"</code> to <var>hazards</var>.</span>
+								<span><b>THEN</b> <b>APPEND</b> <code id="hazards-sound">"Loud sounds"</code> to <var>hazards</var>.</span>
 							</li>
 							<li><b>LET</b> <var>hazards_string</var> be the result of:
 								<ul class="condition">
@@ -878,7 +858,7 @@
 						<span><b>THEN</b> display <code id="hazards-unknown">"The presence of hazards is unknown"</code>.</span>
                     </li>
 					<li>
-						<b>ELSE</b> either omit this key informtion if metadata is missing or display <code id="hazards-no-metadata">"No information about possible hazards is available"</code>.
+						<b>ELSE</b> either omit this key informtion if metadata is missing or display <code id="hazards-no-metadata">"No information is available"</code>.
 
                     </li>
 				</ol>
@@ -928,10 +908,6 @@
  				</ol>
 				<h4>Instructions</h4>
 				<ol class="condition">
- 					<li>
-						Display <code id="accessibility-summary-title">"Accessibility summary"</code> as heading.
-						<p class="note">This heading can be hidden if metadata is missing.</p>
-					</li>
                    <li>
 						<span><b>IF</b> <var>lang_attribute_accessibility_summary</var> is <b>NOT</b> empty:</span>
 						<span><b>THEN</b> <b>LET</b> <var>language_accessibility_summary</var> be the value of <var>lang_attribute_accessibility_summary</var>.</span>
@@ -984,15 +960,11 @@
 				<h4>Instructions</h4>
 				<ol class="condition">
 					<li>
-						Display <code id="legal-considerations-title">"Legal considerations"</code> as heading.
-						<p class="note">This heading can be hidden if metadata is missing.</p>
-					</li>
-					<li>
 						<span><b>IF</b> <var>eaa_exemption_micro_enterprises</var> <b>OR</b> <var>eaa_exception_disproportionate_burden</var> <b>OR</b> <var>eaa_exception_fundamental_modification</var>:</span>
-						<span><b>THEN</b> display <code id="tbd">"TBD"</code>.</span>
+						<span><b>THEN</b> display <code id="legal-considerations-exempt">"This publication claims an accessibility exemption in some jurisdictions"</code>.</span>
 					</li>
 					<li>
-						<b>ELSE</b> either omit this key informtion if metadata is missing or display <code id="legal-considerations-no-metadata">"No legal considerations"</code>.
+						<b>ELSE</b> either omit this key informtion if metadata is missing or display <code id="legal-considerations-no-metadata">"No information is available"</code>.
 					</li>
 				</ol>
 			</section>
@@ -1056,11 +1028,8 @@
                         <li><b>LET</b> <var>package_document</var> be the result of calling <a href="#pre-processing">preprocessing</a> given <var>package_document_as_text</var>.</li>
 						<li><b>LET</b> <var>audio_descriptions</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>audioDescription</i>"]</code>.</li>
 						<li><b>LET</b> <var>braille</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>braille</i>"]</code>.</li>
-						<li><b>LET</b> <var>closed_captions</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>closedCaptions</i>"]</code>.</li>
-                        <li><b>LET</b> <var>open_captions</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>openCaptions</i>"]</code>.</li>
                         <li><b>LET</b> <var>tactile_graphic</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>tactileGraphic</i>"]</code>.</li>
                         <li><b>LET</b> <var>tactile_object</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>tactileObject</i>"]</code>.</li>
-                        <li><b>LET</b> <var>transcript</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>transcript</i>"]</code>.</li>
                         <li><b>LET</b> <var>sign_language</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>signLanguage</i>"]</code>.</li>
     				</ol>
 					
@@ -1076,24 +1045,12 @@
 							<span><b>THEN</b> <b>APPEND</b> <code id="additional-accessibility-information-adaptation-braille">"braille"</code> to <var>adaptation</var>.</span>
 						</li>
 						<li>
-							<span><b>IF</b> <var>closed_captions</var>:</span>
-							<span><b>THEN</b> <b>APPEND</b> <code id="additional-accessibility-information-adaptation-closed-captions">"closed captions"</code> to <var>adaptation</var>.</span>
-						</li>
-						<li>
-							<span><b>IF</b> <var>open_captions</var>:</span>
-							<span><b>THEN</b> <b>APPEND</b> <code id="additional-accessibility-information-adaptation-open-captions">"open captions"</code> to <var>adaptation</var>.</span>
-						</li>
-						<li>
 							<span><b>IF</b> <var>tactile_graphic</var>:</span>
 							<span><b>THEN</b> <b>APPEND</b> <code id="additional-accessibility-information-adaptation-tactile_graphic">"tactile graphic"</code> to <var>adaptation</var>.</span>
 						</li>
 						<li>
 							<span><b>IF</b> <var>tactile_object</var>:</span>
 							<span><b>THEN</b> <b>APPEND</b> <code id="additional-accessibility-information-adaptation-tactile_object">"tactile 3D object"</code> to <var>adaptation</var>.</span>
-						</li>
-						<li>
-							<span><b>IF</b> <var>transcript</var>:</span>
-							<span><b>THEN</b> <b>APPEND</b> <code id="additional-accessibility-information-adaptation-transcript">"transcript"</code> to <var>adaptation</var>.</span>
 						</li>
 						<li>
 							<span><b>IF</b> <var>sign_language</var>:</span>
