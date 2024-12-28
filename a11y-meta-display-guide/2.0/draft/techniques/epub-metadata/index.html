@@ -826,31 +826,22 @@ chemml</var></dt>
 						<span><b>THEN</b> display <code id="hazards-none">"No hazards"</code>.</span>
 					</li>
 					<li>
-						<span><b>ELSE IF</b> <var>flashing_hazard</var> <b>OR</b> <var>motion_simulation_hazard</var> <b>OR</b> <var>sound_hazard</var>:</span>
-						<span><b>THEN</b> <b>LET</b> <var>hazards</var> be  an empty array.</span>
-						<ol class="condition">
+						<span><b>ELSE IF</b> <var>flashing_hazard</var> <b>OR</b> <var>motion_simulation_hazard</var> <b>OR</b> <var>sound_hazard</var>:</span></li>
+						<b>THEN</b> <ol class="condition">
 							<li>
 								<span><b>IF</b> <var>flashing_hazard</var>:</span>
-								<span><b>THEN</b> <b>APPEND</b> <code id="hazards-flashing">"Flashing content"</code> to <var>hazards</var>.</span>
+								<span><b>THEN</b> display <code id="hazards-flashing">"Flashing content"</code>.</span>
 							</li>
 							<li>
 								<span><b>IF</b> <var>motion_simulation_hazard</var>:</span>
-								<span><b>THEN</b> <b>APPEND</b> <code id="hazards-motion">"Motion simulation"</code> to <var>hazards</var>.</span>
+								<span><b>THEN</b> display <code id="hazards-motion">"Motion simulation"</code>.</span>
 							</li>
 							<li>
 								<span><b>IF</b> <var>sound_hazard</var>:</span>
-								<span><b>THEN</b> <b>APPEND</b> <code id="hazards-sound">"Loud sounds"</code> to <var>hazards</var>.</span>
+								<span><b>THEN</b> display <code id="hazards-sound">"Loud sounds"</code>.</span>
 							</li>
-							<li><b>LET</b> <var>hazards_string</var> be the result of:
-								<ul class="condition">
-									<li>calling <a href="#join-array-to-comma-list">join array to comma list</a> given <var>hazards</var></li>
-									<li>uppercasing the first character</li>
-									<li>concatenating <code id="hazards-plural">" hazards"</code> to the end of the string <b>IF</b> (length of <var>hazards</var>)  1 <b>ELSE</b> concatenating <code id="hazards-singular">" hazard"</code> to the end of the string.</li>
-								</ul>
-							</li>
-							<li>display <var>hazards_string</var>.</li>
 						</ol>
-					</li>
+
                     <li>
 						<span><b>ELSE IF</b> <var>unknown_if_contains_hazards</var>:</span>
 						<span><b>THEN</b> display <code id="hazards-unknown">"The presence of hazards is unknown"</code>.</span>
