@@ -743,7 +743,7 @@ chemml</var></dt>
 						<span><b>THEN</b> display <code id="rich-content-accessible-math-as-latex">"Math as LaTex"</code>.</span>
 					</li>
 					<li>
-						<span><b>ELSE IF</b> <var>contains_math_formula</var> <b>AND</b> <var>short_textual_alternative_images</var>:</span>
+						<span><b>ELSE IF</b> <var>contains_math_formula</var></span>
 						<span><b>THEN</b> display <code id="rich-content-accessible-math-described">"Math as images with text description"</code>.</span>
 					</li>
 					<li>
@@ -754,10 +754,8 @@ chemml</var></dt>
 						<span><b>IF</b> <var>chemical_formula_as_latex</var>:</span>
 						<span><b>THEN</b> display <code id="rich-content-accessible-chemistry-as-latex">"Chemical formulas in LaTex"</code>.</span>
 					</li>
-rich-content-accessible-
-rich-content-accessible-chemistry-as-latex
-					<li>
-						<span><b>IF</b> <var>charts_diagrams_as_non_graphical_data</var> <b>OR</b> <var>full_alternative_textual_descriptions</var>:</span>
+				<li>
+						<span><b>IF</b> <var>long_text_descriptions</var> </span>
 						<span><b>THEN</b> display <code id="rich-content-extended">"Information-rich images are described by extended descriptions"</code>.</span>
 					</li>
 					<li>
@@ -773,7 +771,7 @@ rich-content-accessible-chemistry-as-latex
 						<span><b>THEN</b> display <code id="rich-content-transcript">"Has transcript"</code>.</span>
 					</li>
 					<li>
-						<span><b>IF</b> <b>NOT</b> (<var>math_formula_as_mathml</var> <b>OR</b> <var>math_formula_as_latex</var> <b>OR</b> (<var>contains_math_formula</var> <b>AND</b> <var>short_textual_alternative_images</var>) <b>OR</b> <var>chemical_formula_as_mathml</var> <b>OR</b> <var>charts_diagrams_as_non_graphical_data</var> <b>OR</b> <var>full_alternative_textual_descriptions</var> <b>OR</b> <var>closed_captions</var> <b>OR</b> <var>open_captions</var> <b>OR</b> <var>transcript</var>):</span>
+						<span><b>IF</b> <b>NOT</b> (<var>math_formula_as_mathml</var> <b>OR</b> <var>math_formula_as_latex</var> <b>OR</b> (<var>contains_math_formula</var> <b>AND</b> <var>long_text_descriptions</var>) <b>OR</b> <var>chemical_formula_as_mathml</var> <b>OR</b> <var>long_text_descriptions</var> <b>OR</b> <var>closed_captions</var> <b>OR</b> <var>open_captions</var> <b>OR</b> <var>transcript</var>):</span>
 						<span><b>THEN</b> either omit this key information if metadata is missing or display <code id="rich-content-unknown">"No information is available"</code>.</span>
 					</li>
 				</ol>
