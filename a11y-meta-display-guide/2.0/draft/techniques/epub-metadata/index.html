@@ -1066,37 +1066,24 @@ chemml</var></dt>
 
 					<h5>Instructions</h5>
 					<ol class="condition">
-						<li><b>LET</b> <var>adaptation</var> be  an empty array.</li>
 						<li>
 							<span><b>IF</b> <var>audio_descriptions</var>:</span>
-							<span><b>THEN</b> <b>APPEND</b> <code id="additional-accessibility-information-adaptation-audio-descriptions">"audio descriptions"</code> to <var>adaptation</var>.</span>
-						</li>
+							<span><b>THEN</b> display <code id="additional-accessibility-information-adaptation-audio-descriptions">"Audio descriptions"</code>.</span></li>
 						<li>
 							<span><b>IF</b> <var>braille</var>:</span>
-							<span><b>THEN</b> <b>APPEND</b> <code id="additional-accessibility-information-adaptation-braille">"braille"</code> to <var>adaptation</var>.</span>
+							<span><b>THEN</b> display <code id="additional-accessibility-information-adaptation-braille">"braille"</code>.</span>
 						</li>
 						<li>
 							<span><b>IF</b> <var>tactile_graphic</var>:</span>
-							<span><b>THEN</b> <b>APPEND</b> <code id="additional-accessibility-information-adaptation-tactile_graphic">"tactile graphic"</code> to <var>adaptation</var>.</span>
+							<span><b>THEN</b> display <code id="additional-accessibility-information-adaptation-tactile_graphic">"Tactile graphic"</code>.</span>
 						</li>
 						<li>
 							<span><b>IF</b> <var>tactile_object</var>:</span>
-							<span><b>THEN</b> <b>APPEND</b> <code id="additional-accessibility-information-adaptation-tactile_object">"tactile 3D object"</code> to <var>adaptation</var>.</span>
+							<span><b>THEN</b> display <code id="additional-accessibility-information-adaptation-tactile_object">"Tactile 3D object"</code>.</span>
 						</li>
 						<li>
 							<span><b>IF</b> <var>sign_language</var>:</span>
-							<span><b>THEN</b> <b>APPEND</b> <code id="additional-accessibility-information-adaptation-sign-language">"sign language"</code> to <var>adaptation</var>.</span>
-						</li>
-						<li><b>IF</b> <var>adaptation</var> is <b>NOT</b> empty:
-							<ol class="condition">
-								<li><b>LET</b> <var>adaptation_string</var> be the result of:
-									<ul class="condition">
-										<li>calling <a href="#join-array-to-comma-list">join array to comma list</a> given <var>adaptation</var></li>
-										<li>uppercasing the first character.</li>
-									</ul>
-								</li>
-								<li>display <var>adaptation_string</var>.</li>
-							</ol>
+							<span><b>THEN</b> display <code id="additional-accessibility-information-adaptation-sign-language">"Sign language"</code>.</span>
 						</li>
 					</ol>
 				</section>
@@ -1166,52 +1153,38 @@ chemml</var></dt>
 
 					<h5>Instructions</h5>
 					<ol class="condition">
-						<li><b>LET</b> <var>clarity</var> be  an empty array.</li>
+
 						<li>
 							<span><b>IF</b> <var>aria</var>:</span>
-							<span><b>THEN</b> <b>APPEND</b> <code id="additional-accessibility-information-clarity-aria">"aria"</code> to <var>clarity</var>.</span>
+							<span><b>THEN</b> display <code id="additional-accessibility-information-clarity-aria">"ARIA"</code>.</span>
 						</li>
 						<li>
 							<span><b>IF</b> <var>full_ruby_annotations</var>:</span>
-							<span><b>THEN</b> <b>APPEND</b> <code id="additional-accessibility-information-clarity-full-ruby-annotations">"full ruby annotations"</code> to <var>clarity</var>.</span>
+							<span><b>THEN</b> display <code id="additional-accessibility-information-clarity-full-ruby-annotations">"Full ruby annotations"</code>.</span>
 						</li>
 						<li>
 							<span><b>IF</b> <var>text_to_speech_hinting</var>:</span>
-							<span><b>THEN</b> <b>APPEND</b> <code id="additional-accessibility-information-clarity-text-to-speech-hinting">"text-to-speech hinting provided"</code> to <var>clarity</var>.</span>
+							<span><b>THEN</b> display <code id="additional-accessibility-information-clarity-text-to-speech-hinting">"Text-to-speech hinting provided"</code>.</span>
 						</li>
 						<li>
 							<span><b>IF</b> <var>high_contrast_between_foreground_and_background_audio</var>:</span>
-							<span><b>THEN</b> <b>APPEND</b> <code id="additional-accessibility-information-clarity-high-contrast-between-foreground-and-background-audio">"high contrast between foreground and background audio"</code> to <var>clarity</var>.</span>
+							<span><b>THEN</b> display <code id="additional-accessibility-information-clarity-high-contrast-between-foreground-and-background-audio">"High contrast between foreground and background audio"</code> .</span>
 						</li>
 						<li>
 							<span><b>IF</b> <var>high_contrast_between_text_and_background</var>:</span>
-							<span><b>THEN</b> <b>APPEND</b> <code id="additional-accessibility-information-clarity-high-contrast-between-text-and-background">"high contrast between text and background"</code> to <var>clarity</var>.</span>
+							<span><b>THEN</b> display <code id="additional-accessibility-information-clarity-high-contrast-between-text-and-background">"High contrast between foreground text and background"</code>.</span>
 						</li>
 						<li>
 							<span><b>IF</b> <var>large_print</var>:</span>
-							<span><b>THEN</b> <b>APPEND</b> <code id="additional-accessibility-information-clarity-large-print">"large print"</code> to <var>clarity</var>.</span>
+							<span><b>THEN</b> display <code id="additional-accessibility-information-clarity-large-print">"Large print"</code>.</span>
 						</li>
                         <li>
                             <span><b>IF</b> <var>page_break_markers</var>:</span>
-                            <span><b>THEN</b> <b>APPEND</b> <code id="additional-accessibility-information-clarity-page-breaks">"page breaks"</code> to <var>clarity</var>.</span>
+                            <span><b>THEN</b> display <code id="additional-accessibility-information-clarity-page-breaks">"Visible page breaks"</code>.</span>
                         </li>
 						<li>
 							<span><b>IF</b> <var>ruby_annotations</var>:</span>
-							<span><b>THEN</b> <b>APPEND</b> <code id="additional-accessibility-information-clarity-ruby-annotations">"ruby annotations"</code> to <var>clarity</var>.</span>
-						</li>
-
-
-                        <li><b>IF</b> <var>clarity</var> is <b>NOT</b> empty:
-							<ol class="condition">
-								<li><b>LET</b> <var>clarity_string</var> be the result of:
-									<ul class="condition">
-										<li>calling <a href="#join-array-to-comma-list">join array to comma list</a> given <var>clarity</var></li>
-										<li>uppercasing the first character.</li>
-									</ul>
-								</li>
-								<li>display <var>clarity_string</var>.</li>
-							</ol>
-						</li>
+							<span><b>THEN</b> display <code id="additional-accessibility-information-clarity-ruby-annotations">"Some Ruby annotations"</code>.</span></li>
 					</ol>
 				</section>
 
