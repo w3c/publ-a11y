@@ -711,6 +711,21 @@ chemml</var></dt>
 						<p>If true it indicates that the <i>accessibilityFeature="MathML"</i> (Accessible math content as MathML) is present in the package document, otherwise if false it means that the metadata is not present.</p>
 						<p>This means that there is a positive indication that all mathematical content is presented using MathML and works with compatible assistive technology.</p>
 					</dd>
+						<dt><var>closed_captions</var></dt>
+						<dd>
+							<p>If true it indicates that the <i>accessibilityFeature="closedCaptions"</i> (Closed captions) is present in the package document, otherwise if false it means that the metadata is not present.</p>
+							<p>This means that the audio content of a video can be seen via closed captions that can be turned on or off  by the viewer and which will be a separate file from the video itself.</p>
+						</dd>
+						<dt><var>open_captions</var></dt>
+						<dd>
+							<p>If true it indicates that the <i>accessibilityFeature="openCaptions"</i> (Open captions) is present in the package document, otherwise if false it means that the metadata is not present.</p>
+							<p>This means that the audio content of a video can be seen via open captions, which means they cannot be turned off and are always visible when the video plays.</p>
+						</dd>
+<dt><var>transcript</var></dt>
+						<dd>
+							<p>If true it indicates that the <i>accessibilityFeature="transcript"</i> (transcript) is present in the package document, otherwise if false it means that the metadata is not present.</p>
+							<p>This means that a transcript of the audio content of the product is supplied with it.</p>
+						</dd>
 				</dl>
 				<h4>Variables setup</h4>
 				<ol class="condition">
@@ -1016,16 +1031,7 @@ chemml</var></dt>
 							<p>If true it indicates that the <i>accessibilityFeature="braille"</i> (Braille) is present in the package document, otherwise if false it means that the metadata is not present.</p>
 							<p>This means that there is braille available within the publication.</p>
 						</dd>
-						<dt><var>closed_captions</var></dt>
-						<dd>
-							<p>If true it indicates that the <i>accessibilityFeature="closedCaptions"</i> (Closed captions) is present in the package document, otherwise if false it means that the metadata is not present.</p>
-							<p>This means that the audio content of a video can be seen via closed captions that can be turned on or off  by the viewer and which will be a separate file from the video itself.</p>
-						</dd>
-						<dt><var>open_captions</var></dt>
-						<dd>
-							<p>If true it indicates that the <i>accessibilityFeature="openCaptions"</i> (Open captions) is present in the package document, otherwise if false it means that the metadata is not present.</p>
-							<p>This means that the audio content of a video can be seen via open captions, which means they cannot be turned off and are always visible when the video plays.</p>
-						</dd>
+
 						<dt><var>tactile_graphic</var></dt>
 						<dd>
 							<p>If true it indicates that the <i>accessibilityFeature="tactileGraphic"</i> (tactile 2D graphic) is present in the package document, otherwise if false it means that the metadata is not present.</p>
@@ -1036,11 +1042,7 @@ chemml</var></dt>
 							<p>If true it indicates that the <i>accessibilityFeature="tactileObject"</i> (tactile 3D object) is present in the package document, otherwise if false it means that the metadata is not present.</p>
 							<p>This means that there is tactile 3D object(s) contained within this publication.</p>
 						</dd>
-						<dt><var>transcript</var></dt>
-						<dd>
-							<p>If true it indicates that the <i>accessibilityFeature="transcript"</i> (transcript) is present in the package document, otherwise if false it means that the metadata is not present.</p>
-							<p>This means that a transcript of the audio content of the product is supplied with it.</p>
-						</dd>
+
 						<dt><var>sign_language</var></dt>
 						<dd>
 							<p>If true it indicates that the <i>accessibilityFeature="signLanguage"</i> (Sign language interpretation) is present in the package document, otherwise if false it means that the metadata is not present.</p>
