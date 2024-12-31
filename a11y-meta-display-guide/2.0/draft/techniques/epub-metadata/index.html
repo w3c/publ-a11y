@@ -316,6 +316,11 @@
 				</ol>
 				<h4>Instructions</h4>
 				<ol class="condition">
+							<li>
+								<span><b>IF</b> <var>textual_alternative_images</var>:</span>
+								<span><b>THEN</b> display <code id="nonvisual-reading-alt-text">"Has alt text"</code>.</span>
+							</li>
+
 					<li>
 						<span><b>IF</b> <var>all_necessary_content_textual</var>:</span>
 						<span><b>THEN</b> display <code id="nonvisual-reading-readable">"Readable in read aloud or  dynamic braille"</code>.</span>
@@ -381,7 +386,8 @@
 
                 <!-- EPUB Accessibility 1.0 WCAG 2.0 (A/AA/AAA) -->
                  <li>
-                     <span><b>IF</b> the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/link[@rel="dcterms:<i>conformsTo</i>" and @href="<i>http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-a</i>"] | /package/metadata/meta[@property="dcterms:conformsTo" and text() = "http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-a"]</code> :</span>
+                     <span><b>IF</b> the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/link[@rel="dcterms:<i>conformsTo</i>" and @href="<i>http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-a</i>"] | /package/metadata/meta[@property="
+dcterms:conformsTo" and text() = "http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-a"]</code> :</span>
                        <span>
                        	<b>THEN</b> <b>LET</b> <var>conformance_string</var> = 'EPUB Accessibility 1.0 WCAG 2.0 Level A',
                             and <b>LET</b> <var>wcag_level</var> = 'A'.
@@ -448,7 +454,7 @@
 								<span><b>IF</b> <var>certifier</var> is <b>NOT</b> empty:</span>
 								<span><b>THEN</b></span>
 								<ul class="condition">
-									<li>display <code id="conformance-certifier">"This publication was certified by "</code></li>
+									<li>display <code id="conformance-certifier">"The publication was certified by "</code></li>
 									<li>display <var>certifier</var>.</li>
 								</ul>
 							</li>
@@ -468,7 +474,7 @@
 								</ul>
 							</li>
 							<li>
-								<span>Display <code id="conformance-details">"Detailed Conformance Information"</code> as heading.</span>
+								<span>Display <code id="conformance-details">"Detailed conformance information"</code> as heading.</span>
 								<ul class="condition">
 									<li>display <code id="conformance-claim">"This publication claims to meet "</code>.</li>
 									<li>
@@ -535,6 +541,7 @@
                     <dt><var>synchronised_pre_recorded_audio</var></dt>
 					<dd>
                         <p>If true it indicates that the <i>accessibilityFeature="sychronizedAudioText"</i> is present in the package document, otherwise, if false, it means that the metadata is not present.</p>
+
 						<p>This indicates that text-synchronised prerecorded audio narration (natural or synthesized voice) is included for substantially all textual matter, including all alternative descriptions, e.g. via a SMIL media overlay.</p>
 					</dd>
 
@@ -627,33 +634,28 @@
 				<ol class="condition">
 					<li>
 						<span><b>IF</b> <var>table_of_contents_navigation</var> <b>OR</b> <var>index_navigation</var> <b>OR</b> <var>page_navigation</var> <b>OR</b> <var>next_previous_structural_navigation</var>:</span>
-						<span><b>THEN</b> <b>LET</b> <var>navigation</var> be  an empty array.</span>
+
 						<ol class="condition">
 							<li>
 								<span><b>IF</b> <var>table_of_contents_navigation</var>:</span>
-								<span><b>THEN</b> <b>APPEND</b> <code id="navigation-toc">"Table of contents"</code> to <var>navigation</var>.</span>
+								<span><b>THEN</b> display <code id="navigation-toc">"Table of contents"</code>.</span>
 							</li>
 							<li>
 								<span><b>IF</b> <var>index_navigation</var>:</span>
-								<span><b>THEN</b> <b>APPEND</b> <code id="navigation-index">"Index"</code> to <var>navigation</var>.</span>
+								<span><b>THEN</b> display <code id="navigation-index">"Index"</code>.</span>
 							</li>
                             <li>
-							     <span><b>IF</b> <var>page_navigation</var>:</span>
-							     <span><b>THEN</b> <b>APPEND</b> <code id="navigation-page-navigation">"Go to page"</code> to <var>navigation</var>.</span>
-                            </li>
- 							<li>
-								<span><b>IF</b> <var>next_previous_structural_navigation</var>:</span>
-								<span><b>THEN</b> <b>APPEND</b> <code id="navigation-structural">"Headings"</code> to <var>navigation</var>.</span>
+							     <span><b>IF</b> <var>print_equivalent_page_numbering</var>:</span>
+								<span><b>THEN</b> display <code id="navigation-page-navigation">"Go to page"</code>.</span>
 							</li>
-							<li><b>LET</b> <var>navigation_string</var> be the result of:
-								<ul class="condition">
-									<li>calling <a href="#join-array-to-comma-list">join array to comma list</a> given <var>navigation</var></li>
-									<li>concatenating <code id="navigation-intro">"Navigation by "</code> to the beginning of the string.</li>
-								</ul>
+							<li>
+ 							<span><b>IF</b> <var>next_previous_structural_navigation</var>:</span>
+								<span><b>THEN</b> display <code id="navigation-structural">"Headings"</code>.</span>
+							</li></ol>
 							</li>
-							<li>display <var>navigation_string</var>.</li>
-						</ol>
-					</li>
+
+
+
 					<li>
 						<b>ELSE</b> either omit this key information if metadata is missing or display <code id="navigation-no-metadata">"No information is available"</code>.
 					</li>
@@ -661,7 +663,7 @@
 			</section>
 
 			<section id="rich-content">
-				<h3>Charts, diagrams, math, and formulas</h3>
+				<h3>Rich content</h3>
 				<p>This technique relates to <a href="../../guidelines/#rich-content">Charts, diagrams, math, and formulas key information</a>.</p>
 
                 <p>This algorithm takes the <var>package_document_as_text</var> argument: a UTF-8 string representing the Package document.</p>
@@ -682,11 +684,18 @@
 						<p>If true it indicates that the <i>accessibilityFeature="chemOnVisual"</i> (Chemical content) is present in the package document, otherwise if false it means that the metadata is not present.</p>
 						<p>This means that there is a positive indication that the publication contains chemical notations, formulae.</p>
 					</dd>
-					<dt><var>chemical_formula_as_chemml</var></dt>
+					<dt><var>chemical_formula_as_
+chemml</var></dt>
 					<dd>
 						<p>If true it indicates that the <i>accessibilityFeature="ChemML"</i> (Accessible chemistry content as ChemML) is present in the package document, otherwise if false it means that the metadata is not present.</p>
 						<p>This means that there is a positive indication that the chemical formulae are presented using ChemML and works with compatible assistive technology.</p>
 					</dd>
+<dt><var>chemical_formula_as_latex</var></dt>
+					<dd>
+						<p>If true it indicates that the <i>accessibilityFeature="latex-chemistry"</i> (Accessible chemistry content as Latex) is present in the package document, otherwise if false it means that the metadata is not present.</p>
+						<p>This means that there is a positive indication that the chemical formulae are presented using Latex and works with compatible assistive technology.</p>
+					</dd>
+
 					<dt><var>contains_math_formula</var></dt>
 					<dd>
 						<p>If true it indicates that the <i>accessibilityFeature="describedMath"</i> (Mathematical content) is present in the package document, otherwise if false it means that the metadata is not present.</p>
@@ -713,7 +722,9 @@
 
                     <li><b>LET</b> <var>contains_chemical_formula</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>chemOnVisual</i>"]</code>.</li>
 
-                    <li><b>LET</b> <var>chemical_formula_as_chemml</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>ChemML</i>"]</code>.</li>
+
+                    <li><b>LET</b> <var>chemical_formula_as_latex</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>latex-chemistry</i>"]</code>.</li>
+<li><b>LET</b> <var>chemical_formula_as_chemml</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>ChemML</i>"]</code>.</li>
 
 
 	                <li><b>LET</b> <var>contains_math_formula</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>describedMath</i>"]</code>.</li>
@@ -724,24 +735,47 @@
 				</ol>
 				<h4>Instructions</h4>
 				<ol class="condition">
+<li>
+						<span><b>IF</b> <var>math_formula_as_mathml</var>:</span>
+						<span><b>THEN</b> display <code id="rich-content-accessible-math-as-mathml">"Math as MathML"</code>.</span>
+					</li>
 					<li>
-						<span><b>IF</b> (<var>contains_charts_diagrams</var> <b>AND</b> <var>long_text_descriptions</var>):</span>
+						<span><b>ELSE IF</b> <var>math_formula_as_latex</var>:</span>
+						<span><b>THEN</b> display <code id="rich-content-accessible-math-as-latex">"Math as LaTex"</code>.</span>
+					</li>
+					<li>
+						<span><b>ELSE IF</b> <var>contains_math_formula</var>:</span>
+						<span><b>THEN</b> display <code id="rich-content-accessible-math-described">"Math as images with text description"</code>.</span>
+					</li>
+					<li>
+						<span><b>IF</b> <var>chemical_formula_as_mathml</var>:</span>
+						<span><b>THEN</b> display <code id="rich-content-accessible-chemistry-as-mathml">"Chemical formulas in MathML"</code>.</span>
+					</li>
+<li>
+						<span><b>IF</b> <var>chemical_formula_as_latex</var>:</span>
+						<span><b>THEN</b> display <code id="rich-content-accessible-chemistry-as-latex">"Chemical formulas in LaTex"</code>.</span>
+					</li>
+				<li>
+						<span><b>IF</b> <var>long_text_descriptions</var>:</span>
 						<span><b>THEN</b> display <code id="rich-content-extended">"Information-rich images are described by extended descriptions"</code>.</span>
 					</li>
 					<li>
-						<span><b>IF</b> <var>chemical_formula_as_chemml</var>:</span>
-						<span><b>THEN</b> display <code id="rich-content-accessible-chemistry">"Accessible chemistry content"</code>.</span>
+						<span><b>IF</b> <var>closed_captions</var>:</span>
+						<span><b>THEN</b> display <code id="rich-content-closed-captions">"Videos have closed captions"</code>.</span>
 					</li>
 					<li>
-						<span><b>IF</b> <var>math_formula_as_latex</var> <b>OR</b> <var>math_formula_as_mathml</var>:</span>
-						<span><b>THEN</b> display <code id="rich-content-accessible-math">"Accessible math content"</code>.</span>
+						<span><b>IF</b> <var>open_captions</var>:</span>
+						<span><b>THEN</b> display <code id="rich-content-open-captions">"Videos have open captions"</code>.</span>
 					</li>
 					<li>
-						<span><b>IF</b> (<var>contains_charts_diagrams</var> <b>OR</b> <var>contains_chemical_formula</var> <b>OR</b> <var>contains_math_formula</var>) <b>AND</b> <b>NOT</b> (<var>long_text_descriptions</var> <b>OR</b> <var>chemical_formula_as_chemml</var> <b>OR</b> <var>math_formula_as_latex</var> <b>OR</b> <var>math_formula_as_mathml</var>):</span>
-						<span><b>THEN</b> display <code id="rich-content-unknown">"No information is available"</code>.</span>
+						<span><b>IF</b> <var>transcript</var>:</span>
+						<span><b>THEN</b> display <code id="rich-content-transcript">"Has transcript"</code>.</span>
+					</li>
+					<li>
+						<span><b>IF</b> <b>NOT</b> (<var>math_formula_as_mathml</var> <b>OR</b> <var>math_formula_as_latex</var> <b>OR</b> (<var>contains_math_formula</var> <b>AND</b> <var>long_text_descriptions</var>) <b>OR</b> <var>chemical_formula_as_mathml</var> <b>OR</b> <var>long_text_descriptions</var> <b>OR</b> <var>closed_captions</var> <b>OR</b> <var>open_captions</var> <b>OR</b> <var>transcript</var>):</span>
+						<span><b>THEN</b> either omit this key information if metadata is missing or display <code id="rich-content-unknown">"No information is available"</code>.</span>
 					</li>
 				</ol>
-
 			</section>
 
 			<section id="hazards">
@@ -828,31 +862,22 @@
 						<span><b>THEN</b> display <code id="hazards-none">"No hazards"</code>.</span>
 					</li>
 					<li>
-						<span><b>ELSE IF</b> <var>flashing_hazard</var> <b>OR</b> <var>motion_simulation_hazard</var> <b>OR</b> <var>sound_hazard</var>:</span>
-						<span><b>THEN</b> <b>LET</b> <var>hazards</var> be  an empty array.</span>
-						<ol class="condition">
+						<span><b>ELSE IF</b> <var>flashing_hazard</var> <b>OR</b> <var>motion_simulation_hazard</var> <b>OR</b> <var>sound_hazard</var>:</span></li>
+						<b>THEN</b> <ol class="condition">
 							<li>
 								<span><b>IF</b> <var>flashing_hazard</var>:</span>
-								<span><b>THEN</b> <b>APPEND</b> <code id="hazards-flashing">"Flashing content"</code> to <var>hazards</var>.</span>
+								<span><b>THEN</b> display <code id="hazards-flashing">"Flashing content"</code>.</span>
 							</li>
 							<li>
 								<span><b>IF</b> <var>motion_simulation_hazard</var>:</span>
-								<span><b>THEN</b> <b>APPEND</b> <code id="hazards-motion">"Motion simulation"</code> to <var>hazards</var>.</span>
+								<span><b>THEN</b> display <code id="hazards-motion">"Motion simulation"</code>.</span>
 							</li>
 							<li>
 								<span><b>IF</b> <var>sound_hazard</var>:</span>
-								<span><b>THEN</b> <b>APPEND</b> <code id="hazards-sound">"Loud sounds"</code> to <var>hazards</var>.</span>
+								<span><b>THEN</b> display <code id="hazards-sound">"Loud sounds"</code>.</span>
 							</li>
-							<li><b>LET</b> <var>hazards_string</var> be the result of:
-								<ul class="condition">
-									<li>calling <a href="#join-array-to-comma-list">join array to comma list</a> given <var>hazards</var></li>
-									<li>uppercasing the first character</li>
-									<li>concatenating <code id="hazards-plural">" hazards"</code> to the end of the string <b>IF</b> (length of <var>hazards</var>) > 1 <b>ELSE</b> concatenating <code id="hazards-singular">" hazard"</code> to the end of the string.</li>
-								</ul>
-							</li>
-							<li>display <var>hazards_string</var>.</li>
 						</ol>
-					</li>
+
                     <li>
 						<span><b>ELSE IF</b> <var>unknown_if_contains_hazards</var>:</span>
 						<span><b>THEN</b> display <code id="hazards-unknown">"The presence of hazards is unknown"</code>.</span>
