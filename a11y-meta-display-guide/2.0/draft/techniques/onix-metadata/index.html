@@ -24,7 +24,7 @@
 						"name": "Gautier Chomel",
 						"company": "EDRLab ",
 						"companyURL": "https://www.edrlab.org",
-						"w3cid": 136660 
+						"w3cid": 136660
 					},
 					{
 						"name": "Christopher Saynor",
@@ -79,43 +79,43 @@
 		<section id="sotd"></section>
 		<section id="onix-metadata">
 			<h2>ONIX Metadata</h2>
-			
+
 			<aside class="note">
 				Techniques for displaying accessibility metadata in other metadata formats can be found in the <a href="../../guidelines/#techniques">Display Techniques for Displaying Accessibility Metadata</a>
 			</aside>
-            
+
  			<aside class="note">
  				This document provides techniques for meeting the guidelines of the <a href="../../guidelines/">Accessibility Metadata Display Guide for Digital Publications 2.0</a>. It provides practical examples for extracting information from the ONIX metadata for showing it to the end users.
 			</aside>
-			
+
 			<aside class="note">
  			    The examples provided in this document demonstrate the "compact" version of what is to be displayed.
                 For every text string both the "compact" or the "descriptive" options are available.
-                
+
                 <aside class="example" title="Compact Versus Descriptive">
                     <pre>
                         <code>
-                            "visual-adjustments": 
+                            "visual-adjustments":
                                 {
                                 "visual-adjustments-title": "Visual adjustments",
-                                "visual-adjustments-modifiable": 
+                                "visual-adjustments-modifiable":
                                     {
                                     "descriptive": "Appearance of the text and page layout can be modified according to the capabilities of the reading system (font family and font size, spaces between paragraphs, sentences, words, and letters, as well as color of background and text)",
                                     "compact": "Appearance can be modified"
                                     }
                                 }
                         </code>
-                    </pre>  
+                    </pre>
                 </aside>
-                
+
                 The option is yours to provide either the "compact" or "descriptive" versions to the end user or perhaps even allow the user to choose what they wish to see.
-                
+
                 <aside class="ednote">
                     Link to the English JSON file where this example is taken from.
                 </aside>
-                
+
 			 </aside>
-			
+
 			<aside class="note">
 				ONIX messages describe products for the global book supply chain and will be sent from publisher or creator of the EPUB or digital books with full audio to those who will make the products available for sale, lending or subscription.
 				These platforms may not yet have the actual files, as they may not yet be ready, or may only choose to list them for sale if they have certain accessibility features.
@@ -125,11 +125,11 @@
 				Some accessibility information may only be available when you have access to the file itself.
 				If you are unfamiliar with ONIX, then there is more documentation available from <a href="https://www.editeur.org/83/Overview/">EDItEUR.org</a>.
 			</aside>
-			
+
 			<aside class="note">
 				It is important to note that ONIX 3.0 includes a number of new accessibility metadata codes, some of which may not be expressible in earlier versions of ONIX.
 			</aside>
-				
+
 			<section id="onix-record-examples">
 				<h3>ONIX record examples</h3>
 				<section id="onix-record-describing-an-epub">
@@ -230,7 +230,7 @@
 		</section>
 		<section id="techniques">
 			<h2>Techniques</h2>
-			
+
 			<section id="visual-adjustments">
 				<h3>Visual adjustments</h3>
 				<p>This technique relates to <a href="../../guidelines/#visual-adjustments">Visual adjustments key information</a>.</p>
@@ -267,7 +267,7 @@
 					<li><b>ELSE</b> display <code id="visual-adjustments-unknown">"No information is available"</code>.</li>
 				</ol>
 			</section>
-						
+
 			<section id="supports-nonvisual-reading">
 				<h3>Supports nonvisual reading</h3>
 				<p>This technique relates to <a href="../../guidelines/#supports-nonvisual-reading">Supports nonvisual reading key information</a>.</p>
@@ -337,7 +337,7 @@
 					<li><b>ELSE</b> display <code id="nonvisual-reading-may-not-fully">"May not be fully readable in read aloud or  dynamic braille"</code>.</li>
 				</ol>
 			</section>
-			
+
 			<section id="conformance-group">
 				<h3>Conformance</h3>
 				<p>This technique relates to <a href="../../guidelines/#conformance-group">Conformance key information</a>.</p>
@@ -410,7 +410,7 @@
 						<p>This means that is present the URL of a compliance web page for detailed accessibility information. The web page should be maintained by an independent compliance scheme or testing organization. Note the web page may include information about specific national requirements or voluntary conformance reports.</p>
 					</dd>
 				</dl>
-				
+
 				<h4>Variables setup</h4>
 				<ol class="condition">
 					<li><b>LET</b> <var>onix</var> be the result of calling <a href="#preprocessing">preprocessing</a> given <var>onix_record_as_text</var>.</li>
@@ -428,7 +428,7 @@
 					<li><b>LET</b> <var>certification_date</var> be the value of the node extracted from <var>onix</var>, using the xpath <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "91"]/ProductFormFeatureDescription</code>.</li>
 					<li><b>LET</b> <var>certifier_report</var> be the value of the node extracted from <var>onix</var>, using the xpath <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "94"]/ProductFormFeatureDescription</code>.</li>
 				</ol>
-				
+
 				<h4>Instructions</h4>
 				<ol class="condition">
 					<li>
@@ -527,7 +527,7 @@
 				</ol>
 
 			</section>
-			
+
 			<section id="prerecorded-audio">
 				<h3>Prerecorded audio</h3>
 				<p>This technique relates to <a href="../../guidelines/#pre-recorded-audio">Pre-recorded audio key information</a>.</p>
@@ -557,7 +557,7 @@
 								<li><a href="https://ns.editeur.org/onix/en/175/A305">code A305 of codelist 175</a> (Synchronised audio)</li>
 							</ul>
 						<p>Otherwise, if false, it means that none of the above metadata is present.</p>
-						<p>This indicates that text-synchronised pre-recorded audio narration (natural or synthesised voice) is included for substantially all textual matter, including all alternative descriptions, e.g. via a SMIL media overlay.</p>
+						<p>This indicates that text-synchronised pre-recorded audio narration (natural or synthesized voice) is included for substantially all textual matter, including all alternative descriptions, e.g. via a SMIL media overlay.</p>
 					</dd>
 					<dt><var>non_textual_content_audio</var></dt>
 					<dd>
@@ -567,9 +567,9 @@
 							<li><a href="https://ns.editeur.org/onix/en/81/22">code 22 of codelist 81</a> (Additional audio content not part of main content);</li>
 						</ul>
 						<p>Otherwise, if false, it means that none of the above metadata is present.</p>
-						<p>This indicates that pre-recorded audio content is included as part of the work. It can be Audio recording of a reading, performance or dramatization of part of the work	or additional pre-recorded audio of any supplementary material such as full or partial reading, lecture, performance, dramatization, interview, background documentary or other audio content not included in the primary or unenhanced version</p>
+						<p>This indicates that pre-recorded audio content is included as part of the work. It can be Audio recording of a reading, performance or dramatization of part of the work	or additional pre-recorded audio of any supplementary material such as full or partial reading, lecture, performance, dramatization, interview, background documentary or other audio content not included in the primary or un-enhanced version</p>
 					</dd>
-					<dt><var>non_textual_content_audio_in_video</var></dt>					
+					<dt><var>non_textual_content_audio_in_video</var></dt>
 					<dd>
 						<p>If true it indicates that one of the following codes is present in the ONIX record: </p>
 							<ul>
@@ -591,12 +591,12 @@
 					<li><b>LET</b> <var>audiobook</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/DescriptiveDetail[PrimaryContentType = "81" or ProductContentType = "81"] </code>.</li>
 					<li><b>LET</b> <var>all_content_audio</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "39"]</code>.</li>
 					<li><b>LET</b> <var>all_content_pre_recorded</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "51"]</code>.</li>
-					<li><b>LET</b> <var>synchronised_pre_recorded_audio</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "20"]</code> 
+					<li><b>LET</b> <var>synchronised_pre_recorded_audio</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "20"]</code>
 					AND calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormDetail[text() = "A305"]</code>.
 					</li>
-					<li><b>LET</b> <var>non_textual_content_audio</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/DescriptiveDetail[PrimaryContentType = "21" or ProductContentType = "22" or ProductContentType = "21" or ProductContentType = "22"] </code>. 
+					<li><b>LET</b> <var>non_textual_content_audio</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/DescriptiveDetail[PrimaryContentType = "21" or ProductContentType = "22" or ProductContentType = "21" or ProductContentType = "22"] </code>.
 					</li>
-					<li><b>LET</b> <var>non_textual_content_audio_in_video</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/DescriptiveDetail[PrimaryContentType = "06" or PrimaryContentType = "25" or PrimaryContentType = "26" or PrimaryContentType = "27" or PrimaryContentType = "28" or PrimaryContentType = "29" or PrimaryContentType = "30" or ProductContentType = "06" or ProductContentType = "25" or ProductContentType = "26" or ProductContentType = "27" or ProductContentType = "28" or ProductContentType = "29" or ProductContentType = "30"] </code>. 
+					<li><b>LET</b> <var>non_textual_content_audio_in_video</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/DescriptiveDetail[PrimaryContentType = "06" or PrimaryContentType = "25" or PrimaryContentType = "26" or PrimaryContentType = "27" or PrimaryContentType = "28" or PrimaryContentType = "29" or PrimaryContentType = "30" or ProductContentType = "06" or ProductContentType = "25" or ProductContentType = "26" or ProductContentType = "27" or ProductContentType = "28" or ProductContentType = "29" or ProductContentType = "30"] </code>.
 					</li>
 				</ol>
 				<h4>Instructions</h4>
@@ -608,17 +608,17 @@
 					<li>
 						<span><b>ELSE IF</b> <var>audiobook</var> OR <var>non_textual_content_audio</var> OR <var>non_textual_content_audio_in_video</var> <b>AND</b> <b>NOT</b> <var>all_content_pre_recorded</var>:</span>
 						<span><b>THEN</b> display <code id="prerecorded-audio-complementary">"Complementary audio and text"</code>.</span>
-					</li>		
+					</li>
 					<li>
 						<span><b>ELSE IF</b> <var>all_content_pre_recorded</var> <b>AND</b> <var>synchronised_pre_recorded_audio</var>:</span>
 						<span><b>THEN</b> display <code id="prerecorded-audio-synchronized">"Prerecorded audio synchronized with text"</code>.</span>
 					</li>
 					<li>
-						<b>ELSE</b> either omit this key informtion if metadata is missing or display <code id="prerecorded-audio-no-metadata">"No information is available"</code>.
+						<b>ELSE</b> either omit this key information if metadata is missing or display <code id="prerecorded-audio-no-metadata">"No information is available"</code>.
 					</li>
 				</ol>
 			</section>
-			
+
 			<section id="navigation">
 				<h3>Navigation</h3>
 				<p>This technique relates to <a href="../../guidelines/#navigation">Navigation key information</a>.</p>
@@ -678,11 +678,11 @@
 						</ol>
 					</li>
 					<li>
-						<b>ELSE</b> either omit this key informtion if metadata is missing or display <code id="navigation-no-metadata">"No information is available"</code>.
+						<b>ELSE</b> either omit this key information if metadata is missing or display <code id="navigation-no-metadata">"No information is available"</code>.
 					</li>
 				</ol>
 			</section>
-			
+
 			<section id="rich-content">
 				<h3>Rich content</h3>
 				<p>This technique relates to <a href="../../guidelines/#rich-content">Rich content key information</a>.</p>
@@ -691,7 +691,7 @@
 				<dl>
 					<dt><var>charts_diagrams_as_non_graphical_data</var></dt>
 					<dd>
-						<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/196/16">code 16 of codelist 196</a> (Visualized data also available as non-graphical datas) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+						<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/196/16">code 16 of codelist 196</a> (Visualized data also available as non-graphical data) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
 						<p>This means that there is a positive indication that all data presented in a visual format (graph, chart, etc) has an alternative non-graphical presentation of the same data.</p>
 					</dd>
 					<dt><var>full_alternative_textual_descriptions</var></dt>
@@ -795,11 +795,11 @@
 					</li>
 					<li>
 						<span><b>IF</b> <b>NOT</b> (<var>math_formula_as_mathml</var> <b>OR</b> <var>math_formula_as_latex</var> <b>OR</b> (<var>contains_math_formula</var> <b>AND</b> <var>short_textual_alternative_images</var>) <b>OR</b> <var>chemical_formula_as_mathml</var> <b>OR</b> <var>charts_diagrams_as_non_graphical_data</var> <b>OR</b> <var>full_alternative_textual_descriptions</var> <b>OR</b> <var>closed_captions</var> <b>OR</b> <var>open_captions</var> <b>OR</b> <var>transcript</var>):</span>
-						<span><b>THEN</b> either omit this key informtion if metadata is missing or display <code id="rich-content-unknown">"No information is available"</code>.</span>
+						<span><b>THEN</b> either omit this key information if metadata is missing or display <code id="rich-content-unknown">"No information is available"</code>.</span>
 					</li>
 				</ol>
 			</section>
-			
+
 			<section id="hazards">
 				<h3>Hazards</h3>
 				<p>This technique relates to <a href="../../guidelines/#hazards">Hazards key information</a>.</p>
@@ -893,7 +893,7 @@
 					</li>
 				</ol>
 			</section>
-			
+
 			<section id="accessibility-summary">
 				<h3>Accessibility summary</h3>
 				<p>This technique relates to <a href="../../guidelines/#accessibility-summary">Accessibility summary key information</a>.</p>
@@ -993,7 +993,7 @@
 					</li>
 				</ol>
 			</section>
-			
+
 			<section id="legal-considerations">
 				<h3>Legal considerations</h3>
 				<p class="issue" data-number="350">We are actively seeking comments on this "legal consideration" section. If you are a publisher, we want your feedback! Please visit the GitHub Issue tracking linked above to leave a comment.</p>
@@ -1031,11 +1031,11 @@
 						<span><b>THEN</b> display <code id="legal-considerations-exempt">"Claims an accessibility exemption in some jurisdictions"</code>.</span>
 					</li>
 					<li>
-						<b>ELSE</b> either omit this key informtion if metadata is missing or display <code id="legal-considerations-no-metadata">"No information is available"</code>.
+						<b>ELSE</b> either omit this key information if metadata is missing or display <code id="legal-considerations-no-metadata">"No information is available"</code>.
 					</li>
 				</ol>
 			</section>
-			
+
 			<section id="additional-accessibility-information">
 				<h3>Additional accessibility information</h3>
 				<p>This technique relates to <a href="../../guidelines/#additional-accessibility-information">Additional accessibility information key information</a>.</p>
@@ -1048,7 +1048,7 @@
 						<dt><var>dyslexia_readability</var></dt>
 						<dd>
 							<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/196/24">code 24 of codelist 196</a> (Dyslexia readability) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
-							<p>This means that the product has been specifically adapted or has features specifically to improve readability for dyslexic readers, for example specialised font, character and/or line spacing, justification and paragraph spacing, coloring and other options provided specifically to improve readability for dyslexic readers.</p>
+							<p>This means that the product has been specifically adapted or has features specifically to improve readability for dyslexic readers, for example specialized font, character and/or line spacing, justification and paragraph spacing, coloring and other options provided specifically to improve readability for dyslexic readers.</p>
 						</dd>
 						<dt><var>sign_language</var></dt>
 						<dd>
@@ -1056,14 +1056,14 @@
 							<p>This means that a full signing of audio content of the product supplied with the video file.</p>
 						</dd>
 					</dl>
-					
+
 					<h5>Variables setup</h5>
 					<ol class="condition">
 						<li><b>LET</b> <var>onix</var> be the result of calling <a href="#preprocessing">preprocessing</a> given <var>onix_record_as_text</var>.</li>
 						<li><b>LET</b> <var>dyslexia_readability</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "24"]</code>.</li>
 						<li><b>LET</b> <var>sign_language</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail[ProductFormDetail = "V213"]</code>.</li>
 					</ol>
-					
+
 					<h5>Instructions</h5>
 					<ol class="condition">
 						<li>
@@ -1076,7 +1076,7 @@
 						</li>
 					</ol>
 				</section>
-				
+
 				<section id="additional-accessibility-information-clarity">
 					<h3>Clarity</h3>
 					<p>This algorithm takes the <var>onix_record_as_text</var> argument: a UTF-8 string representing the ONIX record.</p>
@@ -1085,7 +1085,7 @@
 						<dt><var>text_to_speech_hinting</var></dt>
 						<dd>
 							<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/196/21">code 21 of codelist 196</a> (Text-to-speech hinting provided) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
-							<p>This means that text-to-speech has been optimised through provision of PLS lexicons, SSML or CSS Speech synthesis hints or other speech synthesis markup languages or hinting.</p>
+							<p>This means that text-to-speech has been optimized through provision of PLS lexicons, SSML or CSS Speech synthesis hints or other speech synthesis markup languages or hinting.</p>
 						</dd>
 						<dt><var>color_not_sole_means_of_conveying_information</var></dt>
 						<dd>
@@ -1118,7 +1118,7 @@
 							<p>This means that pre-recorded audiobook narration does not contain any background sounds, including music, sound effects, etc, though music and effects may be present if isolated from the speech (ie the sounds do not overlap).</p>
 						</dd>
 					</dl>
-					
+
 					<h5>Variables setup</h5>
 					<ol class="condition">
 						<li><b>LET</b> <var>onix</var> be the result of calling <a href="#preprocessing">preprocessing</a> given <var>onix_record_as_text</var>.</li>
@@ -1130,7 +1130,7 @@
 						<li><b>LET</b> <var>high_contrast_between_foreground_and_background_audio</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "27"]</code>.</li>
 						<li><b>LET</b> <var>without_background_sounds</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail[ProductFormDetail = "A312"]</code>.</li>
 					</ol>
-					
+
 					<h5>Instructions</h5>
 					<ol class="condition">
 						<li>
