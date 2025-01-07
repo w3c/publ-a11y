@@ -682,11 +682,10 @@
 						<p>If true it indicates that the <i>accessMode="chemOnVisual"</i> (Chemical content) is present in the package document, otherwise if false it means that the metadata is not present.</p>
 						<p>This means that there is a positive indication that the publication contains chemical notations, formulae.</p>
 					</dd>
-					<dt><var>chemical_formula_as_
-chemml</var></dt>
+					<dt><var>chemical_formula_as_mathml</var></dt>
 					<dd>
-						<p>If true it indicates that the <i>accessibilityFeature="ChemML"</i> (Accessible chemistry content as ChemML) is present in the package document, otherwise if false it means that the metadata is not present.</p>
-						<p>This means that there is a positive indication that the chemical formulae are presented using ChemML and works with compatible assistive technology.</p>
+						<p>If true it indicates that the <i>accessibilityFeature="MathML-chemistry"</i> (Accessible chemistry content as MathML) is present in the package document, otherwise if false it means that the metadata is not present.</p>
+						<p>This means that there is a positive indication that the chemical formulae are presented using MathML and works with compatible assistive technology.</p>
 					</dd>
 <dt><var>chemical_formula_as_latex</var></dt>
 					<dd>
@@ -737,8 +736,8 @@ chemml</var></dt>
 
 
                     <li><b>LET</b> <var>chemical_formula_as_latex</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and normalize-space()="<i>latex-chemistry</i>"]</code>.</li>
-<li><b>LET</b> <var>chemical_formula_as_chemml</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and normalize-space()="<i>ChemML</i>"]</code>.</li>
-
+                    
+                    <li><b>LET</b> <var>chemical_formula_as_mathml</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and normalize-space()="<i>MathML-chemistry</i>"]</code>.</li>
 
 	                <li><b>LET</b> <var>contains_math_formula</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and normalize-space()="<i>describedMath</i>"]</code>.</li>
 
