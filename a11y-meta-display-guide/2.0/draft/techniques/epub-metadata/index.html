@@ -503,10 +503,10 @@ dcterms:conformsTo" and normalize-space() = "http://www.idpf.org/epub/a11y/acces
 								</ul>
 							</li>
 							<li>
-								<span><b>IF</b> <var>certification_date</var>:</span>
-								<span><b>THEN</b> display <code id="conformance-certification-info">"The publication was certified "</code>.</span>
-								<ul class="condition">
-									<li>display <code id="conformance-certification-date-prefix">" on "</code></li>
+								<span><b>IF</b> <var>certification_date</var> <b>THEN</b>:</span>
+                                <ul class="condition">
+
+									<li>display <code id="conformance-certification-info">"The publication was certified on "</code></li>
 									<li>display <var>certification_date</var>.</li>
 								</ul>
 							</li>
