@@ -321,13 +321,13 @@
 
 					<li>
 						<span><b>IF</b> <var>all_necessary_content_textual</var>:</span>
-						<span><b>THEN</b> display <code id="nonvisual-reading-readable">"Readable in read aloud or  dynamic braille"</code>.</span>
+						<span><b>THEN</b> display <code id="nonvisual-reading-readable">"Readable in read aloud or dynamic braille"</code>.</span>
 					</li>
 					<li>
 						<span><b>ELSE IF</b> <var>non_textual_content_images</var> <b>AND</b> <b>NOT</b> <var>textual_alternative_images</var>:</span>
-						<span><b>THEN</b> display <code id="nonvisual-reading-not-fully">"Not fully readable in read aloud or dynamic braille"</code>.</span>
+						<span><b>THEN</b> display <code id="nonvisual-reading-not-fully">"Not fully readable in read aloud or dynamic Braille"</code>.</span>
 					</li>
-					<li><b>ELSE</b> display <code id="nonvisual-reading-may-not-fully">"May not be fully readable in read aloud or dynamic braille"</code>.</li>
+					<li><b>ELSE</b> display <code id="nonvisual-reading-may-not-fully">"May not be fully readable in read aloud or dynamic Braille"</code>.</li>
 				</ol>
 
 
@@ -1030,7 +1030,7 @@
 						<dt><var>braille</var></dt>
 						<dd>
 							<p>If true it indicates that the <i>accessibilityFeature="braille"</i> (Braille) is present in the package document, otherwise if false it means that the metadata is not present.</p>
-							<p>This means that there is braille available within the publication.</p>
+							<p>This means that there is Braille available within the publication.</p>
 						</dd>
 
 						<dt><var>tactile_graphic</var></dt>
@@ -1068,15 +1068,15 @@
 							<span><b>THEN</b> display <code id="additional-accessibility-information-adaptation-audio-descriptions">"Audio descriptions"</code>.</span></li>
 						<li>
 							<span><b>IF</b> <var>braille</var>:</span>
-							<span><b>THEN</b> display <code id="additional-accessibility-information-adaptation-braille">"braille"</code>.</span>
+							<span><b>THEN</b> display <code id="additional-accessibility-information-adaptation-braille">"Braille"</code>.</span>
 						</li>
 						<li>
 							<span><b>IF</b> <var>tactile_graphic</var>:</span>
-							<span><b>THEN</b> display <code id="additional-accessibility-information-adaptation-tactile_graphic">"Tactile graphic"</code>.</span>
+							<span><b>THEN</b> display <code id="additional-accessibility-information-adaptation-tactile_graphics">"Tactile graphics"</code>.</span>
 						</li>
 						<li>
 							<span><b>IF</b> <var>tactile_object</var>:</span>
-							<span><b>THEN</b> display <code id="additional-accessibility-information-adaptation-tactile_object">"Tactile 3D object"</code>.</span>
+							<span><b>THEN</b> display <code id="additional-accessibility-information-adaptation-tactile_objects">"Tactile 3D objects"</code>.</span>
 						</li>
 						<li>
 							<span><b>IF</b> <var>sign_language</var>:</span>
