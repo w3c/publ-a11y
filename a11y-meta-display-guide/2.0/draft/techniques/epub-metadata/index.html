@@ -411,7 +411,7 @@ dcterms:conformsTo" and normalize-space() = "http://www.idpf.org/epub/a11y/acces
                     </li>
 
                    <!-- EPUB Accessibility 1.1 WCAG 2.X (A/AA/AAA) -->
-					<li><b>LET</b> <var>conformance</var> be the value of the node extracted from <var>package_document</var>, using the xpath <code class="xpath">/package/metadata/meta[@property="dcterms:<i>conformsTo</i>" and matches(normalize-space(.), 'EPUB Accessibility 1\.1 - WCAG 2\.[0-2] Level [A]+')]</code>.</li>
+					<li><b>LET</b> <var>conformance</var> be the value of the node extracted from <var>package_document</var>, using the xpath <code class="xpath">/package/metadata/meta[@property="dcterms:<i>conformsTo</i>" and matches(normalize-space(), 'EPUB Accessibility 1\.1 - WCAG 2\.[0-2] Level [A]+')]</code>.</li>
 
 				   <li>
                   	<span><b>IF</b> <var>conformance</var> is <b>NOT</b> empty:</span>
