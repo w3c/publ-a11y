@@ -242,9 +242,9 @@
 				<ol class="condition">
 					<li><b>LET</b> <var>package_document</var> be the result of calling <a href="#pre-processing">preprocessing</a> given <var>package_document_as_text</var>.</li>
 
-                    <li><b>LET</b> <var>all_textual_content_can_be_modified</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>displayTransformability</i>"]</code>.</li>
+                    <li><b>LET</b> <var>all_textual_content_can_be_modified</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and normalize-space()="<i>displayTransformability</i>"]</code>.</li>
 
-                    <li><b>LET</b> <var>is_fixed_layout</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="rendition:<i>layout</i>" and text()="<i>pre-paginated</i>"]</code>.</li>
+                    <li><b>LET</b> <var>is_fixed_layout</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="rendition:<i>layout</i>" and normalize-space()="<i>pre-paginated</i>"]</code>.</li>
 
 				</ol>
 				<h4>Instructions</h4>
@@ -302,15 +302,15 @@
 				<ol class="condition">
 					<li><b>LET</b> <var>package_document</var> be the result of calling <a href="#pre-processing">preprocessing</a> given <var>package_document_as_text</var>.</li>
 
-					<li><b>LET</b> <var>all_necessary_content_textual</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessModeSufficient</i>" and text()="<i>textual</i>"]</code>.</li>
+					<li><b>LET</b> <var>all_necessary_content_textual</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessModeSufficient</i>" and normalize-space()="<i>textual</i>"]</code>.</li>
 					<li>
 						<b>LET</b> <var>non_textual_content_images</var> be the result of calling <a href="#check-for-node">check for node</a> on
-                        <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="<i>schema:accessibilityFeature</i>" and <br/>(text()="<i>chartOnVisual</i>" or text()="<i>chemOnVisual</i>" or <br/>
-                         text()="<i>diagramOnVisual"</i> or text()="<i>mathOnVisual</i>" or <br/>
-                         text()="<i>musicOnVisual"</i> or text()="<i>textOnVisual</i>")]</code>.
+                        <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="<i>schema:accessibilityFeature</i>" and <br/>(normalize-space()="<i>chartOnVisual</i>" or normalize-space()="<i>chemOnVisual</i>" or <br/>
+                         normalize-space()="<i>diagramOnVisual"</i> or normalize-space()="<i>mathOnVisual</i>" or <br/>
+                         normalize-space()="<i>musicOnVisual"</i> or normalize-space()="<i>textOnVisual</i>")]</code>.
 					</li>
 
-                    <li><b>LET</b> <var>textual_alternative_images</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="<i>schema:accessibilityFeature</i>" and <br/>(text()="<i>longDescription</i>" or text()="<i>alternativeText</i>" or text()="<i>describedMath"</i>)]</code>.
+                    <li><b>LET</b> <var>textual_alternative_images</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="<i>schema:accessibilityFeature</i>" and <br/>(normalize-space()="<i>longDescription</i>" or normalize-space()="<i>alternativeText</i>" or normalize-space()="<i>describedMath"</i>)]</code>.
 
 					</li>
 				</ol>
@@ -387,7 +387,7 @@
                 <!-- EPUB Accessibility 1.0 WCAG 2.0 (A/AA/AAA) -->
                  <li>
                      <span><b>IF</b> the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/link[@rel="dcterms:<i>conformsTo</i>" and @href="<i>http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-a</i>"] | /package/metadata/meta[@property="
-dcterms:conformsTo" and text() = "http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-a"]</code> :</span>
+dcterms:conformsTo" and normalize-space() = "http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-a"]</code> :</span>
                        <span>
                        	<b>THEN</b> <b>LET</b> <var>conformance_string</var> = 'EPUB Accessibility 1.0 WCAG 2.0 Level A',
                             and <b>LET</b> <var>wcag_level</var> = 'A'.
@@ -395,7 +395,7 @@ dcterms:conformsTo" and text() = "http://www.idpf.org/epub/a11y/accessibility-20
                     </li>
 
                   <li>
-                       <span><b>IF</b> the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/link[@rel="dcterms:<i>conformsTo</i>" and @href="<i>http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aa</i>"] | /package/metadata/meta[@property="dcterms:conformsTo" and text() = "http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aa"]</code>:</span>
+                       <span><b>IF</b> the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/link[@rel="dcterms:<i>conformsTo</i>" and @href="<i>http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aa</i>"] | /package/metadata/meta[@property="dcterms:conformsTo" and normalize-space() = "http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aa"]</code>:</span>
                        <span>
                             <b>THEN</b> <b>LET</b> <var>conformance_string</var> = 'EPUB Accessibility 1.0 WCAG 2.0 Level AA',
                             and <b>LET</b> <var>wcag_level</var> = 'AA'.
@@ -403,7 +403,7 @@ dcterms:conformsTo" and text() = "http://www.idpf.org/epub/a11y/accessibility-20
                     </li>
 
                   <li>
-                       <span><b>IF</b> the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/link[@rel="dcterms:<i>conformsTo</i>" and @href="<i>http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aaa</i>"] | /package/metadata/meta[@property="dcterms:conformsTo" and text() = "http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aaa"]</code>:</span>
+                       <span><b>IF</b> the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/link[@rel="dcterms:<i>conformsTo</i>" and @href="<i>http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aaa</i>"] | /package/metadata/meta[@property="dcterms:conformsTo" and normalize-space() = "http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aaa"]</code>:</span>
                        <span>
                        	<b>THEN</b> <b>LET</b> <var>conformance_string</var> = 'EPUB Accessibility 1.0 WCAG 2.0 Level AAA',
                             and <b>LET</b> <var>wcag_level</var> = 'AAA'.
@@ -411,7 +411,7 @@ dcterms:conformsTo" and text() = "http://www.idpf.org/epub/a11y/accessibility-20
                     </li>
 
                    <!-- EPUB Accessibility 1.1 WCAG 2.X (A/AA/AAA) -->
-					<li><b>LET</b> <var>conformance</var> be the value of the node extracted from <var>package_document</var>, using the xpath <code class="xpath">/package/metadata/meta[@property="dcterms:<i>conformsTo</i>" and matches(normalize-space(.), 'EPUB Accessibility 1\.1 - WCAG 2\.[0-2] Level [A]+')</code>.</li>
+					<li><b>LET</b> <var>conformance</var> be the value of the node extracted from <var>package_document</var>, using the xpath <code class="xpath">/package/metadata/meta[@property="dcterms:<i>conformsTo</i>" and matches(normalize-space(.), 'EPUB Accessibility 1\.1 - WCAG 2\.[0-2] Level [A]+')]/normalize-space(.)</code>.</li>
 
 				   <li>
                   	<span><b>IF</b> <var>conformance</var> is <b>NOT</b> empty:</span>
@@ -421,13 +421,13 @@ dcterms:conformsTo" and text() = "http://www.idpf.org/epub/a11y/accessibility-20
                        </span>
                     </li>
 
-                    <li><b>LET</b> <var>certifier</var> be the value of the node extracted from <var>package_document</var>, using the xpath <code class="xpath">/package/metadata/meta[@property="a11y:<i>certifiedBy</i>"]/text()</code>.</li>
+                    <li><b>LET</b> <var>certifier</var> be the value of the node extracted from <var>package_document</var>, using the xpath <code class="xpath">/package/metadata/meta[@property="a11y:<i>certifiedBy</i>"]/normalize-space(.)</code>.</li>
 
-                    <li><b>LET</b> <var>certifier_credentials</var> be the value of the node extracted from <var>package_document</var>, using the xpath <code class="xpath">/package/metadata/meta[@property="a11y:<i>certifierCredential</i>"]/text()</code>.</li>
+                    <li><b>LET</b> <var>certifier_credentials</var> be the value of the node extracted from <var>package_document</var>, using the xpath <code class="xpath">/package/metadata/meta[@property="a11y:<i>certifierCredential</i>"]/normalize-space(.)</code>.</li>
 
-                    <li><b>LET</b> <var>certification_date</var> be the value of the node extracted from <var>package_document</var>, using the xpath <code class="xpath">/package/metadata/meta[@property="dcterms:date" and @refines=//meta[@property="a11y:certifiedBy"]/@id]/text()]</code>.</li>
+                    <li><b>LET</b> <var>certification_date</var> be the value of the node extracted from <var>package_document</var>, using the xpath <code class="xpath">/package/metadata/meta[@property="dcterms:date" and @refines=//meta[@property="a11y:certifiedBy"]/@id]/normalize-space(.)]</code>.</li>
 
-                    <li><b>LET</b> <var>certifier_report</var> be the value of the node extracted from <var>package_document</var>, using the xpath <code class="xpath">/package/metadata/meta[@property="a11y:<i>certifierReport</i>"]/text()</code>.</li>
+                    <li><b>LET</b> <var>certifier_report</var> be the value of the node extracted from <var>package_document</var>, using the xpath <code class="xpath">/package/metadata/meta[@property="a11y:<i>certifierReport</i>"]/normalize-space(.)</code>.</li>
 				</ol>
 
 				<h4>Instructions</h4>
@@ -558,11 +558,11 @@ dcterms:conformsTo" and text() = "http://www.idpf.org/epub/a11y/accessibility-20
 				<ol class="condition">
 					<li><b>LET</b> <var>package_document</var> be the result of calling <a href="#pre-processing">preprocessing</a> given <var>package_document_as_text</var>.</li>
 
-					<li><b>LET</b> <var>all_content_audio</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessModeSufficient</i>" and text()="<i>auditory</i>"]</code>.</li>
+					<li><b>LET</b> <var>all_content_audio</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessModeSufficient</i>" and normalize-space()="<i>auditory</i>"]</code>.</li>
 
-					<li><b>LET</b> <var>synchronised_pre_recorded_audio</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>sychronizedAudioText</i>"]</code>.</li>
+					<li><b>LET</b> <var>synchronised_pre_recorded_audio</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and normalize-space()="<i>sychronizedAudioText</i>"]</code>.</li>
 
-					<li><b>LET</b> <var>audio_content</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessMode</i>" and text()="<i>auditory</i>"]</code>.</li>
+					<li><b>LET</b> <var>audio_content</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessMode</i>" and normalize-space()="<i>auditory</i>"]</code>.</li>
 
 				</ol>
 				<h4>Instructions</h4>
@@ -621,13 +621,13 @@ dcterms:conformsTo" and text() = "http://www.idpf.org/epub/a11y/accessibility-20
 
 					<li><b>LET</b> <var>package_document</var> be the result of calling <a href="#pre-processing">preprocessing</a> given <var>package_document_as_text</var>.</li>
 
-                    <li><b>LET</b> <var>table_of_contents_navigation</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>tableOfContents</i>"]</code>.</li>
+                    <li><b>LET</b> <var>table_of_contents_navigation</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and normalize-space()="<i>tableOfContents</i>"]</code>.</li>
 
-                    <li><b>LET</b> <var>index_navigation</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>index</i>"]</code>.</li>
+                    <li><b>LET</b> <var>index_navigation</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and normalize-space()="<i>index</i>"]</code>.</li>
 
-                    <li><b>LET</b> <var>page_navigation</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>pageNavigation</i>"]</code>.</li>
+                    <li><b>LET</b> <var>page_navigation</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and normalize-space()="<i>pageNavigation</i>"]</code>.</li>
 
-                    <li><b>LET</b> <var>next_previous_structural_navigation</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>structuralNavigation</i>"]</code>.</li>
+                    <li><b>LET</b> <var>next_previous_structural_navigation</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and normalize-space()="<i>structuralNavigation</i>"]</code>.</li>
 
   				</ol>
 				<h4>Instructions</h4>
@@ -731,26 +731,26 @@ chemml</var></dt>
 				<ol class="condition">
 					<li><b>LET</b> <var>package_document</var> be the result of calling <a href="#pre-processing">preprocessing</a> given <var>package_document_as_text</var>.</li>
 
-                    <li><b>LET</b> <var>contains_charts_diagrams</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>chartOnVisual</i>"]</code>.</li>
+                    <li><b>LET</b> <var>contains_charts_diagrams</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and normalize-space()="<i>chartOnVisual</i>"]</code>.</li>
 
-                    <li><b>LET</b> <var>long_text_descriptions</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>longDescriptions</i>"]</code>.</li>
+                    <li><b>LET</b> <var>long_text_descriptions</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and normalize-space()="<i>longDescriptions</i>"]</code>.</li>
 
-                    <li><b>LET</b> <var>contains_chemical_formula</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>chemOnVisual</i>"]</code>.</li>
-
-
-                    <li><b>LET</b> <var>chemical_formula_as_latex</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>latex-chemistry</i>"]</code>.</li>
-<li><b>LET</b> <var>chemical_formula_as_chemml</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>ChemML</i>"]</code>.</li>
+                    <li><b>LET</b> <var>contains_chemical_formula</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and normalize-space()="<i>chemOnVisual</i>"]</code>.</li>
 
 
-	                <li><b>LET</b> <var>contains_math_formula</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>describedMath</i>"]</code>.</li>
+                    <li><b>LET</b> <var>chemical_formula_as_latex</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and normalize-space()="<i>latex-chemistry</i>"]</code>.</li>
+<li><b>LET</b> <var>chemical_formula_as_chemml</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and normalize-space()="<i>ChemML</i>"]</code>.</li>
 
-	                <li><b>LET</b> <var>math_formula_as_latex</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>latex</i>"]</code>.</li>
 
-	                <li><b>LET</b> <var>math_formula_as_mathml</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>MathML</i>"]</code>.</li>
+	                <li><b>LET</b> <var>contains_math_formula</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and normalize-space()="<i>describedMath</i>"]</code>.</li>
 
-	                <li><b>LET</b> <var>closed_captions</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>closedCaptions</i>"]</code>.</li>
-<li><b>LET</b> <var>open_captions</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>openCaptions</i>"]</code>.</li>
-<li><b>LET</b> <var>transcript</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>transcript</i>"]</code>.</li>
+	                <li><b>LET</b> <var>math_formula_as_latex</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and normalize-space()="<i>latex</i>"]</code>.</li>
+
+	                <li><b>LET</b> <var>math_formula_as_mathml</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and normalize-space()="<i>MathML</i>"]</code>.</li>
+
+	                <li><b>LET</b> <var>closed_captions</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and normalize-space()="<i>closedCaptions</i>"]</code>.</li>
+<li><b>LET</b> <var>open_captions</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and normalize-space()="<i>openCaptions</i>"]</code>.</li>
+<li><b>LET</b> <var>transcript</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and normalize-space()="<i>transcript</i>"]</code>.</li>
 				</ol>
 				<h4>Instructions</h4>
 				<ol class="condition">
@@ -850,28 +850,28 @@ chemml</var></dt>
 				<ol class="condition">
 					<li><b>LET</b> <var>package_document</var> be the result of calling <a href="#pre-processing">preprocessing</a> given <var>package_document_as_text</var>.</li>
 
-                    <li><b>LET</b> <var>no_hazards_or_warnings_confirmed</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityHazard</i>" and text()="<i>none</i>"]</code>.</li>
+                    <li><b>LET</b> <var>no_hazards_or_warnings_confirmed</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityHazard</i>" and normalize-space()="<i>none</i>"]</code>.</li>
 
-                    <li><b>LET</b> <var>flashing_hazard</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityHazard</i>" and text()="<i>flashing</i>"]</code>.</li>
-
-
-                    <li><b>LET</b> <var>no_flashing_hazards</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityHazard</i>" and text()="<i>noFlashingHazard</i>"]</code>.</li>
+                    <li><b>LET</b> <var>flashing_hazard</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityHazard</i>" and normalize-space()="<i>flashing</i>"]</code>.</li>
 
 
-                    <li><b>LET</b> <var>motion_simulation_hazard</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityHazard</i>" and text()="<i>motionSimulation</i>"]</code>.</li>
+                    <li><b>LET</b> <var>no_flashing_hazards</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityHazard</i>" and normalize-space()="<i>noFlashingHazard</i>"]</code>.</li>
 
 
-                    <li><b>LET</b> <var>no_motion_hazards</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityHazard</i>" and text()="<i>noMotionSimulation</i>"]</code>.</li>
+                    <li><b>LET</b> <var>motion_simulation_hazard</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityHazard</i>" and normalize-space()="<i>motionSimulation</i>"]</code>.</li>
 
 
-                    <li><b>LET</b> <var>sound_hazard</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityHazard</i>" and text()="<i>sound</i>"]</code>.</li>
+                    <li><b>LET</b> <var>no_motion_hazards</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityHazard</i>" and normalize-space()="<i>noMotionSimulation</i>"]</code>.</li>
+
+
+                    <li><b>LET</b> <var>sound_hazard</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityHazard</i>" and normalize-space()="<i>sound</i>"]</code>.</li>
 
 
 
-                    <li><b>LET</b> <var>no_sound_hazards</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityHazard</i>" and text()="<i>noSoundHazard</i>"]</code>.</li>
+                    <li><b>LET</b> <var>no_sound_hazards</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityHazard</i>" and normalize-space()="<i>noSoundHazard</i>"]</code>.</li>
 
 
-                    <li><b>LET</b> <var>unknown_if_contains_hazards</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityHazard</i>" and text()="<i>unknown</i>"]</code>.</li>
+                    <li><b>LET</b> <var>unknown_if_contains_hazards</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityHazard</i>" and normalize-space()="<i>unknown</i>"]</code>.</li>
 
 				</ol>
 				<h4>Instructions</h4>
@@ -943,11 +943,11 @@ chemml</var></dt>
 				<ol class="condition">
                     <li><b>LET</b> <var>package_document</var> be the result of calling <a href="#pre-processing">preprocessing</a> given <var>package_document_as_text</var>.</li>
 
-                    <li><b>LET</b> <var>accessibility_summary</var> be the value of the node extracted from <var>package_document</var>, using the xpath <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilitySummary</i>"]</code>.</li>
+                    <li><b>LET</b> <var>accessibility_summary</var> be the value of the node extracted from <var>package_document</var>, using the xpath <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilitySummary</i>"]/normalize-space(.)</code>.</li>
 
-                    <li><b>LET</b> <var>lang_attribute_accessibility_summary</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilitySummary</i>"]/(@lang|ancestor::*/@lang)[last()]</code>.</li>
+					<li><b>LET</b> <var>lang_attribute_accessibility_summary</var> be the value of the node extracted from <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilitySummary</i>"]/(@lang|ancestor::*/@lang)[last()]/normalize-space(.)</code>.</li>
 
-                    <li><b>LET</b> <var>language_of_text</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/dc:language[1]/text()</code>.</li>
+					<li><b>LET</b> <var>language_of_text</var> be the value of the node extracted from <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/dc:language[1]/normalize-space(.)</code>.</li>
 
  				</ol>
 				<h4>Instructions</h4>
@@ -997,9 +997,9 @@ chemml</var></dt>
 				<h4>Variables setup</h4>
 				<ol class="condition">
 					<li><b>LET</b> <var>package_document</var> be the result of calling <a href="#pre-processing">preprocessing</a> given <var>package_document_as_text</var>.</li>
-					<li><b>LET</b> <var>eaa_exemption_micro_enterprises</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="a11y:<i>exemption</i>" and text()="<i>eaa-microenterprise</i>"]</code>.</li>
-					<li><b>LET</b> <var>eaa_exception_disproportionate_burden</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="a11y:<i>exemption</i>" and text()="<i>eaa-disproportionate-burden</i>"]</code>.</li>
-					<li><b>LET</b> <var>eaa_exception_fundamental_modification</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="a11y:<i>exemption</i>" and text()="<i>eaa-fundamental-alteration</i>"]</code>.</li>
+					<li><b>LET</b> <var>eaa_exemption_micro_enterprises</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="a11y:<i>exemption</i>" and normalize-space()="<i>eaa-microenterprise</i>"]</code>.</li>
+					<li><b>LET</b> <var>eaa_exception_disproportionate_burden</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="a11y:<i>exemption</i>" and normalize-space()="<i>eaa-disproportionate-burden</i>"]</code>.</li>
+					<li><b>LET</b> <var>eaa_exception_fundamental_modification</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="a11y:<i>exemption</i>" and normalize-space()="<i>eaa-fundamental-alteration</i>"]</code>.</li>
 				</ol>
 				<h4>Instructions</h4>
 				<ol class="condition">
@@ -1057,11 +1057,11 @@ chemml</var></dt>
 					<h5>Variables setup</h5>
 					<ol class="condition">
                         <li><b>LET</b> <var>package_document</var> be the result of calling <a href="#pre-processing">preprocessing</a> given <var>package_document_as_text</var>.</li>
-						<li><b>LET</b> <var>audio_descriptions</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>audioDescription</i>"]</code>.</li>
-						<li><b>LET</b> <var>braille</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>braille</i>"]</code>.</li>
-                        <li><b>LET</b> <var>tactile_graphic</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>tactileGraphic</i>"]</code>.</li>
-                        <li><b>LET</b> <var>tactile_object</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>tactileObject</i>"]</code>.</li>
-                        <li><b>LET</b> <var>sign_language</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>signLanguage</i>"]</code>.</li>
+						<li><b>LET</b> <var>audio_descriptions</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and normalize-space()="<i>audioDescription</i>"]</code>.</li>
+						<li><b>LET</b> <var>braille</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and normalize-space()="<i>braille</i>"]</code>.</li>
+                        <li><b>LET</b> <var>tactile_graphic</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and normalize-space()="<i>tactileGraphic</i>"]</code>.</li>
+                        <li><b>LET</b> <var>tactile_object</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and normalize-space()="<i>tactileObject</i>"]</code>.</li>
+                        <li><b>LET</b> <var>sign_language</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and normalize-space()="<i>signLanguage</i>"]</code>.</li>
     				</ol>
 
 					<h5>Instructions</h5>
@@ -1141,14 +1141,14 @@ chemml</var></dt>
 					<h5>Variables setup</h5>
 					<ol class="condition">
 						<li><b>LET</b> <var>package_document</var> be the result of calling <a href="#pre-processing">preprocessing</a> given <var>package_document_as_text</var>.</li>
-						<li><b>LET</b> <var>aria</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>aria</i>"]</code>.</li>
-						<li><b>LET</b> <var>full_ruby_annotations</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>fullRubyAnnotations</i>"]</code>.</li>
-						<li><b>LET</b> <var>text_to_speech_hinting</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>ttsMarkup</i>"]</code>.</li>
-    				    <li><b>LET</b> <var>high_contrast_between_foreground_and_background_audio</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>highContrastAudio</i>"]</code>.</li>
-    				    <li><b>LET</b> <var>high_contrast_between_text_and_background</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>highContrastDisplay</i>"]</code>.</li>
-                        <li><b>LET</b> <var>large_print</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>largePrint</i>"]</code>.</li>
-                        <li><b>LET</b> <var>page_break_markers</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>pageBreakMarkers</i>"]</code>.</li>
-						<li><b>LET</b> <var>ruby_annotations</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and text()="<i>rubyAnnotations</i>"]</code>.</li>
+						<li><b>LET</b> <var>aria</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and normalize-space()="<i>aria</i>"]</code>.</li>
+						<li><b>LET</b> <var>full_ruby_annotations</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and normalize-space()="<i>fullRubyAnnotations</i>"]</code>.</li>
+						<li><b>LET</b> <var>text_to_speech_hinting</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and normalize-space()="<i>ttsMarkup</i>"]</code>.</li>
+    				    <li><b>LET</b> <var>high_contrast_between_foreground_and_background_audio</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and normalize-space()="<i>highContrastAudio</i>"]</code>.</li>
+    				    <li><b>LET</b> <var>high_contrast_between_text_and_background</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and normalize-space()="<i>highContrastDisplay</i>"]</code>.</li>
+                        <li><b>LET</b> <var>large_print</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and normalize-space()="<i>largePrint</i>"]</code>.</li>
+                        <li><b>LET</b> <var>page_break_markers</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and normalize-space()="<i>pageBreakMarkers</i>"]</code>.</li>
+						<li><b>LET</b> <var>ruby_annotations</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and normalize-space()="<i>rubyAnnotations</i>"]</code>.</li>
                     </ol>
 
 					<h5>Instructions</h5>
