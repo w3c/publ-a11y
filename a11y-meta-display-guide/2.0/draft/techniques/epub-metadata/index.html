@@ -45,7 +45,7 @@
 	  	ol.condition > li > span {
 	  		display: block;
 	  	}
-	  	ol.condition > li > span:nth-child(2) {
+	  	ol.condition > li > span:nth-child(n+2) {
 	  		margin-left: 2rem;
 	  	}
 	  	code.xpath {
@@ -195,23 +195,6 @@
 					<li><b>ELSE</b> return <code>False</code>.</li>
 				</ol>
 			</section>
-			<section id="join-array-to-comma-list">
-				<h3>Join array to comma list</h3>
-				<p>This function serves to concatenate an array of strings, separating each element with a comma, with the last element separated by an <code>", and"</code> (this string is localizable).</p>
-				<p>For example if the input array has elements <code>["one", "two", "three"]</code>, then the output is going to be <code>"one, two, and three"</code>.</p>
-				<p>This algorithm takes the <var>string_array</var> argument: the list of string to join.</p>
-				<p>To join the array, run the following steps:</p>
-				<ol class="condition">
-					<li><b>LET</b> <var>output_string</var> be the result of:
-						<ul class="condition">
-							<li>calling join on <var>string_array</var> with the separator <code>", "</code></li>
-							<li>replacing the last occurrence of <code>", "</code> with <code id="join-array-and">", and "</code>.</li>
-						</ul>
-					</li>
-					<li>return <var>output_string</var>.</li>
-				</ol>
-			</section>
-
         </section>
 
 		<section id="techniques">
@@ -303,15 +286,14 @@
 					<li><b>LET</b> <var>package_document</var> be the result of calling <a href="#pre-processing">preprocessing</a> given <var>package_document_as_text</var>.</li>
 
 					<li><b>LET</b> <var>all_necessary_content_textual</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessModeSufficient</i>" and normalize-space()="<i>textual</i>"]</code>.</li>
+					
 					<li>
 						<b>LET</b> <var>non_textual_content_images</var> be the result of calling <a href="#check-for-node">check for node</a> on
-                        <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="<i>schema:accessibilityFeature</i>" and <br/>(normalize-space()="<i>chartOnVisual</i>" or normalize-space()="<i>chemOnVisual</i>" or <br/>
-                         normalize-space()="<i>diagramOnVisual"</i> or normalize-space()="<i>mathOnVisual</i>" or <br/>
-                         normalize-space()="<i>musicOnVisual"</i> or normalize-space()="<i>textOnVisual</i>")]</code>.
+                        <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="<i>schema:accessMode</i>" and <br/>normalize-space() = ("chartOnVisual", "chemOnVisual", "diagramOnVisual", "mathOnVisual", "musicOnVisual", "textOnVisual")]</code>.
 					</li>
 
-                    <li><b>LET</b> <var>textual_alternative_images</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="<i>schema:accessibilityFeature</i>" and <br/>(normalize-space()="<i>longDescription</i>" or normalize-space()="<i>alternativeText</i>" or normalize-space()="<i>describedMath"</i>)]</code>.
-
+                    <li>
+                    	<b>LET</b> <var>textual_alternative_images</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="<i>schema:accessibilityFeature</i>" and <br/>(normalize-space()="<i>longDescription</i>" or normalize-space()="<i>alternativeText</i>" or normalize-space()="<i>describedMath"</i>)]</code>.
 					</li>
 				</ol>
 				<h4>Instructions</h4>
@@ -323,7 +305,7 @@
 
 					<li>
 						<span><b>IF</b> <var>all_necessary_content_textual</var>:</span>
-						<span><b>THEN</b> display <code id="nonvisual-reading-readable">"Readable in read aloud or  dynamic braille"</code>.</span>
+						<span><b>THEN</b> display <code id="nonvisual-reading-readable">"Readable in read aloud or dynamic braille"</code>.</span>
 					</li>
 					<li>
 						<span><b>ELSE IF</b> <var>non_textual_content_images</var> <b>AND</b> <b>NOT</b> <var>textual_alternative_images</var>:</span>
@@ -386,28 +368,21 @@
 
                 <!-- EPUB Accessibility 1.0 WCAG 2.0 (A/AA/AAA) -->
                  <li>
-                     <span><b>IF</b> the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/link[@rel="dcterms:<i>conformsTo</i>" and @href="<i>http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-a</i>"] | /package/metadata/meta[@property="
-dcterms:conformsTo" and normalize-space() = "http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-a"]</code> :</span>
-                       <span>
-                       	<b>THEN</b> <b>LET</b> <var>conformance_string</var> = 'EPUB Accessibility 1.0 WCAG 2.0 Level A',
-                            and <b>LET</b> <var>wcag_level</var> = 'A'.
-                       </span>
-                    </li>
+                     <span><b>IF</b> the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/link[@rel="dcterms:<i>conformsTo</i>" and @href="<i>http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-a</i>"] | /package/metadata/meta[@property="dcterms:conformsTo" and normalize-space() = "http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-a"]</code> :</span>
+                     <span><b>THEN</b> <b>LET</b> <var>conformance_string</var> = 'EPUB Accessibility 1.0 WCAG 2.0 Level A', and</span>
+                 	<span><b>LET</b> <var>wcag_level</var> = 'A'.</span>
+                 </li>
 
                   <li>
                        <span><b>IF</b> the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/link[@rel="dcterms:<i>conformsTo</i>" and @href="<i>http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aa</i>"] | /package/metadata/meta[@property="dcterms:conformsTo" and normalize-space() = "http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aa"]</code>:</span>
-                       <span>
-                            <b>THEN</b> <b>LET</b> <var>conformance_string</var> = 'EPUB Accessibility 1.0 WCAG 2.0 Level AA',
-                            and <b>LET</b> <var>wcag_level</var> = 'AA'.
-                       </span>
+                       <span><b>THEN</b> <b>LET</b> <var>conformance_string</var> = 'EPUB Accessibility 1.0 WCAG 2.0 Level AA', and</span>
+                       <span><b>LET</b> <var>wcag_level</var> = 'AA'.</span>
                     </li>
 
                   <li>
-                       <span><b>IF</b> the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/link[@rel="dcterms:<i>conformsTo</i>" and @href="<i>http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aaa</i>"] | /package/metadata/meta[@property="dcterms:conformsTo" and normalize-space() = "http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aaa"]</code>:</span>
-                       <span>
-                       	<b>THEN</b> <b>LET</b> <var>conformance_string</var> = 'EPUB Accessibility 1.0 WCAG 2.0 Level AAA',
-                            and <b>LET</b> <var>wcag_level</var> = 'AAA'.
-                       </span>
+                      <span><b>IF</b> the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/link[@rel="dcterms:<i>conformsTo</i>" and @href="<i>http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aaa</i>"] | /package/metadata/meta[@property="dcterms:conformsTo" and normalize-space() = "http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aaa"]</code>:</span>
+                      <span><b>THEN</b> <b>LET</b> <var>conformance_string</var> = 'EPUB Accessibility 1.0 WCAG 2.0 Level AAA', and</span>
+                  	<span><b>LET</b> <var>wcag_level</var> = 'AAA'.</span>
                     </li>
 
                    <!-- EPUB Accessibility 1.1 WCAG 2.X (A/AA/AAA) -->
@@ -415,17 +390,15 @@ dcterms:conformsTo" and normalize-space() = "http://www.idpf.org/epub/a11y/acces
 
 				   <li>
                   	<span><b>IF</b> <var>conformance</var> is <b>NOT</b> empty:</span>
-                       <span>
-                       	<b>THEN LET</b> <var>conformance_string</var> = replace(<var>conformance</var>, ' - ', ' '),
-                       	and <b>LET</b> <var>wcag_level</var> = replace(<var>conformance</var>, 'EPUB Accessibility 1\.1 - WCAG 2\.[0-2] Level ', '').
-                       </span>
+                      <span><b>THEN LET</b> <var>conformance_string</var> = replace(<var>conformance</var>, ' - ', ' '), and</span>
+                      <span><b>LET</b> <var>wcag_level</var> = replace(<var>conformance</var>, 'EPUB Accessibility 1\.1 - WCAG 2\.[0-2] Level ', '').</span>
                     </li>
 
                     <li><b>LET</b> <var>certifier</var> be the value of the node extracted from <var>package_document</var>, using the xpath <code class="xpath">/package/metadata/meta[@property="a11y:<i>certifiedBy</i>"]</code>.</li>
 
                     <li><b>LET</b> <var>certifier_credentials</var> be the value of the node extracted from <var>package_document</var>, using the xpath <code class="xpath">/package/metadata/meta[@property="a11y:<i>certifierCredential</i>"]</code>.</li>
 
-                    <li><b>LET</b> <var>certification_date</var> be the value of the node extracted from <var>package_document</var>, using the xpath <code class="xpath">/package/metadata/meta[@property="dcterms:date" and @refines=//meta[@property="a11y:certifiedBy"]/@id]]</code>.</li>
+                    <li><b>LET</b> <var>certification_date</var> be the value of the node extracted from <var>package_document</var>, using the xpath <code class="xpath">/package/metadata/meta[@property="dcterms:date" and @refines=//meta[@property="a11y:certifiedBy"]/@id]</code>.</li>
 
                     <li><b>LET</b> <var>certifier_report</var> be the value of the node extracted from <var>package_document</var>, using the xpath <code class="xpath">/package/metadata/meta[@property="a11y:<i>certifierReport</i>"]</code>.</li>
 				</ol>
@@ -505,10 +478,10 @@ dcterms:conformsTo" and normalize-space() = "http://www.idpf.org/epub/a11y/acces
 								</ul>
 							</li>
 							<li>
-								<span><b>IF</b> <var>certification_date</var>:</span>
-								<span><b>THEN</b> display <code id="conformance-certification-info">"The publication was certified "</code>.</span>
-								<ul class="condition">
-									<li>display <code id="conformance-certification-date-prefix">" on "</code></li>
+								<span><b>IF</b> <var>certification_date</var> <b>THEN</b>:</span>
+                                <ul class="condition">
+
+									<li>display <code id="conformance-certification-info">"The publication was certified on "</code></li>
 									<li>display <var>certification_date</var>.</li>
 								</ul>
 							</li>
@@ -645,7 +618,7 @@ dcterms:conformsTo" and normalize-space() = "http://www.idpf.org/epub/a11y/acces
 								<span><b>THEN</b> display <code id="navigation-index">"Index"</code>.</span>
 							</li>
                             <li>
-							     <span><b>IF</b> <var>print_equivalent_page_numbering</var>:</span>
+							     <span><b>IF</b> <var>page_navigation</var>:</span>
 								<span><b>THEN</b> display <code id="navigation-page-navigation">"Go to page"</code>.</span>
 							</li>
 							<li>
@@ -671,7 +644,7 @@ dcterms:conformsTo" and normalize-space() = "http://www.idpf.org/epub/a11y/acces
 				<dl>
 					<dt><var>contains_charts_diagrams</var></dt>
 					<dd>
-                        <p>If true it indicates that the <i>accessibilityFeature="chartOnVisual"</i> (charts encoded in visual form) is present in the package document, otherwise if false it means that the metadata is not present.</p>
+                        <p>If true it indicates that the <i>accessMode="chartOnVisual"</i> (charts encoded in visual form) is present in the package document, otherwise if false it means that the metadata is not present.</p>
 						<p>This means that there is a positive indication that the product has some information conveyed via some form of illustration, such as a graph, a chart, a diagram, a figure, etc).</p>
 					</dd>
 					<dt><var>long_text_descriptions</var></dt>
@@ -681,14 +654,13 @@ dcterms:conformsTo" and normalize-space() = "http://www.idpf.org/epub/a11y/acces
 					</dd>
 					<dt><var>contains_chemical_formula</var></dt>
 					<dd>
-						<p>If true it indicates that the <i>accessibilityFeature="chemOnVisual"</i> (Chemical content) is present in the package document, otherwise if false it means that the metadata is not present.</p>
+						<p>If true it indicates that the <i>accessMode="chemOnVisual"</i> (Chemical content) is present in the package document, otherwise if false it means that the metadata is not present.</p>
 						<p>This means that there is a positive indication that the publication contains chemical notations, formulae.</p>
 					</dd>
-					<dt><var>chemical_formula_as_
-chemml</var></dt>
+					<dt><var>chemical_formula_as_mathml</var></dt>
 					<dd>
-						<p>If true it indicates that the <i>accessibilityFeature="ChemML"</i> (Accessible chemistry content as ChemML) is present in the package document, otherwise if false it means that the metadata is not present.</p>
-						<p>This means that there is a positive indication that the chemical formulae are presented using ChemML and works with compatible assistive technology.</p>
+						<p>If true it indicates that the <i>accessibilityFeature="MathML-chemistry"</i> (Accessible chemistry content as MathML) is present in the package document, otherwise if false it means that the metadata is not present.</p>
+						<p>This means that there is a positive indication that the chemical formulae are presented using MathML and works with compatible assistive technology.</p>
 					</dd>
 <dt><var>chemical_formula_as_latex</var></dt>
 					<dd>
@@ -731,16 +703,16 @@ chemml</var></dt>
 				<ol class="condition">
 					<li><b>LET</b> <var>package_document</var> be the result of calling <a href="#pre-processing">preprocessing</a> given <var>package_document_as_text</var>.</li>
 
-                    <li><b>LET</b> <var>contains_charts_diagrams</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and normalize-space()="<i>chartOnVisual</i>"]</code>.</li>
+                    <li><b>LET</b> <var>contains_charts_diagrams</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessMode</i>" and normalize-space()="<i>chartOnVisual</i>"]</code>.</li>
 
                     <li><b>LET</b> <var>long_text_descriptions</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and normalize-space()="<i>longDescriptions</i>"]</code>.</li>
 
-                    <li><b>LET</b> <var>contains_chemical_formula</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and normalize-space()="<i>chemOnVisual</i>"]</code>.</li>
+                    <li><b>LET</b> <var>contains_chemical_formula</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessMode</i>" and normalize-space()="<i>chemOnVisual</i>"]</code>.</li>
 
 
                     <li><b>LET</b> <var>chemical_formula_as_latex</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and normalize-space()="<i>latex-chemistry</i>"]</code>.</li>
-<li><b>LET</b> <var>chemical_formula_as_chemml</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and normalize-space()="<i>ChemML</i>"]</code>.</li>
-
+                    
+                    <li><b>LET</b> <var>chemical_formula_as_mathml</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and normalize-space()="<i>MathML-chemistry</i>"]</code>.</li>
 
 	                <li><b>LET</b> <var>contains_math_formula</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and normalize-space()="<i>describedMath</i>"]</code>.</li>
 
@@ -759,11 +731,11 @@ chemml</var></dt>
 						<span><b>THEN</b> display <code id="rich-content-accessible-math-as-mathml">"Math as MathML"</code>.</span>
 					</li>
 					<li>
-						<span><b>ELSE IF</b> <var>math_formula_as_latex</var>:</span>
+						<span><b>IF</b> <var>math_formula_as_latex</var>:</span>
 						<span><b>THEN</b> display <code id="rich-content-accessible-math-as-latex">"Math as LaTex"</code>.</span>
 					</li>
 					<li>
-						<span><b>ELSE IF</b> <var>contains_math_formula</var>:</span>
+						<span><b>IF</b> <var>contains_math_formula</var>:</span>
 						<span><b>THEN</b> display <code id="rich-content-accessible-math-described">"Math as images with text description"</code>.</span>
 					</li>
 					<li>
@@ -882,7 +854,7 @@ chemml</var></dt>
 					</li>
 					<li>
 						<span><b>ELSE IF</b> <var>flashing_hazard</var> <b>OR</b> <var>motion_simulation_hazard</var> <b>OR</b> <var>sound_hazard</var>:</span></li>
-						<b>THEN</b> <ol class="condition">
+						<b>THEN</b> <ul class="condition">
 							<li>
 								<span><b>IF</b> <var>flashing_hazard</var>:</span>
 								<span><b>THEN</b> display <code id="hazards-flashing">"Flashing content"</code>.</span>
@@ -895,7 +867,7 @@ chemml</var></dt>
 								<span><b>IF</b> <var>sound_hazard</var>:</span>
 								<span><b>THEN</b> display <code id="hazards-sound">"Loud sounds"</code>.</span>
 							</li>
-						</ol>
+						</ul>
 
                     <li>
 						<span><b>ELSE IF</b> <var>unknown_if_contains_hazards</var>:</span>
@@ -945,10 +917,9 @@ chemml</var></dt>
 
                     <li><b>LET</b> <var>accessibility_summary</var> be the value of the node extracted from <var>package_document</var>, using the xpath <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilitySummary</i>"]</code>.</li>
 
-					<li><b>LET</b> <var>lang_attribute_accessibility_summary</var> be the value of the node extracted from <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilitySummary</i>"]/(@lang|ancestor::*/@lang)[last()]</code>.</li>
+										<li><b>LET</b> <var>lang_attribute_accessibility_summary</var> be the value of the node extracted from <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="<i>schema:accessibilitySummary</i>"]/(@lang|/package/@lang)[last()]/normalize-space(.)</code>.</li>
 
-					<li><b>LET</b> <var>language_of_text</var> be the value of the node extracted from <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/dc:language[1]</code>.</li>
-
+										<li><b>LET</b> <var>language_of_text</var> be the value of the node extracted from <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/dc:language[1]</code>.</li>
  				</ol>
 				<h4>Instructions</h4>
 				<ol class="condition">
@@ -1071,15 +1042,15 @@ chemml</var></dt>
 							<span><b>THEN</b> display <code id="additional-accessibility-information-adaptation-audio-descriptions">"Audio descriptions"</code>.</span></li>
 						<li>
 							<span><b>IF</b> <var>braille</var>:</span>
-							<span><b>THEN</b> display <code id="additional-accessibility-information-adaptation-braille">"braille"</code>.</span>
+							<span><b>THEN</b> display <code id="additional-accessibility-information-adaptation-braille">"Braille"</code>.</span>
 						</li>
 						<li>
 							<span><b>IF</b> <var>tactile_graphic</var>:</span>
-							<span><b>THEN</b> display <code id="additional-accessibility-information-adaptation-tactile_graphic">"Tactile graphic"</code>.</span>
+							<span><b>THEN</b> display <code id="additional-accessibility-information-adaptation-tactile_graphics">"Tactile graphics"</code>.</span>
 						</li>
 						<li>
 							<span><b>IF</b> <var>tactile_object</var>:</span>
-							<span><b>THEN</b> display <code id="additional-accessibility-information-adaptation-tactile_object">"Tactile 3D object"</code>.</span>
+							<span><b>THEN</b> display <code id="additional-accessibility-information-adaptation-tactile_objects">"Tactile 3D objects"</code>.</span>
 						</li>
 						<li>
 							<span><b>IF</b> <var>sign_language</var>:</span>
