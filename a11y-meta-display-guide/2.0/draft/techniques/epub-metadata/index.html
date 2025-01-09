@@ -288,14 +288,13 @@
 					<li><b>LET</b> <var>all_necessary_content_textual</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessModeSufficient</i>" and normalize-space()="<i>textual</i>"]</code>.</li>
 					
 					<li>
-						<b>LET</b> <var>non_textual_content_images</var> be the result of calling <a href="#check-for-node">check for node</a> on
-                        <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="<i>schema:accessMode</i>" and <br/>normalize-space() = ("chartOnVisual", "chemOnVisual", "diagramOnVisual", "mathOnVisual", "musicOnVisual", "textOnVisual")]</code>.
+						<b>LET</b> <var>non_textual_content_images</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="<i>schema:accessMode</i>" and normalize-space() = ("chartOnVisual", "chemOnVisual", "diagramOnVisual", "mathOnVisual", "musicOnVisual", "textOnVisual")]</code>.
 					</li>
 
                     <li>
-                    	<b>LET</b> <var>textual_alternative_images</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="<i>schema:accessibilityFeature</i>" and <br/>(normalize-space()="<i>longDescription</i>" or normalize-space()="<i>alternativeText</i>" or normalize-space()="<i>describedMath"</i>)]</code>.
+                    	<b>LET</b> <var>textual_alternative_images</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="<i>schema:accessibilityFeature</i>" and normalize-space()=("<i>longDescription</i>", "<i>alternativeText</i>","<i>describedMath"</i>)]</code>.
 					</li>
-				</ol>
+                </ol>
 				<h4>Instructions</h4>
 				<ol class="condition">
 							<li>
