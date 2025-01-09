@@ -211,22 +211,6 @@
 					<li><b>ELSE</b> return <code>False</code>.</li>
 				</ol>
 			</section>
-			<section id="join-array-to-comma-list">
-				<h3>Join array to comma list</h3>
-				<p>This function serves to concatenate an array of strings, separating each element with a comma, with the last element separated by an <code>", and"</code> (this string is localizable).</p>
-				<p>For example if the input array has elements <code>["one", "two", "three"]</code>, then the output is going to be <code>"one, two, and three"</code>.</p>
-				<p>This algorithm takes the <var>string_array</var> argument: the list of string to join.</p>
-				<p>To join the array, run the following steps:</p>
-				<ol class="condition">
-					<li><b>LET</b> <var>output_string</var> be the result of:
-						<ul class="condition">
-							<li>calling join on <var>string_array</var> with the separator <code>", "</code></li>
-							<li>replacing the last occurrence of <code>", "</code> with <code id="join-array-and">", and "</code>.</li>
-						</ul>
-					</li>
-					<li>return <var>output_string</var>.</li>
-				</ol>
-			</section>
 		</section>
 		<section id="techniques">
 			<h2>Techniques</h2>
