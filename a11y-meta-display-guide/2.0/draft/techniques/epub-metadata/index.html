@@ -133,7 +133,26 @@
         </section>
 
 		<section id="conventions">
-			<h2>Conventions for implementations</h2>
+			<h2>Conventions for Implementations</h2>
+            
+            <h3>Heading Structure</h3>
+                <p>The algorithms defined in this document do not include instructions for outputting their respective headings because if a given technique does not result in any information (i.e., would output a statement that no information is available), the section may be omitted (i.e., no heading would be displayed). Whether there is any information to display is only known after an algorithm is processed, which would lead to the algorithms having to include instructions to remove headings.</p>
+            
+                <p>The headings structure to use for the techniques is defined in the guidelines but is repeated here to help guide implementations. The headings are linked to the algorithm they are associated with.</p>
+
+                <ol>
+                    <li><code id="ways-of-reading-title">"<a href="#ways-of-reading-instructions">Ways of reading</a>"</code></li>
+                    <li><code id="conformance-title">"<a href="#conformance-instructions">Conformance</a>"</code></li>
+                    <li><code id="navigation-title">"<a href="#navigation-instructions">Navigation</a>"</code></li>
+                    <li><code id="rich-content-title">"<a href="#rich-content-instructions">Rich content</a>"</code></li>
+                    <li><code id="hazards-title">"<a href="#hazards-instructions">Hazards</a>"</code></li>
+                    <li><code id="accessibility-summary-title">"<a href="#accessibility-summary-instructions">Accessibility summary</a>"</code></li>
+                    <li><code id="legal-considerations-title">"<a href="#legal-considerations-instructions">Legal considerations</a>"</code></li>
+                    <li><code id="#additional-accessibility-information-adaptation-title">"<a href="#additional-accessibility-information-adaptation-instructions">Additional accessibility information adaptation</a>"</code></li>
+                    <li><code id="#additional-accessibility-information-clarity-title">"<a href="#additional-accessibility-information-clarity-instructions">Additional accessibility information clarity</a>"</code></li>
+                </ol>
+            
+            <h3>Coding Conventions</h3>
 			<p>The code conventions used in the provided code snippet follow a structure commonly found in programming languages like Python, Java, or C++. Here&#39;s an explanation of the conventions:</p>
 			<dl>
 				<dt>Conditionals and Control Flow:</dt>
@@ -276,7 +295,7 @@
 							<li><i>accessibilityFeature="alternativeText"</i> (Short alternative textual descriptions);</li>
 							<li><i>accessibilityFeature="longDescription"</i> (Full alternative textual descriptions);</li>
 							<li><i>accessibilityFeature="describedMath"</i> (Visual of math fully described));</li>
-							<li>otherwise if false it means that this metadata is not present.</li>
+							<li>otherwise if false it means that this metadata is not present.</li>ff
 						</ul>
 						<p>This means that there are textual alternatives for images.</p>
 					</dd>
@@ -402,7 +421,7 @@
                     <li><b>LET</b> <var>certifier_report</var> be the value of the node extracted from <var>package_document</var>, using the xpath <code class="xpath">/package/metadata/meta[@property="a11y:<i>certifierReport</i>"]</code>.</li>
 				</ol>
 
-				<h4>Instructions</h4>
+				<h4 id="conformance-instructions">Instructions</h4>
 				<ol class="condition">
 					<li><span><b>IF</b> <var>conformance_string</var> is empty:</span>
 						<span><b>THEN</b> display <code id="conformance-no">"No information is available"</code>.</span>
@@ -602,7 +621,7 @@
                     <li><b>LET</b> <var>next_previous_structural_navigation</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and normalize-space()="<i>structuralNavigation</i>"]</code>.</li>
 
   				</ol>
-				<h4>Instructions</h4>
+				<h4 id="navigation-instructions">Instructions</h4>
 				<ol class="condition">
 					<li>
 						<span><b>IF</b> <var>table_of_contents_navigation</var> <b>OR</b> <var>index_navigation</var> <b>OR</b> <var>page_navigation</var> <b>OR</b> <var>next_previous_structural_navigation</var>:</span>
@@ -723,7 +742,7 @@
 <li><b>LET</b> <var>open_captions</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and normalize-space()="<i>openCaptions</i>"]</code>.</li>
 <li><b>LET</b> <var>transcript</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and normalize-space()="<i>transcript</i>"]</code>.</li>
 				</ol>
-				<h4>Instructions</h4>
+				<h4 id="rich-content-instructions">Instructions</h4>
 				<ol class="condition">
 <li>
 						<span><b>IF</b> <var>math_formula_as_mathml</var>:</span>
@@ -845,7 +864,7 @@
                     <li><b>LET</b> <var>unknown_if_contains_hazards</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityHazard</i>" and normalize-space()="<i>unknown</i>"]</code>.</li>
 
 				</ol>
-				<h4>Instructions</h4>
+				<h4 id="hazards-instructions">Instructions</h4>
 				<ol class="condition">
 					<li>
 						<span><b>IF</b> <var>no_hazards_or_warnings_confirmed</var> <b>OR</b> (<var>no_flashing_hazards</var> <b>AND</b> <var>no_motion_hazards</var> <b>AND</b> <var>no_sound_hazards</var>):</span>
@@ -920,7 +939,7 @@
 
 										<li><b>LET</b> <var>language_of_text</var> be the value of the node extracted from <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/dc:language[1]</code>.</li>
  				</ol>
-				<h4>Instructions</h4>
+				<h4 id="accessibility-summary-instructions">Instructions</h4>
 				<ol class="condition">
                    <li>
 						<span><b>IF</b> <var>lang_attribute_accessibility_summary</var> is <b>NOT</b> empty:</span>
@@ -971,7 +990,7 @@
 					<li><b>LET</b> <var>eaa_exception_disproportionate_burden</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="a11y:<i>exemption</i>" and normalize-space()="<i>eaa-disproportionate-burden</i>"]</code>.</li>
 					<li><b>LET</b> <var>eaa_exception_fundamental_modification</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="a11y:<i>exemption</i>" and normalize-space()="<i>eaa-fundamental-alteration</i>"]</code>.</li>
 				</ol>
-				<h4>Instructions</h4>
+				<h4 id="legal-considerations-instructions">Instructions</h4>
 				<ol class="condition">
 					<li>
 						<span><b>IF</b> <var>eaa_exemption_micro_enterprises</var> <b>OR</b> <var>eaa_exception_disproportionate_burden</var> <b>OR</b> <var>eaa_exception_fundamental_modification</var>:</span>
@@ -1034,7 +1053,7 @@
                         <li><b>LET</b> <var>sign_language</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and normalize-space()="<i>signLanguage</i>"]</code>.</li>
     				</ol>
 
-					<h5>Instructions</h5>
+					<h5 id="additional-accessibility-information-adaptation-instructions">Instructions</h5>
 					<ol class="condition">
 						<li>
 							<span><b>IF</b> <var>audio_descriptions</var>:</span>
@@ -1121,7 +1140,7 @@
 						<li><b>LET</b> <var>ruby_annotations</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and normalize-space()="<i>rubyAnnotations</i>"]</code>.</li>
                     </ol>
 
-					<h5>Instructions</h5>
+					<h5 id="additional-accessibility-information-clarity-instructions">Instructions</h5>
 					<ol class="condition">
 
 						<li>
