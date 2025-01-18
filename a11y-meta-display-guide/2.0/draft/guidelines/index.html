@@ -120,6 +120,9 @@
 			border: none;
 			display: inline-block;
 		}
+		dt {
+			margin-bottom: 1rem;
+		}
 		p[data-localization-mode="descriptive"]:before {
 			content: 'Descriptive: ';
 			font-style: italic;
@@ -1218,45 +1221,54 @@
 				
 				<p>The descriptive and compact statements for navigation are as follows.</p>
 				
-				<p id="nav-desc" class="list-hd">Descriptive statements</p>
-				<ul aria-labelledby="nav-desc">
-					<li data-localization-id="navigation-toc"
-						data-localization-mode="descriptive">Table
-						of contents to all chapters of the text via
-						links</li>
-					<li data-localization-id="navigation-index"
-						data-localization-mode="descriptive">Index
-						with links to referenced entries</li>
-					<li data-localization-id="navigation-structural"
-						data-localization-mode="descriptive">Elements such as headings, tables, etc for
-						structured navigation</li>
-					<li data-localization-id="navigation-page-navigation"
-						data-localization-mode="descriptive">Page list to go to pages from the print
-						source
-						version</li>
-					<li data-localization-id="navigation-no-metadata"
-						data-localization-mode="descriptive">No information is available</li>
-				</ul>
-
-				<p id="nav-compact" class="list-hd">Compact statements</p>
-				<ul aria-labelledby="nav-compact">
-					<li><span data-localization-id="navigation-toc"
-							data-localization-mode="compact">Table
-							of contents</span></li>
-					<li><span
-							data-localization-id="navigation-index"
-							data-localization-mode="compact">Index</span>
-					</li>
-					<li><span
-							data-localization-id="navigation-structural"
-							data-localization-mode="compact">Headings</span>
-					</li>
-					<li><span
-							data-localization-id="navigation-page-navigation"
-							data-localization-mode="compact">Go to page </span></li>
-					<li data-localization-id="navigation-no-metadata"
-						data-localization-mode="compact">No information is available</li>
-				</ul>
+				<dl>
+					<dt>Table of contents provided</dt>
+					<dd>
+						<p data-localization-id="navigation-toc"
+							data-localization-mode="descriptive">Table
+							of contents to all chapters of the text via
+							links</p>
+						<p data-localization-id="navigation-toc"
+								data-localization-mode="compact">Table
+								of contents</p>
+					</dd>
+					
+					<dt>Index(es) provided</dt>
+					<dd>
+						<p data-localization-id="navigation-index"
+							data-localization-mode="descriptive">Index
+							with links to referenced entries</p>
+						<p data-localization-id="navigation-index"
+								data-localization-mode="compact">Index</p>
+					</dd>
+					
+					<dt>Structural navigation provided</dt>
+					<dd>
+						<p data-localization-id="navigation-structural"
+							data-localization-mode="descriptive">Elements such as headings, tables, etc for
+							structured navigation</p>
+						<p data-localization-id="navigation-structural"
+								data-localization-mode="compact">Headings</p>
+					</dd>
+					
+					<dt>Page navigation provided</dt>
+					<dd>
+						<p data-localization-id="navigation-page-navigation"
+							data-localization-mode="descriptive">Page list to go to pages from the print
+							source
+							version</p>
+						<p data-localization-id="navigation-page-navigation"
+								data-localization-mode="compact">Go to page</p>
+					</dd>
+					
+					<dt>No metadata provided</dt>
+					<dd>
+						<p data-localization-id="navigation-no-metadata"
+							data-localization-mode="descriptive">No information is available</p>
+						<p data-localization-id="navigation-no-metadata"
+							data-localization-mode="compact">No information is available</p>
+					</dd>
+				</dl>
 			</section>
 
 			<section id="nav-examples">
@@ -1303,69 +1315,85 @@
 				
 				<p>The descriptive and compact statements for rich content are as follows.</p>
 				
-				<p id="rc-desc" class="list-hd">Descriptive statements</p>
-				<ul aria-labelledby="rc-desc">
-					<li><span data-localization-id="rich-content-accessible-math-as-mathml"
-										data-localization-mode="descriptive">Math formulas in accessible format (MathML)</span></li>
-					<li><span data-localization-id="rich-content-accessible-math-as-latex"
-										data-localization-mode="descriptive">Math formulas in accessible format (LaTeX)</span></li>
-					<li><span
-							data-localization-id="rich-content-accessible-math-described"
-							data-localization-mode="descriptive">text descriptions of math is provided </span>
-					</li>
-<li><span data-localization-id="rich-content-accessible-chemistry-as-mathml"
-							data-localization-mode="descriptive">Chemical formulas in accessible format (MathML)</span>
-					</li>
-<li><span data-localization-id="rich-content-accessible-chemistry-as-latex"
-							data-localization-mode="descriptive">Chemical formulas in accessible format (LaTeX)</span>
-					</li>
-					<li>
-						<span
-							data-localization-id="rich-content-extended"
-							data-localization-mode="descriptive">Information-rich images are described by extended descriptions</span>
-					</li>
-<li><span data-localization-id="rich-content-closed-captions" data-localization-mode="descriptive">
-Videos included in publications have closed captions</span></li>
-
-<li><span data-localization-id="rich-content-open-captions" data-localization-mode="descriptive">
-Videos included in publications have open captions</span></li>
-<li><span data-localization-id="rich-content-transcript" data-localization-mode="descriptive">
-Transcript(s) provided)</span></li>
-<li><span data-localization-id="rich-content-unknown" data-localization-mode="descriptive">No information is available</span></li>
-				</ul>
-
-				<p id="rc-compact" class="list-hd">Compact statements</p>
-				<ul aria-labelledby="rc-compact">
-					<li>
-<span  data-localization-id="rich-content-accessible-math-as-mathml"
-							data-localization-mode="compact">Math as MathML</span></li>
-<li>
-<span data-localization-id="rich-content-accessible-math-as-latex"
-							data-localization-mode="compact">Math as LaTeX</span></li>
-<li>
-<span data-localization-id="rich-content-accessible-math-described"
-							data-localization-mode="compact">text descriptions of math is provided </span></li>
-<li><span data-localization-id="rich-content-accessible-chemistry-as-mathml"
-							data-localization-mode="compact">Chemical formulas in MathML</span>
-					</li>
-<li><span data-localization-id="rich-content-accessible-chemistry-as-latex"
-							data-localization-mode="compact">Chemical formulas in LaTeX</span>
-					</li>
-
-<li>
-						<span
-							data-localization-id="rich-content-extended"
-							data-localization-mode="compact">Information-rich images are described by extended descriptions</span>
-</li>
-<li><span data-localization-id="rich-content-closed-captions" data-localization-mode="compact">
-Videos have closed captions </span></li>
-					<li>
-<span data-localization-id="rich-content-open-captions" data-localization-mode="compact">
-Videos have open captions</span></li>
-<li><span data-localization-id="rich-content-transcript" data-localization-mode="compact">
-Transcript(s) provided)</span></li>
-<li><span data-localization-id="rich-content-unknown" data-localization-mode="compact">No information is available</span></li>
-				</ul>
+				<dl>
+					<dt>Math marked up in MathML</dt>
+					<dd>
+						<p data-localization-id="rich-content-accessible-math-as-mathml"
+								data-localization-mode="descriptive">Math formulas in accessible format (MathML)</p>
+						<p data-localization-id="rich-content-accessible-math-as-mathml"
+								data-localization-mode="compact">Math as MathML</p>
+					</dd>
+					
+					<dt>Math marked up in LaTeX</dt>
+					<dd>
+						<p data-localization-id="rich-content-accessible-math-as-latex"
+								data-localization-mode="descriptive">Math formulas in accessible format (LaTeX)</p>
+						<p data-localization-id="rich-content-accessible-math-as-latex"
+								data-localization-mode="compact">Math as LaTeX</p>
+					</dd>
+					
+					<dt>Math represented as images</dt>
+					<dd>
+						<p data-localization-id="rich-content-accessible-math-described"
+								data-localization-mode="descriptive">Text descriptions of math is provided</p>
+						<p data-localization-id="rich-content-accessible-math-described"
+								data-localization-mode="compact">Text descriptions of math is provided</p>
+					</dd>
+					
+					<dt>Chemical formulas marked up in MathML</dt>
+					<dd>
+						<p data-localization-id="rich-content-accessible-chemistry-as-mathml"
+								data-localization-mode="descriptive">Chemical formulas in accessible format (MathML)</p>
+						<p data-localization-id="rich-content-accessible-chemistry-as-mathml"
+								data-localization-mode="compact">Chemical formulas in MathML</p>
+					</dd>
+					
+					<dt>Chemical formulas marked up in LaTeX</dt>
+					<dd>
+						<p data-localization-id="rich-content-accessible-chemistry-as-latex"
+								data-localization-mode="descriptive">Chemical formulas in accessible format (LaTeX)</p>
+						<p data-localization-id="rich-content-accessible-chemistry-as-latex"
+								data-localization-mode="compact">Chemical formulas in LaTeX</p>
+					</dd>
+					
+					<dt>Extended descriptions provided for images</dt>
+					<dd>
+						<p data-localization-id="rich-content-extended"
+								data-localization-mode="descriptive">Information-rich images are described by extended descriptions</p>
+						<p data-localization-id="rich-content-extended"
+								data-localization-mode="compact">Information-rich images are described by extended descriptions</p>
+					</dd>
+					
+					<dt>Closed captions provided for videos</dt>
+					<dd>
+						<p data-localization-id="rich-content-closed-captions" data-localization-mode="descriptive">
+								Videos included in publications have closed captions</p>
+						<p data-localization-id="rich-content-closed-captions" data-localization-mode="compact">
+								Videos have closed captions</p>
+					</dd>
+					
+					<dt>Open captions provided for videos</dt>
+					<dd>
+						<p data-localization-id="rich-content-open-captions" data-localization-mode="descriptive">
+								Videos included in publications have open captions</p>
+						<p data-localization-id="rich-content-open-captions" data-localization-mode="compact">
+								Videos have open captions</p>
+					</dd>
+					
+					<dt>Transcripts provided for auditory content</dt>
+					<dd>
+						<p data-localization-id="rich-content-transcript" data-localization-mode="descriptive">
+								Transcript(s) provided)</p>
+						<p data-localization-id="rich-content-transcript" data-localization-mode="compact">
+								Transcript(s) provided)</p>
+					</dd>
+					
+					<dt>No metadata provided</dt>
+					<dd>
+						<p data-localization-id="rich-content-unknown" data-localization-mode="descriptive">No information is available</p>
+						<p data-localization-id="rich-content-unknown" data-localization-mode="compact">No information is available</p>
+					</dd>
+				</dl>
 			</section>
 
 			<section id="rc-examples">
