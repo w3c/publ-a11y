@@ -120,8 +120,11 @@
 			border: none;
 			display: inline-block;
 		}
-		p.list-hd {
-			font-weight: bold;
+		p[data-localization-mode="descriptive"]:before {
+			content: 'Descriptive: ';
+		}
+		p[data-localization-mode="compact"]:before {
+			content: 'Compact: ';
 		}
 	</style>
 </head>
@@ -599,49 +602,46 @@
 
 				<p>The descriptive and compact statements for visual adjustment are as follows.</p>
 				
-				<p id="va-desc" class="list-hd">Descriptive statements</p>
-
-				<ul>
-					<li data-localization-id="ways-of-reading-visual-adjustments-modifiable"
-						data-localization-mode="descriptive">
-						Appearance of the text and page layout can
-						be
-						modified according to the capabilities of
-						the reading system (font family and font
-						size,
-						spaces between paragraphs, sentences, words,
-						and letters, as well as color of background
-						and text)</li>
-					<li data-localization-id="ways-of-reading-visual-adjustments-unmodifiable"
-						data-localization-mode="descriptive">Text
-						and page layout cannot be modified as the
-						reading experience is close to a print
-						version, but reading systems can still
-						provide zooming options</li>
-					<li data-localization-id="ways-of-reading-visual-adjustments-unknown"
-						data-localization-mode="descriptive">
-						No information about appearance modifiability is available</li>
-				</ul>
-
-				<p id="va-compact" class="list-hd">Compact statements</p>
-				<ul aria-labelledby="va-compact">
-					<li data-localization-id="ways-of-reading-visual-adjustments-modifiable"
-						data-localization-mode="compact">Appearance
-						can be modified</li>
-					<!--if Display transformability is present-->
-					<li data-localization-id="ways-of-reading-visual-adjustments-unmodifiable"
-						data-localization-mode="compact">Appearance
-						cannot be modified</li>
-					<!--if display transformability is not present and text on visual is present-->
-					<li data-localization-id="ways-of-reading-visual-adjustments-unknown"
-						data-localization-mode="compact">No information about appearance modifiability is available</li>
-					<!--if neither display transformability nor text on visual are presents-->
-				</ul>
-			</section>
-
-			<section id="va-examples">
-				<h5>Examples</h5>
-			
+				<dl>
+					<dt>Display is modifiable</dt>
+					<dd>
+						<p data-localization-id="ways-of-reading-visual-adjustments-modifiable"
+							data-localization-mode="descriptive">
+							Appearance of the text and page layout can
+							be
+							modified according to the capabilities of
+							the reading system (font family and font
+							size,
+							spaces between paragraphs, sentences, words,
+							and letters, as well as color of background
+							and text)</p>
+						<p data-localization-id="ways-of-reading-visual-adjustments-modifiable"
+							data-localization-mode="compact">Appearance
+							can be modified</p>
+					</dd>
+					
+					<dt>Display is not modifiable</dt>
+					<dd>
+						<p data-localization-id="ways-of-reading-visual-adjustments-unmodifiable"
+							data-localization-mode="descriptive">Text
+							and page layout cannot be modified as the
+							reading experience is close to a print
+							version, but reading systems can still
+							provide zooming options</p>
+						<p data-localization-id="ways-of-reading-visual-adjustments-unmodifiable"
+							data-localization-mode="compact">Appearance
+							cannot be modified</p>
+					</dd>
+					
+					<dt>No metadata provided</dt>
+					<dd>
+						<p data-localization-id="ways-of-reading-visual-adjustments-unknown"
+							data-localization-mode="descriptive">
+							No information about appearance modifiability is available</p>
+						<p data-localization-id="ways-of-reading-visual-adjustments-unknown"
+							data-localization-mode="compact">No information about appearance modifiability is available</p>
+					</dd>
+				</dl>
 			</section>
 			
 			<section id="va-techniques">
@@ -700,45 +700,50 @@
 
 				<p>The descriptive and compact statements for nonvisual reading are as follows.</p>
 				
-				<p id="nv-desc-expl" class="list-hd">Descriptive explanations</p>
-				<ul aria-labelledby="nv-desc-expl">
-					<li data-localization-id="ways-of-reading-nonvisual-reading-alt-text"
-						data-localization-mode="descriptive">Has alternative text descriptions for images</li>
-					<li data-localization-id="ways-of-reading-nonvisual-reading-readable"
-						data-localization-mode="descriptive">All
-						content can be read as read aloud speech or
-						dynamic braille</li>
-					<li data-localization-id="ways-of-reading-nonvisual-reading-may-not-fully"
-						data-localization-mode="descriptive">
-						Portions of the content may not be readable
-						as read aloud speech or dynamic braille</li>
-					<li data-localization-id="ways-of-reading-nonvisual-reading-not-fully"
-						data-localization-mode="descriptive">Not all
-						of the content will be readable as read
-						aloud speech or dynamic braille</li>
-				</ul>
-
-				<p id="nv-compact-expl" class="list-hd">Compact explanations</p>
-				<ul aria-labelledby="nv-compact-expl">
-					<li data-localization-id="ways-of-reading-nonvisual-reading-alt-text"
-						data-localization-mode="compact">Has alternative text</li>
-					<li data-localization-id="ways-of-reading-nonvisual-reading-readable"
-						data-localization-mode="compact">Readable in
-						read aloud or dynamic braille</li>
-					<li data-localization-id="ways-of-reading-nonvisual-reading-may-not-fully"
-						data-localization-mode="compact">May not be
-						fully readable in read aloud or dynamic
-						braille</li>
-					<li data-localization-id="ways-of-reading-nonvisual-reading-not-fully"
-						data-localization-mode="compact">Not
-						fully readable in read aloud or dynamic
-						braille</li>
-				</ul>
-			</section>
-
-			<section id="nv-examples">
-				<h5>Examples</h5>
-				
+				<dl>
+					<dt>Text alternatives are provided</dt>
+					<dd>
+						<p data-localization-id="ways-of-reading-nonvisual-reading-alt-text"
+							data-localization-mode="descriptive">Has alternative text descriptions for images</p>
+						<p data-localization-id="ways-of-reading-nonvisual-reading-alt-text"
+							data-localization-mode="compact">Has alternative text</p>
+					</dd>
+					
+					<dt>All content is readable in text form</dt>
+					<dd>
+						<p data-localization-id="ways-of-reading-nonvisual-reading-readable"
+							data-localization-mode="descriptive">All
+							content can be read as read aloud speech or
+							dynamic braille</p>
+						<p data-localization-id="ways-of-reading-nonvisual-reading-readable"
+							data-localization-mode="compact">Readable in
+							read aloud or dynamic braille</p>
+					</dd>
+					
+					<dt>Not all content may be readable in text form</dt>
+					<dd>
+						<p data-localization-id="ways-of-reading-nonvisual-reading-may-not-fully"
+							data-localization-mode="descriptive">
+							Portions of the content may not be readable
+							as read aloud speech or dynamic braille</p>
+						<p data-localization-id="ways-of-reading-nonvisual-reading-may-not-fully"
+							data-localization-mode="compact">May not be
+							fully readable in read aloud or dynamic
+							braille</p>
+					</dd>
+					
+					<dt>Not all content is readable in text form</dt>
+					<dd>
+						<p data-localization-id="ways-of-reading-nonvisual-reading-not-fully"
+							data-localization-mode="descriptive">Not all
+							of the content will be readable as read
+							aloud speech or dynamic braille</p>
+						<p data-localization-id="ways-of-reading-nonvisual-reading-not-fully"
+							data-localization-mode="compact">Not
+							fully readable in read aloud or dynamic
+							braille</p>
+					</dd>
+				</dl>
 			</section>
 			
 			<section id="nv-techniques">
@@ -793,38 +798,41 @@
 				
 				<p>The descriptive and compact statements for prerecorded audio are as follows.</p>
 				
-				<p id="prerecorded-desc" class="list-hd">Descriptive statements</p>
-
-				<ul aria-labelledby="prerecorded-desc">
-					<li data-localization-id="ways-of-reading-prerecorded-audio-only"
-						data-localization-mode="descriptive">
-						Audiobook with no text alternative</li>
-
-					<li data-localization-id="ways-of-reading-prerecorded-audio-synchronized"
-						data-localization-mode="descriptive">All the
-						content is available as prerecorded audio
-						synchronized with text</li>
-						<li data-localization-id="ways-of-reading-prerecorded-audio-complementary" data-localization-mode="descriptive">Portions of prerecorded audio are available</li>
-<li data-localization-id="ways-of-reading-prerecorded-audio-no-metadata"
-						data-localization-mode="descriptive">
-						No information about prerecorded audio is available</li>
-				</ul>
-
-				<p id="prerecorded-compact" class="list-hd">Compact statements</p>
-				<ul aria-labelledby="prerecorded-compact">
-					<li data-localization-id="ways-of-reading-prerecorded-audio-only"
-						data-localization-mode="compact">Audio only</li>
-					<li data-localization-id="ways-of-reading-prerecorded-audio-synchronized"
-						data-localization-mode="compact">Prerecorded audio synchronized with text</li>
-<li data-localization-id="ways-of-reading-prerecorded-audio-no-metadata"
-						data-localization-mode="compact">
-						No information about prerecorded audio is available</li>
-				</ul>
-			</section>
-
-			<section id="prerecorded-audio-examples">
-				<h5>Examples</h5>
-				
+				<dl>
+					<dt>Prerecorded audiobooks</dt>
+					<dd>
+						<p data-localization-id="ways-of-reading-prerecorded-audio-only"
+							data-localization-mode="descriptive">
+							Audiobook with no text alternative</p>
+						<p data-localization-id="ways-of-reading-prerecorded-audio-only"
+							data-localization-mode="compact">Audio only</p>
+					</dd>
+					
+					<dt>Prerecorded audio synchronized with text</dt>
+					<dd>
+						<p data-localization-id="ways-of-reading-prerecorded-audio-synchronized"
+							data-localization-mode="descriptive">All the
+							content is available as prerecorded audio
+							synchronized with text</p>
+						<p data-localization-id="ways-of-reading-prerecorded-audio-synchronized"
+							data-localization-mode="compact">Prerecorded audio synchronized with text</p>
+					</dd>
+					
+					<dt>Prerecorded audio clips</dt>
+					<dd>
+						<p data-localization-id="ways-of-reading-prerecorded-audio-complementary" data-localization-mode="descriptive">Portions of prerecorded audio are available</p>
+					</dd>
+					
+					<dt>No metadata provided</dt>
+					<dd>
+						<p data-localization-id="ways-of-reading-prerecorded-audio-no-metadata"
+							data-localization-mode="descriptive">
+							No information about prerecorded audio is available</p>
+						<p data-localization-id="ways-of-reading-prerecorded-audio-no-metadata"
+							data-localization-mode="compact">
+							No information about prerecorded audio is available</p>
+					</dd>
+				</dl>
 			</section>
 			
 			<section id="prerecorded-audio-techniques">
