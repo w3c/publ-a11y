@@ -1,9 +1,5 @@
-		<!DOCTYPE html>
-
-
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US"
-	xml:lang="en-US">
-
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
 <head>
 	<meta charset="utf-8" />
 	<title>Accessibility Metadata Display Guide for Digital Publications
@@ -123,6 +119,9 @@
 			bottom: 2px;
 			border: none;
 			display: inline-block;
+		}
+		p.list-hd {
+			font-weight: bold;
 		}
 	</style>
 </head>
@@ -595,59 +594,58 @@
 				other readability issues (e.g., text being
 				clipped by its container).</p>
 
-			<section id="va-examples">
-				<h5>Examples</h5>
+			<section id="va-statements">
+				<h5>Statements</h5>
 
-				<p>The examples are provided as lists of possible
-					descriptive and compact explanations for
-					flexibility of adoption.</p>
+				<p>The descriptive and compact statements for visual adjustment are as follows.</p>
+				
+				<p id="va-desc" class="list-hd">Descriptive statements</p>
 
-				<aside class="example" title="Descriptive explanations">
-				<h5 data-localization-id="ways-of-reading-title">Ways of reading</h5>
-					<ul>
-						<li data-localization-id="ways-of-reading-visual-adjustments-modifiable"
-							data-localization-mode="descriptive">
-							Appearance of the text and page layout can
-							be
-							modified according to the capabilities of
-							the reading system (font family and font
-							size,
-							spaces between paragraphs, sentences, words,
-							and letters, as well as color of background
-							and text)</li>
-						<li data-localization-id="ways-of-reading-visual-adjustments-unmodifiable"
-							data-localization-mode="descriptive">Text
-							and page layout cannot be modified as the
-							reading experience is close to a print
-							version, but reading systems can still
-							provide zooming options</li>
-						<li data-localization-id="ways-of-reading-visual-adjustments-unknown"
-							data-localization-mode="descriptive">
-							No information about appearance modifiability is available</li>
-					</ul>
-				</aside>
+				<ul>
+					<li data-localization-id="ways-of-reading-visual-adjustments-modifiable"
+						data-localization-mode="descriptive">
+						Appearance of the text and page layout can
+						be
+						modified according to the capabilities of
+						the reading system (font family and font
+						size,
+						spaces between paragraphs, sentences, words,
+						and letters, as well as color of background
+						and text)</li>
+					<li data-localization-id="ways-of-reading-visual-adjustments-unmodifiable"
+						data-localization-mode="descriptive">Text
+						and page layout cannot be modified as the
+						reading experience is close to a print
+						version, but reading systems can still
+						provide zooming options</li>
+					<li data-localization-id="ways-of-reading-visual-adjustments-unknown"
+						data-localization-mode="descriptive">
+						No information about appearance modifiability is available</li>
+				</ul>
 
-				<aside class="example" title="Compact explanations">
-				<h5 data-localization-id="ways-of-reading-title">Ways of reading</h5>
-					<ul>
-						<li data-localization-id="ways-of-reading-visual-adjustments-modifiable"
-							data-localization-mode="compact">Appearance
-							can be modified</li>
-						<!--if Display transformability is present-->
-						<li data-localization-id="ways-of-reading-visual-adjustments-unmodifiable"
-							data-localization-mode="compact">Appearance
-							cannot be modified</li>
-						<!--if display transformability is not present and text on visual is present-->
-						<li data-localization-id="ways-of-reading-visual-adjustments-unknown"
-							data-localization-mode="compact">No information about appearance modifiability is available</li>
-						<!--if neither display transformability nor text on visual are presents-->
-					</ul>
-				</aside>
+				<p id="va-compact" class="list-hd">Compact statements</p>
+				<ul aria-labelledby="va-compact">
+					<li data-localization-id="ways-of-reading-visual-adjustments-modifiable"
+						data-localization-mode="compact">Appearance
+						can be modified</li>
+					<!--if Display transformability is present-->
+					<li data-localization-id="ways-of-reading-visual-adjustments-unmodifiable"
+						data-localization-mode="compact">Appearance
+						cannot be modified</li>
+					<!--if display transformability is not present and text on visual is present-->
+					<li data-localization-id="ways-of-reading-visual-adjustments-unknown"
+						data-localization-mode="compact">No information about appearance modifiability is available</li>
+					<!--if neither display transformability nor text on visual are presents-->
+				</ul>
 			</section>
 
+			<section id="va-examples">
+				<h5>Examples</h5>
+			
+			</section>
+			
 			<section id="va-techniques">
-				<h5>Display techniques for Visual adjustments support
-				</h5>
+				<h5>Display techniques for Visual adjustments support</h5>
 
 				<p>Specific techniques for meeting this principle are
 					defined in the following documents:</p>
@@ -697,53 +695,52 @@
 				transcripts, captions, etc. depending on the nature of
 				the nonvisual content.</p>
 
-			<section id="nv-examples">
-				<h5>Examples</h5>
+			<section id="nv-statements">
+				<h5>Statements</h5>
 
-				<p>The examples are provided as lists of possible
-					descriptive and compact explanations for
-					flexibility of adoption.</p>
+				<p>The descriptive and compact statements for nonvisual reading are as follows.</p>
+				
+				<p id="nv-desc-expl" class="list-hd">Descriptive explanations</p>
+				<ul aria-labelledby="nv-desc-expl">
+					<li data-localization-id="ways-of-reading-nonvisual-reading-alt-text"
+						data-localization-mode="descriptive">Has alternative text descriptions for images</li>
+					<li data-localization-id="ways-of-reading-nonvisual-reading-readable"
+						data-localization-mode="descriptive">All
+						content can be read as read aloud speech or
+						dynamic braille</li>
+					<li data-localization-id="ways-of-reading-nonvisual-reading-may-not-fully"
+						data-localization-mode="descriptive">
+						Portions of the content may not be readable
+						as read aloud speech or dynamic braille</li>
+					<li data-localization-id="ways-of-reading-nonvisual-reading-not-fully"
+						data-localization-mode="descriptive">Not all
+						of the content will be readable as read
+						aloud speech or dynamic braille</li>
+				</ul>
 
-				<aside class="example" title="Descriptive explanations">
-				<h5 data-localization-id="ways-of-reading-title">Ways of reading</h5>
-					<ul>
-						<li data-localization-id="ways-of-reading-nonvisual-reading-alt-text"
-							data-localization-mode="descriptive">Has alternative text descriptions for images</li>
-						<li data-localization-id="ways-of-reading-nonvisual-reading-readable"
-							data-localization-mode="descriptive">All
-							content can be read as read aloud speech or
-							dynamic braille</li>
-						<li data-localization-id="ways-of-reading-nonvisual-reading-may-not-fully"
-							data-localization-mode="descriptive">
-							Portions of the content may not be readable
-							as read aloud speech or dynamic braille</li>
-						<li data-localization-id="ways-of-reading-nonvisual-reading-not-fully"
-							data-localization-mode="descriptive">Not all
-							of the content will be readable as read
-							aloud speech or dynamic braille</li>
-</ul>
-				</aside>
-
-				<aside class="example" title="Compact explanations">
-				<h5 data-localization-id="ways-of-reading-title">Ways of reading</h5>
-					<ul>
-						<li data-localization-id="ways-of-reading-nonvisual-reading-alt-text"
-							data-localization-mode="compact">Has alternative text</li>
-						<li data-localization-id="ways-of-reading-nonvisual-reading-readable"
-							data-localization-mode="compact">Readable in
-							read aloud or dynamic braille</li>
-						<li data-localization-id="ways-of-reading-nonvisual-reading-may-not-fully"
-							data-localization-mode="compact">May not be
-							fully readable in read aloud or dynamic
-							braille</li>
-						<li data-localization-id="ways-of-reading-nonvisual-reading-not-fully"
-							data-localization-mode="compact">Not
-							fully readable in read aloud or dynamic
-							braille</li>
-</ul>
-				</aside>
+				<p id="nv-compact-expl" class="list-hd">Compact explanations</p>
+				<ul aria-labelledby="nv-compact-expl">
+					<li data-localization-id="ways-of-reading-nonvisual-reading-alt-text"
+						data-localization-mode="compact">Has alternative text</li>
+					<li data-localization-id="ways-of-reading-nonvisual-reading-readable"
+						data-localization-mode="compact">Readable in
+						read aloud or dynamic braille</li>
+					<li data-localization-id="ways-of-reading-nonvisual-reading-may-not-fully"
+						data-localization-mode="compact">May not be
+						fully readable in read aloud or dynamic
+						braille</li>
+					<li data-localization-id="ways-of-reading-nonvisual-reading-not-fully"
+						data-localization-mode="compact">Not
+						fully readable in read aloud or dynamic
+						braille</li>
+				</ul>
 			</section>
 
+			<section id="nv-examples">
+				<h5>Examples</h5>
+				
+			</section>
+			
 			<section id="nv-techniques">
 				<h5>Display techniques for support for nonvisual reading support
 				</h5>
@@ -791,45 +788,45 @@
 				impairments still can access the full content of these
 				books.</p>
 
-			<section id="prerecorded-audio-examples">
-				<h5>Examples</h5>
+			<section id="prerecorded-audio-statements">
+				<h5>Statements</h5>
+				
+				<p>The descriptive and compact statements for prerecorded audio are as follows.</p>
+				
+				<p id="prerecorded-desc" class="list-hd">Descriptive statements</p>
 
-				<p>The examples are provided as lists of possible
-					descriptive and compact explanations for
-					flexibility of adoption.</p>
+				<ul aria-labelledby="prerecorded-desc">
+					<li data-localization-id="ways-of-reading-prerecorded-audio-only"
+						data-localization-mode="descriptive">
+						Audiobook with no text alternative</li>
 
-				<aside class="example" title="Descriptive explanations">
-				<h5 data-localization-id="ways-of-reading-title">Ways of reading</h5>
-					<ul>
-						<li data-localization-id="ways-of-reading-prerecorded-audio-only"
-							data-localization-mode="descriptive">
-							Audiobook with no text alternative</li>
-
-						<li data-localization-id="ways-of-reading-prerecorded-audio-synchronized"
-							data-localization-mode="descriptive">All the
-							content is available as prerecorded audio
-							synchronized with text</li>
-							<li data-localization-id="ways-of-reading-prerecorded-audio-complementary" data-localization-mode="descriptive">Portions of prerecorded audio are available</li>
+					<li data-localization-id="ways-of-reading-prerecorded-audio-synchronized"
+						data-localization-mode="descriptive">All the
+						content is available as prerecorded audio
+						synchronized with text</li>
+						<li data-localization-id="ways-of-reading-prerecorded-audio-complementary" data-localization-mode="descriptive">Portions of prerecorded audio are available</li>
 <li data-localization-id="ways-of-reading-prerecorded-audio-no-metadata"
-							data-localization-mode="descriptive">
-							No information about prerecorded audio is available</li>
-					</ul>
-				</aside>
+						data-localization-mode="descriptive">
+						No information about prerecorded audio is available</li>
+				</ul>
 
-				<aside class="example" title="Compact explanations">
-				<h5 data-localization-id="ways-of-reading-title">Ways of reading</h5>
-					<ul>
-						<li data-localization-id="ways-of-reading-prerecorded-audio-only"
-							data-localization-mode="compact">Audio only</li>
-						<li data-localization-id="ways-of-reading-prerecorded-audio-synchronized"
-							data-localization-mode="compact">Prerecorded audio synchronized with text</li>
+				<p id="prerecorded-compact" class="list-hd">Compact statements</p>
+				<ul aria-labelledby="prerecorded-compact">
+					<li data-localization-id="ways-of-reading-prerecorded-audio-only"
+						data-localization-mode="compact">Audio only</li>
+					<li data-localization-id="ways-of-reading-prerecorded-audio-synchronized"
+						data-localization-mode="compact">Prerecorded audio synchronized with text</li>
 <li data-localization-id="ways-of-reading-prerecorded-audio-no-metadata"
-							data-localization-mode="compact">
-							No information about prerecorded audio is available</li>
-					</ul>
-				</aside>
+						data-localization-mode="compact">
+						No information about prerecorded audio is available</li>
+				</ul>
 			</section>
 
+			<section id="prerecorded-audio-examples">
+				<h5>Examples</h5>
+				
+			</section>
+			
 			<section id="prerecorded-audio-techniques">
 				<h5>Display techniques for prerecorded audio support
 				</h5>
@@ -881,6 +878,7 @@
 
 			<section id="conf-statements">
 				<h4>Conformance statements</h4>
+				
 				<p>The following list explains the meaning of each
 					recommended conformance statement.</p>
 				<dl>
@@ -973,9 +971,14 @@
 				</dl>
 			</section>
 
+			<section id="conformance-statements">
+				<h4>Statements</h4>
+				
+			</section>
+				
 			<section id="conf-examples">
 				<h4>Examples</h4>
-
+				
 				<p>Four examples are provided for the conformance
 					statement, one shows a statement that claims to
 					meet recommended accessibility standards and a
@@ -1200,58 +1203,57 @@
 <div class="note"><p>While not required if available, it may be helpful to identify the bibliographic information about the page break source identified in metadata of the digital publication. Having sufficient information to identify the print source would assure students and educators that the digital version they are using is correctly associated with the print version used in the classroom. The goal is to have the go to page function take the digital user to the same page as the print version user.
 </p></div>
 
-			<section id="nav-examples">
-				<h4>Examples</h4>
+			<section id="nav-statements">
+				<h4>Statements</h4>
+				
+				<p>The descriptive and compact statements for navigation are as follows.</p>
+				
+				<p id="nav-desc" class="list-hd">Descriptive statements</p>
+				<ul aria-labelledby="nav-desc">
+					<li data-localization-id="navigation-toc"
+						data-localization-mode="descriptive">Table
+						of contents to all chapters of the text via
+						links</li>
+					<li data-localization-id="navigation-index"
+						data-localization-mode="descriptive">Index
+						with links to referenced entries</li>
+					<li data-localization-id="navigation-structural"
+						data-localization-mode="descriptive">Elements such as headings, tables, etc for
+						structured navigation</li>
+					<li data-localization-id="navigation-page-navigation"
+						data-localization-mode="descriptive">Page list to go to pages from the print
+						source
+						version</li>
+					<li data-localization-id="navigation-no-metadata"
+						data-localization-mode="descriptive">No information is available</li>
+				</ul>
 
-				<p>The examples are provided as descriptive and compact
-					explanations for flexibility of
-					adoption.</p>
-
-				<aside class="example" title="Descriptive explanations">
-<h4 data-localization-id="navigation-title">Navigation</h4>
-					<ul>
-						<li data-localization-id="navigation-toc"
-							data-localization-mode="descriptive">Table
-							of contents to all chapters of the text via
-							links</li>
-						<li data-localization-id="navigation-index"
-							data-localization-mode="descriptive">Index
-							with links to referenced entries</li>
-						<li data-localization-id="navigation-structural"
-							data-localization-mode="descriptive">Elements such as headings, tables, etc for
-							structured navigation</li>
-						<li data-localization-id="navigation-page-navigation"
-							data-localization-mode="descriptive">Page list to go to pages from the print
-							source
-							version</li>
-						<li data-localization-id="navigation-no-metadata"
-							data-localization-mode="descriptive">No information is available</li>
-					</ul>
-				</aside>
-
-				<aside class="example" title="Compact explanation">
-<h4 data-localization-id="navigation-title">Navigation</h4>
-					<ul>
-						<li><span data-localization-id="navigation-toc"
-								data-localization-mode="compact">Table
-								of contents</span></li>
-						<li><span
-								data-localization-id="navigation-index"
-								data-localization-mode="compact">Index</span>
-						</li>
-						<li><span
-								data-localization-id="navigation-structural"
-								data-localization-mode="compact">Headings</span>
-						</li>
-						<li><span
-								data-localization-id="navigation-page-navigation"
-								data-localization-mode="compact">Go to page </span></li>
-						<li data-localization-id="navigation-no-metadata"
-							data-localization-mode="compact">No information is available</li>
-					</ul>
-				</aside>
+				<p id="nav-compact" class="list-hd">Compact statements</p>
+				<ul aria-labelledby="nav-compact">
+					<li><span data-localization-id="navigation-toc"
+							data-localization-mode="compact">Table
+							of contents</span></li>
+					<li><span
+							data-localization-id="navigation-index"
+							data-localization-mode="compact">Index</span>
+					</li>
+					<li><span
+							data-localization-id="navigation-structural"
+							data-localization-mode="compact">Headings</span>
+					</li>
+					<li><span
+							data-localization-id="navigation-page-navigation"
+							data-localization-mode="compact">Go to page </span></li>
+					<li data-localization-id="navigation-no-metadata"
+						data-localization-mode="compact">No information is available</li>
+				</ul>
 			</section>
 
+			<section id="nav-examples">
+				<h5>Examples</h5>
+				
+			</section>
+			
 			<section id="nav-techniques">
 				<h4>Display techniques for navigation support</h4>
 
@@ -1286,37 +1288,32 @@
 			<p>This group should be displayed only if the metadata
 				indicates the presence of math, chemical formulas, charts, diagrams, figures, graphs, videos, or transcripts of audio within the title, otherwise it can be hidden.</p>
 
-			<section id="cdf-examples">
-				<h4>Examples</h4>
-
-				<p>The examples are provided as lists of possible
-					descriptive and compact explanations for
-					flexibility of adoption.</p>
-
-				<aside class="example" title="Descriptive explanations">
-			<h4 data-localization-id="rich-content-title">Rich content</h4>
-					<ul>
-<li><span data-localization-id="rich-content-accessible-math-as-mathml"
-								data-localization-mode="descriptive">Math formulas in accessible format (MathML)</span>
-						</li>
-<li><span data-localization-id="rich-content-accessible-math-as-latex"
-								data-localization-mode="descriptive">Math formulas in accessible format (LaTeX)</span>
-						</li>
-						<li><span
-								data-localization-id="rich-content-accessible-math-described"
-								data-localization-mode="descriptive">text descriptions of math is provided </span>
-						</li>
+			<section id="rc-statements">
+				<h4>Statements</h4>
+				
+				<p>The descriptive and compact statements for rich content are as follows.</p>
+				
+				<p id="rc-desc" class="list-hd">Descriptive statements</p>
+				<ul aria-labelledby="rc-desc">
+					<li><span data-localization-id="rich-content-accessible-math-as-mathml"
+										data-localization-mode="descriptive">Math formulas in accessible format (MathML)</span></li>
+					<li><span data-localization-id="rich-content-accessible-math-as-latex"
+										data-localization-mode="descriptive">Math formulas in accessible format (LaTeX)</span></li>
+					<li><span
+							data-localization-id="rich-content-accessible-math-described"
+							data-localization-mode="descriptive">text descriptions of math is provided </span>
+					</li>
 <li><span data-localization-id="rich-content-accessible-chemistry-as-mathml"
-								data-localization-mode="descriptive">Chemical formulas in accessible format (MathML)</span>
-						</li>
+							data-localization-mode="descriptive">Chemical formulas in accessible format (MathML)</span>
+					</li>
 <li><span data-localization-id="rich-content-accessible-chemistry-as-latex"
-								data-localization-mode="descriptive">Chemical formulas in accessible format (LaTeX)</span>
-						</li>
-						<li>
-							<span
-								data-localization-id="rich-content-extended"
-								data-localization-mode="descriptive">Information-rich images are described by extended descriptions</span>
-						</li>
+							data-localization-mode="descriptive">Chemical formulas in accessible format (LaTeX)</span>
+					</li>
+					<li>
+						<span
+							data-localization-id="rich-content-extended"
+							data-localization-mode="descriptive">Information-rich images are described by extended descriptions</span>
+					</li>
 <li><span data-localization-id="rich-content-closed-captions" data-localization-mode="descriptive">
 Videos included in publications have closed captions</span></li>
 
@@ -1325,46 +1322,48 @@ Videos included in publications have open captions</span></li>
 <li><span data-localization-id="rich-content-transcript" data-localization-mode="descriptive">
 Transcript(s) provided)</span></li>
 <li><span data-localization-id="rich-content-unknown" data-localization-mode="descriptive">No information is available</span></li>
-					</ul>
-				</aside>
+				</ul>
 
-				<aside class="example" title="Compact explanations">
-<h4 data-localization-id="rich-content-title">Rich content</h4>
-					<ul>
-						<li>
+				<p id="rc-compact" class="list-hd">Compact statements</p>
+				<ul aria-labelledby="rc-compact">
+					<li>
 <span  data-localization-id="rich-content-accessible-math-as-mathml"
-								data-localization-mode="compact">Math as MathML</span></li>
+							data-localization-mode="compact">Math as MathML</span></li>
 <li>
 <span data-localization-id="rich-content-accessible-math-as-latex"
-								data-localization-mode="compact">Math as LaTeX</span></li>
+							data-localization-mode="compact">Math as LaTeX</span></li>
 <li>
 <span data-localization-id="rich-content-accessible-math-described"
-								data-localization-mode="compact">text descriptions of math is provided </span></li>
+							data-localization-mode="compact">text descriptions of math is provided </span></li>
 <li><span data-localization-id="rich-content-accessible-chemistry-as-mathml"
-								data-localization-mode="compact">Chemical formulas in MathML</span>
-						</li>
+							data-localization-mode="compact">Chemical formulas in MathML</span>
+					</li>
 <li><span data-localization-id="rich-content-accessible-chemistry-as-latex"
-								data-localization-mode="compact">Chemical formulas in LaTeX</span>
-						</li>
+							data-localization-mode="compact">Chemical formulas in LaTeX</span>
+					</li>
 
 <li>
-							<span
-								data-localization-id="rich-content-extended"
-								data-localization-mode="compact">Information-rich images are described by extended descriptions</span>
+						<span
+							data-localization-id="rich-content-extended"
+							data-localization-mode="compact">Information-rich images are described by extended descriptions</span>
 </li>
 <li><span data-localization-id="rich-content-closed-captions" data-localization-mode="compact">
 Videos have closed captions </span></li>
-						<li>
+					<li>
 <span data-localization-id="rich-content-open-captions" data-localization-mode="compact">
 Videos have open captions</span></li>
 <li><span data-localization-id="rich-content-transcript" data-localization-mode="compact">
 Transcript(s) provided)</span></li>
 <li><span data-localization-id="rich-content-unknown" data-localization-mode="compact">No information is available</span></li>
-					</ul>
-				</aside>
+				</ul>
 			</section>
 
-			<section id="cdf-techniques">
+			<section id="rc-examples">
+				<h5>Examples</h5>
+				
+			</section>
+			
+			<section id="rc-techniques">
 				<h4>Display techniques for rich content support</h4>
 
 
@@ -1419,69 +1418,68 @@ Transcript(s) provided)</span></li>
 				not been checked for hazards. This is
 				different than providing no metadata for this property.</p>
 
-			<section id="hazards-examples">
-				<h4>Examples</h4>
-
-				<p>The examples are provided as lists of possible
-					descriptive and compact explanations for
-					flexibility of adoption.</p>
-
-				<aside class="example" title="Descriptive explanations">
-							<h4 data-localization-id="hazards-title">Hazards</h4>
-					<ul>
-						<li><span data-localization-id="hazards-none"
-								data-localization-mode="descriptive">No
-								hazards</span></li>
-						<li><span
-								data-localization-id="hazards-flashing"
-								data-localization-mode="descriptive">The
-								publication contains flashing content
-								which can cause photosensitive
-								seizures</span></li>
+			<section id="hazards-statements">
+				<h4>Statements</h4>
+				
+				<p>The descriptive and compact statements for hazards are as follows.</p>
+				
+				<p id="hazards-desc" class="list-hd">Descriptive statements</p>
+				<ul aria-labelledby="hazards-desc">
+					<li><span data-localization-id="hazards-none"
+							data-localization-mode="descriptive">No
+							hazards</span></li>
+					<li><span
+							data-localization-id="hazards-flashing"
+							data-localization-mode="descriptive">The
+							publication contains flashing content
+							which can cause photosensitive
+							seizures</span></li>
 <li><span data-localization-id="hazards-motion"
-								data-localization-mode="descriptive">The
-								publication contains motion simulations
-								that can cause motion sickness</span></li>
-						<li><span data-localization-id="hazards-sound"
-								data-localization-mode="descriptive">The
-								publication contains sounds which
-								can be uncomfortable</span></li>
-						<li><span data-localization-id="hazards-unknown"
-								data-localization-mode="descriptive">The presents
-								of hazards is unknown</span></li>
-						<li><span data-localization-id="hazards-no-metadata]."
-								data-localization-mode="descriptive">No information is available</span></li>
+							data-localization-mode="descriptive">The
+							publication contains motion simulations
+							that can cause motion sickness</span></li>
+					<li><span data-localization-id="hazards-sound"
+							data-localization-mode="descriptive">The
+							publication contains sounds which
+							can be uncomfortable</span></li>
+					<li><span data-localization-id="hazards-unknown"
+							data-localization-mode="descriptive">The presents
+							of hazards is unknown</span></li>
+					<li><span data-localization-id="hazards-no-metadata]."
+							data-localization-mode="descriptive">No information is available</span></li>
 
-					</ul>
-				</aside>
+				</ul>
 
-				<aside class="example" title="Compact explanations">
-				<h4 data-localization-id="hazards-title">Hazards</h4>
-					<ul>
-						<li>
-							<span data-localization-id="hazards-none"
-								data-localization-mode="compact">No
-								hazards</span>
-						</li>
-						<li><span
-								data-localization-id="hazards-flashing"
-								data-localization-mode="compact">Flashing
-								content</span></li>
-						<li><span data-localization-id="hazards-motion"
-								data-localization-mode="compact">Motion
-								simulation</span></li>
+				<p id="hazards-compact" class="list-hd">Compact statements</p>
+				<ul aria-labelledby="hazards-compact">
+					<li>
+						<span data-localization-id="hazards-none"
+							data-localization-mode="compact">No
+							hazards</span>
+					</li>
+					<li><span
+							data-localization-id="hazards-flashing"
+							data-localization-mode="compact">Flashing
+							content</span></li>
+					<li><span data-localization-id="hazards-motion"
+							data-localization-mode="compact">Motion
+							simulation</span></li>
 <li><span data-localization-id="hazards-sound"
-								data-localization-mode="compact">sounds</span></li>
+							data-localization-mode="compact">sounds</span></li>
 <li><span
-								data-localization-id="hazards-unknown"
-								data-localization-mode="compact">The presence of hazards is unknown</span></li>
-						<li><span
-								data-localization-id="hazards-no-metadata"
-								data-localization-mode="compact">No information is available</span></li>
-					</ul>
-				</aside>
+							data-localization-id="hazards-unknown"
+							data-localization-mode="compact">The presence of hazards is unknown</span></li>
+					<li><span
+							data-localization-id="hazards-no-metadata"
+							data-localization-mode="compact">No information is available</span></li>
+				</ul>
 			</section>
 
+			<section id="hazards-examples">
+				<h5>Examples</h5>
+				
+			</section>
+			
 			<section id="hazards-techniques">
 				<h4>Display techniques for hazards reporting</h4>
 
@@ -1619,33 +1617,45 @@ Transcript(s) provided)</span></li>
 				misunderstandings. Nevertheless, the objective
 				is to provide as much accessibility information as possible.</p>
 
-			<section id="legal-examples">
-				<h4>Examples</h4>
-				<aside class="example" title="Descriptive explanation">
+			<section id="legal-statements">
+				<h5>Statements</h5>
+				
+				<p>The descriptive and compact statements for legal exemptions are as follows.</p>
+				
+				<div class="note">
 					<p> In many cases no legal exception or exemption
 						information will be presented. The following
 						example is provided as a possible descriptive
 						explanation when legal exception or exemption
 						information needs to be presented.</p>
-									<h4 data-localization-id="legal-considerations-title">Legal considerations</h4>
-					<p data-localization-id="legal-considerations-exempt"
+					
+				</div>
+				
+				<p id="legal-desc" class="list-hd">Descriptive statements</p>
+				<ul aria-labelledby="legal-desc">
+					<li data-localization-id="legal-considerations-exempt"
 						data-localization-mode="descriptive">This
 						publication claims an accessibility exemption in
-						some jurisdictions</p>
-
-					<p data-localization-id="legal-considerations-no-metadata"
-						data-localization-mode="descriptive">No information is available</p>
-				</aside>
-<aside class="example" title="Compact explanation">
-<p data-localization-id="legal-considerations-exempt"
-						data-localization-mode="compact">Claims an accessibility exemption in some jurisdictions</p>
-					<p data-localization-id="legal-considerations-no-metadata"
-						data-localization-mode="compact">No information is available</p>
-
-				</aside>
+						some jurisdictions</li>
+					
+					<li data-localization-id="legal-considerations-no-metadata"
+						data-localization-mode="descriptive">No information is available</li>
+				</ul>	
+				
+				<p id="legal-compact" class="list-hd">Compact statements</p>
+				<ul>
+					<li data-localization-id="legal-considerations-exempt"
+						data-localization-mode="compact">Claims an accessibility exemption in some jurisdictions</li>
+					<li data-localization-id="legal-considerations-no-metadata"
+						data-localization-mode="compact">No information is available</li>
+				</ul>
 			</section>
 
-
+			<section id="legal-examples">
+				<h5>Examples</h5>
+				
+			</section>
+			
 			<section id="legal-techniques">
 				<h4> Display techniques for legal considerations</h4>
 				<p>Specific techniques for meeting this principle are
@@ -1740,45 +1750,46 @@ Transcript(s) provided)</span></li>
 				</dd>
 			</dl>
 
-			<section id="add-info-examples">
-				<h4>Examples</h4>
+			<section id="add-info-statements">
+				<h4>Statements</h4>
 
+				<p>The descriptive and compact statements for additional information are as follows.</p>
+				
 				<div class="note">There are many features that may be
 					present. Some of the features are listed in
 					the examples. A complete list can be found in the
-					techniques. </div>
+					techniques.</div>
 
-				<aside class="example" title="Descriptive explanations">
-<h4 data-localization-id="additional-accessibility-information-title">Additional accessibility
-				information</h4>
-					<ul>
-						<li>Content is enhanced with ARIA roles to
-							optimize organization and facilitate
-							navigation</li>
-						<li>Page breaks included from the original print
-							source</li>
-						<li>Tactile graphics have been integrated to
-							facilitate access to visual elements for
-							blind
-							people</li>
-<li>No information is available</li>
-</ul>
+				<p id="add-info-desc" class="list-hd">Descriptive statements</p>
+				<ul aria-labelledby="add-info-desc">
+					<li>Content is enhanced with ARIA roles to
+						optimize organization and facilitate
+						navigation</li>
+					<li>Page breaks included from the original print
+						source</li>
+					<li>Tactile graphics have been integrated to
+						facilitate access to visual elements for
+						blind
+						people</li>
+					<li>No information is available</li>
+				</ul>
 
-				</aside>
 
-				<aside class="example" title="Compact explanations">
-<h4 data-localization-id="additional-accessibility-information-title">Additional accessibility
-				information</h4>
-					<ul>
-						<li>ARIA roles included</li>
-						<li>Visible page numbering</li>
-						<li>Tactile graphics included</li>
-<li>No information is available</li>
-</ul>
+				<p id="add-info-compact" class="list-hd">Compact explanations</p>
+				<ul aria-labelledby="add-info-compact">
+					<li>ARIA roles included</li>
+					<li>Visible page numbering</li>
+					<li>Tactile graphics included</li>
+					<li>No information is available</li>
+				</ul>
 
-				</aside>
 			</section>
 
+			<section id="add-info-examples">
+				<h5>Examples</h5>
+				
+			</section>
+			
 			<section id="add-info-techniques">
 				<h4>Display techniques for additional accessibility
 					information</h4>
