@@ -143,9 +143,7 @@
 			font-style: italic;
 			color: red;
 		}
-		.example h4,
-		.example h5,
-		.example h6 {
+		p.ex-hd {
 			margin: 1rem 0 0 0;
 			padding: 0;
 			font-variant: small-caps
@@ -668,30 +666,6 @@
 					</dl>
 				</section>
 				
-				<section id="va-examples">
-					<h5>Examples</h5>
-					
-					<aside class="example" title="Display for a publication with modifiable appearance">
-						<h6 data-localization-id="ways-of-reading-title">Ways of reading</h6>
-						<p>Appearance of the text and page layout can be
-							modified according to the capabilities of
-							the reading system (font family and font size,
-							spaces between paragraphs, sentences, words,
-							and letters, as well as color of background
-							and text)</p>
-					</aside>
-					
-					<aside class="example" title="Display for a publication without modifiable appearance">
-						<h6 data-localization-id="ways-of-reading-title">Ways of reading</h6>
-						<p data-localization-id="ways-of-reading-visual-adjustments-unmodifiable"
-							data-localization-mode="descriptive">Text
-							and page layout cannot be modified as the
-							reading experience is close to a print
-							version, but reading systems can still
-							provide zooming options</p>
-					</aside>
-				</section>
-				
 				<section id="va-techniques">
 					<h5>Display techniques for Visual adjustments support</h5>
 	
@@ -896,6 +870,41 @@
 					</ul>
 				</section>
 			</section>
+			
+			<section id="va-examples">
+				<h4>Examples</h4>
+				
+				<aside class="example" title="Publication with accessible ways of reading">
+					<p>The following example shows the descriptive and compact statements that would display
+						for a publication with a modifiable display, that is compatible with nonvisual reading,
+						and that has synchronized prerecorded audio with the text.</p>
+					
+					<dl>
+						<dt>Compact display</dt>
+						<dd>
+							<p class="ex-hd" data-localization-id="ways-of-reading-title">Ways of reading</p>
+							<p>Appearance can be modified</p>
+							<p>Readable in read aloud or dynamic braille</p>
+							<p>Has alternative text</p>
+							<p>Prerecorded audio synchronized with text</p>
+						</dd>
+						
+						<dt>Descriptive display</dt>
+						<dd>
+							<p class="ex-hd" data-localization-id="ways-of-reading-title">Ways of reading</p>
+							<p>Appearance of the text and page layout can be
+								modified according to the capabilities of
+								the reading system (font family and font size,
+								spaces between paragraphs, sentences, words,
+								and letters, as well as color of background
+								and text)</p>
+							<p>All content can be read as read aloud speech or dynamic braille</p>
+							<p>Has alternative text descriptions for images</p>
+							<p>All the content is available as prerecorded audio synchronized with text</p>
+						</dd>
+					</dl>
+				</aside>
+			</section>
 		</section>
 		<section id="conformance-group">
 			<h3 data-localization-id="conformance-title">Conformance</h3>
@@ -963,39 +972,43 @@
 						<span class="placeholder">&lt;placeholder&gt;</span>).</p>
 				</div>
 				
+				<div class="note">
+					<p>Not all conformance statements have compact and descriptive forms. In these cases,
+						the same string is used for both.</p>
+				</div>
+				
 				<dl>
 					<dt>If the publication meets minimal accessibility requirements:</dt>
 					<dd>
 						<p data-localization-id="conformance-a"
-							data-localization-mode="descriptive">This publication meets minimum accessibility
+							data-localization-mode="compact">This publication meets minimum accessibility
 							standards</p>
 						<p data-localization-id="conformance-a"
-							data-localization-mode="compact">This publication meets minimum accessibility
+							data-localization-mode="descriptive">This publication meets minimum accessibility
 							standards</p>
 					</dd>
 					
 					<dt>If the publication meets widely accepted accessibility requirements:</dt>
 					<dd>
 						<p data-localization-id="conformance-aa"
-							data-localization-mode="descriptive">This publication meets accepted accessibility
+							data-localization-mode="compact">This publication meets accepted accessibility
 							standards</p>
 						<p data-localization-id="conformance-aa"
-							data-localization-mode="compact">This publication meets accepted accessibility
+							data-localization-mode="descriptive">This publication meets accepted accessibility
 							standards</p>
 					</dd>
 					
 					<dt>If no metadata is provided:</dt>
 					<dd>
 						<p data-localization-id="conformance-no"
-							data-localization-mode="descriptive">No information is available</p>
-						<p data-localization-id="conformance-no"
 							data-localization-mode="compact">No information is available</p>
+						<p data-localization-id="conformance-no"
+							data-localization-mode="descriptive">No information is available</p>
 					</dd>
 					
 					<dt>If the publication meets the requirements of the EPUB Accessibility standard:</dt>
 					<dd>
-						<p
-							data-localization-mode="descriptive">
+						<p>
 							<span
 								data-localization-id="conformance-claim">This
 								publication claims to meet</span>
@@ -1011,72 +1024,37 @@
 							<span>Level</span>
 							<span class="placeholder">&lt;A or AA or AAA&gt;</span>
 						</p>
-						<p
-							data-localization-mode="compact">
-							<span
-								data-localization-id="conformance-claim">This
-								publication claims to meet</span>
-							
-							<span>EPUB
-								Accessibility</span>
-							<span class="placeholder">&lt;1.X&gt;</span>
-							
-							<span>WCAG</span>
-							<span class="placeholder">&lt;2.X&gt;</span>
-							
-							<span>Level</span>
-							<span class="placeholder">&lt;A or AA or AAA&gt;</span>
-						</p>
 					</dd>
 					
 					<dt>If a certifier name is provided:</dt>
 					<dd>
-						<p data-localization-mode="descriptive"><span
+						<p><span
 								data-localization-id="conformance-certifier"
 								data-localization-mode="descriptive">The
-								publication was certified by</span>
-							<span class="placeholder">&lt;certifier name&gt;</span></p>
-						<p data-localization-mode="compact"><span
-								data-localization-id="conformance-certifier"
-								data-localization-mode="compact">The
 								publication was certified by</span>
 							<span class="placeholder">&lt;certifier name&gt;</span></p>
 					</dd>
 					
 					<dt>If the certifier has a credential:</dt>
 					<dd>
-						<p data-localization-mode="descriptive"><span
+						<p><span
 								data-localization-id="conformance-certifier-credentials"
 								data-localization-mode="descriptive">The certifier's credential is</span>
-							<span class="placeholder">&lt;certifier credential&gt;</span></p>
-						<p data-localization-mode="compact"><span
-								data-localization-id="conformance-certifier-credentials"
-								data-localization-mode="compact">The certifier's credential is</span>
 							<span class="placeholder">&lt;certifier credential&gt;</span></p>
 					</dd>
 					
 					<dt>If the certification date is provided:</dt>
 					<dd>
-						<p data-localization-mode="descriptive">
+						<p>
 							<span data-localization-id="conformance-certification-info"
 								data-localization-mode="descriptive">The
-								publication was certified on</span>
-							<span class="placeholder">&lt;certification date&gt;</span></p>
-						<p data-localization-mode="compact">
-							<span data-localization-id="conformance-certification-info"
-								data-localization-mode="compact">The
 								publication was certified on</span>
 							<span class="placeholder">&lt;certification date&gt;</span></p>
 					</dd>
 					
 					<dt>If the certifier provides an accessibility report:</dt>
 					<dd>
-						<p data-localization-id="conformance-certifier-report"
-							data-localization-mode="descriptive">For
-								more information refer to the
-								certifier's report</p>
-						<p data-localization-id="conformance-certifier-report"
-							data-localization-mode="compact">For
+						<p data-localization-id="conformance-certifier-report">For
 								more information refer to the
 								certifier's report</p>
 					</dd>
