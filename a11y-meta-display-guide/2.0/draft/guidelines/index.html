@@ -143,6 +143,13 @@
 			font-style: italic;
 			color: red;
 		}
+		.example h4,
+		.example h5,
+		.example h6 {
+			margin: 1rem 0 0 0;
+			padding: 0;
+			font-variant: small-caps
+		}
 	</style>
 </head>
 
@@ -581,296 +588,315 @@
 			</div>
 		</section>
 		<section id="ways-of-reading">
-                <h3 data-localization-id="ways-of-reading-title">Ways of reading</h3>
+			<h3 data-localization-id="ways-of-reading-title">Ways of reading</h3>
 
-		<section id="visual-adjustments">
-			<h4 data-localization-id="ways-to-read-visual-adjustments-title">Visual
-				adjustments</h4>
-
-			<div class="note">
-				<p>This key information should be displayed, even
-					if there is no metadata (See the examples
-					where "No information is available"). </p>
-			</div>
-
-			<p>Indicates if users can modify the appearance of the text
-				and the page layout according to the
-				possibilities offered by the reading system.</p>
-
-			<p>This field answers whether visual adjustments are
-				possible, not possible, or unknown.</p>
-
-			<p>Readers with visual impairments or cognitive disabilities
-				need the ability to change the color of
-				text and its background (contrast), the font family and
-				font size used, as well as spacing between
-				letters, words, sentences, or paragraphs.</p>
-
-			<p>Knowing
-				that a publication can reflow to fit the
-				reading system's display area is not sufficient to know
-				that modifications to the font, spacing, and
-				colors are possible or that the changes will not cause
-				other readability issues (e.g., text being
-				clipped by its container).</p>
-
-			<section id="va-statements">
-				<h5>Statements</h5>
-
-				<p>The descriptive and compact statements for visual adjustment are as follows.</p>
+			<section id="visual-adjustments">
+				<h4 data-localization-id="ways-to-read-visual-adjustments-title">Visual
+					adjustments</h4>
+	
+				<div class="note">
+					<p>This key information should be displayed, even
+						if there is no metadata (See the examples
+						where "No information is available"). </p>
+				</div>
+	
+				<p>Indicates if users can modify the appearance of the text
+					and the page layout according to the
+					possibilities offered by the reading system.</p>
+	
+				<p>This field answers whether visual adjustments are
+					possible, not possible, or unknown.</p>
+	
+				<p>Readers with visual impairments or cognitive disabilities
+					need the ability to change the color of
+					text and its background (contrast), the font family and
+					font size used, as well as spacing between
+					letters, words, sentences, or paragraphs.</p>
+	
+				<p>Knowing
+					that a publication can reflow to fit the
+					reading system's display area is not sufficient to know
+					that modifications to the font, spacing, and
+					colors are possible or that the changes will not cause
+					other readability issues (e.g., text being
+					clipped by its container).</p>
+	
+				<section id="va-statements">
+					<h5>Statements</h5>
+	
+					<p>The descriptive and compact statements for visual adjustment are as follows.</p>
+					
+					<dl>
+						<dt>If the display is modifiable:</dt>
+						<dd>
+							<p data-localization-id="ways-of-reading-visual-adjustments-modifiable"
+								data-localization-mode="compact">Appearance
+								can be modified</p>
+							<p data-localization-id="ways-of-reading-visual-adjustments-modifiable"
+								data-localization-mode="descriptive">
+								Appearance of the text and page layout can
+								be
+								modified according to the capabilities of
+								the reading system (font family and font
+								size,
+								spaces between paragraphs, sentences, words,
+								and letters, as well as color of background
+								and text)</p>
+						</dd>
+						
+						<dt>If the display is not modifiable:</dt>
+						<dd>
+							<p data-localization-id="ways-of-reading-visual-adjustments-unmodifiable"
+								data-localization-mode="compact">Appearance
+								cannot be modified</p>
+							<p data-localization-id="ways-of-reading-visual-adjustments-unmodifiable"
+								data-localization-mode="descriptive">Text
+								and page layout cannot be modified as the
+								reading experience is close to a print
+								version, but reading systems can still
+								provide zooming options</p>
+						</dd>
+						
+						<dt>If no metadata is provided:</dt>
+						<dd>
+							<p data-localization-id="ways-of-reading-visual-adjustments-unknown"
+								data-localization-mode="compact">No information about appearance modifiability is available</p>
+							<p data-localization-id="ways-of-reading-visual-adjustments-unknown"
+								data-localization-mode="descriptive">
+								No information about appearance modifiability is available</p>
+						</dd>
+					</dl>
+				</section>
 				
-				<dl>
-					<dt>If the display is modifiable:</dt>
-					<dd>
-						<p data-localization-id="ways-of-reading-visual-adjustments-modifiable"
-							data-localization-mode="compact">Appearance
-							can be modified</p>
-						<p data-localization-id="ways-of-reading-visual-adjustments-modifiable"
-							data-localization-mode="descriptive">
-							Appearance of the text and page layout can
-							be
+				<section id="va-examples">
+					<h5>Examples</h5>
+					
+					<aside class="example" title="Display for a publication with modifiable appearance">
+						<h6 data-localization-id="ways-of-reading-title">Ways of reading</h6>
+						<p>Appearance of the text and page layout can be
 							modified according to the capabilities of
-							the reading system (font family and font
-							size,
+							the reading system (font family and font size,
 							spaces between paragraphs, sentences, words,
 							and letters, as well as color of background
 							and text)</p>
-					</dd>
+					</aside>
 					
-					<dt>If the display is not modifiable:</dt>
-					<dd>
-						<p data-localization-id="ways-of-reading-visual-adjustments-unmodifiable"
-							data-localization-mode="compact">Appearance
-							cannot be modified</p>
+					<aside class="example" title="Display for a publication without modifiable appearance">
+						<h6 data-localization-id="ways-of-reading-title">Ways of reading</h6>
 						<p data-localization-id="ways-of-reading-visual-adjustments-unmodifiable"
 							data-localization-mode="descriptive">Text
 							and page layout cannot be modified as the
 							reading experience is close to a print
 							version, but reading systems can still
 							provide zooming options</p>
-					</dd>
-					
-					<dt>If no metadata is provided:</dt>
-					<dd>
-						<p data-localization-id="ways-of-reading-visual-adjustments-unknown"
-							data-localization-mode="compact">No information about appearance modifiability is available</p>
-						<p data-localization-id="ways-of-reading-visual-adjustments-unknown"
-							data-localization-mode="descriptive">
-							No information about appearance modifiability is available</p>
-					</dd>
-				</dl>
+					</aside>
+				</section>
+				
+				<section id="va-techniques">
+					<h5>Display techniques for Visual adjustments support</h5>
+	
+					<p>Specific techniques for meeting this principle are
+						defined in the following documents:</p>
+	
+					<ul>
+						<li><a
+								href="../techniques/epub-metadata/index.html#visual-adjustments">EPUB
+								Accessibility:
+								Visual Adjustments</a></li>
+						<li><a
+								href="../techniques/onix-metadata/index.html#visual-adjustments">ONIX:
+								Visual
+								Adjustments</a></li>
+					</ul>
+				</section>
 			</section>
-			
-			<section id="va-techniques">
-				<h5>Display techniques for Visual adjustments support</h5>
-
-				<p>Specific techniques for meeting this principle are
-					defined in the following documents:</p>
-
-				<ul>
-					<li><a
-							href="../techniques/epub-metadata/index.html#visual-adjustments">EPUB
-							Accessibility:
-							Visual Adjustments</a></li>
-					<li><a
-							href="../techniques/onix-metadata/index.html#visual-adjustments">ONIX:
-							Visual
-							Adjustments</a></li>
-				</ul>
+	
+			<section id="supports-nonvisual-reading">
+				<h4 data-localization-id="ways-of-reading-nonvisual-reading-title">Support
+					for nonvisual reading</h4>
+	
+				<div class="note">
+					<p>This key information should be displayed, even
+						if there is no metadata (See the examples
+						where "No information is available"). </p>
+				</div>
+	
+				<p>Indicates whether all content required for comprehension
+					can be consumed in text and therefore is
+					available to reading systems with [=read aloud speech=]
+					or [=dynamic braille=] capabilities.</p>
+	
+				<p>This field answers whether nonvisual reading is possible,
+					not possible, or unknown.</p>
+	
+				<p>Digital publications with essential content included in
+					non-textual form (such as images, photographs, graphs,
+					tables or
+					equations presented as images, videos, etc.) must
+					include textual alternatives to ensure that users
+					reading with other senses than sight (mainly auditory
+					and tactile) have access to the same
+					information as visual readers. These textual
+					alternatives can include alt text on images, extended
+					descriptions,
+					transcripts, captions, etc. depending on the nature of
+					the nonvisual content.</p>
+	
+				<section id="nv-statements">
+					<h5>Statements</h5>
+	
+					<p>The descriptive and compact statements for nonvisual reading are as follows.</p>
+					
+					<dl>
+						<dt>If text alternatives are provided:</dt>
+						<dd>
+							<p data-localization-id="ways-of-reading-nonvisual-reading-alt-text"
+								data-localization-mode="compact">Has alternative text</p>
+							<p data-localization-id="ways-of-reading-nonvisual-reading-alt-text"
+								data-localization-mode="descriptive">Has alternative text descriptions for images</p>
+						</dd>
+						
+						<dt>If all content is readable in text form:</dt>
+						<dd>
+							<p data-localization-id="ways-of-reading-nonvisual-reading-readable"
+								data-localization-mode="compact">Readable in
+								read aloud or dynamic braille</p>
+							<p data-localization-id="ways-of-reading-nonvisual-reading-readable"
+								data-localization-mode="descriptive">All
+								content can be read as read aloud speech or
+								dynamic braille</p>
+						</dd>
+						
+						<dt>If not all content may be readable in text form:</dt>
+						<dd>
+							<p data-localization-id="ways-of-reading-nonvisual-reading-may-not-fully"
+								data-localization-mode="compact">May not be
+								fully readable in read aloud or dynamic
+								braille</p>
+							<p data-localization-id="ways-of-reading-nonvisual-reading-may-not-fully"
+								data-localization-mode="descriptive">
+								Portions of the content may not be readable
+								as read aloud speech or dynamic braille</p>
+						</dd>
+						
+						<dt>If not all content is readable in text form:</dt>
+						<dd>
+							<p data-localization-id="ways-of-reading-nonvisual-reading-not-fully"
+								data-localization-mode="compact">Not
+								fully readable in read aloud or dynamic
+								braille</p>
+							<p data-localization-id="ways-of-reading-nonvisual-reading-not-fully"
+								data-localization-mode="descriptive">Not all
+								of the content will be readable as read
+								aloud speech or dynamic braille</p>
+						</dd>
+					</dl>
+				</section>
+				
+				<section id="nv-techniques">
+					<h5>Display techniques for support for nonvisual reading support</h5>
+	
+					<p>Specific techniques for meeting this principle are
+						defined in the following documents:</p>
+	
+					<ul>
+						<li><a
+								href="../techniques/epub-metadata/index.html#supports-nonvisual-reading">EPUB
+								Accessibility: Support for nonvisual
+								reading</a></li>
+						<li><a
+								href="../techniques/onix-metadata/index.html#supports-nonvisual-reading">ONIX:
+								Support
+								for nonvisual reading</a></li>
+					</ul>
+				</section>
+			</section>
+	
+			<section id="prerecorded-audio">
+				<h4 data-localization-id="ways-to-read-prerecorded-audio-title">Prerecorded audio</h4>
+	
+				<div class="note">
+					<p>This key information can be hidden if metadata is
+						missing. Alternatively it can be stated that
+						<span
+							data-localization-id="prerecorded-audio-no-metadata"
+							data-localization-mode="descriptive">No information is available</span>
+					</p>
+				</div>
+	
+				<p>Indicates the presence of prerecorded audio and specifies if this audio is standalone (an audiobook), is an alternative to the text (synchronized text with audio playback), or is complementary audio (portions of audio, (e.g., reading of a poem).</p>
+	
+				<p>Audiobooks created for mainstream use provide important
+					access for many users with disabilities even
+					though they are not accessible to all. As they grow in
+					popularity, audiobooks may provide more
+					accessibility options in the future.</p>
+	
+				<p>Some publications provide prerecorded audio with text
+					synchronization. Users with hearing
+					impairments still can access the full content of these
+					books.</p>
+	
+				<section id="prerecorded-audio-statements">
+					<h5>Statements</h5>
+					
+					<p>The descriptive and compact statements for prerecorded audio are as follows.</p>
+					
+					<dl>
+						<dt>If the publication is a prerecorded audiobook:</dt>
+						<dd>
+							<p data-localization-id="ways-of-reading-prerecorded-audio-only"
+								data-localization-mode="compact">Audio only</p>
+							<p data-localization-id="ways-of-reading-prerecorded-audio-only"
+								data-localization-mode="descriptive">
+								Audiobook with no text alternative</p>
+						</dd>
+						
+						<dt>If there is prerecorded audio synchronized with text:</dt>
+						<dd>
+							<p data-localization-id="ways-of-reading-prerecorded-audio-synchronized"
+								data-localization-mode="compact">Prerecorded audio synchronized with text</p>
+							<p data-localization-id="ways-of-reading-prerecorded-audio-synchronized"
+								data-localization-mode="descriptive">All the
+								content is available as prerecorded audio
+								synchronized with text</p>
+						</dd>
+						
+						<dt>If there are prerecorded audio clips:</dt>
+						<dd>
+							<p data-localization-id="ways-of-reading-prerecorded-audio-complementary" data-localization-mode="descriptive">Portions of prerecorded audio are available</p>
+						</dd>
+						
+						<dt>If no metadata is provided:</dt>
+						<dd>
+							<p data-localization-id="ways-of-reading-prerecorded-audio-no-metadata"
+								data-localization-mode="compact">
+								No information about prerecorded audio is available</p>
+							<p data-localization-id="ways-of-reading-prerecorded-audio-no-metadata"
+								data-localization-mode="descriptive">
+								No information about prerecorded audio is available</p>
+						</dd>
+					</dl>
+				</section>
+				
+				<section id="prerecorded-audio-techniques">
+					<h5>Display techniques for prerecorded audio support
+					</h5>
+					<p>Specific techniques for meeting this principle are
+						defined in the following documents:</p>
+					<ul>
+						<li><a
+								href="../techniques/epub-metadata/index.html#prerecorded-audio">EPUB
+								Accessibility: Full
+								audio</a></li>
+						<li><a
+								href="../techniques/onix-metadata/index.html#prerecorded-audio">ONIX:
+								Full
+								audio</a></li>
+					</ul>
+				</section>
 			</section>
 		</section>
-
-
-		<section id="supports-nonvisual-reading">
-			<h4 data-localization-id="ways-of-reading-nonvisual-reading-title">Support
-				for nonvisual reading</h4>
-
-			<div class="note">
-				<p>This key information should be displayed, even
-					if there is no metadata (See the examples
-					where "No information is available"). </p>
-			</div>
-
-			<p>Indicates whether all content required for comprehension
-				can be consumed in text and therefore is
-				available to reading systems with [=read aloud speech=]
-				or [=dynamic braille=] capabilities.</p>
-
-			<p>This field answers whether nonvisual reading is possible,
-				not possible, or unknown.</p>
-
-			<p>Digital publications with essential content included in
-				non-textual form (such as images, photographs, graphs,
-				tables or
-				equations presented as images, videos, etc.) must
-				include textual alternatives to ensure that users
-				reading with other senses than sight (mainly auditory
-				and tactile) have access to the same
-				information as visual readers. These textual
-				alternatives can include alt text on images, extended
-				descriptions,
-				transcripts, captions, etc. depending on the nature of
-				the nonvisual content.</p>
-
-			<section id="nv-statements">
-				<h5>Statements</h5>
-
-				<p>The descriptive and compact statements for nonvisual reading are as follows.</p>
-				
-				<dl>
-					<dt>If text alternatives are provided:</dt>
-					<dd>
-						<p data-localization-id="ways-of-reading-nonvisual-reading-alt-text"
-							data-localization-mode="compact">Has alternative text</p>
-						<p data-localization-id="ways-of-reading-nonvisual-reading-alt-text"
-							data-localization-mode="descriptive">Has alternative text descriptions for images</p>
-					</dd>
-					
-					<dt>If all content is readable in text form:</dt>
-					<dd>
-						<p data-localization-id="ways-of-reading-nonvisual-reading-readable"
-							data-localization-mode="compact">Readable in
-							read aloud or dynamic braille</p>
-						<p data-localization-id="ways-of-reading-nonvisual-reading-readable"
-							data-localization-mode="descriptive">All
-							content can be read as read aloud speech or
-							dynamic braille</p>
-					</dd>
-					
-					<dt>If not all content may be readable in text form:</dt>
-					<dd>
-						<p data-localization-id="ways-of-reading-nonvisual-reading-may-not-fully"
-							data-localization-mode="compact">May not be
-							fully readable in read aloud or dynamic
-							braille</p>
-						<p data-localization-id="ways-of-reading-nonvisual-reading-may-not-fully"
-							data-localization-mode="descriptive">
-							Portions of the content may not be readable
-							as read aloud speech or dynamic braille</p>
-					</dd>
-					
-					<dt>If not all content is readable in text form:</dt>
-					<dd>
-						<p data-localization-id="ways-of-reading-nonvisual-reading-not-fully"
-							data-localization-mode="compact">Not
-							fully readable in read aloud or dynamic
-							braille</p>
-						<p data-localization-id="ways-of-reading-nonvisual-reading-not-fully"
-							data-localization-mode="descriptive">Not all
-							of the content will be readable as read
-							aloud speech or dynamic braille</p>
-					</dd>
-				</dl>
-			</section>
-			
-			<section id="nv-techniques">
-				<h5>Display techniques for support for nonvisual reading support
-				</h5>
-
-				<p>Specific techniques for meeting this principle are
-					defined in the following documents:</p>
-
-				<ul>
-					<li><a
-							href="../techniques/epub-metadata/index.html#supports-nonvisual-reading">EPUB
-							Accessibility: Support for nonvisual
-							reading</a></li>
-					<li><a
-							href="../techniques/onix-metadata/index.html#supports-nonvisual-reading">ONIX:
-							Support
-							for nonvisual reading</a></li>
-				</ul>
-			</section>
-		</section>
-
-		<section id="prerecorded-audio">
-			<h4 data-localization-id="ways-to-read-prerecorded-audio-title">Prerecorded audio</h4>
-
-			<div class="note">
-				<p>This key information can be hidden if metadata is
-					missing. Alternatively it can be stated that
-					<span
-						data-localization-id="prerecorded-audio-no-metadata"
-						data-localization-mode="descriptive">No information is available</span>
-				</p>
-			</div>
-
-			<p>Indicates the presence of prerecorded audio and specifies if this audio is standalone (an audiobook), is an alternative to the text (synchronized text with audio playback), or is complementary audio (portions of audio, (e.g., reading of a poem).</p>
-
-			<p>Audiobooks created for mainstream use provide important
-				access for many users with disabilities even
-				though they are not accessible to all. As they grow in
-				popularity, audiobooks may provide more
-				accessibility options in the future.</p>
-
-
-
-			<p>Some publications provide prerecorded audio with text
-				synchronization. Users with hearing
-				impairments still can access the full content of these
-				books.</p>
-
-			<section id="prerecorded-audio-statements">
-				<h5>Statements</h5>
-				
-				<p>The descriptive and compact statements for prerecorded audio are as follows.</p>
-				
-				<dl>
-					<dt>If the publication is a prerecorded audiobook:</dt>
-					<dd>
-						<p data-localization-id="ways-of-reading-prerecorded-audio-only"
-							data-localization-mode="compact">Audio only</p>
-						<p data-localization-id="ways-of-reading-prerecorded-audio-only"
-							data-localization-mode="descriptive">
-							Audiobook with no text alternative</p>
-					</dd>
-					
-					<dt>If there is prerecorded audio synchronized with text:</dt>
-					<dd>
-						<p data-localization-id="ways-of-reading-prerecorded-audio-synchronized"
-							data-localization-mode="compact">Prerecorded audio synchronized with text</p>
-						<p data-localization-id="ways-of-reading-prerecorded-audio-synchronized"
-							data-localization-mode="descriptive">All the
-							content is available as prerecorded audio
-							synchronized with text</p>
-					</dd>
-					
-					<dt>If there are prerecorded audio clips:</dt>
-					<dd>
-						<p data-localization-id="ways-of-reading-prerecorded-audio-complementary" data-localization-mode="descriptive">Portions of prerecorded audio are available</p>
-					</dd>
-					
-					<dt>If no metadata is provided:</dt>
-					<dd>
-						<p data-localization-id="ways-of-reading-prerecorded-audio-no-metadata"
-							data-localization-mode="compact">
-							No information about prerecorded audio is available</p>
-						<p data-localization-id="ways-of-reading-prerecorded-audio-no-metadata"
-							data-localization-mode="descriptive">
-							No information about prerecorded audio is available</p>
-					</dd>
-				</dl>
-			</section>
-			
-			<section id="prerecorded-audio-techniques">
-				<h5>Display techniques for prerecorded audio support
-				</h5>
-				<p>Specific techniques for meeting this principle are
-					defined in the following documents:</p>
-				<ul>
-					<li><a
-							href="../techniques/epub-metadata/index.html#prerecorded-audio">EPUB
-							Accessibility: Full
-							audio</a></li>
-					<li><a
-							href="../techniques/onix-metadata/index.html#prerecorded-audio">ONIX:
-							Full
-							audio</a></li>
-				</ul>
-			</section>
-		</section>
-
-</section>
 		<section id="conformance-group">
 			<h3 data-localization-id="conformance-title">Conformance</h3>
 
