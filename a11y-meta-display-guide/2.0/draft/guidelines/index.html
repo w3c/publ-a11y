@@ -127,9 +127,21 @@
 			content: 'Descriptive: ';
 			font-style: italic;
 		}
+		aside.example p[data-localization-mode="descriptive"]:before {
+			content: '';
+			font-style: normal;
+		}
 		p[data-localization-mode="compact"]:before {
 			content: 'Compact: ';
 			font-style: italic;
+		}
+		aside.example p[data-localization-mode="compact"]:before {
+			content: '';
+			font-style: normal;
+		}
+		.placeholder {
+			font-style: italic;
+			color: red;
 		}
 	</style>
 </head>
@@ -887,73 +899,6 @@
 				identified along with their credentials and
 				placed immediately after the conformance statement.</p>
 
-			<section id="conf-statements">
-				<h4>Conformance statements</h4>
-				
-				<p>The following list explains the meaning of each
-					recommended conformance statement.</p>
-				<dl>
-					<dt data-localization-id="conformance-aaa"
-						data-localization-mode="compact">This
-						publication
-						exceeds accepted accessibility standards</dt>
-					<dd data-localization-id="conformance-aaa"
-						data-localization-mode="descriptive">
-						<p>The publication contains a conformance
-							statement that it meets the EPUB
-							Accessibility and
-							WCAG 2 Level AAA standard</p>
-					</dd>
-					<dt data-localization-id="conformance-aa"
-						data-localization-mode="compact">This
-						publication
-						meets accepted accessibility standards</dt>
-					<dd data-localization-id="conformance-aa"
-						data-localization-mode="descriptive">
-						<p>The publication contains a conformance
-							statement that it meets the EPUB
-							Accessibility and
-							WCAG 2 Level AA standard</p>
-					</dd>
-
-					<dt data-localization-id="conformance-a"
-						data-localization-mode="compact">This
-						publication meets
-						minimum accessibility standards</dt>
-					<dd data-localization-id="conformance-a"
-						data-localization-mode="descriptive">
-						<p>The publication contains a conformance
-							statement that it meets the EPUB
-							Accessibility and
-							WCAG 2 Level A standard</p>
-					</dd>
-
-					<dt data-localization-id="conformance-no"
-						data-localization-mode="compact">No information is available</dt>
-					<dd >
-						<p>The conformance metadata is missing and
-							conformity to a standard of this publication
-							is
-							unknown</p>
-					</dd>
-
-					<dt>Certifier's name</dt>
-					<dd>Identifies the organization providing the
-						certification review or process for
-						certification. </dd>
-
-					<dt>Certifier's Credentials </dt>
-					<dd>If the certifier has a badge or a credential,
-						then the text is provided. If there is a link
-						to their credential, then this can be provided
-						as a link. If the certifier has a logo or
-						badge, this can be displayed. The display of the
-						logo or badge can be arranged between the
-						certifier and the distributor showing the
-						accessibility metadata.</dd>
-
-				</dl>
-			</section>
 
 			<section id="detailled-conformance-information">
 				<h4>Detailed conformance information</h4>
@@ -982,9 +927,202 @@
 				</dl>
 			</section>
 
-			<section id="conformance-statements">
+			<section id="conf-statements">
 				<h4>Statements</h4>
 				
+				<div class="note">
+					<p>Some conformance statements incorporate publication metadata. To indicate where
+						this text will be inserted, the statements include placeholder variables. These
+						placeholders are identified by being enclosed in angle brackets (e.g., 
+						<span class="placeholder">&lt;placeholder&gt;</span>).</p>
+				</div>
+				
+				<dl>
+					<dt>If the publication meets minimal accessibility requirements:</dt>
+					<dd>
+						<p data-localization-id="conformance-a"
+							data-localization-mode="descriptive">This publication meets minimum accessibility
+							standards</p>
+						<p data-localization-id="conformance-a"
+							data-localization-mode="compact">This publication meets minimum accessibility
+							standards</p>
+					</dd>
+					
+					<dt>If the publication meets widely accepted accessibility requirements:</dt>
+					<dd>
+						<p data-localization-id="conformance-aa"
+							data-localization-mode="descriptive">This publication meets accepted accessibility
+							standards</p>
+						<p data-localization-id="conformance-aa"
+							data-localization-mode="compact">This publication meets accepted accessibility
+							standards</p>
+					</dd>
+					
+					<dt>If no metadata is provided:</dt>
+					<dd>
+						<p data-localization-id="conformance-no"
+							data-localization-mode="descriptive">No information is available</p>
+						<p data-localization-id="conformance-no"
+							data-localization-mode="compact">No information is available</p>
+					</dd>
+					
+					<dt>If the publication meets the requirements of the EPUB Accessibility standard:</dt>
+					<dd>
+						<p
+							data-localization-mode="descriptive">
+							<span
+								data-localization-id="conformance-claim">This
+								publication claims to meet</span>
+							
+							<span>EPUB
+								Accessibility</span>
+							<span class="placeholder">&lt;1.X&gt;</span>
+							
+							<span>Web
+								Accessibility Content Guidelines (WCAG)</span>
+							<span class="placeholder">&lt;2.X&gt;</span>
+							
+							<span>Level</span>
+							<span class="placeholder">&lt;A or AA or AAA&gt;</span>
+						</p>
+						<p
+							data-localization-mode="compact">
+							<span
+								data-localization-id="conformance-claim">This
+								publication claims to meet</span>
+							
+							<span>EPUB
+								Accessibility</span>
+							<span class="placeholder">&lt;1.X&gt;</span>
+							
+							<span>WCAG</span>
+							<span class="placeholder">&lt;2.X&gt;</span>
+							
+							<span>Level</span>
+							<span class="placeholder">&lt;A or AA or AAA&gt;</span>
+						</p>
+					</dd>
+					
+					<dt>If a certifier name is provided:</dt>
+					<dd>
+						<p data-localization-mode="descriptive"><span
+								data-localization-id="conformance-certifier"
+								data-localization-mode="descriptive">The
+								publication was certified by</span>
+							<span class="placeholder">&lt;certifier name&gt;</span></p>
+						<p data-localization-mode="compact"><span
+								data-localization-id="conformance-certifier"
+								data-localization-mode="compact">The
+								publication was certified by</span>
+							<span class="placeholder">&lt;certifier name&gt;</span></p>
+					</dd>
+					
+					<dt>If the certifier has a credential:</dt>
+					<dd>
+						<p data-localization-mode="descriptive"><span
+								data-localization-id="conformance-certifier-credentials"
+								data-localization-mode="descriptive">The certifier's credential is</span>
+							<span class="placeholder">&lt;certifier credential&gt;</span></p>
+						<p data-localization-mode="compact"><span
+								data-localization-id="conformance-certifier-credentials"
+								data-localization-mode="compact">The certifier's credential is</span>
+							<span class="placeholder">&lt;certifier credential&gt;</span></p>
+					</dd>
+					
+					<dt>If the certification date is provided:</dt>
+					<dd>
+						<p data-localization-mode="descriptive">
+							<span data-localization-id="conformance-certification-info"
+								data-localization-mode="descriptive">The
+								publication was certified on</span>
+							<span class="placeholder">&lt;certification date&gt;</span></p>
+						<p data-localization-mode="compact">
+							<span data-localization-id="conformance-certification-info"
+								data-localization-mode="compact">The
+								publication was certified on</span>
+							<span class="placeholder">&lt;certification date&gt;</span></p>
+					</dd>
+					
+					<dt>If the certifier provides an accessibility report:</dt>
+					<dd>
+						<p data-localization-id="conformance-certifier-report"
+							data-localization-mode="descriptive">For
+								more information refer to the
+								certifier's report</p>
+						<p data-localization-id="conformance-certifier-report"
+							data-localization-mode="compact">For
+								more information refer to the
+								certifier's report</p>
+					</dd>
+				</dl>
+				
+				<section id="conf-expl">
+					<h4>Explainer</h4>
+					
+					<p>The following list explains the meaning of each
+						recommended conformance statement.</p>
+					<dl>
+						<dt data-localization-id="conformance-aaa"
+							data-localization-mode="compact">This
+							publication
+							exceeds accepted accessibility standards</dt>
+						<dd data-localization-id="conformance-aaa"
+							data-localization-mode="descriptive">
+							<p>The publication contains a conformance
+								statement that it meets the EPUB
+								Accessibility and
+								WCAG 2 Level AAA standard</p>
+						</dd>
+						<dt data-localization-id="conformance-aa"
+							data-localization-mode="compact">This
+							publication
+							meets accepted accessibility standards</dt>
+						<dd data-localization-id="conformance-aa"
+							data-localization-mode="descriptive">
+							<p>The publication contains a conformance
+								statement that it meets the EPUB
+								Accessibility and
+								WCAG 2 Level AA standard</p>
+						</dd>
+						
+						<dt data-localization-id="conformance-a"
+							data-localization-mode="compact">This
+							publication meets
+							minimum accessibility standards</dt>
+						<dd data-localization-id="conformance-a"
+							data-localization-mode="descriptive">
+							<p>The publication contains a conformance
+								statement that it meets the EPUB
+								Accessibility and
+								WCAG 2 Level A standard</p>
+						</dd>
+						
+						<dt data-localization-id="conformance-no"
+							data-localization-mode="compact">No information is available</dt>
+						<dd >
+							<p>The conformance metadata is missing and
+								conformity to a standard of this publication
+								is
+								unknown</p>
+						</dd>
+						
+						<dt>Certifier's name</dt>
+						<dd>Identifies the organization providing the
+							certification review or process for
+							certification. </dd>
+						
+						<dt>Certifier's Credentials </dt>
+						<dd>If the certifier has a badge or a credential,
+							then the text is provided. If there is a link
+							to their credential, then this can be provided
+							as a link. If the certifier has a logo or
+							badge, this can be displayed. The display of the
+							logo or badge can be arranged between the
+							certifier and the distributor showing the
+							accessibility metadata.</dd>
+						
+					</dl>
+				</section>
 			</section>
 				
 			<section id="conf-examples">
