@@ -1,9 +1,5 @@
-		<!DOCTYPE html>
-
-
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US"
-	xml:lang="en-US">
-
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
 <head>
 	<meta charset="utf-8" />
 	<title>Accessibility Metadata Display Guide for Digital Publications
@@ -123,6 +119,34 @@
 			bottom: 2px;
 			border: none;
 			display: inline-block;
+		}
+		dt {
+			margin-bottom: 1rem;
+		}
+		p[data-localization-mode="descriptive"]:before {
+			content: 'Descriptive: ';
+			font-style: italic;
+		}
+		aside.example p[data-localization-mode="descriptive"]:before {
+			content: '';
+			font-style: normal;
+		}
+		p[data-localization-mode="compact"]:before {
+			content: 'Compact: ';
+			font-style: italic;
+		}
+		aside.example p[data-localization-mode="compact"]:before {
+			content: '';
+			font-style: normal;
+		}
+		.placeholder {
+			font-style: italic;
+			color: red;
+		}
+		p.ex-hd {
+			margin: 1rem 0 0 0;
+			padding: 0;
+			font-variant: small-caps
 		}
 	</style>
 </head>
@@ -561,281 +585,329 @@
 					shown in the examples.</p>
 			</div>
 		</section>
-		            <section id="ways-of-reading">
-                <h3 data-localization-id="ways-of-reading-title">Ways of reading</h3>
-<div class="note">
-<p>This section groups the three ways (modes) of reading  together. The modes are through visual adjustments, non-visual reading with Assistive Technology, and by listening to prerecorded audio, i.e., an audiobook. The examples follow the descriptions .</p>
-</div>
+		<section id="ways-of-reading">
+			<h3 data-localization-id="ways-of-reading-title">Ways of reading</h3>
 
-
-		<section id="visual-adjustments">
-			<h4 data-localization-id="ways-to-read-visual-adjustments-title">Visual
-				adjustments</h4>
-
-			<div class="note">
-				<p>This key information should be displayed, even
-					if there is no metadata (See the examples
-					where "No information is available"). </p>
-			</div>
-
-			<p>Indicates if users can modify the appearance of the text
-				and the page layout according to the
-				possibilities offered by the reading system.</p>
-
-			<p>This field answers whether visual adjustments are
-				possible, not possible, or unknown.</p>
-
-			<p>Readers with visual impairments or cognitive disabilities
-				need the ability to change the color of
-				text and its background (contrast), the font family and
-				font size used, as well as spacing between
-				letters, words, sentences, or paragraphs.</p>
-
-			<p>Knowing
-				that a publication can reflow to fit the
-				reading system's display area is not sufficient to know
-				that modifications to the font, spacing, and
-				colors are possible or that the changes will not cause
-				other readability issues (e.g., text being
-				clipped by its container).</p>
-
-			<section id="va-techniques">
-				<h5>Display techniques for Visual adjustments support
-				</h5>
-
-				<p>Specific techniques for meeting this principle are
-					defined in the following documents:</p>
-
-				<ul>
-					<li><a
-							href="../techniques/epub-metadata/index.html#visual-adjustments">EPUB
-							Accessibility:
-							Visual Adjustments</a></li>
-					<li><a
-							href="../techniques/onix-metadata/index.html#visual-adjustments">ONIX:
-							Visual
-							Adjustments</a></li>
-				</ul>
+			<section id="visual-adjustments">
+				<h4 data-localization-id="ways-to-read-visual-adjustments-title">Visual
+					adjustments</h4>
+	
+				<div class="note">
+					<p>This key information should be displayed, even
+						if there is no metadata (See the examples
+						where "No information is available"). </p>
+				</div>
+	
+				<p>Indicates if users can modify the appearance of the text
+					and the page layout according to the
+					possibilities offered by the reading system.</p>
+	
+				<p>This field answers whether visual adjustments are
+					possible, not possible, or unknown.</p>
+	
+				<p>Readers with visual impairments or cognitive disabilities
+					need the ability to change the color of
+					text and its background (contrast), the font family and
+					font size used, as well as spacing between
+					letters, words, sentences, or paragraphs.</p>
+	
+				<p>Knowing
+					that a publication can reflow to fit the
+					reading system's display area is not sufficient to know
+					that modifications to the font, spacing, and
+					colors are possible or that the changes will not cause
+					other readability issues (e.g., text being
+					clipped by its container).</p>
+	
+				<section id="va-statements">
+					<h5>Display statements</h5>
+	
+					<p>The descriptive and compact statements for visual adjustment are as follows.</p>
+					
+					<dl>
+						<dt>If the display is modifiable:</dt>
+						<dd>
+							<p data-localization-id="ways-of-reading-visual-adjustments-modifiable"
+								data-localization-mode="compact">Appearance
+								can be modified</p>
+							<p data-localization-id="ways-of-reading-visual-adjustments-modifiable"
+								data-localization-mode="descriptive">
+								Appearance of the text and page layout can
+								be
+								modified according to the capabilities of
+								the reading system (font family and font
+								size,
+								spaces between paragraphs, sentences, words,
+								and letters, as well as color of background
+								and text)</p>
+						</dd>
+						
+						<dt>If the display is not modifiable:</dt>
+						<dd>
+							<p data-localization-id="ways-of-reading-visual-adjustments-unmodifiable"
+								data-localization-mode="compact">Appearance
+								cannot be modified</p>
+							<p data-localization-id="ways-of-reading-visual-adjustments-unmodifiable"
+								data-localization-mode="descriptive">Text
+								and page layout cannot be modified as the
+								reading experience is close to a print
+								version, but reading systems can still
+								provide zooming options</p>
+						</dd>
+						
+						<dt>If no metadata is provided:</dt>
+						<dd>
+							<p data-localization-id="ways-of-reading-visual-adjustments-unknown"
+								data-localization-mode="compact">No information about appearance modifiability is available</p>
+							<p data-localization-id="ways-of-reading-visual-adjustments-unknown"
+								data-localization-mode="descriptive">
+								No information about appearance modifiability is available</p>
+						</dd>
+					</dl>
+				</section>
+				
+				<section id="va-techniques">
+					<h5>Display techniques for Visual adjustments support</h5>
+	
+					<p>Specific techniques for meeting this principle are
+						defined in the following documents:</p>
+	
+					<ul>
+						<li><a
+								href="../techniques/epub-metadata/index.html#visual-adjustments">EPUB
+								Accessibility:
+								Visual Adjustments</a></li>
+						<li><a
+								href="../techniques/onix-metadata/index.html#visual-adjustments">ONIX:
+								Visual
+								Adjustments</a></li>
+					</ul>
+				</section>
 			</section>
-		</section>
-
-
-		<section id="supports-nonvisual-reading">
-			<h4 data-localization-id="ways-of-reading-nonvisual-reading-title">Support
-				for nonvisual reading</h4>
-
-			<div class="note">
-				<p>This key information should be displayed, even
-					if there is no metadata (See the examples
-					where "No information is available"). </p>
-			</div>
-
-			<p>Indicates whether all content required for comprehension
-				can be consumed in text and therefore is
-				available to reading systems with [=read aloud speech=]
-				or [=dynamic braille=] capabilities.</p>
-
-			<p>This field answers whether nonvisual reading is possible,
-				not possible, or unknown.</p>
-
-			<p>Digital publications with essential content included in
-				non-textual form (such as images, photographs, graphs,
-				tables or
-				equations presented as images, videos, etc.) must
-				include textual alternatives to ensure that users
-				reading with other senses than sight (mainly auditory
-				and tactile) have access to the same
-				information as visual readers. These textual
-				alternatives can include alt text on images, extended
-				descriptions,
-				transcripts, captions, etc. depending on the nature of
-				the nonvisual content.</p>
-
-
-
-
-			<section id="nv-techniques">
-				<h5>Display techniques for support for nonvisual reading support
-				</h5>
-
-				<p>Specific techniques for meeting this principle are
-					defined in the following documents:</p>
-
-				<ul>
-					<li><a
-							href="../techniques/epub-metadata/index.html#supports-nonvisual-reading">EPUB
-							Accessibility: Support for nonvisual
-							reading</a></li>
-					<li><a
-							href="../techniques/onix-metadata/index.html#supports-nonvisual-reading">ONIX:
-							Support
-							for nonvisual reading</a></li>
-				</ul>
+	
+			<section id="supports-nonvisual-reading">
+				<h4 data-localization-id="ways-of-reading-nonvisual-reading-title">Support
+					for nonvisual reading</h4>
+	
+				<div class="note">
+					<p>This key information should be displayed, even
+						if there is no metadata (See the examples
+						where "No information is available"). </p>
+				</div>
+	
+				<p>Indicates whether all content required for comprehension
+					can be consumed in text and therefore is
+					available to reading systems with [=read aloud speech=]
+					or [=dynamic braille=] capabilities.</p>
+	
+				<p>This field answers whether nonvisual reading is possible,
+					not possible, or unknown.</p>
+	
+				<p>Digital publications with essential content included in
+					non-textual form (such as images, photographs, graphs,
+					tables or
+					equations presented as images, videos, etc.) must
+					include textual alternatives to ensure that users
+					reading with other senses than sight (mainly auditory
+					and tactile) have access to the same
+					information as visual readers. These textual
+					alternatives can include alt text on images, extended
+					descriptions,
+					transcripts, captions, etc. depending on the nature of
+					the nonvisual content.</p>
+	
+				<section id="nv-statements">
+					<h5>Display statements</h5>
+	
+					<p>The descriptive and compact statements for nonvisual reading are as follows.</p>
+					
+					<dl>
+						<dt>If text alternatives are provided:</dt>
+						<dd>
+							<p data-localization-id="ways-of-reading-nonvisual-reading-alt-text"
+								data-localization-mode="compact">Has alternative text</p>
+							<p data-localization-id="ways-of-reading-nonvisual-reading-alt-text"
+								data-localization-mode="descriptive">Has alternative text descriptions for images</p>
+						</dd>
+						
+						<dt>If all content is readable in text form:</dt>
+						<dd>
+							<p data-localization-id="ways-of-reading-nonvisual-reading-readable"
+								data-localization-mode="compact">Readable in
+								read aloud or dynamic braille</p>
+							<p data-localization-id="ways-of-reading-nonvisual-reading-readable"
+								data-localization-mode="descriptive">All
+								content can be read as read aloud speech or
+								dynamic braille</p>
+						</dd>
+						
+						<dt>If not all content may be readable in text form:</dt>
+						<dd>
+							<p data-localization-id="ways-of-reading-nonvisual-reading-may-not-fully"
+								data-localization-mode="compact">May not be
+								fully readable in read aloud or dynamic
+								braille</p>
+							<p data-localization-id="ways-of-reading-nonvisual-reading-may-not-fully"
+								data-localization-mode="descriptive">
+								Portions of the content may not be readable
+								as read aloud speech or dynamic braille</p>
+						</dd>
+						
+						<dt>If not all content is readable in text form:</dt>
+						<dd>
+							<p data-localization-id="ways-of-reading-nonvisual-reading-not-fully"
+								data-localization-mode="compact">Not
+								fully readable in read aloud or dynamic
+								braille</p>
+							<p data-localization-id="ways-of-reading-nonvisual-reading-not-fully"
+								data-localization-mode="descriptive">Not all
+								of the content will be readable as read
+								aloud speech or dynamic braille</p>
+						</dd>
+					</dl>
+				</section>
+				
+				<section id="nv-techniques">
+					<h5>Display techniques for support for nonvisual reading support</h5>
+	
+					<p>Specific techniques for meeting this principle are
+						defined in the following documents:</p>
+	
+					<ul>
+						<li><a
+								href="../techniques/epub-metadata/index.html#supports-nonvisual-reading">EPUB
+								Accessibility: Support for nonvisual
+								reading</a></li>
+						<li><a
+								href="../techniques/onix-metadata/index.html#supports-nonvisual-reading">ONIX:
+								Support
+								for nonvisual reading</a></li>
+					</ul>
+				</section>
 			</section>
-		</section>
-
-
-		<section id="prerecorded-audio">
-			<h4 data-localization-id="ways-to-read-prerecorded-audio-title">Prerecorded audio</h4>
-
-			<div class="note">
-				<p>This key information can be hidden if metadata is
-					missing. Alternatively it can be stated that
-					<span
-						data-localization-id="prerecorded-audio-no-metadata"
-						data-localization-mode="descriptive">No information is available</span>
-				</p>
-			</div>
-
-			<p>Indicates the presence of prerecorded audio and specifies if this audio is standalone (an audiobook), is an alternative to the text (synchronized text with audio playback), or is complementary audio (portions of audio, (e.g., reading of a poem).</p>
-
-			<p>Audiobooks created for mainstream use provide important
-				access for many users with disabilities even
-				though they are not accessible to all. As they grow in
-				popularity, audiobooks may provide more
-				accessibility options in the future.</p>
-
-
-
-			<p>Some publications provide prerecorded audio with text
-				synchronization. Users with hearing
-				impairments still can access the full content of these
-				books.</p>
-
-
-			<section id="prerecorded-audio-techniques">
-				<h5>Display techniques for prerecorded audio support
-				</h5>
-				<p>Specific techniques for meeting this principle are
-					defined in the following documents:</p>
-				<ul>
-					<li><a
-							href="../techniques/epub-metadata/index.html#prerecorded-audio">EPUB
-							Accessibility: Full
-							audio</a></li>
-					<li><a
-							href="../techniques/onix-metadata/index.html#prerecorded-audio">ONIX:
-							Full
-							audio</a></li>
-				</ul>
+	
+			<section id="prerecorded-audio">
+				<h4 data-localization-id="ways-to-read-prerecorded-audio-title">Prerecorded audio</h4>
+	
+				<div class="note">
+					<p>This key information can be hidden if metadata is
+						missing. Alternatively it can be stated that
+						<span
+							data-localization-id="prerecorded-audio-no-metadata"
+							data-localization-mode="descriptive">No information is available</span>
+					</p>
+				</div>
+	
+				<p>Indicates the presence of prerecorded audio and specifies if this audio is standalone (an audiobook), is an alternative to the text (synchronized text with audio playback), or is complementary audio (portions of audio, (e.g., reading of a poem).</p>
+	
+				<p>Audiobooks created for mainstream use provide important
+					access for many users with disabilities even
+					though they are not accessible to all. As they grow in
+					popularity, audiobooks may provide more
+					accessibility options in the future.</p>
+	
+				<p>Some publications provide prerecorded audio with text
+					synchronization. Users with hearing
+					impairments still can access the full content of these
+					books.</p>
+	
+				<section id="prerecorded-audio-statements">
+					<h5>Display statements</h5>
+					
+					<p>The descriptive and compact statements for prerecorded audio are as follows.</p>
+					
+					<dl>
+						<dt>If the publication is a prerecorded audiobook:</dt>
+						<dd>
+							<p data-localization-id="ways-of-reading-prerecorded-audio-only"
+								data-localization-mode="compact">Audio only</p>
+							<p data-localization-id="ways-of-reading-prerecorded-audio-only"
+								data-localization-mode="descriptive">
+								Audiobook with no text alternative</p>
+						</dd>
+						
+						<dt>If there is prerecorded audio synchronized with text:</dt>
+						<dd>
+							<p data-localization-id="ways-of-reading-prerecorded-audio-synchronized"
+								data-localization-mode="compact">Prerecorded audio synchronized with text</p>
+							<p data-localization-id="ways-of-reading-prerecorded-audio-synchronized"
+								data-localization-mode="descriptive">All the
+								content is available as prerecorded audio
+								synchronized with text</p>
+						</dd>
+						
+						<dt>If there are prerecorded audio clips:</dt>
+						<dd>
+							<p data-localization-id="ways-of-reading-prerecorded-audio-complementary" data-localization-mode="descriptive">Portions of prerecorded audio are available</p>
+						</dd>
+						
+						<dt>If no metadata is provided:</dt>
+						<dd>
+							<p data-localization-id="ways-of-reading-prerecorded-audio-no-metadata"
+								data-localization-mode="compact">
+								No information about prerecorded audio is available</p>
+							<p data-localization-id="ways-of-reading-prerecorded-audio-no-metadata"
+								data-localization-mode="descriptive">
+								No information about prerecorded audio is available</p>
+						</dd>
+					</dl>
+				</section>
+				
+				<section id="prerecorded-audio-techniques">
+					<h5>Display techniques for prerecorded audio support
+					</h5>
+					<p>Specific techniques for meeting this principle are
+						defined in the following documents:</p>
+					<ul>
+						<li><a
+								href="../techniques/epub-metadata/index.html#prerecorded-audio">EPUB
+								Accessibility: Full
+								audio</a></li>
+						<li><a
+								href="../techniques/onix-metadata/index.html#prerecorded-audio">ONIX:
+								Full
+								audio</a></li>
+					</ul>
+				</section>
 			</section>
-</section>
-
-
-			<section id="ways-to-read-examples">
+			
+			<section id="wr-examples">
 				<h4>Examples</h4>
-<p>The first two examples combine visual adjustment and non-visual reading results. The third and fourth show prerecorded audio results.</p>
-
-
-				<aside class="example" title="Descriptive explanations of visual adjustments and non-visual">
-				<h5 data-localization-id="ways-of-reading-title">Ways of reading</h5>
-					<ul>
-						<li data-localization-id="ways-of-reading-visual-adjustments-modifiable"
-							data-localization-mode="descriptive">
-							Appearance of the text and page layout can
-							be
-							modified according to the capabilities of
-							the reading system (font family and font
-							size,
-							spaces between paragraphs, sentences, words,
-							and letters, as well as color of background
-							and text)</li>
-						<li data-localization-id="ways-of-reading-visual-adjustments-unmodifiable"
-							data-localization-mode="descriptive">Text
-							and page layout cannot be modified as the
-							reading experience is close to a print
-							version, but reading systems can still
-							provide zooming options</li>
-						<li data-localization-id="ways-of-reading-visual-adjustments-unknown"
-							data-localization-mode="descriptive">
-							No information about appearance modifiability is available</li>
-													<li data-localization-id="ways-of-reading-nonvisual-reading-alt-text"
-							data-localization-mode="descriptive">Has alternative text descriptions for images</li>
-						<li data-localization-id="ways-of-reading-nonvisual-reading-readable"
-							data-localization-mode="descriptive">All
-							content can be read as read aloud speech or
-							dynamic braille</li>
-						<li data-localization-id="ways-of-reading-nonvisual-reading-may-not-fully"
-							data-localization-mode="descriptive">
-							Portions of the content may not be readable
-							as read aloud speech or dynamic braille</li>
-						<li data-localization-id="ways-of-reading-nonvisual-reading-not-fully"
-							data-localization-mode="descriptive">Not all
-							of the content will be readable as read
-							aloud speech or dynamic braille</li>
-
-					</ul>
+				
+				<aside class="example" title="Publication with accessible ways of reading">
+					<p>The following example shows the descriptive and compact statements that would display
+						for a publication with a modifiable display, that is compatible with nonvisual reading,
+						and that has synchronized prerecorded audio with the text.</p>
+					
+					<dl>
+						<dt>Compact display</dt>
+						<dd>
+							<p class="ex-hd" data-localization-id="ways-of-reading-title">Ways of reading</p>
+							<p>Appearance can be modified</p>
+							<p>Readable in read aloud or dynamic braille</p>
+							<p>Has alternative text</p>
+							<p>Prerecorded audio synchronized with text</p>
+						</dd>
+						
+						<dt>Descriptive display</dt>
+						<dd>
+							<p class="ex-hd" data-localization-id="ways-of-reading-title">Ways of reading</p>
+							<p>Appearance of the text and page layout can be
+								modified according to the capabilities of
+								the reading system (font family and font size,
+								spaces between paragraphs, sentences, words,
+								and letters, as well as color of background
+								and text)</p>
+							<p>All content can be read as read aloud speech or dynamic braille</p>
+							<p>Has alternative text descriptions for images</p>
+							<p>All the content is available as prerecorded audio synchronized with text</p>
+						</dd>
+					</dl>
 				</aside>
-
-				<aside class="example" title="Compact explanations of visual adjustments and non-visual">
-				<h4 data-localization-id="ways-of-reading-title">Ways of reading</h4>
-					<ul>
-						<li data-localization-id="ways-of-reading-visual-adjustments-modifiable"
-							data-localization-mode="compact">Appearance
-							can be modified</li>
-						<!--if Display transformability is present-->
-						<li data-localization-id="ways-of-reading-visual-adjustments-unmodifiable"
-							data-localization-mode="compact">Appearance
-							cannot be modified</li>
-						<!--if display transformability is not present and text on visual is present-->
-						<li data-localization-id="ways-of-reading-visual-adjustments-unknown"
-							data-localization-mode="compact">No information about appearance modifiability is available</li>
-						<!--if neither display transformability nor text on visual are presents-->
-					<li data-localization-id="ways-of-reading-nonvisual-reading-alt-text"
-							data-localization-mode="compact">Has alternative text</li>
-						<li data-localization-id="ways-of-reading-nonvisual-reading-readable"
-							data-localization-mode="compact">Readable in
-							read aloud or dynamic braille</li>
-						<li data-localization-id="ways-of-reading-nonvisual-reading-may-not-fully"
-							data-localization-mode="compact">May not be
-							fully readable in read aloud or dynamic
-							braille</li>
-						<li data-localization-id="ways-of-reading-nonvisual-reading-not-fully"
-							data-localization-mode="compact">Not
-							fully readable in read aloud or dynamic
-							braille</li>
-					</ul>
-
-				</aside>
-
-				<aside class="example" title="Descriptive explanations of prerecorded audio">
-				<h4 data-localization-id="ways-of-reading-title">Ways of reading</h4>
-					<ul>
-						<li data-localization-id="ways-of-reading-prerecorded-audio-only"
-							data-localization-mode="descriptive">
-							Audiobook with no text alternative</li>
-
-						<li data-localization-id="ways-of-reading-prerecorded-audio-synchronized"
-							data-localization-mode="descriptive">All the
-							content is available as prerecorded audio
-							synchronized with text</li>
-							<li data-localization-id="ways-of-reading-prerecorded-audio-complementary" data-localization-mode="descriptive">Portions of prerecorded audio are available</li>
-<li data-localization-id="ways-of-reading-prerecorded-audio-no-metadata"
-							data-localization-mode="descriptive">
-							No information about prerecorded audio is available</li>
-					</ul>
-				</aside>
-
-				<aside class="example" title="Compact explanations of prerecorded audio">
-				<h4 data-localization-id="ways-of-reading-title">Ways of reading</h4>
-					<ul>
-						<li data-localization-id="ways-of-reading-prerecorded-audio-only"
-							data-localization-mode="compact">Audio only</li>
-						<li data-localization-id="ways-of-reading-prerecorded-audio-synchronized"
-							data-localization-mode="compact">Prerecorded audio synchronized with text</li>
-<li data-localization-id="ways-of-reading-prerecorded-audio-no-metadata"
-							data-localization-mode="compact">
-							No information about prerecorded audio is available</li>
-					</ul>
-				</aside>
+			</section>
 		</section>
-
-</section>
-</section>
-
 		<section id="conformance-group">
-			<h3 data-localization-id="conformance-title">Conformance
-			</h3>
+			<h3 data-localization-id="conformance-title">Conformance</h3>
 
 			<div class="note">
 				<p>This key information should be displayed, even
@@ -862,72 +934,6 @@
 				identified along with their credentials and
 				placed immediately after the conformance statement.</p>
 
-			<section id="conf-statements">
-				<h4>Conformance statements</h4>
-				<p>The following list explains the meaning of each
-					recommended conformance statement.</p>
-				<dl>
-					<dt data-localization-id="conformance-aaa"
-						data-localization-mode="compact">This
-						publication
-						exceeds accepted accessibility standards</dt>
-					<dd data-localization-id="conformance-aaa"
-						data-localization-mode="descriptive">
-						<p>The publication contains a conformance
-							statement that it meets the EPUB
-							Accessibility and
-							WCAG 2 Level AAA standard</p>
-					</dd>
-					<dt data-localization-id="conformance-aa"
-						data-localization-mode="compact">This
-						publication
-						meets accepted accessibility standards</dt>
-					<dd data-localization-id="conformance-aa"
-						data-localization-mode="descriptive">
-						<p>The publication contains a conformance
-							statement that it meets the EPUB
-							Accessibility and
-							WCAG 2 Level AA standard</p>
-					</dd>
-
-					<dt data-localization-id="conformance-a"
-						data-localization-mode="compact">This
-						publication meets
-						minimum accessibility standards</dt>
-					<dd data-localization-id="conformance-a"
-						data-localization-mode="descriptive">
-						<p>The publication contains a conformance
-							statement that it meets the EPUB
-							Accessibility and
-							WCAG 2 Level A standard</p>
-					</dd>
-
-					<dt data-localization-id="conformance-no"
-						data-localization-mode="compact">No information is available</dt>
-					<dd >
-						<p>The conformance metadata is missing and
-							conformity to a standard of this publication
-							is
-							unknown</p>
-					</dd>
-
-					<dt>Certifier's name</dt>
-					<dd>Identifies the organization providing the
-						certification review or process for
-						certification. </dd>
-
-					<dt>Certifier's Credentials </dt>
-					<dd>If the certifier has a badge or a credential,
-						then the text is provided. If there is a link
-						to their credential, then this can be provided
-						as a link. If the certifier has a logo or
-						badge, this can be displayed. The display of the
-						logo or badge can be arranged between the
-						certifier and the distributor showing the
-						accessibility metadata.</dd>
-
-				</dl>
-			</section>
 
 			<section id="detailled-conformance-information">
 				<h4>Detailed conformance information</h4>
@@ -956,9 +962,186 @@
 				</dl>
 			</section>
 
+			<section id="conf-statements">
+				<h4>Display statements</h4>
+				
+				<div class="note">
+					<p>Some conformance statements incorporate publication metadata. To indicate where
+						this text will be inserted, the statements include placeholder variables. These
+						placeholders are identified by being enclosed in angle brackets (e.g., 
+						<span class="placeholder">&lt;placeholder&gt;</span>).</p>
+				</div>
+				
+				<div class="note">
+					<p>Not all conformance statements have compact and descriptive forms. In these cases,
+						the same string is used for both.</p>
+				</div>
+				
+				<dl>
+					<dt>If the publication meets minimal accessibility requirements:</dt>
+					<dd>
+						<p data-localization-id="conformance-a"
+							data-localization-mode="compact">This publication meets minimum accessibility
+							standards</p>
+						<p data-localization-id="conformance-a"
+							data-localization-mode="descriptive">The publication contains a conformance 
+							statement that it meets the EPUB Accessibility and WCAG 2 Level A standard</p>
+					</dd>
+					
+					<dt>If the publication meets widely accepted accessibility requirements:</dt>
+					<dd>
+						<p data-localization-id="conformance-aa"
+							data-localization-mode="compact">This publication meets accepted accessibility
+							standards</p>
+						<p data-localization-id="conformance-aa"
+							data-localization-mode="descriptive">The publication contains a conformance
+							statement that it meets the EPUB Accessibility and WCAG 2 Level AA standard</p>
+					</dd>
+					
+					<dt>If the publication meets exceeds accepted accessibility requirements:</dt>
+					<dd>
+						<p data-localization-id="conformance-aaa"
+							data-localization-mode="compact">This publication exceeds accepted accessibility
+							standards</p>
+						<p data-localization-id="conformance-aaa"
+							data-localization-mode="descriptive">The publication contains a conformance
+							statement that it meets the EPUB Accessibility and WCAG 2 Level AAA standard</p>
+					</dd>
+					
+					<dt>If no metadata is provided:</dt>
+					<dd>
+						<p data-localization-id="conformance-no"
+							data-localization-mode="compact">No information is available</p>
+						<p data-localization-id="conformance-no"
+							data-localization-mode="descriptive">No information is available</p>
+					</dd>
+					
+					<dt>If the publication meets the requirements of the EPUB Accessibility standard:</dt>
+					<dd>
+						<p>
+							<span
+								data-localization-id="conformance-claim">This
+								publication claims to meet</span>
+							
+							<span>EPUB
+								Accessibility</span>
+							<span class="placeholder">&lt;1.X&gt;</span>
+							
+							<span>Web
+								Accessibility Content Guidelines (WCAG)</span>
+							<span class="placeholder">&lt;2.X&gt;</span>
+							
+							<span>Level</span>
+							<span class="placeholder">&lt;A or AA or AAA&gt;</span>
+						</p>
+					</dd>
+					
+					<dt>If a certifier name is provided:</dt>
+					<dd>
+						<p><span
+								data-localization-id="conformance-certifier"
+								data-localization-mode="descriptive">The
+								publication was certified by</span>
+							<span class="placeholder">&lt;certifier name&gt;</span></p>
+					</dd>
+					
+					<dt>If the certifier has a credential:</dt>
+					<dd>
+						<p><span
+								data-localization-id="conformance-certifier-credentials"
+								data-localization-mode="descriptive">The certifier's credential is</span>
+							<span class="placeholder">&lt;certifier credential&gt;</span></p>
+					</dd>
+					
+					<dt>If the certification date is provided:</dt>
+					<dd>
+						<p>
+							<span data-localization-id="conformance-certification-info"
+								data-localization-mode="descriptive">The
+								publication was certified on</span>
+							<span class="placeholder">&lt;certification date&gt;</span></p>
+					</dd>
+					
+					<dt>If the certifier provides an accessibility report:</dt>
+					<dd>
+						<p data-localization-id="conformance-certifier-report">For
+								more information refer to the
+								certifier's report</p>
+					</dd>
+				</dl>
+				
+				<section id="conf-expl">
+					<h4>Explainer</h4>
+					
+					<p>The following list explains the meaning of each
+						recommended conformance statement.</p>
+					<dl>
+						<dt data-localization-id="conformance-aaa"
+							data-localization-mode="compact">This
+							publication
+							exceeds accepted accessibility standards</dt>
+						<dd data-localization-id="conformance-aaa"
+							data-localization-mode="descriptive">
+							<p>The publication contains a conformance
+								statement that it meets the EPUB
+								Accessibility and
+								WCAG 2 Level AAA standard</p>
+						</dd>
+						<dt data-localization-id="conformance-aa"
+							data-localization-mode="compact">This
+							publication
+							meets accepted accessibility standards</dt>
+						<dd data-localization-id="conformance-aa"
+							data-localization-mode="descriptive">
+							<p>The publication contains a conformance
+								statement that it meets the EPUB
+								Accessibility and
+								WCAG 2 Level AA standard</p>
+						</dd>
+						
+						<dt data-localization-id="conformance-a"
+							data-localization-mode="compact">This
+							publication meets
+							minimum accessibility standards</dt>
+						<dd data-localization-id="conformance-a"
+							data-localization-mode="descriptive">
+							<p>The publication contains a conformance
+								statement that it meets the EPUB
+								Accessibility and
+								WCAG 2 Level A standard</p>
+						</dd>
+						
+						<dt data-localization-id="conformance-no"
+							data-localization-mode="compact">No information is available</dt>
+						<dd >
+							<p>The conformance metadata is missing and
+								conformity to a standard of this publication
+								is
+								unknown</p>
+						</dd>
+						
+						<dt>Certifier's name</dt>
+						<dd>Identifies the organization providing the
+							certification review or process for
+							certification. </dd>
+						
+						<dt>Certifier's Credentials </dt>
+						<dd>If the certifier has a badge or a credential,
+							then the text is provided. If there is a link
+							to their credential, then this can be provided
+							as a link. If the certifier has a logo or
+							badge, this can be displayed. The display of the
+							logo or badge can be arranged between the
+							certifier and the distributor showing the
+							accessibility metadata.</dd>
+						
+					</dl>
+				</section>
+			</section>
+				
 			<section id="conf-examples">
 				<h4>Examples</h4>
-
+				
 				<p>Four examples are provided for the conformance
 					statement, one shows a statement that claims to
 					meet recommended accessibility standards and a
@@ -1146,8 +1329,6 @@
 				</ul>
 			</section>
 		</section>
-
-
 		<section id="navigation">
 			<h3 data-localization-id="navigation-title">Navigation</h3>
 
@@ -1183,58 +1364,66 @@
 <div class="note"><p>While not required if available, it may be helpful to identify the bibliographic information about the page break source identified in metadata of the digital publication. Having sufficient information to identify the print source would assure students and educators that the digital version they are using is correctly associated with the print version used in the classroom. The goal is to have the go to page function take the digital user to the same page as the print version user.
 </p></div>
 
-			<section id="nav-examples">
-				<h4>Examples</h4>
-
-				<p>The examples are provided as descriptive and compact
-					explanations for flexibility of
-					adoption.</p>
-
-				<aside class="example" title="Descriptive explanations">
-<h4 data-localization-id="navigation-title">Navigation</h4>
-					<ul>
-						<li data-localization-id="navigation-toc"
+			<section id="nav-statements">
+				<h4>Display statements</h4>
+				
+				<p>The descriptive and compact statements for navigation are as follows.</p>
+				
+				<dl>
+					<dt>If a table of contents is provided:</dt>
+					<dd>
+						<p data-localization-id="navigation-toc"
+							data-localization-mode="compact">Table
+							of contents</p>
+						<p data-localization-id="navigation-toc"
 							data-localization-mode="descriptive">Table
 							of contents to all chapters of the text via
-							links</li>
-						<li data-localization-id="navigation-index"
+							links</p>
+					</dd>
+					
+					<dt>If index(es) are provided:</dt>
+					<dd>
+						<p data-localization-id="navigation-index"
+							data-localization-mode="compact">Index</p>
+						<p data-localization-id="navigation-index"
 							data-localization-mode="descriptive">Index
-							with links to referenced entries</li>
-						<li data-localization-id="navigation-structural"
+							with links to referenced entries</p>
+					</dd>
+					
+					<dt>If structural navigation is provided:</dt>
+					<dd>
+						<p data-localization-id="navigation-structural"
+							data-localization-mode="compact">Headings</p>
+						<p data-localization-id="navigation-structural"
 							data-localization-mode="descriptive">Elements such as headings, tables, etc for
-							structured navigation</li>
-						<li data-localization-id="navigation-page-navigation"
+							structured navigation</p>
+					</dd>
+					
+					<dt>If page navigation is provided:</dt>
+					<dd>
+						<p data-localization-id="navigation-page-navigation"
+							data-localization-mode="compact">Go to page</p>
+						<p data-localization-id="navigation-page-navigation"
 							data-localization-mode="descriptive">Page list to go to pages from the print
 							source
-							version</li>
-						<li data-localization-id="navigation-no-metadata"
-							data-localization-mode="descriptive">No information is available</li>
-					</ul>
-				</aside>
-
-				<aside class="example" title="Compact explanation">
-<h4 data-localization-id="navigation-title">Navigation</h4>
-					<ul>
-						<li><span data-localization-id="navigation-toc"
-								data-localization-mode="compact">Table
-								of contents</span></li>
-						<li><span
-								data-localization-id="navigation-index"
-								data-localization-mode="compact">Index</span>
-						</li>
-						<li><span
-								data-localization-id="navigation-structural"
-								data-localization-mode="compact">Headings</span>
-						</li>
-						<li><span
-								data-localization-id="navigation-page-navigation"
-								data-localization-mode="compact">Go to page </span></li>
-						<li data-localization-id="navigation-no-metadata"
-							data-localization-mode="compact">No information is available</li>
-					</ul>
-				</aside>
+							version</p>
+					</dd>
+					
+					<dt>If no metadata is provided:</dt>
+					<dd>
+						<p data-localization-id="navigation-no-metadata"
+							data-localization-mode="compact">No information is available</p>
+						<p data-localization-id="navigation-no-metadata"
+							data-localization-mode="descriptive">No information is available</p>
+					</dd>
+				</dl>
 			</section>
 
+			<section id="nav-examples">
+				<h5>Examples</h5>
+				
+			</section>
+			
 			<section id="nav-techniques">
 				<h4>Display techniques for navigation support</h4>
 
@@ -1269,85 +1458,98 @@
 			<p>This group should be displayed only if the metadata
 				indicates the presence of math, chemical formulas, extended descriptions, videos, or transcripts of audio within the title, otherwise it can be hidden.</p>
 
-			<section id="cdf-examples">
-				<h4>Examples</h4>
-
-				<p>The examples are provided as lists of possible
-					descriptive and compact explanations for
-					flexibility of adoption.</p>
-
-				<aside class="example" title="Descriptive explanations">
-			<h4 data-localization-id="rich-content-title">Rich content</h4>
-					<ul>
-<li><span data-localization-id="rich-content-accessible-math-as-mathml"
-								data-localization-mode="descriptive">Math formulas in accessible format (MathML)</span>
-						</li>
-<li><span data-localization-id="rich-content-accessible-math-as-latex"
-								data-localization-mode="descriptive">Math formulas in accessible format (LaTeX)</span>
-						</li>
-						<li><span
-								data-localization-id="rich-content-accessible-math-described"
-								data-localization-mode="descriptive">text descriptions of math is provided </span>
-						</li>
-<li><span data-localization-id="rich-content-accessible-chemistry-as-mathml"
-								data-localization-mode="descriptive">Chemical formulas in accessible format (MathML)</span>
-						</li>
-<li><span data-localization-id="rich-content-accessible-chemistry-as-latex"
-								data-localization-mode="descriptive">Chemical formulas in accessible format (LaTeX)</span>
-						</li>
-						<li>
-							<span
-								data-localization-id="rich-content-extended"
-								data-localization-mode="descriptive">Information-rich images are described by extended descriptions</span>
-						</li>
-<li><span data-localization-id="rich-content-closed-captions" data-localization-mode="descriptive">
-Videos included in publications have closed captions</span></li>
-
-<li><span data-localization-id="rich-content-open-captions" data-localization-mode="descriptive">
-Videos included in publications have open captions</span></li>
-<li><span data-localization-id="rich-content-transcript" data-localization-mode="descriptive">
-Transcript(s) provided)</span></li>
-<li><span data-localization-id="rich-content-unknown" data-localization-mode="descriptive">No information is available</span></li>
-					</ul>
-				</aside>
-
-				<aside class="example" title="Compact explanations">
-<h4 data-localization-id="rich-content-title">Rich content</h4>
-					<ul>
-						<li>
-<span  data-localization-id="rich-content-accessible-math-as-mathml"
-								data-localization-mode="compact">Math as MathML</span></li>
-<li>
-<span data-localization-id="rich-content-accessible-math-as-latex"
-								data-localization-mode="compact">Math as LaTeX</span></li>
-<li>
-<span data-localization-id="rich-content-accessible-math-described"
-								data-localization-mode="compact">text descriptions of math is provided </span></li>
-<li><span data-localization-id="rich-content-accessible-chemistry-as-mathml"
-								data-localization-mode="compact">Chemical formulas in MathML</span>
-						</li>
-<li><span data-localization-id="rich-content-accessible-chemistry-as-latex"
-								data-localization-mode="compact">Chemical formulas in LaTeX</span>
-						</li>
-
-<li>
-							<span
-								data-localization-id="rich-content-extended"
-								data-localization-mode="compact">Information-rich images are described by extended descriptions</span>
-</li>
-<li><span data-localization-id="rich-content-closed-captions" data-localization-mode="compact">
-Videos have closed captions </span></li>
-						<li>
-<span data-localization-id="rich-content-open-captions" data-localization-mode="compact">
-Videos have open captions</span></li>
-<li><span data-localization-id="rich-content-transcript" data-localization-mode="compact">
-Transcript(s) provided)</span></li>
-<li><span data-localization-id="rich-content-unknown" data-localization-mode="compact">No information is available</span></li>
-					</ul>
-				</aside>
+			<section id="rc-statements">
+				<h4>Display statements</h4>
+				
+				<p>The descriptive and compact statements for rich content are as follows.</p>
+				
+				<dl>
+					<dt>If math is marked up in MathML:</dt>
+					<dd>
+						<p data-localization-id="rich-content-accessible-math-as-mathml"
+							data-localization-mode="compact">Math as MathML</p>
+						<p data-localization-id="rich-content-accessible-math-as-mathml"
+								data-localization-mode="descriptive">Math formulas in accessible format (MathML)</p>
+					</dd>
+					
+					<dt>If math is marked up in LaTeX:</dt>
+					<dd>
+						<p data-localization-id="rich-content-accessible-math-as-latex"
+							data-localization-mode="compact">Math as LaTeX</p>
+						<p data-localization-id="rich-content-accessible-math-as-latex"
+								data-localization-mode="descriptive">Math formulas in accessible format (LaTeX)</p>
+					</dd>
+					
+					<dt>If math equations are described:</dt>
+					<dd>
+						<p data-localization-id="rich-content-accessible-math-described"
+							data-localization-mode="compact">Text descriptions of math is provided</p>
+						<p data-localization-id="rich-content-accessible-math-described"
+								data-localization-mode="descriptive">Text descriptions of math is provided</p>
+					</dd>
+					
+					<dt>If chemical formulas are marked up in MathML:</dt>
+					<dd>
+						<p data-localization-id="rich-content-accessible-chemistry-as-mathml"
+							data-localization-mode="compact">Chemical formulas in MathML</p>
+						<p data-localization-id="rich-content-accessible-chemistry-as-mathml"
+								data-localization-mode="descriptive">Chemical formulas in accessible format (MathML)</p>
+					</dd>
+					
+					<dt>If chemical formulas are marked up in LaTeX:</dt>
+					<dd>
+						<p data-localization-id="rich-content-accessible-chemistry-as-latex"
+							data-localization-mode="compact">Chemical formulas in LaTeX</p>
+						<p data-localization-id="rich-content-accessible-chemistry-as-latex"
+								data-localization-mode="descriptive">Chemical formulas in accessible format (LaTeX)</p>
+					</dd>
+					
+					<dt>If extended descriptions are provided for images:</dt>
+					<dd>
+						<p data-localization-id="rich-content-extended"
+							data-localization-mode="compact">Information-rich images are described by extended descriptions</p>
+						<p data-localization-id="rich-content-extended"
+								data-localization-mode="descriptive">Information-rich images are described by extended descriptions</p>
+					</dd>
+					
+					<dt>If closed captions are provided for videos:</dt>
+					<dd>
+						<p data-localization-id="rich-content-closed-captions" data-localization-mode="compact">
+							Videos have closed captions</p>
+						<p data-localization-id="rich-content-closed-captions" data-localization-mode="descriptive">
+								Videos included in publications have closed captions</p>
+					</dd>
+					
+					<dt>If open captions are provided for videos:</dt>
+					<dd>
+						<p data-localization-id="rich-content-open-captions" data-localization-mode="compact">
+							Videos have open captions</p>
+						<p data-localization-id="rich-content-open-captions" data-localization-mode="descriptive">
+								Videos included in publications have open captions</p>
+					</dd>
+					
+					<dt>If transcripts are provided for auditory content:</dt>
+					<dd>
+						<p data-localization-id="rich-content-transcript" data-localization-mode="compact">
+							Transcript(s) provided)</p>
+						<p data-localization-id="rich-content-transcript" data-localization-mode="descriptive">
+								Transcript(s) provided)</p>
+					</dd>
+					
+					<dt>If no metadata is provided:</dt>
+					<dd>
+						<p data-localization-id="rich-content-unknown" data-localization-mode="compact">No information is available</p>
+						<p data-localization-id="rich-content-unknown" data-localization-mode="descriptive">No information is available</p>
+					</dd>
+				</dl>
 			</section>
 
-			<section id="cdf-techniques">
+			<section id="rc-examples">
+				<h5>Examples</h5>
+				
+			</section>
+			
+			<section id="rc-techniques">
 				<h4>Display techniques for rich content support</h4>
 
 
@@ -1365,7 +1567,6 @@ Transcript(s) provided)</span></li>
 				</ul>
 			</section>
 		</section>
-
 		<section id="hazards">
 			<h3 data-localization-id="hazards-title">Hazards</h3>
 
@@ -1402,69 +1603,77 @@ Transcript(s) provided)</span></li>
 				not been checked for hazards. This is
 				different than providing no metadata for this property.</p>
 
-			<section id="hazards-examples">
-				<h4>Examples</h4>
-
-				<p>The examples are provided as lists of possible
-					descriptive and compact explanations for
-					flexibility of adoption.</p>
-
-				<aside class="example" title="Descriptive explanations">
-							<h4 data-localization-id="hazards-title">Hazards</h4>
-					<ul>
-						<li><span data-localization-id="hazards-none"
-								data-localization-mode="descriptive">No
-								hazards</span></li>
-						<li><span
-								data-localization-id="hazards-flashing"
+			<section id="hazards-statements">
+				<h4>Display statements</h4>
+				
+				<p>The descriptive and compact statements for hazards are as follows.</p>
+				
+				<dl>
+					<dt>If there are no hazards:</dt>
+					<dd>
+						<p data-localization-id="hazards-none"
+							data-localization-mode="compact">No hazards</p>
+						<p data-localization-id="hazards-none"
+								data-localization-mode="descriptive">No hazards</p>
+					</dd>
+					
+					<dt>If there is a flashing hazard:</dt>
+					<dd>
+						<p data-localization-id="hazards-flashing"
+							data-localization-mode="compact">Flashing
+							content</p>
+						<p data-localization-id="hazards-flashing"
 								data-localization-mode="descriptive">The
 								publication contains flashing content
 								which can cause photosensitive
-								seizures</span></li>
-<li><span data-localization-id="hazards-motion"
+								seizures</p>
+					</dd>
+					
+					<dt>If there is a motion simulation hazard:</dt>
+					<dd>
+						<p data-localization-id="hazards-motion"
+							data-localization-mode="compact">Motion
+							simulation</p>
+						<p data-localization-id="hazards-motion"
 								data-localization-mode="descriptive">The
 								publication contains motion simulations
-								that can cause motion sickness</span></li>
-						<li><span data-localization-id="hazards-sound"
+								that can cause motion sickness</p>
+					</dd>
+					
+					<dt>If there is a sound hazard:</dt>
+					<dd>
+						<p data-localization-id="hazards-sound"
+							data-localization-mode="compact">sounds</p>
+						<p data-localization-id="hazards-sound"
 								data-localization-mode="descriptive">The
 								publication contains sounds which
-								can be uncomfortable</span></li>
-						<li><span data-localization-id="hazards-unknown"
+								can be uncomfortable</p>
+					</dd>
+					
+					<dt>If hazards are not known:</dt>
+					<dd>
+						<p data-localization-id="hazards-unknown"
+							data-localization-mode="compact">The presence of hazards is unknown</p>
+						<p data-localization-id="hazards-unknown"
 								data-localization-mode="descriptive">The presents
-								of hazards is unknown</span></li>
-						<li><span data-localization-id="hazards-no-metadata]."
-								data-localization-mode="descriptive">No information is available</span></li>
-
-					</ul>
-				</aside>
-
-				<aside class="example" title="Compact explanations">
-				<h4 data-localization-id="hazards-title">Hazards</h4>
-					<ul>
-						<li>
-							<span data-localization-id="hazards-none"
-								data-localization-mode="compact">No
-								hazards</span>
-						</li>
-						<li><span
-								data-localization-id="hazards-flashing"
-								data-localization-mode="compact">Flashing
-								content</span></li>
-						<li><span data-localization-id="hazards-motion"
-								data-localization-mode="compact">Motion
-								simulation</span></li>
-<li><span data-localization-id="hazards-sound"
-								data-localization-mode="compact">sounds</span></li>
-<li><span
-								data-localization-id="hazards-unknown"
-								data-localization-mode="compact">The presence of hazards is unknown</span></li>
-						<li><span
-								data-localization-id="hazards-no-metadata"
-								data-localization-mode="compact">No information is available</span></li>
-					</ul>
-				</aside>
+								of hazards is unknown</p>
+					</dd>
+					
+					<dt>If no metadata is provided:</dt>
+					<dd>
+						<p data-localization-id="hazards-no-metadata"
+							data-localization-mode="compact">No information is available</p>
+						<p data-localization-id="hazards-no-metadata]."
+								data-localization-mode="descriptive">No information is available</p>
+					</dd>
+				</dl>
 			</section>
 
+			<section id="hazards-examples">
+				<h5>Examples</h5>
+				
+			</section>
+			
 			<section id="hazards-techniques">
 				<h4>Display techniques for hazards reporting</h4>
 
@@ -1482,7 +1691,6 @@ Transcript(s) provided)</span></li>
 				</ul>
 			</section>
 		</section>
-
 		<section id="accessibility-summary">
 			<h3 data-localization-id="accessibility-summary-title">
 				Accessibility summary</h3>
@@ -1549,7 +1757,6 @@ Transcript(s) provided)</span></li>
 				</ul>
 			</section>
 		</section>
-
 		<section id="legal-considerations">
 			<h3 data-localization-id="legal-considerations-title">Legal
 				considerations</h3>
@@ -1602,33 +1809,46 @@ Transcript(s) provided)</span></li>
 				misunderstandings. Nevertheless, the objective
 				is to provide as much accessibility information as possible.</p>
 
-			<section id="legal-examples">
-				<h4>Examples</h4>
-				<aside class="example" title="Descriptive explanation">
+			<section id="legal-statements">
+				<h5>Display statements</h5>
+				
+				<p>The descriptive and compact statements for legal exemptions are as follows.</p>
+				
+				<div class="note">
 					<p> In many cases no legal exception or exemption
 						information will be presented. The following
 						example is provided as a possible descriptive
 						explanation when legal exception or exemption
 						information needs to be presented.</p>
-									<h4 data-localization-id="legal-considerations-title">Legal considerations</h4>
-					<p data-localization-id="legal-considerations-exempt"
-						data-localization-mode="descriptive">This
-						publication claims an accessibility exemption in
-						some jurisdictions</p>
-
-					<p data-localization-id="legal-considerations-no-metadata"
-						data-localization-mode="descriptive">No information is available</p>
-				</aside>
-<aside class="example" title="Compact explanation">
-<p data-localization-id="legal-considerations-exempt"
-						data-localization-mode="compact">Claims an accessibility exemption in some jurisdictions</p>
-					<p data-localization-id="legal-considerations-no-metadata"
-						data-localization-mode="compact">No information is available</p>
-
-				</aside>
+					
+				</div>
+				
+				<dl>
+					<dt>If the publication claims an exemption:</dt>
+					<dd>
+						<p data-localization-id="legal-considerations-exempt"
+							data-localization-mode="compact">Claims an accessibility exemption in some jurisdictions</p>
+						<p data-localization-id="legal-considerations-exempt"
+							data-localization-mode="descriptive">This
+							publication claims an accessibility exemption in
+							some jurisdictions</p>
+					</dd>
+					
+					<dt>If no metadata is provided:</dt>
+					<dd>
+						<p data-localization-id="legal-considerations-no-metadata"
+							data-localization-mode="compact">No information is available</p>
+						<p data-localization-id="legal-considerations-no-metadata"
+							data-localization-mode="descriptive">No information is available</p>
+					</dd>
+				</dl>	
 			</section>
 
-
+			<section id="legal-examples">
+				<h5>Examples</h5>
+				
+			</section>
+			
 			<section id="legal-techniques">
 				<h4> Display techniques for legal considerations</h4>
 				<p>Specific techniques for meeting this principle are
@@ -1646,7 +1866,6 @@ Transcript(s) provided)</span></li>
 			</section>
 
 		</section>
-
 		<section id="additional-accessibility-information">
 			<h3 data-localization-id="additional-accessibility-information-title">Additional accessibility
 				information</h3>
@@ -1723,45 +1942,53 @@ Transcript(s) provided)</span></li>
 				</dd>
 			</dl>
 
-			<section id="add-info-examples">
-				<h4>Examples</h4>
+			<section id="add-info-statements">
+				<h4>Display statements</h4>
 
+				<p>The descriptive and compact statements for additional information are as follows.</p>
+				
 				<div class="note">There are many features that may be
-					present. Some of the features are listed in
-					the examples. A complete list can be found in the
-					techniques. </div>
+					present. Only some of the features are listed here.
+					A complete list can be found in the techniques.</div>
 
-				<aside class="example" title="Descriptive explanations">
-<h4 data-localization-id="additional-accessibility-information-title">Additional accessibility
-				information</h4>
-					<ul>
-						<li>Content is enhanced with ARIA roles to
+				<dl>
+					<dt>If there are ARIA roles:</dt>
+					<dd>
+						<p data-localization-mode="compact">ARIA roles included</p>
+						<p data-localization-mode="descriptive">Content is enhanced with ARIA roles to
 							optimize organization and facilitate
-							navigation</li>
-						<li>Page breaks included from the original print
-							source</li>
-						<li>Tactile graphics have been integrated to
+							navigation</p>
+					</dd>
+					
+					<dt>If there are page break markers:</dt>
+					<dd>
+						<p data-localization-mode="compact">Visible page numbering</p>
+						<p data-localization-mode="descriptive">Page breaks included from the original print
+							source</p>
+					</dd>
+					
+					<dt>If there are tactile graphics:</dt>
+					<dd>
+						<p data-localization-mode="compact">Tactile graphics included</p>
+						<p data-localization-mode="descriptive">Tactile graphics have been integrated to
 							facilitate access to visual elements for
 							blind
-							people</li>
-<li>No information is available</li>
-</ul>
-
-				</aside>
-
-				<aside class="example" title="Compact explanations">
-<h4 data-localization-id="additional-accessibility-information-title">Additional accessibility
-				information</h4>
-					<ul>
-						<li>ARIA roles included</li>
-						<li>Visible page numbering</li>
-						<li>Tactile graphics included</li>
-<li>No information is available</li>
-</ul>
-
-				</aside>
+							people</p>
+					</dd>
+					
+					<dt>If no metadata is provided:</dt>
+					<dd>
+						<p data-localization-mode="compact">No information is available</p>
+						<p data-localization-mode="descriptive">No information is available</p>
+					</dd>
+				</dl>
 			</section>
 
+			<section id="add-info-examples">
+				<h5>Examples</h5>
+				
+			</section>
+			
 			<section id="add-info-techniques">
 				<h4>Display techniques for additional accessibility
 					information</h4>
