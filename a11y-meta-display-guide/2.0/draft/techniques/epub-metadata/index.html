@@ -148,7 +148,7 @@
                     <li><code id="hazards-title">"<a href="#hazards-instructions">Hazards</a>"</code></li>
                     <li><code id="accessibility-summary-title">"<a href="#accessibility-summary-instructions">Accessibility summary</a>"</code></li>
                     <li><code id="legal-considerations-title">"<a href="#legal-considerations-instructions">Legal considerations</a>"</code></li>
-                    <li><code id="#additional-accessibility-information-title">"<a href="#additional-accessibility-information">Additional accessibility information</a>"</code></li>
+                    <li><code id="additional-accessibility-information-title">"<a href="#additional-accessibility-information">Additional accessibility information</a>"</code></li>
                 </ol>
             
             <h3>Coding Conventions</h3>
@@ -505,6 +505,10 @@
 								<span><b>ELSE IF</b> <var>wcag_level</var> == 'A':</span>
 								<span><b>THEN</b> display <code id="conformance-a">"This publication meets minimum accessibility standards"</code>.</span>
 							</li>
+                            <li>
+                                <span><b>ELSE</b></span>
+								<span><b>THEN</b> display <code id="conformance-unknown-standard">"Conformance to accepted standards for accessibility of this publication cannot be determined"</code>.</span>
+                            </li>
 							<li>
 								<span><b>IF</b> <var>certifier</var> is <b>NOT</b> empty:</span>
 								<span><b>THEN</b></span>
@@ -754,7 +758,7 @@
 					</li>
 					<li>
 						<span><b>IF</b> <var>math_formula_as_latex</var>:</span>
-						<span><b>THEN</b> display <code id="rich-content-accessible-math-as-latex">"Math as LaTex"</code>.</span>
+						<span><b>THEN</b> display <code id="rich-content-accessible-math-as-latex">"Math as LaTeX"</code>.</span>
 					</li>
 					<li>
 						<span><b>IF</b> <var>contains_math_formula</var>:</span>
@@ -766,7 +770,7 @@
 					</li>
 <li>
 						<span><b>IF</b> <var>chemical_formula_as_latex</var>:</span>
-						<span><b>THEN</b> display <code id="rich-content-accessible-chemistry-as-latex">"Chemical formulas in LaTex"</code>.</span>
+						<span><b>THEN</b> display <code id="rich-content-accessible-chemistry-as-latex">"Chemical formulas in LaTeX"</code>.</span>
 					</li>
 				<li>
 						<span><b>IF</b> <var>long_text_descriptions</var>:</span>
