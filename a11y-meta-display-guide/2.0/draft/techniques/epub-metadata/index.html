@@ -481,7 +481,7 @@
 				   <li>
                   	<span><b>IF</b> <var>conformance</var> is <b>NOT</b> empty:</span>
 				   	<span><b>THEN LET</b> <var>epub_version</var> = '1.1', and</span>
-				   	<span><b>LET</b> <var>wcag_version</var> = replace(<var>conformance</var>, 'EPUB Accessibility 1\.1 - WCAG (2\.[0-2]) Level [A]+', '\1'), and</span>
+				   	<span><b>LET</b> <var>wcag_version</var> = replace(<var>conformance</var>, 'EPUB Accessibility 1\.1 - WCAG (2\.[0-2]) Level [A]+', '$1'), and</span>
 				   	<span><b>LET</b> <var>wcag_level</var> = replace(<var>conformance</var>, 'EPUB Accessibility 1\.1 - WCAG 2\.[0-2] Level ', '').</span>
                     </li>
 
@@ -544,35 +544,35 @@
 								<span>Display <code id="conformance-claim">"This publication claims to meet"</code>.</span>
 								<ul>
 									<li>
-										<span><b>IF</b> <var>epub_version</var> = '<code>1.0</code>':</span>
+										<span><b>IF</b> <var>epub_version</var> == '<code>1.0</code>':</span>
 										<span><b>THEN</b> display <code id="conformance-epub-accessibility-1-0">" EPUB Accessibility 1.0"</code>.</span>
 									</li>
 									<li>
-										<span><b>ELSE IF</b>  <var>epub_version</var> = '<code>1.1</code>':</span>
+										<span><b>ELSE IF</b>  <var>epub_version</var> == '<code>1.1</code>':</span>
 										<span><b>THEN</b> display <code id="conformance-epub-accessibility-1-1">" EPUB Accessibility 1.1"</code>.</span>
 									</li>
 									<li>
-										<span><b>IF</b> <var>wcag_version</var> = '<code>2.2</code>':</span>
+										<span><b>IF</b> <var>wcag_version</var> == '<code>2.2</code>':</span>
 										<span><b>THEN</b> display <code id="conformance-wcag-2-2">" WCAG 2.2"</code>.</span>
 									</li>
 									<li>
-										<span><b>ELSE IF</b> <var>wcag_version</var> = '<code>2.1</code>':</span>
+										<span><b>ELSE IF</b> <var>wcag_version</var> == '<code>2.1</code>':</span>
 										<span><b>THEN</b> display <code id="conformance-wcag-2-1">" WCAG 2.1"</code>.</span>
 									</li>
 									<li>
-										<span><b>ELSE IF</b> <var>wcag_version</var> = '<code>2.0</code>':</span>
+										<span><b>ELSE IF</b> <var>wcag_version</var> == '<code>2.0</code>':</span>
 										<span><b>THEN</b> display <code id="conformance-wcag-2-0">" WCAG 2.0"</code>.</span>
 									</li>
 									<li>
-										<span><b>IF</b> <var>wcag_level</var> = '<code>AAA</code>':</span>
+										<span><b>IF</b> <var>wcag_level</var> == '<code>AAA</code>':</span>
 										<span><b>THEN</b> display <code id="conformance-level-aaa">" Level AAA"</code>.</span>
 									</li>
 									<li>
-										<span><b>ELSE IF</b> <var>wcag_level</var> = '<code>AA</code>':</span>
+										<span><b>ELSE IF</b> <var>wcag_level</var> == '<code>AA</code>':</span>
 										<span><b>THEN</b> display <code id="conformance-level-aa">" Level AA"</code>.</span>
 									</li>
 									<li>
-										<span><b>ELSE IF</b> <var>wcag_level</var> = '<code>A</code>':</span>
+										<span><b>ELSE IF</b> <var>wcag_level</var> == '<code>A</code>':</span>
 										<span><b>THEN</b> display <code id="conformance-level-a">" Level A"</code>.</span>
 									</li>
 								</ul>
