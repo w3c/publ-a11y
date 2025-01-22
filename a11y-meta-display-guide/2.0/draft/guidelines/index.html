@@ -171,7 +171,7 @@
 
 		<section id="overview">
 			<h3>Overview</h3>
-			
+
 			<p>Reading a digital publication is a very personal experience.
 				For most people this is routine, and little
 				consideration is given to how the title was obtained before
@@ -179,7 +179,7 @@
 				search for the title to purchase online, or have the title
 				selected for them by an instructor for a
 				class.</p>
-			
+
 			<p>Now consider that the person is blind and relies on assistive
 				technology. The user needs that technology
 				to assist them in the purchase process as well as to read
@@ -192,13 +192,13 @@
 				of these accessibility concerns are potential issues
 				consumers have when trying to purchase and ultimately read a
 				digital publication in any format.</p>
-			
+
 			<p>The good news is more and more publishers are creating
 				digital publications that are Born Accessible (i.e.,
 				accessible from the outset, not fixed later) and getting the
 				accessibility validation or audit done by
 				independent organizations.</p>
-			
+
 			<p>These guidelines help those who wish to render accessibility
 				metadata directly to users understand how to
 				represent the accessibility claims inherent in
@@ -212,7 +212,7 @@
 					Accessibility 1.1
 					Conformance and Discoverability Requirements section and
 					its techniques.</a></p>
-			
+
 			<div class="note">
 				<p>This document presents high-level guidelines without
 					going into technical issues related to the
@@ -223,13 +223,13 @@
 					retrieve data to show the information outlined in this
 					document.</p>
 			</div>
-			
+
 			<p>Metadata found either inside a digital publication or in a
 				corresponding external record may have
 				important accessibility claims that help end users find and
 				determine if the publication can meet their
 				specific accessibility needs.</p>
-			
+
 			<p>This accessibility metadata uses controlled vocabularies to
 				allow it to be extracted and displayed uniformly across
 				different publications and localized to different user
@@ -237,14 +237,14 @@
 				summary, which allows accessibility statements that are
 				unique to a publication and that adds information not
 				covered by other metadata entries.</p>
-			
+
 			<p>One important aspect is that the role of the Accessibility
 				Summary metadata has changed in the latest
 				version of the EPUB Accessibility specification, so a more
 				in-depth analysis in the <a
 					href="#accessibility-summary">Accessibility summary</a>
 				section is recommended.</p>
-			
+
 			<p>This document offers guidance on how to aggregate and display
 				claims inherent in metadata to end users;
 				these are not strict guidelines, but suggestions for
@@ -255,26 +255,26 @@
 					href="#implementations">Implementations</a> section
 				of the document.</p>
 		</section>
-		
+
 		<section id="processing-guide">
 			<h3>Metadata processing</h3>
-			
+
 			<p>The following diagram depicts how these guidelines relate
 				to the format-specific techniques in the
 				process of receiving and displaying accessibility
 				metadata.</p>
-			
+
 			<img class="responsive" src="media/MetadataProcessing.png"
 				aria-details="ecosystem"
 				alt="Outline of the processing for EPUB, PDF, ONIX and MARC metadata. Description follows." />
-			
+
 			<div class="note">
 				<p>Work on integrating PDF and MARC is ongoing. The
 					diagram and text of this section will be updated
 					in future versions as the related documents are
 					finalized.</p>
 			</div>
-			
+
 			<p>The diagram categorizes two ways that metadata
 				accompanies a publication. In the first are digital
 				publication formats that directly embed accessibility
@@ -282,7 +282,7 @@
 				external metadata record formats (ONIX and MARC) that
 				accompany a digital publication as it moves
 				through the supply chain.</p>
-			
+
 			<p>In some cases, a digital publication may include both
 				internal and external metadata (e.g., an EPUB
 				could have accessibility metadata in it package document
@@ -290,7 +290,7 @@
 				ONIX record). In these cases, vendors and reading system
 				developers determine for themselves which
 				set of metadata they will use to display to users.</p>
-			
+
 			<div class="note">
 				<p>This guide assumes the metadata is already in one of
 					the formats described in the diagram, but
@@ -309,14 +309,14 @@
 						Properties
 						Crosswalk</a>.</p>
 			</div>
-			
+
 			<p>The next level of the diagram depicts the encoding
 				standards expected for each format. This guide
 				assumes that the metadata conforms to a recognized
 				standard, otherwise it would be difficult to
 				anticipate and process the incoming information for
 				users:</p>
-			
+
 			<ul>
 				<li>For EPUB, the EPUB Accessibility standard
 					[[epub-a11y-11]] defines required and recommended
@@ -339,7 +339,7 @@
 						guide</a> define how to describe accessibility
 					metadata.</li>
 			</ul>
-			
+
 			<p>Knowing how the metadata is encoded and how it is
 				expressed, the next stage of processing is to use
 				the algorithms defined in the respective techniques
@@ -348,13 +348,13 @@
 				documents are intended primarily for developers,
 				to help them with the specific processing of the
 				metadata markup grammars.</p>
-			
+
 			<p>Finally, this document is shown at the last stage of
 				processing, as it defines the purpose of each
 				piece of metadata in more detail and prioritizes the
 				display for readers.</p>
 		</section>
-		
+
 		<section id="terminology">
 			<h3>Terminology</h3>
 
@@ -426,13 +426,13 @@
 	</section>
 	<section id="meta-display">
 		<h2>Metadata display</h2>
-		
+
 		<section id="a11y-section">
 			<h3>Accessibility section</h3>
-			
+
 			<section id="a11y-section-hd">
 				<h4>Accessibility header</h4>
-				
+
 				<p>When presenting accessibility metadata provided by the
 					publisher, it is suggested that the section is
 					introduced using terms such as "claims" or
@@ -442,14 +442,14 @@
 					information that the publisher intends to communicate.
 				</p>
 			</section>
-			
+
 			<section id="rec-fields">
 				<h4>Recommended fields</h4>
-				
+
 				<p>When focusing on the accessibility of any digital
 					publication, several areas of key information come to
 					mind:</p>
-				
+
 				<ul>
 					<li>People who need to adjust the visual presentation
 						want to know if they can enlarge the text,
@@ -460,7 +460,7 @@
 						dyslexia
 						represent the largest percentage of the
 						print-disabled population.</li>
-					
+
 					<li>People who use a screen reader need to know if all
 						the content in the title will be accessible
 						to them. When images have text descriptions (alt
@@ -469,65 +469,65 @@
 						will greatly benefit from this information as
 						well as individuals who use the read aloud feature
 						in Reading Systems.</li>
-					
+
 					<li>People who are selecting materials for public
 						institutions such as libraries or schools need
 						to know if the content conforms to accepted
 						standards.</li>
 				</ul>
-				
-				<p>This is why these guidelines recommend that the following <a 
+
+				<p>This is why these guidelines recommend that the following <a
 						href="#order-of-key-information">key accessibility information</a> should be
 					displayed:</p>
-				
+
 				<ul>
 					<li><a href="#ways-of-reading">Ways of reading</a> &#8212; specifically the
 						<a href="#visual-adjustments">visual adjustments</a>
 						and <a href="#supports-nonvisual-reading">support for nonvisual reading</a> statements</li>
 					<li><a href="#conformance-group">Conformance</a></li>
 				</ul>
-				
+
 				<p>The other areas provide details about specific features or shortcomings in publications. It is
 					expected that these other areas of key information will give people what they need to make an
 					informed choice to read a particular e-book.</p>
-				
+
 				<div class="note">
 					<p>This document does not define the order in which to show the key accessibility information; each
 						implementer can decide the preferred order and appropriate headings to use to show the
 						accessibility information that follows.</p>
 				</div>
 			</section>
-			
+
 			<section id="additional-a11y-meta">
 				<h4>Additional accessibility metadata</h4>
-				
+
 				<p>In this document are examples of important metadata that is expected to be in a wide range of
 					publications. However, we do not have examples of all possible features that the metadata can
 					express. The techniques have more values than are shown in the examples.</p>
 			</section>
-			
+
 			<section id="missing-metadata">
 				<h4>Missing metadata</h4>
-				
-				<p>When no accessibility metadata is provided by the publisher, it is best to 
-					avoid making a negative statement that could be attributed to them. 
+
+				<p>When no accessibility metadata is provided by the publisher, it is best to
+					avoid making a negative statement that could be attributed to them.
 					The neutral statement "No information is available" is shown in the examples for this case.</p>
-				
+
 				<p>In some cases, the distributer may not be allowed to show statements the publisher did not make.
 					Hiding such sections is acceptable in these cases.</p>
 			</section>
 
 			<section id="techniques">
 				<h3>Display techniques</h3>
-				
+
 				<p>To assist developers in implementing these guidelines,
 					in-depth notes are available to explain how to
 					extract information from publishing industry metadata
 					standards.</p>
-				
+
 				<p>At the time of publishing this document the available
 					techniques for metadata standards are:</p>
-				
+
 				<ul>
 					<li>
 						<p><a href="../techniques/epub-metadata/index.html">EPUB
@@ -538,7 +538,7 @@
 								Accessibility Metadata</a></p>
 					</li>
 				</ul>
-				
+
 				<div class="note">
 					<p>Publishers update their ONIX records as needed. We
 						expect "unknown" accessibility metadata may be
@@ -550,20 +550,20 @@
 				</div>
 			</section>
 		</section>
-		
+
 		<section id="alt-statements">
 			<h3>Alternative statements</h3>
-		
+
 			<p>Although the display statements listed in this document and in the techniques are recommended
 				for use, it is possible to use alternative statements if the situation requires.</p>
 		</section>
-		
+
 		<section id="non-a11y-meta">
 			<h3>Non-accessibility metadata</h3>
-			
-			<p>The product details provide important information about the usability of the e-book in relation to 
+
+			<p>The product details provide important information about the usability of the e-book in relation to
 				specific user needs. The following information should always be displayed:</p>
-			
+
 			<ul>
 				<li>File format (EPUB 2 or 3, PDF, MP3, Audiobook, etc.) &#8212;
 					The file format gives a strong indication of
@@ -572,20 +572,20 @@
 					deprecated, an EPUB 3 support page navigation and
 					better structural semantics; an MP3 format audiobook
 					will be less structured than an Audiobook, etc.</li>
-				
-				<li>Protection measure or lack thereof &#8212; The 
+
+				<li>Protection measure or lack thereof &#8212; The
 					protection measure may block assistive
 					technologies such as screen readers. In addition,
 					many specific eReading devices such as DAISY readers
 					or Braille note takers are not equipped to read
 					encrypted files.</li>
-				
-				<li>Name of the publishing house  &#8212; The name of the 
+
+				<li>Name of the publishing house  &#8212; The name of the
 					publishing house can highlight the
 					efforts it has made in terms of
 					accessibility.</li>
-				
-				<li>Main language of the content &#8212; The main language 
+
+				<li>Main language of the content &#8212; The main language
 					of the content enables readers to
 					be confident that they will be able to read
 					with their Assistive Technology that uses
@@ -595,7 +595,7 @@
 			</ul>
 		</section>
 	</section>
-	
+
 	<section id="order-of-key-information">
 		<h2>Key accessibility information</h2>
 
@@ -603,8 +603,7 @@
 			<h3 data-localization-id="ways-of-reading-title">Ways of reading</h3>
 
 			<section id="visual-adjustments">
-				<h4 data-localization-id="ways-to-read-visual-adjustments-title">Visual
-					adjustments</h4>
+				<h4>Visual adjustments</h4>
 
 				<div class="note">
 					<p>This key information should be displayed, even
@@ -700,8 +699,7 @@
 			</section>
 
 			<section id="supports-nonvisual-reading">
-				<h4 data-localization-id="ways-of-reading-nonvisual-reading-title">Support
-					for nonvisual reading</h4>
+				<h4>Support for nonvisual reading</h4>
 
 				<div class="note">
 					<p>This key information should be displayed, even
@@ -801,7 +799,7 @@
 			</section>
 
 			<section id="prerecorded-audio">
-				<h4 data-localization-id="ways-to-read-prerecorded-audio-title">Prerecorded audio</h4>
+				<h4>Prerecorded audio</h4>
 
 				<div class="note">
 					<p>This key information can be hidden if metadata is
@@ -834,7 +832,7 @@
 						<dt>If the publication is a prerecorded audiobook:</dt>
 						<dd>
 							<p data-localization-id="ways-of-reading-prerecorded-audio-only"
-								data-localization-mode="compact">Audio only</p>
+								data-localization-mode="compact">Prerecorded audio only</p>
 							<p data-localization-id="ways-of-reading-prerecorded-audio-only"
 								data-localization-mode="descriptive">
 								Audiobook with no text alternative</p>
@@ -1520,9 +1518,9 @@
 					<dt>If math equations are described:</dt>
 					<dd>
 						<p data-localization-id="rich-content-accessible-math-described"
-							data-localization-mode="compact">Text descriptions of math is provided</p>
+							data-localization-mode="compact">Text descriptions of math are provided</p>
 						<p data-localization-id="rich-content-accessible-math-described"
-								data-localization-mode="descriptive">Text descriptions of math is provided</p>
+								data-localization-mode="descriptive">Text descriptions of math are provided</p>
 					</dd>
 
 					<dt>If chemical formulas are marked up in MathML:</dt>
@@ -1567,10 +1565,8 @@
 
 					<dt>If transcripts are provided for auditory content:</dt>
 					<dd>
-						<p data-localization-id="rich-content-transcript" data-localization-mode="compact">
-							Transcript(s) provided)</p>
-						<p data-localization-id="rich-content-transcript" data-localization-mode="descriptive">
-								Transcript(s) provided)</p>
+						<p data-localization-id="rich-content-transcript" data-localization-mode="compact">Transcript(s) provided</p>
+						<p data-localization-id="rich-content-transcript" data-localization-mode="descriptive">Transcript(s) provided</p>
 					</dd>
 
 					<dt>If no metadata is provided:</dt>
@@ -1707,7 +1703,7 @@
 					<dt>If there is a sound hazard:</dt>
 					<dd>
 						<p data-localization-id="hazards-sound"
-							data-localization-mode="compact">sounds</p>
+							data-localization-mode="compact">Sounds</p>
 						<p data-localization-id="hazards-sound"
 								data-localization-mode="descriptive">The
 								publication contains sounds which
