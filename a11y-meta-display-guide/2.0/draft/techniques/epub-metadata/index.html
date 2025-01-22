@@ -408,9 +408,14 @@
 
 				<h4>Understanding the variables</h4>
 				<dl>
-					<dt><var>conformance_string</var></dt>
+					<dt><var>epub_version</var></dt>
 					<dd>
-                        <p>If set, provides the full conformance claim statement.</p>
+                        <p>If set, provides the version of the EPUB Accessibility specification the
+                        	publication conforms to.</p>
+					</dd>
+					<dt><var>wcag_version</var></dt>
+					<dd>
+						<p>If set, provides the version of WCAG 2 the publication conforms to.</p>
 					</dd>
 					<dt><var>wcag_version</var></dt>
 					<dd>
@@ -451,29 +456,33 @@
                 <!-- EPUB Accessibility 1.0 WCAG 2.0 (A/AA/AAA) -->
                  <li>
                      <span><b>IF</b> the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/link[@rel="dcterms:<i>conformsTo</i>" and @href="<i>http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-a</i>"] | /package/metadata/meta[@property="dcterms:conformsTo" and normalize-space() = "http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-a"]</code> :</span>
-                     <span><b>THEN</b> <b>LET</b> <var>conformance_string</var> = 'EPUB Accessibility 1.0 WCAG 2.0 Level A', and</span>
+                     <span><b>THEN LET</b> <var>epub_version</var> = '1.0', and</span>
+                 	<span><b>LET</b> <var>wcag_version</var> = '2.0', and</span>
                  	<span><b>LET</b> <var>wcag_level</var> = 'A'.</span>
                  </li>
 
                   <li>
                        <span><b>IF</b> the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/link[@rel="dcterms:<i>conformsTo</i>" and @href="<i>http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aa</i>"] | /package/metadata/meta[@property="dcterms:conformsTo" and normalize-space() = "http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aa"]</code>:</span>
-                       <span><b>THEN</b> <b>LET</b> <var>conformance_string</var> = 'EPUB Accessibility 1.0 WCAG 2.0 Level AA', and</span>
-                       <span><b>LET</b> <var>wcag_level</var> = 'AA'.</span>
-                    </li>
+                  	<span><b>THEN LET</b> <var>epub_version</var> = '1.0', and</span>
+                  	<span><b>LET</b> <var>wcag_version</var> = '2.0', and</span>
+                  	<span><b>LET</b> <var>wcag_level</var> = 'AA'.</span>
+                  </li>
 
                   <li>
                       <span><b>IF</b> the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/link[@rel="dcterms:<i>conformsTo</i>" and @href="<i>http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aaa</i>"] | /package/metadata/meta[@property="dcterms:conformsTo" and normalize-space() = "http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aaa"]</code>:</span>
-                      <span><b>THEN</b> <b>LET</b> <var>conformance_string</var> = 'EPUB Accessibility 1.0 WCAG 2.0 Level AAA', and</span>
+                  	<span><b>THEN LET</b> <var>epub_version</var> = '1.0', and</span>
+                  	<span><b>LET</b> <var>wcag_version</var> = '2.0', and</span>
                   	<span><b>LET</b> <var>wcag_level</var> = 'AAA'.</span>
-                    </li>
+                  </li>
 
                    <!-- EPUB Accessibility 1.1 WCAG 2.X (A/AA/AAA) -->
 					<li><b>LET</b> <var>conformance</var> be the value of the node extracted from <var>package_document</var>, using the xpath <code class="xpath">/package/metadata/meta[@property="dcterms:<i>conformsTo</i>" and matches(normalize-space(), 'EPUB Accessibility 1\.1 - WCAG 2\.[0-2] Level [A]+')]</code>.</li>
 
 				   <li>
                   	<span><b>IF</b> <var>conformance</var> is <b>NOT</b> empty:</span>
-                      <span><b>THEN LET</b> <var>conformance_string</var> = replace(<var>conformance</var>, ' - ', ' '), and</span>
-                      <span><b>LET</b> <var>wcag_level</var> = replace(<var>conformance</var>, 'EPUB Accessibility 1\.1 - WCAG 2\.[0-2] Level ', '').</span>
+				   	<span><b>THEN LET</b> <var>epub_version</var> = '1.1', and</span>
+				   	<span><b>LET</b> <var>wcag_version</var> = replace(<var>conformance</var>, 'EPUB Accessibility 1\.1 - WCAG (2\.[0-2]) Level [A]+', '$1'), and</span>
+				   	<span><b>LET</b> <var>wcag_level</var> = replace(<var>conformance</var>, 'EPUB Accessibility 1\.1 - WCAG 2\.[0-2] Level ', '').</span>
                     </li>
 
                     <li><b>LET</b> <var>certifier</var> be the value of the node extracted from <var>package_document</var>, using the xpath <code class="xpath">/package/metadata/meta[@property="a11y:<i>certifiedBy</i>"]</code>.</li>
@@ -487,7 +496,7 @@
 
 				<h4 id="conformance-instructions">Instructions</h4>
 				<ol class="condition">
-					<li><span><b>IF</b> <var>conformance_string</var> is empty:</span>
+					<li><span><b>IF</b> <b>NOT</b> <var>epub_version</var> <b>AND NOT</b> <var>wcag_version</var>:</span>
 						<span><b>THEN</b> display <code id="conformance-no">"No information is available"</code>.</span>
 					</li>
 					<li>
@@ -534,32 +543,41 @@
 							</li>
 							<li>
 								<span>Display <code id="conformance-details">"Detailed conformance information"</code> as heading.</span>
-								<ul class="condition">
-									<li>display <code id="conformance-claim">"This publication claims to meet "</code>.</li>
+							</li>
+							<li>
+								<span>Display <code id="conformance-claim">"This publication claims to meet"</code>.</span>
+								<ul>
 									<li>
-										<p>display <var>conformance_string</var>.</p>
-
-										<div class="note">
-											<p>The value of <var>conformance_string</var> will be one of the following
-												strings:</p>
-											<ul>
-												<li><code id="conformance-epub10-wcag20a">EPUB Accessibility 1.0 WCAG 2.0 Level A</code></li>
-												<li><code id="conformance-epub10-wcag20aa">EPUB Accessibility 1.0 WCAG 2.0 Level AA</code></li>
-												<li><code id="conformance-epub10-wcag20aaa">EPUB Accessibility 1.0 WCAG 2.0 Level AAA</code></li>
-												<li><code id="conformance-epub11-wcag20a">EPUB Accessibility 1.1 WCAG 2.0 Level A</code></li>
-												<li><code id="conformance-epub11-wcag20aa">EPUB Accessibility 1.1 WCAG 2.0 Level AA</code></li>
-												<li><code id="conformance-epub11-wcag20aaa">EPUB Accessibility 1.1 WCAG 2.0 Level AAA</code></li>
-												<li><code id="conformance-epub11-wcag21a">EPUB Accessibility 1.1 WCAG 2.1 Level A</code></li>
-												<li><code id="conformance-epub11-wcag21aa">EPUB Accessibility 1.1 WCAG 2.1 Level AA</code></li>
-												<li><code id="conformance-epub11-wcag21aaa">EPUB Accessibility 1.1 WCAG 2.1 Level AAA</code></li>
-												<li><code id="conformance-epub11-wcag22a">EPUB Accessibility 1.1 WCAG 2.2 Level A</code></li>
-												<li><code id="conformance-epub11-wcag22aa">EPUB Accessibility 1.1 WCAG 2.2 Level AA</code></li>
-												<li><code id="conformance-epub11-wcag22aaa">EPUB Accessibility 1.1 WCAG 2.2 Level AAA</code></li>
-											</ul>
-											<p>To localize the string, the value of <var>conformance_string</var> will
-												need to be matched against these values to determine the corresponding
-												ID to use for translation.</p>
-										</div>
+										<span><b>IF</b> <var>epub_version</var> == '<code>1.0</code>':</span>
+										<span><b>THEN</b> display <code id="conformance-epub-accessibility-1-0">" EPUB Accessibility 1.0"</code>.</span>
+									</li>
+									<li>
+										<span><b>ELSE IF</b>  <var>epub_version</var> == '<code>1.1</code>':</span>
+										<span><b>THEN</b> display <code id="conformance-epub-accessibility-1-1">" EPUB Accessibility 1.1"</code>.</span>
+									</li>
+									<li>
+										<span><b>IF</b> <var>wcag_version</var> == '<code>2.2</code>':</span>
+										<span><b>THEN</b> display <code id="conformance-wcag-2-2">" WCAG 2.2"</code>.</span>
+									</li>
+									<li>
+										<span><b>ELSE IF</b> <var>wcag_version</var> == '<code>2.1</code>':</span>
+										<span><b>THEN</b> display <code id="conformance-wcag-2-1">" WCAG 2.1"</code>.</span>
+									</li>
+									<li>
+										<span><b>ELSE IF</b> <var>wcag_version</var> == '<code>2.0</code>':</span>
+										<span><b>THEN</b> display <code id="conformance-wcag-2-0">" WCAG 2.0"</code>.</span>
+									</li>
+									<li>
+										<span><b>IF</b> <var>wcag_level</var> == '<code>AAA</code>':</span>
+										<span><b>THEN</b> display <code id="conformance-level-aaa">" Level AAA"</code>.</span>
+									</li>
+									<li>
+										<span><b>ELSE IF</b> <var>wcag_level</var> == '<code>AA</code>':</span>
+										<span><b>THEN</b> display <code id="conformance-level-aa">" Level AA"</code>.</span>
+									</li>
+									<li>
+										<span><b>ELSE IF</b> <var>wcag_level</var> == '<code>A</code>':</span>
+										<span><b>THEN</b> display <code id="conformance-level-a">" Level A"</code>.</span>
 									</li>
 								</ul>
 							</li>
@@ -581,13 +599,12 @@
 						</ul>
 					</li>
 				</ol>
-
 			</section>
 
 
-      <section id="navigation">
-				<h3>Navigation</h3>
-      	<p>This technique relates to <a href="../../guidelines/#navigation">Navigation key information</a>.</p>
+	      <section id="navigation">
+			<h3>Navigation</h3>
+    	  	<p>This technique relates to <a href="../../guidelines/#navigation">Navigation key information</a>.</p>
                 <p>This algorithm takes the <var>package_document_as_text</var> argument: a UTF-8 string representing the Package document.</p>
 
 				<h4>Understanding the variables</h4>
