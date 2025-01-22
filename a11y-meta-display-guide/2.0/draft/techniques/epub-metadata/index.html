@@ -380,12 +380,12 @@
                     <h5>Instructions</h5>
                     <ol class="condition">
                         <li>
-                            <span><b>IF</b> <var>all_content_audio</var>:</span>
-                            <span><b>THEN</b> display <code id="ways-of-reading-prerecorded-audio-only">"Prerecorded audio only"</code>.</span>
+                            <span><b>IF</b> <var>synchronised_pre_recorded_audio</var>:</span>
+                            <span><b>THEN</b> display <code id="ways-of-reading-prerecorded-audio-synchronized">"Prerecorded audio synchronized with text"</code>.</span>
                         </li>
                         <li>
-                            <span><b>ELSE IF</b> <var>synchronised_pre_recorded_audio</var>:</span>
-                            <span><b>THEN</b> display <code id="ways-of-reading-prerecorded-audio-synchronized">"Prerecorded audio synchronized with text"</code>.</span>
+                            <span><b>ELSE IF</b> <var>all_content_audio</var>:</span>
+                            <span><b>THEN</b> display <code id="ways-of-reading-prerecorded-audio-only">"Prerecorded audio only"</code>.</span>
                         </li>
                         <li>
                             <span><b>ELSE IF</b> <var>audio_content</var>:</span>
