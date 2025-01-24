@@ -4,6 +4,7 @@
 		<meta charset="utf-8" />
 		<title>Display Techniques for ONIX Accessibility Metadata 2.0</title>
 		<script src="https://www.w3.org/Tools/respec/respec-w3c" class="remove" defer="defer"></script>
+		<script src="../../common/js/add_ids.js" class="remove"></script>
 		<script class="remove">
 			// <![CDATA[
 			var respecConfig = {
@@ -40,7 +41,8 @@
 				github:			 {
 					repoURL: "https://github.com/w3c/publ-a11y/",
 					branch: "main"
-				}
+				},
+				preProcess: [addStringIDs]
 			};
 			// ]]>
 	  </script>
@@ -62,16 +64,13 @@
 	  	code.xpath {
 	  		word-break: keep-all;
 	  	}
-	  	code[id]::before, code[id]::after {
+	  	span.str-id {
 			background: #faa;
 			border-radius: 3px;
 			font: normal normal 400 1em/1.2 monospace;
-			margin-left: 0.2em;
+			margin-left: 0.5em;
 			padding: 0.1em;
-		}
-		code[id]::after {
-			content: "[ID: " attr(id) "]";
-		}
+	  	}
 	  </style>
 	</head>
 	<body>
