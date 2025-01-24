@@ -196,7 +196,7 @@
             <section id="ways-of-reading">
                 <h3>Ways of reading</h3>
 
-                <p>This technique relates to <a href="../../guidelines/#way-of-reading">Ways of reading key information</a>.</p>
+                <p>This technique relates to the <a href="../../guidelines/#way-of-reading">Ways of reading accessibility display field</a>.</p>
   
                 <p>This algorithm takes the <var>package_document_as_text</var> argument: a UTF-8 string representing the Package document.</p>
 
@@ -204,7 +204,7 @@
                 <section id="visual-adjustments">
                     <!-- https://www.w3.org/TR/pub-manifest/#manifest-processing -->
                     <h4>Visual adjustments</h4>
-                    <p>This technique relates to <a href="../../guidelines/#visual-adjustments">Visual adjustments key information</a>.</p>
+                    <p>This technique relates to the <a href="../../guidelines/#visual-adjustments">Visual adjustments accessibility display field</a>.</p>
   
                     <h5>Understanding the variables</h5>
                     <dl>
@@ -245,7 +245,7 @@
 
                 <section id="supports-nonvisual-reading">
                     <h4>Supports nonvisual reading</h4>
-                    <p>This technique relates to <a href="../../guidelines/#supports-nonvisual-reading">Supports nonvisual reading key information</a>.</p>
+                    <p>This technique relates to the <a href="../../guidelines/#supports-nonvisual-reading">Supports nonvisual reading accessibility display field</a>.</p>
 
                     <h5>Understanding the variables</h5>
                     <dl>
@@ -317,7 +317,7 @@
                 
                 <section id="prerecorded-audio">
                     <h4>Prerecorded audio</h4>
-                    <p>This technique relates to <a href="../../guidelines/#prerecorded-audio">Prerecorded audio key information</a>.</p>
+                    <p>This technique relates to the <a href="../../guidelines/#prerecorded-audio">Prerecorded audio accessibility display field</a>.</p>
 
                      <h5>Understanding the variables</h5>
                     <dl>
@@ -368,7 +368,7 @@
                         </li>
 
                         <li>
-                            <b>ELSE</b> either omit this key information if metadata is missing or display <code id="ways-of-reading-prerecorded-audio-no-metadata">"No information about prerecorded audio is available"</code>.
+                            <b>ELSE</b> either omit this display field if metadata is missing or display <code id="ways-of-reading-prerecorded-audio-no-metadata">"No information about prerecorded audio is available"</code>.
                         </li>
                     </ol>
                 </section>
@@ -377,7 +377,7 @@
 
 			<section id="conformance-group">
 				<h3>Conformance</h3>
-				<p>This technique relates to <a href="../../guidelines/#conformance-group">Conformance key information</a>.</p>
+				<p>This technique relates to the <a href="../../guidelines/#conformance-group">Conformance accessibility display field</a>.</p>
 
 				<p>This algorithm takes the <var>package_document_as_text</var> argument: a UTF-8 string representing the Package document.</p>
 
@@ -579,7 +579,7 @@
 
 	      <section id="navigation">
 			<h3>Navigation</h3>
-    	  	<p>This technique relates to <a href="../../guidelines/#navigation">Navigation key information</a>.</p>
+    	  	<p>This technique relates to the <a href="../../guidelines/#navigation">Navigation accessibility display field</a>.</p>
                 <p>This algorithm takes the <var>package_document_as_text</var> argument: a UTF-8 string representing the Package document.</p>
 
 				<h4>Understanding the variables</h4>
@@ -648,14 +648,14 @@
 
 
 					<li>
-						<b>ELSE</b> either omit this key information if metadata is missing or display <code id="navigation-no-metadata">"No information is available"</code>.
+						<b>ELSE</b> either omit this display field if metadata is missing or display <code id="navigation-no-metadata">"No information is available"</code>.
 					</li>
 				</ol>
 			</section>
 
 			<section id="rich-content">
 				<h3>Rich content</h3>
-				<p>This technique relates to <a href="../../guidelines/#rich-content">Charts, diagrams, math, and formulas key information</a>.</p>
+				<p>This technique relates to the <a href="../../guidelines/#rich-content">Rich content accessibility display field</a>.</p>
 
                 <p>This algorithm takes the <var>package_document_as_text</var> argument: a UTF-8 string representing the Package document.</p>
 				<h4>Understanding the variables</h4>
@@ -782,14 +782,14 @@
 					</li>
 					<li>
 						<span><b>IF</b> <b>NOT</b> (<var>math_formula_as_mathml</var> <b>OR</b> <var>math_formula_as_latex</var> <b>OR</b> (<var>contains_math_formula</var> <b>AND</b> <var>long_text_descriptions</var>) <b>OR</b> <var>chemical_formula_as_mathml</var> <b>OR</b> <var>long_text_descriptions</var> <b>OR</b> <var>closed_captions</var> <b>OR</b> <var>open_captions</var> <b>OR</b> <var>transcript</var>):</span>
-						<span><b>THEN</b> either omit this key information if metadata is missing or display <code id="rich-content-unknown">"No information is available"</code>.</span>
+						<span><b>THEN</b> either omit this display field if metadata is missing or display <code id="rich-content-unknown">"No information is available"</code>.</span>
 					</li>
 				</ol>
 			</section>
 
 			<section id="hazards">
 				<h3>Hazards</h3>
-				<p>This technique relates to <a href="../../guidelines/#hazards">Hazards key information</a>.</p>
+				<p>This technique relates to the <a href="../../guidelines/#hazards">Hazards accessibility display field</a>.</p>
 				<p>This algorithm takes the <var>package_document_as_text</var> argument: a UTF-8 string representing the Package document.</p>
 
         <h4>Understanding the variables</h4>
@@ -892,7 +892,7 @@
 						<span><b>THEN</b> display <code id="hazards-unknown">"The presence of hazards is unknown"</code>.</span>
                     </li>
 					<li>
-						<b>ELSE</b> either omit this key information if metadata is missing or display <code id="hazards-no-metadata">"No information is available"</code>.
+						<b>ELSE</b> either omit this display field if metadata is missing or display <code id="hazards-no-metadata">"No information is available"</code>.
 
                     </li>
 				</ol>
@@ -901,7 +901,7 @@
 
 			<section id="accessibility-summary">
 				<h3>Accessibility summary</h3>
-				<p>This technique relates to <a href="../../guidelines/#accessibility-summary">Accessibility summary key information</a>.</p>
+				<p>This technique relates to the <a href="../../guidelines/#accessibility-summary">Accessibility summary accessibility display field</a>.</p>
 
 				<p>This algorithm takes the <var>package_document_as_text</var> argument: a UTF-8 string representing the Package document.</p>
 
@@ -952,7 +952,7 @@
 						<span><b>IF</b> <var>accessibility_summary</var> is <b>NOT</b> empty:</span>
 						<span><b>THEN</b> display the content of <var>accessibility_summary</var> with <var>language_accessibility_summary</var> as language.</span></li>
 					<li>
-						<b>ELSE</b> either omit this key informtion if metadata is missing or display <code id="accessibility-summary-no-metadata">"No information is available"</code>.
+						<b>ELSE</b> either omit this display field if metadata is missing or display <code id="accessibility-summary-no-metadata">"No information is available"</code>.
 					</li>
 				</ol>
 			</section>
@@ -961,7 +961,7 @@
 				<h3>Legal considerations</h3>
                 <div class="issue" data-number="350">We are actively seeking comments on this "legal consideration" section. If you are a publisher, we want your feedback! Please visit the GitHub Issue tracking linked above to leave a comment.</div>
 
-            	<p>This technique relates to <a href="../../guidelines/#legal-considerations">Legal considerations key information</a>.</p>
+            	<p>This technique relates to the <a href="../../guidelines/#legal-considerations">Legal considerations accessibility display field</a>.</p>
 
                  <p>This algorithm takes the <var>package_document_as_text</var> argument: a UTF-8 string representing the Package document.</p>
 
@@ -997,7 +997,7 @@
 						<span><b>THEN</b> display <code id="legal-considerations-exempt">"Claims an accessibility exemption in some jurisdictions"</code>.</span>
 					</li>
 					<li>
-						<b>ELSE</b> either omit this key information if metadata is missing or display <code id="legal-considerations-no-metadata">"No information is available"</code>.
+						<b>ELSE</b> either omit this display field if metadata is missing or display <code id="legal-considerations-no-metadata">"No information is available"</code>.
 					</li>
 				</ol>
 			</section>
@@ -1005,7 +1005,7 @@
 
 			<section id="additional-accessibility-information">
 				<h3>Additional accessibility information</h3>
-				<p>This technique relates to <a href="../../guidelines/#additional-accessibility-information">Additional accessibility information key information</a>.</p>
+				<p>This technique relates to the <a href="../../guidelines/#additional-accessibility-information">Additional accessibility information accessibility display field</a>.</p>
 
 				<p>This algorithm takes the <var>package_document_as_text</var> argument: a UTF-8 string representing the Package document.</p>
 
