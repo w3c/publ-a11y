@@ -382,15 +382,6 @@
 
 				<h4>Understanding the variables</h4>
 				<dl>
-					<dt><var>epub_version</var></dt>
-					<dd>
-                        <p>If set, provides the version of the EPUB Accessibility specification the
-                        	publication conforms to.</p>
-					</dd>
-					<dt><var>wcag_version</var></dt>
-					<dd>
-                        <p>If set, provides the WCAG 2 conformance level claimed.</p>
-					</dd>
 					<dt><var>certifier</var></dt>
 					<dd>
 						<p>Returns the description of <i>a11y:certifiedBy</i> (Compliance certification by (name)) if present in the package document, otherwise if false it means that the metadata is not present.</p>
@@ -416,7 +407,15 @@
 						<p>If true it indicates that the <i>conformsTo</i> is present in the package document, otherwise if false it means that the metadata is not present.</p>
 						<p>This means that the publication conforms to some specification.</p>
 					</dd>
-
+					<dt><var>epub_version</var></dt>
+					<dd>
+                        <p>If set, provides the version of the EPUB Accessibility specification the
+                        	publication conforms to.</p>
+					</dd>
+					<dt><var>wcag_version</var></dt>
+					<dd>
+                        <p>If set, provides the WCAG 2 conformance level claimed.</p>
+					</dd>
 				</dl>
 
 				<h4>Variables setup</h4>
