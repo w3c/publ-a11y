@@ -794,39 +794,39 @@
 
         <h4>Understanding the variables</h4>
 				<dl>
-					<dt><var>no_hazards_or_warnings_confirmed</var></dt>
-					<dd>
-                        <p>If true it indicates that the <i>accessibilityHazard="none"</i> (no accessibility hazards) is present in the package document, otherwise if false it means that the metadata is not present.</p>
-						<p>This means there is a positive indication in the accessibility metadata within the EPUB confirming there are no associated hazard warnings with this product.</p>
-					</dd>
 					<dt><var>flashing_hazard</var></dt>
 					<dd>
                         <p>If true it indicates that the <i>accessibilityHazard="flashing"</i> (WARNING - Flashing hazards) is present in the package document, otherwise if false it means that the metadata is not present.</p>
 						<p>This means that there is a positive indication in the accessibility metadata within the EPUB confirming that the product has a flashing hazard which must be displayed.</p>
-					</dd>
-					<dt><var>no_flashing_hazards</var></dt>
-					<dd>
-                        <p>If true it indicates that the <i>accessibilityHazard="noFlashingHazard"</i> (No flashing hazard warning necessary) is present in the package document, otherwise if false it means that the metadata is not present.</p>
-						<p>This means there is a positive indication in the accessibility metadata within the EPUB confirming there are no flashing hazards associated with this product.</p>
 					</dd>
 					<dt><var>motion_simulation_hazard</var></dt>
 					<dd>
                         <p>If true it indicates that the <i>accessibilityHazard="motionSimulation"</i> (WARNING - Motion simulation hazard) is present in the package document, otherwise if false it means that the metadata is not present.</p>
 						<p>This means that there is a positive indication in the accessibility metadata within the EPUB confirming that the product has a motion simulation hazard which must be displayed.</p>
 					</dd>
+					<dt><var>no_flashing_hazards</var></dt>
+					<dd>
+                        <p>If true it indicates that the <i>accessibilityHazard="noFlashingHazard"</i> (No flashing hazard warning necessary) is present in the package document, otherwise if false it means that the metadata is not present.</p>
+						<p>This means there is a positive indication in the accessibility metadata within the EPUB confirming there are no flashing hazards associated with this product.</p>
+					</dd>
+					<dt><var>no_hazards_or_warnings_confirmed</var></dt>
+					<dd>
+                        <p>If true it indicates that the <i>accessibilityHazard="none"</i> (no accessibility hazards) is present in the package document, otherwise if false it means that the metadata is not present.</p>
+						<p>This means there is a positive indication in the accessibility metadata within the EPUB confirming there are no associated hazard warnings with this product.</p>
+					</dd>
 					<dt><var>no_motion_hazards</var></dt>
 					<dd>
                         <p>If true it indicates that the <i>accessibilityHazard="noMotionSimulationHazard"</i> (No motion simulation hazard warning necessary) is present in the package document, otherwise if false it means that the metadata is not present.</p> 		<p>This means there is a positive indication in the accessibility metadata within the EPUB confirming there are no motion simulation hazards associated with this product.</p>
-					</dd>
-					<dt><var>sound_hazard</var></dt>
-					<dd>
-                        <p>If true it indicates that the <i>accessibilityHazard="Sound"</i> (WARNING - Sound hazard) is present in the package document, otherwise if false it means that the metadata is not present.</p>
- 						<p>This means that there is a positive indication in the accessibility metadata within the EPUB confirming that the product has a sound hazard which must be displayed.</p>
 					</dd>
 					<dt><var>no_sound_hazards</var></dt>
 					<dd>
                         <p>If true it indicates that the <i>accessibilityHazard="noSoundHazard"</i> (No sound hazard warning necessary) is present in the package document, otherwise if false it means that the metadata is not present.</p>
 						<p>This means there is a positive indication in the accessibility metadata within the EPUB confirming there are no sound hazards associated with this product.</p>
+					</dd>
+					<dt><var>sound_hazard</var></dt>
+					<dd>
+                        <p>If true it indicates that the <i>accessibilityHazard="Sound"</i> (WARNING - Sound hazard) is present in the package document, otherwise if false it means that the metadata is not present.</p>
+ 						<p>This means that there is a positive indication in the accessibility metadata within the EPUB confirming that the product has a sound hazard which must be displayed.</p>
 					</dd>
 					<dt><var>unknown_if_contains_hazards</var></dt>
 					<dd>
@@ -840,27 +840,20 @@
 				<ol class="condition">
 					<li><b>LET</b> <var>package_document</var> be the result of calling <a href="#pre-processing">preprocessing</a> given <var>package_document_as_text</var>.</li>
 
-                    <li><b>LET</b> <var>no_hazards_or_warnings_confirmed</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityHazard</i>" and normalize-space()="<i>none</i>"]</code>.</li>
-
                     <li><b>LET</b> <var>flashing_hazard</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityHazard</i>" and normalize-space()="<i>flashing</i>"]</code>.</li>
-
-
-                    <li><b>LET</b> <var>no_flashing_hazards</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityHazard</i>" and normalize-space()="<i>noFlashingHazard</i>"]</code>.</li>
-
 
                     <li><b>LET</b> <var>motion_simulation_hazard</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityHazard</i>" and normalize-space()="<i>motionSimulation</i>"]</code>.</li>
 
+                    <li><b>LET</b> <var>no_flashing_hazards</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityHazard</i>" and normalize-space()="<i>noFlashingHazard</i>"]</code>.</li>
+                    
+                    <li><b>LET</b> <var>no_hazards_or_warnings_confirmed</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityHazard</i>" and normalize-space()="<i>none</i>"]</code>.</li>
 
                     <li><b>LET</b> <var>no_motion_hazards</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityHazard</i>" and normalize-space()="<i>noMotionSimulationHazard</i>"]</code>.</li>
 
-
-                    <li><b>LET</b> <var>sound_hazard</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityHazard</i>" and normalize-space()="<i>sound</i>"]</code>.</li>
-
-
-
                     <li><b>LET</b> <var>no_sound_hazards</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityHazard</i>" and normalize-space()="<i>noSoundHazard</i>"]</code>.</li>
 
-
+                    <li><b>LET</b> <var>sound_hazard</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityHazard</i>" and normalize-space()="<i>sound</i>"]</code>.</li>
+  
                     <li><b>LET</b> <var>unknown_if_contains_hazards</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityHazard</i>" and normalize-space()="<i>unknown</i>"]</code>.</li>
 
 				</ol>
