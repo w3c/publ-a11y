@@ -325,13 +325,7 @@
                         <dd>
                             <p>If true it indicates that the <i>accessModeSufficient="auditory"</i> (all main content is provided in audio form) is present in the package document, otherwise if false it means that the metadata is not present.</p>
                         </dd>
-                        <dt><var>synchronised_pre_recorded_audio</var></dt>
-                        <dd>
-                            <p>If true it indicates that the <i>accessibilityFeature="sychronizedAudioText"</i> is present in the package document, otherwise, if false, it means that the metadata is not present.</p>
-
-                            <p>This indicates that text-synchronised prerecorded audio narration (natural or synthesized voice) is included for substantially all textual matter, including all alternative descriptions, e.g. via a SMIL media overlay.</p>
-                        </dd>
-
+                        
                         <dt><var>audio_content</var></dt>
                         <dd>
                             <p>If true it indicates that the <i>accessMode="auditory"</i> is present in the package document, otherwise, if false, it means that the metadata is not present.</p>
@@ -339,7 +333,12 @@
                             <p>This indicates that prerecorded audio content is included as part of the work.</p>
                         </dd>
 
+                        <dt><var>synchronised_pre_recorded_audio</var></dt>
+                        <dd>
+                            <p>If true it indicates that the <i>accessibilityFeature="sychronizedAudioText"</i> is present in the package document, otherwise, if false, it means that the metadata is not present.</p>
 
+                            <p>This indicates that text-synchronised prerecorded audio narration (natural or synthesized voice) is included for substantially all textual matter, including all alternative descriptions, e.g. via a SMIL media overlay.</p>
+                        </dd>
                     </dl>
                     <h5>Variables setup</h5>
                     <ol class="condition">
@@ -347,9 +346,9 @@
 
                         <li><b>LET</b> <var>all_content_audio</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessModeSufficient</i>" and normalize-space()="<i>auditory</i>"]</code>.</li>
 
-                        <li><b>LET</b> <var>synchronised_pre_recorded_audio</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and normalize-space()="<i>sychronizedAudioText</i>"]</code>.</li>
-
                         <li><b>LET</b> <var>audio_content</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessMode</i>" and normalize-space()="<i>auditory</i>"]</code>.</li>
+
+                        <li><b>LET</b> <var>synchronised_pre_recorded_audio</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and normalize-space()="<i>sychronizedAudioText</i>"]</code>.</li>
 
                     </ol>
                     <h5>Instructions</h5>
