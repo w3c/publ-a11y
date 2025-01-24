@@ -960,11 +960,7 @@
 
 				<h4>Understanding the variables</h4>
 				<dl>
-					<dt><var>eaa_exemption_micro_enterprises</var></dt>
-					<dd>
-						<p>If true it indicates that the <i><a href="https://www.w3.org/TR/epub-a11y-exemption/#exemption-property">a11y:exemption</a>="<a href="https://www.w3.org/TR/epub-a11y-exemption/#exemption-values">eaa-microenterprise</a>"</i> (EEA exception 1 – Micro-enterprises) is present in the package document, otherwise if false it means that the metadata is not present.</p>
-						<p>This means that the digital product falls under European Accessibility Act exemption for Micro-enterprises (as defined by current regulations). The product may not have to comply with requirements of the EAA if the publisher is a micro-enterprise.</p>
-					</dd>
+
 					<dt><var>eaa_exception_disproportionate_burden</var></dt>
 					<dd>
 						<p>If true it indicates that the <i><a href="https://www.w3.org/TR/epub-a11y-exemption/#exemption-property">a11y:exemption</a>="<a href="https://www.w3.org/TR/epub-a11y-exemption/#exemption-values">eaa_disproportionate_burden</a>"</i> (EAA exception 2 – Disproportionate burden) is present in the package document, otherwise if false it means that the metadata is not present.</p>
@@ -975,13 +971,19 @@
 						<p>If true it indicates that the <i><a href="https://www.w3.org/TR/epub-a11y-exemption/#exemption-property">a11y:exemption</a>="<a href="https://www.w3.org/TR/epub-a11y-exemption/#exemption-values">eaa_fundamental_modification</a>"</i> (EAA exception 3 – Fundamental modification) is present in the package document, otherwise if false it means that the metadata is not present.</p>
 						<p>This means that the digital product falls under European Accessibility Act exception for Fundamental modification (as defined by current regulations). The product may not have to comply with requirements of the EAA if doing so requires a fundamental modification of the nature of the product or service.</p>
 					</dd>
-				</dl>
+					<dt><var>eaa_exemption_micro_enterprises</var></dt>
+					<dd>
+						<p>If true it indicates that the <i><a href="https://www.w3.org/TR/epub-a11y-exemption/#exemption-property">a11y:exemption</a>="<a href="https://www.w3.org/TR/epub-a11y-exemption/#exemption-values">eaa-microenterprise</a>"</i> (EEA exception 1 – Micro-enterprises) is present in the package document, otherwise if false it means that the metadata is not present.</p>
+						<p>This means that the digital product falls under European Accessibility Act exemption for Micro-enterprises (as defined by current regulations). The product may not have to comply with requirements of the EAA if the publisher is a micro-enterprise.</p>
+					</dd>
+                </dl>
 				<h4>Variables setup</h4>
 				<ol class="condition">
 					<li><b>LET</b> <var>package_document</var> be the result of calling <a href="#pre-processing">preprocessing</a> given <var>package_document_as_text</var>.</li>
-					<li><b>LET</b> <var>eaa_exemption_micro_enterprises</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="a11y:<i>exemption</i>" and normalize-space()="<i>eaa-microenterprise</i>"]</code>.</li>
 					<li><b>LET</b> <var>eaa_exception_disproportionate_burden</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="a11y:<i>exemption</i>" and normalize-space()="<i>eaa-disproportionate-burden</i>"]</code>.</li>
 					<li><b>LET</b> <var>eaa_exception_fundamental_modification</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="a11y:<i>exemption</i>" and normalize-space()="<i>eaa-fundamental-alteration</i>"]</code>.</li>
+					<li><b>LET</b> <var>eaa_exemption_micro_enterprises</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="a11y:<i>exemption</i>" and normalize-space()="<i>eaa-microenterprise</i>"]</code>.</li>
+
 				</ol>
 				<h4 id="legal-considerations-instructions">Instructions</h4>
 				<ol class="condition">
@@ -1004,6 +1006,12 @@
 
                     <h4>Understanding the variables</h4>
 					<dl>
+						<dt><var>aria</var></dt>
+						<dd>
+							<p>If true it indicates that the <i>accessibilityFeature="aria"</i>  (ARIA roles - semantic markup) is present in the package document, otherwise if false it means that the metadata is not present.</p>
+							<p>This means that the use of ARIA, including <a href="https://w3c.github.io/dpub-aria/">DPUB ARIA</a> is used to improve the semantic markup of the publication.</p>
+						</dd>
+                        
 						<dt><var>audio_descriptions</var></dt>
 						<dd>
 							<p>If true it indicates that the <i>accessibilityFeature="audioDescriptions"</i> (Audio Descriptions) is present in the package document, otherwise if false it means that the metadata is not present.</p>
@@ -1016,42 +1024,11 @@
 							<p>This means that there is braille available within the publication.</p>
 						</dd>
 
-						<dt><var>tactile_graphic</var></dt>
-						<dd>
-							<p>If true it indicates that the <i>accessibilityFeature="tactileGraphic"</i> (tactile 2D graphic) is present in the package document, otherwise if false it means that the metadata is not present.</p>
-							<p>This means that there is tactile graphic(s) contained within this publication.</p>
-						</dd>
-                        
-						<dt><var>tactile_object</var></dt>
-						<dd>
-							<p>If true it indicates that the <i>accessibilityFeature="tactileObject"</i> (tactile 3D object) is present in the package document, otherwise if false it means that the metadata is not present.</p>
-							<p>This means that there is tactile 3D object(s) contained within this publication.</p>
-						</dd>
-
-						<dt><var>sign_language</var></dt>
-						<dd>
-							<p>If true it indicates that the <i>accessibilityFeature="signLanguage"</i> (Sign language interpretation) is present in the package document, otherwise if false it means that the metadata is not present.</p>
-							<p>This means that a full signing of audio content of the product is supplied with the video file.</p>
-						</dd>
-
-						<dt><var>aria</var></dt>
-						<dd>
-							<p>If true it indicates that the <i>accessibilityFeature="aria"</i>  (ARIA roles - semantic markup) is present in the package document, otherwise if false it means that the metadata is not present.</p>
-							<p>This means that the use of ARIA, including <a href="https://w3c.github.io/dpub-aria/">DPUB ARIA</a> is used to improve the semantic markup of the publication.</p>
-						</dd>
-                        
-  						<dt><var>full_ruby_annotations</var></dt>
+                        <dt><var>full_ruby_annotations</var></dt>
 						<dd>
 							<p>If true it indicates that the <i>accessibilityFeature="fullRubyAnnotations"</i> (Full Ruby Annotations) is present in the package document, otherwise if false it means that the metadata is not present.</p>
 							<p>This means that ruby annotations are attached to every CJK ideographic character in the content. Ruby annotations are used as pronunciation guides for the logographic characters for languages like Chinese or Japanese. They make difficult CJK ideographic characters more accessible.</p>
 						</dd>
-
-						<dt><var>text_to_speech_hinting</var></dt>
-						<dd>
-							<p>If true it indicates that the <i>accessibilityFeature="ttsMarkup"</i>  (Text-to-speech markup provided) is present in the package document, otherwise if false it means that the metadata is not present.</p>
-							<p>This means that text-to-speech has been optimized through provision of PLS lexicons, SSML or CSS Speech synthesis hints or other speech synthesis markup languages or hinting.</p>
-						</dd>
-                        
 						<dt><var>high_contrast_between_foreground_and_background_audio</var></dt>
 						<dd>
 							<p>If true it indicates that the <i>accessibilityFeature="highContrastAudio"</i> (Use of high contrast between foreground and background audio) is present in the package document, otherwise if false it means that the metadata is not present.</p>
@@ -1075,34 +1052,51 @@
                             <p>If true it indicates that the <i>accessibilityFeature="pageBreakMarkers"</i> (Print-equivalent page numbering) is present in the package document, otherwise if false it means that the metadata is not present.</p>
                             <p>This means that the publication contains references to the page numbering.</p>
                         </dd>
-                        
- 						<dt><var>ruby_annotations</var></dt>
+
+						<dt><var>ruby_annotations</var></dt>
 						<dd>
 							<p>If true it indicates that the <i>accessibilityFeature="rubyAnnotations"</i> (Ruby Annotations) is present in the package document, otherwise if false it means that the metadata is not present.</p>
 							<p>This means that ruby annotations are attached to some but not all CJK ideographic characters in the content.</p>
 						</dd>
-					</dl>
+                        
+						<dt><var>sign_language</var></dt>
+						<dd>
+							<p>If true it indicates that the <i>accessibilityFeature="signLanguage"</i> (Sign language interpretation) is present in the package document, otherwise if false it means that the metadata is not present.</p>
+							<p>This means that a full signing of audio content of the product is supplied with the video file.</p>
+						</dd>
+
+
+						<dt><var>tactile_graphic</var></dt>
+						<dd>
+							<p>If true it indicates that the <i>accessibilityFeature="tactileGraphic"</i> (tactile 2D graphic) is present in the package document, otherwise if false it means that the metadata is not present.</p>
+							<p>This means that there is tactile graphic(s) contained within this publication.</p>
+						</dd>
+                        
+						<dt><var>tactile_object</var></dt>
+						<dd>
+							<p>If true it indicates that the <i>accessibilityFeature="tactileObject"</i> (tactile 3D object) is present in the package document, otherwise if false it means that the metadata is not present.</p>
+							<p>This means that there is tactile 3D object(s) contained within this publication.</p>
+						</dd>
+
+ 						<dt><var>text_to_speech_hinting</var></dt>
+						<dd>
+							<p>If true it indicates that the <i>accessibilityFeature="ttsMarkup"</i>  (Text-to-speech markup provided) is present in the package document, otherwise if false it means that the metadata is not present.</p>
+							<p>This means that text-to-speech has been optimized through provision of PLS lexicons, SSML or CSS Speech synthesis hints or other speech synthesis markup languages or hinting.</p>
+						</dd>
+                        
+ 					</dl>
 
 					<h4>Variables setup</h4>
 					<ol class="condition">
                         <li><b>LET</b> <var>package_document</var> be the result of calling <a href="#pre-processing">preprocessing</a> given <var>package_document_as_text</var>.</li>
                         
+						<li><b>LET</b> <var>aria</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and normalize-space()="<i>aria</i>"]</code>.</li>
+                        
 						<li><b>LET</b> <var>audio_descriptions</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and normalize-space()="<i>audioDescription</i>"]</code>.</li>
 						
                         <li><b>LET</b> <var>braille</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and normalize-space()="<i>braille</i>"]</code>.</li>
-                        
-                        <li><b>LET</b> <var>tactile_graphic</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and normalize-space()="<i>tactileGraphic</i>"]</code>.</li>
-                        
-                        <li><b>LET</b> <var>tactile_object</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and normalize-space()="<i>tactileObject</i>"]</code>.</li>
-                        
-                        <li><b>LET</b> <var>sign_language</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and normalize-space()="<i>signLanguage</i>"]</code>.</li>
-                        
 
-						<li><b>LET</b> <var>aria</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and normalize-space()="<i>aria</i>"]</code>.</li>
-                        
 						<li><b>LET</b> <var>full_ruby_annotations</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and normalize-space()="<i>fullRubyAnnotations</i>"]</code>.</li>
-                        
-						<li><b>LET</b> <var>text_to_speech_hinting</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and normalize-space()="<i>ttsMarkup</i>"]</code>.</li>
                         
     				    <li><b>LET</b> <var>high_contrast_between_foreground_and_background_audio</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and normalize-space()="<i>highContrastAudio</i>"]</code>.</li>
                         
@@ -1113,10 +1107,22 @@
                         <li><b>LET</b> <var>page_break_markers</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and normalize-space()="<i>pageBreakMarkers</i>"]</code>.</li>
                         
 						<li><b>LET</b> <var>ruby_annotations</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and normalize-space()="<i>rubyAnnotations</i>"]</code>.</li>
-    				</ol>
+                        
+                        <li><b>LET</b> <var>sign_language</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and normalize-space()="<i>signLanguage</i>"]</code>.</li>
 
+                       <li><b>LET</b> <var>tactile_graphic</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and normalize-space()="<i>tactileGraphic</i>"]</code>.</li>
+                        
+                        <li><b>LET</b> <var>tactile_object</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and normalize-space()="<i>tactileObject</i>"]</code>.</li>
+                        
+ 						<li><b>LET</b> <var>text_to_speech_hinting</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and normalize-space()="<i>ttsMarkup</i>"]</code>.</li>
+    				</ol>
+                        
 					<h4 id="additional-accessibility-information-instructions">Instructions</h4>
 					<ol class="condition">
+						<li>
+							<span><b>IF</b> <var>aria</var>:</span>
+							<span><b>THEN</b> display <code id="additional-accessibility-information-aria">"ARIA"</code>.</span>
+						</li>
 						<li>
 							<span><b>IF</b> <var>audio_descriptions</var>:</span>
 							<span><b>THEN</b> display <code id="additional-accessibility-information-audio-descriptions">"Audio descriptions"</code>.</span></li>
@@ -1125,28 +1131,8 @@
 							<span><b>THEN</b> display <code id="additional-accessibility-information-braille">"Braille"</code>.</span>
 						</li>
 						<li>
-							<span><b>IF</b> <var>tactile_graphic</var>:</span>
-							<span><b>THEN</b> display <code id="additional-accessibility-information-tactile-graphics">"Tactile graphics"</code>.</span>
-						</li>
-						<li>
-							<span><b>IF</b> <var>tactile_object</var>:</span>
-							<span><b>THEN</b> display <code id="additional-accessibility-information-tactile-objects">"Tactile 3D objects"</code>.</span>
-						</li>
-						<li>
-							<span><b>IF</b> <var>sign_language</var>:</span>
-							<span><b>THEN</b> display <code id="additional-accessibility-information-sign-language">"Sign language"</code>.</span>
-						</li>
-						<li>
-							<span><b>IF</b> <var>aria</var>:</span>
-							<span><b>THEN</b> display <code id="additional-accessibility-information-aria">"ARIA"</code>.</span>
-						</li>
-						<li>
 							<span><b>IF</b> <var>full_ruby_annotations</var>:</span>
 							<span><b>THEN</b> display <code id="additional-accessibility-information-full-ruby-annotations">"Full ruby annotations"</code>.</span>
-						</li>
-						<li>
-							<span><b>IF</b> <var>text_to_speech_hinting</var>:</span>
-							<span><b>THEN</b> display <code id="additional-accessibility-information-text-to-speech-hinting">"Text-to-speech hinting provided"</code>.</span>
 						</li>
 						<li>
 							<span><b>IF</b> <var>high_contrast_between_foreground_and_background_audio</var>:</span>
@@ -1166,7 +1152,24 @@
                         </li>
 						<li>
 							<span><b>IF</b> <var>ruby_annotations</var>:</span>
-							<span><b>THEN</b> display <code id="additional-accessibility-information-ruby-annotations">"Some Ruby annotations"</code>.</span></li>
+							<span><b>THEN</b> display <code id="additional-accessibility-information-ruby-annotations">"Some Ruby annotations"</code>.</span>
+                        </li>
+						<li>
+							<span><b>IF</b> <var>sign_language</var>:</span>
+							<span><b>THEN</b> display <code id="additional-accessibility-information-sign-language">"Sign language"</code>.</span>
+						</li>
+						<li>
+							<span><b>IF</b> <var>tactile_graphic</var>:</span>
+							<span><b>THEN</b> display <code id="additional-accessibility-information-tactile-graphics">"Tactile graphics"</code>.</span>
+						</li>
+						<li>
+							<span><b>IF</b> <var>tactile_object</var>:</span>
+							<span><b>THEN</b> display <code id="additional-accessibility-information-tactile-objects">"Tactile 3D objects"</code>.</span>
+						</li>
+						<li>
+							<span><b>IF</b> <var>text_to_speech_hinting</var>:</span>
+							<span><b>THEN</b> display <code id="additional-accessibility-information-text-to-speech-hinting">"Text-to-speech hinting provided"</code>.</span>
+						</li>
 					</ol>
 			</section>
 
