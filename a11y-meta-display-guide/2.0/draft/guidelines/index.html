@@ -354,7 +354,38 @@
 				piece of metadata in more detail and prioritizes the
 				display for readers.</p>
 		</section>
-
+		
+		<section id="techniques">
+			<h3>Display techniques</h3>
+			
+			<p>To assist developers in implementing these guidelines,
+				in-depth notes are available to explain how to
+				extract information from publishing industry metadata
+				standards.</p>
+			
+			<p>At the time of publishing this document the available
+				techniques for metadata standards are:</p>
+			
+			<ul>
+				<li>
+					<p><a href="../techniques/epub-metadata/index.html">Display Techniques for EPUB Accessibility Metadata 2.0</a></p>
+				</li>
+				<li>
+					<p><a href="../techniques/onix-metadata/index.html">Display Techniques for ONIX Accessibility Metadata 2.0</a></p>
+				</li>
+			</ul>
+			
+			<div class="note">
+				<p>Publishers update their ONIX records as needed. We
+					expect "unknown" accessibility metadata may be
+					initially provided but may change as more
+					information becomes available. For this reason,
+					implementors should be prepared to update the
+					accessibility metadata as new ONIX feeds are made
+					available.</p>
+			</div>
+		</section>
+		
 		<section id="terminology">
 			<h3>Terminology</h3>
 
@@ -430,17 +461,18 @@
 		<section id="a11y-section">
 			<h3>Accessibility section</h3>
 
-			<section id="a11y-section-hd">
-				<h4>Accessibility header</h4>
+			<section id="a11y-display-hd">
+				<h4>Display heading</h4>
 
 				<p>When presenting accessibility metadata provided by the
 					publisher, it is suggested that the section is
 					introduced using terms such as "claims" or
-					"declarations." This heading should clearly convey to
+					"declarations" (e.g., "Accessibility Claims").</p>
+				
+				<p>The heading should clearly convey to
 					the end user that the information comes directly from the
 					publisher and represents the accessibility
-					information that the publisher intends to communicate.
-				</p>
+					information that the publisher intends to communicate.</p>
 			</section>
 
 			<section id="rec-fields">
@@ -467,7 +499,7 @@
 				</ul>
 
 				<p>This is why these guidelines recommend that the following <a
-						href="#order-of-information">accessibility fields</a> should be
+						href="#a11y-display-fields">accessibility fields</a> should be
 					displayed:</p>
 
 				<ul>
@@ -477,75 +509,71 @@
 					<li><a href="#conformance-group">Conformance</a></li>
 				</ul>
 
-				<p>The other metadata topics discussed below provide further details about specific features or shortcomings in a publication to give people the information they need to make an informed choice when selecting a particular digital publication.</p>
-
-				<div class="note">
-					<p>This document does not define the order in which to show the accessibility information; each
-						implementer can decide the preferred order and appropriate headings to use to show the
-						accessibility information that follows.</p>
-				</div>
+				<p>The other metadata fields provide additional details about specific features or shortcomings in 
+					a publication. They give people the information they need to make an informed choice when selecting 
+					a particular digital publication.</p>
+			</section>
+			
+			<section id="field-order">
+				<h4>Display field order</h4>
+				
+				<p>Implementers can choose the order in which they prefer to display the <a
+						href="#a11y-display-fields">accessibility metadata fields</a>.</p>
+				
+				<p>Moreover, although the metadata fields in this document are named, it is not required that
+					implementers use these names as the field headings. Implementers can use alternative
+					field names if they would make more sense in their display context.</p>
 			</section>
 
 			<section id="additional-a11y-meta">
 				<h4>Additional accessibility metadata</h4>
 
-				<p>This document showcases examples of important metadata that is expected to be present in a wide range of publications. Available metadata schemas can support statements about many other features. The techniques documents provide additional examples.</p>
+				<p>Although this document showcases examples of important metadata that is expected to be present 
+					in a wide range of publications, available metadata schemas can support statements about many 
+					other features.</p>
+				
+				<p>The <a href="#techniques">techniques documents</a> describe how to output additional information not listed in this
+					document. In addition, implementers may choose to display metadata that is not covered by
+					this document or the techniques.</p>
 			</section>
 
 			<section id="missing-metadata">
 				<h4>Missing metadata</h4>
 
 				<p>When no accessibility metadata is provided by the publisher, it is best to
-					avoid making a negative statement that could be attributed to them.
-					The neutral statement "No information is available" is shown in the examples for this case.</p>
+					avoid making a negative statement that could be attributed to them (e.g., stating
+					it is not known if a feature is available could be misconstrued as the publisher
+					saying they are unsure). The neutral statement "No information is available" is 
+					shown in the examples for this case.</p>
 
 				<p>In some cases, the distributer may not be allowed to show statements the publisher did not make.
 					Hiding such sections is acceptable in these cases.</p>
-			</section>
-
-			<section id="techniques">
-				<h3>Display techniques</h3>
-
-				<p>To assist developers in implementing these guidelines,
-					in-depth notes are available to explain how to
-					extract information from publishing industry metadata
-					standards.</p>
-
-				<p>At the time of publishing this document the available
-					techniques for metadata standards are:</p>
-
-				<ul>
-					<li>
-						<p><a href="../techniques/epub-metadata/index.html">Display Techniques for EPUB Accessibility Metadata 2.0</a></p>
-					</li>
-					<li>
-						<p><a href="../techniques/onix-metadata/index.html">Display Techniques for ONIX Accessibility Metadata 2.0</a></p>
-					</li>
-				</ul>
-
-				<div class="note">
-					<p>Publishers update their ONIX records as needed. We
-						expect "unknown" accessibility metadata may be
-						initially provided but may change as more
-						information becomes available. For this reason,
-						implementors should be prepared to update the
-						accessibility metadata as new ONIX feeds are made
-						available.</p>
-				</div>
 			</section>
 		</section>
 
 		<section id="alt-statements">
 			<h3>Alternative statements</h3>
 
-			<p>Although the display statements listed in this document and in the techniques documents are recommended for use, and have been translated to support localization, implementors may wish to use different wording in some situations.</p>
+			<p>Although the display statements listed in this document and in the <a href="#techniques">techniques 
+					documents</a> are recommended for use, and have been translated to support localization, 
+				implementors may prefer to use different wording in some situations.</p>
+			
+			<p>This document does not restrict implementers from using alternative phrasing, however
+				any deviations should be done with caution. The phrases defined in this document resulted
+				from much discussion among accessibility professionals as well as from user feedback.</p>
+			
+			<p>If the cause of alternative wording is due to translation issues, implementers are encouraged
+				to <a href="https://github.com/w3c/publ-a11y/issues/">techniques documents</a> for correction.</p>
 		</section>
 
 		<section id="non-a11y-meta">
 			<h3>Non-accessibility metadata</h3>
 
-			<p>The product details provide important information about the usability of the e-book in relation to
-				specific user needs. The following information should always be displayed:</p>
+			<p>Not all metadata used in determining the accessibility of a publication is strictly categorized as
+				accessibility metadata. The product details, for example, provide important information about the 
+				usability of an ebook in relation to specific user needs.</p>
+			
+			<p>In particular, the following information should always be displayed:</p>
 
 			<ul>
 				<li>File format (EPUB 2 or 3, PDF, MP3, Audiobook, etc.) &#8212;
@@ -576,10 +604,12 @@
 					translation table
 					for the language.</li>
 			</ul>
+			
+			<p>This metadata does not have to be included as part of the accessibility section; it only
+				needs to be made available to users in the metadata display for a publication.</p>
 		</section>
 	</section>
-
-	<section id="order-of-information">
+	<section id="a11y-display-fields">
 		<h2>Accessibility display fields</h2>
 
 		<section id="ways-of-reading">
