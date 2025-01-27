@@ -621,17 +621,17 @@
 						<span><b>IF</b> <var>table_of_contents_navigation</var> <b>OR</b> <var>index_navigation</var> <b>OR</b> <var>page_navigation</var> <b>OR</b> <var>next_previous_structural_navigation</var>:</span>
 
 						<ol class="condition">
-							<li>
-								<span><b>IF</b> <var>index_navigation</var>:</span>
-								<span><b>THEN</b> display <code id="navigation-index">"Index"</code>.</span>
+                            <li>
+							    <span><b>IF</b> <var>page_navigation</var>:</span>
+				                <span><b>THEN</b> display <code id="navigation-page-navigation">"Go to page"</code>.</span>
 							</li>
 							<li>
  							<span><b>IF</b> <var>next_previous_structural_navigation</var>:</span>
 								<span><b>THEN</b> display <code id="navigation-structural">"Headings"</code>.</span>
 							</li>
-                            <li>
-							    <span><b>IF</b> <var>page_navigation</var>:</span>
-				                <span><b>THEN</b> display <code id="navigation-page-navigation">"Go to page"</code>.</span>
+							<li>
+								<span><b>IF</b> <var>index_navigation</var>:</span>
+								<span><b>THEN</b> display <code id="navigation-index">"Index"</code>.</span>
 							</li>
                             <li>
 								<span><b>IF</b> <var>table_of_contents_navigation</var>:</span>
