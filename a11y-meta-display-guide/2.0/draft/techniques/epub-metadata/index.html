@@ -743,23 +743,6 @@
 				<h4 id="rich-content-instructions">Instructions</h4>
 				<ol class="condition">
                     <li>
-						<span><b>IF</b> <var>chemical_formula_as_latex</var>:</span>
-						<span><b>THEN</b> display <code id="rich-content-accessible-chemistry-as-latex">"Chemical formulas in LaTeX"</code>.</span>
-					</li>
-   					<li>
-						<span><b>IF</b> <var>chemical_formula_as_mathml</var>:</span>
-						<span><b>THEN</b> display <code id="rich-content-accessible-chemistry-as-mathml">"Chemical formulas in MathML"</code>.</span>
-					</li>
- 					<li>
-						<span><b>IF</b> <var>closed_captions</var>:</span>
-						<span><b>THEN</b> display <code id="rich-content-closed-captions">"Videos have closed captions"</code>.</span>
-					</li>
-
-                    <li>
-						<span><b>IF</b> <var>contains_math_formula</var>:</span>
-						<span><b>THEN</b> display <code id="rich-content-accessible-math-described">"Text descriptions of math are provided"</code>.</span>
-					</li>
-                    <li>
 						<span><b>IF</b> <var>long_text_descriptions</var>:</span>
 						<span><b>THEN</b> display <code id="rich-content-extended">"Information-rich images are described by extended descriptions"</code>.</span>
 					</li>
@@ -772,6 +755,11 @@
 						<span><b>IF</b> <var>math_formula_as_mathml</var>:</span>
 						<span><b>THEN</b> display <code id="rich-content-accessible-math-as-mathml">"Math as MathML"</code>.</span>
 					</li>
+                    
+ 					<li>
+						<span><b>IF</b> <var>closed_captions</var>:</span>
+						<span><b>THEN</b> display <code id="rich-content-closed-captions">"Videos have closed captions"</code>.</span>
+					</li>
  					<li>
 						<span><b>IF</b> <var>open_captions</var>:</span>
 						<span><b>THEN</b> display <code id="rich-content-open-captions">"Videos have open captions"</code>.</span>
@@ -780,6 +768,16 @@
 						<span><b>IF</b> <var>transcript</var>:</span>
 						<span><b>THEN</b> display <code id="rich-content-transcript">"Transcript(s) provided"</code>.</span>
 					</li>
+                                        
+                    <li>
+						<span><b>IF</b> <var>chemical_formula_as_latex</var>:</span>
+						<span><b>THEN</b> display <code id="rich-content-accessible-chemistry-as-latex">"Chemical formulas in LaTeX"</code>.</span>
+					</li>
+   					<li>
+						<span><b>IF</b> <var>chemical_formula_as_mathml</var>:</span>
+						<span><b>THEN</b> display <code id="rich-content-accessible-chemistry-as-mathml">"Chemical formulas in MathML"</code>.</span>
+					</li>
+
 					<li>
 						<span><b>IF</b> <b>NOT</b> (<var>math_formula_as_mathml</var> <b>OR</b> <var>math_formula_as_latex</var> <b>OR</b> (<var>contains_math_formula</var> <b>AND</b> <var>long_text_descriptions</var>) <b>OR</b> <var>chemical_formula_as_mathml</var> <b>OR</b> <var>long_text_descriptions</var> <b>OR</b> <var>closed_captions</var> <b>OR</b> <var>open_captions</var> <b>OR</b> <var>transcript</var>):</span>
 						<span><b>THEN</b> either omit this display field if metadata is missing or display <code id="rich-content-unknown">"No information is available"</code>.</span>
