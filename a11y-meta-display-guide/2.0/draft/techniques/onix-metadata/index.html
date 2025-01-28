@@ -366,6 +366,16 @@
 							<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/81/01">code 01 of codelist 81</a> (Audiobook) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
 							<p>This means that the primary content is an Audio recording of a reading of a book or other text.</p>
 						</dd>
+						<dt><var>non_textual_content_audio</var></dt>
+						<dd>
+							<p>If true it indicates that one of the following codes is present in the ONIX record: </p>
+							<ul>
+								<li><a href="https://ns.editeur.org/onix/en/81/21">code 21 of codelist 81</a> (Partial performance – spoken word);</li>
+								<li><a href="https://ns.editeur.org/onix/en/81/22">code 22 of codelist 81</a> (Additional audio content not part of main content);</li>
+							</ul>
+							<p>Otherwise, if false, it means that none of the above metadata is present.</p>
+							<p>This indicates that pre-recorded audio content is included as part of the work. It can be Audio recording of a reading, performance or dramatization of part of the work	or additional pre-recorded audio of any supplementary material such as full or partial reading, lecture, performance, dramatization, interview, background documentary or other audio content not included in the primary or un-enhanced version</p>
+						</dd>
 						<dt><var>non_textual_content_audio_in_video</var></dt>
 						<dd>
 							<p>If true it indicates that one of the following codes is present in the ONIX record: </p>
@@ -380,16 +390,6 @@
 								</ul>
 								<p>Otherwise, if false, it means that none of the above metadata is present.</p>
 								<p>This indicates that pre-recorded video including audio content is included as part of the work. It can be video recording of a reading, performance of part of the work or additional pre-recorded video of any supplementary material such as full or partial reading, lecture, performance, dramatization, interview, background documentary or other video containing audio content.</p>
-						</dd>
-						<dt><var>non_textual_content_audio</var></dt>
-						<dd>
-							<p>If true it indicates that one of the following codes is present in the ONIX record: </p>
-							<ul>
-								<li><a href="https://ns.editeur.org/onix/en/81/21">code 21 of codelist 81</a> (Partial performance – spoken word);</li>
-								<li><a href="https://ns.editeur.org/onix/en/81/22">code 22 of codelist 81</a> (Additional audio content not part of main content);</li>
-							</ul>
-							<p>Otherwise, if false, it means that none of the above metadata is present.</p>
-							<p>This indicates that pre-recorded audio content is included as part of the work. It can be Audio recording of a reading, performance or dramatization of part of the work	or additional pre-recorded audio of any supplementary material such as full or partial reading, lecture, performance, dramatization, interview, background documentary or other audio content not included in the primary or un-enhanced version</p>
 						</dd>
 						<dt><var>synchronised_pre_recorded_audio</var></dt>
 						<dd>
@@ -408,8 +408,8 @@
 						<li><b>LET</b> <var>all_content_audio</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "39"]</code>.</li>
 						<li><b>LET</b> <var>all_content_pre_recorded</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "51"]</code>.</li>
 						<li><b>LET</b> <var>audiobook</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail[PrimaryContentType = "81" or ProductContentType = "81"] </code>.</li>
-						<li><b>LET</b> <var>non_textual_content_audio_in_video</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail[PrimaryContentType = "06" or PrimaryContentType = "25" or PrimaryContentType = "26" or PrimaryContentType = "27" or PrimaryContentType = "28" or PrimaryContentType = "29" or PrimaryContentType = "30" or ProductContentType = "06" or ProductContentType = "25" or ProductContentType = "26" or ProductContentType = "27" or ProductContentType = "28" or ProductContentType = "29" or ProductContentType = "30"] </code>.</li>
 						<li><b>LET</b> <var>non_textual_content_audio</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail[PrimaryContentType = "21" or ProductContentType = "22" or ProductContentType = "21" or ProductContentType = "22"] </code>.</li>
+						<li><b>LET</b> <var>non_textual_content_audio_in_video</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail[PrimaryContentType = "06" or PrimaryContentType = "25" or PrimaryContentType = "26" or PrimaryContentType = "27" or PrimaryContentType = "28" or PrimaryContentType = "29" or PrimaryContentType = "30" or ProductContentType = "06" or ProductContentType = "25" or ProductContentType = "26" or ProductContentType = "27" or ProductContentType = "28" or ProductContentType = "29" or ProductContentType = "30"] </code>.</li>
 						<li><b>LET</b> <var>synchronised_pre_recorded_audio</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "20"]</code> <b>AND</b> calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormDetail[normalize-space() = "A305"]</code>.</li>
 					</ol>
 					<h4>Instructions</h4>
