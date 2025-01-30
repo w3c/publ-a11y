@@ -31,20 +31,28 @@
                             <xsl:when test="not(contains($current-id, '-title'))">
                                 <xsl:element name="{$current-id}">
                                     <xsl:element name="compact">
-                                        <xsl:choose>
-                                            <xsl:when test="document($guidelines)//*[@data-localization-id=$current-id and @data-localization-mode='compact']">
-                                                <xsl:value-of select="normalize-space(document($guidelines)//*[@data-localization-id=$current-id and @data-localization-mode='compact'][1])"/>
-                                            </xsl:when>
-                                            <xsl:when test="document($epub)//*[@id=$current-id]">
-                                                <xsl:value-of select="normalize-space(substring(document($epub)//*[@id=$current-id][1], 2, string-length(document($epub)//*[@id=$current-id][1]) - 2))"/>
-                                            </xsl:when>
-                                            <xsl:when test="document($onix)//*[@id=$current-id]">
-                                                <xsl:value-of select="normalize-space(substring(document($onix)//*[@id=$current-id][1], 2, string-length(document($onix)//*[@id=$current-id][1]) - 2))"/>
-                                            </xsl:when>
-                                        </xsl:choose>
+                                        <xsl:variable name="compact">
+                                            <xsl:choose>
+                                                <xsl:when test="document($guidelines)//*[@data-localization-id=$current-id and @data-localization-mode='compact']">
+                                                    <xsl:value-of select="concat('|', document($guidelines)//*[@data-localization-id=$current-id and @data-localization-mode='compact'][1], '|')" />
+                                                </xsl:when>
+                                                <xsl:when test="document($epub)//*[@id=$current-id]">
+                                                    <!--<xsl:value-of select="substring(normalize-space(document($epub)//*[@id=$current-id][1]), 2, string-length(normalize-space(document($epub)//*[@id=$current-id][1])) - 2)"/>-->
+                                                    <xsl:value-of select="normalize-space(translate(document($epub)//*[@id=$current-id][1], '&quot;', '|'))"/>
+                                                </xsl:when>
+                                                <xsl:when test="document($onix)//*[@id=$current-id]">
+                                                    <!--<xsl:value-of select="substring(normalize-space(document($onix)//*[@id=$current-id][1]), 2, string-length(normalize-space(document($onix)//*[@id=$current-id][1])) - 2)"/>-->
+                                                    <xsl:value-of select="normalize-space(translate(document($onix)//*[@id=$current-id][1], '&quot;', '|'))"/>
+                                                </xsl:when>
+                                            </xsl:choose>
+                                        </xsl:variable>
+                                        <xsl:value-of select="normalize-space($compact)"/>
                                     </xsl:element>
                                     <xsl:element name="descriptive">
-                                        <xsl:value-of select="normalize-space(document($guidelines)//*[@data-localization-id=$current-id and @data-localization-mode='descriptive'][1])"/>
+                                        <xsl:variable name="descriptive">
+                                            <xsl:value-of select="concat('|', document($guidelines)//*[@data-localization-id=$current-id and @data-localization-mode='descriptive'][1], '|')"/>
+                                        </xsl:variable>
+                                        <xsl:value-of select="normalize-space($descriptive)"/>
                                     </xsl:element>
                                 </xsl:element>
                             </xsl:when>

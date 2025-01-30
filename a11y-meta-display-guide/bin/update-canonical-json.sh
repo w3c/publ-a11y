@@ -44,7 +44,13 @@ xsltproc --stringparam guidelines "$guidelines" \
          "$xslt_extract_strings" "$tmpdir/ids.xml" > "$tmpdir/strings.xml"
 
 # Convert to JSON
-yq --prettyPrint --xml-skip-proc-inst --indent 4 -p=xml -o=json '.root' "$tmpdir/strings.xml" > "$output_dir/en-US/display_guide_vocabulary_w3c_en-US.json"
+yq --prettyPrint --xml-skip-proc-inst --indent 4 -p=xml -o=json '.root' "$tmpdir/strings.xml" > "$tmpdir/temp.json"
+
+# Remove | characters and save to final destination
+sed 's/|//g' "$tmpdir/temp.json" > "$output_dir/en-US/display_guide_vocabulary_w3c_en-US.json"
+
+# Cleanup
+rm -rf "$tmpdir"
 
 # Cleanup
 rm -rf "$tmpdir"

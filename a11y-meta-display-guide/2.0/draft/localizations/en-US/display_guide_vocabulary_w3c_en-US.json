@@ -14,7 +14,7 @@
         },
         "ways-of-reading-nonvisual-reading-may-not-fully": {
             "compact": "May not be fully readable in read aloud or dynamic braille",
-            "descriptive": "Portions of the content may not be readable as read aloud speech or dynamic braille"
+            "descriptive": " Portions of the content may not be readable as read aloud speech or dynamic braille"
         },
         "ways-of-reading-nonvisual-reading-not-fully": {
             "compact": "Not fully readable in read aloud or dynamic braille",
@@ -29,12 +29,12 @@
             "descriptive": "Portions of prerecorded audio are available"
         },
         "ways-of-reading-prerecorded-audio-no-metadata": {
-            "compact": "No information about prerecorded audio is available",
-            "descriptive": "No information about prerecorded audio is available"
+            "compact": " No information about prerecorded audio is available",
+            "descriptive": " No information about prerecorded audio is available"
         },
         "ways-of-reading-prerecorded-audio-only": {
             "compact": "Prerecorded audio only",
-            "descriptive": "Audiobook with no text alternative"
+            "descriptive": " Audiobook with no text alternative"
         },
         "ways-of-reading-prerecorded-audio-synchronized": {
             "compact": "Prerecorded audio synchronized with text",
@@ -42,11 +42,11 @@
         },
         "ways-of-reading-visual-adjustments-modifiable": {
             "compact": "Appearance can be modified",
-            "descriptive": "Appearance of the text and page layout can be modified according to the capabilities of the reading system (font family and font size, spaces between paragraphs, sentences, words, and letters, as well as color of background and text)"
+            "descriptive": " Appearance of the text and page layout can be modified according to the capabilities of the reading system (font family and font size, spaces between paragraphs, sentences, words, and letters, as well as color of background and text)"
         },
         "ways-of-reading-visual-adjustments-unknown": {
             "compact": "No information about appearance modifiability is available",
-            "descriptive": "No information about appearance modifiability is available"
+            "descriptive": " No information about appearance modifiability is available"
         },
         "ways-of-reading-visual-adjustments-unmodifiable": {
             "compact": "Appearance cannot be modified",
@@ -68,48 +68,48 @@
             "descriptive": "The publication contains a conformance statement that it meets the EPUB Accessibility and WCAG 2 Level AAA standard"
         },
         "conformance-certification-info": {
-            "compact": "The publication was certified on",
-            "descriptive": "The publication was certified on"
+            "compact": "The publication was certified on ",
+            "descriptive": ""
         },
         "conformance-certifier": {
             "compact": "The publication was certified by",
-            "descriptive": "The publication was certified by"
+            "descriptive": ""
         },
         "conformance-certifier-credentials": {
-            "compact": "The certifier's credential is",
-            "descriptive": "The certifier's credential is"
+            "compact": "The certifier's credential is ",
+            "descriptive": ""
         },
         "conformance-certifier-report": {
             "compact": "For more information refer to the certifier's report",
-            "descriptive": null
+            "descriptive": ""
         },
         "conformance-claim": {
             "compact": "This publication claims to meet",
-            "descriptive": null
+            "descriptive": "This publication claims to meet"
         },
         "conformance-details": {
             "compact": "Detailed conformance information",
-            "descriptive": null
+            "descriptive": ""
         },
         "conformance-epub-accessibility-1-0": {
-            "compact": "EPUB Accessibility 1.0",
-            "descriptive": null
+            "compact": " EPUB Accessibility 1.0",
+            "descriptive": ""
         },
         "conformance-epub-accessibility-1-1": {
-            "compact": "EPUB Accessibility 1.1",
-            "descriptive": null
+            "compact": " EPUB Accessibility 1.1",
+            "descriptive": ""
         },
         "conformance-level-a": {
-            "compact": "Level A",
-            "descriptive": null
+            "compact": " Level A",
+            "descriptive": ""
         },
         "conformance-level-aa": {
-            "compact": "Level AA",
-            "descriptive": null
+            "compact": " Level AA",
+            "descriptive": ""
         },
         "conformance-level-aaa": {
-            "compact": "Level AAA",
-            "descriptive": null
+            "compact": " Level AAA",
+            "descriptive": ""
         },
         "conformance-no": {
             "compact": "No information is available",
@@ -117,19 +117,19 @@
         },
         "conformance-unknown-standard": {
             "compact": "Conformance to accepted standards for accessibility of this publication cannot be determined",
-            "descriptive": null
+            "descriptive": ""
         },
         "conformance-wcag-2-0": {
-            "compact": "WCAG 2.0",
-            "descriptive": null
+            "compact": " WCAG 2.0",
+            "descriptive": "Web Content Accessibility Guidelines (WCAG ) 2.0"
         },
         "conformance-wcag-2-1": {
-            "compact": "WCAG 2.1",
-            "descriptive": "Web Accessibility Content Guidelines (WCAG) 2.1"
+            "compact": " WCAG 2.1",
+            "descriptive": "Web Content Accessibility Guidelines (WCAG ) 2.1"
         },
         "conformance-wcag-2-2": {
-            "compact": "WCAG 2.2",
-            "descriptive": "Web Content Accessibility Guidelines (WCAG) 2.2"
+            "compact": " WCAG 2.2",
+            "descriptive": "Web Content Accessibility Guidelines (WCAG ) 2.2"
         }
     },
     "navigation": {
@@ -178,16 +178,16 @@
             "descriptive": "Text descriptions of math are provided"
         },
         "rich-content-closed-captions": {
-            "compact": "Videos have closed captions",
-            "descriptive": "Videos included in publications have closed captions"
+            "compact": " Videos have closed captions",
+            "descriptive": " Videos included in publications have closed captions"
         },
         "rich-content-extended": {
             "compact": "Information-rich images are described by extended descriptions",
             "descriptive": "Information-rich images are described by extended descriptions"
         },
         "rich-content-open-captions": {
-            "compact": "Videos have open captions",
-            "descriptive": "Videos included in publications have open captions"
+            "compact": " Videos have open captions",
+            "descriptive": " Videos included in publications have open captions"
         },
         "rich-content-transcript": {
             "compact": "Transcript(s) provided",
@@ -229,7 +229,7 @@
         "accessibility-summary-title": "Accessibility summary",
         "accessibility-summary-no-metadata": {
             "compact": "No information is available",
-            "descriptive": null
+            "descriptive": ""
         }
     },
     "legal-considerations": {
@@ -245,77 +245,89 @@
     },
     "additional-accessibility-information": {
         "additional-accessibility-information-title": "Additional accessibility information",
-        "additional-accessibility-information-adaptation-audio-descriptions": {
+        "additional-accessibility-information-adaptation-tactile-graphics": {
+            "compact": "Tactile graphics included",
+            "descriptive": "Tactile graphics have been integrated to facilitate access to visual elements for blind people"
+        },
+        "additional-accessibility-information-aria": {
+            "compact": "ARIA",
+            "descriptive": ""
+        },
+        "additional-accessibility-information-audio-descriptions": {
             "compact": "Audio descriptions",
-            "descriptive": null
+            "descriptive": ""
         },
-        "additional-accessibility-information-adaptation-braille": {
+        "additional-accessibility-information-braille": {
             "compact": "Braille",
-            "descriptive": null
-        },
-        "additional-accessibility-information-adaptation-dyslexia-readability": {
-            "compact": "Dyslexia readability",
-            "descriptive": null
-        },
-        "additional-accessibility-information-adaptation-sign-language": {
-            "compact": "Sign language",
-            "descriptive": null
-        },
-        "additional-accessibility-information-adaptation-tactile_graphics": {
-            "compact": "Tactile graphics",
-            "descriptive": null
-        },
-        "additional-accessibility-information-adaptation-tactile_objects": {
-            "compact": "Tactile 3D objects",
-            "descriptive": null
+            "descriptive": ""
         },
         "additional-accessibility-information-clarity-aria": {
-            "compact": "ARIA",
-            "descriptive": null
-        },
-        "additional-accessibility-information-clarity-color-not-sole-means-of-conveying-information": {
-            "compact": "Color is not the sole means of conveying information",
-            "descriptive": null
-        },
-        "additional-accessibility-information-clarity-full-ruby-annotations": {
-            "compact": "Full ruby annotations",
-            "descriptive": null
-        },
-        "additional-accessibility-information-clarity-high-contrast-between-foreground-and-background-audio": {
-            "compact": "High contrast between foreground and background audio",
-            "descriptive": null
-        },
-        "additional-accessibility-information-clarity-high-contrast-between-text-and-background": {
-            "compact": "High contrast between foreground text and background",
-            "descriptive": null
-        },
-        "additional-accessibility-information-clarity-large-print": {
-            "compact": "Large print",
-            "descriptive": null
+            "compact": "ARIA roles included",
+            "descriptive": "Content is enhanced with ARIA roles to optimize organization and facilitate navigation"
         },
         "additional-accessibility-information-clarity-page-breaks": {
-            "compact": "Visible page breaks",
-            "descriptive": null
+            "compact": "Page breaks included",
+            "descriptive": "Page breaks included from the original print source"
         },
-        "additional-accessibility-information-clarity-ruby-annotations": {
+        "additional-accessibility-information-color-not-sole-means-of-conveying-information": {
+            "compact": "Color is not the sole means of conveying information",
+            "descriptive": ""
+        },
+        "additional-accessibility-information-dyslexia-readability": {
+            "compact": "Dyslexia readability",
+            "descriptive": ""
+        },
+        "additional-accessibility-information-full-ruby-annotations": {
+            "compact": "Full ruby annotations",
+            "descriptive": ""
+        },
+        "additional-accessibility-information-high-contrast-between-foreground-and-background-audio": {
+            "compact": "High contrast between foreground and background audio",
+            "descriptive": ""
+        },
+        "additional-accessibility-information-high-contrast-between-text-and-background": {
+            "compact": "High contrast between foreground text and background",
+            "descriptive": ""
+        },
+        "additional-accessibility-information-large-print": {
+            "compact": "Large print",
+            "descriptive": ""
+        },
+        "additional-accessibility-information-page-breaks": {
+            "compact": "Page breaks",
+            "descriptive": ""
+        },
+        "additional-accessibility-information-ruby-annotations": {
             "compact": "Some Ruby annotations",
-            "descriptive": null
+            "descriptive": ""
         },
-        "additional-accessibility-information-clarity-text-to-speech-hinting": {
+        "additional-accessibility-information-sign-language": {
+            "compact": "Sign language",
+            "descriptive": ""
+        },
+        "additional-accessibility-information-tactile-graphics": {
+            "compact": "Tactile graphics",
+            "descriptive": ""
+        },
+        "additional-accessibility-information-tactile-objects": {
+            "compact": "Tactile 3D objects",
+            "descriptive": ""
+        },
+        "additional-accessibility-information-text-to-speech-hinting": {
             "compact": "Text-to-speech hinting provided",
-            "descriptive": null
+            "descriptive": ""
         },
-        "additional-accessibility-information-clarity-ultra-high-contrast-between-text-and-background": {
+        "additional-accessibility-information-ultra-high-contrast-between-text-and-background": {
             "compact": "Ultra high contrast between text and background",
-            "descriptive": null
+            "descriptive": ""
         },
-        "additional-accessibility-information-clarity-visible-page-numbering": {
-            "compact": "Visible page numbering",
-            "descriptive": null
+        "additional-accessibility-information-visible-page-numbering": {
+            "compact": "Visible page numbering ",
+            "descriptive": ""
         },
-        "additional-accessibility-information-clarity-without-background-sounds": {
+        "additional-accessibility-information-without-background-sounds": {
             "compact": "Without background sounds",
-            "descriptive": null
+            "descriptive": ""
         }
     }
 }
