@@ -296,14 +296,13 @@
                     </ol>
                     <h5>Instructions</h5>
                     <ol class="condition">
-                                <li>
-                                    <span><b>IF</b> <var>textual_alternative_images</var>:</span>
-                                    <span><b>THEN</b> display <code id="ways-of-reading-nonvisual-reading-alt-text">"Has alternative text"</code>.</span>
-                                </li>
-
                         <li>
                             <span><b>IF</b> <var>all_necessary_content_textual</var>:</span>
                             <span><b>THEN</b> display <code id="ways-of-reading-nonvisual-reading-readable">"Readable in read aloud or dynamic braille"</code>.</span>
+                        </li>
+                        <li>
+                            <span><b>IF</b> <var>textual_alternative_images</var>:</span>
+                            <span><b>THEN</b> display <code id="ways-of-reading-nonvisual-reading-alt-text">"Has alternative text"</code>.</span>
                         </li>
                         <li>
                             <span><b>ELSE IF</b> <var>non_textual_content_images</var> <b>AND</b> <b>NOT</b> <var>textual_alternative_images</var>:</span>
