@@ -69,19 +69,19 @@
         },
         "conformance-certification-info": {
             "compact": "The publication was certified on ",
-            "descriptive": ""
+            "descriptive": "The publication was certified on "
         },
         "conformance-certifier": {
             "compact": "The publication was certified by",
-            "descriptive": ""
+            "descriptive": "The publication was certified by "
         },
         "conformance-certifier-credentials": {
             "compact": "The certifier's credential is ",
-            "descriptive": ""
+            "descriptive": "The certifier's credential is "
         },
         "conformance-certifier-report": {
             "compact": "For more information refer to the certifier's report",
-            "descriptive": ""
+            "descriptive": "For more information refer to the certifier's report"
         },
         "conformance-claim": {
             "compact": "This publication claims to meet",
@@ -89,27 +89,27 @@
         },
         "conformance-details": {
             "compact": "Detailed conformance information",
-            "descriptive": ""
+            "descriptive": "Detailed conformance information"
         },
         "conformance-epub-accessibility-1-0": {
             "compact": " EPUB Accessibility 1.0",
-            "descriptive": ""
+            "descriptive": " EPUB Accessibility 1.0"
         },
         "conformance-epub-accessibility-1-1": {
             "compact": " EPUB Accessibility 1.1",
-            "descriptive": ""
+            "descriptive": " EPUB Accessibility 1.1"
         },
         "conformance-level-a": {
             "compact": " Level A",
-            "descriptive": ""
+            "descriptive": " Level A"
         },
         "conformance-level-aa": {
             "compact": " Level AA",
-            "descriptive": ""
+            "descriptive": " Level AA"
         },
         "conformance-level-aaa": {
             "compact": " Level AAA",
-            "descriptive": ""
+            "descriptive": " Level AAA"
         },
         "conformance-no": {
             "compact": "No information is available",
@@ -117,7 +117,7 @@
         },
         "conformance-unknown-standard": {
             "compact": "Conformance to accepted standards for accessibility of this publication cannot be determined",
-            "descriptive": ""
+            "descriptive": "Conformance to accepted standards for accessibility of this publication cannot be determined"
         },
         "conformance-wcag-2-0": {
             "compact": " WCAG 2.0",
@@ -229,7 +229,7 @@
         "accessibility-summary-title": "Accessibility summary",
         "accessibility-summary-no-metadata": {
             "compact": "No information is available",
-            "descriptive": ""
+            "descriptive": "No information is available"
         }
     },
     "legal-considerations": {
@@ -251,15 +251,15 @@
         },
         "additional-accessibility-information-aria": {
             "compact": "ARIA",
-            "descriptive": ""
+            "descriptive": "ARIA"
         },
         "additional-accessibility-information-audio-descriptions": {
             "compact": "Audio descriptions",
-            "descriptive": ""
+            "descriptive": "Audio descriptions"
         },
         "additional-accessibility-information-braille": {
             "compact": "Braille",
-            "descriptive": ""
+            "descriptive": "Braille"
         },
         "additional-accessibility-information-clarity-aria": {
             "compact": "ARIA roles included",
@@ -271,63 +271,63 @@
         },
         "additional-accessibility-information-color-not-sole-means-of-conveying-information": {
             "compact": "Color is not the sole means of conveying information",
-            "descriptive": ""
+            "descriptive": "Color is not the sole means of conveying information"
         },
         "additional-accessibility-information-dyslexia-readability": {
             "compact": "Dyslexia readability",
-            "descriptive": ""
+            "descriptive": "Dyslexia readability"
         },
         "additional-accessibility-information-full-ruby-annotations": {
             "compact": "Full ruby annotations",
-            "descriptive": ""
+            "descriptive": "Full ruby annotations"
         },
         "additional-accessibility-information-high-contrast-between-foreground-and-background-audio": {
             "compact": "High contrast between foreground and background audio",
-            "descriptive": ""
+            "descriptive": "High contrast between foreground and background audio"
         },
         "additional-accessibility-information-high-contrast-between-text-and-background": {
             "compact": "High contrast between foreground text and background",
-            "descriptive": ""
+            "descriptive": "High contrast between foreground text and background"
         },
         "additional-accessibility-information-large-print": {
             "compact": "Large print",
-            "descriptive": ""
+            "descriptive": "Large print"
         },
         "additional-accessibility-information-page-breaks": {
             "compact": "Page breaks",
-            "descriptive": ""
+            "descriptive": "Page breaks"
         },
         "additional-accessibility-information-ruby-annotations": {
             "compact": "Some Ruby annotations",
-            "descriptive": ""
+            "descriptive": "Some Ruby annotations"
         },
         "additional-accessibility-information-sign-language": {
             "compact": "Sign language",
-            "descriptive": ""
+            "descriptive": "Sign language"
         },
         "additional-accessibility-information-tactile-graphics": {
             "compact": "Tactile graphics",
-            "descriptive": ""
+            "descriptive": "Tactile graphics"
         },
         "additional-accessibility-information-tactile-objects": {
             "compact": "Tactile 3D objects",
-            "descriptive": ""
+            "descriptive": "Tactile 3D objects"
         },
         "additional-accessibility-information-text-to-speech-hinting": {
             "compact": "Text-to-speech hinting provided",
-            "descriptive": ""
+            "descriptive": "Text-to-speech hinting provided"
         },
         "additional-accessibility-information-ultra-high-contrast-between-text-and-background": {
             "compact": "Ultra high contrast between text and background",
-            "descriptive": ""
+            "descriptive": "Ultra high contrast between text and background"
         },
         "additional-accessibility-information-visible-page-numbering": {
             "compact": "Visible page numbering ",
-            "descriptive": ""
+            "descriptive": "Visible page numbering "
         },
         "additional-accessibility-information-without-background-sounds": {
             "compact": "Without background sounds",
-            "descriptive": ""
+            "descriptive": "Without background sounds"
         }
     }
 }

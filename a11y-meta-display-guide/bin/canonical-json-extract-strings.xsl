@@ -50,7 +50,19 @@
                                     </xsl:element>
                                     <xsl:element name="descriptive">
                                         <xsl:variable name="descriptive">
-                                            <xsl:value-of select="concat('|', document($guidelines)//*[@data-localization-id=$current-id and @data-localization-mode='descriptive'][1], '|')"/>
+                                            <xsl:choose>
+                                                <xsl:when test="document($guidelines)//*[@data-localization-id=$current-id and @data-localization-mode='descriptive']">
+                                                    <xsl:value-of select="concat('|', document($guidelines)//*[@data-localization-id=$current-id and @data-localization-mode='descriptive'][1], '|')"/>
+                                                </xsl:when>
+                                                <xsl:when test="document($epub)//*[@id=$current-id]">
+                                                    <!--<xsl:value-of select="substring(normalize-space(document($epub)//*[@id=$current-id][1]), 2, string-length(normalize-space(document($epub)//*[@id=$current-id][1])) - 2)"/>-->
+                                                    <xsl:value-of select="normalize-space(translate(document($epub)//*[@id=$current-id][1], '&quot;', '|'))"/>
+                                                </xsl:when>
+                                                <xsl:when test="document($onix)//*[@id=$current-id]">
+                                                    <!--<xsl:value-of select="substring(normalize-space(document($onix)//*[@id=$current-id][1]), 2, string-length(normalize-space(document($onix)//*[@id=$current-id][1])) - 2)"/>-->
+                                                    <xsl:value-of select="normalize-space(translate(document($onix)//*[@id=$current-id][1], '&quot;', '|'))"/>
+                                                </xsl:when>
+                                            </xsl:choose>
                                         </xsl:variable>
                                         <xsl:value-of select="normalize-space($descriptive)"/>
                                     </xsl:element>
