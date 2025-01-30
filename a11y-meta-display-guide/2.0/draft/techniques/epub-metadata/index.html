@@ -254,7 +254,12 @@
                             <p>If true it indicates that there is only a single access mode of textual or <i>accessModeSufficient="textual"</i> (all main content is provided in textual form) is present in the package document, otherwise if false it means that the metadata is not present.</p>
                             <p><i>All non-decorative content supports reading without sight</i> means that all contents of the digital publication necessary to use and understanding, including text, images (via their alternative descriptions), audio and video material (via their transcripts, descriptions, captions or subtitles) are fully accessible via suitable reading devices, for example text-to-speech screen readers or tactile reading devices (‘Braille displays’), and nothing in the digital publication prevents or blocks the use of alternative reading modes. The entire publication can be navigated and ‘read’ using only text rendered via sound or touch, and does not require visual perception.</p>
                         </dd>
-                        <dt><var>non_textual_content</var></dt>
+                    	<dt><var>has_nonvisual_metadata</var></dt>
+                    	<dd>
+                    		<p>If true it indicates that the publisher has stated a least one access mode or sufficient access mode.</p>
+                    		<p>If this metadata is not set, it is not possible to determine whether or not the content will be readable nonvisually.</p>
+                    	</dd>
+                    	<dt><var>non_textual_content</var></dt>
                         <dd>
                             <p>If true it indicates that there is non-textual content such as images, audio, or video in the publication.</p>
                         </dd>
