@@ -1038,130 +1038,113 @@
 			<section id="additional-accessibility-information">
 				<h3>Additional accessibility information</h3>
 				<p>This technique relates to the <a href="../../guidelines/#additional-accessibility-information">Additional accessibility information accessibility display field</a>.</p>
+				<p>This algorithm takes the <var>onix_record_as_text</var> argument: a UTF-8 string representing the ONIX record.</p>
 
-				<section id="additional-accessibility-information-adaptation">
-					<h3>Adaptation</h3>
-					<p>This algorithm takes the <var>onix_record_as_text</var> argument: a UTF-8 string representing the ONIX record.</p>
-					<h5>Understanding the variables</h5>
-					<dl>
-						<dt><var>dyslexia_readability</var></dt>
-						<dd>
-							<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/196/24">code 24 of codelist 196</a> (Dyslexia readability) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
-							<p>This means that the product has been specifically adapted or has features specifically to improve readability for dyslexic readers, for example specialized font, character and/or line spacing, justification and paragraph spacing, coloring and other options provided specifically to improve readability for dyslexic readers.</p>
-						</dd>
-						<dt><var>sign_language</var></dt>
-						<dd>
-							<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/175/V213">code V213 of codelist 175</a> (Sign language interpretation) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
-							<p>This means that a full signing of audio content of the product supplied with the video file.</p>
-						</dd>
-					</dl>
+		
+				<h4>Understanding the variables</h4>
+				<dl>
+					<dt><var>color_not_sole_means_of_conveying_information</var></dt>
+					<dd>
+						<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/196/25">code 25 of codelist 196</a> (Use of color is not sole means of conveying information) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+						<p>This means that for readers with color vision deficiency, use of color (eg in diagrams, graphs and charts, in prompts or on buttons inviting a response) is not the sole means of graphical distinction or of conveying information.</p>
+					</dd>
+					<dt><var>dyslexia_readability</var></dt>
+					<dd>
+						<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/196/24">code 24 of codelist 196</a> (Dyslexia readability) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+						<p>This means that the product has been specifically adapted or has features specifically to improve readability for dyslexic readers, for example specialized font, character and/or line spacing, justification and paragraph spacing, coloring and other options provided specifically to improve readability for dyslexic readers.</p>
+					</dd>
+					<dt><var>high_contrast_between_foreground_and_background_audio</var></dt>
+					<dd>
+						<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/196/27">code 27 of codelist 196</a> (Use of high contrast between foreground and background audio) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+						<p>This means that foreground audio content (eg voice) is presented with no or low background noise (eg ambient sounds, music), at least 20dB below the level of the foreground, or background noise can be switched off (eg via an alternative audio track). Brief and occasional sound effects may be as loud as foreground voice so long as they are isolated from the foreground.</p>
+					</dd>
+					<dt><var>high_contrast_between_text_and_background</var></dt>
+					<dd>
+						<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/196/26">code 26 of codelist 196</a> (Use of high contrast between text and background color) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+						<p>This means that body text is presented with a contrast ratio of at least 4.5:1 (or 3:1 for large/heading text).</p>
+					</dd>
+					<dt><var>sign_language</var></dt>
+					<dd>
+						<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/175/V213">code V213 of codelist 175</a> (Sign language interpretation) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+						<p>This means that a full signing of audio content of the product supplied with the video file.</p>
+					</dd>
+					<dt><var>text_to_speech_hinting</var></dt>
+					<dd>
+						<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/196/21">code 21 of codelist 196</a> (Text-to-speech hinting provided) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+						<p>This means that text-to-speech has been optimized through provision of PLS lexicons, SSML or CSS Speech synthesis hints or other speech synthesis markup languages or hinting.</p>
+					</dd>
+					<dt><var>ultra_high_contrast_between_text_and_background</var></dt>
+					<dd>
+						<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/196/37">code 37 of codelist 196</a> (Use of ultra-high contrast between text foreground and background) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+						<p>This means that body text is presented with a contrast ratio of at least 7:1 (or 4.5:1 for large/heading text).</p>
+					</dd>
+					<dt><var>visible_page_numbering</var></dt>
+					<dd>
+						<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/175/E205">code E205 of codelist 175</a> (Visible page numbering) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+						<p>This means that the e-publication (mostly in the case of a fixed-format) contains visible page numbers.</p>
+					</dd>
+					
+					<dt><var>without_background_sounds</var></dt>
+					<dd>
+						<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/175/A312">code A312 of codelist 175</a> (Without background sounds) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+						<p>This means that pre-recorded audiobook narration does not contain any background sounds, including music, sound effects, etc, though music and effects may be present if isolated from the speech (ie the sounds do not overlap).</p>
+					</dd>
+				</dl>
 
-					<h5>Variables setup</h5>
-					<ol class="condition">
-						<li><b>LET</b> <var>onix</var> be the result of calling <a href="#preprocessing">preprocessing</a> given <var>onix_record_as_text</var>.</li>
-						<li><b>LET</b> <var>dyslexia_readability</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "24"]</code>.</li>
-						<li><b>LET</b> <var>sign_language</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail[ProductFormDetail = "V213"]</code>.</li>
-					</ol>
+				<h4>Variables setup</h4>
+				<ol class="condition">
+					<li><b>LET</b> <var>onix</var> be the result of calling <a href="#preprocessing">preprocessing</a> given <var>onix_record_as_text</var>.</li>
+					<li><b>LET</b> <var>color_not_sole_means_of_conveying_information</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "25"]</code>.</li>
+					<li><b>LET</b> <var>dyslexia_readability</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "24"]</code>.</li>
+					<li><b>LET</b> <var>high_contrast_between_foreground_and_background_audio</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "27"]</code>.</li>
+					<li><b>LET</b> <var>high_contrast_between_text_and_background</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "26"]</code>.</li>
+					<li><b>LET</b> <var>sign_language</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail[ProductFormDetail = "V213"]</code>.</li>
+					<li><b>LET</b> <var>text_to_speech_hinting</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "21"]</code>.</li>
+					<li><b>LET</b> <var>ultra_high_contrast_between_text_and_background</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "37"]</code>.</li>
+					<li><b>LET</b> <var>visible_page_numbering</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail[ProductFormDetail = "E205"]</code>.</li>
+					<li><b>LET</b> <var>without_background_sounds</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail[ProductFormDetail = "A312"]</code>.</li>
+				</ol>
 
-					<h5>Instructions</h5>
-					<ol class="condition">
-						<li>
-							<span><b>IF</b> <var>dyslexia_readability</var>:</span>
-							<span><b>THEN</b> display <code id="additional-accessibility-information-adaptation-dyslexia-readability">"Dyslexia readability"</code>.</span>
-						</li>
-						<li>
-							<span><b>IF</b> <var>sign_language</var>:</span>
-							<span><b>THEN</b> display <code id="additional-accessibility-information-adaptation-sign-language">"Sign language"</code>.</span>
-						</li>
-					</ol>
-				</section>
-
-				<section id="additional-accessibility-information-clarity">
-					<h3>Clarity</h3>
-					<p>This algorithm takes the <var>onix_record_as_text</var> argument: a UTF-8 string representing the ONIX record.</p>
-					<h5>Understanding the variables</h5>
-					<dl>
-						<dt><var>text_to_speech_hinting</var></dt>
-						<dd>
-							<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/196/21">code 21 of codelist 196</a> (Text-to-speech hinting provided) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
-							<p>This means that text-to-speech has been optimized through provision of PLS lexicons, SSML or CSS Speech synthesis hints or other speech synthesis markup languages or hinting.</p>
-						</dd>
-						<dt><var>color_not_sole_means_of_conveying_information</var></dt>
-						<dd>
-							<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/196/25">code 25 of codelist 196</a> (Use of color is not sole means of conveying information) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
-							<p>This means that for readers with color vision deficiency, use of color (eg in diagrams, graphs and charts, in prompts or on buttons inviting a response) is not the sole means of graphical distinction or of conveying information.</p>
-						</dd>
-						<dt><var>high_contrast_between_text_and_background</var></dt>
-						<dd>
-							<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/196/26">code 26 of codelist 196</a> (Use of high contrast between text and background color) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
-							<p>This means that body text is presented with a contrast ratio of at least 4.5:1 (or 3:1 for large/heading text).</p>
-						</dd>
-						<dt><var>ultra_high_contrast_between_text_and_background</var></dt>
-						<dd>
-							<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/196/37">code 37 of codelist 196</a> (Use of ultra-high contrast between text foreground and background) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
-							<p>This means that body text is presented with a contrast ratio of at least 7:1 (or 4.5:1 for large/heading text).</p>
-						</dd>
-						<dt><var>visible_page_numbering</var></dt>
-						<dd>
-							<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/175/E205">code E205 of codelist 175</a> (Visible page numbering) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
-							<p>This means that the e-publication (mostly in the case of a fixed-format) contains visible page numbers.</p>
-						</dd>
-						<dt><var>high_contrast_between_foreground_and_background_audio</var></dt>
-						<dd>
-							<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/196/27">code 27 of codelist 196</a> (Use of high contrast between foreground and background audio) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
-							<p>This means that foreground audio content (eg voice) is presented with no or low background noise (eg ambient sounds, music), at least 20dB below the level of the foreground, or background noise can be switched off (eg via an alternative audio track). Brief and occasional sound effects may be as loud as foreground voice so long as they are isolated from the foreground.</p>
-						</dd>
-						<dt><var>without_background_sounds</var></dt>
-						<dd>
-							<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/175/A312">code A312 of codelist 175</a> (Without background sounds) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
-							<p>This means that pre-recorded audiobook narration does not contain any background sounds, including music, sound effects, etc, though music and effects may be present if isolated from the speech (ie the sounds do not overlap).</p>
-						</dd>
-					</dl>
-
-					<h5>Variables setup</h5>
-					<ol class="condition">
-						<li><b>LET</b> <var>onix</var> be the result of calling <a href="#preprocessing">preprocessing</a> given <var>onix_record_as_text</var>.</li>
-						<li><b>LET</b> <var>text_to_speech_hinting</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "21"]</code>.</li>
-						<li><b>LET</b> <var>color_not_sole_means_of_conveying_information</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "25"]</code>.</li>
-						<li><b>LET</b> <var>high_contrast_between_text_and_background</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "26"]</code>.</li>
-						<li><b>LET</b> <var>ultra_high_contrast_between_text_and_background</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "37"]</code>.</li>
-						<li><b>LET</b> <var>visible_page_numbering</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail[ProductFormDetail = "E205"]</code>.</li>
-						<li><b>LET</b> <var>high_contrast_between_foreground_and_background_audio</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "27"]</code>.</li>
-						<li><b>LET</b> <var>without_background_sounds</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail[ProductFormDetail = "A312"]</code>.</li>
-					</ol>
-
-					<h5>Instructions</h5>
-					<ol class="condition">
-						<li>
-							<span><b>IF</b> <var>text_to_speech_hinting</var>:</span>
-							<span><b>THEN</b> display <code id="additional-accessibility-information-clarity-text-to-speech-hinting">"Text-to-speech hinting provided"</code>.</span>
-						</li>
-						<li>
-							<span><b>IF</b> <var>color_not_sole_means_of_conveying_information</var>:</span>
-							<span><b>THEN</b> display <code id="additional-accessibility-information-clarity-color-not-sole-means-of-conveying-information">"Color is not the sole means of conveying information"</code>.</span>
-						</li>
-						<li>
-							<span><b>IF</b> <var>high_contrast_between_text_and_background</var>:</span>
-							<span><b>THEN</b> display <code id="additional-accessibility-information-clarity-high-contrast-between-text-and-background">"High contrast between text and background"</code>.</span>
-						</li>
-						<li>
-							<span><b>IF</b> <var>ultra_high_contrast_between_text_and_background</var>:</span>
-							<span><b>THEN</b> display <code id="additional-accessibility-information-clarity-ultra-high-contrast-between-text-and-background">"Ultra high contrast between text and background"</code>.</span>
-						</li>
-						<li>
-							<span><b>IF</b> <var>visible_page_numbering</var>:</span>
-							<span><b>THEN</b> display <code id="additional-accessibility-information-clarity-visible-page-numbering">"Visible page numbering "</code>.</span>
-						</li>
-						<li>
-							<span><b>IF</b> <var>high_contrast_between_foreground_and_background_audio</var>:</span>
-							<span><b>THEN</b> display <code id="additional-accessibility-information-clarity-high-contrast-between-foreground-and-background-audio">"High contrast between foreground and background audio"</code>.</span>
-						</li>
-						<li>
-							<span><b>IF</b> <var>without_background_sounds</var>:</span>
-							<span><b>THEN</b> display <code id="additional-accessibility-information-clarity-without-background-sounds">"Without background sounds"</code>.</span>
-						</li>
-					</ol>
-				</section>
+				<h4>Instructions</h4>
+				<ol class="condition">
+					<li>
+						<span><b>IF</b> <var>color_not_sole_means_of_conveying_information</var>:</span>
+						<span><b>THEN</b> display <code id="additional-accessibility-information-color-not-sole-means-of-conveying-information">"Color is not the sole means of conveying information"</code>.</span>
+					</li>
+					<li>
+						<span><b>IF</b> <var>dyslexia_readability</var>:</span>
+						<span><b>THEN</b> display <code id="additional-accessibility-information-dyslexia-readability">"Dyslexia readability"</code>.</span>
+					</li>
+					<li>
+						<span><b>IF</b> <var>high_contrast_between_foreground_and_background_audio</var>:</span>
+						<span><b>THEN</b> display <code id="additional-accessibility-information-high-contrast-between-foreground-and-background-audio">"High contrast between foreground and background audio"</code>.</span>
+					</li>
+					<li>
+						<span><b>IF</b> <var>high_contrast_between_text_and_background</var>:</span>
+						<span><b>THEN</b> display <code id="additional-accessibility-information-high-contrast-between-text-and-background">"High contrast between text and background"</code>.</span>
+					</li>
+					<li>
+						<span><b>IF</b> <var>sign_language</var>:</span>
+						<span><b>THEN</b> display <code id="additional-accessibility-information-sign-language">"Sign language"</code>.</span>
+					</li>
+					<li>
+						<span><b>IF</b> <var>text_to_speech_hinting</var>:</span>
+						<span><b>THEN</b> display <code id="additional-accessibility-information-text-to-speech-hinting">"Text-to-speech hinting provided"</code>.</span>
+					</li>
+					<li>
+						<span><b>IF</b> <var>ultra_high_contrast_between_text_and_background</var>:</span>
+						<span><b>THEN</b> display <code id="additional-accessibility-information-ultra-high-contrast-between-text-and-background">"Ultra high contrast between text and background"</code>.</span>
+					</li>
+					<li>
+						<span><b>IF</b> <var>visible_page_numbering</var>:</span>
+						<span><b>THEN</b> display <code id="additional-accessibility-information-visible-page-numbering">"Visible page numbering "</code>.</span>
+					</li>
+					
+					<li>
+						<span><b>IF</b> <var>without_background_sounds</var>:</span>
+						<span><b>THEN</b> display <code id="additional-accessibility-information-without-background-sounds">"Without background sounds"</code>.</span>
+					</li>
+				</ol>
 			</section>
 		</section>
 		<div data-include="../../common/acknowledgements.html" data-include-replace="true"></div>
