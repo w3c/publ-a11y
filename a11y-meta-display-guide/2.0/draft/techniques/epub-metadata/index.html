@@ -290,7 +290,7 @@
                         </li>
 
                         <li>
-                            <b>LET</b> <var>textual_alternative</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="<i>schema:accessibilityFeature</i>" and normalize-space()=("<i>longDescription</i>", "<i>alternativeText</i>", "<i>describedMath"</i>, "<i>transcripts</i>")]</code>.
+                            <b>LET</b> <var>textual_alternatives</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="<i>schema:accessibilityFeature</i>" and normalize-space()=("<i>longDescription</i>", "<i>alternativeText</i>", "<i>describedMath"</i>, "<i>transcript</i>")]</code>.
                         </li>
                     </ol>
                     <h5>Instructions</h5>
@@ -312,7 +312,7 @@
                         <li><b>ELSE</b> display <code id="ways-of-reading-nonvisual-reading-may-not-fully">"May not be fully readable in read aloud or dynamic braille"</code>.</li>
                     	
                     	<li>
-                    		<span><b>IF</b> <var>textual_alternative_images</var>:</span>
+                    		<span><b>IF</b> <var>textual_alternatives</var>:</span>
                     		<span><b>THEN</b> display <code id="ways-of-reading-nonvisual-reading-alt-text">"Has alternative text"</code>.</span>
                     	</li>
                     </ol>
