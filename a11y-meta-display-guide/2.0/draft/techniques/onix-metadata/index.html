@@ -77,9 +77,24 @@
 	<body>
 		<section id="abstract"></section>
 		<section id="sotd"></section>
-		<section id="onix-metadata">
-			<h2>ONIX Metadata</h2>
-
+        <section id="introduction">
+            <h2>Introduction</h2>
+            <h3>ONIX Metadata</h3>
+            
+            <p>
+				ONIX messages describe products for the global book supply chain and will be sent from publisher or creator of the EPUB or digital books with full audio to those who will make the products available for sale, lending or subscription.
+				These platforms may not yet have the actual files, as they may not yet be ready, or may only choose to list them for sale if they have certain accessibility features.
+				ONIX also only describes a product, it cannot describe the features of the reading systems on which a product may be accessed.
+				It is important to use ONIX metadata as a complement to the accessibility data embedded within the publication itself, if describing accessible books, books with full audio and related products for the global book supply chain.
+				An ONIX file can be used to display accessibility information in advance of publication or when you do not have access to the metadata in the digital file itself.
+				Some accessibility information may only be available when you have access to the file itself.
+				If you are unfamiliar with ONIX, then there is more documentation available from <a href="https://www.editeur.org/83/Overview/">EDItEUR.org</a>.
+			</p>
+			
+			<p>
+				It is important to note that ONIX 3.0 includes a number of new accessibility metadata codes, some of which may not be expressible in earlier versions of ONIX.
+			</p>
+            
 			<aside class="note">
 				Techniques for displaying accessibility metadata in other metadata formats can be found in the <a href="../../guidelines/#techniques">Display Techniques for Displaying Accessibility Metadata</a>
 			</aside>
@@ -115,83 +130,47 @@
                 </aside>
 
 			 </aside>
-
-			<aside class="note">
-				ONIX messages describe products for the global book supply chain and will be sent from publisher or creator of the EPUB or digital books with full audio to those who will make the products available for sale, lending or subscription.
-				These platforms may not yet have the actual files, as they may not yet be ready, or may only choose to list them for sale if they have certain accessibility features.
-				ONIX also only describes a product, it cannot describe the features of the reading systems on which a product may be accessed.
-				It is important to use ONIX metadata as a complement to the accessibility data embedded within the publication itself, if describing accessible books, books with full audio and related products for the global book supply chain.
-				An ONIX file can be used to display accessibility information in advance of publication or when you do not have access to the metadata in the digital file itself.
-				Some accessibility information may only be available when you have access to the file itself.
-				If you are unfamiliar with ONIX, then there is more documentation available from <a href="https://www.editeur.org/83/Overview/">EDItEUR.org</a>.
-			</aside>
-
-			<aside class="note">
-				It is important to note that ONIX 3.0 includes a number of new accessibility metadata codes, some of which may not be expressible in earlier versions of ONIX.
-			</aside>
-
-			<section id="onix-record-examples">
-				<h3>ONIX record examples</h3>
-				<section id="onix-record-describing-an-epub">
-					<h4>ONIX record describing an EPUB</h4>
-					<p>Here is an example of an ONIX record (version 3.0), which will be used as a reference point for the
-						following examples on EPUB accessibility metadata: the results of the XPath shown are based on
-						this example.</p>
-					<aside class="example" id="onix-example-1">
-						<pre><code class="xpath">TBD</code></pre>
-					</aside>
-				</section>
-				<section>
-					<h4
-						id="onix-record-describing-an-full-audio-book-here-is-an-example-of-an-onix-record-version-3.0-for-describing-a-full-audio-book"
-						>ONIX record describing an audiobook</h4>
-						<p>Here is an example of an ONIX record (version 3.0) for describing an audiobook, which will be used as a reference point for the
-						some of the following examples on EPUB accessibility metadata: the results of the XPath shown are based on
-						this example.</p>
-					<aside class="example" id="onix-example-2">
-						<pre><code class="xpath">TBD</code></pre>
-					</aside>
-				</section>
+			
+			<section id="conventions">
+				<h3>Conventions for Implementations</h3>
+				
+				<h4>Heading Structure</h4>
+					<p>The algorithms defined in this document do not include instructions for outputting their respective headings because if a given technique does not result in any information (i.e., would output a statement that no information is available), the section may be omitted (i.e., no heading would be displayed). Whether there is any information to display is only known after an algorithm is processed, which would lead to the algorithms having to include instructions to remove headings.</p>
+				
+					<p>The headings structure to use for the techniques is defined in the guidelines but is repeated here to help guide implementations. The headings are linked to the algorithm they are associated with.</p>
+	
+					<ol>
+						<li><code id="ways-of-reading-title">"<a href="#ways-of-reading">Ways of reading</a>"</code></li>
+						<li><code id="conformance-title">"<a href="#conformance-instructions">Conformance</a>"</code></li>
+						<li><code id="navigation-title">"<a href="#navigation-instructions">Navigation</a>"</code></li>
+						<li><code id="rich-content-title">"<a href="#rich-content-instructions">Rich content</a>"</code></li>
+						<li><code id="hazards-title">"<a href="#hazards-instructions">Hazards</a>"</code></li>
+						<li><code id="accessibility-summary-title">"<a href="#accessibility-summary-instructions">Accessibility summary</a>"</code></li>
+						<li><code id="legal-considerations-title">"<a href="#legal-considerations-instructions">Legal considerations</a>"</code></li>
+						<li><code id="additional-accessibility-information-title">"<a href="#additional-accessibility-information">Additional accessibility information</a>"</code></li>
+					</ol>
+				
+				<h4>Coding Conventions</h4>
+				<p>The code conventions used in the provided code snippet follow a structure commonly found in programming languages like Python, Java, or C++. Here&#39;s an explanation of the conventions:</p>
+				<dl>
+					<dt>Conditionals and Control Flow:</dt>
+						<dd><b>IF</b>, <b>ELSE IF</b>, and <b>ELSE</b> (in bold and capital letters) statements are used to define different conditions and the corresponding actions to be taken.</dd>
+					<dt>Operators:</dt>
+						<dd>Written operators (<i>is present</i>) are used to check if a particular code or codelist is present (or not) in the metadata record.</dd>
+					<dt>Logical operators:</dt>
+						<dd>Logical operators (<b>AND</b>, <b>OR</b>, <b>NOT</b>, in bold and capital letters) are used to combine conditions.</dd>
+					<dt>String Literals:</dt>
+						<dd>String literals are used to represent the text that should be displayed when a particular condition is met.</dd>
+					<dt>Variable Naming:</dt>
+						<dd>The terms like &quot;property&quot; and &quot;value&quot; are used in a way that suggests a variable or data structure representing the metadata record.</dd>
+					<dt>Indentation:</dt>
+						<dd>The code uses consistent indentation to define blocks of code within conditional statements. This is crucial for readability and maintaining a clear structure.</dd>
+					<dt>Readability:</dt>
+						<dd>The code is written in a way that is intended to be easily readable and understandable even by non-coders.</dd>
+				</dl>
 			</section>
 		</section>
-		<section id="conventions">
-			<h2>Conventions for Implementations</h2>
-            
-            <h3>Heading Structure</h3>
-                <p>The algorithms defined in this document do not include instructions for outputting their respective headings because if a given technique does not result in any information (i.e., would output a statement that no information is available), the section may be omitted (i.e., no heading would be displayed). Whether there is any information to display is only known after an algorithm is processed, which would lead to the algorithms having to include instructions to remove headings.</p>
-            
-                <p>The headings structure to use for the techniques is defined in the guidelines but is repeated here to help guide implementations. The headings are linked to the algorithm they are associated with.</p>
-
-                <ol>
-                    <li><code id="ways-of-reading-title">"<a href="#ways-of-reading">Ways of reading</a>"</code></li>
-                    <li><code id="conformance-title">"<a href="#conformance-instructions">Conformance</a>"</code></li>
-                    <li><code id="navigation-title">"<a href="#navigation-instructions">Navigation</a>"</code></li>
-                    <li><code id="rich-content-title">"<a href="#rich-content-instructions">Rich content</a>"</code></li>
-                    <li><code id="hazards-title">"<a href="#hazards-instructions">Hazards</a>"</code></li>
-                    <li><code id="accessibility-summary-title">"<a href="#accessibility-summary-instructions">Accessibility summary</a>"</code></li>
-                    <li><code id="legal-considerations-title">"<a href="#legal-considerations-instructions">Legal considerations</a>"</code></li>
-                    <li><code id="additional-accessibility-information-title">"<a href="#additional-accessibility-information">Additional accessibility information</a>"</code></li>
-                </ol>
-            
-            <h3>Coding Conventions</h3>
-			<p>The code conventions used in the provided code snippet follow a structure commonly found in programming languages like Python, Java, or C++. Here&#39;s an explanation of the conventions:</p>
-			<dl>
-				<dt>Conditionals and Control Flow:</dt>
-					<dd><b>IF</b>, <b>ELSE IF</b>, and <b>ELSE</b> (in bold and capital letters) statements are used to define different conditions and the corresponding actions to be taken.</dd>
-				<dt>Operators:</dt>
-					<dd>Written operators (<i>is present</i>) are used to check if a particular code or codelist is present (or not) in the metadata record.</dd>
-				<dt>Logical operators:</dt>
-					<dd>Logical operators (<b>AND</b>, <b>OR</b>, <b>NOT</b>, in bold and capital letters) are used to combine conditions.</dd>
-				<dt>String Literals:</dt>
-					<dd>String literals are used to represent the text that should be displayed when a particular condition is met.</dd>
-				<dt>Variable Naming:</dt>
-					<dd>The terms like &quot;property&quot; and &quot;value&quot; are used in a way that suggests a variable or data structure representing the metadata record.</dd>
-				<dt>Indentation:</dt>
-					<dd>The code uses consistent indentation to define blocks of code within conditional statements. This is crucial for readability and maintaining a clear structure.</dd>
-				<dt>Readability:</dt>
-					<dd>The code is written in a way that is intended to be easily readable and understandable even by non-coders.</dd>
-			</dl>
-		</section>
+	
 		<section id="common-functions">
 			<h2>Common Functions</h2>
 			<p>In this section we define the functions common to all techniques, which are called by them during execution.</p>
