@@ -251,12 +251,15 @@
                     <dl>
                         <dt><var>all_necessary_content_textual</var></dt>
                         <dd>
-                            <p>If true it indicates that there is only a single access mode of textual or <i>accessModeSufficient="textual"</i> (all main content is provided in textual form) is present in the package document, otherwise if false it means that the metadata is not present.</p>
+                            <p>If true it indicates that there is only a single access mode of textual or <i>accessModeSufficient="textual"</i> (all main content is provided in textual form) is present in the package document.</p>
                         </dd>
-                    	<dt><var>has_nonvisual_metadata</var></dt>
+                    	<dt><var>audio_only_content</var></dt>
                     	<dd>
-                    		<p>If true it indicates that the publisher has stated a least one access mode or sufficient access mode.</p>
-                    		<p>If this metadata is not set, it is not possible to determine whether or not the content will be readable nonvisually.</p>
+                    		<p>If true it indicates that there is only a single access mode of auditory (an audiobook).</p>
+                    	</dd>
+                    	<dt><var>braille_only_content</var></dt>
+                    	<dd>
+                    		<p>If true it indicates that there is only a single access mode of tactile (a digital braille publication).</p>
                     	</dd>
                     	<dt><var>non_textual_content</var></dt>
                         <dd>
@@ -274,6 +277,10 @@
                             </ul>
                             <p>This means that there are textual alternatives for the non-textual content.</p>
                         </dd>
+                    	<dt><var>visual_only_content</var></dt>
+                    	<dd>
+                    		<p>If true it indicates that there is only a single access mode of visual and there are no sufficient access modes that include textual (e.g., comics and manga with no alternative text).</p>
+                    	</dd>
                     </dl>
                     <h5>Variables setup</h5>
                     <ol class="condition">
@@ -298,7 +305,7 @@
                         </li>
 
                         <li>
-                            <b>LET</b> <var>textual_alternatives</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="<i>schema:accessibilityFeature</i>" and normalize-space()=("<i>longDescription</i>", "<i>alternativeText</i>", "<i>describedMath"</i>, "<i>transcript</i>")]</code>.
+                            <b>LET</b> <var>textual_alternatives</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="<i>schema:accessModeSufficient</i>" and contains(normalize-space() = "textual") and string-length(normalize-space()) &gt; 7]</code>.
                         </li>
                     	
                     	<li>
