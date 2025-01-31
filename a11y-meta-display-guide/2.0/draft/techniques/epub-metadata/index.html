@@ -286,34 +286,48 @@
                         </li>
                     	
                     	<li>
-                    		<b>LET</b> <var>has_nonvisual_metadata</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property=("<i>schema:accessMode</i>", "<i>schema:accessModeSufficient</i>")]</code>.
+                    		<b>LET</b> <var>audio_only_content</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessMode</i>" and normalize-space() = "auditory" and count(//meta[@property="schema:<i>accessMode</i>"]) = 1]</code>.
                     	</li>
                     	
-                        <li>
+                    	<li>
+                    		<b>LET</b> <var>braille_only_content</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessMode</i>" and normalize-space() = "tactile" and count(//meta[@property="schema:<i>accessMode</i>"]) = 1]</code>.
+                    	</li>
+                    	
+                    	<li>
                             <b>LET</b> <var>non_textual_content</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="<i>schema:accessMode</i>" and not(normalize-space() = "textual")]</code>.
                         </li>
 
                         <li>
                             <b>LET</b> <var>textual_alternatives</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="<i>schema:accessibilityFeature</i>" and normalize-space()=("<i>longDescription</i>", "<i>alternativeText</i>", "<i>describedMath"</i>, "<i>transcript</i>")]</code>.
                         </li>
+                    	
+                    	<li>
+                    		<b>LET</b> <var>visual_only_content</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessMode</i>" and normalize-space() = "visual" and count(//meta[@property="schema:<i>accessMode</i>"]) = 1]</code>.
+                    	</li>
                     </ol>
                     <h5>Instructions</h5>
                     <ol class="condition">
-                    	<li>
-                    		<span><b>IF</b> <b>NOT</b> <var>has_nonvisual_metadata</var>:</span>
-                    		<span><b>THEN</b> display <code id="ways-of-reading-nonvisual-no-metadata">"No information about nonvisual reading is available"</code>.</span>
-                    	</li>
-
                         <li>
-                            <span><b>ELSE IF</b> <var>all_necessary_content_textual</var>:</span>
+                            <span><b>IF</b> <var>all_necessary_content_textual</var>:</span>
                             <span><b>THEN</b> display <code id="ways-of-reading-nonvisual-reading-readable">"Readable in read aloud or dynamic braille"</code>.</span>
                         </li>
-                        <li>
+                    	
+                    	<li>
+                    		<span><b>ELSE IF</b> <var>audio_only_content</var> or <var>visual_only_content</var>:</span>
+                    		<span><b>THEN</b> display <code id="ways-of-reading-nonvisual-reading-audio-only">"Not readable in read aloud or dynamic braille"</code>.</span>
+                    	</li>
+                    	
+                    	<li>
+                    		<span><b>ELSE IF</b> <var>braille_only_content</var>:</span>
+                    		<span><b>THEN</b> display <code id="ways-of-reading-nonvisual-reading-braille-only">"Readable in dynamic braille"</code>.</span>
+                    	</li>
+                    	
+                    	<li>
                             <span><b>ELSE IF</b> <var>non_textual_content</var> <b>AND</b> <b>NOT</b> <var>textual_alternative_images</var>:</span>
                             <span><b>THEN</b> display <code id="ways-of-reading-nonvisual-reading-not-fully">"Not fully readable in read aloud or dynamic braille"</code>.</span>
                         </li>
                     	
-                        <li><b>ELSE</b> display <code id="ways-of-reading-nonvisual-reading-may-not-fully">"May not be fully readable in read aloud or dynamic braille"</code>.</li>
+                    	<li><b>ELSE</b> display <code id="ways-of-reading-nonvisual-no-metadata">"No information about nonvisual reading is available"</code>.</li>
                     	
                     	<li>
                     		<span><b>IF</b> <var>textual_alternatives</var>:</span>
@@ -874,7 +888,7 @@
 						<span><b>THEN</b> display <code id="hazards-none">"No hazards"</code>.</span>
 					</li>
 					<li>
-						<span><b>ELSE IF</b> <var>flashing_hazard</var> <b>OR</b> <var>motion_simulation_hazard</var> <b>OR</b> <var>sound_hazard</var>:</span></li>
+						<span><b>ELSE IF</b> <var>flashing_hazard</var> <b>OR</b> <var>motion_simulation_hazard</var> <b>OR</b> <var>sound_hazard</var>:</span>
 						<b>THEN</b> <ul class="condition">
 							<li>
 								<span><b>IF</b> <var>flashing_hazard</var>:</span>
@@ -889,7 +903,7 @@
 								<span><b>THEN</b> display <code id="hazards-sound">"Sounds"</code>.</span>
 							</li>
 						</ul>
-
+					</li>
                     <li>
 						<span><b>ELSE IF</b> <var>unknown_if_contains_hazards</var>:</span>
 						<span><b>THEN</b> display <code id="hazards-unknown">"The presence of hazards is unknown"</code>.</span>
