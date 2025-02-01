@@ -257,10 +257,6 @@
                     	<dd>
                     		<p>If true it indicates that there is only a single access mode of auditory (an audiobook).</p>
                     	</dd>
-                    	<dt><var>braille_only_content</var></dt>
-                    	<dd>
-                    		<p>If true it indicates that there is only a single access mode of tactile (a digital braille publication).</p>
-                    	</dd>
                     	<dt><var>non_textual_content</var></dt>
                         <dd>
                             <p>If true it indicates that there is non-textual content such as images, audio, or video in the publication.</p>
@@ -297,10 +293,6 @@
                     	</li>
                     	
                     	<li>
-                    		<b>LET</b> <var>braille_only_content</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessMode</i>" and normalize-space() = "tactile" and count(//meta[@property="schema:<i>accessMode</i>"]) = 1]</code>.
-                    	</li>
-                    	
-                    	<li>
                             <b>LET</b> <var>non_textual_content</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="<i>schema:accessMode</i>" and not(normalize-space() = "textual")]</code>.
                         </li>
 
@@ -322,11 +314,6 @@
                             <span><b>IF</b> <var>all_necessary_content_textual</var>:</span>
                             <span><b>THEN</b> display <code id="ways-of-reading-nonvisual-reading-readable">"Readable in read aloud or dynamic braille"</code>.</span>
                         </li>
-                    	
-                    	<li>
-                    		<span><b>ELSE IF</b> <var>braille_only_content</var>:</span>
-                    		<span><b>THEN</b> display <code id="ways-of-reading-nonvisual-reading-braille-only">"Readable in dynamic braille"</code>.</span>
-                    	</li>
                     	
                     	<li>
                             <span><b>ELSE IF</b> <var>non_textual_content</var> <b>AND</b> (<var>some_sufficient_text</var> <b>OR</b> <var>textual_alternatives</var>):</span>
