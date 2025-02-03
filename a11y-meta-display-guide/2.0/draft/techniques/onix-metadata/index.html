@@ -266,7 +266,12 @@
 							<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/196/52">code 52 of codelist 196</a> (All non-decorative content supports reading without sight) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
 							<p><i>All non-decorative content supports reading without sight</i> means that all contents of the digital publication necessary to use and understanding, including text, images (via their alternative descriptions), audio and video material (via their transcripts, descriptions, captions or subtitles) are fully accessible via suitable reading devices, for example text-to-speech screen readers or tactile reading devices (‘Braille displays’), and nothing in the digital publication prevents or blocks the use of alternative reading modes. The entire publication can be navigated and ‘read’ using only text rendered via sound or touch, and does not require visual perception.</p>
 						</dd>
-						<dt><var>non_textual_content_images</var></dt>
+                    	<dt><var>audio_only_content</var></dt>
+						<dd>
+							<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/81/01">code 01 of codelist 81</a> (Audiobook) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+							<p>This means that the primary content is an Audio recording of a reading of a book or other text.</p>
+						</dd>
+                    	<dt><var>non_textual_content</var></dt>
 						<dd>
 							<p>If true it indicates that at least one of the following is present in the ONIX record:</p>
 							<ul>
@@ -276,25 +281,37 @@
 								<li><a href="https://ns.editeur.org/onix/en/81/07">code 12 of codelist 81</a> (Maps and/or other cartographic content);</li>
 								<li><a href="https://ns.editeur.org/onix/en/81/49">code 49 of codelist 81</a> (Images of text);</li>
 								<li><a href="https://ns.editeur.org/onix/en/81/49">code 20 of codelist 81</a> (Additional images / graphics not part of main work);</li>
+								<li><a href="https://ns.editeur.org/onix/en/81/06">code 06 of codelist 81</a> (Video);</li>
+								<li><a href="https://ns.editeur.org/onix/en/81/26">code 26 of codelist 81</a> (Video recording of a reading);</li>
+								<li><a href="https://ns.editeur.org/onix/en/81/50">code 50 of codelist 81</a> (Video content without audio);</li>
+								<li><a href="https://ns.editeur.org/onix/en/81/28">code 28 of codelist 81</a> (Other video);</li>
+								<li><a href="https://ns.editeur.org/onix/en/81/29">code 29 of codelist 81</a> (Partial performance – video);</li>
+								<li><a href="https://ns.editeur.org/onix/en/81/30">code 30 of codelist 81</a> (Additional video content not part of main work);</li>
+								<li><a href="https://ns.editeur.org/onix/en/81/31">code 31 of codelist 81</a> (Promotional video for other book product);</li>
+								<li><a href="https://ns.editeur.org/onix/en/81/01">code 06 of codelist 81</a> (Audiobook);</li>
+								<li><a href="https://ns.editeur.org/onix/en/81/04">code 06 of codelist 81</a> (Other audio);</li>
+								<li><a href="https://ns.editeur.org/onix/en/81/22">code 22 of codelist 81</a> (Additional audio content not part of main content);</li>
+								<li><a href="https://ns.editeur.org/onix/en/81/23">code 23 of codelist 81</a> (Promotional audio for other book product);</li>
 								<li>otherwise if false it means that this metadata is not present.</li>
 							</ul>
-							<p>This means that the content contains images of any type.</p>
+                            <p>If true it indicates that there is non-textual content such as images, audio, or video in the publication.</p>
 						</dd>
-						<dt><var>real_text</var></dt>
-						<dd>
-							<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/81/10">code 10 of codelist 81</a> (Text) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
-							<p><i>Text</i> means that digital publication contains "real" text (user-selectable) as its main content (or as secondary content).</p>
-						</dd>
-						<dt><var>textual_alternative_images</var></dt>
+                    	<dt><var>textual_alternatives</var></dt>
 						<dd>
 							<p>If true it indicates that at least one of the following is present in the ONIX record:</p>
 							<ul>
 								<li><a href="https://ns.editeur.org/onix/en/196/14">code 14 of codelist 196</a> (Short alternative textual descriptions);</li>
 								<li><a href="https://ns.editeur.org/onix/en/196/15">code 15 of codelist 196</a> (Full alternative textual descriptions);</li>
 								<li><a href="https://ns.editeur.org/onix/en/196/16">code 16 of codelist 196</a> (Visualized data also available as non-graphical data);</li>
+								<li><a href="https://ns.editeur.org/onix/en/175/V212">code V212 of codelist 175</a> (Transcript);</li>
 								<li>otherwise if false it means that this metadata is not present.</li>
 							</ul>
-							<p>This means that there are textual alternatives for images.</p>
+                            <p>This means that there are textual alternatives for the non-textual content.</p>
+						</dd>
+						<dt><var>real_text</var></dt>
+						<dd>
+							<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/81/10">code 10 of codelist 81</a> (Text) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+							<p><i>Text</i> means that digital publication contains "real" text (user-selectable) as its main content (or as secondary content).</p>
 						</dd>
 					</dl>
 					<h4>Variables setup</h4>
@@ -306,6 +323,39 @@
 						<li><b>LET</b> <var>textual_alternative_images</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and (ProductFormFeatureValue = "14" or ProductFormFeatureValue = "15" or ProductFormFeatureValue = "16")]</code>.</li>
 					</ol>
 					<h4>Instructions</h4>
+					<ol class="condition">
+                        <li>
+                            <span><b>IF</b> <var>all_necessary_content_textual</var>:</span>
+                            <span><b>THEN</b> display <code id="ways-of-reading-nonvisual-reading-readable">"Readable in read aloud or dynamic braille"</code>.</span>
+                        </li>
+                    	
+                    	<li>
+                            <span><b>ELSE IF</b> <var>non_textual_content</var> <b>AND</b> (<var>some_sufficient_text</var> <b>OR</b> <var>textual_alternatives</var>):</span>
+                            <span><b>THEN</b> display <code id="ways-of-reading-nonvisual-reading-not-fully">"Not fully readable in read aloud or dynamic braille"</code>.</span>
+                        </li>
+                    	
+                    	<li>
+                    		<span><b>ELSE IF</b> <var>audio_only_content</var> or <var>visual_only_content</var>:</span>
+                    		<span><b>THEN</b> display <code id="ways-of-reading-nonvisual-reading-none">"Not readable in read aloud or dynamic braille"</code>.</span>
+                    	</li>
+                    	
+                    	<li><b>ELSE</b> display <code id="ways-of-reading-nonvisual-no-metadata">"No information about nonvisual reading is available"</code>.</li>
+                    	
+                    	<li>
+                    		<span><b>IF</b> <var>textual_alternatives</var>:</span>
+                    		<span><b>THEN</b> display <code id="ways-of-reading-nonvisual-reading-alt-text">"Has alternative text"</code>.</span>
+                    	</li>
+                    </ol>
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
 					<ol class="condition">
 						<li>
 							<span><b>IF</b> <var>all_necessary_content_textual</var>:</span>
