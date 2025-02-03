@@ -257,9 +257,10 @@
                     	<dd>
                     		<p>If true it indicates that there is only a single access mode of auditory (an audiobook).</p>
                     	</dd>
-                    	<dt><var>non_textual_content</var></dt>
+                    	<dt><var>some_sufficient_text</var></dt>
                         <dd>
-                            <p>If true it indicates that there is non-textual content such as images, audio, or video in the publication.</p>
+                            <p>If true it indicates that sufficient access mode metadata indicates that the content is at least partially
+                            	readable in textual form (i.e., "textual" is one of a set of sufficient access modes).</p>
                         </dd>
                         <dt><var>textual_alternatives</var></dt>
                         <dd>
@@ -292,10 +293,6 @@
                     		<b>LET</b> <var>audio_only_content</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessMode</i>" and normalize-space() = "auditory" and count(//meta[@property="schema:<i>accessMode</i>"]) = 1]</code>.
                     	</li>
                     	
-                    	<li>
-                            <b>LET</b> <var>non_textual_content</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="<i>schema:accessMode</i>" and not(normalize-space() = "textual")]</code>.
-                        </li>
-
                         <li>
                         	<b>LET</b> <var>some_sufficient_text</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[(@property="schema:accessMode" and contains(normalize-space(), "textual")) or (@property="schema:accessModeSufficient" and contains(normalize-space(), "textual"))]</code>.
                         </li>
@@ -316,7 +313,7 @@
                         </li>
                     	
                     	<li>
-                            <span><b>ELSE IF</b> <var>non_textual_content</var> <b>AND</b> (<var>some_sufficient_text</var> <b>OR</b> <var>textual_alternatives</var>):</span>
+                            <span><b>ELSE IF</b> <var>some_sufficient_text</var> <b>OR</b> <var>textual_alternatives</var>:</span>
                             <span><b>THEN</b> display <code id="ways-of-reading-nonvisual-reading-not-fully">"Not fully readable in read aloud or dynamic braille"</code>.</span>
                         </li>
                     	
