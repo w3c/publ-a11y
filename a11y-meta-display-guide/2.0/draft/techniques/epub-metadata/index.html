@@ -322,7 +322,7 @@
                     		<span><b>THEN</b> display <code id="ways-of-reading-nonvisual-reading-none">"Not readable in read aloud or dynamic braille"</code>.</span>
                     	</li>
                     	
-                    	<li><b>ELSE</b> display <code id="ways-of-reading-nonvisual-no-metadata">"No information about nonvisual reading is available"</code>.</li>
+                    	<li><b>ELSE</b> display <code id="ways-of-reading-nonvisual-reading-no-metadata">"No information about nonvisual reading is available"</code>.</li>
                     	
                     	<li>
                     		<span><b>IF</b> <var>textual_alternatives</var>:</span>
@@ -1140,11 +1140,11 @@
 					<ol class="condition">
                         <li>
                             <span><b>IF</b> <var>page_break_markers</var>:</span>
-                            <span><b>THEN</b> display <code id="additional-accessibility-information-page-breaks">"Page breaks"</code>.</span>
+                        	<span><b>THEN</b> display <code id="additional-accessibility-information-page-breaks">"Page breaks included"</code>.</span>
                         </li>
 						<li>
 							<span><b>IF</b> <var>aria</var>:</span>
-							<span><b>THEN</b> display <code id="additional-accessibility-information-aria">"ARIA"</code>.</span>
+							<span><b>THEN</b> display <code id="additional-accessibility-information-aria">"ARIA roles included"</code>.</span>
 						</li>
 						<li>
 							<span><b>IF</b> <var>audio_descriptions</var>:</span>
@@ -1179,11 +1179,11 @@
 						</li>
 						<li>
 							<span><b>IF</b> <var>tactile_graphic</var>:</span>
-							<span><b>THEN</b> display <code id="additional-accessibility-information-tactile-graphics">"Tactile graphics"</code>.</span>
+							<span><b>THEN</b> display <code id="additional-accessibility-information-tactile-graphics">"Tactile graphics included"</code>.</span>
 						</li>
 						<li>
 							<span><b>IF</b> <var>tactile_object</var>:</span>
-							<span><b>THEN</b> display <code id="additional-accessibility-information-tactile-objects">"Tactile 3D objects"</code>.</span>
+							<span><b>THEN</b> display <code id="additional-accessibility-information-tactile-objects">"Tactile 3D objects included"</code>.</span>
 						</li>
 						<li>
 							<span><b>IF</b> <var>text_to_speech_hinting</var>:</span>
