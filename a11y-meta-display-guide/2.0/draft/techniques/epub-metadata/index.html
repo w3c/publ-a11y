@@ -705,7 +705,7 @@
 						<p>If true it indicates that the <i>accessibilityFeature="describedMath"</i> (Mathematical content) is present in the package document, otherwise if false it means that the metadata is not present.</p>
 						<p>This means that there is a positive indication that the publication contains mathematical notation, equations, formulae.</p>
 					</dd>
-					<dt><var>long_text_descriptions</var></dt>
+					<dt><var>full_alternative_textual_descriptions</var></dt>
 					<dd>
                         <p>If true it indicates that the <i>accessibilityFeature="longDescriptions"</i> (Full alternative textual description) is present in the package document, otherwise if false it means that the metadata is not present.</p>
 						<p>This means that there is a positive indication that a full alternative textual description has been supplied for all of the graphs, charts, diagrams, or figures necessary to understand the content.</p>
@@ -748,7 +748,7 @@
 
  	                <li><b>LET</b> <var>contains_math_formula</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and normalize-space()="<i>describedMath</i>"]</code>.</li>
 
-                    <li><b>LET</b> <var>long_text_descriptions</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and normalize-space()="<i>longDescriptions</i>"]</code>.</li>
+					<li><b>LET</b> <var>full_alternative_textual_descriptions</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and normalize-space()="<i>longDescriptions</i>"]</code>.</li>
 
  	                <li><b>LET</b> <var>math_formula_as_latex</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and normalize-space()="<i>latex</i>"]</code>.</li>
 
@@ -761,7 +761,7 @@
 				<h4 id="rich-content-instructions">Instructions</h4>
 				<ol class="condition">
                     <li>
-						<span><b>IF</b> <var>long_text_descriptions</var>:</span>
+                    	<span><b>IF</b> <var>full_alternative_textual_descriptions</var>:</span>
 						<span><b>THEN</b> display <code id="rich-content-extended">"Information-rich images are described by extended descriptions"</code>.</span>
 					</li>
                    <li>
@@ -800,7 +800,7 @@
 					</li>
                                         
 					<li>
-						<span><b>IF</b> <b>NOT</b> (<var>math_formula_as_mathml</var> <b>OR</b> <var>math_formula_as_latex</var> <b>OR</b> (<var>contains_math_formula</var> <b>AND</b> <var>long_text_descriptions</var>) <b>OR</b> <var>chemical_formula_as_mathml</var> <b>OR</b> <var>long_text_descriptions</var> <b>OR</b> <var>closed_captions</var> <b>OR</b> <var>open_captions</var> <b>OR</b> <var>transcript</var>):</span>
+						<span><b>IF</b> <b>NOT</b> (<var>math_formula_as_mathml</var> <b>OR</b> <var>math_formula_as_latex</var> <b>OR</b> (<var>contains_math_formula</var> <b>AND</b> <var>full_alternative_textual_descriptions</var>) <b>OR</b> <var>chemical_formula_as_mathml</var> <b>OR</b> <var>full_alternative_textual_descriptions</var> <b>OR</b> <var>closed_captions</var> <b>OR</b> <var>open_captions</var> <b>OR</b> <var>transcript</var>):</span>
 						<span><b>THEN</b> either omit this display field if metadata is missing or display <code id="rich-content-unknown">"No information is available"</code>.</span>
 					</li>
 				</ol>
