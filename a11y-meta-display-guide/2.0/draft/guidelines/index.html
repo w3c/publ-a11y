@@ -354,18 +354,18 @@
 				piece of metadata in more detail and prioritizes the
 				display for readers.</p>
 		</section>
-		
+
 		<section id="techniques">
 			<h3>Display techniques</h3>
-			
+
 			<p>To assist developers in implementing these guidelines,
 				in-depth notes are available to explain how to
 				extract information from publishing industry metadata
 				standards.</p>
-			
+
 			<p>At the time of publishing this document the available
 				techniques for metadata standards are:</p>
-			
+
 			<ul>
 				<li>
 					<p><a href="../techniques/epub-metadata/index.html">Display Techniques for EPUB Accessibility Metadata 2.0</a></p>
@@ -374,7 +374,7 @@
 					<p><a href="../techniques/onix-metadata/index.html">Display Techniques for ONIX Accessibility Metadata 2.0</a></p>
 				</li>
 			</ul>
-			
+
 			<div class="note">
 				<p>Publishers update their ONIX records as needed. We
 					expect "unknown" accessibility metadata may be
@@ -385,7 +385,7 @@
 					available.</p>
 			</div>
 		</section>
-		
+
 		<section id="terminology">
 			<h3>Terminology</h3>
 
@@ -468,7 +468,7 @@
 					publisher, it is suggested that the section is
 					introduced using terms such as "claims" or
 					"declarations" (e.g., "Accessibility Claims").</p>
-				
+
 				<p>The heading should clearly convey to
 					the end user that the information comes directly from the
 					publisher and represents the accessibility
@@ -509,17 +509,17 @@
 					<li><a href="#conformance-group">Conformance</a></li>
 				</ul>
 
-				<p>The other metadata fields provide additional details about specific features or shortcomings in 
-					a publication. They give people the information they need to make an informed choice when selecting 
+				<p>The other metadata fields provide additional details about specific features or shortcomings in
+					a publication. They give people the information they need to make an informed choice when selecting
 					a particular digital publication.</p>
 			</section>
-			
+
 			<section id="field-order">
 				<h4>Display field order</h4>
-				
+
 				<p>Implementers can choose the order in which they prefer to display the <a
 						href="#a11y-display-fields">accessibility metadata fields</a>.</p>
-				
+
 				<p>Moreover, although the metadata fields in this document are named, it is not required that
 					implementers use these names as the field headings. Implementers can use alternative
 					field names if they would make more sense in their display context.</p>
@@ -528,10 +528,10 @@
 			<section id="additional-a11y-meta">
 				<h4>Additional accessibility metadata</h4>
 
-				<p>Although this document showcases examples of important metadata that is expected to be present 
-					in a wide range of publications, available metadata schemas can support statements about many 
+				<p>Although this document showcases examples of important metadata that is expected to be present
+					in a wide range of publications, available metadata schemas can support statements about many
 					other features.</p>
-				
+
 				<p>The <a href="#techniques">techniques documents</a> describe how to output additional information not listed in this
 					document. In addition, implementers may choose to display metadata that is not covered by
 					this document or the techniques.</p>
@@ -543,7 +543,7 @@
 				<p>When no accessibility metadata is provided by the publisher, it is best to
 					avoid making a negative statement that could be attributed to them (e.g., stating
 					it is not known if a feature is available could be misconstrued as the publisher
-					saying they are unsure). The neutral statement "No information is available" is 
+					saying they are unsure). The neutral statement "No information is available" is
 					shown in the examples for this case.</p>
 
 				<p>In some cases, the distributer may not be allowed to show statements the publisher did not make.
@@ -554,14 +554,14 @@
 		<section id="alt-statements">
 			<h3>Alternative statements</h3>
 
-			<p>Although the display statements listed in this document and in the <a href="#techniques">techniques 
-					documents</a> are recommended for use, and have been translated to support localization, 
+			<p>Although the display statements listed in this document and in the <a href="#techniques">techniques
+					documents</a> are recommended for use, and have been translated to support localization,
 				implementors may prefer to use different wording in some situations.</p>
-			
+
 			<p>This document does not restrict implementers from using alternative phrasing, however
 				any deviations should be done with caution. The phrases defined in this document resulted
 				from much discussion among accessibility professionals as well as from user feedback.</p>
-			
+
 			<p>If the cause of alternative wording is due to translation issues, implementers are encouraged
 				to <a href="https://github.com/w3c/publ-a11y/issues/">techniques documents</a> for correction.</p>
 		</section>
@@ -570,9 +570,9 @@
 			<h3>Non-accessibility metadata</h3>
 
 			<p>Not all metadata used in determining the accessibility of a publication is strictly categorized as
-				accessibility metadata. The product details, for example, provide important information about the 
+				accessibility metadata. The product details, for example, provide important information about the
 				usability of an ebook in relation to specific user needs.</p>
-			
+
 			<p>In particular, the following information should always be displayed:</p>
 
 			<ul>
@@ -604,7 +604,7 @@
 					translation table
 					for the language.</li>
 			</ul>
-			
+
 			<p>This metadata does not have to be included as part of the accessibility section; it only
 				needs to be made available to users in the metadata display for a publication.</p>
 		</section>
@@ -747,47 +747,45 @@
 					<p>The descriptive and compact statements for nonvisual reading are as follows.</p>
 
 					<dl>
+
+						<dt>If all content is readable in text form:</dt>
+						<dd>
+							<p data-localization-id="ways-of-reading-nonvisual-reading-readable"
+								data-localization-mode="compact">Readable in read aloud or dynamic braille</p>
+							<p data-localization-id="ways-of-reading-nonvisual-reading-readable"
+								data-localization-mode="descriptive">All content can be read as read aloud speech or dynamic braille</p>
+						</dd>
+
+						<dt>If not all content is readable in text form:</dt>
+						<dd>
+							<p data-localization-id="ways-of-reading-nonvisual-reading-not-fully"
+								data-localization-mode="compact">Not fully readable in read aloud or dynamic braille</p>
+							<p data-localization-id="ways-of-reading-nonvisual-reading-not-fully"
+								data-localization-mode="descriptive">Not all of the content will be readable as read aloud speech or dynamic braille</p>
+						</dd>
+						
+						<dt>If the content cannot be read in text form:</dt>
+						<dd>
+							<p data-localization-id="ways-of-reading-nonvisual-reading-none"
+								data-localization-mode="compact">Not readable in read aloud or dynamic braille</p>
+							<p data-localization-id="ways-of-reading-nonvisual-reading-none"
+								data-localization-mode="descriptive">The content is not readable as read aloud speech or dynamic braille</p>
+						</dd>
+						
+						<dt>If no metadata is provided:</dt>
+						<dd>
+							<p data-localization-id="ways-of-reading-nonvisual-reading-no-metadata"
+								data-localization-mode="compact">No information about nonvisual reading is available</p>
+							<p data-localization-id="ways-of-reading-nonvisual-reading-no-metadata"
+								data-localization-mode="descriptive">No information about nonvisual reading is available</p>
+						</dd>
+						
 						<dt>If text alternatives are provided:</dt>
 						<dd>
 							<p data-localization-id="ways-of-reading-nonvisual-reading-alt-text"
 								data-localization-mode="compact">Has alternative text</p>
 							<p data-localization-id="ways-of-reading-nonvisual-reading-alt-text"
 								data-localization-mode="descriptive">Has alternative text descriptions for images</p>
-						</dd>
-
-						<dt>If all content is readable in text form:</dt>
-						<dd>
-							<p data-localization-id="ways-of-reading-nonvisual-reading-readable"
-								data-localization-mode="compact">Readable in
-								read aloud or dynamic braille</p>
-							<p data-localization-id="ways-of-reading-nonvisual-reading-readable"
-								data-localization-mode="descriptive">All
-								content can be read as read aloud speech or
-								dynamic braille</p>
-						</dd>
-
-						<dt>If not all content may be readable in text form:</dt>
-						<dd>
-							<p data-localization-id="ways-of-reading-nonvisual-reading-may-not-fully"
-								data-localization-mode="compact">May not be
-								fully readable in read aloud or dynamic
-								braille</p>
-							<p data-localization-id="ways-of-reading-nonvisual-reading-may-not-fully"
-								data-localization-mode="descriptive">
-								Portions of the content may not be readable
-								as read aloud speech or dynamic braille</p>
-						</dd>
-
-						<dt>If not all content is readable in text form:</dt>
-						<dd>
-							<p data-localization-id="ways-of-reading-nonvisual-reading-not-fully"
-								data-localization-mode="compact">Not
-								fully readable in read aloud or dynamic
-								braille</p>
-							<p data-localization-id="ways-of-reading-nonvisual-reading-not-fully"
-								data-localization-mode="descriptive">Not all
-								of the content will be readable as read
-								aloud speech or dynamic braille</p>
 						</dd>
 					</dl>
 				</section>
@@ -864,8 +862,8 @@
 
 						<dt>If there are prerecorded audio clips:</dt>
 						<dd>
-							<p data-localization-id="ways-of-reading-prerecorded-audio-complementary" data-localization-mode="compact">Complementary audio and text</p>
-							<p data-localization-id="ways-of-reading-prerecorded-audio-complementary" data-localization-mode="descriptive">Portions of prerecorded audio are available</p>
+							<p data-localization-id="ways-of-reading-prerecorded-audio-complementary" data-localization-mode="compact">Prerecorded audio clips</p>
+							<p data-localization-id="ways-of-reading-prerecorded-audio-complementary" data-localization-mode="descriptive">Prerecorded audio clips are embedded in the content</p>
 						</dd>
 
 						<dt>If no metadata is provided:</dt>
@@ -912,10 +910,11 @@
 							<p data-localization-id="ways-of-reading-nonvisual-reading-readable"
 								data-localization-mode="compact">Readable in
 								read aloud or dynamic braille</p>
-							<p data-localization-id="ways-of-reading-nonvisual-reading-alt-text"
-								data-localization-mode="compact">Has alternative text</p>
+
 							<p data-localization-id="ways-of-reading-prerecorded-audio-synchronized"
 								data-localization-mode="compact">Prerecorded audio synchronized with text</p>
+															<p data-localization-id="ways-of-reading-nonvisual-reading-alt-text"
+								data-localization-mode="compact">Has alternative text</p>
 						</dd>
 
 						<dt>Descriptive display</dt>
@@ -930,10 +929,11 @@
 								and text)</p>
 							<p data-localization-id="ways-of-reading-nonvisual-reading-readable"
 								data-localization-mode="descriptive">All content can be read as read aloud speech or dynamic braille</p>
-							<p data-localization-id="ways-of-reading-nonvisual-reading-alt-text"
-								data-localization-mode="descriptive">Has alternative text descriptions for images</p>
+
 							<p data-localization-id="ways-of-reading-prerecorded-audio-synchronized"
 								data-localization-mode="descriptive">All the content is available as prerecorded audio synchronized with text</p>
+															<p data-localization-id="ways-of-reading-nonvisual-reading-alt-text"
+								data-localization-mode="descriptive">Has alternative text descriptions for images</p>
 						</dd>
 					</dl>
 				</aside>
@@ -966,26 +966,26 @@
 				publication. The certifying organization should be
 				identified along with their credentials and
 				placed immediately after the conformance statement.</p>
-			
+
 			<section id="conf-statements">
 				<h4>Display statements</h4>
-				
+
 				<div class="note">
 					<p>Some conformance statements incorporate publication metadata. To indicate where
 						this text will be inserted, the statements include placeholder variables. These
 						placeholders are identified by being enclosed in angle brackets (e.g.,
 						<span class="placeholder">&lt;placeholder&gt;</span>).</p>
 				</div>
-				
+
 				<div class="note">
 					<p>Not all conformance statements have compact and descriptive forms. In these cases,
 						the same string is used for both.</p>
 				</div>
-				
-				
+
+
 				<section id="conformance-general">
 					<h5>General conformance</h5>
-		
+
 					<dl>
 						<dt>If the publication meets minimal accessibility requirements:</dt>
 						<dd>
@@ -996,7 +996,7 @@
 								data-localization-mode="descriptive">The publication contains a conformance
 								statement that it meets the EPUB Accessibility and WCAG 2 Level A standard</p>
 						</dd>
-	
+
 						<dt>If the publication meets widely accepted accessibility requirements:</dt>
 						<dd>
 							<p data-localization-id="conformance-aa"
@@ -1006,7 +1006,7 @@
 								data-localization-mode="descriptive">The publication contains a conformance
 								statement that it meets the EPUB Accessibility and WCAG 2 Level AA standard</p>
 						</dd>
-	
+
 						<dt>If the publication exceeds accepted accessibility requirements:</dt>
 						<dd>
 							<p data-localization-id="conformance-aaa"
@@ -1016,7 +1016,7 @@
 								data-localization-mode="descriptive">The publication contains a conformance
 								statement that it meets the EPUB Accessibility and WCAG 2 Level AAA standard</p>
 						</dd>
-	
+
 						<dt>If no metadata is provided:</dt>
 						<dd>
 							<p data-localization-id="conformance-no"
@@ -1024,7 +1024,7 @@
 							<p data-localization-id="conformance-no"
 								data-localization-mode="descriptive">No information is available</p>
 						</dd>
-						
+
 						<dt>If a certifier name is provided:</dt>
 						<dd>
 							<p><span
@@ -1033,7 +1033,7 @@
 									publication was certified by</span>
 								<span class="placeholder">&lt;certifier name&gt;</span></p>
 						</dd>
-	
+
 						<dt>If the certifier has a credential:</dt>
 						<dd>
 							<p><span
@@ -1043,14 +1043,14 @@
 						</dd>
 					</dl>
 				</section>
-				
+
 				<section id="detailed-conformance-information">
 					<h5>Detailed conformance</h5>
-		
+
 					<p>The following information can be placed in a section
 						that shows the details of the conformance
 						information.</p>
-					
+
 					<dl>
 						<dt>If a detailed conformance claim is made:</dt>
 						<dd>
@@ -1058,13 +1058,13 @@
 								<span data-localization-id="conformance-claim"
 									data-localization-mode="compact">This
 									publication claims to meet</span>
-								
+
 								EPUB Accessibility
 								<span class="placeholder">&lt;1.X&gt;</span>
-								
+
 								WCAG
 								<span class="placeholder">&lt;2.X&gt;</span>
-								
+
 								Level
 								<span class="placeholder">&lt;A or AA or AAA&gt;</span>
 							</p>
@@ -1072,19 +1072,19 @@
 								<span data-localization-id="conformance-claim"
 									data-localization-mode="descriptive">This
 									publication claims to meet</span>
-								
+
 								EPUB Accessibility
 								<span class="placeholder">&lt;1.X&gt;</span>
-								
+
 								Web Content Accessibility Guidelines (WCAG)
 								<span class="placeholder">&lt;2.X&gt;</span>
-								
+
 								Level
 								<span class="placeholder">&lt;A or AA or AAA&gt;</span>
 							</p>
-							
+
 							<div class="note">
-								<p>The placeholders in these strings allow the display of each version of the 
+								<p>The placeholders in these strings allow the display of each version of the
 									respective standard. For example, the descriptive statements for WCAG 2 would be:</p>
 								<ul>
 									<li data-localization-id="conformance-wcag-2-0"
@@ -1096,7 +1096,7 @@
 								</ul>
 							</div>
 						</dd>
-						
+
 						<dt>If the certification date is provided:</dt>
 						<dd>
 							<p>
@@ -1105,7 +1105,7 @@
 									publication was certified on </span>
 								<span class="placeholder">&lt;certification date&gt;</span></p>
 						</dd>
-	
+
 						<dt>If the certifier provides an accessibility report:</dt>
 						<dd>
 							<p><span data-localization-id="conformance-certifier-report"
@@ -1122,7 +1122,7 @@
 
 				<aside class="example"
 					title="Conformance statement that claims to meet accepted accessibility standards followed by detailed conformance information">
-					
+
 					<dl>
 						<dt>Compact display</dt>
 						<dd>
@@ -1143,8 +1143,8 @@
 									data-localization-mode="compact">The certifier's credential is</span> "Enterprise
 								Accessibility Rating"
 							</p>
-							
-							<p class="ex-hd" data-localization-id="conformance-details">
+
+							<p class="ex-hd" data-localization-id="conformance-details-title">
 								Detailed conformance information</p>
 							<p>
 								<span
@@ -1173,7 +1173,7 @@
 										report</a></span>
 							</p>
 						</dd>
-						
+
 						<dt>Descriptive display</dt>
 						<dd>
 							<p class="ex-hd" data-localization-id="conformance-title">Conformance</p>
@@ -1193,8 +1193,8 @@
 									data-localization-mode="compact">The certifier's credential is</span> "Enterprise
 								Accessibility Rating"
 							</p>
-							
-							<p class="ex-hd" data-localization-id="conformance-details">
+
+							<p class="ex-hd" data-localization-id="conformance-details-title">
 								Detailed conformance information</p>
 							<p>
 								<span
@@ -1973,9 +1973,9 @@
 				<dl>
 					<dt>If there are ARIA roles:</dt>
 					<dd>
-						<p data-localization-id="additional-accessibility-information-clarity-aria"
+						<p data-localization-id="additional-accessibility-information-aria"
 							data-localization-mode="compact">ARIA roles included</p>
-						<p data-localization-id="additional-accessibility-information-clarity-aria"
+						<p data-localization-id="additional-accessibility-information-aria"
 							data-localization-mode="descriptive">Content is enhanced with ARIA roles to
 							optimize organization and facilitate
 							navigation</p>
@@ -1983,18 +1983,18 @@
 
 					<dt>If there are page break markers:</dt>
 					<dd>
-						<p data-localization-id="additional-accessibility-information-clarity-page-breaks"
+						<p data-localization-id="additional-accessibility-information-page-breaks"
 							data-localization-mode="compact">Page breaks included</p>
-						<p data-localization-id="additional-accessibility-information-clarity-page-breaks"
+						<p data-localization-id="additional-accessibility-information-page-breaks"
 							data-localization-mode="descriptive">Page breaks included from the original print
 							source</p>
 					</dd>
 
 					<dt>If there are tactile graphics:</dt>
 					<dd>
-						<p data-localization-id="additional-accessibility-information-adaptation-tactile-graphics"
+						<p data-localization-id="additional-accessibility-information-tactile-graphics"
 							data-localization-mode="compact">Tactile graphics included</p>
-						<p data-localization-id="additional-accessibility-information-adaptation-tactile-graphics"
+						<p data-localization-id="additional-accessibility-information-tactile-graphics"
 							data-localization-mode="descriptive">Tactile graphics have been integrated to
 							facilitate access to visual elements for
 							blind people</p>
@@ -2014,9 +2014,9 @@
 						<dd>
 							<p class="ex-hd" data-localization-id="additional-accessibility-information-title">Additional accessibility information</p>
 							<ul>
-								<li data-localization-id="additional-accessibility-information-clarity-aria"
+								<li data-localization-id="additional-accessibility-information-aria"
 									data-localization-mode="compact">ARIA roles included</li>
-								<li data-localization-id="additional-accessibility-information-clarity-page-breaks"
+								<li data-localization-id="additional-accessibility-information-page-breaks"
 									data-localization-mode="compact">Page breaks included</li>
 							</ul>
 						</dd>
@@ -2025,10 +2025,10 @@
 						<dd>
 							<p class="ex-hd" data-localization-id="additional-accessibility-information-title">Additional accessibility information</p>
 							<ul>
-								<li data-localization-id="additional-accessibility-information-clarity-aria"
+								<li data-localization-id="additional-accessibility-information-aria"
 									data-localization-mode="descriptive">Content is enhanced with ARIA roles to
 									optimize organization and facilitate navigation</li>
-								<li data-localization-id="additional-accessibility-information-clarity-page-breaks"
+								<li data-localization-id="additional-accessibility-information-page-breaks"
 									data-localization-mode="descriptive">Page breaks included from the original print source</li>
 							</ul>
 						</dd>
