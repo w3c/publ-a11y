@@ -24,6 +24,12 @@
                         <xsl:variable name="id-title" select="concat(@name, '-title')"/>
                         <xsl:value-of select="normalize-space(document($guidelines)//*[@data-localization-id=$id-title][1])"/>
                     </xsl:element>
+                    <xsl:if test="@name = 'conformance'">
+                        <xsl:variable name="id-title" select="'conformance-details-title'"/>
+                        <xsl:element name="{$id-title}">
+                            <xsl:value-of select="normalize-space(document($guidelines)//*[@data-localization-id=$id-title][1])"/>
+                        </xsl:element>
+                    </xsl:if>
                     <xsl:for-each select="id[generate-id(.) = generate-id(key('id-lookup', .)[1])]">
                         <xsl:sort select="."/>
                         <xsl:variable name="current-id" select="."/>

@@ -8,13 +8,21 @@
     },
     "ways-of-reading": {
         "ways-of-reading-title": "Ways of reading",
+        "ways-of-reading-nonvisual-no-metadata": {
+            "compact": "No information about nonvisual reading is available",
+            "descriptive": "No information about nonvisual reading is available"
+        },
         "ways-of-reading-nonvisual-reading-alt-text": {
             "compact": "Has alternative text",
             "descriptive": "Has alternative text descriptions for images"
         },
-        "ways-of-reading-nonvisual-reading-may-not-fully": {
-            "compact": "May not be fully readable in read aloud or dynamic braille",
-            "descriptive": " Portions of the content may not be readable as read aloud speech or dynamic braille"
+        "ways-of-reading-nonvisual-reading-no-metadata": {
+            "compact": "No information about nonvisual reading is available",
+            "descriptive": "No information about nonvisual reading is available"
+        },
+        "ways-of-reading-nonvisual-reading-none": {
+            "compact": "Not readable in read aloud or dynamic braille",
+            "descriptive": "The content is not readable as read aloud speech or dynamic braille"
         },
         "ways-of-reading-nonvisual-reading-not-fully": {
             "compact": "Not fully readable in read aloud or dynamic braille",
@@ -25,8 +33,8 @@
             "descriptive": "All content can be read as read aloud speech or dynamic braille"
         },
         "ways-of-reading-prerecorded-audio-complementary": {
-            "compact": "Complementary audio and text",
-            "descriptive": "Portions of prerecorded audio are available"
+            "compact": "Prerecorded audio clips",
+            "descriptive": "Prerecorded audio clips are embedded in the content"
         },
         "ways-of-reading-prerecorded-audio-no-metadata": {
             "compact": " No information about prerecorded audio is available",
@@ -55,6 +63,7 @@
     },
     "conformance": {
         "conformance-title": "Conformance",
+        "conformance-details-title": "Detailed conformance information",
         "conformance-a": {
             "compact": "This publication meets minimum accessibility standards",
             "descriptive": "The publication contains a conformance statement that it meets the EPUB Accessibility and WCAG 2 Level A standard"
@@ -86,10 +95,6 @@
         "conformance-claim": {
             "compact": "This publication claims to meet",
             "descriptive": "This publication claims to meet"
-        },
-        "conformance-details": {
-            "compact": "Detailed conformance information",
-            "descriptive": "Detailed conformance information"
         },
         "conformance-epub-accessibility-1-0": {
             "compact": " EPUB Accessibility 1.0",
@@ -245,13 +250,9 @@
     },
     "additional-accessibility-information": {
         "additional-accessibility-information-title": "Additional accessibility information",
-        "additional-accessibility-information-adaptation-tactile-graphics": {
-            "compact": "Tactile graphics included",
-            "descriptive": "Tactile graphics have been integrated to facilitate access to visual elements for blind people"
-        },
         "additional-accessibility-information-aria": {
-            "compact": "ARIA",
-            "descriptive": "ARIA"
+            "compact": "ARIA roles included",
+            "descriptive": "Content is enhanced with ARIA roles to optimize organization and facilitate navigation"
         },
         "additional-accessibility-information-audio-descriptions": {
             "compact": "Audio descriptions",
@@ -260,14 +261,6 @@
         "additional-accessibility-information-braille": {
             "compact": "Braille",
             "descriptive": "Braille"
-        },
-        "additional-accessibility-information-clarity-aria": {
-            "compact": "ARIA roles included",
-            "descriptive": "Content is enhanced with ARIA roles to optimize organization and facilitate navigation"
-        },
-        "additional-accessibility-information-clarity-page-breaks": {
-            "compact": "Page breaks included",
-            "descriptive": "Page breaks included from the original print source"
         },
         "additional-accessibility-information-color-not-sole-means-of-conveying-information": {
             "compact": "Color is not the sole means of conveying information",
@@ -294,8 +287,8 @@
             "descriptive": "Large print"
         },
         "additional-accessibility-information-page-breaks": {
-            "compact": "Page breaks",
-            "descriptive": "Page breaks"
+            "compact": "Page breaks included",
+            "descriptive": "Page breaks included from the original print source"
         },
         "additional-accessibility-information-ruby-annotations": {
             "compact": "Some Ruby annotations",
@@ -306,8 +299,8 @@
             "descriptive": "Sign language"
         },
         "additional-accessibility-information-tactile-graphics": {
-            "compact": "Tactile graphics",
-            "descriptive": "Tactile graphics"
+            "compact": "Tactile graphics included",
+            "descriptive": "Tactile graphics have been integrated to facilitate access to visual elements for blind people"
         },
         "additional-accessibility-information-tactile-objects": {
             "compact": "Tactile 3D objects",
