@@ -8,10 +8,6 @@
     },
     "ways-of-reading": {
         "ways-of-reading-title": "Ways of reading",
-        "ways-of-reading-nonvisual-no-metadata": {
-            "compact": "No information about nonvisual reading is available",
-            "descriptive": "No information about nonvisual reading is available"
-        },
         "ways-of-reading-nonvisual-reading-alt-text": {
             "compact": "Has alternative text",
             "descriptive": "Has alternative text descriptions for images"
