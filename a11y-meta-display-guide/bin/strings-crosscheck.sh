@@ -32,35 +32,18 @@ xslt_techniques="$basedir/extract-ids-from-techniques.xsl"
 output_dir="$basedir/../2.0/draft/localizations"
 
 # performs XSLT transformation on XHTML files
-xsltproc "$xslt_guidelines" "$guidelines" > "$output_dir/guidelines-strings.xml"
-xsltproc "$xslt_techniques" "$epub_techniques" > "$output_dir/epub-metadata-strings.xml"
-xsltproc "$xslt_techniques" "$onix_techniques" > "$output_dir/onix-metadata-strings.xml"
+xsltproc "$xslt_guidelines" "$guidelines" > "$tmpdir/guidelines-strings.xml"
+xsltproc "$xslt_techniques" "$epub_techniques" > "$tmpdir/epub-metadata-strings.xml"
+xsltproc "$xslt_techniques" "$onix_techniques" > "$tmpdir/onix-metadata-strings.xml"
 
 # converts XML files to CSV
-java -jar "$basedir/libs/xml2csv-1.1.jar" "$output_dir/guidelines-strings.xml" > "$output_dir/guidelines-strings.csv"
-java -jar "$basedir/libs/xml2csv-1.1.jar" "$output_dir/epub-metadata-strings.xml" > "$output_dir/epub-metadata-strings.csv"
-java -jar "$basedir/libs/xml2csv-1.1.jar" "$output_dir/onix-metadata-strings.xml" > "$output_dir/onix-metadata-strings.csv"
-
-# converts JSON file to CSV
-# json_in_csv=$(jq -r '
-#   to_entries[] | 
-#   select(.value | type == "object" and (has("descriptive") or has("compact"))) | 
-#   [.key, .value.descriptive // "", .value.compact // ""] | 
-#   @csv
-# ' "$canonical_json")
-# echo '"key","descriptive","compact"'  > "$output_dir/canonical-json-strings.csv"
-# echo "$json_in_csv" >> "$output_dir/canonical-json-strings.csv"
+java -jar "$basedir/libs/xml2csv-1.1.jar" "$tmpdir/guidelines-strings.xml" > "$tmpdir/guidelines-strings.csv"
+java -jar "$basedir/libs/xml2csv-1.1.jar" "$tmpdir/epub-metadata-strings.xml" > "$tmpdir/epub-metadata-strings.csv"
+java -jar "$basedir/libs/xml2csv-1.1.jar" "$tmpdir/onix-metadata-strings.xml" > "$tmpdir/onix-metadata-strings.csv"
 
 # converts CSV files to Excel
-ssconvert "$output_dir/guidelines-strings.csv" "$output_dir/guidelines-strings.xlsx"
-ssconvert "$output_dir/epub-metadata-strings.csv" "$output_dir/epub-metadata-strings.xlsx"
-ssconvert "$output_dir/onix-metadata-strings.csv" "$output_dir/onix-metadata-strings.xlsx"
-# ssconvert "$output_dir/canonical-json-strings.csv" "$output_dir/canonical-json-strings.xlsx"
-
-# cleanup
-rm -f "$output_dir/guidelines-strings.csv"
-rm -f "$output_dir/epub-metadata-strings.csv"
-rm -f "$output_dir/onix-metadata-strings.csv"
-# rm -f "$output_dir/canonical-json-strings.csv"
+ssconvert "$tmpdir/guidelines-strings.csv" "$output_dir/guidelines-strings.xlsx"
+ssconvert "$tmpdir/epub-metadata-strings.csv" "$output_dir/epub-metadata-strings.xlsx"
+ssconvert "$tmpdir/onix-metadata-strings.csv" "$output_dir/onix-metadata-strings.xlsx"
 
 echo "Operations completed. Need to manually update Excel file localizations/crosscheck strings epub-onix-canonical_json.xlsx"
