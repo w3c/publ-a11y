@@ -3,6 +3,7 @@
         "author": "W3C Publishing Community Group Accessibility Task Force",
         "language": "en-US",
         "variant": "canonical",
+        "version": "2.0.a",
         "audience": "general",
         "description": "Original wording discussed by a large group representing different actors of the English-speaking geographies. It has been improved after proof of concept implementations and panel testers"
     },
