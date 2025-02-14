@@ -529,42 +529,46 @@
 								</ul>
 							</li>
 							<li>
-								<span>Display <code id="conformance-details-title">"Detailed conformance information"</code> as heading.</span>
-							</li>
-							<li>
-								<span>Display <code id="conformance-claim">"This publication claims to meet"</code>.</span>
+								<div class="note">
+									<p>The instructions from here on define the output for the detailed conformance
+										information. Refer to the 
+										<a href="../../guidelines/#detailed-conformance-information">Detailed Conformance section</a>
+										in the guidelines for more information on how to present these strings.</p>
+								</div>
+								
+								<span>Display <code id="conformance-details-claim">"This publication claims to meet"</code>.</span>
 								<ul>
 									<li>
 										<span><b>IF</b> <var>epub_version</var> == '<code>1.0</code>':</span>
-										<span><b>THEN</b> display <code id="conformance-epub-accessibility-1-0">" EPUB Accessibility 1.0"</code>.</span>
+										<span><b>THEN</b> display <code id="conformance-details-epub-accessibility-1-0">" EPUB Accessibility 1.0"</code>.</span>
 									</li>
 									<li>
 										<span><b>ELSE IF</b>  <var>epub_version</var> == '<code>1.1</code>':</span>
-										<span><b>THEN</b> display <code id="conformance-epub-accessibility-1-1">" EPUB Accessibility 1.1"</code>.</span>
+										<span><b>THEN</b> display <code id="conformance-details-epub-accessibility-1-1">" EPUB Accessibility 1.1"</code>.</span>
 									</li>
 									<li>
 										<span><b>IF</b> <var>wcag_version</var> == '<code>2.2</code>':</span>
-										<span><b>THEN</b> display <code id="conformance-wcag-2-2">" WCAG 2.2"</code>.</span>
+										<span><b>THEN</b> display <code id="conformance-details-wcag-2-2">" WCAG 2.2"</code>.</span>
 									</li>
 									<li>
 										<span><b>ELSE IF</b> <var>wcag_version</var> == '<code>2.1</code>':</span>
-										<span><b>THEN</b> display <code id="conformance-wcag-2-1">" WCAG 2.1"</code>.</span>
+										<span><b>THEN</b> display <code id="conformance-details-wcag-2-1">" WCAG 2.1"</code>.</span>
 									</li>
 									<li>
 										<span><b>ELSE IF</b> <var>wcag_version</var> == '<code>2.0</code>':</span>
-										<span><b>THEN</b> display <code id="conformance-wcag-2-0">" WCAG 2.0"</code>.</span>
+										<span><b>THEN</b> display <code id="conformance-details-wcag-2-0">" WCAG 2.0"</code>.</span>
 									</li>
 									<li>
 										<span><b>IF</b> <var>wcag_level</var> == '<code>AAA</code>':</span>
-										<span><b>THEN</b> display <code id="conformance-level-aaa">" Level AAA"</code>.</span>
+										<span><b>THEN</b> display <code id="conformance-details-level-aaa">" Level AAA"</code>.</span>
 									</li>
 									<li>
 										<span><b>ELSE IF</b> <var>wcag_level</var> == '<code>AA</code>':</span>
-										<span><b>THEN</b> display <code id="conformance-level-aa">" Level AA"</code>.</span>
+										<span><b>THEN</b> display <code id="conformance-details-level-aa">" Level AA"</code>.</span>
 									</li>
 									<li>
 										<span><b>ELSE IF</b> <var>wcag_level</var> == '<code>A</code>':</span>
-										<span><b>THEN</b> display <code id="conformance-level-a">" Level A"</code>.</span>
+										<span><b>THEN</b> display <code id="conformance-details-level-a">" Level A"</code>.</span>
 									</li>
 								</ul>
 							</li>
@@ -572,7 +576,7 @@
 								<span><b>IF</b> <var>certification_date</var> <b>THEN</b>:</span>
                                 <ul class="condition">
 
-									<li>display <code id="conformance-certification-info">"The publication was certified on "</code></li>
+                                	<li>display <code id="conformance-details-certification-info">"The publication was certified on "</code></li>
 									<li>display <var>certification_date</var>.</li>
 								</ul>
 							</li>
@@ -580,7 +584,7 @@
 								<span><b>IF</b> <var>certifier_report</var>:</span>
 								<span><b>THEN</b></span>
 								<ul class="condition">
-									<li>display <code id="conformance-certifier-report">"For more information refer to the certifier's report"</code> as a named link with <var>certifier_report</var> as the URL used.</li>
+									<li>display <code id="conformance-details-certifier-report">"For more information refer to the certifier's report"</code> as a named link with <var>certifier_report</var> as the URL used.</li>
 								</ul>
 							</li>
 						</ul>

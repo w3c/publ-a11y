@@ -123,6 +123,9 @@
 		dt {
 			margin-bottom: 1rem;
 		}
+		div.head dt {
+			margin-bottom: 0;
+		}
 		p[data-localization-mode="descriptive"]:before {
 			content: 'Descriptive: ';
 			font-style: italic;
@@ -147,6 +150,12 @@
 			margin: 1rem 0 0 0;
 			padding: 0;
 			font-variant: small-caps
+		}
+		aside.example > dl > dt:nth-child(1) {
+			margin-top: 2rem;
+		}
+		aside.example > dl > dt:nth-child(n+2) {
+			margin-top: 3rem;
 		}
 	</style>
 </head>
@@ -615,19 +624,41 @@
 		<section id="ways-of-reading">
 			<h3 data-localization-id="ways-of-reading-title">Ways of reading</h3>
 
+			<div class="note">
+				<p>This display field should be rendered even
+					if there is no metadata. </p>
+			</div>
+			
+			<p>The ways of reading display field is a banner heading that groups together the following
+				information about how the content facilitates access:</p>
+			
+			<ul>
+				<li><a href="#visual-adjustments">visual adjustments</a> &#8212; whether users can control the 
+					text and page layout (e.g., to increase font sizes, line spacing, and foreground and
+					background colors).</li>
+				<li><a href="#supports-nonvisual-reading">nonvisual reading</a> &#8212; whether all of the
+					content of the publication is available as text, for playback using a reading system's
+					read aloud functionality or via rendering as dynamic braille on a refreshable braille
+					display.</li>
+				<li><a href="#prerecorded-audio">prerecorded audio</a> &#8212; whether the publication includes
+					prerecorded narration (audiobooks or text and audio synchronized publications) or
+					embedded audio (standalone audio clips or audio tracks in a video).</li>
+			</ul>
+			
+			<p>This section is divided into subsections to explain each of the display outputs for each characteristic,
+				but this separation is only for ease of reading. The subsections do not represent new display fields
+				or have titles associated with them. All of the information is expected to be displayed under the 
+				"<span data-localization-id="ways-of-reading-title">Ways of reading</span>" title, as depicted in 
+				the <a href="#wr-examples">ways of reading examples</a>.</p>
+			
 			<section id="visual-adjustments">
 				<h4>Visual adjustments</h4>
-
-				<div class="note">
-					<p>This display field should be rendered even
-						if there is no metadata. </p>
-				</div>
 
 				<p>Indicates if users can modify the appearance of the text
 					and the page layout according to the
 					possibilities offered by the reading system.</p>
 
-				<p>This display field answers whether visual adjustments are
+				<p>These display strings answer whether visual adjustments are
 					possible, not possible, or unknown.</p>
 
 				<p>Readers with visual impairments or cognitive disabilities
@@ -713,17 +744,12 @@
 			<section id="supports-nonvisual-reading">
 				<h4>Support for nonvisual reading</h4>
 
-				<div class="note">
-					<p>This display field should be rendered even
-						if there is no metadata. </p>
-				</div>
-
 				<p>Indicates whether all content required for comprehension
 					can be consumed in text and therefore is
 					available to reading systems with [=read aloud speech=]
 					or [=dynamic braille=] capabilities.</p>
 
-				<p>This display field answers whether nonvisual reading is possible,
+				<p>These display strings answers whether nonvisual reading is possible,
 					not possible, or unknown.</p>
 
 				<p>Digital publications with essential content included in
@@ -811,7 +837,7 @@
 				<h4>Prerecorded audio</h4>
 
 				<div class="note">
-					<p>This display field can be hidden if metadata is
+					<p>The prerecorded audio display strings can be hidden if metadata is
 						missing. Alternatively it can be stated that
 						<span
 							data-localization-id="ways-of-reading-prerecorded-audio-no-metadata"
@@ -894,7 +920,42 @@
 			<section id="wr-examples">
 				<h4>Examples</h4>
 
-				<aside class="example" title="Publication with accessible ways of reading">
+				<aside class="example" title="Publication with text and images">
+					<p>The following example shows the descriptive and compact statements that would display
+						for a typical text-based publication with images that have text alternatives.</p>
+					
+					<dl>
+						<dt>Compact display</dt>
+						<dd>
+							<p class="ex-hd" data-localization-id="ways-of-reading-title">Ways of reading</p>
+							<p data-localization-id="ways-of-reading-visual-adjustments-modifiable"
+								data-localization-mode="compact">Appearance can be modified</p>
+							<p data-localization-id="ways-of-reading-nonvisual-reading-readable"
+								data-localization-mode="compact">Readable in
+								read aloud or dynamic braille</p>
+							<p data-localization-id="ways-of-reading-nonvisual-reading-alt-text"
+								data-localization-mode="compact">Has alternative text</p>
+						</dd>
+						
+						<dt>Descriptive display</dt>
+						<dd>
+							<p class="ex-hd" data-localization-id="ways-of-reading-title">Ways of reading</p>
+							<p data-localization-id="ways-of-reading-visual-adjustments-modifiable"
+								data-localization-mode="descriptive">Appearance of the text and page layout can be
+								modified according to the capabilities of
+								the reading system (font family and font size,
+								spaces between paragraphs, sentences, words,
+								and letters, as well as color of background
+								and text)</p>
+							<p data-localization-id="ways-of-reading-nonvisual-reading-readable"
+								data-localization-mode="descriptive">All content can be read as read aloud speech or dynamic braille</p>
+							<p data-localization-id="ways-of-reading-nonvisual-reading-alt-text"
+								data-localization-mode="descriptive">Has alternative text descriptions for images</p>
+						</dd>
+					</dl>
+				</aside>
+				
+				<aside class="example" title="Publication with synchronized text and audio">
 					<p>The following example shows the descriptive and compact statements that would display
 						for a publication with a modifiable display, that is compatible with nonvisual reading,
 						and that has synchronized prerecorded audio with the text.</p>
@@ -1044,9 +1105,13 @@
 				<section id="detailed-conformance-information">
 					<h5>Detailed conformance</h5>
 
-					<p>The following information can be placed in a section
-						that shows the details of the conformance
-						information.</p>
+					<p>The following detailed information may be too technical for the average reader,
+						which is why it is separated from the general conformance information. Implementors
+						may opt to include it without distinction from the general information, but it may
+						be more helpful to users if it is clearly separated, such as by including it in an
+						expandable display box (see the <a href="#conf-examples">conformance examples</a>) 
+						or adding a heading before it. Implementors may also choose not to display this 
+						information if it is too technical for their target audience.</p>
 
 					<dl>
 						<dt>If a detailed conformance claim is made:</dt>
@@ -1119,6 +1184,9 @@
 
 				<aside class="example"
 					title="Conformance statement that claims to meet accepted accessibility standards followed by detailed conformance information">
+					
+					<p>In this example, the detailed conformance information is minimized by default in the compact display and
+						expanded for the descriptive.</p>
 
 					<dl>
 						<dt>Compact display</dt>
@@ -1141,34 +1209,36 @@
 								Accessibility Rating"
 							</p>
 
-							<p class="ex-hd" data-localization-id="conformance-details-title">
-								Detailed conformance information</p>
-							<p>
-								<span
-									data-localization-id="conformance-claim">This
-									publication claims to meet</span>
-								<span
-									data-localization-id="conformance-epub-accessibility-1-1">EPUB
-									Accessibility
-									1.1</span>
-								<span
-									data-localization-id="conformance-wcag-2-1"
-									data-localization-mode="descriptive">Web
-									Accessibility Content Guidelines (WCAG)
-									2.1</span>
-								<span
-									data-localization-id="conformance-level-aa">Level
-									AA</span>
-							</p>
-							<p><span data-localization-id="conformance-certification-info">The
-									publication was certified on</span>
-								2021-09-07</p>
-							<p><span data-localization-id="conformance-certifier-report">For
-									more information refer to the
-									<a
-										href="http://www.example.com/a11y/report/9780000000001">certifier's
-										report</a></span>
-							</p>
+							<details>
+								<summary data-localization-id="conformance-details-title">Detailed conformance information</summary>
+								
+								<p>
+									<span
+										data-localization-id="conformance-details-claim">This
+										publication claims to meet</span>
+									<span
+										data-localization-id="conformance-details-epub-accessibility-1-1">EPUB
+										Accessibility
+										1.1</span>
+									<span
+										data-localization-id="conformance-details-wcag-2-1"
+										data-localization-mode="descriptive">Web
+										Accessibility Content Guidelines (WCAG)
+										2.1</span>
+									<span
+										data-localization-id="conformance-details-level-aa">Level
+										AA</span>
+								</p>
+								<p><span data-localization-id="conformance-details-certification-info">The
+										publication was certified on</span>
+									2021-09-07</p>
+								<p><span data-localization-id="conformance-details-certifier-report">For
+										more information refer to the
+										<a
+											href="http://www.example.com/a11y/report/9780000000001">certifier's
+											report</a></span>
+								</p>
+							</details>
 						</dd>
 
 						<dt>Descriptive display</dt>
@@ -1191,34 +1261,36 @@
 								Accessibility Rating"
 							</p>
 
-							<p class="ex-hd" data-localization-id="conformance-details-title">
-								Detailed conformance information</p>
-							<p>
-								<span
-									data-localization-id="conformance-claim">This
-									publication claims to meet</span>
-								<span
-									data-localization-id="conformance-epub-accessibility-1-1">EPUB
-									Accessibility
-									1.1</span>
-								<span
-									data-localization-id="conformance-wcag-2-1"
-									data-localization-mode="descriptive">Web
-									Accessibility Content Guidelines (WCAG)
-									2.1</span>
-								<span
-									data-localization-id="conformance-level-aa">Level
-									AA</span>
-							</p>
-							<p><span data-localization-id="conformance-certification-info">The
-									publication was certified on</span>
-								2021-09-07</p>
-							<p><span data-localization-id="conformance-certifier-report">For
-									more information refer to the
-									<a
-										href="http://www.example.com/a11y/report/9780000000001">certifier's
-										report</a></span>
-							</p>
+							<details open="">
+								<summary data-localization-id="conformance-details-title">Detailed conformance information</summary>
+								
+								<p>
+									<span
+										data-localization-id="conformance-details-claim">This
+										publication claims to meet</span>
+									<span
+										data-localization-id="conformance-details-epub-accessibility-1-1">EPUB
+										Accessibility
+										1.1</span>
+									<span
+										data-localization-id="conformance-details-wcag-2-1"
+										data-localization-mode="descriptive">Web
+										Accessibility Content Guidelines (WCAG)
+										2.1</span>
+									<span
+										data-localization-id="conformance-details-level-aa">Level
+										AA</span>
+								</p>
+								<p><span data-localization-id="conformance-details-certification-info">The
+										publication was certified on</span>
+									2021-09-07</p>
+								<p><span data-localization-id="conformance-details-certifier-report">For
+										more information refer to the
+										<a
+											href="http://www.example.com/a11y/report/9780000000001">certifier's
+											report</a></span>
+								</p>
+							</details>
 						</dd>
 					</dl>
 				</aside>
