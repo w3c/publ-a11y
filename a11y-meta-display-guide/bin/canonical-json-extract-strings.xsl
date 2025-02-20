@@ -6,6 +6,7 @@
     <xsl:param name="onix"/>
     <xsl:param name="epub"/>
     <xsl:param name="ids-file"/>
+    <xsl:param name="version"/>
     
     <xsl:key name="id-lookup" match="/ids/group/id" use="."/>
     
@@ -15,6 +16,7 @@
                 <author>W3C Publishing Community Group Accessibility Task Force</author>
                 <language>en-US</language>
                 <variant>canonical</variant>
+                <version><xsl:value-of select="$version"/></version>
                 <audience>general</audience>
                 <description>Original wording discussed by a large group representing different actors of the English-speaking geographies. It has been improved after proof of concept implementations and panel testers</description>
             </metadata>
