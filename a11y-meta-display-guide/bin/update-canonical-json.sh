@@ -21,6 +21,9 @@ basedir=$(dirname "$basedir")
 tmpdir=$(mktemp -d)
 output_dir="$basedir/../2.0/draft/localizations"
 
+# Input
+read -p 'JSON version: ' jsonVersion
+
 # Input files
 guidelines="$basedir/../2.0/draft/guidelines/index.html"
 epub_techniques="$basedir/../2.0/draft/techniques/epub-metadata/index.html"
@@ -41,6 +44,7 @@ xsltproc --stringparam guidelines "$guidelines" \
          --stringparam onix "$onix_techniques" \
          --stringparam epub "$epub_techniques" \
          --stringparam ids-file "$tmpdir/ids.xml" \
+         --stringparam version "$jsonVersion" \
          "$xslt_extract_strings" "$tmpdir/ids.xml" > "$tmpdir/strings.xml"
 
 # Convert to JSON
