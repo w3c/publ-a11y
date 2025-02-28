@@ -417,7 +417,7 @@
 					</dd>
 					<dt><var>certifier_report</var></dt>
 					<dd>
-						<p>Returns the description of <i>a11y:certifierReport</i> (Compliance web page for detailed accessibility information) if present in the OPF, otherwise if false it means that the metadata is not present.</p>
+						<p>Returns the description of <i>a11y:certifierReport</i> (Compliance web page for detailed accessibility information) if present in the package document, otherwise if false it means that the metadata is not present.</p>
 						<p>This means that is present the URL of a compliance web page for detailed accessibility information. The web page should be maintained by an independent compliance scheme or testing organization. Note the web page may include information about specific national requirements or voluntary conformance reports.</p>
 					</dd>
                     <dt><var>conformance-claimed</var></dt>
@@ -437,48 +437,61 @@
 				</dl>
 
 				<h4>Variables setup</h4>
+				
 				<ol class="condition">
 					<li><b>LET</b> <var>package_document</var> be the result of calling <a href="#pre-processing">preprocessing</a> given <var>package_document_as_text</var>.</li>
 
-                <!-- EPUB Accessibility 1.0 WCAG 2.0 (A/AA/AAA) -->
-                 <li>
-                     <span><b>IF</b> the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/link[@rel="dcterms:<i>conformsTo</i>" and @href="<i>http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-a</i>"] | /package/metadata/meta[@property="dcterms:conformsTo" and normalize-space() = "http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-a"]</code> :</span>
-                     <span><b>THEN LET</b> <var>epub_version</var> = '1.0', and</span>
-                 	<span><b>LET</b> <var>wcag_version</var> = '2.0', and</span>
-                 	<span><b>LET</b> <var>wcag_level</var> = 'A'.</span>
-                 </li>
-
-                  <li>
-                       <span><b>IF</b> the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/link[@rel="dcterms:<i>conformsTo</i>" and @href="<i>http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aa</i>"] | /package/metadata/meta[@property="dcterms:conformsTo" and normalize-space() = "http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aa"]</code>:</span>
-                  	<span><b>THEN LET</b> <var>epub_version</var> = '1.0', and</span>
-                  	<span><b>LET</b> <var>wcag_version</var> = '2.0', and</span>
-                  	<span><b>LET</b> <var>wcag_level</var> = 'AA'.</span>
-                  </li>
-
-                  <li>
-                      <span><b>IF</b> the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/link[@rel="dcterms:<i>conformsTo</i>" and @href="<i>http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aaa</i>"] | /package/metadata/meta[@property="dcterms:conformsTo" and normalize-space() = "http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aaa"]</code>:</span>
-                  	<span><b>THEN LET</b> <var>epub_version</var> = '1.0', and</span>
-                  	<span><b>LET</b> <var>wcag_version</var> = '2.0', and</span>
-                  	<span><b>LET</b> <var>wcag_level</var> = 'AAA'.</span>
-                  </li>
-
-                   <!-- EPUB Accessibility 1.1 WCAG 2.X (A/AA/AAA) -->
-					<li><b>LET</b> <var>conformance</var> be the value of the node extracted from <var>package_document</var>, using the xpath <code class="xpath">/package/metadata/meta[@property="dcterms:<i>conformsTo</i>" and matches(normalize-space(), 'EPUB Accessibility 1\.1 - WCAG 2\.[0-2] Level [A]+')]</code>.</li>
-
-				   <li>
-                  	<span><b>IF</b> <var>conformance</var> is <b>NOT</b> empty:</span>
-				   	<span><b>THEN LET</b> <var>epub_version</var> = '1.1', and</span>
-				   	<span><b>LET</b> <var>wcag_version</var> = replace(<var>conformance</var>, 'EPUB Accessibility 1\.1 - WCAG (2\.[0-2]) Level [A]+', '$1'), and</span>
-				   	<span><b>LET</b> <var>wcag_level</var> = replace(<var>conformance</var>, 'EPUB Accessibility 1\.1 - WCAG 2\.[0-2] Level ', '').</span>
-                    </li>
-
-                    <li><b>LET</b> <var>certifier</var> be the value of the node extracted from <var>package_document</var>, using the xpath <code class="xpath">/package/metadata/meta[@property="a11y:<i>certifiedBy</i>"]</code>.</li>
-
-                    <li><b>LET</b> <var>certifier_credentials</var> be the value of the node extracted from <var>package_document</var>, using the xpath <code class="xpath">/package/metadata/meta[@property="a11y:<i>certifierCredential</i>"]</code>.</li>
-
-                    <li><b>LET</b> <var>certification_date</var> be the value of the node extracted from <var>package_document</var>, using the xpath <code class="xpath">/package/metadata/meta[@property="dcterms:date" and @refines=//meta[@property="a11y:certifiedBy"]/@id]</code>.</li>
-
-                    <li><b>LET</b> <var>certifier_report</var> be the value of the node extracted from <var>package_document</var>, using the xpath <code class="xpath">/package/metadata/meta[@property="a11y:<i>certifierReport</i>"]</code>.</li>
+					<!-- EPUB Accessibility 1.1 WCAG 2.X (A/AA/AAA) -->
+					<li><b>LET</b> <var>conformance</var> be the value of the node extracted from <var>package_document</var>, using the xpath <code class="xpath">/package/metadata/meta[@property="dcterms:conformsTo" and matches(normalize-space(), 'EPUB Accessibility 1\.1 - WCAG 2\.[0-2] Level [A]+')]</code>.</li>
+					
+					<li>
+						<span><b>IF</b> <var>conformance</var> is <b>NOT</b> empty:</span>
+						<span><b>THEN LET</b> <var>epub_version</var> = '1.1', and</span>
+						<span><b>LET</b> <var>wcag_version</var> = replace(<var>conformance</var>, 'EPUB Accessibility 1\.1 - WCAG (2\.[0-2]) Level [A]+', '$1'), and</span>
+						<span><b>LET</b> <var>wcag_level</var> = replace(<var>conformance</var>, 'EPUB Accessibility 1\.1 - WCAG 2\.[0-2] Level ', '').</span>
+					</li>
+					
+					<!-- EPUB Accessibility 1.0 WCAG 2.0 (A/AA/AAA) -->
+					<li>
+						<span><b>ELSE IF</b> the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, using the xpath <code class="xpath">/package/metadata/*[(@rel="dcterms:conformsTo" and @href="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aaa") or (@property="dcterms:conformsTo" and normalize-space() = "http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aaa")]</code>:</span>
+						<span><b>THEN LET</b> <var>epub_version</var> = '1.0', and</span>
+						<span><b>LET</b> <var>wcag_version</var> = '2.0', and</span>
+						<span><b>LET</b> <var>wcag_level</var> = 'AAA'.</span>
+					</li>
+					
+					<li>
+						<span><b>ELSE IF</b> the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, using the xpath <code class="xpath">/package/metadata/*[(@rel="dcterms:conformsTo" and @href="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aa") or (@property="dcterms:conformsTo" and normalize-space() = "http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aa")]</code>:</span>
+						<span><b>THEN LET</b> <var>epub_version</var> = '1.0', and</span>
+						<span><b>LET</b> <var>wcag_version</var> = '2.0', and</span>
+						<span><b>LET</b> <var>wcag_level</var> = 'AA'.</span>
+					</li>
+					
+					<li>
+						<span><b>ELSE IF</b> the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, using the xpath <code class="xpath">/package/metadata/*[(@rel="dcterms:conformsTo" and @href="http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-a") or (@property="dcterms:conformsTo" and normalize-space() = "http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-a")]</code> :</span>
+						<span><b>THEN LET</b> <var>epub_version</var> = '1.0', and</span>
+						<span><b>LET</b> <var>wcag_version</var> = '2.0', and</span>
+						<span><b>LET</b> <var>wcag_level</var> = 'A'.</span>
+					</li>
+					
+					<li><b>LET</b> <var>certifier</var> be the value of the node extracted from <var>package_document</var>, using the xpath <code class="xpath">/package/metadata/meta[@property="a11y:certifiedBy" and (not(@refines) or substring(@refines,2)=//*[(@rel="dcterms:conformsTo" and contains(@href, "http://www.idpf.org/epub/a11y/")) or (@property="dcterms:conformsTo" and contains(normalize-space(), "http://www.idpf.org/epub/a11y/")) or (@property="dcterms:conformsTo" and contains(normalize-space(), "EPUB Accessibility 1.1"))]/@id)]</code>.
+					
+						<div class="note">
+							<p>The <code>refines</code> attribute is used to link evaluation metadata back to the right evaluator and the 
+								evaluator back to their conformance claim. This adds complexity to the xpaths because these refinement
+								chains need to be resolved by matching fragment identifiers to IDs.</p>
+							<p>The xpath for this variable, and the following ones, can be simplified if the ID of the element containing
+								the conformance string is stored when the conformance claim is first found. This ID can then be dynamically
+								added to match against the <code>refines</code> attribute value rather than using text comparisons to relocate
+								the claim each time. The text comparisons are necessary without such an optimization because it is possible an 
+								EPUB publication has more than one conformance claim.</p>
+						</div>
+					</li>
+					
+					<li><b>LET</b> <var>certifier_credentials</var> be the value of the node extracted from <var>package_document</var>, using the xpath <code class="xpath">/package/metadata/meta[@property="a11y:certifierCredential" and (not(@refines) or substring(@refines,2)=//meta[@property="a11y:certifiedBy" and substring(@refines,2)=//*[(@rel="dcterms:conformsTo" and contains(@href, "http://www.idpf.org/epub/a11y/")) or (@property="dcterms:conformsTo" and contains(normalize-space(), "http://www.idpf.org/epub/a11y/")) or (@property="dcterms:conformsTo" and contains(normalize-space(), "EPUB Accessibility 1.1"))]/@id]/@id)]</code>.</li>
+					
+					<li><b>LET</b> <var>certification_date</var> be the value of the node extracted from <var>package_document</var>, using the xpath <code class="xpath">/package/metadata/meta[@property="dcterms:date" and substring(@refines,2)=//*[(@rel="dcterms:conformsTo" and contains(@href, "http://www.idpf.org/epub/a11y/")) or (@property="dcterms:conformsTo" and contains(normalize-space(), "http://www.idpf.org/epub/a11y/")) or (@property="dcterms:conformsTo" and contains(normalize-space(), "EPUB Accessibility 1.1"))]/@id]</code>.</li>
+					
+					<li><b>LET</b> <var>certifier_report</var> be the value of the node extracted from <var>package_document</var>, using the xpath <code class="xpath">/package/metadata/link[@rel="a11y:certifierReport" and (not(@refines) or substring(@refines,2)=//meta[@property="a11y:certifiedBy" and substring(@refines,2)=//*[(@rel="dcterms:conformsTo" and contains(@href, "http://www.idpf.org/epub/a11y/")) or (@property="dcterms:conformsTo" and contains(normalize-space(), "http://www.idpf.org/epub/a11y/")) or (@property="dcterms:conformsTo" and contains(normalize-space(), "EPUB Accessibility 1.1"))]/@id]/@id)]/@href</code>.</li>
 				</ol>
 
 				<h4 id="conformance-instructions">Instructions</h4>
