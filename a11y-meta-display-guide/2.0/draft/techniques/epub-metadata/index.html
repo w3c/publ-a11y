@@ -960,16 +960,24 @@
 								<span><b>THEN</b> display <code id="hazards-flashing">"Flashing content"</code>.</span>
 							</li>
 							<li>
-								<span><b>IF</b> <var>unknown_flashing_hazard</var>:</span>
-								<span><b>THEN</b> display <code id="hazards-flashing-unknown">"Flashing hazards not known"</code>.</span>
-							</li>
-							<li>
 								<span><b>IF</b> <var>motion_simulation_hazard</var>:</span>
 								<span><b>THEN</b> display <code id="hazards-motion">"Motion simulation"</code>.</span>
 							</li>
 							<li>
+								<span><b>IF</b> <var>sound_hazard</var>:</span>
+								<span><b>THEN</b> display <code id="hazards-sound">"Sounds"</code>.</span>
+							</li>
+							<li>
+								<span><b>IF</b> <var>unknown_flashing_hazard</var>:</span>
+								<span><b>THEN</b> display <code id="hazards-flashing-unknown">"Flashing hazards not known"</code>.</span>
+							</li>
+							<li>
 								<span><b>IF</b> <var>unknown_motion_simulation_hazard</var>:</span>
 								<span><b>THEN</b> display <code id="hazards-motion-unknown">"Motion simulation hazards not known"</code>.</span>
+							</li>
+							<li>
+								<span><b>IF</b> <var>unknown_sound_hazard</var>:</span>
+								<span><b>THEN</b> display <code id="hazards-sound-unknown">"Sound hazards not known"</code>.</span>
 							</li>
 							<li>
 								<span><b>IF</b> <var>no_flashing_hazard</var>:</span>
@@ -982,14 +990,6 @@
 							<li>
 								<span><b>IF</b> <var>no_sound_hazard</var>:</span>
 								<span><b>THEN</b> display <code id="hazards-sound-none">"No sound hazards"</code>.</span>
-							</li>
-							<li>
-								<span><b>IF</b> <var>sound_hazard</var>:</span>
-								<span><b>THEN</b> display <code id="hazards-sound">"Sounds"</code>.</span>
-							</li>
-							<li>
-								<span><b>IF</b> <var>unknown_sound_hazard</var>:</span>
-								<span><b>THEN</b> display <code id="hazards-sound-unknown">"Sound hazards not known"</code>.</span>
 							</li>
 						</ul>
 					</li>
