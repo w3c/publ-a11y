@@ -75,70 +75,47 @@
 	  </style>
 	</head>
 	<body>
-		<section id="abstract"></section>
+		<section id="abstract">
+			<p>This document provides techniques for meeting the guidelines of the 
+				<a href="../../guidelines/">Accessibility Metadata Display Guide for Digital Publications 2.0</a>.
+				It provides practical examples on how to extract information from an ONIX record and show it to 
+				end users.</p>
+		</section>
 		<section id="sotd"></section>
         <section id="introduction">
             <h2>Introduction</h2>
-            <h3>ONIX Metadata</h3>
+        	
+        	<section>
+        		<h3>ONIX metadata</h3>
+        		
+        		<p>
+        			ONIX messages describe products for the global book supply chain and will be sent from publisher or creator of the EPUB or digital books with full audio to those who will make the products available for sale, lending or subscription.
+        			These platforms may not yet have the actual files, as they may not yet be ready, or may only choose to list them for sale if they have certain accessibility features.
+        			ONIX also only describes a product, it cannot describe the features of the reading systems on which a product may be accessed.
+        			It is important to use ONIX metadata as a complement to the accessibility data embedded within the publication itself, if describing accessible books, books with full audio and related products for the global book supply chain.
+        			An ONIX file can be used to display accessibility information in advance of publication or when you do not have access to the metadata in the digital file itself.
+        			Some accessibility information may only be available when you have access to the file itself.
+        			If you are unfamiliar with ONIX, then there is more documentation available from <a href="https://www.editeur.org/83/Overview/">EDItEUR.org</a>.
+        		</p>
+        		
+        		<p>
+        			It is important to note that ONIX 3.0 includes a number of new accessibility metadata codes, some of which may not be expressible in earlier versions of ONIX.
+        		</p>
+        		
+        		<div class="note">
+        			<p>Techniques for displaying accessibility metadata in other metadata formats can be found in the <a href="../../guidelines/#techniques">Display Techniques for Displaying Accessibility Metadata</a></p>
+        		</div>
+        	</section>
             
-            <p>
-				ONIX messages describe products for the global book supply chain and will be sent from publisher or creator of the EPUB or digital books with full audio to those who will make the products available for sale, lending or subscription.
-				These platforms may not yet have the actual files, as they may not yet be ready, or may only choose to list them for sale if they have certain accessibility features.
-				ONIX also only describes a product, it cannot describe the features of the reading systems on which a product may be accessed.
-				It is important to use ONIX metadata as a complement to the accessibility data embedded within the publication itself, if describing accessible books, books with full audio and related products for the global book supply chain.
-				An ONIX file can be used to display accessibility information in advance of publication or when you do not have access to the metadata in the digital file itself.
-				Some accessibility information may only be available when you have access to the file itself.
-				If you are unfamiliar with ONIX, then there is more documentation available from <a href="https://www.editeur.org/83/Overview/">EDItEUR.org</a>.
-			</p>
-			
-			<p>
-				It is important to note that ONIX 3.0 includes a number of new accessibility metadata codes, some of which may not be expressible in earlier versions of ONIX.
-			</p>
-            
-			<aside class="note">
-				Techniques for displaying accessibility metadata in other metadata formats can be found in the <a href="../../guidelines/#techniques">Display Techniques for Displaying Accessibility Metadata</a>
-			</aside>
-
- 			<aside class="note">
- 				This document provides techniques for meeting the guidelines of the <a href="../../guidelines/">Accessibility Metadata Display Guide for Digital Publications 2.0</a>. It provides practical examples for extracting information from the ONIX metadata for showing it to the end users.
-			</aside>
-
-			<aside class="note">
- 			    The examples provided in this document demonstrate the "compact" version of what is to be displayed.
-                For every text string both the "compact" or the "descriptive" options are available.
-
-                <aside class="example" title="Compact Versus Descriptive">
-                    <pre>
-                        <code>
-                            "visual-adjustments":
-                                {
-                                "visual-adjustments-title": "Visual adjustments",
-                                "visual-adjustments-modifiable":
-                                    {
-                                    "descriptive": "Appearance of the text and page layout can be modified according to the capabilities of the reading system (font family and font size, spaces between paragraphs, sentences, words, and letters, as well as color of background and text)",
-                                    "compact": "Appearance can be modified"
-                                    }
-                                }
-                        </code>
-                    </pre>
-                </aside>
-
-                The option is yours to provide either the "compact" or "descriptive" versions to the end user or perhaps even allow the user to choose what they wish to see.
-
-                <aside class="ednote">
-                    Link to the English JSON file where this example is taken from.
-                </aside>
-
-			 </aside>
-			
 			<section id="conventions">
-				<h3>Conventions for Implementations</h3>
+				<h3>Implementation conventions</h3>
 				
-				<h4>Heading Structure</h4>
+				<section>
+					<h4>Heading structure</h4>
 					<p>The algorithms defined in this document do not include instructions for outputting their respective headings because if a given technique does not result in any information (i.e., would output a statement that no information is available), the section may be omitted (i.e., no heading would be displayed). Whether there is any information to display is only known after an algorithm is processed, which would lead to the algorithms having to include instructions to remove headings.</p>
-				
+					
 					<p>The headings structure to use for the techniques is defined in the guidelines but is repeated here to help guide implementations. The headings are linked to the algorithm they are associated with.</p>
-	
+					
 					<ol>
 						<li><code id="ways-of-reading-title">"<a href="#ways-of-reading">Ways of reading</a>"</code></li>
 						<li><code id="conformance-title">"<a href="#conformance-instructions">Conformance</a>"</code></li>
@@ -149,25 +126,73 @@
 						<li><code id="legal-considerations-title">"<a href="#legal-considerations-instructions">Legal considerations</a>"</code></li>
 						<li><code id="additional-accessibility-information-title">"<a href="#additional-accessibility-information">Additional accessibility information</a>"</code></li>
 					</ol>
+				</section>
 				
-				<h4>Coding Conventions</h4>
-				<p>The code conventions used in the provided code snippet follow a structure commonly found in programming languages like Python, Java, or C++. Here&#39;s an explanation of the conventions:</p>
-				<dl>
-					<dt>Conditionals and Control Flow:</dt>
+				<section>
+					<h4>Coding conventions</h4>
+					<p>The code conventions used in the provided code snippet follow a structure commonly found in programming languages like Python, Java, or C++. Here&#39;s an explanation of the conventions:</p>
+					<dl>
+						<dt>Conditionals and Control Flow:</dt>
 						<dd><b>IF</b>, <b>ELSE IF</b>, and <b>ELSE</b> (in bold and capital letters) statements are used to define different conditions and the corresponding actions to be taken.</dd>
-					<dt>Operators:</dt>
+						<dt>Operators:</dt>
 						<dd>Written operators (<i>is present</i>) are used to check if a particular code or codelist is present (or not) in the metadata record.</dd>
-					<dt>Logical operators:</dt>
+						<dt>Logical operators:</dt>
 						<dd>Logical operators (<b>AND</b>, <b>OR</b>, <b>NOT</b>, in bold and capital letters) are used to combine conditions.</dd>
-					<dt>String Literals:</dt>
+						<dt>String Literals:</dt>
 						<dd>String literals are used to represent the text that should be displayed when a particular condition is met.</dd>
-					<dt>Variable Naming:</dt>
+						<dt>Variable Naming:</dt>
 						<dd>The terms like &quot;property&quot; and &quot;value&quot; are used in a way that suggests a variable or data structure representing the metadata record.</dd>
-					<dt>Indentation:</dt>
+						<dt>Indentation:</dt>
 						<dd>The code uses consistent indentation to define blocks of code within conditional statements. This is crucial for readability and maintaining a clear structure.</dd>
-					<dt>Readability:</dt>
+						<dt>Readability:</dt>
 						<dd>The code is written in a way that is intended to be easily readable and understandable even by non-coders.</dd>
-				</dl>
+					</dl>
+				</section>
+				
+				<section id="node-selectors">
+					<h4>Node selectors</h4>
+					
+					<p>These techniques use XPath 1.0 expressions [[xpath-10]] to verify the presence of 
+						accessibility metadata in an ONIX record and to select information from it.
+						Some of the selectors can be optimized for processors that support newer versions of XPath 
+						(e.g., to match an element against a sequence of values rather than repeat the element for each 
+						possible value).</p>
+					
+					<p>Translation of these XPath selectors may be necessary if the input record is transformed into
+						another form, such as a JSON structure.</p>
+				</section>
+				
+				<section id="output-statements">
+					<h4>Output statements</h4>
+					
+					<p>The outputs provided in this document demonstrate the compact strings to display. For every text 
+						string, however, both a compact and descriptive option is available. These strings are provided
+						in a JSON structure, as shown in the following example.</p>
+					
+					<aside class="example" title="Display string encoding" id="ex-str-json">
+						<pre><code>"ways-of-reading": {
+   &#8230;
+   "ways-of-reading-visual-adjustments-modifiable": {
+      "compact": "Appearance can be modified",
+      "descriptive": " Appearance of the text and page layout can be modified according to the capabilities of the reading system (font family and font size, spaces between paragraphs, sentences, words, and letters, as well as color of background and text)",
+   },
+   &#8230;
+},</code></pre>
+					</aside>
+					
+					<p>This document does not set a default output. Either the compact or descriptive statements can be 
+						presented to the end user, or they can even be provided the option to choose their own preference.</p>
+					
+					<p>At the end of each output statement is an ID in brackets. This ID corresponds to a key in the JSON
+						file containing both the compact and descriptive display statements (see the <a 
+							href="#ex-str-json">preceding example</a>). To use the descriptive statement instead of the
+						compact, simply select the "descriptive" subkey instead of the "compact" one associated with the ID.</p>
+					
+					<div class="note">
+						The canonical English JSON file containing the compact and descriptive strings is available
+						at <a href="https://github.com/w3c/publ-a11y/tree/main/a11y-meta-display-guide/2.0/draft/localizations/en-US">https://github.com/w3c/publ-a11y/tree/main/a11y-meta-display-guide/2.0/draft/localizations/en-US</a>.
+					</div>
+				</section>
 			</section>
 		</section>
 	
@@ -192,7 +217,7 @@
 				</aside>
 			</section>
 			<section id="check-for-node">
-				<h3>Check for Node</h3>
+				<h3>Check for node</h3>
 				<p>Many of the techniques rely on checking for the presence or absence of metadata in the ONIX record.</p>
 				<p>This algorithm takes:</p>
 				<ul>
@@ -1136,7 +1161,8 @@
 						href="https://w3c.github.io/publ-a11y/a11y-meta-display-guide/2.0/techniques/onix-metadata/onix-metadata-draft-note-20250220.html">2025-02-20
 						Draft Community Group Report</a></summary>
 				<ul>
-					<li>No substantive changes have been made.</li>
+					<li>06-Mar-2025: Added new sections to the implementation conventions to cover node
+						selection and output strings.</li>
 				</ul>
 			</details>
 		</section>
