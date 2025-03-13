@@ -39,6 +39,16 @@
 	  	var {
 			color: brown;
 		}
+		li > ol.condition {
+			list-style-type: alpha;
+		}
+		
+		li > ol.condition > li >  ol.condition {
+			list-style-type: roman;
+		}
+		ol.display {
+			list-style-type: disc;
+		}
 	  	ol.condition > li {
 	  		margin-top: 1rem;
 	  		margin-left: 0;
@@ -219,15 +229,15 @@
                         </dd>
                     </dl>
 
-                    <h5>Variables setup</h5>
-                    <ol class="condition">
-                        <li><b>LET</b> <var>package_document</var> be the result of calling <a href="#pre-processing">preprocessing</a> given <var>package_document_as_text</var>.</li>
-
-                        <li><b>LET</b> <var>all_textual_content_can_be_modified</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and normalize-space()="<i>displayTransformability</i>"]</code>.</li>
-
+					<h5>Variables setup</h5>
+					<ul class="variable">
+						<li><b>LET</b> <var>package_document</var> be the result of calling <a href="#pre-processing">preprocessing</a> given <var>package_document_as_text</var>.</li>
+						
+						<li><b>LET</b> <var>all_textual_content_can_be_modified</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and normalize-space()="<i>displayTransformability</i>"]</code>.</li>
                         <li><b>LET</b> <var>is_fixed_layout</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="rendition:<i>layout</i>" and normalize-space()="<i>pre-paginated</i>"]</code>.</li>
 
-                    </ol>
+					</ul>
+
                     <h5>Instructions</h5>
                     <ol class="condition">
                         <li>
@@ -357,9 +367,9 @@
                             <p>This indicates that text-synchronised prerecorded audio narration (natural or synthesized voice) is included for substantially all textual matter, including all alternative descriptions, e.g. via a SMIL media overlay.</p>
                         </dd>
                     </dl>
-                    <h5>Variables setup</h5>
-                    <ol class="condition">
-                        <li><b>LET</b> <var>package_document</var> be the result of calling <a href="#pre-processing">preprocessing</a> given <var>package_document_as_text</var>.</li>
+					<h5>Variables setup</h5>
+					<ul class="variable">
+						<li><b>LET</b> <var>package_document</var> be the result of calling <a href="#pre-processing">preprocessing</a> given <var>package_document_as_text</var>.</li>
 
                         <li><b>LET</b> <var>all_content_audio</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessModeSufficient</i>" and normalize-space()="<i>auditory</i>"]</code>.</li>
 
@@ -367,7 +377,7 @@
 
                         <li><b>LET</b> <var>synchronised_pre_recorded_audio</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and normalize-space()="<i>synchronizedAudioText</i>"]</code>.</li>
 
-                    </ol>
+                    </ul>
                     <h5>Instructions</h5>
                     <ol class="condition">
                         <li>
@@ -447,7 +457,7 @@
 
 				<h4>Variables setup</h4>
 				
-				<ol class="condition">
+				<ul class="variable">
 					<li><b>LET</b> <var>package_document</var> be the result of calling <a href="#pre-processing">preprocessing</a> given <var>package_document_as_text</var>.</li>
 
 					<!-- EPUB Accessibility 1.1 WCAG 2.X (A/AA/AAA) -->
@@ -508,7 +518,7 @@
 					<li><b>LET</b> <var>certification_date</var> be the value of the node extracted from <var>package_document</var>, using the xpath <code class="xpath">/package/metadata/meta[@property="dcterms:date" and substring(@refines,2)=//*[(@rel="dcterms:conformsTo" and contains(@href, "http://www.idpf.org/epub/a11y/")) or (@property="dcterms:conformsTo" and contains(normalize-space(), "http://www.idpf.org/epub/a11y/")) or (@property="dcterms:conformsTo" and contains(normalize-space(), "EPUB Accessibility 1.1"))]/@id]</code>.</li>
 					
 					<li><b>LET</b> <var>certifier_report</var> be the value of the node extracted from <var>package_document</var>, using the xpath <code class="xpath">/package/metadata/link[@rel="a11y:certifierReport" and (not(@refines) or substring(@refines,2)=//meta[@property="a11y:certifiedBy" and substring(@refines,2)=//*[(@rel="dcterms:conformsTo" and contains(@href, "http://www.idpf.org/epub/a11y/")) or (@property="dcterms:conformsTo" and contains(normalize-space(), "http://www.idpf.org/epub/a11y/")) or (@property="dcterms:conformsTo" and contains(normalize-space(), "EPUB Accessibility 1.1"))]/@id]/@id)]/@href</code>.</li>
-				</ol>
+				</ul>
 
 				<h4 id="conformance-instructions">Instructions</h4>
 				<ol class="condition">
@@ -517,7 +527,7 @@
 					</li>
 					<li>
 						<span><b>ELSE</b>:</span>
-						<ul class="condition">
+						<ol class="condition">
 							<li>
 								<span><b>IF</b> <var>wcag_level</var> == 'AAA':</span>
 								<span><b>THEN</b> display <code id="conformance-aaa">"This publication exceeds accepted accessibility standards"</code>.</span>
@@ -537,15 +547,15 @@
 							<li>
 								<span><b>IF</b> <var>certifier</var> is <b>NOT</b> empty:</span>
 								<span><b>THEN</b></span>
-								<ul class="condition">
+								<ol class="display">
 									<li>display <code id="conformance-certifier">"The publication was certified by "</code></li>
 									<li>display <var>certifier</var>.</li>
-								</ul>
+								</ol>
 							</li>
 							<li>
 								<span><b>IF</b> <var>certifier_credentials</var> is <b>NOT</b> empty:</span>
 								<span><b>THEN</b></span>
-								<ul class="condition">
+								<ol class="condition">
 									<li>display <code id="conformance-certifier-credentials">"The certifier's credential is "</code></li>
 									<li>
                                         <span><b>IF</b> <var>certifier_credentials</var> is a URL.</span>
@@ -555,7 +565,7 @@
                                         <span><b>ELSE</b> display <var>certifier_credentials</var> as text.</span>
                                     </li>
 
-								</ul>
+								</ol>
 							</li>
 							<li>
 								<div class="note">
@@ -566,7 +576,7 @@
 								</div>
 								
 								<span>Display <code id="conformance-details-claim">"This publication claims to meet"</code>.</span>
-								<ul>
+								<ol class="condition">
 									<li>
 										<span><b>IF</b> <var>epub_version</var> == '<code>1.0</code>':</span>
 										<span><b>THEN</b> display <code id="conformance-details-epub-accessibility-1-0">" EPUB Accessibility 1.0"</code>.</span>
@@ -599,24 +609,20 @@
 										<span><b>ELSE IF</b> <var>wcag_level</var> == '<code>A</code>':</span>
 										<span><b>THEN</b> display <code id="conformance-details-level-a">" Level A"</code>.</span>
 									</li>
-								</ul>
+								</ol>
 							</li>
 							<li>
 								<span><b>IF</b> <var>certification_date</var> <b>THEN</b>:</span>
-                                <ul class="condition">
-
+								<ol class="display">
                                 	<li>display <code id="conformance-details-certification-info">"The publication was certified on "</code></li>
 									<li>display <var>certification_date</var>.</li>
-								</ul>
+								</ol>
 							</li>
 							<li>
 								<span><b>IF</b> <var>certifier_report</var>:</span>
-								<span><b>THEN</b></span>
-								<ul class="condition">
-									<li>display <code id="conformance-details-certifier-report">"For more information refer to the certifier's report"</code> as a named link with <var>certifier_report</var> as the URL used.</li>
-								</ul>
+								<span><b>THEN</b> display <code id="conformance-details-certifier-report">"For more information refer to the certifier's report"</code> as a named link with <var>certifier_report</var> as the URL used.</span>
 							</li>
-						</ul>
+						</ol>
 					</li>
 				</ol>
 			</section>
@@ -652,7 +658,7 @@
 					</dd>
 				</dl>
 				<h4>Variables setup</h4>
-				<ol class="condition">
+				<ul class="variable">
 
  					<li><b>LET</b> <var>package_document</var> be the result of calling <a href="#pre-processing">preprocessing</a> given <var>package_document_as_text</var>.</li>
 
@@ -664,7 +670,7 @@
 
                     <li><b>LET</b> <var>table_of_contents_navigation</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and normalize-space()="<i>tableOfContents</i>"]</code>.</li>
 
-  				</ol>
+  				</ul>
 				<h4 id="navigation-instructions">Instructions</h4>
 				<ol class="condition">
 					<li>
@@ -765,7 +771,7 @@
 						</dd>
 				</dl>
 				<h4>Variables setup</h4>
-				<ol class="condition">
+				<ul class="variable">
 					<li><b>LET</b> <var>package_document</var> be the result of calling <a href="#pre-processing">preprocessing</a> given <var>package_document_as_text</var>.</li>
 
                    <li><b>LET</b> <var>chemical_formula_as_latex</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and normalize-space()="<i>latex-chemistry</i>"]</code>.</li>
@@ -782,14 +788,14 @@
 
 					<li><b>LET</b> <var>full_alternative_textual_descriptions</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and normalize-space()="<i>longDescriptions</i>"]</code>.</li>
 
- 	                <li><b>LET</b> <var>math_formula_as_latex</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and normalize-space()="<i>latex</i>"]</code>.</li>
+					<li><b>LET</b> <var>math_formula_as_latex</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and normalize-space()="<i>latex</i>"]</code>.</li>
 
-	                <li><b>LET</b> <var>math_formula_as_mathml</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and normalize-space()="<i>MathML</i>"]</code>.</li>
+					<li><b>LET</b> <var>math_formula_as_mathml</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and normalize-space()="<i>MathML</i>"]</code>.</li>
 
-                    <li><b>LET</b> <var>open_captions</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and normalize-space()="<i>openCaptions</i>"]</code>.</li>
-                    
-                    <li><b>LET</b> <var>transcript</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and normalize-space()="<i>transcript</i>"]</code>.</li>
-				</ol>
+					<li><b>LET</b> <var>open_captions</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and normalize-space()="<i>openCaptions</i>"]</code>.</li>
+
+					<li><b>LET</b> <var>transcript</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and normalize-space()="<i>transcript</i>"]</code>.</li>
+				</ul>
 				<h4 id="rich-content-instructions">Instructions</h4>
 				<ol class="condition">
                     <li>
@@ -913,7 +919,7 @@
 				</dl>
 
 				<h4>Variables setup</h4>
-				<ol class="condition">
+				<ul class="variable">
 					<li><b>LET</b> <var>package_document</var> be the result of calling <a href="#pre-processing">preprocessing</a> given <var>package_document_as_text</var>.</li>
 
                     <li><b>LET</b> <var>flashing_hazard</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityHazard</i>" and normalize-space()="<i>flashing</i>"]</code>.</li>
@@ -937,7 +943,7 @@
 					<li><b>LET</b> <var>unknown_motion_hazard</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityHazard</i>" and normalize-space()="<i>unknownMotionSimulationHazard</i>"]</code>.</li>
 					
 					<li><b>LET</b> <var>unknown_sound_hazard</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityHazard</i>" and normalize-space()="<i>unknownSoundHazard</i>"]</code>.</li>
-				</ol>
+				</ul>
 				
 				<h4 id="hazards-instructions">Instructions</h4>
 				<ol class="condition">
@@ -954,7 +960,7 @@
 							<b>OR</b> <var>no_flashing_hazard</var> <b>OR</b> <var>no_motion_hazard</var> <b>OR</b> <var>no_sound_hazard</var>
 							<b>OR</b> <var>unknown_flashing_hazard</var> <b>OR</b> <var>unknown_motion_hazard</var> <b>OR</b> <var>unknown_sound_hazard</var>:</span>
 						<span><b>THEN</b></span>
-						<ul class="condition">
+						<ol class="condition">
 							<li>
 								<span><b>IF</b> <var>flashing_hazard</var>:</span>
 								<span><b>THEN</b> display <code id="hazards-flashing">"Flashing content"</code>.</span>
@@ -991,7 +997,7 @@
 								<span><b>IF</b> <var>no_sound_hazard</var>:</span>
 								<span><b>THEN</b> display <code id="hazards-sound-none">"No sound hazards"</code>.</span>
 							</li>
-						</ul>
+						</ol>
 					</li>
 					<li>
 						<b>ELSE</b> either omit this display field if metadata is missing or display <code id="hazards-no-metadata">"No information is available"</code>.
@@ -1030,15 +1036,15 @@
 					</dd>
 				</dl>
 				<h4>Variables setup</h4>
-				<ol class="condition">
-                    <li><b>LET</b> <var>package_document</var> be the result of calling <a href="#pre-processing">preprocessing</a> given <var>package_document_as_text</var>.</li>
+				<ul class="variable">
+					<li><b>LET</b> <var>package_document</var> be the result of calling <a href="#pre-processing">preprocessing</a> given <var>package_document_as_text</var>.</li>
 
                     <li><b>LET</b> <var>accessibility_summary</var> be the value of the node extracted from <var>package_document</var>, using the xpath <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilitySummary</i>"]</code>.</li>
 
-										<li><b>LET</b> <var>lang_attribute_accessibility_summary</var> be the value of the node extracted from <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="<i>schema:accessibilitySummary</i>"]/(@lang|/package/@lang)[last()]/normalize-space(.)</code>.</li>
+					<li><b>LET</b> <var>lang_attribute_accessibility_summary</var> be the value of the node extracted from <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="<i>schema:accessibilitySummary</i>"]/(@lang|/package/@lang)[last()]/normalize-space(.)</code>.</li>
 
-										<li><b>LET</b> <var>language_of_text</var> be the value of the node extracted from <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/dc:language[1]</code>.</li>
- 				</ol>
+					<li><b>LET</b> <var>language_of_text</var> be the value of the node extracted from <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/dc:language[1]</code>.</li>
+				</ul>
 				<h4 id="accessibility-summary-instructions">Instructions</h4>
 				<ol class="condition">
                    <li>
@@ -1085,13 +1091,13 @@
 					</dd>
                 </dl>
 				<h4>Variables setup</h4>
-				<ol class="condition">
+				<ul class="variable">
 					<li><b>LET</b> <var>package_document</var> be the result of calling <a href="#pre-processing">preprocessing</a> given <var>package_document_as_text</var>.</li>
 					<li><b>LET</b> <var>eaa_exception_disproportionate_burden</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="a11y:<i>exemption</i>" and normalize-space()="<i>eaa-disproportionate-burden</i>"]</code>.</li>
 					<li><b>LET</b> <var>eaa_exception_fundamental_modification</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="a11y:<i>exemption</i>" and normalize-space()="<i>eaa-fundamental-alteration</i>"]</code>.</li>
 					<li><b>LET</b> <var>eaa_exemption_micro_enterprises</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="a11y:<i>exemption</i>" and normalize-space()="<i>eaa-microenterprise</i>"]</code>.</li>
 
-				</ol>
+				</ul>
 				<h4 id="legal-considerations-instructions">Instructions</h4>
 				<ol class="condition">
 					<li>
@@ -1193,7 +1199,7 @@
  					</dl>
 
 					<h4>Variables setup</h4>
-					<ol class="condition">
+					<ul class="variable">
                         <li><b>LET</b> <var>package_document</var> be the result of calling <a href="#pre-processing">preprocessing</a> given <var>package_document_as_text</var>.</li>
                         
 						<li><b>LET</b> <var>aria</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and normalize-space()="<i>aria</i>"]</code>.</li>
@@ -1221,7 +1227,7 @@
                         <li><b>LET</b> <var>tactile_object</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and normalize-space()="<i>tactileObject</i>"]</code>.</li>
                         
  						<li><b>LET</b> <var>text_to_speech_hinting</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and normalize-space()="<i>ttsMarkup</i>"]</code>.</li>
-    				</ol>
+    				</ul>
                         
 					<h4 id="additional-accessibility-information-instructions">Instructions</h4>
 					<ol class="condition">
