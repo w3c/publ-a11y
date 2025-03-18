@@ -50,6 +50,16 @@
 	  	var {
 			color: brown;
 		}
+		li > ol.condition {
+			list-style-type: lower-alpha;
+		}
+		
+		li > ol.condition > li >  ol.condition {
+			list-style-type: upper-roman;
+		}
+		ol.display {
+			list-style-type: disc;
+		}
 	  	ol.condition > li {
 	  		margin-top: 1rem;
 	  		margin-left: 0;
@@ -182,11 +192,11 @@
 				</aside>
 				<p>This algorithm takes the <var>onix_record_as_text</var> argument: a UTF-8 string representing the ONIX record.</p>
 				<p>To generate the internal representation, run the following steps:</p>
-				<ol class="condition">
+				<ul class="variable">
 					<li><b>LET</b> <var>record</var> be textual representation of the ONIX record for the publication given <var>onix_record_as_text</var>.</li>
 					<li><b>LET</b> <var>onix</var> be the DOM tree that results from parsing <var>record</var> using an XML DOM parser.</li>
 					<li>return <var>onix</var>.</li>
-				</ol>
+				</ul>
 				<aside class="note">
 					<p>The XML file being processed may contain namespaces, in the techniques when we use XPATH we will assume that the default namespace of the root record is used.</p>
 				</aside>
@@ -227,21 +237,21 @@
 					<dl>
 						<dt><var>all_textual_content_can_be_modified</var></dt>
 						<dd>
-							<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/196/36">code 36 of codelist 196</a> (All textual content can be modified) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+							<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/196/36">code 36 of codelist 196</a> (All textual content can be modified) is present in the ONIX record; otherwise, it means that the metadata is not present.</p>
 							<p><i>All textual content can be modified</i> means that the digital publication does not restrict the ability of users to modify and reflow the display of any textual content to the full extent allowed by the reading system (i.e. to change the text size or typeface, line height and word spacing, colors).</p>
 						</dd>
 						<dt><var>is_fixed_layout</var></dt>
 						<dd>
-							<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/175/E201">code E201 of codelist 175</a> (Fixed format) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+							<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/175/E201">code E201 of codelist 175</a> (Fixed format) is present in the ONIX record; otherwise, it means that the metadata is not present.</p>
 							<p><i>Fixed format</i> means that digital publication is in fixed format (e.g. EPUB Fixed Layout).</p>
 						</dd>
 					</dl>
 					<h4>Variables setup</h4>
-					<ol class="condition">
+					<ul class="variable">
 						<li><b>LET</b> <var>onix</var> be the result of calling <a href="#preprocessing">preprocessing</a> given <var>onix_record_as_text</var>.</li>
 						<li><b>LET</b> <var>all_textual_content_can_be_modified</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "36"]</code>.</li>
 						<li><b>LET</b> <var>is_fixed_layout</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormDetail[normalize-space() = "E201"]</code> <b>AND</b> <b>NOT</b> the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormDetail[normalize-space() = "E200"]</code>.</li>
-					</ol>
+					</ul>
 					<h4>Instructions</h4>
 					<ol class="condition">
 						<li>
@@ -263,40 +273,40 @@
 					<dl>
 						<dt><var>all_necessary_content_textual</var></dt>
 						<dd>
-							<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/196/52">code 52 of codelist 196</a> (All non-decorative content supports reading without sight) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+							<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/196/52">code 52 of codelist 196</a> (All non-decorative content supports reading without sight) is present in the ONIX record; otherwise, it means that the metadata is not present.</p>
 							<p><i>All non-decorative content supports reading without sight</i> means that all contents of the digital publication necessary to use and understanding, including text, images (via their alternative descriptions), audio and video material (via their transcripts, descriptions, captions or subtitles) are fully accessible via suitable reading devices, for example text-to-speech screen readers or tactile reading devices (‘Braille displays’), and nothing in the digital publication prevents or blocks the use of alternative reading modes. The entire publication can be navigated and ‘read’ using only text rendered via sound or touch, and does not require visual perception.</p>
 						</dd>
                     	<dt><var>audio_only_content</var></dt>
 						<dd>
-							<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/81/01">code 01 of codelist 81</a> (Audiobook) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+							<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/81/01">code 01 of codelist 81</a> (Audiobook) is present in the ONIX record; otherwise, it means that the metadata is not present.</p>
 							<p>This means that the primary content is an Audio recording of a reading of a book or other text.</p>
 						</dd>
 						<dt><var>real_text</var></dt>
 						<dd>
-							<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/81/10">code 10 of codelist 81</a> (Text) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+							<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/81/10">code 10 of codelist 81</a> (Text) is present in the ONIX record; otherwise, it means that the metadata is not present.</p>
 							<p><i>Text</i> means that digital publication contains "real" text (user-selectable) as its main content (or as secondary content).</p>
 						</dd>
                     	<dt><var>textual_alternatives</var></dt>
 						<dd>
-							<p>If true it indicates that at least one of the following is present in the ONIX record:</p>
+							<p>If true, it indicates that at least one of the following is present in the ONIX record:</p>
 							<ul>
 								<li><a href="https://ns.editeur.org/onix/en/196/14">code 14 of codelist 196</a> (Short alternative textual descriptions);</li>
 								<li><a href="https://ns.editeur.org/onix/en/196/15">code 15 of codelist 196</a> (Full alternative textual descriptions);</li>
 								<li><a href="https://ns.editeur.org/onix/en/196/16">code 16 of codelist 196</a> (Visualized data also available as non-graphical data);</li>
 								<li><a href="https://ns.editeur.org/onix/en/175/V212">code V212 of codelist 175</a> (Transcript);</li>
-								<li>otherwise if false it means that this metadata is not present.</li>
+								<li>otherwise, it means that this metadata is not present.</li>
 							</ul>
                             <p>This means that there are textual alternatives for the non-textual content.</p>
 						</dd>
 					</dl>
 					<h4>Variables setup</h4>
-					<ol class="condition">
+					<ul class="variable">
 						<li><b>LET</b> <var>onix</var> be the result of calling <a href="#preprocessing">preprocessing</a> given <var>onix_record_as_text</var>.</li>
 						<li><b>LET</b> <var>all_necessary_content_textual</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "52"]</code>.</li>
 						<li><b>LET</b> <var>audio_only_content</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail[PrimaryContentType = "81" or ProductContentType = "81"] </code>.</li>
 						<li><b>LET</b> <var>real_text</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail[PrimaryContentType = "10" or ProductContentType = "10"]</code>.</li>
 						<li><b>LET</b> <var>textual_alternatives</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and (ProductFormFeatureValue = "14" or ProductFormFeatureValue = "15" or ProductFormFeatureValue = "16")]</code> <b>OR</b> calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormDetail[normalize-space() = "V212"]</code>.</li>
-					</ol>
+					</ul>
 					<h4>Instructions</h4>
 					<ol class="condition">
                         <li>
@@ -326,32 +336,32 @@
 					<dl>
 						<dt><var>all_content_audio</var></dt>
 						<dd>
-							<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/196/39">code 39 of codelist 196</a> (Supplementary material to an audiobook is accessible) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+							<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/196/39">code 39 of codelist 196</a> (Supplementary material to an audiobook is accessible) is present in the ONIX record; otherwise, it means that the metadata is not present.</p>
 							<p>This means that all supplementary visual or textual material necessary for understanding of an audiobook, is available as pre-recorded audio, or has full alternative text that can be read via text-to- speech. Only for use in ONIX 3.0 or later.</p>
 						</dd>
 						<dt><var>all_content_pre_recorded</var></dt>
 						<dd>
-							<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/196/51">code 51 of codelist 196</a> (All non-decorative content supports reading via pre-recorded audio) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+							<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/196/51">code 51 of codelist 196</a> (All non-decorative content supports reading via pre-recorded audio) is present in the ONIX record; otherwise, it means that the metadata is not present.</p>
 							<p>This means that all contents of the digital publication necessary to use and understanding, including any text, images (via alternative descriptions), video (via audio description) is fully accessible via suitable audio reproduction. The entire publication can be navigated and ‘read’ using only pre-recorded sound, and does not require visual or tactile perception.</p>
 						</dd>
 						<dt><var>audiobook</var></dt>
 						<dd>
-							<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/81/01">code 01 of codelist 81</a> (Audiobook) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+							<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/81/01">code 01 of codelist 81</a> (Audiobook) is present in the ONIX record; otherwise, it means that the metadata is not present.</p>
 							<p>This means that the primary content is an Audio recording of a reading of a book or other text.</p>
 						</dd>
 						<dt><var>non_textual_content_audio</var></dt>
 						<dd>
-							<p>If true it indicates that one of the following codes is present in the ONIX record: </p>
+							<p>If true, it indicates that one of the following codes is present in the ONIX record: </p>
 							<ul>
 								<li><a href="https://ns.editeur.org/onix/en/81/21">code 21 of codelist 81</a> (Partial performance – spoken word);</li>
 								<li><a href="https://ns.editeur.org/onix/en/81/22">code 22 of codelist 81</a> (Additional audio content not part of main content);</li>
 							</ul>
-							<p>Otherwise, if false, it means that none of the above metadata is present.</p>
+							<p>Otherwise, it means that none of the above metadata is present.</p>
 							<p>This indicates that pre-recorded audio content is included as part of the work. It can be Audio recording of a reading, performance or dramatization of part of the work	or additional pre-recorded audio of any supplementary material such as full or partial reading, lecture, performance, dramatization, interview, background documentary or other audio content not included in the primary or un-enhanced version</p>
 						</dd>
 						<dt><var>non_textual_content_audio_in_video</var></dt>
 						<dd>
-							<p>If true it indicates that one of the following codes is present in the ONIX record: </p>
+							<p>If true, it indicates that one of the following codes is present in the ONIX record: </p>
 								<ul>
 									<li><a href="https://ns.editeur.org/onix/en/81/06">code 06 of codelist 81</a> (Video);</li>
 									<li><a href="https://ns.editeur.org/onix/en/81/25">code 25 of codelist 81</a> (Narrative animation);</li>
@@ -361,22 +371,22 @@
 									<li><a href="https://ns.editeur.org/onix/en/81/29">code 29 of codelist 81</a> (Partial performance – video);</li>
 									<li><a href="https://ns.editeur.org/onix/en/81/30">code 30 of codelist 81</a> (Additional video content not part of main work);</li>
 								</ul>
-								<p>Otherwise, if false, it means that none of the above metadata is present.</p>
+								<p>Otherwise, it means that none of the above metadata is present.</p>
 								<p>This indicates that pre-recorded video including audio content is included as part of the work. It can be video recording of a reading, performance of part of the work or additional pre-recorded video of any supplementary material such as full or partial reading, lecture, performance, dramatization, interview, background documentary or other video containing audio content.</p>
 						</dd>
 						<dt><var>synchronised_pre_recorded_audio</var></dt>
 						<dd>
-							<p>If true it indicates that one of the following codes is present in the ONIX record: </p>
+							<p>If true, it indicates that one of the following codes is present in the ONIX record: </p>
 								<ul>
 									<li><a href="https://ns.editeur.org/onix/en/196/20">code 20 of codelist 196</a> (Synchronised pre-recorded audio)</li>
 									<li><a href="https://ns.editeur.org/onix/en/175/A305">code A305 of codelist 175</a> (Synchronised audio)</li>
 								</ul>
-							<p>Otherwise, if false, it means that none of the above metadata is present.</p>
+							<p>Otherwise, it means that none of the above metadata is present.</p>
 							<p>This indicates that text-synchronised pre-recorded audio narration (natural or synthesized voice) is included for substantially all textual matter, including all alternative descriptions, e.g. via a SMIL media overlay.</p>
 						</dd>
 					</dl>
 					<h4>Variables setup</h4>
-					<ol class="condition">
+					<ul class="variable">
 						<li><b>LET</b> <var>onix</var> be the result of calling <a href="#preprocessing">preprocessing</a> given <var>onix_record_as_text</var>.</li>
 						<li><b>LET</b> <var>all_content_audio</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "39"]</code>.</li>
 						<li><b>LET</b> <var>all_content_pre_recorded</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "51"]</code>.</li>
@@ -384,7 +394,7 @@
 						<li><b>LET</b> <var>non_textual_content_audio</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail[PrimaryContentType = "21" or ProductContentType = "22" or ProductContentType = "21" or ProductContentType = "22"] </code>.</li>
 						<li><b>LET</b> <var>non_textual_content_audio_in_video</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail[PrimaryContentType = "06" or PrimaryContentType = "25" or PrimaryContentType = "26" or PrimaryContentType = "27" or PrimaryContentType = "28" or PrimaryContentType = "29" or PrimaryContentType = "30" or ProductContentType = "06" or ProductContentType = "25" or ProductContentType = "26" or ProductContentType = "27" or ProductContentType = "28" or ProductContentType = "29" or ProductContentType = "30"] </code>.</li>
 						<li><b>LET</b> <var>synchronised_pre_recorded_audio</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "20"]</code> <b>AND</b> calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormDetail[normalize-space() = "A305"]</code>.</li>
-					</ol>
+					</ul>
 					<h4>Instructions</h4>
 					<ol class="condition">
 						<li>
@@ -414,73 +424,73 @@
 				<dl>
 					<dt><var>certifier</var></dt>
 					<dd>
-						<p>Returns the description of <a href="https://ns.editeur.org/onix/en/196/90">code 90 of codelist 196</a> (Compliance certification by (name)) if present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+						<p>Returns the description of <a href="https://ns.editeur.org/onix/en/196/90">code 90 of codelist 196</a> (Compliance certification by (name)) if present in the ONIX record; otherwise, it means that the metadata is not present.</p>
 						<p>This means that the name of the organization responsible for compliance testing and certification of the product is present.</p>
 					</dd>
 					<dt><var>certification_date</var></dt>
 					<dd>
-						<p>Returns the description of <a href="https://ns.editeur.org/onix/en/196/91">code 91 of codelist 196</a> (Latest accessibility assessment date) if present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+						<p>Returns the description of <a href="https://ns.editeur.org/onix/en/196/91">code 91 of codelist 196</a> (Latest accessibility assessment date) if present in the ONIX record; otherwise, it means that the metadata is not present.</p>
 						<p>This means that the date of the latest assessment or re-assessment of the accessibility of the product is present.</p>
 					</dd>
 					<dt><var>certifier_credentials</var></dt>
 					<dd>
-						<p>Returns the description of <a href="https://ns.editeur.org/onix/en/196/93">code 93 of codelist 196</a> (Compliance certification by (URL)) if present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+						<p>Returns the description of <a href="https://ns.editeur.org/onix/en/196/93">code 93 of codelist 196</a> (Compliance certification by (URL)) if present in the ONIX record; otherwise, it means that the metadata is not present.</p>
 						<p>This means that the the URL of a web page belonging to an organization responsible for compliance testing and certification of the product is present – typically a ‘home page’ or a page describing the certification scheme itself.</p>
 					</dd>
 					<dt><var>certifier_report</var></dt>
 					<dd>
-						<p>Returns the description of <a href="https://ns.editeur.org/onix/en/196/94">code 94 of codelist 196</a> (Compliance web page for detailed accessibility information) if present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+						<p>Returns the description of <a href="https://ns.editeur.org/onix/en/196/94">code 94 of codelist 196</a> (Compliance web page for detailed accessibility information) if present in the ONIX record; otherwise, it means that the metadata is not present.</p>
 						<p>This means that is present the URL of a compliance web page for detailed accessibility information. The web page should be maintained by an independent compliance scheme or testing organization. Note the web page may include information about specific national requirements or voluntary conformance reports.</p>
 					</dd>
 					<dt><var>epub_accessibility_10</var></dt>
 					<dd>
-						<p>If true it indicates that either the <a href="https://ns.editeur.org/onix/en/196/02">code 02 of codelist 196</a> (EPUB Accessibility Specification 1.0 A) or the <a href="https://ns.editeur.org/onix/en/196/03">code 03 of codelist 196</a> (EPUB Accessibility Specification 1.0 AA) are present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+						<p>If true, it indicates that either the <a href="https://ns.editeur.org/onix/en/196/02">code 02 of codelist 196</a> (EPUB Accessibility Specification 1.0 A) or the <a href="https://ns.editeur.org/onix/en/196/03">code 03 of codelist 196</a> (EPUB Accessibility Specification 1.0 AA) are present in the ONIX record; otherwise, it means that the metadata is not present.</p>
 						<p>This means that the publication conforms with either the requirements of EPUB Accessibility Spec 1.0, at level A or level AA.</p>
 					</dd>
 					<dt><var>epub_accessibility_11</var></dt>
 					<dd>
-						<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/196/04">code 04 of codelist 196</a> (EPUB Accessibility Specification 1.1) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+						<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/196/04">code 04 of codelist 196</a> (EPUB Accessibility Specification 1.1) is present in the ONIX record; otherwise, it means that the metadata is not present.</p>
 						<p>This means that the publication conforms with the requirements of EPUB Accessibility Spec 1.1.</p>
 					</dd>
 					<dt><var>level_a</var></dt>
 					<dd>
-						<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/196/84">code 84 of codelist 196</a> (WCAG level A) or the <a href="https://ns.editeur.org/onix/en/196/02">code 02 of codelist 196</a> (EPUB Accessibility Specification 1.0 A) are present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+						<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/196/84">code 84 of codelist 196</a> (WCAG level A) or the <a href="https://ns.editeur.org/onix/en/196/02">code 02 of codelist 196</a> (EPUB Accessibility Specification 1.0 A) are present in the ONIX record; otherwise, it means that the metadata is not present.</p>
 						<p>This means that the publication conforms with the requirements of WCAG level A or with the requirements of EPUB Accessibility Spec 1.0 level A.</p>
 					</dd>
 					<dt><var>level_aa</var></dt>
 					<dd>
-						<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/196/85">code 85 of codelist 196</a> (WCAG level AA) or the <a href="https://ns.editeur.org/onix/en/196/03">code 03 of codelist 196</a> (EPUB Accessibility Specification 1.0 AA) are present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+						<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/196/85">code 85 of codelist 196</a> (WCAG level AA) or the <a href="https://ns.editeur.org/onix/en/196/03">code 03 of codelist 196</a> (EPUB Accessibility Specification 1.0 AA) are present in the ONIX record; otherwise, it means that the metadata is not present.</p>
 						<p>This means that the publication conforms with the requirements of WCAG level AA or with the requirements of EPUB Accessibility Spec 1.0 level AA.</p>
 					</dd>
 					<dt><var>level_aaa</var></dt>
 					<dd>
-						<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/196/86">code 86 of codelist 196</a> (WCAG level AAA) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+						<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/196/86">code 86 of codelist 196</a> (WCAG level AAA) is present in the ONIX record; otherwise, it means that the metadata is not present.</p>
 						<p>This means that the publication conforms with the requirements of WCAG level AAA.</p>
 					</dd>
 					<dt><var>lia_compliant</var></dt>
 					<dd>
-						<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/196/01">code 01 of codelist 196</a> (LIA Compliance Scheme) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+						<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/196/01">code 01 of codelist 196</a> (LIA Compliance Scheme) is present in the ONIX record; otherwise, it means that the metadata is not present.</p>
 						<p>This means that the publication conforms with the requirements of Fondazione LIA.</p>
 					</dd>
 					<dt><var>wcag_20</var></dt>
 					<dd>
-						<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/196/80">code 80 of codelist 196</a> (WCAG v2.0) or the <a href="https://ns.editeur.org/onix/en/196/02">code 02 of codelist 196</a> (EPUB Accessibility Specification 1.0 A) or the <a href="https://ns.editeur.org/onix/en/196/03">code 03 of codelist 196</a> (EPUB Accessibility Specification 1.0 AA) are present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+						<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/196/80">code 80 of codelist 196</a> (WCAG v2.0) or the <a href="https://ns.editeur.org/onix/en/196/02">code 02 of codelist 196</a> (EPUB Accessibility Specification 1.0 A) or the <a href="https://ns.editeur.org/onix/en/196/03">code 03 of codelist 196</a> (EPUB Accessibility Specification 1.0 AA) are present in the ONIX record; otherwise, it means that the metadata is not present.</p>
 						<p>This means that the publication conforms with the requirements of WCAG version 2.0 or with the requirements of EPUB Accessibility Spec 1.0 (at level A or level AA). This is because being compliant with EPUB Accessibility 1.0 specification means at least being compliant with WCAG 2.0 specification.</p>
 					</dd>
 					<dt><var>wcag_21</var></dt>
 					<dd>
-						<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/196/81">code 81 of codelist 196</a> (WCAG v2.1) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+						<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/196/81">code 81 of codelist 196</a> (WCAG v2.1) is present in the ONIX record; otherwise, it means that the metadata is not present.</p>
 						<p>This means that the publication conforms with the requirements of WCAG version 2.1.</p>
 					</dd>
 					<dt><var>wcag_22</var></dt>
 					<dd>
-						<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/196/82">code 82 of codelist 196</a> (WCAG v2.2) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+						<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/196/82">code 82 of codelist 196</a> (WCAG v2.2) is present in the ONIX record; otherwise, it means that the metadata is not present.</p>
 						<p>This means that the publication conforms with the requirements of WCAG version 2.2.</p>
 					</dd>
 				</dl>
 
 				<h4>Variables setup</h4>
-				<ol class="condition">
+				<ul class="variable">
 					<li><b>LET</b> <var>onix</var> be the result of calling <a href="#preprocessing">preprocessing</a> given <var>onix_record_as_text</var>.</li>
 					<li><b>LET</b> <var>certifier</var> be the value of the node extracted from <var>onix</var>, using the xpath <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "90"]/ProductFormFeatureDescription</code>.</li>
 					<li><b>LET</b> <var>certification_date</var> be the value of the node extracted from <var>onix</var>, using the xpath <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "91"]/ProductFormFeatureDescription</code>.</li>
@@ -495,7 +505,7 @@
 					<li><b>LET</b> <var>wcag_20</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "80"]</code> <b>OR</b> calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "02"]</code> <b>OR</b> calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "03"]</code>.</li>
 					<li><b>LET</b> <var>wcag_21</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "81"]</code>.</li>
 					<li><b>LET</b> <var>wcag_22</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "82"]</code>.</li>
-				</ol>
+				</ul>
 
 				<h4 id="conformance-instructions">Instructions</h4>
 				<ol class="condition">
@@ -524,18 +534,18 @@
 					<li>
 						<span><b>IF</b> <var>certifier</var> is <b>NOT</b> empty:</span>
 						<span><b>THEN</b></span>
-						<ul class="condition">
+						<ol class="display">
 							<li>display <code id="conformance-certifier">"The publication was certified by "</code></li>
 							<li>display <var>certifier</var>.</li>
-						</ul>
+						</ol>
 					</li>
 					<li>
 						<span><b>IF</b> <var>certifier_credentials</var> is <b>NOT</b> empty:</span>
 						<span><b>THEN</b></span>
-						<ul class="condition">
+						<ol class="display">
 							<li>display <code id="conformance-certifier-credentials">"The certifier's credential is"</code></li>
 							<li>display <var>certifier_credentials</var> as link <b>IF</b> <var>certifier_credentials</var> is an URL.</li>
-						</ul>
+						</ol>
 					</li>
 					<li>
 						<div class="note">
@@ -583,17 +593,14 @@
 					<li>
 						<span><b>IF</b> <var>certification_date</var>:</span>
 						<span><b>THEN</b></span>
-						<ul class="condition">
+						<ol class="display">
 							<li>display <code id="conformance-details-certification-info">"The publication was certified on"</code></li>
 							<li>display <var>certification_date</var>.</li>
-						</ul>
+						</ol>
 					</li>
 					<li>
 						<span><b>IF</b> <var>certifier_report</var>:</span>
-						<span><b>THEN</b></span>
-						<ul class="condition">
-							<li>display <code id="conformance-details-certifier-report">"For more information refer to the certifier's report"</code> as a named link with <var>certifier_report</var> as the URL used.</li>
-						</ul>
+						<span><b>THEN</b> display <code id="conformance-details-certifier-report">"For more information refer to the certifier's report"</code> as a named link with <var>certifier_report</var> as the URL used.</span>
 					</li>
 				</ol>
 			</section>
@@ -606,33 +613,33 @@
 				<dl>
 					<dt><var>index_navigation</var></dt>
 					<dd>
-						<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/196/12">code 12 of codelist 196</a> (Index navigation) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+						<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/196/12">code 12 of codelist 196</a> (Index navigation) is present in the ONIX record; otherwise, it means that the metadata is not present.</p>
 						<p>This means that there is an index that provides direct (eg hyperlinked) access to uses of the index terms in the document body.</p>
 					</dd>
 					<dt><var>next_previous_structural_navigation</var></dt>
 					<dd>
-						<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/196/29">code 29 of codelist 196</a> (Next / Previous structural navigation) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+						<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/196/29">code 29 of codelist 196</a> (Next / Previous structural navigation) is present in the ONIX record; otherwise, it means that the metadata is not present.</p>
 						<p>This means that all levels of heading and other structural elements of the content are correctly marked up and (if applicable) numbered, to enable fast next heading / previous heading, next chapter / previous chapter navigation without returning to the table of contents.</p>
 					</dd>
 					<dt><var>page_navigation</var></dt>
 					<dd>
-						<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/196/19">code 19 of codelist 196</a> (Print-equivalent page numbering) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+						<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/196/19">code 19 of codelist 196</a> (Print-equivalent page numbering) is present in the ONIX record; otherwise, it means that the metadata is not present.</p>
 						<p>This means that in the publication contains references to the page numbering of an equivalent printed product.</p>
 					</dd>
 					<dt><var>table_of_contents_navigation</var></dt>
 					<dd>
-						<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/196/11">code 11 of codelist 196</a> (Table of contents navigation) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+						<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/196/11">code 11 of codelist 196</a> (Table of contents navigation) is present in the ONIX record; otherwise, it means that the metadata is not present.</p>
 						<p>This means that there is a Table of Contents in the publication that allows direct (eg hyperlinked) access to all levels of text organization above individual paragraphs (eg to all sections and subsections) and to all tables, figures, illustrations etc.</p>
 					</dd>
 				</dl>
 				<h4>Variables setup</h4>
-				<ol class="condition">
+				<ul class="variable">
 					<li><b>LET</b> <var>onix</var> be the result of calling <a href="#preprocessing">preprocessing</a> given <var>onix_record_as_text</var>.</li>
 					<li><b>LET</b> <var>index_navigation</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "12"]</code>.</li>
 					<li><b>LET</b> <var>next_previous_structural_navigation</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "29"]</code>.</li>
 					<li><b>LET</b> <var>page_navigation</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "19"]</code>.</li>
 					<li><b>LET</b> <var>table_of_contents_navigation</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "11"]</code>.</li>
-				</ol>
+				</ul>
 				<h4 id="navigation-instructions">Instructions</h4>
 				<ol class="condition">
 					<li>
@@ -670,57 +677,57 @@
 				<dl>
 					<dt><var>charts_diagrams_as_non_graphical_data</var></dt>
 					<dd>
-						<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/196/16">code 16 of codelist 196</a> (Visualized data also available as non-graphical data) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+						<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/196/16">code 16 of codelist 196</a> (Visualized data also available as non-graphical data) is present in the ONIX record; otherwise, it means that the metadata is not present.</p>
 						<p>This means that there is a positive indication that all data presented in a visual format (graph, chart, etc) has an alternative non-graphical presentation of the same data.</p>
 					</dd>
 					<dt><var>chemical_formula_as_mathml</var></dt>
 					<dd>
-						<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/196/34">code 34 of codelist 196</a> (Accessible chemistry content as MathML) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+						<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/196/34">code 34 of codelist 196</a> (Accessible chemistry content as MathML) is present in the ONIX record; otherwise, it means that the metadata is not present.</p>
 						<p>This means that there is a positive indication that the chemical formulae are presented using MathML and works with compatible assistive technology.</p>
 					</dd>
 					<dt><var>closed_captions</var></dt>
 					<dd>
-						<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/175/V210">code V210 of codelist 175</a> (Closed captions) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+						<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/175/V210">code V210 of codelist 175</a> (Closed captions) is present in the ONIX record; otherwise, it means that the metadata is not present.</p>
 						<p>This means that the publication contains videos with closed captions or subtitles.</p>
 					</dd>
 					<dt><var>contains_math_formula</var></dt>
 					<dd>
-						<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/81/48">code 48 of codelist 81</a> (Mathematical content) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+						<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/81/48">code 48 of codelist 81</a> (Mathematical content) is present in the ONIX record; otherwise, it means that the metadata is not present.</p>
 						<p>This means that there is a positive indication that the publication contains mathematical notation, equations, formulae.</p>
 					</dd>
 					<dt><var>full_alternative_textual_descriptions</var></dt>
 					<dd>
-						<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/196/15">code 15 of codelist 196</a> (Full alternative textual description) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+						<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/196/15">code 15 of codelist 196</a> (Full alternative textual description) is present in the ONIX record; otherwise, it means that the metadata is not present.</p>
 						<p>This means that there is a positive indication that a full alternative textual description has been supplied for all of the graphs, charts, diagrams, or figures necessary to understand the content.</p>
 					</dd>
 					<dt><var>math_formula_as_latex</var></dt>
 					<dd>
-						<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/196/35">code 35 of codelist 196</a> (Accessible math content as LaTeX) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+						<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/196/35">code 35 of codelist 196</a> (Accessible math content as LaTeX) is present in the ONIX record; otherwise, it means that the metadata is not present.</p>
 						<p>This means that there is a positive indication that the chemical formulae are presented using LaTeX and works with compatible assistive technology.</p>
 					</dd>
 					<dt><var>math_formula_as_mathml</var></dt>
 					<dd>
-						<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/196/17">code 17 of codelist 196</a> (Accessible math content as MathML) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+						<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/196/17">code 17 of codelist 196</a> (Accessible math content as MathML) is present in the ONIX record; otherwise, it means that the metadata is not present.</p>
 						<p>This means that there is a positive indication that all mathematical content is presented using MathML and works with compatible assistive technology.</p>
 					</dd>
 					<dt><var>open_captions</var></dt>
 					<dd>
-						<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/175/V211">code V211 of codelist 175</a> (Open captions) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+						<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/175/V211">code V211 of codelist 175</a> (Open captions) is present in the ONIX record; otherwise, it means that the metadata is not present.</p>
 						<p>This means that the publication contains videos with ‘burnt-in’ or hard captions or subtitles.</p>
 					</dd>
 					<dt><var>short_textual_alternative_images</var></dt>
 					<dd>
-						<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/196/14">code 14 of codelist 196</a> (Short alternative textual descriptions) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+						<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/196/14">code 14 of codelist 196</a> (Short alternative textual descriptions) is present in the ONIX record; otherwise, it means that the metadata is not present.</p>
 						<p>This means that all or substantially all non-text content has short alternative (textual) descriptions, usually provided via alt attributes.</p>
 					</dd>
 					<dt><var>transcript</var></dt>
 					<dd>
-						<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/175/V212">code V212 of codelist 175</a> (Transcript) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+						<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/175/V212">code V212 of codelist 175</a> (Transcript) is present in the ONIX record; otherwise, it means that the metadata is not present.</p>
 						<p>This means that the publication contains full transcript of audio and audiovisual content.</p>
 					</dd>
 				</dl>
 				<h4>Variables setup</h4>
-				<ol class="condition">
+				<ul class="variable">
 					<li><b>LET</b> <var>onix</var> be the result of calling <a href="#preprocessing">preprocessing</a> given <var>onix_record_as_text</var>.</li>
 					<li><b>LET</b> <var>charts_diagrams_as_non_graphical_data</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "16"]</code>.</li>
 					<li><b>LET</b> <var>chemical_formula_as_mathml</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "34"]</code>.</li>
@@ -732,7 +739,7 @@
 					<li><b>LET</b> <var>open_captions</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail[ProductFormDetail = "V211"]</code>.</li>
 					<li><b>LET</b> <var>short_textual_alternative_images</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "14"]</code>.</li>
 					<li><b>LET</b> <var>transcript</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail[ProductFormDetail = "V212"]</code>.</li>
-				</ol>
+				</ul>
 				<h4 id="rich-content-instructions">Instructions</h4>
 				<ol class="condition">
 					<li>
@@ -782,65 +789,89 @@
 				<dl>
 					<dt><var>flashing_hazard</var></dt>
 					<dd>
-						<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/143/13">code 13 of codelist 143</a> (WARNING - Flashing hazard) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+						<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/143/13">code 13 of codelist 143</a> (WARNING - Flashing hazard) is present in the ONIX record; otherwise, it means that the metadata is not present.</p>
 						<p>This means that there is a positive indication that the product has a flashing hazard which must be displayed.</p>
 					</dd>
 					<dt><var>motion_simulation_hazard</var></dt>
 					<dd>
-						<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/143/17">code 17 of codelist 143</a> (WARNING - Motion simulation hazard) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+						<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/143/17">code 17 of codelist 143</a> (WARNING - Motion simulation hazard) is present in the ONIX record; otherwise, it means that the metadata is not present.</p>
 						<p>This means that there is a positive indication that the product has a motion simulation hazard which must be displayed.</p>
 					</dd>
-					<dt><var>no_flashing_hazards</var></dt>
+					<dt><var>no_flashing_hazard</var></dt>
 					<dd>
-						<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/143/14">code 14 of codelist 143</a> (No flashing hazard warning necessary) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+						<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/143/14">code 14 of codelist 143</a> (No flashing hazard warning necessary) is present in the ONIX record; otherwise, it means that the metadata is not present.</p>
 						<p>This means there is a positive indication in the ONIX record confirming there are no flashing hazards associated with this product.</p>
 					</dd>
 					<dt><var>no_hazards_or_warnings_confirmed</var></dt>
 					<dd>
-						<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/143/00">code 00 of codelist 143</a> (No known hazards or warnings) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+						<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/143/00">code 00 of codelist 143</a> (No known hazards or warnings) is present in the ONIX record; otherwise, it means that the metadata is not present.</p>
 						<p>This means there is a positive indication in the ONIX record confirming there are no associated hazard warnings with this product.</p>
 					</dd>
-					<dt><var>no_motion_hazards</var></dt>
+					<dt><var>no_motion_hazard</var></dt>
 					<dd>
-						<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/143/18">code 18 of codelist 143</a> (No motion simulation hazard warning necessary) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+						<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/143/18">code 18 of codelist 143</a> (No motion simulation hazard warning necessary) is present in the ONIX record; otherwise, it means that the metadata is not present.</p>
 						<p>This means there is a positive indication in the ONIX record confirming there are no motion simulation hazards associated with this product.</p>
 					</dd>
-					<dt><var>no_sound_hazards</var></dt>
+					<dt><var>no_sound_hazard</var></dt>
 					<dd>
-						<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/143/16">code 16 of codelist 143</a> (No sound hazard warning necessary) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+						<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/143/16">code 16 of codelist 143</a> (No sound hazard warning necessary) is present in the ONIX record; otherwise, it means that the metadata is not present.</p>
 						<p>This means there is a positive indication in the ONIX record confirming there are no sound hazards associated with this product.</p>
 					</dd>
 					<dt><var>sound_hazard</var></dt>
 					<dd>
-						<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/143/15">code 15 of codelist 143</a> (WARNING - Sound hazard) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+						<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/143/15">code 15 of codelist 143</a> (WARNING - Sound hazard) is present in the ONIX record; otherwise, it means that the metadata is not present.</p>
 						<p>This means that there is a positive indication that the product has a sound hazard which must be displayed.</p>
+					</dd>
+					<dt><var>unknown_flashing_hazard</var></dt>
+					<dd>
+						<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/143/24">code 24 of codelist 143</a> (Flashing risk unknown) is present in the ONIX record; otherwise, it means that the metadata is not present.</p>
+						<p>This means the presence of flashing hazards could not be determined.</p>
 					</dd>
 					<dt><var>unknown_if_contains_hazards</var></dt>
 					<dd>
-						<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/196/08">code 08 of codelist 196</a> (Unknown accessibility) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+						<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/196/08">code 08 of codelist 196</a> (Unknown accessibility) is present in the ONIX record; otherwise, it means that the metadata is not present.</p>
 						<p>This means that the product has not been assessed for hazards and there is no information about potential hazards.</p>
+					</dd>
+					<dt><var>unknown_motion_hazard</var></dt>
+					<dd>
+						<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/143/26">code 26 of codelist 143</a> (Motion simulation risk unknown) is present in the ONIX record; otherwise, it means that the metadata is not present.</p>
+						<p>This means the presence of motion simulation hazards could not be determined.</p>
+					</dd>
+					<dt><var>unknown_sound_hazard</var></dt>
+					<dd>
+						<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/143/25">code 25 of codelist 143</a> (Sound risk unknown) is present in the ONIX record; otherwise, it means that the metadata is not present.</p>
+						<p>This means the presence of sound hazards could not be determined.</p>
 					</dd>
 				</dl>
 				<h4>Variables setup</h4>
-				<ol class="condition">
+				<ul class="variable">
 					<li><b>LET</b> <var>onix</var> be the result of calling <a href="#preprocessing">preprocessing</a> given <var>onix_record_as_text</var>.</li>
 					<li><b>LET</b> <var>flashing_hazard</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "12" and ProductFormFeatureValue = "13"]</code>.</li>
 					<li><b>LET</b> <var>motion_simulation_hazard</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "12" and ProductFormFeatureValue = "17"]</code>.</li>
-					<li><b>LET</b> <var>no_flashing_hazards</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "12" and ProductFormFeatureValue = "14"]</code>.</li>
+					<li><b>LET</b> <var>no_flashing_hazard</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "12" and ProductFormFeatureValue = "14"]</code>.</li>
 					<li><b>LET</b> <var>no_hazards_or_warnings_confirmed</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "12" and ProductFormFeatureValue = "00"]</code>.</li>
-					<li><b>LET</b> <var>no_motion_hazards</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "12" and ProductFormFeatureValue = "18"]</code>.</li>
-					<li><b>LET</b> <var>no_sound_hazards</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "12" and ProductFormFeatureValue = "16"]</code>.</li>
+					<li><b>LET</b> <var>no_motion_hazard</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "12" and ProductFormFeatureValue = "18"]</code>.</li>
+					<li><b>LET</b> <var>no_sound_hazard</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "12" and ProductFormFeatureValue = "16"]</code>.</li>
 					<li><b>LET</b> <var>sound_hazard</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "12" and ProductFormFeatureValue = "15"]</code>.</li>
+					<li><b>LET</b> <var>unknown_flashing_hazard</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "12" and ProductFormFeatureValue = "24"]</code>.</li>
 					<li><b>LET</b> <var>unknown_if_contains_hazards</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "08"]</code>.</li>
-				</ol>
+					<li><b>LET</b> <var>unknown_motion_hazard</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "12" and ProductFormFeatureValue = "26"]</code>.</li>
+					<li><b>LET</b> <var>unknown_sound_hazard</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "12" and ProductFormFeatureValue = "25"]</code>.</li>
+				</ul>
 				<h4 id="hazards-instructions">Instructions</h4>
 				<ol class="condition">
 					<li>
-						<span><b>IF</b> <var>no_hazards_or_warnings_confirmed</var> <b>OR</b> (<var>no_flashing_hazards</var> <b>AND</b> <var>no_motion_hazards</var> <b>AND</b> <var>no_sound_hazards</var>):</span>
+						<span><b>IF</b> <var>no_hazards_or_warnings_confirmed</var> <b>OR</b>  (<var>no_flashing_hazard</var> <b>AND</b> <var>no_motion_hazard</var> <b>AND</b> <var>no_sound_hazard</var>):</span>
 						<span><b>THEN</b> display <code id="hazards-none">"No hazards"</code>.</span>
 					</li>
 					<li>
-						<span><b>ELSE IF</b> <var>flashing_hazard</var> <b>OR</b> <var>motion_simulation_hazard</var> <b>OR</b> <var>sound_hazard</var>:</span>
+						<span><b>ELSE IF</b> <var>unknown_if_contains_hazards</var> <b>OR</b> (<var>unknown_flashing_hazard</var> <b>AND</b> <var>unknown_motion_hazard</var> <b>AND</b> <var>unknown_sound_hazard</var>):</span>
+						<span><b>THEN</b> display <code id="hazards-unknown">"The presence of hazards is unknown"</code>.</span>
+					</li>
+					<li>
+						<span><b>ELSE IF</b> <var>flashing_hazard</var> <b>OR</b> <var>motion_simulation_hazard</var> <b>OR</b> <var>sound_hazard</var>
+							<b>OR</b> <var>no_flashing_hazard</var> <b>OR</b> <var>no_motion_hazard</var> <b>OR</b> <var>no_sound_hazard</var>
+							<b>OR</b> <var>unknown_flashing_hazard</var> <b>OR</b> <var>unknown_motion_hazard</var> <b>OR</b> <var>unknown_sound_hazard</var>:</span>
 						<span><b>THEN</b></span>
 						<ol class="condition">
 							<li>
@@ -855,11 +886,31 @@
 								<span><b>IF</b> <var>sound_hazard</var>:</span>
 								<span><b>THEN</b> display <code id="hazards-sound">"Sounds"</code>.</span>
 							</li>
+							<li>
+								<span><b>IF</b> <var>unknown_flashing_hazard</var>:</span>
+								<span><b>THEN</b> display <code id="hazards-flashing-unknown">"Flashing hazards not known"</code>.</span>
+							</li>
+							<li>
+								<span><b>IF</b> <var>unknown_motion_simulation_hazard</var>:</span>
+								<span><b>THEN</b> display <code id="hazards-motion-unknown">"Motion simulation hazards not known"</code>.</span>
+							</li>
+							<li>
+								<span><b>IF</b> <var>unknown_sound_hazard</var>:</span>
+								<span><b>THEN</b> display <code id="hazards-sound-unknown">"Sound hazards not known"</code>.</span>
+							</li>
+							<li>
+								<span><b>IF</b> <var>no_flashing_hazard</var>:</span>
+								<span><b>THEN</b> display <code id="hazards-flashing-none">"No flashing hazards"</code>.</span>
+							</li>
+							<li>
+								<span><b>IF</b> <var>no_motion_simulation_hazard</var>:</span>
+								<span><b>THEN</b> display <code id="hazards-motion-none">"No motion simulation hazards"</code>.</span>
+							</li>
+							<li>
+								<span><b>IF</b> <var>no_sound_hazard</var>:</span>
+								<span><b>THEN</b> display <code id="hazards-sound-none">"No sound hazards"</code>.</span>
+							</li>
 						</ol>
-					</li>
-					<li>
-						<span><b>ELSE IF</b> <var>unknown_if_contains_hazards</var>:</span>
-						<span><b>THEN</b> display <code id="hazards-unknown">"The presence of hazards is unknown"</code>.</span>
 					</li>
 					<li>
 						<b>ELSE</b> display <code id="hazards-no-metadata">"No information is available"</code>.
@@ -882,17 +933,17 @@
 				<dl>
 					<dt><var>accessibility_addendum</var></dt>
 					<dd>
-						<p>Returns the description of <a href="https://ns.editeur.org/onix/en/196/92">code 92 of codelist 196</a> (Accessibility addendum) if present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+						<p>Returns the description of <a href="https://ns.editeur.org/onix/en/196/92">code 92 of codelist 196</a> (Accessibility addendum) if present in the ONIX record; otherwise, it means that the metadata is not present.</p>
 						<p>This means there is a human-written text containing a short addendum to the accessibility detail of the product. It contains precise information that the publisher could not express with the other's codes.</p>
 					</dd>
 					<dt><var>accessibility_summary</var></dt>
 					<dd>
-						<p>Returns the description of <a href="https://ns.editeur.org/onix/en/196/00">code 00 of codelist 196</a>  (Accessibility summary) if present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+						<p>Returns the description of <a href="https://ns.editeur.org/onix/en/196/00">code 00 of codelist 196</a>  (Accessibility summary) if present in the ONIX record; otherwise, it means that the metadata is not present.</p>
 						<p>This means there is a human-written text containing a short explanatory summary of the accessibility of the product or the URL of a web page comprising such a summary. Summarizes the already existent information and may add information that the publisher could not express with the other codes.</p>
 					</dd>
 					<dt><var>known_limited_accessibility</var></dt>
 					<dd>
-						<p>Returns the description of <a href="https://ns.editeur.org/onix/en/196/09">code 09 of codelist 196</a> (Inaccessible, or known limited accessibility) if present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+						<p>Returns the description of <a href="https://ns.editeur.org/onix/en/196/09">code 09 of codelist 196</a> (Inaccessible, or known limited accessibility) if present in the ONIX record; otherwise, it means that the metadata is not present.</p>
 						<p>This means there is a human-written text containing details of and reasons for limitations on accessibility of an ebook.</p>
 					</dd>
 					<dt><var>lang_attribute_accessibility_addendum</var></dt>
@@ -912,12 +963,12 @@
 					</dd>
 					<dt><var>language_of_text</var></dt>
 					<dd>
-						<p>Returns the value of nearest  <a href="https://ns.editeur.org/onix/en/22/01">code 01 of codelist 22</a> (Language of text)  if present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+						<p>Returns the value of nearest  <a href="https://ns.editeur.org/onix/en/22/01">code 01 of codelist 22</a> (Language of text)  if present in the ONIX record; otherwise, it means that the metadata is not present.</p>
 						<p>This indicates the main language of the content and therefore the most probable language of accessibility summary and addendum.</p>
 					</dd>
 				</dl>
 				<h4>Variables setup</h4>
-				<ol class="condition">
+				<ul class="variable">
 					<li><b>LET</b> <var>onix</var> be the result of calling <a href="#preprocessing">preprocessing</a> given <var>onix_record_as_text</var>.</li>
 					<li><b>LET</b> <var>accessibility_addendum</var> be the value of the node extracted from <var>onix</var>, using the xpath <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "92"]/ProductFormFeatureDescription</code>.</li>
 					<li><b>LET</b> <var>accessibility_summary</var> be the value of the node extracted from <var>onix</var>, using the xpath <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "00"]/ProductFormFeatureDescription</code>.</li>
@@ -926,7 +977,7 @@
 					<li><b>LET</b> <var>lang_attribute_accessibility_summary</var> be the value extracted from <var>onix</var>, using the xpath <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "00"]/ProductFormFeatureDescription/(@lang|ancestor::*/@lang)[last()]</code>.</li>
 					<li><b>LET</b> <var>lang_known_limited_accessibility</var> be the value extracted from <var>onix</var>, using the xpath <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "09"]/ProductFormFeatureDescription/(@lang|ancestor::*/@lang)[last()]</code>.</li>
 					<li><b>LET</b> <var>language_of_text</var> be the value of the node extracted from <var>onix</var>, using the xpath <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/Language[LanguageRole="01"]/LanguageCode</code>.</li>
-				</ol>
+				</ul>
 				<h4 id="accessibility-summary-instructions">Instructions</h4>
 				<ol class="condition">
 					<li>
@@ -977,27 +1028,27 @@
 				<dl>
 					<dt><var>eaa_exception_disproportionate_burden</var></dt>
 					<dd>
-						<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/196/76">code 76 of codelist 196</a> (EAA exception 2 – Disproportionate burden) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+						<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/196/76">code 76 of codelist 196</a> (EAA exception 2 – Disproportionate burden) is present in the ONIX record; otherwise, it means that the metadata is not present.</p>
 						<p>This means that the digital product falls under European Accessibility Act exception for Disproportionate burden (as defined by current regulations). The product may not have to comply with requirements of the EAA if doing so would financially overburden the publisher.</p>
 					</dd>
 					<dt><var>eaa_exception_fundamental_modification</var></dt>
 					<dd>
-						<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/196/77">code 77 of codelist 196</a> (EAA exception 3 – Fundamental modification) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+						<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/196/77">code 77 of codelist 196</a> (EAA exception 3 – Fundamental modification) is present in the ONIX record; otherwise, it means that the metadata is not present.</p>
 						<p>This means that the digital product falls under European Accessibility Act exception for Fundamental modification (as defined by current regulations). The product may not have to comply with requirements of the EAA if doing so requires a fundamental modification of the nature of the product or service.</p>
 					</dd>
 					<dt><var>eaa_exemption_micro_enterprises</var></dt>
 					<dd>
-						<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/196/75">code 75 of codelist 196</a> (EEA exception 1 – Micro-enterprises) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+						<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/196/75">code 75 of codelist 196</a> (EEA exception 1 – Micro-enterprises) is present in the ONIX record; otherwise, it means that the metadata is not present.</p>
 						<p>This means that the digital product falls under European Accessibility Act exemption for Micro-enterprises (as defined by current regulations). The product may not have to comply with requirements of the EAA if the publisher is a micro-enterprise.</p>
 					</dd>
 				</dl>
 				<h4>Variables setup</h4>
-				<ol class="condition">
+				<ul class="variable">
 					<li><b>LET</b> <var>onix</var> be the result of calling <a href="#preprocessing">preprocessing</a> given <var>onix_record_as_text</var>.</li>
 					<li><b>LET</b> <var>eaa_exception_disproportionate_burden</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "76"]</code>.</li>
 					<li><b>LET</b> <var>eaa_exception_fundamental_modification</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "77"]</code>.</li>
 					<li><b>LET</b> <var>eaa_exemption_micro_enterprises</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "75"]</code>.</li>
-				</ol>
+				</ul>
 				<h4 id="legal-considerations-instructions">Instructions</h4>
 				<ol class="condition">
 					<li>
@@ -1020,54 +1071,54 @@
 				<dl>
 					<dt><var>color_not_sole_means_of_conveying_information</var></dt>
 					<dd>
-						<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/196/25">code 25 of codelist 196</a> (Use of color is not sole means of conveying information) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+						<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/196/25">code 25 of codelist 196</a> (Use of color is not sole means of conveying information) is present in the ONIX record; otherwise, it means that the metadata is not present.</p>
 						<p>This means that for readers with color vision deficiency, use of color (eg in diagrams, graphs and charts, in prompts or on buttons inviting a response) is not the sole means of graphical distinction or of conveying information.</p>
 					</dd>
 					<dt><var>dyslexia_readability</var></dt>
 					<dd>
-						<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/196/24">code 24 of codelist 196</a> (Dyslexia readability) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+						<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/196/24">code 24 of codelist 196</a> (Dyslexia readability) is present in the ONIX record; otherwise, it means that the metadata is not present.</p>
 						<p>This means that the product has been specifically adapted or has features specifically to improve readability for dyslexic readers, for example specialized font, character and/or line spacing, justification and paragraph spacing, coloring and other options provided specifically to improve readability for dyslexic readers.</p>
 					</dd>
 					<dt><var>high_contrast_between_foreground_and_background_audio</var></dt>
 					<dd>
-						<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/196/27">code 27 of codelist 196</a> (Use of high contrast between foreground and background audio) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+						<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/196/27">code 27 of codelist 196</a> (Use of high contrast between foreground and background audio) is present in the ONIX record; otherwise, it means that the metadata is not present.</p>
 						<p>This means that foreground audio content (eg voice) is presented with no or low background noise (eg ambient sounds, music), at least 20dB below the level of the foreground, or background noise can be switched off (eg via an alternative audio track). Brief and occasional sound effects may be as loud as foreground voice so long as they are isolated from the foreground.</p>
 					</dd>
 					<dt><var>high_contrast_between_text_and_background</var></dt>
 					<dd>
-						<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/196/26">code 26 of codelist 196</a> (Use of high contrast between text and background color) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+						<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/196/26">code 26 of codelist 196</a> (Use of high contrast between text and background color) is present in the ONIX record; otherwise, it means that the metadata is not present.</p>
 						<p>This means that body text is presented with a contrast ratio of at least 4.5:1 (or 3:1 for large/heading text).</p>
 					</dd>
 					<dt><var>sign_language</var></dt>
 					<dd>
-						<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/175/V213">code V213 of codelist 175</a> (Sign language interpretation) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+						<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/175/V213">code V213 of codelist 175</a> (Sign language interpretation) is present in the ONIX record; otherwise, it means that the metadata is not present.</p>
 						<p>This means that a full signing of audio content of the product supplied with the video file.</p>
 					</dd>
 					<dt><var>text_to_speech_hinting</var></dt>
 					<dd>
-						<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/196/21">code 21 of codelist 196</a> (Text-to-speech hinting provided) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+						<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/196/21">code 21 of codelist 196</a> (Text-to-speech hinting provided) is present in the ONIX record; otherwise, it means that the metadata is not present.</p>
 						<p>This means that text-to-speech has been optimized through provision of PLS lexicons, SSML or CSS Speech synthesis hints or other speech synthesis markup languages or hinting.</p>
 					</dd>
 					<dt><var>ultra_high_contrast_between_text_and_background</var></dt>
 					<dd>
-						<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/196/37">code 37 of codelist 196</a> (Use of ultra-high contrast between text foreground and background) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+						<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/196/37">code 37 of codelist 196</a> (Use of ultra-high contrast between text foreground and background) is present in the ONIX record; otherwise, it means that the metadata is not present.</p>
 						<p>This means that body text is presented with a contrast ratio of at least 7:1 (or 4.5:1 for large/heading text).</p>
 					</dd>
 					<dt><var>visible_page_numbering</var></dt>
 					<dd>
-						<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/175/E205">code E205 of codelist 175</a> (Visible page numbering) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+						<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/175/E205">code E205 of codelist 175</a> (Visible page numbering) is present in the ONIX record; otherwise, it means that the metadata is not present.</p>
 						<p>This means that the e-publication (mostly in the case of a fixed-format) contains visible page numbers.</p>
 					</dd>
 					
 					<dt><var>without_background_sounds</var></dt>
 					<dd>
-						<p>If true it indicates that the <a href="https://ns.editeur.org/onix/en/175/A312">code A312 of codelist 175</a> (Without background sounds) is present in the ONIX record, otherwise if false it means that the metadata is not present.</p>
+						<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/175/A312">code A312 of codelist 175</a> (Without background sounds) is present in the ONIX record; otherwise, it means that the metadata is not present.</p>
 						<p>This means that pre-recorded audiobook narration does not contain any background sounds, including music, sound effects, etc, though music and effects may be present if isolated from the speech (ie the sounds do not overlap).</p>
 					</dd>
 				</dl>
 
 				<h4>Variables setup</h4>
-				<ol class="condition">
+				<ul class="variable">
 					<li><b>LET</b> <var>onix</var> be the result of calling <a href="#preprocessing">preprocessing</a> given <var>onix_record_as_text</var>.</li>
 					<li><b>LET</b> <var>color_not_sole_means_of_conveying_information</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "25"]</code>.</li>
 					<li><b>LET</b> <var>dyslexia_readability</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "24"]</code>.</li>
@@ -1078,7 +1129,7 @@
 					<li><b>LET</b> <var>ultra_high_contrast_between_text_and_background</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "37"]</code>.</li>
 					<li><b>LET</b> <var>visible_page_numbering</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail[ProductFormDetail = "E205"]</code>.</li>
 					<li><b>LET</b> <var>without_background_sounds</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail[ProductFormDetail = "A312"]</code>.</li>
-				</ol>
+				</ul>
 
 				<h4>Instructions</h4>
 				<ol class="condition">
@@ -1136,7 +1187,9 @@
 						href="https://w3c.github.io/publ-a11y/a11y-meta-display-guide/2.0/techniques/onix-metadata/onix-metadata-draft-note-20250220.html">2025-02-20
 						Draft Community Group Report</a></summary>
 				<ul>
-					<li>No substantive changes have been made.</li>
+					<li>03-Mar-2025: Added individual tests for unknown hazards and included outputs for situations
+						where there is a mix of hazard, no hazard, and unknown hazard statements. See <a 
+							href="https://github.com/w3c/publ-a11y/issues/578">issue 587</a>.</li>
 				</ul>
 			</details>
 		</section>
