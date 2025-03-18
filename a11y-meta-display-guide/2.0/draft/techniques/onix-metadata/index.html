@@ -987,6 +987,11 @@
 						<p>Returns the value of nearest  <a href="https://ns.editeur.org/onix/en/22/01">code 01 of codelist 22</a> (Language of text)  if present in the ONIX record.</p>
 						<p>This indicates the main language of the content and therefore the most probable language of accessibility summary and addendum.</p>
 					</dd>
+					<dt><var>publisher_contact_for_accessibility</var></dt>
+					<dd>
+						<p>Returns the description of <a href="https://ns.editeur.org/onix/en/196/99">code 99 of codelist 196</a> (Publisher contact for further accessibility information) if present in the ONIX record.</p>
+						<p>This means there is an e-mail address of the publisher to whom detailed questions about accessibility of this product may be directed.</p>
+					</dd>
 				</dl>
 				<h4>Variables setup</h4>
 				<ul class="variable">
@@ -998,6 +1003,7 @@
 					<li><b>LET</b> <var>lang_attribute_accessibility_summary</var> be the value extracted from <var>onix</var>, using the xpath <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "00"]/ProductFormFeatureDescription/(@lang|ancestor::*/@lang)[last()]</code>.</li>
 					<li><b>LET</b> <var>lang_known_limited_accessibility</var> be the value extracted from <var>onix</var>, using the xpath <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "09"]/ProductFormFeatureDescription/(@lang|ancestor::*/@lang)[last()]</code>.</li>
 					<li><b>LET</b> <var>language_of_text</var> be the value of the node extracted from <var>onix</var>, using the xpath <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/Language[LanguageRole="01"]/LanguageCode</code>.</li>
+					<li><b>LET</b> <var>publisher_contact_for_accessibility</var> be the value of the node extracted from <var>onix</var>, using the xpath <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "99"]/ProductFormFeatureDescription</code>.</li>
 				</ul>
 				<h4 id="accessibility-summary-instructions">Instructions</h4>
 				<ol class="condition">
@@ -1036,6 +1042,14 @@
 					</li>
 					<li>
 						<b>ELSE</b> either omit this display field if metadata is missing or display <code id="accessibility-summary-no-metadata">"No information is available"</code>.
+					</li>
+					<li>
+						<span><b>IF</b> <var>publisher_contact_for_accessibility</var> is <b>NOT</b> empty:</span>
+						<span><b>THEN</b></span>
+						<ol class="display">
+							<li>display <code id="accessibility-summary-publisher-contact">"To ask detailed questions about the accessibility of this product to the publisher, write to:"</code></li>
+							<li>display <var>publisher_contact_for_accessibility</var> as link <b>IF</b> <var>publisher_contact_for_accessibility</var> is an email address.</li>
+						</ol>
 					</li>
 				</ol>
 			</section>
