@@ -714,10 +714,10 @@
 						<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/175/V210">code V210 of codelist 175</a> (Closed captions) is present in the ONIX record.</p>
 						<p>This means that the publication contains videos with closed captions or subtitles.</p>
 					</dd>
-					<dt><var>contains_math_formula</var></dt>
+					<dt><var>described_math</var></dt>
 					<dd>
-						<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/81/48">code 48 of codelist 81</a> (Mathematical content) is present in the ONIX record.</p>
-						<p>This means that there is a positive indication that the publication contains mathematical notation, equations, formulae.</p>
+						<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/196/53">code 53 of codelist 196</a> (Described math content) is present in the ONIX record.</p>
+						<p>This means that there is a positive indication that textual descriptions of mathematical content are present, either as alternative descriptions attached to an image of the content, or in addition to MathML or LaTeX.</p>
 					</dd>
 					<dt><var>full_alternative_textual_descriptions</var></dt>
 					<dd>
@@ -739,11 +739,6 @@
 						<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/175/V211">code V211 of codelist 175</a> (Open captions) is present in the ONIX record.</p>
 						<p>This means that the publication contains videos with ‘burnt-in’ or hard captions or subtitles.</p>
 					</dd>
-					<dt><var>short_textual_alternative_images</var></dt>
-					<dd>
-						<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/196/14">code 14 of codelist 196</a> (Short alternative textual descriptions) is present in the ONIX record.</p>
-						<p>This means that all or substantially all non-text content has short alternative (textual) descriptions, usually provided via alt attributes.</p>
-					</dd>
 					<dt><var>transcript</var></dt>
 					<dd>
 						<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/175/V212">code V212 of codelist 175</a> (Transcript) is present in the ONIX record.</p>
@@ -756,12 +751,11 @@
 					<li><b>LET</b> <var>charts_diagrams_as_non_graphical_data</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "16"]</code>.</li>
 					<li><b>LET</b> <var>chemical_formula_as_mathml</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "34"]</code>.</li>
 					<li><b>LET</b> <var>closed_captions</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail[ProductFormDetail = "V210"]</code>.</li>
-					<li><b>LET</b> <var>contains_math_formula</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail[PrimaryContentType = "48" or ContentType = "48"] </code>.</li>
+					<li><b>LET</b> <var>described_math</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "53"]</code>.</li>
 					<li><b>LET</b> <var>full_alternative_textual_descriptions</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "15"]</code>.</li>
 					<li><b>LET</b> <var>math_formula_as_latex</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "35"]</code>.</li>
 					<li><b>LET</b> <var>math_formula_as_mathml</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "17"]</code>.</li>
 					<li><b>LET</b> <var>open_captions</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail[ProductFormDetail = "V211"]</code>.</li>
-					<li><b>LET</b> <var>short_textual_alternative_images</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "14"]</code>.</li>
 					<li><b>LET</b> <var>transcript</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail[ProductFormDetail = "V212"]</code>.</li>
 				</ul>
 				<h4 id="rich-content-instructions">Instructions</h4>
@@ -771,11 +765,11 @@
 						<span><b>THEN</b> display <code id="rich-content-accessible-math-as-mathml">"Math as MathML"</code>.</span>
 					</li>
 					<li>
-						<span><b>ELSE IF</b> <var>math_formula_as_latex</var>:</span>
+						<span><b>IF</b> <var>math_formula_as_latex</var>:</span>
 						<span><b>THEN</b> display <code id="rich-content-accessible-math-as-latex">"Math as LaTeX"</code>.</span>
 					</li>
 					<li>
-						<span><b>ELSE IF</b> <var>contains_math_formula</var> <b>AND</b> <var>short_textual_alternative_images</var>:</span>
+						<span><b>IF</b> <var>described_math</var>:</span>
 						<span><b>THEN</b> display <code id="rich-content-accessible-math-described">"Text descriptions of math are provided"</code>.</span>
 					</li>
 					<li>
