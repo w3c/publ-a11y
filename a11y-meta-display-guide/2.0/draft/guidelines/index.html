@@ -1088,7 +1088,7 @@
 							<p><span
 									data-localization-id="conformance-certifier"
 									data-localization-mode="compact">The
-									publication was certified by</span>
+									publication was certified by </span>
 								<span class="placeholder">&lt;certifier name&gt;</span></p>
 						</dd>
 
@@ -1120,7 +1120,7 @@
 						<dt>If a detailed conformance claim is made:</dt>
 						<dd>
 							<p data-localization-mode="compact">
-								<span data-localization-id="conformance-claim"
+								<span data-localization-id="conformance-details-claim"
 									data-localization-mode="compact">This
 									publication claims to meet</span>
 
@@ -1134,7 +1134,7 @@
 								<span class="placeholder">&lt;A or AA or AAA&gt;</span>
 							</p>
 							<p data-localization-mode="descriptive">
-								<span data-localization-id="conformance-claim"
+								<span data-localization-id="conformance-details-claim"
 									data-localization-mode="descriptive">This
 									publication claims to meet</span>
 
@@ -1152,12 +1152,12 @@
 								<p>The placeholders in these strings allow the display of each version of the
 									respective standard. For example, the descriptive statements for WCAG 2 would be:</p>
 								<ul>
-									<li data-localization-id="conformance-wcag-2-0"
-										data-localization-mode="descriptive">Web Content Accessibility Guidelines (WCAG ) 2.0</li>
-									<li data-localization-id="conformance-wcag-2-1"
-										data-localization-mode="descriptive">Web Content Accessibility Guidelines (WCAG ) 2.1</li>
-									<li data-localization-id="conformance-wcag-2-2"
-										data-localization-mode="descriptive">Web Content Accessibility Guidelines (WCAG ) 2.2</li>
+									<li data-localization-id="conformance-details-wcag-2-0"
+										data-localization-mode="descriptive"> Web Content Accessibility Guidelines (WCAG) 2.0</li>
+									<li data-localization-id="conformance-details-wcag-2-1"
+										data-localization-mode="descriptive"> Web Content Accessibility Guidelines (WCAG) 2.1</li>
+									<li data-localization-id="conformance-details-wcag-2-2"
+										data-localization-mode="descriptive"> Web Content Accessibility Guidelines (WCAG) 2.2</li>
 								</ul>
 							</div>
 						</dd>
@@ -1165,7 +1165,7 @@
 						<dt>If the certification date is provided:</dt>
 						<dd>
 							<p>
-								<span data-localization-id="conformance-certification-info"
+								<span data-localization-id="conformance-details-certification-info"
 									data-localization-mode="compact">The
 									publication was certified on </span>
 								<span class="placeholder">&lt;certification date&gt;</span></p>
@@ -1173,7 +1173,7 @@
 
 						<dt>If the certifier provides an accessibility report:</dt>
 						<dd>
-							<p><span data-localization-id="conformance-certifier-report"
+							<p><span data-localization-id="conformance-details-certifier-report"
 									data-localization-mode="compact">For
 									more information refer to the
 									certifier's report</span></p>
@@ -1202,13 +1202,13 @@
 								<span
 									data-localization-id="conformance-certifier"
 									data-localization-mode="compact">The
-									publication was certified by</span>
+									publication was certified by </span>
 								Foo's Accessibility Testing
 							</p>
 							<p>
 								<span
 									data-localization-id="conformance-certifier-credentials"
-									data-localization-mode="compact">The certifier's credential is</span> "Enterprise
+									data-localization-mode="compact">The certifier's credential is </span> "Enterprise
 								Accessibility Rating"
 							</p>
 
@@ -1217,25 +1217,29 @@
 								
 								<p>
 									<span
-										data-localization-id="conformance-details-claim">This
+										data-localization-id="conformance-details-claim"
+										data-localization-mode="compact">This
 										publication claims to meet</span>
 									<span
-										data-localization-id="conformance-details-epub-accessibility-1-1">EPUB
+										data-localization-id="conformance-details-epub-accessibility-1-1"
+										data-localization-mode="compact"> EPUB
 										Accessibility
 										1.1</span>
 									<span
 										data-localization-id="conformance-details-wcag-2-1"
-										data-localization-mode="descriptive">Web
-										Accessibility Content Guidelines (WCAG)
+										data-localization-mode="compact"> WCAG
 										2.1</span>
 									<span
-										data-localization-id="conformance-details-level-aa">Level
+										data-localization-id="conformance-details-level-aa"
+										data-localization-mode="compact"> Level
 										AA</span>
 								</p>
-								<p><span data-localization-id="conformance-details-certification-info">The
-										publication was certified on</span>
+								<p><span data-localization-id="conformance-details-certification-info"
+										data-localization-mode="compact">The
+										publication was certified on </span>
 									2021-09-07</p>
-								<p><span data-localization-id="conformance-details-certifier-report">For
+								<p><span data-localization-id="conformance-details-certifier-report"
+										data-localization-mode="compact">For
 										more information refer to the
 										<a
 											href="http://www.example.com/a11y/report/9780000000001">certifier's
@@ -1248,19 +1252,19 @@
 						<dd>
 							<p class="ex-hd" data-localization-id="conformance-title">Conformance</p>
 							<p data-localization-id="conformance-aa"
-								data-localization-mode="compact">The publication contains a conformance statement
+								data-localization-mode="descriptive">The publication contains a conformance statement
 								that it meets the EPUB Accessibility and WCAG 2 Level AA standard.</p>
 							<p>
 								<span
 									data-localization-id="conformance-certifier"
-									data-localization-mode="compact">The
-									publication was certified by</span>
+									data-localization-mode="descriptive">The
+									publication was certified by </span>
 								Foo's Accessibility Testing
 							</p>
 							<p>
 								<span
 									data-localization-id="conformance-certifier-credentials"
-									data-localization-mode="compact">The certifier's credential is</span> "Enterprise
+									data-localization-mode="descriptive">The certifier's credential is </span> "Enterprise
 								Accessibility Rating"
 							</p>
 
@@ -1269,25 +1273,30 @@
 								
 								<p>
 									<span
-										data-localization-id="conformance-details-claim">This
+										data-localization-id="conformance-details-claim"
+										data-localization-mode="descriptive">This
 										publication claims to meet</span>
 									<span
-										data-localization-id="conformance-details-epub-accessibility-1-1">EPUB
+										data-localization-id="conformance-details-epub-accessibility-1-1"
+										data-localization-mode="descriptive"> EPUB
 										Accessibility
 										1.1</span>
 									<span
 										data-localization-id="conformance-details-wcag-2-1"
-										data-localization-mode="descriptive">Web
+										data-localization-mode="descriptive"> Web
 										Accessibility Content Guidelines (WCAG)
 										2.1</span>
 									<span
-										data-localization-id="conformance-details-level-aa">Level
+										data-localization-id="conformance-details-level-aa"
+										data-localization-mode="descriptive"> Level
 										AA</span>
 								</p>
-								<p><span data-localization-id="conformance-details-certification-info">The
-										publication was certified on</span>
+								<p><span data-localization-id="conformance-details-certification-info"
+										data-localization-mode="descriptive">The
+										publication was certified on </span>
 									2021-09-07</p>
-								<p><span data-localization-id="conformance-details-certifier-report">For
+								<p><span data-localization-id="conformance-details-certifier-report"
+										data-localization-mode="descriptive">For
 										more information refer to the
 										<a
 											href="http://www.example.com/a11y/report/9780000000001">certifier's
@@ -1674,6 +1683,14 @@
 							data-localization-mode="descriptive">The publication contains no hazards</p>
 					</dd>
 
+					<dt>If hazards are not known:</dt>
+					<dd>
+						<p data-localization-id="hazards-unknown"
+							data-localization-mode="compact">The presence of hazards is unknown</p>
+						<p data-localization-id="hazards-unknown"
+							data-localization-mode="descriptive">The presence of hazards is unknown</p>
+					</dd>
+					
 					<dt>If there is a flashing hazard:</dt>
 					<dd>
 						<p data-localization-id="hazards-flashing"
@@ -1682,10 +1699,33 @@
 						<p data-localization-id="hazards-flashing"
 								data-localization-mode="descriptive">The
 								publication contains flashing content
-								which can cause photosensitive
+								that can cause photosensitive
 								seizures</p>
 					</dd>
 
+					<dt>If there is no flashing hazard:</dt>
+					<dd>
+						<p data-localization-id="hazards-flashing-none"
+							data-localization-mode="compact">No flashing
+							hazard</p>
+						<p data-localization-id="hazards-flashing-none"
+							data-localization-mode="descriptive">The
+							publication does not contain flashing content
+							that can cause photosensitive
+							seizures</p>
+					</dd>
+					
+					<dt>If a flashing hazard is not known:</dt>
+					<dd>
+						<p data-localization-id="hazards-flashing-unknown"
+							data-localization-mode="compact">Flashing
+							hazard not known</p>
+						<p data-localization-id="hazards-flashing-unknown"
+							data-localization-mode="descriptive">The
+							presence of flashing content that can cause
+							photosensitive seizures could not be determined</p>
+					</dd>
+					
 					<dt>If there is a motion simulation hazard:</dt>
 					<dd>
 						<p data-localization-id="hazards-motion"
@@ -1696,26 +1736,61 @@
 								publication contains motion simulations
 								that can cause motion sickness</p>
 					</dd>
-
+					
+					<dt>If there is no motion simulation hazard:</dt>
+					<dd>
+						<p data-localization-id="hazards-flashing-none"
+							data-localization-mode="compact">No motion simulation
+							hazards</p>
+						<p data-localization-id="hazards-motion-none"
+							data-localization-mode="descriptive">The
+							publication does not contain motion simulations
+							that can cause motion sickness</p>
+					</dd>
+					
+					<dt>If a motion simulation hazard is not known:</dt>
+					<dd>
+						<p data-localization-id="hazards-motion-unknown"
+							data-localization-mode="compact">Motion simulation
+							hazard not known</p>
+						<p data-localization-id="hazards-motion-unknown"
+							data-localization-mode="descriptive">The
+							presence of motion simulations that can cause
+							motion sickness could not be determined</p>
+					</dd>
+					
 					<dt>If there is a sound hazard:</dt>
 					<dd>
 						<p data-localization-id="hazards-sound"
 							data-localization-mode="compact">Sounds</p>
 						<p data-localization-id="hazards-sound"
 								data-localization-mode="descriptive">The
-								publication contains sounds which
-								can be uncomfortable</p>
+								publication contains sounds that
+								can cause sensitivity issues</p>
 					</dd>
-
-					<dt>If hazards are not known:</dt>
+					
+					<dt>If there is no sound hazard:</dt>
 					<dd>
-						<p data-localization-id="hazards-unknown"
-							data-localization-mode="compact">The presence of hazards is unknown</p>
-						<p data-localization-id="hazards-unknown"
-								data-localization-mode="descriptive">The presents
-								of hazards is unknown</p>
+						<p data-localization-id="hazards-sound-none"
+							data-localization-mode="compact">No sound
+							hazards</p>
+						<p data-localization-id="hazards-sound-none"
+							data-localization-mode="descriptive">The
+							publication does not contain sounds
+							that can cause sensitivity issues</p>
 					</dd>
-
+					
+					<dt>If a sound hazard is not known:</dt>
+					<dd>
+						<p data-localization-id="hazards-sound-unknown"
+							data-localization-mode="compact">Sound
+							hazards not known</p>
+						<p data-localization-id="hazards-sound-unknown"
+							data-localization-mode="descriptive">The
+							presence of sounds that can cause
+							sensitivity issues could not be determined</p>
+					</dd>
+					
 					<dt>If no metadata is provided:</dt>
 					<dd>
 						<p data-localization-id="hazards-no-metadata"
@@ -2401,6 +2476,29 @@
 			accessibility metadata.</p>
 
 		<p>Links TBD</p>
+	</section>
+	<section id="change-log" class="informative">
+		<h2>Change log</h2>
+		
+		<div class="note">
+			<p>This section identifies substantive changes between versions. For a list of all changes, refer to 
+				the <a
+					href="https://github.com/w3c/publ-a11y/issues?q=is%3Aissue%20state%3Aclosed%20label%3Aa11y-display-guide">issue tracker</a>.</p>
+		</div>
+		
+		<details open="">
+			<summary>Changes since the <a 
+					href="https://w3c.github.io/publ-a11y/a11y-meta-display-guide/2.0/guidelines/guidelines-draft-note-20250220.html">2025-02-20
+					Draft Community Group Report</a></summary>
+			<ul>
+				<li>18-Mar-2025: Fixed a typo in the descriptive statement for unknown hazards. See <a 
+						href="https://github.com/w3c/publ-a11y/issues/674">issue 674</a>.</li>
+				<li>03-Mar-2025: Added outputs for situations where there is a mix of hazard, no hazard, and 
+					unknown hazard statements. See <a href="https://github.com/w3c/publ-a11y/issues/578">issue 
+						587</a>.</li>
+				<li>28-Feb-2025: Fixed missing space at the end of the <code>conformance-certifier</code> string.</li>
+			</ul>
+		</details>
 	</section>
 	<div data-include="../common/acknowledgements.html"
 		data-include-replace="true"></div>
