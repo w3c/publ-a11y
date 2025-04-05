@@ -628,12 +628,12 @@
 				<p>This display field should be rendered even
 					if there is no metadata. </p>
 			</div>
-			
+
 			<p>The ways of reading display field is a banner heading that groups together the following
 				information about how the content facilitates access:</p>
-			
+
 			<ul>
-				<li><a href="#visual-adjustments">visual adjustments</a> &#8212; whether users can control the 
+				<li><a href="#visual-adjustments">visual adjustments</a> &#8212; whether users can control the
 					text and page layout (e.g., to increase font sizes, line spacing, and foreground and
 					background colors).</li>
 				<li><a href="#supports-nonvisual-reading">nonvisual reading</a> &#8212; whether all of the
@@ -644,13 +644,13 @@
 					prerecorded narration (audiobooks or text and audio synchronized publications) or
 					embedded audio (standalone audio clips or audio tracks in a video).</li>
 			</ul>
-			
+
 			<p>This section is divided into subsections to explain each of the display outputs for each characteristic,
 				but this separation is only for ease of reading. The subsections do not represent new display fields
-				or have titles associated with them. All of the information is expected to be displayed under the 
-				"<span data-localization-id="ways-of-reading-title">Ways of reading</span>" title, as depicted in 
+				or have titles associated with them. All of the information is expected to be displayed under the
+				"<span data-localization-id="ways-of-reading-title">Ways of reading</span>" title, as depicted in
 				the <a href="#wr-examples">ways of reading examples</a>.</p>
-			
+
 			<section id="visual-adjustments">
 				<h4>Visual adjustments</h4>
 
@@ -787,7 +787,7 @@
 							<p data-localization-id="ways-of-reading-nonvisual-reading-not-fully"
 								data-localization-mode="descriptive">Not all of the content will be readable as read aloud speech or dynamic braille</p>
 						</dd>
-						
+
 						<dt>If the content cannot be read in text form:</dt>
 						<dd>
 							<p data-localization-id="ways-of-reading-nonvisual-reading-none"
@@ -795,7 +795,7 @@
 							<p data-localization-id="ways-of-reading-nonvisual-reading-none"
 								data-localization-mode="descriptive">The content is not readable as read aloud speech or dynamic braille</p>
 						</dd>
-						
+
 						<dt>If no metadata is provided:</dt>
 						<dd>
 							<p data-localization-id="ways-of-reading-nonvisual-reading-no-metadata"
@@ -803,7 +803,7 @@
 							<p data-localization-id="ways-of-reading-nonvisual-reading-no-metadata"
 								data-localization-mode="descriptive">No information about nonvisual reading is available</p>
 						</dd>
-						
+
 						<dt>If text alternatives are provided:</dt>
 						<dd>
 							<p data-localization-id="ways-of-reading-nonvisual-reading-alt-text"
@@ -923,7 +923,7 @@
 				<aside class="example" title="Publication with text and images">
 					<p>The following example shows the descriptive and compact statements that would display
 						for a typical text-based publication with images that have text alternatives.</p>
-					
+
 					<dl>
 						<dt>Compact display</dt>
 						<dd>
@@ -936,7 +936,7 @@
 							<p data-localization-id="ways-of-reading-nonvisual-reading-alt-text"
 								data-localization-mode="compact">Has alternative text</p>
 						</dd>
-						
+
 						<dt>Descriptive display</dt>
 						<dd>
 							<p class="ex-hd" data-localization-id="ways-of-reading-title">Ways of reading</p>
@@ -954,7 +954,7 @@
 						</dd>
 					</dl>
 				</aside>
-				
+
 				<aside class="example" title="Publication with synchronized text and audio">
 					<p>The following example shows the descriptive and compact statements that would display
 						for a publication with a modifiable display, that is compatible with nonvisual reading,
@@ -1112,8 +1112,8 @@
 						which is why it is separated from the general conformance information. Implementors
 						may opt to include it without distinction from the general information, but it may
 						be more helpful to users if it is clearly separated, such as by including it in an
-						expandable display box (see the <a href="#conf-examples">conformance examples</a>) 
-						or adding a heading before it. Implementors may also choose not to display this 
+						expandable display box (see the <a href="#conf-examples">conformance examples</a>)
+						or adding a heading before it. Implementors may also choose not to display this
 						information if it is too technical for their target audience.</p>
 
 					<dl>
@@ -1187,7 +1187,7 @@
 
 				<aside class="example"
 					title="Conformance statement that claims to meet accepted accessibility standards followed by detailed conformance information">
-					
+
 					<p>In this example, the detailed conformance information is minimized by default in the compact display and
 						expanded for the descriptive.</p>
 
@@ -1214,7 +1214,7 @@
 
 							<details>
 								<summary data-localization-id="conformance-details-title">Detailed conformance information</summary>
-								
+
 								<p>
 									<span
 										data-localization-id="conformance-details-claim"
@@ -1270,7 +1270,7 @@
 
 							<details open="">
 								<summary data-localization-id="conformance-details-title">Detailed conformance information</summary>
-								
+
 								<p>
 									<span
 										data-localization-id="conformance-details-claim"
@@ -1480,8 +1480,7 @@
 			<h3 data-localization-id="rich-content-title">Rich content</h3>
 
 			<div class="note">
-				<p>This display field can be hidden if metadata is
-					missing. Alternatively it can be stated that
+				<p>This group should be displayed only if the metadata indicates the presence of accessible math, accessible chemical formulas, extended descriptions, captions or transcriptions for videos, or transcripts of audio within the title, otherwise it can be hidden. Alternatively it can be stated that
 					<span
 						data-localization-id="rich-content-unknown"
 						data-localization-mode="descriptive">No information is available</span>
@@ -1490,8 +1489,7 @@
 
 			<p>Indicates the presence of math, chemical formulas, extended descriptions for information rich images, e.g., charts, diagrams, figures, graphs, and whether these are in an accessible format or available in an alternative form, e.g., whether math and chemical formulas are navigable with assistive technologies, or whether extended descriptions are available for information-rich images. In addition, it indicates the presence of videos and if closed captions, open captions, or transcripts for prerecorded audio are available.</p>
 
-			<p>This group should be displayed only if the metadata
-				indicates the presence of math, chemical formulas, extended descriptions, videos, or transcripts of audio within the title, otherwise it can be hidden.</p>
+
 
 			<section id="rc-statements">
 				<h4>Display statements</h4>
@@ -1690,7 +1688,7 @@
 						<p data-localization-id="hazards-unknown"
 							data-localization-mode="descriptive">The presence of hazards is unknown</p>
 					</dd>
-					
+
 					<dt>If there is a flashing hazard:</dt>
 					<dd>
 						<p data-localization-id="hazards-flashing"
@@ -1714,7 +1712,7 @@
 							that can cause photosensitive
 							seizures</p>
 					</dd>
-					
+
 					<dt>If a flashing hazard is not known:</dt>
 					<dd>
 						<p data-localization-id="hazards-flashing-unknown"
@@ -1725,7 +1723,7 @@
 							presence of flashing content that can cause
 							photosensitive seizures could not be determined</p>
 					</dd>
-					
+
 					<dt>If there is a motion simulation hazard:</dt>
 					<dd>
 						<p data-localization-id="hazards-motion"
@@ -1736,7 +1734,7 @@
 								publication contains motion simulations
 								that can cause motion sickness</p>
 					</dd>
-					
+
 					<dt>If there is no motion simulation hazard:</dt>
 					<dd>
 						<p data-localization-id="hazards-motion-none"
@@ -1747,7 +1745,7 @@
 							publication does not contain motion simulations
 							that can cause motion sickness</p>
 					</dd>
-					
+
 					<dt>If a motion simulation hazard is not known:</dt>
 					<dd>
 						<p data-localization-id="hazards-motion-unknown"
@@ -1758,7 +1756,7 @@
 							presence of motion simulations that can cause
 							motion sickness could not be determined</p>
 					</dd>
-					
+
 					<dt>If there is a sound hazard:</dt>
 					<dd>
 						<p data-localization-id="hazards-sound"
@@ -1768,7 +1766,7 @@
 								publication contains sounds that
 								can cause sensitivity issues</p>
 					</dd>
-					
+
 					<dt>If there is no sound hazard:</dt>
 					<dd>
 						<p data-localization-id="hazards-sound-none"
@@ -1779,7 +1777,7 @@
 							publication does not contain sounds
 							that can cause sensitivity issues</p>
 					</dd>
-					
+
 					<dt>If a sound hazard is not known:</dt>
 					<dd>
 						<p data-localization-id="hazards-sound-unknown"
@@ -1790,7 +1788,7 @@
 							presence of sounds that can cause
 							sensitivity issues could not be determined</p>
 					</dd>
-					
+
 					<dt>If no metadata is provided:</dt>
 					<dd>
 						<p data-localization-id="hazards-no-metadata"
@@ -2287,7 +2285,8 @@
 			<aside class="example" title="Extended filtering options">
 				<ul>
 					<li>Go to page</li>
-					<li>Contains charts, diagrams, figures, graphs, math, or chemical formulas</li>
+					<li>Math as MathML</li>
+					<li>Information-rich images are described by extended descriptions</li>
 					<li>This publication meets accepted accessibility standards</li>
 						<li>No hazards</li>
 					<li>Prerecorded audio</li>
@@ -2478,22 +2477,22 @@
 	</section>
 	<section id="change-log" class="informative">
 		<h2>Change log</h2>
-		
+
 		<div class="note">
-			<p>This section identifies substantive changes between versions. For a list of all changes, refer to 
+			<p>This section identifies substantive changes between versions. For a list of all changes, refer to
 				the <a
 					href="https://github.com/w3c/publ-a11y/issues?q=is%3Aissue%20state%3Aclosed%20label%3Aa11y-display-guide">issue tracker</a>.</p>
 		</div>
-		
+
 		<details open="">
-			<summary>Changes since the <a 
+			<summary>Changes since the <a
 					href="https://w3c.github.io/publ-a11y/a11y-meta-display-guide/2.0/guidelines/guidelines-draft-note-20250220.html">2025-02-20
 					Draft Community Group Report</a></summary>
 			<ul>
-				<li>18-Mar-2025: Fixed a typo in the descriptive statement for unknown hazards. See <a 
+				<li>18-Mar-2025: Fixed a typo in the descriptive statement for unknown hazards. See <a
 						href="https://github.com/w3c/publ-a11y/issues/674">issue 674</a>.</li>
-				<li>03-Mar-2025: Added outputs for situations where there is a mix of hazard, no hazard, and 
-					unknown hazard statements. See <a href="https://github.com/w3c/publ-a11y/issues/578">issue 
+				<li>03-Mar-2025: Added outputs for situations where there is a mix of hazard, no hazard, and
+					unknown hazard statements. See <a href="https://github.com/w3c/publ-a11y/issues/578">issue
 						587</a>.</li>
 				<li>28-Feb-2025: Fixed missing space at the end of the <code>conformance-certifier</code> string.</li>
 			</ul>
