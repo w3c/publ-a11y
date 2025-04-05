@@ -1480,8 +1480,7 @@
 			<h3 data-localization-id="rich-content-title">Rich content</h3>
 
 			<div class="note">
-				<p>This display field can be hidden if metadata is
-					missing. Alternatively it can be stated that
+				<p>This group should be displayed only if the metadata indicates the presence of accessible math, accessible chemical formulas, extended descriptions, captions or transcriptions for videos, or transcripts of audio within the title, otherwise it can be hidden. Alternatively it can be stated that
 					<span
 						data-localization-id="rich-content-unknown"
 						data-localization-mode="descriptive">No information is available</span>
@@ -1490,8 +1489,7 @@
 
 			<p>Indicates the presence of math, chemical formulas, extended descriptions for information rich images, e.g., charts, diagrams, figures, graphs, and whether these are in an accessible format or available in an alternative form, e.g., whether math and chemical formulas are navigable with assistive technologies, or whether extended descriptions are available for information-rich images. In addition, it indicates the presence of videos and if closed captions, open captions, or transcripts for prerecorded audio are available.</p>
 
-			<p>This group should be displayed only if the metadata
-				indicates the presence of math, chemical formulas, extended descriptions, videos, or transcripts of audio within the title, otherwise it can be hidden.</p>
+
 
 			<section id="rc-statements">
 				<h4>Display statements</h4>
@@ -2287,7 +2285,8 @@
 			<aside class="example" title="Extended filtering options">
 				<ul>
 					<li>Go to page</li>
-					<li>Contains charts, diagrams, figures, graphs, math, or chemical formulas</li>
+					<li>Math as MathML</li>
+					<li>Information-rich images are described by extended descriptions</li>
 					<li>This publication meets accepted accessibility standards</li>
 						<li>No hazards</li>
 					<li>Prerecorded audio</li>
@@ -2488,13 +2487,13 @@
 					href="https://w3c.github.io/publ-a11y/a11y-meta-display-guide/2.0/guidelines/guidelines-draft-note-20250220.html">2025-02-20
 					Draft Community Group Report</a></summary>
 			<ul>
+
 			<li>01-apr-2025: Made language improvements in the implementation section.Put the change log in the correct order.</li>
 			<li>29-Mar-2025: Fixed language describing accessible rich content. See <a
 						href="https://github.com/w3c/publ-a11y/issues/671">issue 671</a>.</li>
 			<li>29-Mar-2025: Fixed example 12 that was using incorrect strings for filtering. See <a
 						href="https://github.com/w3c/publ-a11y/issues/673">issue 673</a>.</li>
 						<li>29-Mar-2025: Revised Implementation section to point to an external page rather than embedding static images of examples.</li>
-
 				<li>18-Mar-2025: Fixed a typo in the descriptive statement for unknown hazards. See <a
 						href="https://github.com/w3c/publ-a11y/issues/674">issue 674</a>.</li>
 				<li>03-Mar-2025: Added outputs for situations where there is a mix of hazard, no hazard, and
