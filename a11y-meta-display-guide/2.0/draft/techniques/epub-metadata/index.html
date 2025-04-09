@@ -888,17 +888,6 @@
 						<p>This means that the audio content of a video can be seen via closed captions that can be turned on or off  by the viewer and which will be a separate file from the video itself.</p>
 					</dd>
 
-					<dt><var>contains_charts_diagrams</var></dt>
-					<dd>
-						<p>If true, it indicates that <i>accessMode="chartOnVisual"</i> is present in the package document.</p>
-						<p>This means that there is a positive indication that the product has some information conveyed via some form of illustration, such as a graph, a chart, a diagram, a figure, etc).</p>
-					</dd>
-					<dt><var>contains_chemical_formula</var></dt>
-					<dd>
-						<p>If true, it indicates that <i>accessMode="chemOnVisual"</i> is present in the package document.</p>
-						<p>This means that there is a positive indication that the publication contains chemical notations, formulae.</p>
-					</dd>
-
 					<dt><var>contains_math_formula</var></dt>
 					<dd>
 						<p>If true, it indicates that <i>accessibilityFeature="describedMath"</i> is present in the package document.</p>
@@ -952,18 +941,6 @@
 						on <var>package_document</var>, <code class="xpath"
 								>/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and
 								normalize-space()="<i>closedCaptions</i>"]</code>.</li>
-
-					<li><b>LET</b>
-						<var>contains_charts_diagrams</var> be the result of calling <a href="#check-for-node">check for
-							node</a> on <var>package_document</var>, <code class="xpath"
-								>/package/metadata/meta[@property="schema:<i>accessMode</i>" and
-								normalize-space()="<i>chartOnVisual</i>"]</code>.</li>
-
-					<li><b>LET</b>
-						<var>contains_chemical_formula</var> be the result of calling <a href="#check-for-node">check
-							for node</a> on <var>package_document</var>, <code class="xpath"
-								>/package/metadata/meta[@property="schema:<i>accessMode</i>" and
-								normalize-space()="<i>chemOnVisual</i>"]</code>.</li>
 
 					<li><b>LET</b>
 						<var>contains_math_formula</var> be the result of calling <a href="#check-for-node">check for
