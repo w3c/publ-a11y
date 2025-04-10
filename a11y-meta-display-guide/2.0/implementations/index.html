@@ -11,15 +11,18 @@
 				color: var(--heading-text);
 				margin-top: 0;
 			}
-			body, nav#toc {
+			body,
+			nav#toc {
 				background-image: none !important;
 			}
 			nav#toc {
 				padding-top: 2rem !important;
 			}
-		</style>
+			div.info p {
+				margin: 0;
+			}</style>
 	</head>
-	
+
 	<body class="h-entry informative">
 		<div class="head">
 			<hgroup>
@@ -28,30 +31,64 @@
 			</hgroup>
 			<hr title="Separator for header" />
 		</div>
-		
 		<nav id="toc">
 			<h2 class="introductory" id="table-of-contents">Table of Contents</h2>
 			<ol class="toc">
-				<li class="tocline"><a class="tocxref" href="#intro"><bdi class="secno">1. </bdi>Introduction</a></li>
-				<li class="tocline"><a class="tocxref" href="#implementations"><bdi class="secno">2. </bdi>Implementations</a></li>
+				<li class="tocline"><a class="tocxref" href="#intro">Introduction</a></li>
+				<li class="tocline">
+					<a class="tocxref" href="#implementations">Implementations</a>
+					<ol class="toc">
+						<li class="tocline">
+							<a class="tocxref" href="#daisy-viewer">DAISY Accessibility Metadata Viewer</a>
+						</li>
+					</ol>
+				</li>
 			</ol>
 		</nav>
-		
-		
 		<section id="intro">
 			<div class="header-wrapper">
-				<h2 id="x1-introduction"><bdi class="secno">1. </bdi>Introduction</h2>
+				<h2>Introduction</h2>
 			</div>
 		</section>
-		
-		
 		<section id="implementations">
 			<div class="header-wrapper">
-				<h2 id="x2-implementations"><bdi class="secno">2. </bdi>Implementations</h2>
+				<h2>Implementations</h2>
 			</div>
+
+			<section id="daisy-viewer">
+				<h3>DAISY Accessibility Metadata Viewer</h3>
+
+				<div class="info">
+					<p><strong>Web site</strong>: <a href="https://daisy.github.io/a11y-meta-viewer/"
+							>https://daisy.github.io/a11y-meta-viewer/</a></p>
+					<p><strong>Organization</strong>: <a href="https://daisy.org">DAISY Consortium</a></p>
+				</div>
+
+				<div class="summary">
+					<p>The DAISY Accessibility Metadata Viewer is a free browser-based testing tool that allows users to
+						review the metadata that will be generated according to the display guidelines and techniques.
+						It can run online or downloaded and run locally.</p>
+
+					<p>To use the tool, a user only needs to paste an EPUB package document or ONIX record into the user
+						interface. The viewer has options to display either the descriptive or compact display
+						statements, as well as to select the display language and suppress fields for which no
+						information is available.</p>
+					
+					<p>The site provides some free sample records for testing purposes for users who not have access
+						to digital publication metadata.</p>
+				</div>
+
+				<div class="snapshots">
+					<figure id="daisy-viewer-interface">
+						<img src="graphics/daisy-viewer/display.png"
+							alt="DAISY Accessibility Metadata Viewer result dialog" />
+						<figcaption>The result dialog for the DAISY Accessibility Metadata Viewer has options at the top
+							to control the display of the metadata. The metadata headings are laid out in a tabular
+							format with their corresponding display statements to their right.</figcaption>
+					</figure>
+				</div>
+			</section>
 		</section>
-		
-		
 		<p role="navigation" id="back-to-top">
 			<a href="#title"><abbr title="Back to Top">↑</abbr></a>
 		</p>
