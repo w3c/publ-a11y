@@ -19,7 +19,7 @@ check_command java
 basedir=$(readlink -f "$0")
 basedir=$(dirname "$basedir")
 tmpdir=$(mktemp -d)
-output_dir="$basedir/../2.0/draft/localizations"
+output_dir="$basedir/../../../publ-a11y-display-guide-localizations/lang"
 
 # Input
 read -p 'JSON version: ' jsonVersion
@@ -51,7 +51,7 @@ xsltproc --stringparam guidelines "$guidelines" \
 yq --prettyPrint --xml-skip-proc-inst --indent 4 -p=xml -o=json '.root' "$tmpdir/strings.xml" > "$tmpdir/temp.json"
 
 # Remove | characters and save to final destination
-sed 's/|//g' "$tmpdir/temp.json" > "$output_dir/en-US/display_guide_vocabulary_w3c_en-US.json"
+sed 's/|//g' "$tmpdir/temp.json" > "$output_dir/en-US/display_guide_vocabulary_w3c.json"
 
 # Cleanup
 rm -rf "$tmpdir"
@@ -59,4 +59,4 @@ rm -rf "$tmpdir"
 # Cleanup
 rm -rf "$tmpdir"
 
-echo "Transformation completed. JSON created at en-US/display_guide_vocabulary_w3c_en-US.json"
+echo "Transformation completed. JSON created at en-US/display_guide_vocabulary_w3c.json"
