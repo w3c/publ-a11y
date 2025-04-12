@@ -11,9 +11,9 @@
 				group: "publishingcg",
 				specStatus: "CG-DRAFT",
 				noRecTrack: true,
-				latestVersion: "https://www.w3.org/publishing/a11y/UX-Guide-metadata/techniques/epub-metadata/",
+				latestVersion: "https://www.w3.org/publishing/a11y/metadata-display-guide/techniques/epub/",
 				edDraftURI: "https://w3c.github.io/publ-a11y/a11y-meta-display-guide/2.0/draft/techniques/epub-metadata/",
-				canonicalURI: "https://www.w3.org/publishing/a11y/UX-Guide-metadata/techniques/epub-metadata/",
+				canonicalURI: "https://www.w3.org/publishing/a11y/metadata-display-guide/techniques/epub/",
 				editors: [
 					{
 						"name": "Charles LaPierre",
@@ -75,7 +75,7 @@
 	</head>
 	<body>
 		<section id="abstract">
-			<p>This document provides techniques for meeting the guidelines of the <a href="../../guidelines/"
+			<p>This document provides techniques for meeting the guidelines of the <a href="https://www.w3.org/publishing/a11y/metadata-display-guide/guidelines/"
 					>Accessibility Metadata Display Guide for Digital Publications 2.0</a>. It provides practical
 				examples on how to extract information from an EPUB package document and show it to end users.</p>
 		</section>
@@ -91,7 +91,7 @@
 
 				<div class="note">
 					<p>Techniques for displaying accessibility metadata in other metadata formats can be found in the <a
-							href="../../guidelines/#techniques">Display Techniques for Displaying Accessibility
+							href="https://www.w3.org/publishing/a11y/metadata-display-guide/guidelines/#techniques">Display Techniques for Displaying Accessibility
 							Metadata</a>.</p>
 				</div>
 			</section>
@@ -269,7 +269,7 @@
 			<section id="ways-of-reading">
 				<h3>Ways of reading</h3>
 
-				<p>This technique relates to the <a href="../../guidelines/#ways-of-reading">Ways of reading
+				<p>This technique relates to the <a href="https://www.w3.org/publishing/a11y/metadata-display-guide/guidelines/#ways-of-reading">Ways of reading
 						accessibility display field</a>.</p>
 
 				<p>This algorithm takes the <var>package_document_as_text</var> argument: a UTF-8 string representing
@@ -278,7 +278,7 @@
 				<section id="visual-adjustments">
 					<!-- https://www.w3.org/TR/pub-manifest/#manifest-processing -->
 					<h4>Visual adjustments</h4>
-					<p>This technique relates to the <a href="../../guidelines/#visual-adjustments">Visual adjustments accessibility display field</a>.</p>
+					<p>This technique relates to the <a href="https://www.w3.org/publishing/a11y/metadata-display-guide/guidelines/#visual-adjustments">Visual adjustments accessibility display field</a>.</p>
   
 					<h5>Understanding the variables</h5>
 					<dl>
@@ -319,7 +319,7 @@
 				
 				<section id="supports-nonvisual-reading">
 					<h4>Supports nonvisual reading</h4>
-					<p>This technique relates to the <a href="../../guidelines/#supports-nonvisual-reading">Supports
+					<p>This technique relates to the <a href="https://www.w3.org/publishing/a11y/metadata-display-guide/guidelines/#supports-nonvisual-reading">Supports
 							nonvisual reading accessibility display field</a>.</p>
 
 					<h5>Understanding the variables</h5>
@@ -414,7 +414,7 @@
 
 				<section id="prerecorded-audio">
 					<h4>Prerecorded audio</h4>
-					<p>This technique relates to the <a href="../../guidelines/#prerecorded-audio">Prerecorded audio
+					<p>This technique relates to the <a href="https://www.w3.org/publishing/a11y/metadata-display-guide/guidelines/#prerecorded-audio">Prerecorded audio
 							accessibility display field</a>.</p>
 
 					<h5>Understanding the variables</h5>
@@ -488,7 +488,7 @@
 
 			<section id="conformance-group">
 				<h3>Conformance</h3>
-				<p>This technique relates to the <a href="../../guidelines/#conformance-group">Conformance accessibility
+				<p>This technique relates to the <a href="https://www.w3.org/publishing/a11y/metadata-display-guide/guidelines/#conformance-group">Conformance accessibility
 						display field</a>.</p>
 
 				<p>This algorithm takes the <var>package_document_as_text</var> argument: a UTF-8 string representing
@@ -677,17 +677,16 @@
 									<li>
 										<span><b>ELSE</b> display <var>certifier_credentials</var> as text.</span>
 									</li>
-                                    <div class="note">
-                                        <p>If the certifier metadata value is a text-based badge or a credential, then only the text is displayed. If the badge or credential is expressed as a URL, then the URL can be made a link for users to access. The display of image logos or badges is typically arranged between the certifier and the distributor. The distributor would be responsible for identifying the certifier's text or link credential and replacing it with the image or linked image.</p>
-                                    </div>
-
 								</ol>
+								<div class="note">
+									<p>If the certifier metadata value is a text-based badge or a credential, then only the text is displayed. If the badge or credential is expressed as a URL, then the URL can be made a link for users to access. The display of image logos or badges is typically arranged between the certifier and the distributor. The distributor would be responsible for identifying the certifier's text or link credential and replacing it with the image or linked image.</p>
+								</div>
 							</li>
 							<li>
 								<div class="note">
 									<p>The instructions from here on define the output for the detailed conformance
 										information. Refer to the <a
-											href="../../guidelines/#detailed-conformance-information">Detailed
+											href="https://www.w3.org/publishing/a11y/metadata-display-guide/guidelines/#detailed-conformance-information">Detailed
 											Conformance section</a> in the guidelines for more information on how to
 										present these strings.</p>
 								</div>
@@ -761,7 +760,7 @@
 
 			<section id="navigation">
 				<h3>Navigation</h3>
-				<p>This technique relates to the <a href="../../guidelines/#navigation">Navigation accessibility display field</a>.</p>
+				<p>This technique relates to the <a href="https://www.w3.org/publishing/a11y/metadata-display-guide/guidelines/#navigation">Navigation accessibility display field</a>.</p>
 				<p>This algorithm takes the <var>package_document_as_text</var> argument: a UTF-8 string representing the Package document.</p>
 
 				<h4>Understanding the variables</h4>
@@ -865,7 +864,7 @@
 
 			<section id="rich-content">
 				<h3>Rich content</h3>
-				<p>This technique relates to the <a href="../../guidelines/#rich-content">Rich content accessibility
+				<p>This technique relates to the <a href="https://www.w3.org/publishing/a11y/metadata-display-guide/guidelines/#rich-content">Rich content accessibility
 						display field</a>.</p>
 
 				<p>This algorithm takes the <var>package_document_as_text</var> argument: a UTF-8 string representing
@@ -1046,7 +1045,7 @@
 
 			<section id="hazards">
 				<h3>Hazards</h3>
-				<p>This technique relates to the <a href="../../guidelines/#hazards">Hazards accessibility display
+				<p>This technique relates to the <a href="https://www.w3.org/publishing/a11y/metadata-display-guide/guidelines/#hazards">Hazards accessibility display
 						field</a>.</p>
 				<p>This algorithm takes the <var>package_document_as_text</var> argument: a UTF-8 string representing
 					the Package document.</p>
@@ -1231,7 +1230,7 @@
 
 			<section id="accessibility-summary">
 				<h3>Accessibility summary</h3>
-				<p>This technique relates to the <a href="../../guidelines/#accessibility-summary">Accessibility summary
+				<p>This technique relates to the <a href="https://www.w3.org/publishing/a11y/metadata-display-guide/guidelines/#accessibility-summary">Accessibility summary
 						accessibility display field</a>.</p>
 
 				<p>This algorithm takes the <var>package_document_as_text</var> argument: a UTF-8 string representing
@@ -1305,7 +1304,7 @@
 					section. If you are a publisher, we want your feedback! Please visit the GitHub Issue tracking
 					linked above to leave a comment.</div>
 
-				<p>This technique relates to the <a href="../../guidelines/#legal-considerations">Legal considerations
+				<p>This technique relates to the <a href="https://www.w3.org/publishing/a11y/metadata-display-guide/guidelines/#legal-considerations">Legal considerations
 						accessibility display field</a>.</p>
 
 				<p>This algorithm takes the <var>package_document_as_text</var> argument: a UTF-8 string representing
@@ -1351,7 +1350,7 @@
 
 			<section id="additional-accessibility-information">
 				<h3>Additional accessibility information</h3>
-				<p>This technique relates to the <a href="../../guidelines/#additional-accessibility-information"
+				<p>This technique relates to the <a href="https://www.w3.org/publishing/a11y/metadata-display-guide/guidelines/#additional-accessibility-information"
 						>Additional accessibility information accessibility display field</a>.</p>
 
 				<p>This algorithm takes the <var>package_document_as_text</var> argument: a UTF-8 string representing
