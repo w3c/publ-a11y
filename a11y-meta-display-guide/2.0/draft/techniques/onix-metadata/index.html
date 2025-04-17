@@ -11,9 +11,9 @@
 				group: "publishingcg",
 				specStatus: "CG-DRAFT",
 				noRecTrack: true,
-				latestVersion: "https://www.w3.org/publishing/a11y/UX-Guide-metadata/techniques/onix-metadata/",
+				latestVersion: "https://www.w3.org/publishing/a11y/metadata-display-guide/techniques/onix/",
 				edDraftURI: "https://w3c.github.io/publ-a11y/a11y-meta-display-guide/2.0/draft/techniques/onix-metadata/",
-				canonicalURI: "https://www.w3.org/publishing/a11y/UX-Guide-metadata/techniques/onix-metadata/",
+				canonicalURI: "https://www.w3.org/publishing/a11y/metadata-display-guide/techniques/onix/",
 				editors: [
 					{
 						"name": "Gregorio Pellegrino",
@@ -87,7 +87,7 @@
 	<body>
 		<section id="abstract">
 			<p>This document provides techniques for meeting the guidelines of the 
-				<a href="../../guidelines/">Accessibility Metadata Display Guide for Digital Publications 2.0</a>.
+				<a href="https://www.w3.org/publishing/a11y/metadata-display-guide/guidelines/">Accessibility Metadata Display Guide for Digital Publications 2.0</a>.
 				It provides practical examples on how to extract information from an ONIX record and show it to 
 				end users.</p>
 		</section>
@@ -113,7 +113,7 @@
         		</p>
         		
         		<div class="note">
-        			<p>Techniques for displaying accessibility metadata in other metadata formats can be found in the <a href="../../guidelines/#techniques">Display Techniques for Displaying Accessibility Metadata</a></p>
+        			<p>Techniques for displaying accessibility metadata in other metadata formats can be found in the <a href="https://www.w3.org/publishing/a11y/metadata-display-guide/guidelines/#techniques">Display Techniques for Displaying Accessibility Metadata</a></p>
         		</div>
         	</section>
             
@@ -250,14 +250,14 @@
 			<section id="ways-of-reading">
                 <h3>Ways of reading</h3>
 
-                <p>This technique relates to the <a href="../../guidelines/#ways-of-reading">Ways of reading accessibility display field</a>.</p>
+                <p>This technique relates to the <a href="https://www.w3.org/publishing/a11y/metadata-display-guide/guidelines/#ways-of-reading">Ways of reading accessibility display field</a>.</p>
   
 				<p>This algorithm takes the <var>onix_record_as_text</var> argument: a UTF-8 string representing the ONIX record.</p>
 
 
 				<section id="visual-adjustments">
 					<h3>Visual adjustments</h3>
-					<p>This technique relates to the <a href="../../guidelines/#visual-adjustments">Visual adjustments accessibility display field</a>.</p>
+					<p>This technique relates to the <a href="https://www.w3.org/publishing/a11y/metadata-display-guide/guidelines/#visual-adjustments">Visual adjustments accessibility display field</a>.</p>
 					<h4>Understanding the variables</h4>
 					<dl>
 						<dt><var>all_textual_content_can_be_modified</var></dt>
@@ -293,7 +293,7 @@
 	
 				<section id="supports-nonvisual-reading">
 					<h3>Supports nonvisual reading</h3>
-					<p>This technique relates to the <a href="../../guidelines/#supports-nonvisual-reading">Supports nonvisual reading accessibility display field</a>.</p>
+					<p>This technique relates to the <a href="https://www.w3.org/publishing/a11y/metadata-display-guide/guidelines/#supports-nonvisual-reading">Supports nonvisual reading accessibility display field</a>.</p>
 					<h4>Understanding the variables</h4>
 					<dl>
 						<dt><var>all_necessary_content_textual</var></dt>
@@ -355,7 +355,7 @@
 				
 				<section id="prerecorded-audio">
 					<h3>Prerecorded audio</h3>
-					<p>This technique relates to the <a href="../../guidelines/#prerecorded-audio">Pre-recorded audio accessibility display field</a>.</p>
+					<p>This technique relates to the <a href="https://www.w3.org/publishing/a11y/metadata-display-guide/guidelines/#prerecorded-audio">Pre-recorded audio accessibility display field</a>.</p>
 					<h4>Understanding the variables</h4>
 					<dl>
 						<dt><var>all_content_audio</var></dt>
@@ -439,7 +439,7 @@
 
 			<section id="conformance-group">
 				<h3>Conformance</h3>
-				<p>This technique relates to the <a href="../../guidelines/#conformance-group">Conformance accessibility display field</a>.</p>
+				<p>This technique relates to the <a href="https://www.w3.org/publishing/a11y/metadata-display-guide/guidelines/#conformance-group">Conformance accessibility display field</a>.</p>
 				<p>This algorithm takes the <var>onix_record_as_text</var> argument: a UTF-8 string representing the ONIX record.</p>
 				<h4>Understanding the variables</h4>
 				<dl>
@@ -566,16 +566,16 @@
 						<ol class="display">
 							<li>display <code id="conformance-certifier-credentials">"The certifier's credential is"</code></li>
 							<li>display <var>certifier_credentials</var> as link <b>IF</b> <var>certifier_credentials</var> is an URL.</li>
-                            <div class="note">
-                                <p>If the certifier metadata value is a text-based badge or a credential, then only the text is displayed. If the badge or credential is expressed as a URL, then the URL can be made a link for users to access. The display of image logos or badges is typically arranged between the certifier and the distributor. The distributor would be responsible for identifying the certifier's text or link credential and replacing it with the image or linked image.</p>
-                            </div>
 						</ol>
+						<div class="note">
+							<p>If the certifier metadata value is a text-based badge or a credential, then only the text is displayed. If the badge or credential is expressed as a URL, then the URL can be made a link for users to access. The display of image logos or badges is typically arranged between the certifier and the distributor. The distributor would be responsible for identifying the certifier's text or link credential and replacing it with the image or linked image.</p>
+						</div>
 					</li>
 					<li>
 						<div class="note">
 							<p>The instructions from here on define the output for the detailed conformance
 								information. Refer to the 
-								<a href="../../guidelines/#detailed-conformance-information">Detailed Conformance section</a>
+								<a href="https://www.w3.org/publishing/a11y/metadata-display-guide/guidelines/#detailed-conformance-information">Detailed Conformance section</a>
 								in the guidelines for more information on how to present these strings.</p>
 						</div>
 						
@@ -631,7 +631,7 @@
 
 			<section id="navigation">
 				<h3>Navigation</h3>
-				<p>This technique relates to the <a href="../../guidelines/#navigation">Navigation accessibility display field</a>.</p>
+				<p>This technique relates to the <a href="https://www.w3.org/publishing/a11y/metadata-display-guide/guidelines/#navigation">Navigation accessibility display field</a>.</p>
 				<p>This algorithm takes the <var>onix_record_as_text</var> argument: a UTF-8 string representing the ONIX record.</p>
 				<h4>Understanding the variables</h4>
 				<dl>
@@ -695,7 +695,7 @@
 
 			<section id="rich-content">
 				<h3>Rich content</h3>
-				<p>This technique relates to the <a href="../../guidelines/#rich-content">Rich content accessibility display field</a>.</p>
+				<p>This technique relates to the <a href="https://www.w3.org/publishing/a11y/metadata-display-guide/guidelines/#rich-content">Rich content accessibility display field</a>.</p>
 				<p>This algorithm takes the <var>onix_record_as_text</var> argument: a UTF-8 string representing the ONIX record.</p>
 				<h4>Understanding the variables</h4>
 				<dl>
@@ -811,7 +811,7 @@
 
 			<section id="hazards">
 				<h3>Hazards</h3>
-				<p>This technique relates to the <a href="../../guidelines/#hazards">Hazards accessibility display field</a>.</p>
+				<p>This technique relates to the <a href="https://www.w3.org/publishing/a11y/metadata-display-guide/guidelines/#hazards">Hazards accessibility display field</a>.</p>
 				<p>This algorithm takes the <var>onix_record_as_text</var> argument: a UTF-8 string representing the ONIX record.</p>
 				<h4>Understanding the variables</h4>
 				<dl>
@@ -949,7 +949,7 @@
 
 			<section id="accessibility-summary">
 				<h3>Accessibility summary</h3>
-				<p>This technique relates to the <a href="../../guidelines/#accessibility-summary">Accessibility summary accessibility display field</a>.</p>
+				<p>This technique relates to the <a href="https://www.w3.org/publishing/a11y/metadata-display-guide/guidelines/#accessibility-summary">Accessibility summary accessibility display field</a>.</p>
 				<p>This algorithm takes the <var>onix_record_as_text</var> argument: a UTF-8 string representing the ONIX record.</p>
 				<aside class="note">
 					Being human-written, the accessibility summary and addendum will appear in the original language of the publication. Therefore it is necessary of take care of setting up the correct language tag information.
@@ -1064,7 +1064,7 @@
 			<section id="legal-considerations">
 				<h3>Legal considerations</h3>
 				<p class="issue" data-number="350">We are actively seeking comments on this "legal consideration" section. If you are a publisher, we want your feedback! Please visit the GitHub Issue tracking linked above to leave a comment.</p>
-				<p>This technique relates to the <a href="../../guidelines/#legal-considerations">Legal considerations accessibility display field</a>.</p>
+				<p>This technique relates to the <a href="https://www.w3.org/publishing/a11y/metadata-display-guide/guidelines/#legal-considerations">Legal considerations accessibility display field</a>.</p>
 				<p>This algorithm takes the <var>onix_record_as_text</var> argument: a UTF-8 string representing the ONIX record.</p>
 				<h4>Understanding the variables</h4>
 				<dl>
@@ -1105,7 +1105,7 @@
 
 			<section id="additional-accessibility-information">
 				<h3>Additional accessibility information</h3>
-				<p>This technique relates to the <a href="../../guidelines/#additional-accessibility-information">Additional accessibility information accessibility display field</a>.</p>
+				<p>This technique relates to the <a href="https://www.w3.org/publishing/a11y/metadata-display-guide/guidelines/#additional-accessibility-information">Additional accessibility information accessibility display field</a>.</p>
 				<p>This algorithm takes the <var>onix_record_as_text</var> argument: a UTF-8 string representing the ONIX record.</p>
 
 		
