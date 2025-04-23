@@ -1402,7 +1402,7 @@
 						
 						<dt><var>page_break_markers</var></dt>
 						<dd>
-							<p>If true, it indicates that <i>accessibilityFeature="pageBreakMarkers"</i> is present in the package document.</p>
+							<p>If true, it indicates that either <i>accessibilityFeature="pageBreakMarkers"</i> or <i>accessibilityFeature="printPageNumbers"</i> are present in the package document, alone or together.</p>
 							<p>This means that the publication contains references to the page numbering.</p>
 						</dd>
 
@@ -1455,7 +1455,8 @@
 
 						<li><b>LET</b> <var>large_print</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and normalize-space()="<i>largePrint</i>"]</code>.</li>
 
-						<li><b>LET</b> <var>page_break_markers</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and normalize-space()="<i>pageBreakMarkers</i>"]</code>.</li>
+						<li><b>LET</b> <var>page_break_markers</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and (normalize-space()="<i>pageBreakMarkers</i>" or normalize-space()="<i>printPageNumbers</i>")]</code>.</li>
+
 
 						<li><b>LET</b> <var>ruby_annotations</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>package_document</var>, <code class="xpath">/package/metadata/meta[@property="schema:<i>accessibilityFeature</i>" and normalize-space()="<i>rubyAnnotations</i>"]</code>.</li>
 
