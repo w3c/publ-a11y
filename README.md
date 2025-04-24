@@ -19,15 +19,15 @@ Task force meetings are announced on the Publishing Community Group's [public ma
 
 The Accessibility Task Force maintains the following documents in this repository:
 
-- Accessibility Metadata Display Guide for Digital Publications ([Project Page](https://github.com/w3c/publ-a11y/tree/main/a11y-meta-display-guide/2.0))
-  - [Editor's Draft](https://w3c.github.io/publ-a11y/a11y-meta-display-guide/2.0/draft/guidelines/)
-  - [Latest Version](https://www.w3.org/2021/09/UX-Guide-metadata-1.0/principles/)
+- Accessibility Metadata Display Guide for Digital Publications ([Project Page](https://github.com/w3c/publ-a11y/tree/main/a11y-meta-display-guide/2.1))
+  - [Editor's Draft](https://w3c.github.io/publ-a11y/a11y-meta-display-guide/2.1/draft/guidelines/)
+  - [Latest Version](https://www.w3.org/publishing/a11y/metadata-display-guide/guidelines/)
   - EPUB Techniques
-    - [Editor's Draft](https://w3c.github.io/publ-a11y/a11y-meta-display-guide/2.0/draft/techniques/epub-metadata/)
-    - [Latest Version](https://www.w3.org/publishing/a11y/UX-Guide-metadata/techniques/epub-metadata/)
+    - [Editor's Draft](https://w3c.github.io/publ-a11y/a11y-meta-display-guide/2.1/draft/techniques/epub-metadata/)
+    - [Latest Version](https://www.w3.org/publishing/a11y/metadata-display-guide/techniques/epub/)
   - ONIX Techniques
-    - [Editor's Draft](https://w3c.github.io/publ-a11y/a11y-meta-display-guide/2.0/draft/techniques/onix-metadata/)
-    - [Latest Version](https://www.w3.org/publishing/a11y/UX-Guide-metadata/techniques/onix-metadata/)
+    - [Editor's Draft](https://w3c.github.io/publ-a11y/a11y-meta-display-guide/2.1/draft/techniques/onix-metadata/)
+    - [Latest Version](https://www.w3.org/publishing/a11y/metadata-display-guide/techniques/onix/)
 - Accessibility Properties Crosswalk
   - [Editor's Draft](https://w3c.github.io/publ-a11y/drafts/a11y-crosswalk-MARC/)
 - Publishing Guide to Audio Playback and Text-To-Speech

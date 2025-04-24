@@ -25,9 +25,9 @@ output_dir="$basedir/../../../publ-a11y-display-guide-localizations/lang"
 read -p 'JSON version: ' jsonVersion
 
 # Input files
-guidelines="$basedir/../2.0/draft/guidelines/index.html"
-epub_techniques="$basedir/../2.0/draft/techniques/epub-metadata/index.html"
-onix_techniques="$basedir/../2.0/draft/techniques/onix-metadata/index.html"
+guidelines="$basedir/../2.1/draft/guidelines/index.html"
+epub_techniques="$basedir/../2.1/draft/techniques/epub-metadata/index.html"
+onix_techniques="$basedir/../2.1/draft/techniques/onix-metadata/index.html"
 
 # XSLT files
 xslt_extract_ids="$basedir/canonical-json-extract-ids.xsl"
