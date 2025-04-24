@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Script for creating static version for the UX-Guide-Metadata documents
-# It starts from the published draft (in the main branch): https://w3c.github.io/publ-a11y/a11y-meta-display-guide/2.0/draft/guidelines/
+# It starts from the published draft (in the main branch): https://w3c.github.io/publ-a11y/a11y-meta-display-guide/2.1/draft/guidelines/
 # It generates the static version
 # It runs nuchecker and link checker
 # The output is a zip folder that can be sent to W3C staff for publishing on the website
@@ -25,11 +25,11 @@ do
 	tmpdir=$(mktemp -d)
 	filename=${document##*/}
 	versionFilename="$filename-draft-note-$publishDateWithoutDashes.html"
-	versionURL="https://w3c.github.io/publ-a11y/a11y-meta-display-guide/2.0/$document/$versionFilename"
+	versionURL="https://w3c.github.io/publ-a11y/a11y-meta-display-guide/2.1/$document/$versionFilename"
 
 	# copies the content to the temporary directory
 	printf "\nCopying the content to the temporary directory..."
-	cp -a "$basedir/../2.0/draft/$document/." $tmpdir
+	cp -a "$basedir/../2.1/draft/$document/." $tmpdir
 	rm $tmpdir/*.md
 	
 	# generates the static version
@@ -65,7 +65,7 @@ do
 	checklink \
 		--summary \
 		--broken \
-		"https://w3c.github.io/publ-a11y/a11y-meta-display-guide/2.0/draft/$document/?specStatus=CG-DRAFT&publishDate=$publishDate"
+		"https://w3c.github.io/publ-a11y/a11y-meta-display-guide/2.1/draft/$document/?specStatus=CG-DRAFT&publishDate=$publishDate"
 	
 	# commenting while waiting for this issue to be fixed: https://github.com/w3c/publ-a11y/issues/386
 	# if [ $? -gt 0 ] 
@@ -74,10 +74,10 @@ do
 	# fi
 	
 	printf "\nMoving temporary files to directory..."
-	mv $tmpdir/* "$basedir/../2.0/$document/"
+	mv $tmpdir/* "$basedir/../2.1/$document/"
 	
 	printf "\nCopying for versioning..."
-	cp "$basedir/../2.0/$document/index.html" "$basedir/../2.0/$document/$versionFilename"
+	cp "$basedir/../2.1/$document/index.html" "$basedir/../2.1/$document/$versionFilename"
 
 done
 
