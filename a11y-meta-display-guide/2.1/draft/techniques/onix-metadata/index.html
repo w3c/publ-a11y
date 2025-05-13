@@ -171,6 +171,12 @@
 					
 					<p>Translation of these XPath selectors may be necessary if the input record is transformed into
 						another form, such as a JSON structure.</p>
+					
+					<p>Note that the node selectors in this document only account for ONIX records that use <a 
+							href="https://www.editeur.org/74/faqs/#q10">reference names</a>. To process records that 
+						use short tags, the records will either need to be <a 
+							href="https://www.editeur.org/93/release-3.0-downloads/#Tools">transformed to use reference
+							names</a> or compatible XPaths will need to be provided.</p>
 				</section>
 				
 				<section id="output-statements">
@@ -206,7 +212,6 @@
 				</section>
 			</section>
 		</section>
-	
 		<section id="common-functions">
 			<h2>Common Functions</h2>
 			<p>In this section we define the functions common to all techniques, which are called by them during execution.</p>

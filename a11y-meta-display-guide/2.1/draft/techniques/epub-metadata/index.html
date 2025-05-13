@@ -173,6 +173,9 @@
 
 					<p>Translation of these XPath selectors may be necessary if the input record is transformed into
 						another form, such as a JSON structure.</p>
+					
+					<p>Note that the node selectors in this document only account for EPUB 3 metadata. To process 
+						EPUB 2 publications, compatible XPaths will need to be provided.</p>
 				</section>
 
 				<section id="output-statements">
@@ -243,15 +246,11 @@
 				<p>Many of the techniques rely on checking for the presence or absence of metadata in the metadata
 					section of the Package document.</p>
 
-				<aside class="note">
-					<p>All XPATHs are made for EPUB 3, while for EPUB 2 they would need to be adjusted.</p>
-				</aside>
-
 				<p>This algorithm takes:</p>
 				<ul>
 					<li>the <var>package_document</var> argument: the internal representation of the Package document
 						(output of <a href="#pre-processing">preprocessing</a>);</li>
-					<li>the <var>path</var> argument: the XPATH of the node to check the presence of.</li>
+					<li>the <var>path</var> argument: the XPath of the node to check the presence of.</li>
 				</ul>
 				<p>To check for node, run the following steps:</p>
 				<ol class="condition">
