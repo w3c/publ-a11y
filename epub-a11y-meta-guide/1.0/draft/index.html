@@ -1,0 +1,1726 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
+	<head>
+		<meta charset="utf-8" />
+		<title>EPUB Accessibility Metadata Guide</title>
+		<script src="https://www.w3.org/Tools/respec/respec-w3c" class="remove"></script>
+		<script class="remove">
+			//<![CDATA[
+            var respecConfig = {
+				shortName: "epub-a11y-meta-guide",
+				group: "publishingcg",
+				specStatus: "CG-DRAFT",
+				noRecTrack: true,
+                edDraftURI: "https://w3c.github.io/publ-a11y/epub-a11y-meta-guide/1.0/draft/",
+                copyrightStart: "2025",
+                editors:[ {
+                    name: "Charles LaPierre",
+                    company: "Benetech",
+                    companyURL: "http://www.benetech.org",
+                    w3cid: 72055
+                }
+                ],
+                includePermalinks: true,
+                permalinkEdge: true,
+                permalinkHide: false,
+                github: {
+                    repoURL: "https://github.com/w3c/publ-a11y",
+                    branch: "main"
+                },
+                pluralize: true,
+                localBiblio: {
+					"a11y-discov-vocab": {
+						"title": "Schema.org Accessibility Properties for Discoverability Vocabulary",
+						"href": "https://www.w3.org/2021/a11y-discov-vocab/latest/",
+						"editors": [
+							"Charles LaPierre",
+							"Madeleine Rothberg",
+							"Matt Garrish"
+						]
+					},
+					"dpub-aria":{
+						"title": "Digital Publishing WAI-ARIA Module 1.1",
+						"href": "https://w3c.github.io/dpub-aria/",
+						"publisher": "W3C"                        
+                    },
+					"epub-3": {
+						"title": "EPUB 3",
+						"href": "https://www.w3.org/TR/epub/",
+						"publisher": "W3C"
+					},
+					"iso24751-3": {
+						"title": " ISO/IEC 24751-3:2008 Information technology -- Individualized adaptability and accessibility in e-learning, education and training -- Part 3: &quot;Access for all&quot; digital resource description",
+						"href": "http://www.iso.org/iso/catalogue_detail?csnumber=43604",
+						"date": "2008-10-01"
+					},
+                    "wai-aria":{
+						"title": "Accessible Rich Internet Applications (WAI-ARIA) 1.2",
+						"href": "https://www.w3.org/TR/wai-aria-1.2/",
+						"publisher": "W3C"                        
+                    },
+					"wcag2": {
+						"title": "Web Content Accessibility Guidelines (WCAG) 2",
+						"href": "https://www.w3.org/TR/WCAG2/",
+						"publisher": "W3C"
+					}
+                }
+            };//]]>
+      </script>
+
+		<style>
+			/*prevent examples from horizontal scrolling*/
+			pre {
+				white-space: break-spaces !important;
+			}</style>
+	</head>
+	<body>
+		<section id="abstract">
+			<p></p>
+		</section>
+		<section id="sotd"></section>
+		<section id="toc"></section>
+		<section id="introduction">
+			<h2>Introduction</h2>
+		</section>
+		<section id="metadata">
+			<h2>Accessibility Metadata</h2>
+
+			<p>This metadata as outlined in EPUB Accessibility 1.1 [[epub-a11y-11]], can be found in the EPUB package
+				document [[EPUB-33]].</p>
+
+			<div class="note">
+				<p>For the complete list of approved terms to use with these properties, refer to the <a
+						href="https://www.w3.org/2021/a11y-discov-vocab/latest/">Schema.org Accessibility Properties for
+						Discoverability Vocabulary</a> [[a11y-discov-vocab]].</p>
+			</div>
+
+			<section id="metadata-access-mode">
+				<h3>Access modes</h3>
+
+				<p>An access mode is defined as a "human sense perceptual system or cognitive faculty through which a
+					user may process or perceive the content of a digital resource." [[iso24751-3]] For example, if an
+						<a href="https://www.w3.org/TR/epub/#dfn-epub-publication">EPUB publication</a> contains images
+					and video, visual perception is required to consume the content exactly as it was created.</p>
+
+				<p>There are four access modes that are typically specified for EPUB publications:</p>
+
+				<ul>
+					<li>
+						<p><strong>textual</strong> — the publication contains text content (headings, paragraphs,
+							etc.).</p>
+					</li>
+					<li>
+						<p><strong>visual</strong> — the publication contains visual content such as images, graphics,
+							diagrams, animations, and video.</p>
+					</li>
+					<li>
+						<p><strong>auditory</strong> — the publication contains auditory content such as standalone
+							audio clips and audio soundtracks for video content.</p>
+					</li>
+					<li>
+						<p><strong>tactile</strong> — the publication contains tactile content such as embedded braille
+							and tactile diagrams.</p>
+					</li>
+				</ul>
+
+				<p>For a user to determine whether an EPUB publication is suitable for their needs, they need to know
+					which of these access modes are required to consume the content. List all applicable access modes in
+					the [[schema-org]] <a href="https://schema.org/accessMode"><code>accessMode</code> property</a>,
+					repeating the property for each applicable mode.</p>
+
+				<aside class="example" title="Metadata entries for textual and visual access modes">
+					<pre>&lt;meta
+    property="schema:accessMode">
+   textual
+&lt;/meta>
+&lt;meta
+    property="schema:accessMode">
+   visual
+&lt;/meta></pre>
+				</aside>
+
+				<p><strong>Do not</strong> list access modes for content that does not contain information necessary to
+					understand a publication. Most EPUB publications contain cover images, for example, but it is not
+					necessary to see the cover image to read the publication. The same is true of publisher logos and
+					images in the content are only for presentational purposes (i.e., have no information so have empty
+					[[html]] <code>alt</code> attribute values). If these are the only visual content, then it is not
+					valid to list a visual access mode. Similarly, if the only audio an EPUB publication contains is
+					background music (e.g., for an instructional video with text captions, or as mood music while
+					reading), listing an auditory access mode is not valid.</p>
+
+				<p>Note that the access modes of the content do not reflect any adaptations that have been provided. For
+					example, if a comic book also includes alternative text for each image, it does not have a textual
+					access mode. See the following section on <a href="#accessModeSufficient">sufficient access
+						modes</a> for how to indicate that the available adaptations allow the content to be consumed in
+					another mode.</p>
+
+				<p>Refer to <a href="https://www.w3.org/2021/a11y-discov-vocab/latest/#accessMode">The
+							<code>accessMode</code> Property</a> [[a11y-discov-vocab]] for more information about this
+					property and its values.</p>
+
+				<section id="accessmode-visual">
+					<h4>Access mode: visual</h4>
+
+					<p>Indicates that the resource contains information encoded in visual form.</p>
+
+					<div class="note">
+						<p>This value is not set if the only visual imagery is presentational or not directly relevant
+							to understanding the content.</p>
+
+						<p>If the only images within the EPUB are: cover, author, corporate logos, or decorative images
+							the <code>accessMode</code> of 'visual' would not be included in the metadata.</p>
+					</div>
+
+					<aside id="example-access-mode-visual" class="example" title="AccessMode: Visual">
+						<p>The following two examples shows a visual only image being presented. This would not be
+							accessible and would fail <a href="https://www.w3.org/TR/WCAG22/#non-text-content">WCAG
+								1.1.1 (Non Text Content)</a> since there is no alt text description provided.</p>
+						<pre>
+                            <code>
+                            &lt;p&gt;
+                                &lt;img src="images/hawk.jpg"&gt;
+                            &lt;/p&gt;
+                            
+                            or
+                            
+                            &lt;div style="background-image: url('images/hawk.jpg')"&gt;&lt;/div&gt;
+                            </code>
+                        </pre>
+						<p>The metadata to included in the package document would be:</p>
+						<pre>
+                            <code>
+                            &lt;meta property="schema:accessMode"&gt;visual&lt;/meta&gt;
+                            </code>
+                        </pre>
+						<div class="note">
+							<p>In the <a href="#example-access-mode-visual">Example: AccessMode: Visual</a> no alt text
+								description of the image was provided, demonstrating the single metadata
+									<code>accessMode</code> of "visual". If however, the example included an alt text
+								description for the image both the <code>accessMode</code> of 'visual' and 'textual'
+								would be included in the metadata.</p>
+						</div>
+					</aside>
+				</section>
+
+				<section id="accessmode-textual">
+					<h4>Access mode: textual</h4>
+
+					<p>Indicates that the resource contains information encoded in textual form.</p>
+					<div class="note">
+						<p>This value is not set if the only textual content is for navigational purposes. For example,
+							an audiobook might include a table of contents, but it is not necessary to read the table of
+							contents to read the work. Likewise, books with synchronized text-audio playback may only
+							include headings to allow structured navigation.</p>
+					</div>
+					<aside class="example" title="AccessMode: Textual">
+						<pre>
+                            <code>
+                             &lt;p&gt;
+                                The red-tailed hawk is one of North America's most widespread raptors.
+                                &lt;img src="images/hawk.jpg" 
+                                alt="A red-tailed hawk perched on a bare tree branch, its reddish-brown tail feathers clearly visible against the blue sky"&gt;
+                                These majestic birds can often be seen soaring high above open fields, scanning for prey with their keen eyesight.
+                            &lt;/p&gt;                            </code>
+                        </pre>
+						<p>Since there is textual content within the EPUB, the metadata to included in the package
+							document would be:</p>
+						<pre>
+                            <code>
+                            &lt;meta property="schema:accessMode"&gt;textual&lt;/meta&gt;
+                            </code>
+                            In addition, since there is an image with the alt description present the additional metadata would be also included:
+                            <code>
+                            &lt;meta property="schema:accessibilityFeature"&gt;alternativeText&lt;/meta&gt;
+                            </code>
+                            And finally, since there is a content image present, you would also include:
+                            <code>
+                            &lt;meta property="schema:accessMode"&gt;visual&lt;/meta&gt;
+                            </code>
+                        </pre>
+					</aside>
+				</section>
+
+				<section id="accessmode-auditory">
+					<h4>Access mode: auditory</h4>
+
+					<p>Indicates that the resource contains information encoded in auditory form.</p>
+
+					<div class="note">
+						<p>This value is not set when the auditory content conveys no information. For example, an
+							instructional video might include background music while all the necessary information to
+							complete the task is conveyed visually and/or through text captions.</p>
+					</div>
+					<aside class="example" title="AccessMode: Auditory">
+						<pre>
+                            <code>
+                            &lt;figure&gt;
+                               &lt;audio controls&gt;
+                                   &lt;source src="audiofile.mp3" type="audio/mpeg"&gt;
+                                   Your browser does not support the audio element.
+                               &lt;/audio&gt;
+                               &lt;figcaption&gt;Interview with Dr. Smith about climate change research&lt;/figcaption&gt;
+                            &lt;/figure&gt;                            
+                            </code>
+                        </pre>
+						<p>The metadata to included in the package document would be:</p>
+						<pre>
+                            <code>
+                            &lt;meta property="schema:accessMode"&gt;auditory&lt;/meta&gt;
+                            </code>
+                            In addition, since there is a textual figcaption description present the additional metadata would be also included:
+                            <code>
+                            &lt;meta property="schema:accessMode"&gt;textual&lt;/meta&gt;
+                            </code>
+                        </pre>
+						<div class="note">
+							<p>Ideally there would also be a textual transcript included, and depending on its existance
+								this would affect the accessModeSufficient metadata inclusion of 'textual'.</p>
+						</div>
+					</aside>
+				</section>
+
+				<section id="accessmode-text-on-visual">
+					<h4>Access mode: Text On Visual</h4>
+
+					<p>Indicates that the resource contains text encoded in visual form.</p>
+
+					<aside id="example-access-mode-text-on-visual" class="example" title="AccessMode: Text On Visual">
+						<pre>
+                            <code>
+                            &lt;p&gt;
+                                &lt;img src="images/newspaper-clipping.jpg" alt="Newspaper Clipping: Climate Crisis: Local Scientist Speaks Out. By Jane Wilson. Our measurements indicate a 2.3°C increase over the past decade alone."&gt;
+                            &lt;/p&gt;
+                            </code>
+                        </pre>
+						<p>The metadata to included in the package document would be:</p>
+						<pre>
+                            <code>
+                            &lt;meta property="schema:accessMode"&gt;textOnVisual&lt;/meta&gt;
+                            </code>
+                            In addition, since there is an image and associated alt text description of the text on the newspaper clipping the additional metadata would be also included:
+                            <code>
+                            &lt;meta property="schema:accessMode"&gt;visual&lt;/meta&gt;
+                            &lt;meta property="schema:accessMode"&gt;textual&lt;/meta&gt;
+                            &lt;meta property="schema:accessibilityFeature"&gt;alternativeText&lt;/meta&gt;
+                            </code>
+                        </pre>
+					</aside>
+				</section>
+			</section>
+
+			<section id="metadata-access-mode-sufficient">
+				<h3>Sufficient access modes</h3>
+
+				<p>The access modes sufficient to consume an <a href="https://www.w3.org/TR/epub/#dfn-epub-publication"
+						>EPUB publication</a> express a broader picture of the potential usability than do the <a
+						href="#accessMode">basic access modes</a>. Where the basic access modes identify the default
+					nature of the media used in the publication, sufficient access modes identify all the individual
+					modes, and sets of modes, that allow a user to read a publication. Sufficient access modes account
+					for the affordances and adaptations that the EPUB creators have provided, allowing users to
+					determine whether they can the read content regardless of its default nature.</p>
+
+				<p>Sufficient access modes are identified in the [[schema-org]] <a
+						href="https://schema.org/accessModeSufficient"><code>accessModeSufficient</code> property</a>.
+					Repeat the property for each set of sufficient access modes.</p>
+
+				<p>The most strongly recommended sufficient access modes to list are the ones that consist of only a
+					single value. Users seeking alternatives to the default encoding of the information typically want
+					to read the content without switching reading modes (e.g., they want a purely textual alternative to
+					use text-to-speech playback or an auditory alternative to listen to prerecorded narration). Listing
+					the single value sets allows users to easily determine whether a publication will meet their reading
+					needs.</p>
+
+				<p>The most common single sufficient access modes for EPUB publications are:</p>
+
+				<ul>
+					<li><code>textual</code> &#8212; setting this value indicates that the publication is screen-reader
+						friendly (i.e., all the content is available for text-to-speech rendering by an assistive
+						technology). EPUB creators can set this value for EPUB publications that conform to <a
+							href="https://www.w3.org/TR/WCAG2/#cc1_A">Level A</a> [[wcag2]] or higher, for example, as
+						there must be textual alternatives for non-text content to meet these thresholds.</li>
+					<li><code>auditory</code> &#8212; setting this value indicates that pre-recorded audio is available
+						for the publication. EPUB creators can set this value for EPUB publications that provide media
+						overlays for all the content.</li>
+				</ul>
+
+				<p>As an example of setting sufficient access modes, consider an EPUB publication that contains graphics
+					and charts, as well as descriptions for all these images. The publication has both textual and
+					visual content, so the <a href="https://www.w3.org/TR/epub/#dfn-epub-creator">EPUB creator</a> will
+					include the following <code>schema:accessMode</code> metadata entries to indicate this:</p>
+
+				<pre>&lt;meta
+    property="schema:accessMode">
+   textual
+&lt;/meta>
+&lt;meta
+    property="schema:accessMode">
+   visual
+&lt;/meta></pre>
+
+				<p>This metadata does not make clear whether a textual access mode is sufficient to read the entire
+					publication, or whether a visual one is, only that the user requires the ability to read in those
+					two modes by default. This discrepancy is why sufficiency is also important to know.</p>
+
+				<p>Since the EPUB creator has also included textual alternatives and/or descriptions for all the images
+					in the example publication, the metadata can also indicate that a purely textual access mode is
+					sufficient to read the content:</p>
+
+				<pre>&lt;meta
+    property="schema:accessModeSufficient">
+   textual
+&lt;/meta></pre>
+
+				<p>Without this metadata, users would not have known that they could read the publication only via its
+					textual content.</p>
+
+				<p>It is important to emphasize when listing individual values in the
+						<code>schema:accessModeSufficient</code> property not to simply restate each individual access
+					mode. When adding a <code>schema:accessModeSufficient</code> property with only a single value,
+						<strong>all information</strong> in the publication must be available in that mode.</p>
+
+				<p>For example, the EPUB creator would not declare a sufficient access mode of "<code>visual</code>" for
+					the example publication as the information is not entirely available in image-based form. (Photo
+					books without text would be examples of works with a purely visual sufficient access mode.)</p>
+
+				<p>EPUB creators may also list any sets of sufficient access modes that allow full access to the
+					information. As the most typical set of values is the combination of all the access modes, however,
+					the information this provides users is less helpful in determining the usability of a
+					publication.</p>
+
+				<p>For example, the metadata the EPUB creator inputs for the example publication re-establishes that
+					there is a textual and visual reading option:</p>
+
+				<pre>&lt;meta
+    property="schema:accessModeSufficient">
+   textual,visual
+&lt;/meta></pre>
+
+				<div class="note">
+					<p>The order in which EPUB creators list the access modes in a set is not important. The only
+						requirement is to separate the values by commas.</p>
+				</div>
+
+
+				<p>The complete set of <code>schema:accessMode</code> and <code>schema:accessModeSufficient</code>
+					entries for the example publication is as follows:</p>
+
+				<pre>&lt;meta
+    property="schema:accessMode">
+   textual
+&lt;/meta>
+&lt;meta
+    property="schema:accessMode">
+   visual
+&lt;/meta>
+&lt;meta
+    property="schema:accessModeSufficient">
+   textual,visual
+&lt;/meta>
+&lt;meta
+    property="schema:accessModeSufficient">
+   textual
+&lt;/meta></pre>
+
+				<p>Note that sufficiency of access is often a subjective determination of the EPUB creator based on
+					their understanding of what information is essential to comprehending the text. Some information
+					loss occurs by not being able to view a video, for example, but the EPUB creator might regard the
+					visual or auditory losses as inconsequential if a transcript provides all the necessary information
+					to understand the concepts being conveyed.</p>
+
+				<p>Refer to <a href="https://www.w3.org/2021/a11y-discov-vocab/latest/#accessModeSufficient">The
+							<code>accessModeSufficient</code> Property</a> [[a11y-discov-vocab]] for more information
+					about this property and its values.</p>
+
+				<div class="note">
+					<p>The <code>accessModeSufficient</code> property, as defined in [[schema-org]], allows more
+						complicated expressions than can be represented in the EPUB 2 or 3 <a
+							href="https://www.w3.org/TR/epub/#dfn-package-document">package document</a> (e.g.,
+						definition of lists of values and inclusion of a human-readable description). A future version
+						of EPUB might allow for richer metadata, but the basic expression shown in this section is
+						sufficient for discovery purposes.</p>
+				</div>
+
+				<section>
+					<h4>Single Values</h4>
+
+					<p>Having a single <code>accessMode</code> implies that the entire content of the EPUB can be
+						consumed with only that mode of accessing the content within the book.</p>
+
+					<section id="metadata-access-mode-sufficient-visual">
+						<h5>AccessModeSufficient: Visual</h5>
+						<p>Indicates that only visual perception is necessary to consume the information.</p>
+						<p>An example of this would be a children's picture book.</p>
+						<aside id="example-access-mode-sufficient-visual" class="example"
+							title="AccessModeSufficient: Visual">
+							<pre>
+                                 Content files includes:
+                                    Only images, (i.e. no text, audio, or tactile content)
+                            </pre>
+							<p>The metadata to included in the package document would be:</p>
+							<pre>
+                                <code>
+                                &lt;meta property="schema:accessModeSufficient"&gt;visual&lt;/meta&gt;
+                                </code>
+                                In addition, you would include:
+                                <code>
+                                &lt;meta property="schema:accessMode"&gt;visual&lt;/meta&gt;
+                                </code>
+                            </pre>
+						</aside>
+					</section>
+
+					<section id="metadata-access-mode-sufficient-textual">
+						<h5>AccessModeSufficient: Textual</h5>
+						<p>Indicates that the ability to read textual content is necessary to consume the
+							information.</p>
+						<p>Note that reading textual content does not require visual perception, as textual content can
+							be rendered as audio using a text-to-speech capable device or embossed as braille for
+							tactile reading.</p>
+						<p>An example of this would be a romance novel.</p>
+						<aside class="example" title="AccessModeSufficient: Tactile">
+							<pre>
+                                 Content files includes:
+                                     Only text, (i.e. no images, audio, or tactile content)
+                            </pre>
+							<p>The metadata to included in the package document would be:</p>
+							<pre>
+                                <code>
+                                &lt;meta property="schema:accessModeSufficient"&gt;textual&lt;/meta&gt;
+                                </code>
+                                In addition, you would include:
+                                <code>
+                                &lt;meta property="schema:accessMode"&gt;textual&lt;/meta&gt;
+                                </code>                        
+                            </pre>
+						</aside>
+					</section>
+
+					<section id="metadata-access-mode-sufficient-auditory">
+						<h5>AccessModeSufficient: Auditory</h5>
+
+						<p>Indicates that auditory perception is necessary to consume the information.</p>
+
+						<p>An example of this would be an audio book.</p>
+
+						<aside class="example" title="AccessModeSufficient: Auditory">
+							<pre>
+                                Content files includes:
+                                     Only audio, (i.e no text, images, or tactile content)
+                            </pre>
+							<p>The metadata to included in the package document would be:</p>
+							<pre>
+                                <code>
+                                &lt;meta property="schema:accessModeSufficient"&gt;auditory&lt;/meta&gt;
+                                </code>
+                                In addition, you would include:
+                                <code>
+                                &lt;meta property="schema:accessMode"&gt;auditory&lt;/meta&gt;
+                                </code>                        
+                            </pre>
+						</aside>
+					</section>
+				</section>
+
+				<section>
+					<h4>Combined Values</h4>
+					<p>Combining various <code>accessModeSufficient</code>s implies that a combination of access modes
+						are required to completely consume and understand the content within the EPUB.</p>
+
+					<section id="metadata-access-mode-sufficient-visual-textual">
+						<h5>AccessModeSufficient: Visual &amp; Textual</h5>
+						<p>Indicates that both visual perception and the ability to read textual content is necessary to
+							consume the information.</p>
+						<p>An example of this would be a cookbook.</p>
+						<aside id="example-access-mode-sufficient-visual-textual" class="example"
+							title="AccessModeSufficient: Visual &amp; Textual">
+							<pre>
+                                 Content files includes:
+                                     Only text and images, (i.e. no audio or tactile content)
+                            </pre>
+							<p>The metadata to included in the package document would be:</p>
+							<pre>
+                                <code>
+                                &lt;meta property="schema:accessModeSufficient"&gt;visual,textual&lt;/meta&gt;
+                                </code>
+                                In addition, you would include:
+                                <code>
+                                &lt;meta property="schema:accessMode"&gt;visual&lt;/meta&gt;
+                                &lt;meta property="schema:accessMode"&gt;textual&lt;/meta&gt;
+                                </code>                        
+                            </pre>
+							<div class="note">
+								<p>In the <a href="#example-access-mode-sufficient-visual-textual">Example:
+										AccessModeSufficient: Visual &amp; Textual</a> no alt text descriptions for the
+									images were assumed, demonstrating the single metadata accessModeSufficient of only
+									"visual,textual". If however, the example included alt text descriptions for all
+									images within the EPUB the metadata accessModeSufficient of both 'textual' as well
+									as 'textual,visual' would be included.</p>
+							</div>
+						</aside>
+					</section>
+
+					<section id="metadata-access-mode-sufficient-visual-auditory">
+						<h5>AccessModeSufficient: Visual &amp; Auditory</h5>
+						<p>Indicates that both visual perception and the ability to hear the content is necessary to
+							consume the information.</p>
+						<p>An example of this would be a narrated picture book.</p>
+						<aside id="example-access-mode-sufficient-visual-auditory" class="example"
+							title="AccessModeSufficient: Visual &amp; Auditory">
+							<pre>
+                                 Content files includes:
+                                     Only images and audio, (i.e. no text or tactile content)
+                            </pre>
+							<p>The metadata to included in the package document would be:</p>
+							<pre>
+                                <code>
+                                &lt;meta property="schema:accessModeSufficient"&gt;visual&lt;/meta&gt;
+                                &lt;meta property="schema:accessModeSufficient"&gt;visual,auditory&lt;/meta&gt;
+                                </code>
+                                In addition, you would include:
+                                <code>
+                                &lt;meta property="schema:accessMode"&gt;visual&lt;/meta&gt;
+                                &lt;meta property="schema:accessMode"&gt;auditory&lt;/meta&gt;
+                                </code>
+                                If all images not only had audio speaking all text on the images but included audio descriptions of the images the following single accessModeSufficient of 'audio' would be claimed.
+                                <code>
+                                &lt;meta property="schema:accessModeSufficient"&gt;auditory&lt;/meta&gt;         </code>
+                                
+                            </pre>
+							<div class="note">
+								<p>In the <a href="#example-access-mode-sufficient-visual-auditory">Example:
+										AccessModeSufficient: Visual &amp; Auditory</a> no alt text descriptions for the
+									images were assumed, demonstrating the single metadata accessModeSufficient of only
+									"visual,auditory". If however, the example included alt text descriptions for all
+									images within the EPUB the metadata accessModeSufficient of both 'textual' as well
+									as 'visual,auditory,textual' would be included.</p>
+							</div>
+						</aside>
+					</section>
+
+					<section id="metadata-access-mode-sufficient-auditory-textual">
+						<h5>AccessModeSufficient: Auditory &amp; Textual</h5>
+						<p>Indicates that both the ability to hear the content and read textual content is necessary to
+							consume the information.</p>
+						<p>Examples of this would be an an audio book with synchronized text highlighting, or an
+							interactive dictionary where you could hear the pronunciation of the defined words.</p>
+						<aside class="example" title="AccessModeSufficient: Auditory &amp; Textual">
+							<pre>
+                                Content files includes:
+                                    Only text and audio, (i.e. no visual or tactile content)
+                            </pre>
+							<p>The metadata to included in the package document would be:</p>
+							<pre>
+                                <code>
+                                &lt;meta property="schema:accessModeSufficient"&gt;auditory,textual&lt;/meta&gt;
+                                </code>
+                                In addition, you would include:
+                                <code>
+                                &lt;meta property="schema:accessMode"&gt;auditory&lt;/meta&gt;
+                                &lt;meta property="schema:accessMode"&gt;textual&lt;/meta&gt;
+                                </code>                        
+                            </pre>
+						</aside>
+					</section>
+				</section>
+			</section>
+
+			<section id="metadata-a11y-features">
+				<h3>Accessibility features</h3>
+
+				<p>Identifying all the accessibility features and adaptations included in an <a
+						href="https://www.w3.org/TR/epub/#dfn-epub-publication">EPUB publication</a> allows users to
+					determine whether the content is usable at a more fine-grained level than the access modes do.</p>
+
+				<p>For example, a math textbook might have a textual access mode, but that alone does not indicate
+					whether MathML markup is available. Whether a visual work only provides alternative text or whether
+					it includes extended descriptions is also important to know when gauging its usability.</p>
+
+				<p>Accessibility features are identified in the [[schema-org]] <a
+						href="https://schema.org/accessibilityFeature"><code>accessibilityFeature</code> property</a>.
+					Repeat this property for each feature.</p>
+
+				<aside class="example" title="Metadata entries for MathML and alternative text">
+					<pre>&lt;meta
+    property="schema:accessibilityFeature">
+   MathML
+&lt;/meta>
+&lt;meta
+    property="schema:accessibilityFeature">
+   alternativeText
+&lt;/meta></pre>
+				</aside>
+
+				<p>The EPUB format requires that some accessibility features will always be present (e.g., a table of
+					contents). Do not exclude these features from the accessibility metadata, as users typically are not
+					aware what features are built into a format. Failing to include entries will reduce the
+					discoverability of the publication when users search for specific features.</p>
+
+				<p>Be aware that although the vocabulary for the <a
+						href="https://www.w3.org/2021/a11y-discov-vocab/latest/#accessibilityFeature"
+							><code>accessibilityFeature</code> property</a> [[a11y-discov-vocab]] contains the values
+						"<a href="https://www.w3.org/2021/a11y-discov-vocab/latest/#feature-none"><code>none</code></a>"
+					and "<a href="https://www.w3.org/2021/a11y-discov-vocab/latest/#feature-unknown"
+							><code>unknown</code></a>", these terms cannot be used to meet the reporting requirements
+					for the property. Authors must indicate at least one feature that is not one of these values to
+					claim conformance to EPUB Accessibility 1.1.1 [[epub-a11y-111]].</p>
+
+				<p>Refer to <a href="https://www.w3.org/2021/a11y-discov-vocab/latest/#accessibilityFeature">The
+							<code>accessibilityFeature</code> Property</a> [[a11y-discov-vocab]] for more information
+					about this property and its values.</p>
+
+				<section id="accessibility-feature-values">
+					<h4>Values</h4>
+					<p>The <code>accessibilityFeature</code> property provides a list of all the applicable
+						accessibility characteristics of the content. It allows a user agent to discover these
+						characteristics without having to parse or interpret the structure of the content.</p>
+
+					<p>For ease of reading, this section splits the vocabulary into the following distinct groups:</p>
+
+					<p><a href="#structure-navigation-terms">Structure and navigation terms</a> identify navigation aids
+						that are provided to simplify moving around within the media, such as the inclusion of a table
+						of contents or an index.</p>
+
+					<p><a href="#adaptation-terms">Adaptation terms</a> identify content features that provide alternate
+						access to a resource. The inclusion of alternative text in an [HTML] alt attribute is one of the
+						most commonly identifiable augmentation features.</p>
+
+					<p><a href="#rendering-control-terms">Rendering control terms</a> identify content rendering
+						features that users have access to or can control. The ability to modify the appearance of the
+						text is one example.</p>
+
+					<p><a href="#specialized-markup-terms">Specialized markup terms</a> identify that content is encoded
+						using domain-specific grammars like MathML and ChemML that can provide users a richer reading
+						experience.</p>
+
+					<p><a href="#clarity-terms">Clarity terms</a> identify ways that the content has been enhanced for
+						clearer readability. Audio with minimized background noise is one example, while content
+						formatted for large print reading is another.</p>
+
+					<p><a href="#tactile-terms">Tactile terms</a> identify content that is formatted for tactile use,
+						such as graphics and objects.</p>
+
+					<p><a href="#international-terms">Internationalization terms</a> identify those accessibility
+						characteristics of the content which are required for internationalization.</p>
+
+					<section id="structure-navigation-terms">
+						<h5>Structure and navigation terms</h5>
+
+						<section id="metadata-a11y-features-aria">
+							<h6>ARIA</h6>
+
+							<p>Indicates the resource includes ARIA roles to organize and improve the structure and
+								navigation.</p>
+
+							<p>The use of this value corresponds to the inclusion of [[DPUB-ARIA]] semantics, Document
+								Structure, Landmark, and Window roles [[WAI-ARIA]].</p>
+
+							<aside class="example" title="AccessibilityFeature: ARIA">
+								<pre>
+                                <code>
+                                &lt;!-- role="doc-chapter", role="doc-pagebreak", and aria-label="5" are all ARIA roles --&gt;
+                                &lt;section epub:type="chapter" <b>role="doc-chapter"</b>&gt;
+                                    &lt;span id="page_5" epub:type="pagebreak" role="doc-pagebreak" <b>aria-label="5"</b>/&gt;
+                                    &lt;h1 id="ch01_h1">Chapter One&lt;/h1&gt;
+                                    ...
+                                &lt;/section&gt;
+                                </code>
+                            </pre>
+								<p>The metadata to included in the package document would be:</p>
+								<pre>
+                                <code>
+                                &lt;meta property="schema:accessibilityFeature"&gt;ARIA&lt;/meta&gt;
+                                &lt;meta property="schema:accessibilityFeature"&gt;PageBreakMarker&lt;/meta&gt;
+                                </code>
+                            </pre>
+							</aside>
+						</section>
+
+						<section id="metadata-a11y-features-index">
+							<h5>Index</h5>
+							<p>The resource includes an index to the content.</p>
+
+							<aside class="example" title="AccessibilityFeature: Index">
+								<pre>
+                                <code>
+                                &lt;!-- Defined Index in the Nav Doc --&gt;
+                                &lt;nav role="doc-index" aria-labelledby="index"&gt;
+                                   &lt;h1 id="index"&gt;Index&lt;/h1&gt;
+                                   &lt;div&gt;
+                                       &lt;p&gt;
+                                           &lt;span&gt;Artificial Intelligence&lt;/span&gt;
+                                           &lt;a href="chapter2.xhtml#ai-def"&gt;12&lt;/a&gt;
+                                       &lt;/p&gt;
+                                       &lt;p&gt;
+                                           &lt;span&gt;Machine Learning&lt;/span&gt;
+                                           &lt;a href="chapter3.xhtml#ml-basics"&gt;45&lt;/a&gt;
+                                       &lt;/p&gt;
+                                       ...
+                                   &lt;/div&gt;
+                                &lt;/nav&gt;
+                                </code>
+                            </pre>
+								<p>The metadata to included in the package document would be:</p>
+								<pre>
+                                <code>
+                                &lt;meta property="schema:accessibilityFeature"&gt;index&lt;/meta&gt;
+                                </code>
+                            </pre>
+							</aside>
+
+						</section>
+
+						<section id="metadata-a11y-features-pageBreakMarkers">
+							<h5>Page Break Markers</h5>
+
+							<p>The resource includes static page markers, such as those identified by the
+									<code>doc-pagebreak</code>
+								<code>role</code> [[DPUB-ARIA]].</p>
+
+							<aside class="example" title="AccessibilityFeature: Page Break Marker">
+								<pre>
+                                <code>
+                                &lt;!-- role="doc-pagebreak"--&gt;
+                                &lt;span id="page_5" epub:type="pagebreak" role="doc-pagebreak" <b>aria-label="5"</b>/&gt;
+                                </code>
+                            </pre>
+								<p>The metadata to included in the package document would look like:</p>
+								<pre>
+                                <code>
+                                &lt;meta property="schema:accessibilityFeature"&gt;PageBreakMarker&lt;/meta&gt;
+                                </code>
+                            </pre>
+							</aside>
+						</section>
+						<section id="metadata-a11y-features-pageNavigation">
+							<h5>Page Navigation</h5>
+							<p>The resource includes a Page List to the content.</p>
+
+							<aside class="example" title="AccessibilityFeature: Page Navigation">
+								<pre>
+                                <code>
+                                &lt;!-- Defined pagelist in the Nav Doc --&gt;
+                                &lt;nav epub:type="page-list" role="doc-index" aria-labelledby="pglist"&gt;
+                                   &lt;h1 id="pglist"&gt;Index&lt;/h1&gt;
+                                   &lt;div&gt;
+                                       &lt;p&gt;
+                                           &lt;span&gt;Artificial Intelligence&lt;/span&gt;
+                                           &lt;a href="chapter2.xhtml#ai-def"&gt;12&lt;/a&gt;
+                                       &lt;/p&gt;
+                                       &lt;p&gt;
+                                           &lt;span&gt;Machine Learning&lt;/span&gt;
+                                           &lt;a href="chapter3.xhtml#ml-basics"&gt;45&lt;/a&gt;
+                                       &lt;/p&gt;
+                                       ...
+                                   &lt;/div&gt;
+                                &lt;/nav&gt;
+                                </code>
+                            </pre>
+								<p>The metadata to included in the package document would be:</p>
+								<pre>
+                                <code>
+                                &lt;meta property="schema:accessibilityFeature"&gt;pageNavigation&lt;/meta&gt;
+                                </code>
+                            </pre>
+							</aside>
+
+						</section>
+						<section id="metadata-a11y-features-readingOrder">
+							<h5>Reading Order</h5>
+							<p>The reading order of the content is clearly defined in the markup (e.g., figures,
+								sidebars and other secondary content has been marked up to allow it to be skipped
+								automatically and/or manually escaped from.</p>
+							<p>Add this metadata of <code>readingOrder</code> only when the accessible reading order
+								matches the visual layout reading order.</p>
+							<p>An example when this would not be the case is a two page spread where the intent is to
+								visually read across the page boundry, since AT would read down the first page and then
+								continue reading down the 2nd page.</p>
+							<p>The metadata to include in the package document when the visual reading order matches the
+								accessible reading order would be:</p>
+							<pre>
+                            <code>
+                            &lt;meta property="schema:accessibilityFeature"&gt;readingOrder&lt;/meta&gt;
+                            </code>
+                        </pre>
+
+						</section>
+						<section id="metadata-a11y-features-structuralNavigation">
+							<h5>Structural Navigation</h5>
+							<p>The metadata <code>structuralNavigation</code> is used to indicate that an EPUB document
+								has been structured to support accessible navigation through its content. This is
+								crucial for users of assistive technologies.</p>
+
+							<p>The use of headings, lists, tables, asides, etc. in the resource fully and accurately
+								reflects the document hierarchy, allowing navigation by assistive technologies.</p>
+
+							<p>You should use this metadata when your document meets the following criteria:</p>
+
+							<ul>
+								<li><b>Semantic Structure</b>: The document uses semantic HTML5 elements that accurately
+									represent the content's logical structure.</li>
+								<li><b>Heading Hierarchy</b>: Headings (h1-h6) are used in a meaningful, hierarchical
+									manner that reflects the document's outline.</li>
+								<li><b>Navigational Elements</b>: The document includes: <ul>
+										<li>Properly nested headings</li>
+										<li>Ordered and unordered lists where appropriate</li>
+										<li>Tables with appropriate headers and captions</li>
+										<li>Semantic elements like section, article, aside, etc.</li>
+										<li>Meaningful landmark roles</li>
+									</ul>
+								</li>
+							</ul>
+
+							<p>Benefits of Structural Navigation:</p>
+
+							<ul>
+								<li>Enables screen readers to provide better navigation</li>
+								<li>Allows users to jump between sections easily</li>
+								<li>Provides a clear, logical understanding of the document's structure</li>
+								<li>Improves overall accessibility and usability</li>
+							</ul>
+							<p>The metadata to include in the package document when proper structural elements are used
+								to facility accessible navigation would be:</p>
+							<pre>
+                                <code>
+                                &lt;meta property="schema:accessibilityFeature"&gt;structuralNavigation&lt;/meta&gt;
+                                </code>
+                            </pre>
+
+						</section>
+						<section id="metadata-a11y-features-tableOfContents">
+							<h5>Table Of Contents</h5>
+							<p>The resource includes a table of contents that provides links to the major sections of
+								the content.</p>
+							<div class="note">
+								<p>The Table of Contents referred to here is the one in the 'Nav Doc', which is
+									processed by the Reading System to access the content. The publisher could also add
+									an additional Table of Contents in the front matter of the book in the 'spine' but
+									this is not required for use of this metadata.</p>
+							</div>
+							<aside class="example" title="AccessibilityFeature: Table Of Contents">
+								<pre>
+                                <code>
+                                &lt;!-- Defined TOC in the Nav Doc --&gt;
+                                &lt;nav epub:type="toc" role="doc-toc" aria-labelledby="nav-toc"&gt;
+                                    &lt;h1 id="nav-toc"&gt;Table of Contents&lt;/h1&gt;
+                                    &lt;ol style="list-style-type: none;"&gt;
+                                        &lt;li&gt;&lt;a href="chapter1.xhtml"&gt;Chapter 1: Introduction&lt;/a&gt;
+                                            &lt;ol&gt;
+                                                &lt;li&gt;&lt;a href="chapter1.xhtml#section1"&gt;Section 1.1&lt;/a&gt;&lt;/li&gt;
+                                                &lt;li&gt;&lt;a href="chapter1.xhtml#section2"&gt;Section 1.2&lt;/a&gt;&lt;/li&gt;
+                                            &lt;/ol&gt;
+                                        &lt;/li&gt;
+                                        ...
+                                    &lt;/ol&gt;
+                                &lt;/nav&gt;
+                                </code>
+                            </pre>
+								<p>The metadata to include in the package document would be:</p>
+								<pre>
+                                <code>
+                                &lt;meta property="schema:accessibilityFeature"&gt;tableOfContents&lt;/meta&gt;
+                                </code>
+                            </pre>
+							</aside>
+						</section>
+					</section>
+
+					<section id="adaptation-terms">
+						<h5>Adaptation Terms</h5>
+
+						<section id="metadata-a11y-features-alternativeText">
+							<h5>Alternative Text</h5>
+
+							<p>Alternative text is provided for visual content. In fixed layout books this would
+								typically be in the form of textual descriptions of the images contained within the
+								publication.</p>
+							<aside class="example" title="AccessibilityFeature: Alternative Text">
+								<pre>
+                                 <code>
+                                    &lt;img src="images/hawk.jpg" alt="A majestic hawk perches on a tree branch, its sharp golden eyes scanning the landscape, feathered wings folded, powerful talons gripping the bark against a soft blue sky background."&gt; 
+                                 </code>
+                            </pre>
+								<p>The metadata to include in the package document would be:</p>
+								<pre>
+                                <code>
+                                &lt;meta property="schema:accessibilityFeature"&gt;alternativeText&lt;/meta&gt;
+                                </code>
+                            </pre>
+							</aside>
+						</section>
+						<section id="metadata-a11y-features-audioDescription">
+							<h5>Audio Description</h5>
+							<p>Audio descriptions are available (e.g., via an HTML <code>track</code> element with its
+									<code>kind</code> attribute set to "descriptions").</p>
+							<aside class="example" title="AccessibilityFeature: Audio Description>">
+								<pre>
+                                <code>
+                                &lt;video controls&gt;
+                                    &lt;source src="chapter4-video.mp4" type="video/mp4"&gt;
+
+                                    &lt;track kind="descriptions" 
+                                          src="chapter4-video-audio-description.vtt" 
+                                          srclang="en" 
+                                          label="English Audio Description"&gt;
+
+                                  Your browser does not support the video tag.
+                                &lt;/video&gt;
+                                </code>
+                            </pre>
+								<p>The VTT file would contain timed text descriptions of visual elements not conveyed by
+									dialogue.</p>
+								<p>A sample audio description VTT file might look like:</p>
+								<pre>
+                            chapter4-video-audio-description.vtt
+                            
+                            WEBVTT
+                            00:00:05.000 --> 00:00:10.000
+                            A red sports car speeds down a winding mountain road.
+
+                            00:00:15.500 --> 00:00:20.000
+                            The driver, wearing a black leather jacket, turns sharply around a bend.
+                            </pre>
+
+								<p>The metadata to include in the package document would be:</p>
+								<pre>
+                                <code>
+                                &lt;meta property="schema:accessibilityFeature"&gt;audioDescription&lt;/meta&gt;
+                                </code>
+                            </pre>
+							</aside>
+
+						</section>
+						<section id="metadata-a11y-features-closedCaptions">
+							<h5>Closed Captions</h5>
+							<p>Indicates that synchronized closed captions are available for audio and video
+								content.</p>
+							<p>Closed captions are defined separately from the video, allowing users to control whether
+								they are rendered or not, unlike <a href="#metadata-a11y-features-openCaptions">open
+									captions</a> which would be rendered directly onto the video during the video
+								editing process, becoming a permanent part of the visual content. </p>
+							<aside class="example" title="AccessibilityFeature: Closed Captions">
+								<pre>
+                                <code>
+                                &lt;video controls width="480" height="360"&gt;
+                                  &lt;source src="ch1-interview.mp4" type="video/mp4"&gt;
+
+                                  &lt;track kind="captions" 
+                                          src="ch1-interview-captions-en.vtt" 
+                                          srclang="en" 
+                                          label="English Captions" 
+                                          default&gt;
+
+                                  &lt;track kind="captions" 
+                                          src="ch1-interview-captions-es.vtt" 
+                                          srclang="es" 
+                                          label="Spanish Captions"&gt;
+
+                                  Your browser does not support the video element.
+                                &lt;/video&gt;                                
+                                </code>
+                            </pre>
+								<p>A sample WebVTT might look like:</p>
+								<pre>
+                            ch1-interview-captions-en.vtt
+                            
+                            WEBVTT
+                            00:00:01.000 --> 00:00:04.000
+                            [Soft instrumental music playing]
+                            Hello, welcome to our interview.
+
+                            00:00:04.500 --> 00:00:07.500
+                            Today we're discussing accessibility in web design.
+                            </pre>
+
+								<p>The metadata to include in the package document would be:</p>
+								<pre>
+                                <code>
+                                &lt;meta property="schema:accessibilityFeature"&gt;closedCaptions&lt;/meta&gt;
+                                </code>
+                            </pre>
+							</aside>
+
+
+						</section>
+						<section id="metadata-a11y-features-describedMath">
+							<h5>Described Math</h5>
+							<p>Textual descriptions of math equations are included in the alt attribute for image-based
+								equations, or by other means.</p>
+							<aside class="example" title="AccessibilityFeature: Described Math">
+								<pre>
+                                <code>
+                                    &lt;img src="images/quadraticFormula.jpg" alt="A X-squared + B X + C = zero"&gt; 
+                                </code>
+                             </pre>
+								<aside class="note"> This however is not recommended since a more accessible way to
+									include math would be to use real <a href="#metadata-a11y-features-MathML"
+										>MathML</a> markup instead of an image of the math equation. </aside>
+
+								<p>The metadata to include in the package document would be:</p>
+								<pre>
+                                <code>
+                                &lt;meta property="schema:accessibilityFeature"&gt;describedMath&lt;/meta&gt;
+                                </code>
+                            </pre>
+							</aside>
+						</section>
+						<section id="metadata-a11y-features-longDescription">
+							<h5>Long Description</h5>
+							<p>Descriptions are provided for image-based visual content and/or complex structures such
+								as tables, mathematics, diagrams, and charts.</p>
+							<aside class="example" title="AccessibilityFeature: Long Description">
+								<pre>
+                                <code>
+                                &lt;figure&gt;
+                                  &lt;img src="complex-chart.jpg" 
+                                       alt="Annual sales growth bar graph" 
+                                       aria-details="sales-long-description"&gt;
+
+                                &lt;details id="sales-long-description"&gt;
+                                    &lt;summary&gt;Detailed description of sales growth chart&lt;/summary&gt;
+                                    This bar graph illustrates the company's annual sales growth from 2019 to 2023. 
+                                    The vertical axis represents revenue in millions of dollars, ranging from 0 to 50 million. 
+                                    The horizontal axis shows years from 2019 to 2023. 
+                                    Each bar represents the total annual revenue, with notable increases in 2021 and 2022, 
+                                    showing a significant recovery and growth after the initial impact of the global pandemic. 
+                                    The 2022 bar reaches the highest point at 45 million dollars, 
+                                    demonstrating the most successful year in the company's recent history.
+                                  &lt;/details&gt;
+                                &lt;/figure&gt;
+                                </code>
+                            </pre>
+								<aside class="note"> An even better long description would be to inclue the real HTML
+									table which makes up the chart. </aside>
+
+								<p>The metadata to include in the package document would be:</p>
+								<pre>
+                                <code>
+                                &lt;meta property="schema:accessibilityFeature"&gt;longDescription&lt;/meta&gt;
+                                </code>
+                            </pre>
+							</aside>
+						</section>
+						<section id="metadata-a11y-features-openCaptions">
+							<h5>Open Captions</h5>
+							<p>Indicates that synchronized open captions are available for audio and video content.</p>
+							<p>Open captions are part of the video stream and cannot be turned off by the user, unlike
+									<a href="#metadata-a11y-features-closedCaptions">closed captions.</a></p>
+							<aside class="example" title="AccessibilityFeature: Open Captions">
+								<pre>
+                                <code>
+                                &lt;video controls width="480" height="360"&gt;
+                                    &lt;source src="ch1-interview-with-embedded-captions.mp4" type="video/mp4"&gt;
+
+                                    Your browser does not support the video element.
+                                &lt;/video&gt;                               
+                                </code>
+                            </pre>
+
+								<p>The metadata to include in the package document would be:</p>
+								<pre>
+                                <code>
+                                &lt;meta property="schema:accessibilityFeature"&gt;openCaptions&lt;/meta&gt;
+                                </code>
+                            </pre>
+							</aside>
+						</section>
+						<section id="metadata-a11y-features-signLanguage">
+							<h5>Sign Language</h5>
+
+							<p>Sign language interpretation is available for audio and video content.</p>
+
+							<aside class="example" title="AccessibilityFeature: Sign Language">
+								<pre>
+                                <code>
+                                &lt;?xml version="1.0" encoding="UTF-8"?&gt;
+                                &lt;html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xml:lang="en" lang="en"&gt;
+                                &lt;head&gt;
+                                    &lt;meta charset="UTF-8"&gt;
+                                    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+                                    &lt;title&gt;Video with Sign Language&lt;/title&gt;
+                                    &lt;style&gt;
+                                        .video-container {
+                                            display: grid;
+                                            grid-template-columns: 3fr 1fr;
+                                            gap: 10px;
+                                            max-width: 1200px;
+                                            margin: 20px auto;
+                                        }
+
+                                        .main-video, .sign-video {
+                                            width: 100%;
+                                        }
+
+                                        @media (max-width: 768px) {
+                                            .video-container {
+                                                grid-template-columns: 1fr;
+                                            }
+                                        }
+                                    &lt;/style&gt;
+                                &lt;/head&gt;
+                                &lt;body&gt;
+                                    &lt;div class="video-container"&gt;
+                                        &lt;video class="main-video" controls&gt;
+                                            &lt;source src="chapter2-video.mp4" type="video/mp4"&gt;
+                                            &lt;track kind="captions" src="chapter2-closed_captions.vtt" srclang="en" label="English"&gt;
+                                        &lt;/video&gt;
+                                        &lt;video class="sign-video" controls&gt;
+                                            &lt;source src="chapter2-sign-language.mp4" type="video/mp4"&gt;
+                                        &lt;/video&gt;
+                                    &lt;/div&gt;
+                                &lt;/body&gt;
+                                &lt;/html&gt;                         
+                                </code>
+                            </pre>
+								<p>The metadata to include in the package document would be:</p>
+								<pre>
+                                <code>
+                                &lt;meta property="schema:accessibilityFeature"&gt;signLanguage&lt;/meta&gt;
+                                </code>
+                            </pre>
+								<p>Also since there are captions you would include closedCaptions</p>
+								<pre>
+                                <code>
+                                &lt;meta property="schema:accessibilityFeature"&gt;closedCaptions&lt;/meta&gt;
+                                </code>
+                            </pre>
+							</aside>
+
+						</section>
+						<section id="metadata-a11y-features-transcript">
+							<h5>Transcript</h5>
+
+						</section>
+					</section>
+
+					<section id="rendering-control-terms">
+						<h5>Rendering Control Terms</h5>
+
+						<section id="metadata-a11y-features-synchronizedAudioText">
+							<h5>Synchronized Audio Text</h5>
+
+						</section>
+						<section id="metadata-a11y-features-timingControl">
+							<h5>Timing Control</h5>
+
+						</section>
+					</section>
+
+					<section id="specialized-markup-terms">
+						<h5>Specialized Markup Terms</h5>
+
+						<section id="metadata-a11y-features-ChemML">
+							<h5>Chemistry Represented using ChemML</h5>
+
+						</section>
+
+						<section id="metadata-a11y-features-latex-chemistry">
+							<h5>Chemistry Represented using LaTeX</h5>
+
+						</section>
+
+						<section id="metadata-a11y-features-MathML-chemistry">
+							<h5>Chemistry Represented using MathML</h5>
+
+						</section>
+
+						<section id="metadata-a11y-features-latex">
+							<h5>Math Represented using LaTeX</h5>
+
+						</section>
+						<section id="metadata-a11y-features-MathML">
+							<h5>Math Represented using MathML</h5>
+
+						</section>
+						<section id="metadata-a11y-features-ttsMarkup">
+							<h5>Text-To-Speech Markup</h5>
+
+						</section>
+					</section>
+
+					<section id="clarity-terms">
+						<h5>Clarity Terms</h5>
+
+						<section id="metadata-a11y-features-highContrastAudio">
+							<h5>High Contrast Audio</h5>
+
+						</section>
+
+						<section id="metadata-a11y-features-highContrastDisplay">
+							<h5>High Contrast Display</h5>
+
+						</section>
+						<section id="metadata-a11y-features-largePrint">
+							<h5>Large Print</h5>
+
+						</section>
+					</section>
+
+					<section id="tactile-terms">
+						<h5>Tactile Terms</h5>
+
+						<section id="metadata-a11y-features-braille">
+							<h5>Braille</h5>
+
+						</section>
+
+						<section id="metadata-a11y-features-tactileGraphic">
+							<h5>Tactile Graphic</h5>
+
+						</section>
+						<section id="metadata-a11y-features-tactileObject">
+							<h5>Tactile Object</h5>
+
+						</section>
+					</section>
+
+					<section id="international-terms">
+						<h5>International Terms</h5>
+
+						<section id="metadata-a11y-features-fullRubyAnnotations">
+							<h5>Full Ruby Annotations</h5>
+
+						</section>
+						<section id="metadata-a11y-features-horizontalWriting">
+							<h5>horizontalWriting</h5>
+
+						</section>
+						<section id="metadata-a11y-features-rubyAnnotations">
+							<h5>Ruby Annotations</h5>
+
+						</section>
+						<section id="metadata-a11y-features-verticalWriting">
+							<h5>Vertical Writing</h5>
+
+						</section>
+						<section id="metadata-a11y-features-withAdditionalWordSegmentation">
+							<h5>With Additional Word Segmentation</h5>
+
+						</section>
+						<section id="metadata-a11y-features-withoutAdditionalWordSegmentation">
+							<h5>Without Additional Word Segmentation</h5>
+
+						</section>
+					</section>
+
+					<section id="accessibility-feature-none">
+						<h5>None</h5>
+
+						<p>Indicates that the resource does not contain any accessibility features.</p>
+
+						<p>The none value must not be set with any other feature value.</p>
+					</section>
+
+					<section id="accessibility-feature-unknown">
+						<h5>Unknown</h5>
+
+						<p>Indicates that the author has not yet checked if the resource contains accessibility
+							features. This value is only intended as a placeholder until an accessibility review can be
+							completed.</p>
+
+						<p>The unknown value must not be set with any other feature value.</p>
+					</section>
+				</section>
+			</section>
+
+			<section id="metadata-a11y-hazards">
+				<h3>Accessibility hazards</h3>
+
+				<p>There are three widely recognized hazards that can affect readers of digital content:</p>
+
+				<ul>
+					<li>
+						<p>flashing — if a resource flashes more than three times a second, it can cause seizures (e.g.,
+							videos and animations). See also <a data-cite="wcag2#seizures-and-physical-reactions"
+								>Guideline 2.3</a> [[wcag2]].</p>
+					</li>
+					<li>
+						<p>motion simulation — if a resource simulates motion, it can cause a user to become nauseated
+							(e.g., a video game drawn on the [[html]] <a data-lt="canvas"
+								><code>canvas</code> element</a> or parallax scrolling with CSS).</p>
+					</li>
+					<li>
+						<p>sound — certain sound patterns, such as ringing and buzzing, can cause seizures, while loud
+							or sudden changes in volume can also negatively affect users.</p>
+					</li>
+				</ul>
+
+				<p><a href="https://www.w3.org/TR/epub/#dfn-epub-creator">EPUB creators</a> have to report whether their
+						<a href="https://www.w3.org/TR/epub/#dfn-epub-publication">EPUB publications</a> contain
+					resources that present any of these hazards to users, as they can have real physical effects.</p>
+
+				<div class="note">
+					<p>What precisely constitutes a sound hazard, and how to test for these hazards, is not standardized
+						as of publication of this document. EPUB creators will have to use their discretion on when to
+						specify a sound hazard until additional guidance is developed. This technique will be updated
+						whenever there is more clarity on this issue.</p>
+				</div>
+
+				<p>Hazards are identified in the [[schema-org]] <a href="https://schema.org/accessibilityHazard"
+							><code>accessibilityHazard</code> property</a>. Repeat this property for each hazard.</p>
+
+				<p>Unlike other accessibility properties, the presence of hazards can be expressed both positively and
+					negatively. This design decision was made because users most often search for content that is free
+					from hazards that affect them, but also want to know what dangers are present in any publications
+					they discover. To indicate that hazards are not present, use the values
+						"<code>noFlashingHazard</code>", "<code>noMotionSimulationHazard</code>", and
+						"<code>noSoundHazard</code>".</p>
+
+				<aside class="example"
+					title="Metadata entries for a flashing hazard but no motion simulation or sound hazards">
+					<pre>&lt;meta
+    property="schema:accessibilityHazard">
+   flashing
+&lt;/meta>
+&lt;meta
+    property="schema:accessibilityHazard">
+   noMotionSimulationHazard
+&lt;/meta>
+&lt;meta
+    property="schema:accessibilityHazard">
+   noSoundHazard
+&lt;/meta></pre>
+				</aside>
+
+				<p>Do not skip reporting hazards just because an EPUB publication does not contain any content that
+					could present risks. Users cannot infer a meaning when no metadata is present. The value
+						"<code>none</code>" can be used in such cases instead of repeating each non-hazard. When the
+						"<code>none</code>" value is used, no other hazards values may be specified.</p>
+
+				<p>If an EPUB publication contains a hazard, provide additional information about its source and nature
+					in the <a href="#accessibilitySummary">accessibility summary</a>.</p>
+
+				<p>If an EPUB creator cannot determine if a publication presents a specific hazard for users, list that
+					hazard as unknown. The following values are used to identify individual unknown hazards:
+						"<code>unknownFlashingHazard</code>", "<code>unknownMotionSimultationHazard</code>", and
+						"<code>unknownSoundHazard</code>".</p>
+
+				<p>For example, determining whether sound hazards are present can be challenging as the causes are
+					currently not well defined. In this case, EPUB creators may prefer to set the
+						"<code>unknownSoundHazard</code>" value, as in the following example.</p>
+
+				<aside class="example"
+					title="Metadata entries for an unknown sound hazard and no motion simulation or sound hazards">
+					<pre>&lt;meta
+    property="schema:accessibilityHazard">
+   noflashingHazard
+&lt;/meta>
+&lt;meta
+    property="schema:accessibilityHazard">
+   noMotionSimulationHazard
+&lt;/meta>
+&lt;meta
+    property="schema:accessibilityHazard">
+   unknownSoundHazard
+&lt;/meta></pre>
+				</aside>
+
+				<p>If it is not possible to determine any hazards, the value "<code>unknown</code>" can be used in place
+					of setting the individual hazards to unknown. This value should be used sparingly, however, as it is
+					of no value to users. EPUB creators should make every effort to determine if hazards are present.
+					When the "<code>unknown</code>" value is set, no other hazard values may be specified.</p>
+
+				<p>EPUB creators must ensure that information about all three types of hazards is included when not
+					using the "<code>unknown</code>" or "<code>none</code>" values.</p>
+
+				<p>Refer to <a href="https://www.w3.org/2021/a11y-discov-vocab/latest/#accessibilityHazard">The
+							<code>accessibilityHazard</code> Property</a> [[a11y-discov-vocab]] for more information
+					about this property and its values.</p>
+			</section>
+
+			<section id="metadata-a11y-summary">
+				<h3>Accessibility Summary</h3>
+
+				<p>An accessibility summary provides a brief, human-readable description of the accessibility
+					characteristics of an <a href="https://www.w3.org/TR/epub/#dfn-epub-publication">EPUB
+						publication</a> that cannot be expressed through the other discovery metadata.</p>
+
+				<p>The accessibility summary should not simply repeat the conformance information provided in the
+						<code>dcterms:conformsTo</code> property, for example, or the features listed in the
+						<code>schema:accessibilityFeature</code> properties. When other accessibility metadata is
+					present in the package document, systems that process EPUB publications can already present it to
+					users. Repeating it in the summary only makes them hear the information again.</p>
+
+				<aside class="example" title="Accessibility summary that complements the conformance statement">
+					<pre>&lt;meta
+    property="dcterms:conformsTo">
+   EPUB Accessibility 1.1 - WCAG 2.1 Level AA
+&lt;/meta>
+&lt;meta
+    property="schema:accessibilitySummary">
+   In addition to the requirements of its conformance claim,
+   this publication includes sign language interpretation
+   for all audio content.&#8230;
+&lt;/meta>
+					</pre>
+				</aside>
+
+				<p>EPUB creators should not include an accessibility summary when they have nothing more to add to the
+					conformance claim and other discovery metadata.</p>
+
+				<p>If an EPUB publication does not meet the requirements for content accessibility in [[epub-a11y-111]],
+					the reason(s) it fails should be noted in the summary. Similarly, if an EPUB creator is hesitant to
+					make a formal claim of conformance, the reasons why can be explained in the summary.</p>
+
+				<p>An accessibility summary is provided using the [[schema-org]] <a
+						href="https://schema.org/accessibilitySummary"
+					><code>accessibilitySummary</code> property</a>.</p>
+
+				<aside class="example"
+					title="Accessibility summary for a publication that fails the content accessibility requirements">
+					<pre>&lt;meta
+    property="schema:accessibilitySummary">
+   The publication is missing alternative text for complex diagrams.
+   The publication otherwise meets WCAG 2.0 Level A.
+&lt;/meta></pre>
+				</aside>
+
+				<aside class="example" title="Accessibility summary for a publication with a motion simulation hazard">
+					<pre>&lt;meta
+    property="schema:accessibilitySummary">
+   Although this publication meets the requirements of its accessibility
+   claim, chapter four contains a first-person interactive game that could
+   cause motion sickness in certain individuals. The game is only provided
+   for illustrative purposes, so readers unable to interact with it will not
+   be at a disadvantage.
+&lt;/meta></pre>
+				</aside>
+
+				<p>Do not repeat this property to provide translations of a summary. EPUB does not define a method for
+					including translations. Putting different <code>xml:lang</code> attributes on properties does not
+					indicate a translation and could lead to wrong summary being rendered to users.</p>
+
+				<p>Refer to <a href="https://www.w3.org/2021/a11y-discov-vocab/latest/#accessibilitySummary">The
+							<code>accessibilitySummary</code> property</a> [[a11y-discov-vocab]] for more
+					information.</p>
+			</section>
+
+			<section id="accessMode-sync">
+				<span id="meta-access-modes-sync-audio"></span>
+				<h3>Setting access modes for synchronized text-audio</h3>
+
+				<p>Setting the correct access modes and sufficient access modes for EPUB 3 publications that contain
+					synchronized text-audio playback requires evaluating whether playback is essential to reading the
+					publication or an additional feature.</p>
+
+				<p>EPUB 3's <a href="https://www.w3.org/TR/epub/#sec-media-overlays">media overlays</a> [[epub-3]]
+					allows EPUB creators to synchronize the full text of a publication with full audio narration. These
+					types of publications are commonly referred to as "read aloud" books, as the user chooses whether or
+					not to turn on the narration (unlike traditional audiobooks where only the audio is available).</p>
+
+				<p>In this case, because the audio playback is an extra feature, EPUB creators would
+						<strong>not</strong> list "<code>auditory</code>" as an <a href="#accessMode">access mode</a>.
+					Rather, they would indicate the presence of text and audio synchronization as an <a
+						href="#accessMode-sync">accessibility feature</a>:</p>
+
+				<pre>&lt;meta
+    property="schema:accessibilityFeature">
+   synchronizedAudioText
+&lt;/meta></pre>
+
+				<p>Although the audio is not essential to reading the publication, having full audio playback capability
+					means that there is an auditory <a href="#accessModeSufficient">sufficient access mode</a> &#8212;
+					the user can listen to the complete publication. Consequently, the EPUB creator would declare a
+						<code>schema:accessModeSufficient</code> property with the value <code>auditory</code>:</p>
+
+				<pre>&lt;meta
+    property="schema:accessModeSufficient">
+   auditory
+&lt;/meta></pre>
+
+				<div class="note">
+					<p>When media overlays are present, EPUB creators should not add "<code>auditory</code>" to all the
+						possible sufficient access modes just because it is possible to turn on text-audio playback.</p>
+
+					<p>For example, a publication with media overlays that has text and images (with text alternatives)
+						would only declare the following sufficient access modes: "<code>textual</code>",
+							"<code>auditory</code>", and "<code>textual,visual</code>".</p>
+
+					<p>It would <strong>not</strong> declare "<code>textual,auditory</code>" or
+							"<code>textual,visual,auditory</code>".</p>
+				</div>
+
+				<p>Another use for media overlays &#8212; more typical among accessible republishers such as libraries
+					that serve blind and low vision readers &#8212; is to provide full audio synchronized to the major
+					headings of a publication. These types of publications are more like traditional audiobooks, as all
+					the information in the work is typically available in auditory form. The minimal text does not allow
+					meaningful visual reading or text-to-speech playback; it is only to provide structured navigation
+					capabilities.</p>
+
+				<p>In this case, being able to hear the audio is essential to being able to read the publication, so
+					EPUB creators will list an auditory access mode:</p>
+
+				<pre>&lt;meta
+    property="schema:accessMode">
+   auditory
+&lt;/meta></pre>
+
+				<p>In a reverse of the first case discussed, EPUB creators will <strong>not</strong> identify text-audio
+					synchronization as a feature of the publication since the amount of text provided is trivial.</p>
+
+				<p>Likewise, since the text in the publication only provides heading navigation, EPUB creators will
+						<strong>not</strong> list a textual access mode. The user does not need to, and is not expected
+					to, visually read this text.</p>
+
+				<div class="note">
+					<p>Some publications that provide the body in auditory form may include the backmatter in text form,
+						allowing users to use text-to-speech playback to render it. In this case, there would be a
+						textual component.</p>
+				</div>
+			</section>
+
+			<section id="metadata-conformanc">
+				<h3>Conformance</h3>
+			</section>
+
+
+			<section id="accessibilityAPI">
+				<span id="meta-006"></span>
+				<h3>Identify ARIA conformance</h3>
+
+				<p>The use of the <code>schema:accesibilityAPI</code> property is no longer necessary for <a
+						href="https://www.w3.org/TR/epub/#dfn-epub-publication">EPUB publications</a>. <a
+						href="https://www.w3.org/TR/epub/#dfn-epub-creator">EPUB creators</a> are not responsible for
+					the interaction between <a href="https://www.w3.org/TR/epub/#dfn-epub-reading-system">reading
+						systems</a> and the underlying platform APIs.</p>
+
+				<p>Meeting the requirements of [[wcag2]] is a better measure of the accessibility of scripting, as this
+					property does not differentiate between ARIA markup used for document structure or for identifying
+					controls.</p>
+			</section>
+
+			<section id="accessibilityControl">
+				<span id="meta-007"></span>
+				<h3>Identify input control methods</h3>
+
+				<p>The use of the <code>schema:accesibilityControl</code> property is no longer necessary for <a
+						href="https://www.w3.org/TR/epub/#dfn-epub-publication">EPUB publications</a>. This property
+					does not differentiate issues arising from the <a
+						href="https://www.w3.org/TR/epub/#dfn-epub-reading-system">reading system</a> interface from
+					those in the underlying content, which has led to confusion about its use.</p>
+
+				<p>Meeting the requirements of [[wcag2]] will mitigate most known issues with the content and is
+					sufficient for authoring purposes.</p>
+			</section>
+
+			<section id="metadata-examples">
+				<span id="sec-meta-ex"></span>
+				<h3>Examples</h3>
+
+				<p>The following examples show the metadata that would be added to an <a
+						href="https://www.w3.org/TR/epub/#dfn-epub-publication">EPUB publication</a> that has textual
+					and visual access modes, is sufficient for reading by text, contains alternative text and MathML
+					markup, and has a flashing hazard.</p>
+
+				<aside class="example" title="EPUB 3">
+					<pre>&lt;package … >
+   &lt;metadata …>
+      …
+      &lt;meta
+          property="schema:accessMode">
+         textual
+      &lt;/meta>
+      
+      &lt;meta
+          property="schema:accessMode">
+         visual
+      &lt;/meta>
+      
+      &lt;meta
+          property="schema:accessModeSufficient">
+         textual,visual
+      &lt;/meta>
+      
+      &lt;meta
+          property="schema:accessModeSufficient">
+         textual
+      &lt;/meta>
+      
+      &lt;meta
+          property="schema:accessibilityFeature">
+         transcript
+      &lt;/meta>
+      
+      &lt;meta
+          property="schema:accessibilityFeature">
+         MathML
+      &lt;/meta>
+      
+      &lt;meta
+          property="schema:accessibilityFeature">
+         alternativeText
+      &lt;/meta>
+      
+      &lt;meta
+          property="schema:accessibilityHazard">
+         flashing
+      &lt;/meta>
+      
+      &lt;meta
+          property="schema:accessibilityHazard">
+         noMotionSimulationHazard
+      &lt;/meta>
+      
+      &lt;meta
+          property="schema:accessibilityHazard">
+         noSoundHazard
+      &lt;/meta>
+      
+      &lt;meta
+          property="schema:accessibilitySummary">
+         The video in chapter 2 presents a flashing hazard. A transcript is
+         provided that covers all the essential information contained in the
+         video. The publication otherwise meets WCAG 2.0 Level A.
+      &lt;/meta>
+   &lt;/metadata>
+   …
+&lt;/package></pre>
+				</aside>
+
+				<aside class="example" title="EPUB 2">
+					<pre>&lt;package … >
+    &lt;metadata …>
+       …
+       &lt;meta
+           name="schema:accessMode"
+           content="textual"/>
+       &lt;meta
+           name="schema:accessMode"
+           content="visual"/>
+       &lt;meta
+           name="schema:accessModeSufficient"
+           content="textual,visual"/>
+       &lt;meta
+           name="schema:accessModeSufficient"
+           content="textual"/>
+       &lt;meta
+           name="schema:accessibilityFeature"
+           content="transcript"/>
+       &lt;meta
+           name="schema:accessibilityFeature"
+           content="MathML"/>
+       &lt;meta
+           name="schema:accessibilityFeature"
+           content="alternativeText"/>
+       &lt;meta
+           name="schema:accessibilityHazard"
+           content="flashing"/>
+       &lt;meta
+           name="schema:accessibilityHazard"
+           content="noMotionSimulationHazard"/>
+       &lt;meta
+           name="schema:accessibilityHazard"
+           content="noSoundHazard"/>
+       &lt;meta
+           name="schema:accessibilitySummary"
+           content="The video in chapter 2 presents a flashing hazard.
+              A transcript is provided that covers all the essential
+              information contained in the video. The publication
+              otherwise meets WCAG 2.0 Level AA."/>
+    &lt;/metadata>
+    …
+&lt;/package></pre>
+				</aside>
+			</section>
+		</section>
+	</body>
+</html>
