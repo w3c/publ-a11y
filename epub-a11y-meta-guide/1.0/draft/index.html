@@ -83,7 +83,7 @@
 			<h2>Introduction</h2>
 		</section>
 		<section id="metadata">
-			<h2>Accessibility Metadata</h2>
+			<h2>Accessibility metadata</h2>
 
 			<p>This metadata as outlined in EPUB Accessibility 1.1 [[epub-a11y-11]], can be found in the EPUB package
 				document [[EPUB-33]].</p>
@@ -94,7 +94,7 @@
 						Discoverability Vocabulary</a> [[a11y-discov-vocab]].</p>
 			</div>
 
-			<section id="metadata-access-mode">
+			<section id="accessMode">
 				<h3>Access modes</h3>
 
 				<p>An access mode is defined as a "human sense perceptual system or cognitive faculty through which a
@@ -306,9 +306,82 @@
                         </pre>
 					</aside>
 				</section>
+			
+				<section id="accessMode-sync">
+					<h3>Setting access modes for synchronized text-audio</h3>
+					
+					<p>Setting the correct access modes and sufficient access modes for EPUB 3 publications that contain
+						synchronized text-audio playback requires evaluating whether playback is essential to reading the
+						publication or an additional feature.</p>
+					
+					<p>EPUB 3's <a href="https://www.w3.org/TR/epub/#sec-media-overlays">media overlays</a> [[epub-3]]
+						allows EPUB creators to synchronize the full text of a publication with full audio narration. These
+						types of publications are commonly referred to as "read aloud" books, as the user chooses whether or
+						not to turn on the narration (unlike traditional audiobooks where only the audio is available).</p>
+					
+					<p>In this case, because the audio playback is an extra feature, EPUB creators would
+						<strong>not</strong> list "<code>auditory</code>" as an <a href="#accessMode">access mode</a>.
+						Rather, they would indicate the presence of text and audio synchronization as an <a
+							href="#accessMode-sync">accessibility feature</a>:</p>
+					
+					<pre>&lt;meta
+    property="schema:accessibilityFeature">
+   synchronizedAudioText
+&lt;/meta></pre>
+					
+					<p>Although the audio is not essential to reading the publication, having full audio playback capability
+						means that there is an auditory <a href="#accessModeSufficient">sufficient access mode</a> &#8212;
+						the user can listen to the complete publication. Consequently, the EPUB creator would declare a
+						<code>schema:accessModeSufficient</code> property with the value <code>auditory</code>:</p>
+					
+					<pre>&lt;meta
+    property="schema:accessModeSufficient">
+   auditory
+&lt;/meta></pre>
+					
+					<div class="note">
+						<p>When media overlays are present, EPUB creators should not add "<code>auditory</code>" to all the
+							possible sufficient access modes just because it is possible to turn on text-audio playback.</p>
+						
+						<p>For example, a publication with media overlays that has text and images (with text alternatives)
+							would only declare the following sufficient access modes: "<code>textual</code>",
+							"<code>auditory</code>", and "<code>textual,visual</code>".</p>
+						
+						<p>It would <strong>not</strong> declare "<code>textual,auditory</code>" or
+							"<code>textual,visual,auditory</code>".</p>
+					</div>
+					
+					<p>Another use for media overlays &#8212; more typical among accessible republishers such as libraries
+						that serve blind and low vision readers &#8212; is to provide full audio synchronized to the major
+						headings of a publication. These types of publications are more like traditional audiobooks, as all
+						the information in the work is typically available in auditory form. The minimal text does not allow
+						meaningful visual reading or text-to-speech playback; it is only to provide structured navigation
+						capabilities.</p>
+					
+					<p>In this case, being able to hear the audio is essential to being able to read the publication, so
+						EPUB creators will list an auditory access mode:</p>
+					
+					<pre>&lt;meta
+    property="schema:accessMode">
+   auditory
+&lt;/meta></pre>
+					
+					<p>In a reverse of the first case discussed, EPUB creators will <strong>not</strong> identify text-audio
+						synchronization as a feature of the publication since the amount of text provided is trivial.</p>
+					
+					<p>Likewise, since the text in the publication only provides heading navigation, EPUB creators will
+						<strong>not</strong> list a textual access mode. The user does not need to, and is not expected
+						to, visually read this text.</p>
+					
+					<div class="note">
+						<p>Some publications that provide the body in auditory form may include the backmatter in text form,
+							allowing users to use text-to-speech playback to render it. In this case, there would be a
+							textual component.</p>
+					</div>
+				</section>
 			</section>
 
-			<section id="metadata-access-mode-sufficient">
+			<section id="accessModeSufficient">
 				<h3>Sufficient access modes</h3>
 
 				<p>The access modes sufficient to consume an <a href="https://www.w3.org/TR/epub/#dfn-epub-publication"
@@ -624,7 +697,7 @@
 				</section>
 			</section>
 
-			<section id="metadata-a11y-features">
+			<section id="accessibilityFeature">
 				<h3>Accessibility features</h3>
 
 				<p>Identifying all the accessibility features and adaptations included in an <a
@@ -1322,7 +1395,7 @@
 				</section>
 			</section>
 
-			<section id="metadata-a11y-hazards">
+			<section id="accessibilityHazard">
 				<h3>Accessibility hazards</h3>
 
 				<p>There are three widely recognized hazards that can affect readers of digital content:</p>
@@ -1427,8 +1500,8 @@
 					about this property and its values.</p>
 			</section>
 
-			<section id="metadata-a11y-summary">
-				<h3>Accessibility Summary</h3>
+			<section id="accessibilitySummary">
+				<h3>Accessibility summary</h3>
 
 				<p>An accessibility summary provides a brief, human-readable description of the accessibility
 					characteristics of an <a href="https://www.w3.org/TR/epub/#dfn-epub-publication">EPUB
@@ -1494,88 +1567,8 @@
 					information.</p>
 			</section>
 
-			<section id="accessMode-sync">
-				<span id="meta-access-modes-sync-audio"></span>
-				<h3>Setting access modes for synchronized text-audio</h3>
-
-				<p>Setting the correct access modes and sufficient access modes for EPUB 3 publications that contain
-					synchronized text-audio playback requires evaluating whether playback is essential to reading the
-					publication or an additional feature.</p>
-
-				<p>EPUB 3's <a href="https://www.w3.org/TR/epub/#sec-media-overlays">media overlays</a> [[epub-3]]
-					allows EPUB creators to synchronize the full text of a publication with full audio narration. These
-					types of publications are commonly referred to as "read aloud" books, as the user chooses whether or
-					not to turn on the narration (unlike traditional audiobooks where only the audio is available).</p>
-
-				<p>In this case, because the audio playback is an extra feature, EPUB creators would
-						<strong>not</strong> list "<code>auditory</code>" as an <a href="#accessMode">access mode</a>.
-					Rather, they would indicate the presence of text and audio synchronization as an <a
-						href="#accessMode-sync">accessibility feature</a>:</p>
-
-				<pre>&lt;meta
-    property="schema:accessibilityFeature">
-   synchronizedAudioText
-&lt;/meta></pre>
-
-				<p>Although the audio is not essential to reading the publication, having full audio playback capability
-					means that there is an auditory <a href="#accessModeSufficient">sufficient access mode</a> &#8212;
-					the user can listen to the complete publication. Consequently, the EPUB creator would declare a
-						<code>schema:accessModeSufficient</code> property with the value <code>auditory</code>:</p>
-
-				<pre>&lt;meta
-    property="schema:accessModeSufficient">
-   auditory
-&lt;/meta></pre>
-
-				<div class="note">
-					<p>When media overlays are present, EPUB creators should not add "<code>auditory</code>" to all the
-						possible sufficient access modes just because it is possible to turn on text-audio playback.</p>
-
-					<p>For example, a publication with media overlays that has text and images (with text alternatives)
-						would only declare the following sufficient access modes: "<code>textual</code>",
-							"<code>auditory</code>", and "<code>textual,visual</code>".</p>
-
-					<p>It would <strong>not</strong> declare "<code>textual,auditory</code>" or
-							"<code>textual,visual,auditory</code>".</p>
-				</div>
-
-				<p>Another use for media overlays &#8212; more typical among accessible republishers such as libraries
-					that serve blind and low vision readers &#8212; is to provide full audio synchronized to the major
-					headings of a publication. These types of publications are more like traditional audiobooks, as all
-					the information in the work is typically available in auditory form. The minimal text does not allow
-					meaningful visual reading or text-to-speech playback; it is only to provide structured navigation
-					capabilities.</p>
-
-				<p>In this case, being able to hear the audio is essential to being able to read the publication, so
-					EPUB creators will list an auditory access mode:</p>
-
-				<pre>&lt;meta
-    property="schema:accessMode">
-   auditory
-&lt;/meta></pre>
-
-				<p>In a reverse of the first case discussed, EPUB creators will <strong>not</strong> identify text-audio
-					synchronization as a feature of the publication since the amount of text provided is trivial.</p>
-
-				<p>Likewise, since the text in the publication only provides heading navigation, EPUB creators will
-						<strong>not</strong> list a textual access mode. The user does not need to, and is not expected
-					to, visually read this text.</p>
-
-				<div class="note">
-					<p>Some publications that provide the body in auditory form may include the backmatter in text form,
-						allowing users to use text-to-speech playback to render it. In this case, there would be a
-						textual component.</p>
-				</div>
-			</section>
-
-			<section id="metadata-conformanc">
-				<h3>Conformance</h3>
-			</section>
-
-
 			<section id="accessibilityAPI">
-				<span id="meta-006"></span>
-				<h3>Identify ARIA conformance</h3>
+				<h3>Accessibility APIs</h3>
 
 				<p>The use of the <code>schema:accesibilityAPI</code> property is no longer necessary for <a
 						href="https://www.w3.org/TR/epub/#dfn-epub-publication">EPUB publications</a>. <a
@@ -1589,8 +1582,7 @@
 			</section>
 
 			<section id="accessibilityControl">
-				<span id="meta-007"></span>
-				<h3>Identify input control methods</h3>
+				<h3>Accessible Control</h3>
 
 				<p>The use of the <code>schema:accesibilityControl</code> property is no longer necessary for <a
 						href="https://www.w3.org/TR/epub/#dfn-epub-publication">EPUB publications</a>. This property
@@ -1601,18 +1593,20 @@
 				<p>Meeting the requirements of [[wcag2]] will mitigate most known issues with the content and is
 					sufficient for authoring purposes.</p>
 			</section>
+		</section>
+		<section id="metadata-conformance">
+			<h3>Conformance metadata</h3>
+		</section>
+		<section id="metadata-examples" class="informative">
+			<h3>Examples</h3>
 
-			<section id="metadata-examples">
-				<span id="sec-meta-ex"></span>
-				<h3>Examples</h3>
+			<p>The following examples show the metadata that would be added to an <a
+					href="https://www.w3.org/TR/epub/#dfn-epub-publication">EPUB publication</a> that has textual and
+				visual access modes, is sufficient for reading by text, contains alternative text and MathML markup, and
+				has a flashing hazard.</p>
 
-				<p>The following examples show the metadata that would be added to an <a
-						href="https://www.w3.org/TR/epub/#dfn-epub-publication">EPUB publication</a> that has textual
-					and visual access modes, is sufficient for reading by text, contains alternative text and MathML
-					markup, and has a flashing hazard.</p>
-
-				<aside class="example" title="EPUB 3">
-					<pre>&lt;package … >
+			<aside class="example" title="EPUB 3">
+				<pre>&lt;package … >
    &lt;metadata …>
       …
       &lt;meta
@@ -1674,10 +1668,10 @@
    &lt;/metadata>
    …
 &lt;/package></pre>
-				</aside>
+			</aside>
 
-				<aside class="example" title="EPUB 2">
-					<pre>&lt;package … >
+			<aside class="example" title="EPUB 2">
+				<pre>&lt;package … >
     &lt;metadata …>
        …
        &lt;meta
@@ -1719,8 +1713,7 @@
     &lt;/metadata>
     …
 &lt;/package></pre>
-				</aside>
-			</section>
+			</aside>
 		</section>
 	</body>
 </html>
