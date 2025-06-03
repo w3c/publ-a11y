@@ -614,7 +614,7 @@
 
 					<li><b>LET</b> <var>certifier_credentials</var> be the value of the node extracted from <var>package_document</var>, using the xpath <code class="xpath">/package/metadata/meta[@property="a11y:certifierCredential" and (not(@refines) or substring(@refines,2)=//meta[@property="a11y:certifiedBy" and substring(@refines,2)=//*[(@rel="dcterms:conformsTo" and contains(@href, "http://www.idpf.org/epub/a11y/")) or (@property="dcterms:conformsTo" and contains(normalize-space(), "http://www.idpf.org/epub/a11y/")) or (@property="dcterms:conformsTo" and contains(normalize-space(), "EPUB Accessibility 1.1"))]/@id]/@id)]</code>.</li>
 					
-					<li><b>LET</b> <var>certification_date</var> be the value of the node extracted from <var>package_document</var>, using the xpath <code class="xpath">/package/metadata/meta[@property="dcterms:date" and substring(@refines,2)=//*[(@rel="dcterms:conformsTo" and contains(@href, "http://www.idpf.org/epub/a11y/")) or (@property="dcterms:conformsTo" and contains(normalize-space(), "http://www.idpf.org/epub/a11y/")) or (@property="dcterms:conformsTo" and contains(normalize-space(), "EPUB Accessibility 1.1"))]/@id]</code>.</li>
+					<li><b>LET</b> <var>certification_date</var> be the value of the node extracted from <var>package_document</var>, using the xpath <code class="xpath">/package/metadata/meta[@property="dcterms:date" and (not(@refines) or substring(@refines,2)=//meta[@property="a11y:certifiedBy" and substring(@refines,2)=//*[(@rel="dcterms:conformsTo" and contains(@href, "http://www.idpf.org/epub/a11y/")) or (@property="dcterms:conformsTo" and contains(normalize-space(), "http://www.idpf.org/epub/a11y/")) or (@property="dcterms:conformsTo" and contains(normalize-space(), "EPUB Accessibility 1.1"))]/@id]/@id)]</code>.</li>
 					
 					<li><b>LET</b> <var>certifier_report</var> be the value of the node extracted from <var>package_document</var>, using the xpath <code class="xpath">/package/metadata/link[@rel="a11y:certifierReport" and (not(@refines) or substring(@refines,2)=//meta[@property="a11y:certifiedBy" and substring(@refines,2)=//*[(@rel="dcterms:conformsTo" and contains(@href, "http://www.idpf.org/epub/a11y/")) or (@property="dcterms:conformsTo" and contains(normalize-space(), "http://www.idpf.org/epub/a11y/")) or (@property="dcterms:conformsTo" and contains(normalize-space(), "EPUB Accessibility 1.1"))]/@id]/@id)]/@href</code>.</li>
 				</ul>
@@ -1544,6 +1544,9 @@
 						Final Draft of the Display Techniques for EPUB Accessibility Metadata 2.0</a></summary>
 				
 				<ul>
+					<li>13-May-2025: Fixed the xpath for the <code>certification_date</code> variable so that it
+						checks it is attached to the evaluator and not directly to the conformance statement. See
+						<a href="https://github.com/w3c/publ-a11y/issues/715">issue 715</a>.</li>
 					<li>12-May-2025: Restored the missing variable setup statement for <code>no_sound_hazards</code>.
 						See <a href="https://github.com/w3c/publ-a11y/issues/717">issue 717</a>.</li>
 					<li>24-Apr-2025: Include the older <code>printPageNumbers</code> value in the check for the
