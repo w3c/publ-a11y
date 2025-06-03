@@ -4,6 +4,12 @@
 		<meta charset="utf-8" />
 		<title>Accessibility Summary Authoring Guidelines for EPUB Publications</title>
 		<script src="https://www.w3.org/Tools/respec/respec-w3c" class="remove" defer="defer"></script>
+		<script>
+			function moveWarning() {
+				var warning = document.getElementById('obsolete');
+				document.body.insertAdjacentElement('afterbegin', warning);
+			}
+		</script>
 		<script class="remove">
 			var respecConfig = {
 				group: "publishingcg",
@@ -37,7 +43,8 @@
 				github:			 {
 					repoURL: "https://github.com/w3c/publ-a11y",
 					branch: "main"
-				}
+				},
+				postProcess: [moveWarning]
 			};
 		</script>
 		<style type="text/css">
@@ -79,6 +86,13 @@
 		</style>
 	</head>
 	<body>
+		<div class="warning" id="obsolete">
+			<p>This document is now obsolete and much of the guidance it provides has been superseded by newer versions
+				of the EPUB Accessibility standard. Accessibility summaries should not repeat information that is already 
+				available in the other metadata fields. For updated guidance on how to write a summary, please refer to 
+				the <a href="https://w3c.github.io/publ-a11y/epub-a11y-meta-guide/1.0/">EPUB Accessibility Metadata 
+					Guidelines</a>.</p>
+		</div>
 		<section id="abstract">
 			<p>The Accessibility Summary  adds additional information, clarifications,  and refinements to other accessibility metadata. In creating the Accessibility Summary, one should assume that the other accessibility metadata has already been presented, and the Accessibility Summary serves to enhance the metadata.  In the "EPUB Accessibility Conformance and Discoverability Specification 1.0," the accessibilitySummary was a required field, and it would present the essential accessibility metadata. However, in version 1.1, it changed to be an optional field.  The accessibilitySummary now eliminates the duplication of information presented by other accessibility metadata. If there are features or shortcomings in the publication that are not expressed in other accessibility metadata, then the Accessibility Summary is the correct place to include this information. The remainder of these guidelines explains some considerations, and provides some examples of Accessibility Summaries.</p>
 		</section>
