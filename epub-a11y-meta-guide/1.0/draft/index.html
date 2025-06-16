@@ -1379,12 +1379,54 @@
 
 					</section>
 
-					<section id="metadata-a11y-features-transcript">
-						<h5>Transcript</h5>
+                 <section id="metadata-a11y-features-transcript">
+                    <h5>Transcript</h5>
 
-					</section>
-				</section>
+                    <p>Indicates that a transcript of the audio or video content is available.</p>
 
+                    <aside class="example" title="AccessibilityFeature: Transcript">
+                        <pre>
+                            <code>
+                &lt;!--
+                  The aria-details attribute programmatically links the audio player
+                  to the transcript container for assistive technologies. It points to the
+                  ID of the &lt;details&gt; element itself, ensuring the link is always
+                  valid whether the details are open or closed.
+                --&gt;
+                &lt;audio controls aria-details="audio-transcript"&gt;
+                    &lt;source src="interview.mp3" type="audio/mpeg"&gt;
+
+                    &lt;track
+                        label="English"
+                        kind="captions"
+                        srclang="en"
+                        src="captions.vtt"
+                        default&gt;
+
+                    Your browser does not support the audio element.
+                &lt;/audio&gt;
+
+                &lt;!--
+                  The &lt;details&gt; element has the ID that aria-details references.
+                  The &lt;summary&gt; acts as the visible, interactive control for all users.
+                --&gt;
+                &lt;details id="audio-transcript"&gt;
+                    &lt;summary&gt;View Transcript&lt;/summary&gt;
+
+                    &lt;div&gt;
+                        &lt;p&gt;This is a transcript of the audio recording.&lt;/p&gt;
+                        &lt;p&gt;[Interviewer] Welcome to the show.&lt;/p&gt;
+                        &lt;p&gt;[Guest] Thank you for having me.&lt;/p&gt;
+                    &lt;/div&gt;
+                &lt;/details&gt;</code>
+                        </pre>
+
+                        <p>The metadata to include in the package document would be:</p>
+                        <pre>
+                            <code>&lt;meta property="schema:accessibilityFeature"&gt;transcript&lt;/meta&gt;</code>
+                        </pre>
+                    </aside>
+                </section>
 				<section id="rendering-control-terms">
 					<h4>Rendering Control Terms</h4>
 
