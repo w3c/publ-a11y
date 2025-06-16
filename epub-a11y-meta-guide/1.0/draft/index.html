@@ -1430,6 +1430,72 @@
                     
 				<section id="rendering-control-terms">
 					<h4>Rendering Control Terms</h4>
+   
+                <section id="metadata-a11y-features-displayTransformability">
+                    <h5>Display Transformability</h5>
+
+                    <p>Indicates that the visual presentation of the text can be transformed by the user to meet their reading requirements. This includes the ability to resize text, adjust line spacing and margins, change fonts, and modify color contrast (e.g., for a light, dark, or sepia mode).</p>
+                    <p>This feature is characteristic of reflowable EPUBs that are built with semantic HTML and flexible CSS, avoiding practices that lock down the presentation, such as hard-coding sizes in absolute units or embedding text in images.</p>
+
+                    <aside class="example" title="AccessibilityFeature: Display Transformability">
+                        <p>A publication enables transformability by using flexible CSS and, most importantly, by declaring the <strong>reflowable</strong> layout model in the package document.</p>
+
+                        <p><strong>Example Package Document (<code>package.opf</code>):</strong></p>
+                        <pre>
+                            <code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+                &lt;package xmlns="http://www.idpf.org/2007/opf" version="3.0" unique-identifier="pub-id"&gt;
+                  &lt;metadata xmlns:dc="http://purl.org/dc/elements/1.1/"&gt;
+                    &lt;dc:title&gt;My Book&lt;/dc:title&gt;
+                    &lt;dc:creator&gt;Author Name&lt;/dc:creator&gt;
+                    &lt;dc:language&gt;en&lt;/dc:language&gt;
+                    &lt;meta property="dcterms:modified"&gt;2025-06-16T10:48:00Z&lt;/meta&gt;
+
+                    &lt;!-- This meta tag is essential for declaring the reflowable layout --&gt;
+                    &lt;meta property="rendition:layout"&gt;reflowable&lt;/meta&gt;
+
+                  &lt;/metadata&gt;
+                  &lt;manifest&gt;
+                    &lt;!-- ... manifest items ... --&gt;
+                  &lt;/manifest&gt;
+                  &lt;spine&gt;
+                    &lt;!-- ... spine items ... --&gt;
+                  &lt;/spine&gt;
+                &lt;/package&gt;</code>
+                        </pre>
+
+                        <p><strong>Example Stylesheet (<code>style.css</code>):</strong></p>
+                        <pre>
+                            <code>/* Use CSS Custom Properties for adaptable theming */
+                :root {
+                  --text-color: #121212;
+                  --background-color: #fefefe;
+                  --base-font-size: 1em; /* Base font size on the reading system's default */
+                }
+
+                /* Adapt to the user's preference for a dark theme */
+                @media (prefers-color-scheme: dark) {
+                  :root {
+                    --text-color: #e3e3e3;
+                    --background-color: #121212;
+                  }
+                }
+
+                body {
+                  font-family: sans-serif; /* Use a generic font family that can be overridden */
+                  font-size: var(--base-font-size);
+                  color: var(--text-color);
+                  background-color: var(--background-color);
+                  line-height: 1.5; /* Use a relative unit for line spacing */
+                }</code>
+                        </pre>
+
+                        <p>The metadata to include in the package document to advertise this feature would be:</p>
+                        <pre>
+                            <code>&lt;meta property="schema:accessibilityFeature"&gt;displayTransformability&lt;/meta&gt;</code>
+                        </pre>
+                    </aside>
+                </section>
+
 
                 <section id="metadata-a11y-features-synchronizedAudioText">
                     <h5>Synchronized Audio Text</h5>
