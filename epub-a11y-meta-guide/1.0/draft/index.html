@@ -1427,13 +1427,59 @@
                         </pre>
                     </aside>
                 </section>
+                    
 				<section id="rendering-control-terms">
 					<h4>Rendering Control Terms</h4>
 
-					<section id="metadata-a11y-features-synchronizedAudioText">
-						<h5>Synchronized Audio Text</h5>
+                <section id="metadata-a11y-features-synchronizedAudioText">
+                    <h5>Synchronized Audio Text</h5>
 
-					</section>
+                    <p>Indicates that the EPUB contains synchronized pre-recorded audio narration that matches the text of the document, commonly known as a Media Overlay. The reading system can highlight units of text as they are spoken.</p>
+
+                    <aside class="example" title="AccessibilityFeature: Synchronized Audio Text">
+                        <p>This feature is implemented using a Media Overlay file (SMIL) that links timings in an audio file to elements in the XHTML content document.</p>
+
+                        <p><strong>Example Content Document (<code>content.xhtml</code>):</strong></p>
+                        <pre>
+                            <code>&lt;!DOCTYPE html&gt;
+                &lt;html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops"&gt;
+                &lt;head&gt;...&lt;/head&gt;
+                &lt;body&gt;
+                    &lt;p id="p1"&gt;To be, or not to be, that is the question:&lt;/p&gt;
+                    &lt;p id="p2"&gt;Whether 'tis nobler in the mind to suffer&lt;/p&gt;
+                    &lt;p id="p3"&gt;The slings and arrows of outrageous fortune,&lt;/p&gt;
+                &lt;/body&gt;
+                &lt;/html&gt;</code>
+                        </pre>
+
+                        <p><strong>Example Media Overlay (<code>overlay.smil</code>):</strong></p>
+                        <pre>
+                            <code>&lt;smil xmlns="http://www.w3.org/ns/SMIL" version="3.0"&gt;
+                  &lt;body&gt;
+                    &lt;seq id="seq1"&gt;
+                      &lt;par id="par1"&gt;
+                        &lt;text src="content.xhtml#p1"/&gt;
+                        &lt;audio src="audio/narration.mp3" clipBegin="0s" clipEnd="3.5s"/&gt;
+                      &lt;/par&gt;
+                      &lt;par id="par2"&gt;
+                        &lt;text src="content.xhtml#p2"/&gt;
+                        &lt;audio src="audio/narration.mp3" clipBegin="3.5s" clipEnd="6.2s"/&gt;
+                      &lt;/par&gt;
+                      &lt;par id="par3"&gt;
+                        &lt;text src="content.xhtml#p3"/&gt;
+                        &lt;audio src="audio/narration.mp3" clipBegin="6.2s" clipEnd="9.0s"/&gt;
+                      &lt;/par&gt;
+                    &lt;/seq&gt;
+                  &lt;/body&gt;
+                &lt;/smil&gt;</code>
+                        </pre>
+
+                        <p>The metadata to include in the package document would be:</p>
+                        <pre>
+                            <code>&lt;meta property="schema:accessibilityFeature"&gt;synchronizedAudioText&lt;/meta&gt;</code>
+                        </pre>
+                    </aside>
+                </section>
 
 					<section id="metadata-a11y-features-timingControl">
 						<h5>Timing Control</h5>
