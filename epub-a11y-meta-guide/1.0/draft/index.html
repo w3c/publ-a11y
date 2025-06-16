@@ -1546,11 +1546,69 @@
                         </pre>
                     </aside>
                 </section>
+                    
+                <section id="metadata-a11y-features-timingControl">
+                    <h5>Timing Control</h5>
 
-					<section id="metadata-a11y-features-timingControl">
-						<h5>Timing Control</h5>
+                    <p>Indicates that the user has control over the timing of time-based media. The most common application in EPUB is the ability for the user to change the playback speed of pre-recorded audio narration.</p>
+                    <p>This feature is enabled by the content author providing a Media Overlay and associating it with the content document in the EPUB Package Document. This signals the Reading System to provide the necessary playback controls.</p>
 
-					</section>
+                    <aside class="example" title="AccessibilityFeature: Timing Control">
+                        <p>The association between the text (XHTML) and the timing/audio (SMIL) is defined in the <code>package.opf</code> file. This is the trigger for the reading system to display its timing controls.</p>
+
+                        <p><strong>Example Package Document (<code>package.opf</code>):</strong></p>
+                        <pre>
+                            <code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+                &lt;package xmlns="http://www.idpf.org/2007/opf" version="3.0" unique-identifier="pub-id"&gt;
+                  &lt;metadata&gt;
+                    &lt;!-- ... metadata ... --&gt;
+                  &lt;/metadata&gt;
+                  &lt;manifest&gt;
+                    &lt;!-- The XHTML text document --&gt;
+                    &lt;item id="chap1" href="content.xhtml" media-type="application/xhtml+xml" /&gt;
+
+                    &lt;!-- The SMIL file with the timing info --&gt;
+                    &lt;item id="chap1-overlay" href="overlay.smil" media-type="application/smil+xml" /&gt;
+
+                    &lt;!-- The audio file --&gt;
+                    &lt;item id="narration-audio" href="audio/narration.mp3" media-type="audio/mpeg" /&gt;
+                  &lt;/manifest&gt;
+
+                  &lt;!-- The 'media-overlay' attribute creates the crucial link --&gt;
+                  &lt;spine&gt;
+                    &lt;itemref idref="chap1" media-overlay="chap1-overlay" /&gt;
+                  &lt;/spine&gt;
+                &lt;/package&gt;</code>
+                        </pre>
+
+                        <p><strong>Example Content Document (<code>content.xhtml</code>):</strong></p>
+                        <pre>
+                            <code>&lt;!DOCTYPE html&gt;
+                &lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;
+                &lt;body&gt;
+                    &lt;p id="p1"&gt;To be, or not to be, that is the question:&lt;/p&gt;
+                &lt;/body&gt;
+                &lt;/html&gt;</code>
+                        </pre>
+
+                        <p><strong>Example Media Overlay (<code>overlay.smil</code>):</strong></p>
+                        <pre>
+                            <code>&lt;smil xmlns="http://www.w3.org/ns/SMIL" version="3.0"&gt;
+                  &lt;body&gt;
+                    &lt;par id="par1"&gt;
+                      &lt;text src="content.xhtml#p1"/&gt;
+                      &lt;audio src="audio/narration.mp3" clipBegin="0s" clipEnd="3.5s"/&gt;
+                    &lt;/par&gt;
+                  &lt;/body&gt;
+                &lt;/smil&gt;</code>
+                        </pre>
+
+                        <p>The metadata to include in the package document to advertise this feature would be:</p>
+                        <pre>
+                            <code>&lt;meta property="schema:accessibilityFeature"&gt;timingControl&lt;/meta&gt;</code>
+                        </pre>
+                    </aside>
+                </section>
 				</section>
 
 				<section id="specialized-markup-terms">
