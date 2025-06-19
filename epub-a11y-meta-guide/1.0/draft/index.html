@@ -1685,10 +1685,50 @@
                 <section id="specialized-markup-terms">
 					<h4>Specialized Markup Terms</h4>
 
-					<section id="metadata-a11y-features-ChemML">
-						<h5>Chemistry Represented using ChemML</h5>
+                <section id="metadata-a11y-features-ChemML">
+                    <h5>ChemML</h5>
 
-					</section>
+                    <p>Indicates that chemical notations, such as molecular formulas and reaction diagrams, are represented using the Chemical Markup Language (ChemML, sometimes also refered to as CML). This provides a structured, accessible alternative to presenting chemical information as flat images.</p>
+                    <p>Using ChemML allows assistive technologies to correctly interpret and announce chemical structures. It also enables searching, copying, and styling of the notation, making it highly adaptable to user needs.</p>
+
+                    <aside class="example" title="AccessibilityFeature: ChemML">
+                        <p>Instead of an inaccessible image of a water molecule, the structure is encoded directly in the content document using ChemML. This allows a reading system or assistive technology to identify the atoms and their bonds.</p>
+
+                        <p><strong>Example of H₂O represented in ChemML:</strong></p>
+                        <pre>
+                            <code>&lt;!DOCTYPE html&gt;
+                &lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;
+                &lt;head&gt;
+                  &lt;title&gt;Chemistry Example&lt;/title&gt;
+                &lt;/head&gt;
+                &lt;body&gt;
+                  &lt;p&gt;The structure of a water molecule (H₂O) is shown below:&lt;/p&gt;
+
+                  &lt;!-- Chemical Markup Language provides a structured format for chemistry --&gt;
+                  &lt;cml xmlns="http://www.xml-cml.org/schema"&gt;
+                    &lt;molecule id="water"&gt;
+                      &lt;atomArray&gt;
+                        &lt;atom id="a1" elementType="O" /&gt;
+                        &lt;atom id="a2"elementType="H" /&gt;
+                        &lt;atom id="a3" elementType="H" /&gt;
+                      &lt;/atomArray&gt;
+                      &lt;bondArray&gt;
+                        &lt;bond atomRefs2="a1 a2" order="S" /&gt;
+                        &lt;bond atomRefs2="a1 a3" order="S" /&gt;
+                      &lt;/bondArray&gt;
+                    &lt;/molecule&gt;
+                  &lt;/cml&gt;
+
+                &lt;/body&gt;
+                &lt;/html&gt;</code>
+                        </pre>
+
+                        <p>The metadata to include in the package document to advertise this feature would be:</p>
+                        <pre>
+                            <code>&lt;meta property="schema:accessibilityFeature"&gt;ChemML&lt;/meta&gt;</code>
+                        </pre>
+                    </aside>
+                </section>
 
 					<section id="metadata-a11y-features-latex-chemistry">
 						<h5>Chemistry Represented using LaTeX</h5>
