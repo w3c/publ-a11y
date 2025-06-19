@@ -1942,10 +1942,51 @@
                     </aside>
                 </section>>
 
-					<section id="metadata-a11y-features-ttsMarkup">
-						<h5>Text-To-Speech Markup</h5>
+				<section id="metadata-a11y-features-ttsMarkup">
+				    <h5>Text-To-Speech Markup</h5>
 
-					</section>
+                    <p>One or more of [SSML], [Pronunciation-Lexicon], and [CSS3-Speech] properties has been used to enhance text-to-speech playback quality.</p>
+                    <p>These technologies allow an author to resolve ambiguities and improve the clarity of synthesized speech by correcting mispronunciations of names or jargon, indicating emphasis, and controlling the pacing and prosody of the narration.</p>
+
+                    <aside class="example" title="AccessibilityFeature: ttsMarkup">
+                        <p>TTS Markup can be applied using inline SSML attributes in the XHTML or through CSS properties from the CSS3 Speech Module. The following example shows both methods being used to enhance a single sentence.</p>
+
+                        <p><strong>Example Content Document (<code>content.xhtml</code>):</strong></p>
+                        <p>The <code>ssml:say-as</code> attribute instructs the TTS engine to spell out the acronym "W3C". Note the required SSML namespace declaration on the <code>&lt;html&gt;</code> element.</p>
+                        <pre>
+                            <code>&lt;!DOCTYPE html&gt;
+                &lt;html xmlns="http://www.w3.org/1999/xhtml"
+                      xmlns:ssml="http://www.w3.org/2001/10/synthesis"&gt;
+                &lt;head&gt;
+                  &lt;title&gt;TTS Markup Example&lt;/title&gt;
+                  &lt;link rel="stylesheet" href="style.css" type="text/css" /&gt;
+                &lt;/head&gt;
+                &lt;body&gt;
+                  &lt;p&gt;The new standard is from the &lt;span ssml:say-as="spell-out"&gt;W3C&lt;/span&gt;. 
+                     It is &lt;span class="emphasis"&gt;very&lt;/span&gt; important.&lt;/p&gt;
+                &lt;/body&gt;
+                &lt;/html&gt;</code>
+                        </pre>
+
+                        <p><strong>Example Stylesheet (<code>style.css</code>):</strong></p>
+                        <p>The CSS3 Speech Module can be used to control how the text is spoken. Here, it adds emphasis to the targeted word.</p>
+                        <pre>
+                            <code>/* Use the CSS3 Speech Module to add emphasis */
+                .emphasis {
+                  /* A higher pitch can indicate emphasis to the listener */
+                  pitch: high;
+
+                  /* Other properties like voice-stress could also be used */
+                  /* voice-stress: strong; */
+                }</code>
+                        </pre>
+
+                        <p>The metadata to include in the package document to advertise this feature would be:</p>
+                        <pre>
+                            <code>&lt;meta property="schema:accessibilityFeature"&gt;ttsMarkup&lt;/meta&gt;</code>
+                        </pre>
+                    </aside>
+                </section>
 				</section>
 
 				<section id="clarity-terms">
