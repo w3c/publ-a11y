@@ -1781,10 +1781,59 @@
                     </aside>
                 </section>
 
-					<section id="metadata-a11y-features-MathML-chemistry">
-						<h5>Chemistry Represented using MathML</h5>
+				<section id="metadata-a11y-features-MathML-chemistry">
+                    <h5>Chemistry represented using MathML</h5>
 
-					</section>
+                    <p>Identifies that the Mathematical Markup Language (MathML) is used to encode chemical equations and formulas. MathML provides a structured, semantic representation that can be rendered directly by modern browsers and assistive technologies.</p>
+                    <p>This method provides a robust, accessible alternative to images, as the notation can be resized, searched, copied, and interpreted correctly by screen readers.</p>
+
+                    <aside class="example" title="AccessibilityFeature: MathML-chemistry">
+                        <p>MathML uses markup to describe the structure of a formula. The following example shows the chemical formula for water (H₂O) embedded directly in the content document. Note the required <code>xmlns="http://www.w3.org/1998/Math/MathML"</code> namespace on the root <code>&lt;math&gt;</code> element.</p>
+
+                        <p><strong>Example of H₂O represented using MathML:</strong></p>
+                        <pre>
+                            <code>&lt;!DOCTYPE html&gt;
+                &lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;
+                &lt;head&gt;
+                  &lt;title&gt;Chemistry with MathML&lt;/title&gt;
+                &lt;/head&gt;
+                &lt;body&gt;
+                  &lt;p&gt;The chemical formula for water is shown below:&lt;/p&gt;
+
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                    &lt;mrow&gt;
+                      &lt;mi&gt;H&lt;/mi&gt;
+                      &lt;msub&gt;
+                        &lt;mrow&gt;&lt;/mrow&gt;
+                        &lt;mn&gt;2&lt;/mn&gt;
+                      &lt;/msub&gt;
+                      &lt;mi&gt;O&lt;/mi&gt;
+                    &lt;/mrow&gt;
+                  &lt;/math&gt;
+
+                &lt;/body&gt;
+                &lt;/html&gt;</code>
+                        </pre>
+
+                        
+                        <div class="note">
+                           <p><em>The above MathML structure is verbose. A more common authoring method is to use a tool or converter that generates the correct MathML from a simpler input.</em></p>
+
+                            <p><em><strong>Future-facing Note (MathML 4):</strong> The upcoming MathML 4 specification, currently in development by the W3C as of June 2025, introduces an <code>intent</code> attribute to explicitly declare the semantic meaning of a formula. This will allow authors to unambiguously state that a formula represents chemistry, greatly improving accessibility and machine-readability. An example might look like this:</em></p>
+                            <pre>
+                                <code>&lt;math xmlns="http://www.w3.org/1998/Math/MathML" intent="chemical-formula('water')"&gt;
+                      &lt;!-- ... MathML for H2O ... --&gt;
+                    &lt;/math&gt;</code>
+                            </pre>
+                        </div>
+
+
+                        <p>The metadata to include in the package document to advertise this feature would be:</p>
+                        <pre>
+                            <code>&lt;meta property="schema:accessibilityFeature"&gt;MathML-chemistry&lt;/meta&gt;</code>
+                        </pre>
+                    </aside>
+                </section>
 
 					<section id="metadata-a11y-features-latex">
 						<h5>Math Represented using LaTeX</h5>
