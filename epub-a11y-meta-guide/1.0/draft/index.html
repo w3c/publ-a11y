@@ -1503,9 +1503,34 @@
                     <p>Indicates that the EPUB contains synchronized pre-recorded audio narration that matches the text of the document, commonly known as a Media Overlay. The reading system can highlight units of text as they are spoken.</p>
 
                     <aside class="example" title="AccessibilityFeature: Synchronized Audio Text">
-                        <p>This feature is implemented using a Media Overlay file (SMIL) that links timings in an audio file to elements in the XHTML content document.</p>
+                        <p>This feature is enabled by associating a Media Overlay file (SMIL) with a content document (XHTML) inside the EPUB Package Document. This association is the trigger for the reading system to provide the synchronized playback and text highlighting.</p>
 
-                        <p><strong>Example Content Document (<code>content.xhtml</code>):</strong></p>
+                        <p><strong>Example Package Document (<code>package.opf</code>):</strong></p>
+                        <pre>
+                            <code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+                &lt;package xmlns="http://www.idpf.org/2007/opf" version="3.0" unique-identifier="pub-id"&gt;
+                  &lt;metadata&gt;
+                    &lt;!-- ... metadata ... --&gt;
+                  &lt;/metadata&gt;
+                  &lt;manifest&gt;
+                    &lt;!-- The XHTML text document --&gt;
+                    &lt;item id="chap1" href="content.xhtml" media-type="application/xhtml+xml" /&gt;
+
+                    &lt;!-- The SMIL file with the timing info --&gt;
+                    &lt;item id="chap1-overlay" href="overlay.smil" media-type="application/smil+xml" /&gt;
+
+                    &lt;!-- The audio file --&gt;
+                    &lt;item id="narration-audio" href="audio/narration.mp3" media-type="audio/mpeg" /&gt;
+                  &lt;/manifest&gt;
+
+                  &lt;!-- The 'media-overlay' attribute creates the crucial link between the text and the SMIL file --&gt;
+                  &lt;spine&gt;
+                    &lt;itemref idref="chap1" media-overlay="chap1-overlay" /&gt;
+                  &lt;/spine&gt;
+                &lt;/package&gt;</code>
+                        </pre>
+
+                        <p><strong>Example Content Document (<code>content.xhtml</code>) referenced by the package:</strong></p>
                         <pre>
                             <code>&lt;!DOCTYPE html&gt;
                 &lt;html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops"&gt;
@@ -1518,7 +1543,7 @@
                 &lt;/html&gt;</code>
                         </pre>
 
-                        <p><strong>Example Media Overlay (<code>overlay.smil</code>):</strong></p>
+                        <p><strong>Example Media Overlay (<code>overlay.smil</code>) referenced by the package:</strong></p>
                         <pre>
                             <code>&lt;smil xmlns="http://www.w3.org/ns/SMIL" version="3.0"&gt;
                   &lt;body&gt;
@@ -1547,71 +1572,117 @@
                     </aside>
                 </section>
                     
-                <section id="metadata-a11y-features-timingControl">
+                 <section id="metadata-a11y-features-timingControl">
                     <h5>Timing Control</h5>
 
-                    <p>Indicates that the user has control over the timing of time-based media. The most common application in EPUB is the ability for the user to change the playback speed of pre-recorded audio narration.</p>
-                    <p>This feature is enabled by the content author providing a Media Overlay and associating it with the content document in the EPUB Package Document. This signals the Reading System to provide the necessary playback controls.</p>
+                    <p>Indicates that the user can control the timing of any time-based interaction to meet their needs. This allows the user to turn off, adjust, or extend time limits on activities like tests or forms.</p>
+                    <p>This feature is critical for users who may require more time to read, comprehend, or respond to content.</p>
 
                     <aside class="example" title="AccessibilityFeature: Timing Control">
-                        <p>The association between the text (XHTML) and the timing/audio (SMIL) is defined in the <code>package.opf</code> file. This is the trigger for the reading system to display its timing controls.</p>
+                        <p>A common example is a timed quiz. To be fully accessible, the quiz must provide straightforward controls for the user to pause the timer or add more time. It should also ensure keyboard focus is clearly visible and that status updates are announced in a non-disruptive manner.</p>
 
-                        <p><strong>Example Package Document (<code>package.opf</code>):</strong></p>
-                        <pre>
-                            <code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-                &lt;package xmlns="http://www.idpf.org/2007/opf" version="3.0" unique-identifier="pub-id"&gt;
-                  &lt;metadata&gt;
-                    &lt;!-- ... metadata ... --&gt;
-                  &lt;/metadata&gt;
-                  &lt;manifest&gt;
-                    &lt;!-- The XHTML text document --&gt;
-                    &lt;item id="chap1" href="content.xhtml" media-type="application/xhtml+xml" /&gt;
-
-                    &lt;!-- The SMIL file with the timing info --&gt;
-                    &lt;item id="chap1-overlay" href="overlay.smil" media-type="application/smil+xml" /&gt;
-
-                    &lt;!-- The audio file --&gt;
-                    &lt;item id="narration-audio" href="audio/narration.mp3" media-type="audio/mpeg" /&gt;
-                  &lt;/manifest&gt;
-
-                  &lt;!-- The 'media-overlay' attribute creates the crucial link --&gt;
-                  &lt;spine&gt;
-                    &lt;itemref idref="chap1" media-overlay="chap1-overlay" /&gt;
-                  &lt;/spine&gt;
-                &lt;/package&gt;</code>
-                        </pre>
-
-                        <p><strong>Example Content Document (<code>content.xhtml</code>):</strong></p>
+                        <p><strong>Example Content Document (<code>quiz.xhtml</code>):</strong></p>
                         <pre>
                             <code>&lt;!DOCTYPE html&gt;
                 &lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;
+                &lt;head&gt;
+                  &lt;title&gt;Timed Quiz&lt;/title&gt;
+                  &lt;link rel="stylesheet" href="quiz.css" type="text/css" /&gt;
+                  &lt;script src="quiz.js" defer&gt;&lt;/script&gt;
+                &lt;/head&gt;
                 &lt;body&gt;
-                    &lt;p id="p1"&gt;To be, or not to be, that is the question:&lt;/p&gt;
+                  &lt;h1&gt;Quiz Question&lt;/h1&gt;
+                  &lt;p&gt;What is the capital of California?&lt;/p&gt;
+                  &lt;textarea id="quiz-answer" aria-label="Answer"&gt;&lt;/textarea&gt;
+
+                  &lt;div class="timer-controls"&gt;
+                    &lt;div&gt;Time Remaining: &lt;span id="time-display" aria-live="polite"&gt;60&lt;/span&gt; seconds&lt;/div&gt;
+                    &lt;button id="start-btn"&gt;Start Timer&lt;/button&gt;
+                    &lt;button id="add-time-btn"&gt;Add 30 Seconds&lt;/button&gt;
+                    &lt;button id="pause-btn"&gt;Pause Timer&lt;/button&gt;
+                  &lt;/div&gt;
+
+                  &lt;!-- This empty element will be used for important, non-disruptive announcements --&gt;
+                  &lt;div id="quiz-status" role="alert" aria-live="assertive"&gt;&lt;/div&gt;
+
                 &lt;/body&gt;
                 &lt;/html&gt;</code>
                         </pre>
 
-                        <p><strong>Example Media Overlay (<code>overlay.smil</code>):</strong></p>
+                        <p><strong>Example Stylesheet (<code>quiz.css</code>) for enhanced visibility:</strong></p>
                         <pre>
-                            <code>&lt;smil xmlns="http://www.w3.org/ns/SMIL" version="3.0"&gt;
-                  &lt;body&gt;
-                    &lt;par id="par1"&gt;
-                      &lt;text src="content.xhtml#p1"/&gt;
-                      &lt;audio src="audio/narration.mp3" clipBegin="0s" clipEnd="3.5s"/&gt;
-                    &lt;/par&gt;
-                  &lt;/body&gt;
-                &lt;/smil&gt;</code>
+                            <code>/* Add a clear, high-contrast outline to buttons when focused via keyboard */
+                .timer-controls button:focus-visible {
+                  outline: 3px solid dodgerblue;
+                  outline-offset: 2px;
+                }
+
+                /* Style the status message for visibility */
+                #quiz-status {
+                  margin-top: 1em;
+                  font-weight: bold;
+                  color: #d00; /* A color for alerts */
+                }</code>
                         </pre>
 
-                        <p>The metadata to include in the package document to advertise this feature would be:</p>
+                        <p><strong>Example JavaScript (<code>quiz.js</code>) with non-disruptive alerts:</strong></p>
+                        <pre>
+                            <code>document.addEventListener('DOMContentLoaded', () =&gt; {
+                  const timeDisplay = document.getElementById('time-display');
+                  const startBtn = document.getElementById('start-btn');
+                  const addTimeBtn = document.getElementById('add-time-btn');
+                  const pauseBtn = document.getElementById('pause-btn');
+                  const statusDiv = document.getElementById('quiz-status');
+
+                  let timeLeft = 60;
+                  let timerId = null;
+
+                  function updateTimer() {
+                    timeLeft--;
+                    timeDisplay.textContent = timeLeft;
+                    if (timeLeft &lt;= 0) {
+                      clearInterval(timerId);
+                      // Announce "Time is up!" in the status div instead of a disruptive alert().
+                      statusDiv.textContent = 'Time is up!';
+                    }
+                  }
+
+                  startBtn.addEventListener('click', () =&gt; {
+                    if (!timerId &amp;&amp; timeLeft &gt; 0) {
+                      timerId = setInterval(updateTimer, 1000);
+                    }
+                  });
+
+                  addTimeBtn.addEventListener('click', () =&gt; {
+                    if (timeLeft > 0) {
+                      timeLeft += 30;
+                      timeDisplay.textContent = timeLeft;
+                    }
+                  });
+
+                  pauseBtn.addEventListener('click', () =&gt; {
+                    if (timerId) {
+                      clearInterval(timerId);
+                      timerId = null;
+                      pauseBtn.textContent = 'Resume Timer';
+                    } else {
+                      if (timeLeft > 0) {
+                        timerId = setInterval(updateTimer, 1000);
+                        pauseBtn.textContent = 'Pause Timer';
+                      }
+                    }
+                  });
+                });</code>
+                        </pre>
+
+                        <p>The metadata to include in the package document would be:</p>
                         <pre>
                             <code>&lt;meta property="schema:accessibilityFeature"&gt;timingControl&lt;/meta&gt;</code>
                         </pre>
                     </aside>
-                </section>
-				</section>
-
-				<section id="specialized-markup-terms">
+                </section>  
+                    </section>    
+                <section id="specialized-markup-terms">
 					<h4>Specialized Markup Terms</h4>
 
 					<section id="metadata-a11y-features-ChemML">
