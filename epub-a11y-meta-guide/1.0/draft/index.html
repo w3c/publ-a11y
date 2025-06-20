@@ -1520,7 +1520,7 @@
                     &lt;item id="chap1" href="content.xhtml" media-type="application/xhtml+xml" /&gt;
 
                     &lt;!-- The SMIL file with the timing info --&gt;
-                    &lt;item id="chap1-overlay" href="overlay.smil" media-type="application/smil+xml" /&gt;
+                    &lt;item id="chap1-overlay" href="overlay.smil" media-type="application/smil+xml" media-overlay="chap1" /&gt;
 
                     &lt;!-- The audio file --&gt;
                     &lt;item id="narration-audio" href="audio/narration.mp3" media-type="audio/mpeg" /&gt;
@@ -1528,7 +1528,7 @@
 
                   &lt;!-- The 'media-overlay' attribute creates the crucial link between the text and the SMIL file --&gt;
                   &lt;spine&gt;
-                    &lt;itemref idref="chap1" media-overlay="chap1-overlay" /&gt;
+                    &lt;itemref idref="chap1" /&gt;
                   &lt;/spine&gt;
                 &lt;/package&gt;</code>
                         </pre>
