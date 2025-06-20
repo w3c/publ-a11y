@@ -848,7 +848,7 @@
 						text is one example.</p>
 
 					<p><a href="#specialized-markup-terms">Specialized markup terms</a> identify that content is encoded
-						using domain-specific grammars like MathML and ChemML that can provide users a richer reading
+						using domain-specific grammars like MathML and LaTeX that can provide users a richer reading
 						experience.</p>
 
 					<p><a href="#clarity-terms">Clarity terms</a> identify ways that the content has been enhanced for
@@ -860,6 +860,7 @@
 
 					<p><a href="#i18n-terms">Internationalization terms</a> identify those accessibility characteristics
 						of the content which are required for internationalization.</p>
+                    <p><a href="#unsupported-terms">Unsupported terms</a> include those features that are currently not supported in EPUB.</p>
 				</section>
 
 				<section id="structure-navigation-terms">
@@ -1684,57 +1685,13 @@
                             <code>&lt;meta property="schema:accessibilityFeature"&gt;timingControl&lt;/meta&gt;</code>
                         </pre>
                     </aside>
-                </section>  
+                </section> 
+
                     </section>    
                 <section id="specialized-markup-terms">
 					<h4>Specialized Markup Terms</h4>
 
-                <section id="metadata-a11y-features-ChemML">
-                    <h5>ChemML</h5>
-
-                    <p>Indicates that chemical notations, such as molecular formulas and reaction diagrams, are represented using the Chemical Markup Language (ChemML, sometimes also refered to as CML). This provides a structured, accessible alternative to presenting chemical information as flat images.</p>
-                    <p>Using ChemML allows assistive technologies to correctly interpret and announce chemical structures. It also enables searching, copying, and styling of the notation, making it highly adaptable to user needs.</p>
-
-                    <aside class="example" title="AccessibilityFeature: ChemML">
-                        <p>Instead of an inaccessible image of a water molecule, the structure is encoded directly in the content document using ChemML. This allows a reading system or assistive technology to identify the atoms and their bonds.</p>
-
-                        <p><strong>Example of H₂O represented in ChemML:</strong></p>
-                        <pre>
-                            <code>&lt;!DOCTYPE html&gt;
-                &lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;
-                &lt;head&gt;
-                  &lt;title&gt;Chemistry Example&lt;/title&gt;
-                &lt;/head&gt;
-                &lt;body&gt;
-                  &lt;p&gt;The structure of a water molecule (H₂O) is shown below:&lt;/p&gt;
-
-                  &lt;!-- Chemical Markup Language provides a structured format for chemistry --&gt;
-                  &lt;cml xmlns="http://www.xml-cml.org/schema"&gt;
-                    &lt;molecule id="water"&gt;
-                      &lt;atomArray&gt;
-                        &lt;atom id="a1" elementType="O" /&gt;
-                        &lt;atom id="a2"elementType="H" /&gt;
-                        &lt;atom id="a3" elementType="H" /&gt;
-                      &lt;/atomArray&gt;
-                      &lt;bondArray&gt;
-                        &lt;bond atomRefs2="a1 a2" order="S" /&gt;
-                        &lt;bond atomRefs2="a1 a3" order="S" /&gt;
-                      &lt;/bondArray&gt;
-                    &lt;/molecule&gt;
-                  &lt;/cml&gt;
-
-                &lt;/body&gt;
-                &lt;/html&gt;</code>
-                        </pre>
-
-                        <p>The metadata to include in the package document to advertise this feature would be:</p>
-                        <pre>
-                            <code>&lt;meta property="schema:accessibilityFeature"&gt;ChemML&lt;/meta&gt;</code>
-                        </pre>
-                    </aside>
-                </section>
-
-               <section id="metadata-a11y-features-latex-chemistry">
+                <section id="metadata-a11y-features-latex-chemistry">
                     <h5>Chemistry Represented using LaTeX</h5>
 
                     <p>Identifies that the LaTeX typesetting system is used to encode chemical equations and formulas.</p>
@@ -2093,8 +2050,32 @@
 
 					<p>The unknown value must not be set with any other feature value.</p>
 				</section>
-			</section>
-		</section>
+                <section id="unsupported-terms">
+					<h4>Unsupported Features</h4>
+                    <section id="metadata-a11y-features-unsupported-ChemML">
+                        <h5>ChemML</h5>
+             
+                        <p><b>Definition:</b> Indicates that chemical notations, such as molecular formulas and reaction diagrams, are represented in a structured format.</p>
+
+                        <p><b>Status:</b> Unsupported. Although the metadata value is <code>ChemML</code>, the underlying format it actually identifies is the Chemical Markup Language (CML).</p>
+
+                        <p><b>Reasoning:</b> There is no native support for CML in HTML. Because EPUB content is built on web standards, the vast majority of e-reader devices cannot render CML visually, making this feature unreliable without a fallback image. The name also causes significant confusion with the unrelated 'ChemML' Python library for machine learning. Here is a link to the <a href="https://www.xml-cml.org/">CML (Chemical Markup Language)</a> specification.</p>
+                     </section>
+
+                    <section id="metadata-a11y-features-unsupported-taggedPDF">
+                        <h5>taggedPDF</h5>
+
+                        <p><b>Definition:</b> Indicates that a PDF document's contents have been tagged to create a logical structure, permitting access by assistive technologies.</p>
+
+                        <p><b>Status:</b> Unsupported. This metadata property is exclusively for describing PDF documents and is not relevant in the context of an EPUB file.</p>
+
+                        <p><b>Reasoning:</b> EPUB and PDF are fundamentally different technologies. An EPUB's accessibility is achieved through its use of semantic HTML and ARIA, while a PDF's accessibility relies on its internal tagging structure. An EPUB's metadata must describe the features of the EPUB itself. Applying a PDF-specific property like <code>taggedPDF</code> is inappropriate and would be ignored by reading systems. While an EPUB might link to an external PDF, the metadata for the EPUB should not describe the features of that external file.</p>
+                        
+                    </section>
+                     
+                    
+                </section>
+		  </section>
         </section>
         
 		<section id="accessibilityHazard">
