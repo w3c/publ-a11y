@@ -1740,17 +1740,22 @@
                     <p>Identifies that the LaTeX typesetting system is used to encode chemical equations and formulas.</p>
                     <p>In this method, the raw LaTeX source is embedded directly in the content document. A JavaScript-based rendering engine, such as MathJax, should then be used to convert this source into a visually and accessibly rendered formula.</p>
 
-                    <aside class="example" title="AccessibilityFeature: latex-chemistry">
+                    <aside class="example" title="AccessibilityFeature: latex-chemistry - Raw LaTeX Data in HTML">
                         <p>The core of this method is the raw LaTeX source code embedded in the text. The example below shows the LaTeX for the formula for water, using the <code>\ce{...}</code> macro from the mhchem package.</p>
 
-                        <p><strong>1. Raw LaTeX Data in HTML:</strong></p>
                         <pre>
                             <code>&lt;p&gt;The chemical formula for water is \(\ce{H2O}\).&lt;/p&gt;</code>
                         </pre>
 
                         <p><strong>Important:</strong> The example above is incomplete on its own. Without a rendering engine, it would only display the literal text "\(\ce{H2O}\)" to the user. To be functional, a library must be included to process the LaTeX.</p>
-
-                        <p><strong>2. Complete, Functional Example with a Rendering Library:</strong></p>
+                        
+                        <p>The metadata to include in the package document to advertise this feature would be:</p>
+                        <pre>
+                            <code>&lt;meta property="schema:accessibilityFeature"&gt;MathML-chemistry&lt;/meta&gt;</code>
+                        </pre>
+                   </aside>
+                   
+                    <aside class="example" title="AccessibilityFeature: latex-chemistry - Complete, Functional Example with a Rendering Library">
                         <p>The following self-contained example shows how to include the MathJax library to find and render the raw LaTeX source code from the previous step.</p>
                         <pre>
                             <code>&lt;!DOCTYPE html&gt;
@@ -1850,6 +1855,11 @@
                         </pre>
 
                         <p><strong>Important:</strong> The example above is incomplete on its own. Without a rendering engine, it would only display the raw text of the LaTeX source. To be functional, a library must be included to process it.</p>
+
+                        <p>The metadata to include in the package document would be:</p>
+                        <pre>
+                            <code>&lt;meta property="schema:accessibilityFeature"&gt;latex&lt;/meta&gt;</code>
+                        </pre>
                     </aside>
 
                     <aside class="example" title="AccessibilityFeature: LaTeX - Complete, Functional Example with a Rendering Library">
