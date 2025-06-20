@@ -1388,12 +1388,15 @@
                         <pre>
                             <code>
                 &lt;!--
+                  The aria-label provides a specific name for the audio player.
                   The aria-details attribute programmatically links the audio player
                   to the transcript container for assistive technologies. It points to the
                   ID of the &lt;details&gt; element itself, ensuring the link is always
                   valid whether the details are open or closed.
                 --&gt;
-                &lt;audio controls aria-details="audio-transcript"&gt;
+                &lt;audio controls 
+                         aria-details="audio-transcript"
+                         aria-label="Audio recording of the interview"&gt;
                     &lt;source src="interview.mp3" type="audio/mpeg"&gt;
 
                     &lt;track
