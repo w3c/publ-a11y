@@ -866,6 +866,48 @@
 				<section id="structure-navigation-terms">
 					<h4>Structure and navigation terms</h4>
 
+                <section id="metadata-a11y-features-annotations">
+                    <h5>Annotations</h5>
+
+                    <p>The resource includes annotations from the author, instructor and/or others.</p>
+                    <p>These annotations can clarify complex topics, define jargon, or provide pedagogical context, which enhances comprehension for many readers. To be accessible, the annotations must be programmatically linked to the text they reference.</p>
+
+                    <aside class="example" title="AccessibilityFeature: annotations">
+                        <p>Accessible annotations can be implemented by semantically linking a reference in the main text to the annotation's content. The EPUB Structural Semantics Vocabulary provides the <code>annoref</code> value for the reference link and the <code>annotation</code> value for the note's content.</p>
+
+                        <p><b>Example of a semantic annotation:</b></p>
+                        <pre>
+                            <code>&lt;!DOCTYPE html&gt;
+                &lt;html xmlns="http://www.w3.org/1999/xhtml"
+                      xmlns:epub="http://www.idpf.org/2007/ops"&gt;
+                &lt;head&gt;
+                  &lt;title&gt;Annotations Example&lt;/title&gt;
+                &lt;/head&gt;
+                &lt;body&gt;
+                  &lt;h1&gt;Chapter 1: The Cell&lt;/h1&gt;
+                  &lt;p&gt;The book discusses the concept of &lt;a epub:type="annoref" href="#note1"&gt;epigenetics&lt;/a&gt;, which has profound implications for our understanding of genetics.&lt;/p&gt;
+
+                  &lt;!-- More content would follow here --&gt;
+
+                  &lt;hr/&gt;
+
+                  &lt;footer&gt;
+                    &lt;h2&gt;Notes&lt;/h2&gt;
+                    &lt;aside epub:type="annotation" id="note1"&gt;
+                      &lt;p&gt;&lt;b&gt;1. Epigenetics:&lt;/b&gt; The study of heritable phenotype changes that do not involve alterations in the DNA sequence. It refers to how behaviors and environment can cause changes that affect the way your genes work.&lt;/p&gt;
+                    &lt;/aside&gt;
+                  &lt;/footer&gt;
+                &lt;/body&gt;
+                &lt;/html&gt;</code>
+                        </pre>
+
+                        <p>The metadata to include in the package document would be:</p>
+                        <pre>
+                            <code>&lt;meta property="schema:accessibilityFeature"&gt;annotations&lt;/meta&gt;</code>
+                        </pre>
+                    </aside>
+                </section>                    
+                    
 					<section id="metadata-a11y-features-aria">
 						<h5>ARIA</h5>
 
@@ -1686,7 +1728,10 @@
                         </pre>
                     </aside>
                 </section> 
-
+                <section id="metadata-a11y-features-unlocked">
+                    <h5>Unlocked</h5>
+                    
+                </section>
                     </section>    
                 <section id="specialized-markup-terms">
 					<h4>Specialized Markup Terms</h4>
