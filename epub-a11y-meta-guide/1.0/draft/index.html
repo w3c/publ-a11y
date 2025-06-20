@@ -1728,9 +1728,38 @@
                         </pre>
                     </aside>
                 </section> 
+
                 <section id="metadata-a11y-features-unlocked">
                     <h5>Unlocked</h5>
-                    
+
+                    <p>No digital rights management or other content restriction protocols have been applied to the resource.</p>
+                    <p>The absence of DRM is a critical accessibility feature as it ensures that users can access the content with their preferred assistive technologies, which might otherwise be blocked by encryption. It allows for personal use and transformations of the content that may be necessary for a user to perceive and understand it (e.g., using it with specialized text-to-speech software).</p>
+
+                    <aside class="example" title="AccessibilityFeature: unlocked">
+                        <p>This accessibility feature is not represented by a specific code structure within the publication's content, but rather by the absence of any encryption or content restriction technology being applied to the EPUB container.</p>
+                        <p>A publication that is "unlocked" does not contain an <code>encryption.xml</code> file. The <code>container.xml</code> file, located in the <code>META-INF</code> directory, points to the package document but includes no references to encryption information.</p>
+
+                        <p><strong>Example of a standard <code>container.xml</code> for a DRM-free EPUB:</strong></p>
+                        <pre>
+                            <code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+                &lt;container version="1.0" xmlns="urn:oasis:names:tc:opendocument:xmlns:container"&gt;
+                  &lt;rootfiles&gt;
+                    &lt;!-- 
+                      This entry points to the package document. 
+                      The absence of a second rootfile entry for an encryption.xml file 
+                      is indicative that the book is not encrypted.
+                    --&gt;
+                    &lt;rootfile full-path="EPUB/package.opf"
+                              media-type="application/oebps-package+xml"/&gt;
+                  &lt;/rootfiles&gt;
+                &lt;/container&gt;</code>
+                        </pre>
+
+                        <p>The metadata to include in the package document to advertise this feature would be:</p>
+                        <pre>
+                            <code>&lt;meta property="schema:accessibilityFeature"&gt;unlocked&lt;/meta&gt;</code>
+                        </pre>
+                    </aside>
                 </section>
                     </section>    
                 <section id="specialized-markup-terms">
