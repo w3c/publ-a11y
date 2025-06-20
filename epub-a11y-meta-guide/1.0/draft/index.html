@@ -1747,7 +1747,10 @@
                             <code>&lt;p&gt;The chemical formula for water is \(\ce{H2O}\).&lt;/p&gt;</code>
                         </pre>
 
-                        <p><strong>Important:</strong> The example above is incomplete on its own. Without a rendering engine, it would only display the literal text "\(\ce{H2O}\)" to the user. To be functional, a library must be included to process the LaTeX.</p>
+                        <div class="note">
+                           <p>The example above is incomplete on its own. Without a rendering engine, it would only display the literal text "\(\ce{H2O}\)" to the user. To be functional, a library must be included to process the LaTeX.</p>                     
+                        </div>
+
                         
                         <p>The metadata to include in the package document to advertise this feature would be:</p>
                         <pre>
@@ -1854,7 +1857,9 @@
                             <code>&lt;p&gt;The quadratic formula is \[x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}\].&lt;/p&gt;</code>
                         </pre>
 
-                        <p><strong>Important:</strong> The example above is incomplete on its own. Without a rendering engine, it would only display the raw text of the LaTeX source. To be functional, a library must be included to process it.</p>
+                        <div class="note">
+                            <p>The example above is incomplete on its own. Without a rendering engine, it would only display the literal text "\[x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}\]" to the user. To be functional, a library must be included to process it.</p>
+                        </div>
 
                         <p>The metadata to include in the package document would be:</p>
                         <pre>
