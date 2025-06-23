@@ -2105,7 +2105,7 @@
                         <p><b>Status:</b> Depricated</p>
                         
                         <p><b>Reasoning:</b> The use of the <code>bookmarks</code> value is now deprecated due to its ambiguity. Reading systems typically provide bookmark support not the EPUB itself.</p>
-                    </section>                     
+                    </section>
                     
                     <section id="metadata-a11y-features-unsupported-ChemML">
                         <h5>ChemML</h5>
@@ -2116,6 +2116,15 @@
 
                         <p><b>Reasoning:</b> There is no native support for CML in HTML. Because EPUB content is built on web standards, the vast majority of e-reader devices cannot render CML visually, making this feature unreliable without a fallback image. The name also causes significant confusion with the unrelated 'ChemML' Python library for machine learning. Here is a link to the <a href="https://www.xml-cml.org/">CML (Chemical Markup Language)</a> specification.</p>
                      </section>
+
+                     <section id="metadata-a11y-features-unsupported-printpagenumbers">
+                        <h5>printPageNumbers</h5>
+                        <p><b>Definition:</b> The resource includes print page numbers.</p>
+
+                        <p><b>Status:</b> Depricated</p>
+                        
+                        <p><b>Reasoning:</b> The metadata term <code>printPageNumbers</code> value has been replaced by <code><a href="#metadata-a11y-features-pageBreakMarkers">pageBreakMarkers</a></code>.</p>
+                    </section>                     
                     
                     <section id="metadata-a11y-features-unsupported-taggedPDF">
                         <h5>taggedPDF</h5>
