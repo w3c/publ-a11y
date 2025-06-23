@@ -1817,11 +1817,15 @@
                         </pre>
 
                         <div class="note">
-                            <p>Future-facing (MathML 4): The upcoming MathML 4 specification, currently in development by the W3C as of June 2025, introduces an <code>intent</code> attribute to explicitly declare the semantic meaning of a formula. This will allow authors to unambiguously state that a formula represents chemistry, greatly improving accessibility and machine-readability. An example might look like this:</p>
+                            <p>Future-facing (MathML 4): The upcoming MathML 4 specification, currently in development by the W3C as of June 2025, introduces an <code>intent</code> attribute to explicitly declare the semantic meaning of a formula or equation. This will allow authors to unambiguously state that a formula represents chemistry, greatly improving accessibility and machine-readability. An example might look like this:</p>
                             <pre>
-                                <code>&lt;math xmlns="http://www.w3.org/1998/Math/MathML" intent="chemical-formula('water')"&gt;
-                      &lt;!-- ... MathML for H2O ... --&gt;
-                    &lt;/math&gt;</code>
+                                <code>&lt;math intent=":chemical-formula">
+                                    &lt;mi mathvariant="normal">H&lt;/mi>
+                                    &lt;msub>
+                                        &lt;mn>2&lt;/mn>
+                                    &lt;/msub>
+                                    &lt;mi mathvariant="normal">O&lt;/mi>
+                                &lt;/math></code>
                             </pre>
                         </div>
 
