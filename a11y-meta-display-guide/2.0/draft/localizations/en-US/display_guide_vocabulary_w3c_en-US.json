@@ -224,7 +224,7 @@
         },
         "hazards-unknown": {
             "compact": "The presence of hazards is unknown",
-            "descriptive": "The presents of hazards is unknown"
+            "descriptive": "The presence of hazards is unknown"
         }
     },
     "accessibility-summary": {
