@@ -41,7 +41,7 @@
 					"dpub-aria":{
 						"title": "Digital Publishing WAI-ARIA Module 1.1",
 						"href": "https://w3c.github.io/dpub-aria/",
-						"publisher": "W3C"                        
+						"publisher": "W3C"
                     },
 					"epub-3": {
 						"title": "EPUB 3",
@@ -56,7 +56,7 @@
                     "wai-aria":{
 						"title": "Accessible Rich Internet Applications (WAI-ARIA) 1.2",
 						"href": "https://www.w3.org/TR/wai-aria-1.2/",
-						"publisher": "W3C"                        
+						"publisher": "W3C"
                     },
 					"wcag2": {
 						"title": "Web Content Accessibility Guidelines (WCAG) 2",
@@ -208,7 +208,7 @@
                                    Your browser does not support the audio element.
                                &lt;/audio&gt;
                                &lt;figcaption&gt;Interview with Dr. Smith about climate change research&lt;/figcaption&gt;
-                            &lt;/figure&gt;                            
+                            &lt;/figure&gt;
                             </code>
                         </pre>
 							<p>The metadata to included in the package document would be:</p>
@@ -223,7 +223,7 @@
                         </pre>
 							<div class="note">
 								<p>Ideally there would also be a textual transcript included, and depending on its
-									existance this would affect the accessModeSufficient metadata inclusion of
+									existence this would affect the accessModeSufficient metadata inclusion of
 									'textual'.</p>
 							</div>
 						</aside>
@@ -244,7 +244,7 @@
                             <code>
                              &lt;p&gt;
                                 The red-tailed hawk is one of North America's most widespread raptors.
-                                &lt;img src="images/hawk.jpg" 
+                                &lt;img src="images/hawk.jpg"
                                 alt="A red-tailed hawk perched on a bare tree branch, its reddish-brown tail feathers clearly visible against the blue sky"&gt;
                                 These majestic birds can often be seen soaring high above open fields, scanning for prey with their keen eyesight.
                             &lt;/p&gt;                            </code>
@@ -290,9 +290,9 @@
                             &lt;p&gt;
                                 &lt;img src="images/hawk.jpg"&gt;
                             &lt;/p&gt;
-                            
+
                             or
-                            
+
                             &lt;div style="background-image: url('images/hawk.jpg')"&gt;&lt;/div&gt;
                             </code>
                         </pre>
@@ -626,7 +626,7 @@
                                 In addition, you would include:
                                 <code>
                                 &lt;meta property="schema:accessMode"&gt;textual&lt;/meta&gt;
-                                </code>                        
+                                </code>
                             </pre>
 						</aside>
 					</section>
@@ -653,7 +653,7 @@
                                 In addition, you would include:
                                 <code>
                                 &lt;meta property="schema:accessMode"&gt;auditory&lt;/meta&gt;
-                                </code>                        
+                                </code>
                             </pre>
 						</aside>
 					</section>
@@ -688,7 +688,7 @@
                                 <code>
                                 &lt;meta property="schema:accessMode"&gt;visual&lt;/meta&gt;
                                 &lt;meta property="schema:accessMode"&gt;textual&lt;/meta&gt;
-                                </code>                        
+                                </code>
                             </pre>
 							<div class="note">
 								<p>In the <a href="#example-access-mode-sufficient-visual-textual">Example:
@@ -729,7 +729,7 @@
                                 If all images not only had audio speaking all text on the images but included audio descriptions of the images the following single accessModeSufficient of 'audio' would be claimed.
                                 <code>
                                 &lt;meta property="schema:accessModeSufficient"&gt;auditory&lt;/meta&gt;         </code>
-                                
+
                             </pre>
 							<div class="note">
 								<p>In the <a href="#example-access-mode-sufficient-visual-auditory">Example:
@@ -764,7 +764,7 @@
                                 <code>
                                 &lt;meta property="schema:accessMode"&gt;auditory&lt;/meta&gt;
                                 &lt;meta property="schema:accessMode"&gt;textual&lt;/meta&gt;
-                                </code>                        
+                                </code>
                             </pre>
 						</aside>
 					</section>
@@ -999,7 +999,7 @@
 							the visual layout reading order.</p>
 
 						<p>An example when this would not be the case is a two page spread where the intent is to
-							visually read across the page boundry, since AT would read down the first page and then
+							visually read across the page boundary, since AT would read down the first page and then
 							continue reading down the 2nd page.</p>
 
 						<p>The metadata to include in the package document when the visual reading order matches the
@@ -1111,7 +1111,7 @@
 						<aside class="example" title="AccessibilityFeature: Alternative Text">
 							<pre>
                                  <code>
-                                    &lt;img src="images/hawk.jpg" alt="A majestic hawk perches on a tree branch, its sharp golden eyes scanning the landscape, feathered wings folded, powerful talons gripping the bark against a soft blue sky background."&gt; 
+                                    &lt;img src="images/hawk.jpg" alt="A majestic hawk perches on a tree branch, its sharp golden eyes scanning the landscape, feathered wings folded, powerful talons gripping the bark against a soft blue sky background."&gt;
                                  </code>
                             </pre>
 							<p>The metadata to include in the package document would be:</p>
@@ -1135,9 +1135,9 @@
                                 &lt;video controls&gt;
                                     &lt;source src="chapter4-video.mp4" type="video/mp4"&gt;
 
-                                    &lt;track kind="descriptions" 
-                                          src="chapter4-video-audio-description.vtt" 
-                                          srclang="en" 
+                                    &lt;track kind="descriptions"
+                                          src="chapter4-video-audio-description.vtt"
+                                          srclang="en"
                                           label="English Audio Description"&gt;
 
                                   Your browser does not support the video tag.
@@ -1149,7 +1149,7 @@
 							<p>A sample audio description VTT file might look like:</p>
 							<pre>
                             chapter4-video-audio-description.vtt
-                            
+
                             WEBVTT
                             00:00:05.000 --> 00:00:10.000
                             A red sports car speeds down a winding mountain road.
@@ -1184,25 +1184,25 @@
                                 &lt;video controls width="480" height="360"&gt;
                                   &lt;source src="ch1-interview.mp4" type="video/mp4"&gt;
 
-                                  &lt;track kind="captions" 
-                                          src="ch1-interview-captions-en.vtt" 
-                                          srclang="en" 
-                                          label="English Captions" 
+                                  &lt;track kind="captions"
+                                          src="ch1-interview-captions-en.vtt"
+                                          srclang="en"
+                                          label="English Captions"
                                           default&gt;
 
-                                  &lt;track kind="captions" 
-                                          src="ch1-interview-captions-es.vtt" 
-                                          srclang="es" 
+                                  &lt;track kind="captions"
+                                          src="ch1-interview-captions-es.vtt"
+                                          srclang="es"
                                           label="Spanish Captions"&gt;
 
                                   Your browser does not support the video element.
-                                &lt;/video&gt;                                
+                                &lt;/video&gt;
                                 </code>
                             </pre>
 							<p>A sample WebVTT might look like:</p>
 							<pre>
                             ch1-interview-captions-en.vtt
-                            
+
                             WEBVTT
                             00:00:01.000 --> 00:00:04.000
                             [Soft instrumental music playing]
@@ -1232,7 +1232,7 @@
 						<aside class="example" title="AccessibilityFeature: Described Math">
 							<pre>
                                 <code>
-                                    &lt;img src="images/quadraticFormula.jpg" alt="A X-squared + B X + C = zero"&gt; 
+                                    &lt;img src="images/quadraticFormula.jpg" alt="A X-squared + B X + C = zero"&gt;
                                 </code>
                              </pre>
 							<aside class="note"> This however is not recommended since a more accessible way to include
@@ -1258,24 +1258,24 @@
 							<pre>
                                 <code>
                                 &lt;figure&gt;
-                                  &lt;img src="complex-chart.jpg" 
-                                       alt="Annual sales growth bar graph" 
+                                  &lt;img src="complex-chart.jpg"
+                                       alt="Annual sales growth bar graph"
                                        aria-details="sales-long-description"&gt;
 
                                 &lt;details id="sales-long-description"&gt;
                                     &lt;summary&gt;Detailed description of sales growth chart&lt;/summary&gt;
-                                    This bar graph illustrates the company's annual sales growth from 2019 to 2023. 
-                                    The vertical axis represents revenue in millions of dollars, ranging from 0 to 50 million. 
-                                    The horizontal axis shows years from 2019 to 2023. 
-                                    Each bar represents the total annual revenue, with notable increases in 2021 and 2022, 
-                                    showing a significant recovery and growth after the initial impact of the global pandemic. 
-                                    The 2022 bar reaches the highest point at 45 million dollars, 
+                                    This bar graph illustrates the company's annual sales growth from 2019 to 2023.
+                                    The vertical axis represents revenue in millions of dollars, ranging from 0 to 50 million.
+                                    The horizontal axis shows years from 2019 to 2023.
+                                    Each bar represents the total annual revenue, with notable increases in 2021 and 2022,
+                                    showing a significant recovery and growth after the initial impact of the global pandemic.
+                                    The 2022 bar reaches the highest point at 45 million dollars,
                                     demonstrating the most successful year in the company's recent history.
                                   &lt;/details&gt;
                                 &lt;/figure&gt;
                                 </code>
                             </pre>
-							<aside class="note"> An even better long description would be to inclue the real HTML table
+							<aside class="note"> An even better long description would be to include the real HTML table
 								which makes up the chart. </aside>
 
 							<p>The metadata to include in the package document would be:</p>
@@ -1302,7 +1302,7 @@
                                     &lt;source src="ch1-interview-with-embedded-captions.mp4" type="video/mp4"&gt;
 
                                     Your browser does not support the video element.
-                                &lt;/video&gt;                               
+                                &lt;/video&gt;
                                 </code>
                             </pre>
 
@@ -1360,7 +1360,7 @@
                                         &lt;/video&gt;
                                     &lt;/div&gt;
                                 &lt;/body&gt;
-                                &lt;/html&gt;                         
+                                &lt;/html&gt;
                                 </code>
                             </pre>
 							<p>The metadata to include in the package document would be:</p>
@@ -1610,7 +1610,7 @@
 					title="Metadata entries for an unknown sound hazard and no motion simulation or sound hazards">
 					<pre>&lt;meta
     property="schema:accessibilityHazard">
-   noflashingHazard
+   noFlashingHazard
 &lt;/meta>
 &lt;meta
     property="schema:accessibilityHazard">
@@ -1724,7 +1724,7 @@
 		<section id="accessibilityAPI">
 			<h2>Accessibility APIs</h2>
 
-			<p>It is not necessary to set the <code>schema:accesibilityAPI</code> property for <a
+			<p>It is not necessary to set the <code>schema:accessibilityAPI</code> property for <a
 					href="https://www.w3.org/TR/epub/#dfn-epub-publication">EPUB publications</a>. <a
 					href="https://www.w3.org/TR/epub/#dfn-epub-creator">EPUB creators</a> are not responsible for the
 				interaction between <a href="https://www.w3.org/TR/epub/#dfn-epub-reading-system">reading systems</a>
@@ -1733,7 +1733,7 @@
 		<section id="accessibilityControl">
 			<h2>Accessible Control</h2>
 
-			<p>It is not necessary to set the <code>schema:accesibilityControl</code> property for <a
+			<p>It is not necessary to set the <code>schema:accessibilityControl</code> property for <a
 					href="https://www.w3.org/TR/epub/#dfn-epub-publication">EPUB publications</a>. This property does
 				not differentiate issues arising from the <a href="https://www.w3.org/TR/epub/#dfn-epub-reading-system"
 					>reading system</a> interface from those in the underlying content, which has led to confusion about
@@ -1758,52 +1758,52 @@
           property="schema:accessMode">
          textual
       &lt;/meta>
-      
+
       &lt;meta
           property="schema:accessMode">
          visual
       &lt;/meta>
-      
+
       &lt;meta
           property="schema:accessModeSufficient">
          textual,visual
       &lt;/meta>
-      
+
       &lt;meta
           property="schema:accessModeSufficient">
          textual
       &lt;/meta>
-      
+
       &lt;meta
           property="schema:accessibilityFeature">
          transcript
       &lt;/meta>
-      
+
       &lt;meta
           property="schema:accessibilityFeature">
          MathML
       &lt;/meta>
-      
+
       &lt;meta
           property="schema:accessibilityFeature">
          alternativeText
       &lt;/meta>
-      
+
       &lt;meta
           property="schema:accessibilityHazard">
          flashing
       &lt;/meta>
-      
+
       &lt;meta
           property="schema:accessibilityHazard">
          noMotionSimulationHazard
       &lt;/meta>
-      
+    
       &lt;meta
           property="schema:accessibilityHazard">
          noSoundHazard
       &lt;/meta>
-      
+
       &lt;meta
           property="schema:accessibilitySummary">
          The video in chapter 2 presents a flashing hazard. A transcript is
