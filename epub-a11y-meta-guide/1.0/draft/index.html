@@ -1710,9 +1710,31 @@
     property="schema:accessibilitySummary">
    Although this publication meets the requirements of its accessibility
    claim, the publication contains a motion hazard in chapter 8 page 202., which could cause motion sickness in certain individuals. There is a video showing a rollercoaster going up and down rapidly. Watching the video is interesting, but not essential for understanding the concept of elevation loss and gain.
-
 &lt;/meta></pre>
 				</aside>
+				<aside class="example" title="Accessibility summary for a publication with a conformance nuance and additional details">
+					<pre>&lt;meta
+    property="schema:accessibilitySummary">
+This publication strives to meet accepted Web Content Accessibility Guidelines (WCAG) at the AA level. Subject experts were used to create the ALT text. A comprehensive index is included with links to the top of the page.
+&lt;/meta></pre>
+				</aside>
+
+
+				<aside class="example" title="Accessibility summary for a publication that used AI for the generation of alt text">
+					<pre>&lt;meta
+    property="schema:accessibilitySummary">
+	Ai was used to generate the alt text without review by people familiar with the material.
+&lt;/meta></pre>
+				</aside>
+
+
+				<aside class="example" title="Accessibility summary for a publication where experts used AI to assist in the generation of alt text ">
+					<pre>&lt;meta
+    property="schema:accessibilitySummary">
+	People familiar with the material used AI to assist in the generation of Alt text.
+&lt;/meta></pre>
+				</aside>
+
 
 				<p>Do not repeat this property to provide translations of a summary. EPUB does not define a method for
 					including translations. Putting different <code>xml:lang</code> attributes on properties does not
