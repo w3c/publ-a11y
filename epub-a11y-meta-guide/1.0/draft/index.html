@@ -848,7 +848,7 @@
 						text is one example.</p>
 
 					<p><a href="#specialized-markup-terms">Specialized markup terms</a> identify that content is encoded
-						using domain-specific grammars like MathML and ChemML that can provide users a richer reading
+						using domain-specific grammars like MathML and LaTeX that can provide users a richer reading
 						experience.</p>
 
 					<p><a href="#clarity-terms">Clarity terms</a> identify ways that the content has been enhanced for
@@ -860,6 +860,7 @@
 
 					<p><a href="#i18n-terms">Internationalization terms</a> identify those accessibility characteristics
 						of the content which are required for internationalization.</p>
+                    <p><a href="#deprecated-unsupported-terms">Unsupported terms</a> include those features that are currently not supported in EPUB.</p>
 				</section>
 
 				<section id="structure-navigation-terms">
@@ -1379,58 +1380,619 @@
 
 					</section>
 
-					<section id="metadata-a11y-features-transcript">
-						<h5>Transcript</h5>
+                <section id="metadata-a11y-features-transcript">
+                    <h5>Transcript</h5>
 
-					</section>
-				</section>
+                    <p>Indicates that a transcript of the audio or video content is available.</p>
 
+                    <aside class="example" title="AccessibilityFeature: Transcript">
+                        <pre>
+                            <code>
+                &lt;!--
+                  The aria-label provides a specific name for the audio player.
+                  The aria-details attribute programmatically links the audio player
+                  to the transcript container for assistive technologies. It points to the
+                  ID of the &lt;details&gt; element itself, ensuring the link is always
+                  valid whether the details are open or closed.
+                --&gt;
+                &lt;audio controls 
+                         aria-details="audio-transcript"
+                         aria-label="Audio recording of the interview"&gt;
+                    &lt;source src="interview.mp3" type="audio/mpeg"&gt;
+
+                    &lt;track
+                        label="English"
+                        kind="captions"
+                        srclang="en"
+                        src="captions.vtt"
+                        default&gt;
+
+                    Your browser does not support the audio element.
+                &lt;/audio&gt;
+
+                &lt;!--
+                  The &lt;details&gt; element has the ID that aria-details references.
+                  The &lt;summary&gt; acts as the visible, interactive control for all users.
+                --&gt;
+                &lt;details id="audio-transcript"&gt;
+                    &lt;summary&gt;View Transcript&lt;/summary&gt;
+
+                    &lt;div&gt;
+                        &lt;p&gt;This is a transcript of the audio recording.&lt;/p&gt;
+                        &lt;p&gt;[Interviewer] Welcome to the show.&lt;/p&gt;
+                        &lt;p&gt;[Guest] Thank you for having me.&lt;/p&gt;
+                    &lt;/div&gt;
+                &lt;/details&gt;</code>
+                        </pre>
+
+                        <p>The metadata to include in the package document would be:</p>
+                        <pre>
+                            <code>&lt;meta property="schema:accessibilityFeature"&gt;transcript&lt;/meta&gt;</code>
+                        </pre>
+                    </aside>
+                </section>
+                    
 				<section id="rendering-control-terms">
 					<h4>Rendering Control Terms</h4>
+   
+                <section id="metadata-a11y-features-displayTransformability">
+                    <h5>Display Transformability</h5>
 
-					<section id="metadata-a11y-features-synchronizedAudioText">
-						<h5>Synchronized Audio Text</h5>
+                    <p>Indicates that the visual presentation of the text can be transformed by the user to meet their reading requirements. This includes the ability to resize text, adjust line spacing and margins, change fonts, and modify color contrast (e.g., for a light, dark, or sepia mode).</p>
+                    <p>This feature is characteristic of reflowable EPUBs that are built with semantic HTML and flexible CSS, avoiding practices that lock down the presentation, such as hard-coding sizes in absolute units or embedding text in images.</p>
 
-					</section>
+                    <aside class="example" title="AccessibilityFeature: Display Transformability">
+                        <p>A publication enables transformability by using flexible CSS and, most importantly, by declaring the <strong>reflowable</strong> layout model in the package document.</p>
 
-					<section id="metadata-a11y-features-timingControl">
-						<h5>Timing Control</h5>
+                        <p><strong>Example Package Document (<code>package.opf</code>):</strong></p>
+                        <pre>
+                            <code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+                &lt;package xmlns="http://www.idpf.org/2007/opf" version="3.0" unique-identifier="pub-id"&gt;
+                  &lt;metadata xmlns:dc="http://purl.org/dc/elements/1.1/"&gt;
+                    &lt;dc:title&gt;My Book&lt;/dc:title&gt;
+                    &lt;dc:creator&gt;Author Name&lt;/dc:creator&gt;
+                    &lt;dc:language&gt;en&lt;/dc:language&gt;
+                    &lt;meta property="dcterms:modified"&gt;2025-06-16T10:48:00Z&lt;/meta&gt;
 
-					</section>
-				</section>
+                    &lt;!-- This meta tag is essential for declaring the reflowable layout --&gt;
+                    &lt;meta property="rendition:layout"&gt;reflowable&lt;/meta&gt;
 
-				<section id="specialized-markup-terms">
+                  &lt;/metadata&gt;
+                  &lt;manifest&gt;
+                    &lt;!-- ... manifest items ... --&gt;
+                  &lt;/manifest&gt;
+                  &lt;spine&gt;
+                    &lt;!-- ... spine items ... --&gt;
+                  &lt;/spine&gt;
+                &lt;/package&gt;</code>
+                        </pre>
+
+                        <p><strong>Example Stylesheet (<code>style.css</code>):</strong></p>
+                        <pre>
+                            <code>/* Use CSS Custom Properties for adaptable theming */
+                :root {
+                  --text-color: #121212;
+                  --background-color: #fefefe;
+                  --base-font-size: 1em; /* Base font size on the reading system's default */
+                }
+
+                /* Adapt to the user's preference for a dark theme */
+                @media (prefers-color-scheme: dark) {
+                  :root {
+                    --text-color: #e3e3e3;
+                    --background-color: #121212;
+                  }
+                }
+
+                body {
+                  font-family: sans-serif; /* Use a generic font family that can be overridden */
+                  font-size: var(--base-font-size);
+                  color: var(--text-color);
+                  background-color: var(--background-color);
+                  line-height: 1.5; /* Use a relative unit for line spacing */
+                }</code>
+                        </pre>
+
+                        <p>The metadata to include in the package document to advertise this feature would be:</p>
+                        <pre>
+                            <code>&lt;meta property="schema:accessibilityFeature"&gt;displayTransformability&lt;/meta&gt;</code>
+                        </pre>
+                    </aside>
+                </section>
+
+
+                <section id="metadata-a11y-features-synchronizedAudioText">
+                    <h5>Synchronized Audio Text</h5>
+
+                    <p>Indicates that the EPUB contains synchronized pre-recorded audio narration that matches the text of the document, commonly known as a Media Overlay. The reading system can highlight units of text as they are spoken.</p>
+
+                    <aside class="example" title="AccessibilityFeature: Synchronized Audio Text">
+                        <p>This feature is enabled by associating a Media Overlay file (SMIL) with a content document (XHTML) inside the EPUB Package Document. This association is the trigger for the reading system to provide the synchronized playback and text highlighting.</p>
+
+                        <p><strong>Example Package Document (<code>package.opf</code>):</strong></p>
+                        <pre>
+                            <code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+                &lt;package xmlns="http://www.idpf.org/2007/opf" version="3.0" unique-identifier="pub-id"&gt;
+                  &lt;metadata&gt;
+                    &lt;!-- ... metadata ... --&gt;
+                  &lt;/metadata&gt;
+                  &lt;manifest&gt;
+                    &lt;!-- The XHTML text document --&gt;
+                    &lt;item id="chap1" href="content.xhtml" media-type="application/xhtml+xml" /&gt;
+
+                    &lt;!-- The SMIL file with the timing info --&gt;
+                    &lt;item id="chap1-overlay" href="overlay.smil" media-type="application/smil+xml" media-overlay="chap1" /&gt;
+
+                    &lt;!-- The audio file --&gt;
+                    &lt;item id="narration-audio" href="audio/narration.mp3" media-type="audio/mpeg" /&gt;
+                  &lt;/manifest&gt;
+
+                  &lt;!-- The 'media-overlay' attribute creates the crucial link between the text and the SMIL file --&gt;
+                  &lt;spine&gt;
+                    &lt;itemref idref="chap1" /&gt;
+                  &lt;/spine&gt;
+                &lt;/package&gt;</code>
+                        </pre>
+
+                        <p><strong>Example Content Document (<code>content.xhtml</code>) referenced by the package:</strong></p>
+                        <pre>
+                            <code>&lt;!DOCTYPE html&gt;
+                &lt;html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops"&gt;
+                &lt;head&gt;...&lt;/head&gt;
+                &lt;body&gt;
+                    &lt;p id="p1"&gt;To be, or not to be, that is the question:&lt;/p&gt;
+                    &lt;p id="p2"&gt;Whether 'tis nobler in the mind to suffer&lt;/p&gt;
+                    &lt;p id="p3"&gt;The slings and arrows of outrageous fortune,&lt;/p&gt;
+                &lt;/body&gt;
+                &lt;/html&gt;</code>
+                        </pre>
+
+                        <p><strong>Example Media Overlay (<code>overlay.smil</code>) referenced by the package:</strong></p>
+                        <pre>
+                            <code>&lt;smil xmlns="http://www.w3.org/ns/SMIL" version="3.0"&gt;
+                  &lt;body&gt;
+                    &lt;seq id="seq1"&gt;
+                      &lt;par id="par1"&gt;
+                        &lt;text src="content.xhtml#p1"/&gt;
+                        &lt;audio src="audio/narration.mp3" clipBegin="0s" clipEnd="3.5s"/&gt;
+                      &lt;/par&gt;
+                      &lt;par id="par2"&gt;
+                        &lt;text src="content.xhtml#p2"/&gt;
+                        &lt;audio src="audio/narration.mp3" clipBegin="3.5s" clipEnd="6.2s"/&gt;
+                      &lt;/par&gt;
+                      &lt;par id="par3"&gt;
+                        &lt;text src="content.xhtml#p3"/&gt;
+                        &lt;audio src="audio/narration.mp3" clipBegin="6.2s" clipEnd="9.0s"/&gt;
+                      &lt;/par&gt;
+                    &lt;/seq&gt;
+                  &lt;/body&gt;
+                &lt;/smil&gt;</code>
+                        </pre>
+
+                        <p>The metadata to include in the package document would be:</p>
+                        <pre>
+                            <code>&lt;meta property="schema:accessibilityFeature"&gt;synchronizedAudioText&lt;/meta&gt;</code>
+                        </pre>
+                    </aside>
+                </section>
+                    
+                 <section id="metadata-a11y-features-timingControl">
+                    <h5>Timing Control</h5>
+
+                    <p>Indicates that the user can control the timing of any time-based interaction to meet their needs. This allows the user to turn off, adjust, or extend time limits on activities like tests or forms.</p>
+                     <p>For more details see <a href="https://www.w3.org/TR/WCAG22/#timing-adjustable">Success Criterion 2.2.1 Timing Adjustable</a>.</p>
+                    <p>This feature is critical for users who may require more time to read, comprehend, or respond to content.</p>
+
+                    <aside class="example" title="AccessibilityFeature: Timing Control">
+                        <p>A common example is a timed quiz. To be fully accessible, the quiz must provide straightforward controls for the user to pause the timer or add more time. It should also ensure keyboard focus is clearly visible and that status updates are announced in a non-disruptive manner.</p>
+
+                        <p><strong>Example Content Document (<code>quiz.xhtml</code>):</strong></p>
+                        <pre>
+                            <code>&lt;!DOCTYPE html&gt;
+                &lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;
+                &lt;head&gt;
+                  &lt;title&gt;Timed Quiz&lt;/title&gt;
+                  &lt;link rel="stylesheet" href="quiz.css" type="text/css" /&gt;
+                  &lt;script src="quiz.js" defer&gt;&lt;/script&gt;
+                &lt;/head&gt;
+                &lt;body&gt;
+                  &lt;h1&gt;Quiz Question&lt;/h1&gt;
+                  &lt;p&gt;What is the capital of California?&lt;/p&gt;
+                  &lt;textarea id="quiz-answer" aria-label="Answer"&gt;&lt;/textarea&gt;
+
+                  &lt;div class="timer-controls"&gt;
+                    &lt;div&gt;Time Remaining: &lt;span id="time-display" aria-live="polite"&gt;60&lt;/span&gt; seconds&lt;/div&gt;
+                    &lt;button id="start-btn"&gt;Start Timer&lt;/button&gt;
+                    &lt;button id="add-time-btn"&gt;Add 30 Seconds&lt;/button&gt;
+                    &lt;button id="pause-btn"&gt;Pause Timer&lt;/button&gt;
+                  &lt;/div&gt;
+
+                  &lt;!-- This empty element will be used for important, non-disruptive announcements --&gt;
+                  &lt;div id="quiz-status" role="alert" aria-live="assertive"&gt;&lt;/div&gt;
+
+                &lt;/body&gt;
+                &lt;/html&gt;</code>
+                        </pre>
+
+                        <p><strong>Example Stylesheet (<code>quiz.css</code>) for enhanced visibility:</strong></p>
+                        <pre>
+                            <code>/* Add a clear, high-contrast outline to buttons when focused via keyboard */
+                .timer-controls button:focus-visible {
+                  outline: 3px solid dodgerblue;
+                  outline-offset: 2px;
+                }
+
+                /* Style the status message for visibility */
+                #quiz-status {
+                  margin-top: 1em;
+                  font-weight: bold;
+                  color: #d00; /* A color for alerts */
+                }</code>
+                        </pre>
+
+                        <p><strong>Example JavaScript (<code>quiz.js</code>) with non-disruptive alerts:</strong></p>
+                        <pre>
+                            <code>document.addEventListener('DOMContentLoaded', () =&gt; {
+                  const timeDisplay = document.getElementById('time-display');
+                  const startBtn = document.getElementById('start-btn');
+                  const addTimeBtn = document.getElementById('add-time-btn');
+                  const pauseBtn = document.getElementById('pause-btn');
+                  const statusDiv = document.getElementById('quiz-status');
+
+                  let timeLeft = 60;
+                  let timerId = null;
+
+                  function updateTimer() {
+                    timeLeft--;
+                    timeDisplay.textContent = timeLeft;
+                    if (timeLeft &lt;= 0) {
+                      clearInterval(timerId);
+                      // Announce "Time is up!" in the status div instead of a disruptive alert().
+                      statusDiv.textContent = 'Time is up!';
+                    }
+                  }
+
+                  startBtn.addEventListener('click', () =&gt; {
+                    if (!timerId &amp;&amp; timeLeft &gt; 0) {
+                      timerId = setInterval(updateTimer, 1000);
+                    }
+                  });
+
+                  addTimeBtn.addEventListener('click', () =&gt; {
+                    if (timeLeft > 0) {
+                      timeLeft += 30;
+                      timeDisplay.textContent = timeLeft;
+                    }
+                  });
+
+                  pauseBtn.addEventListener('click', () =&gt; {
+                    if (timerId) {
+                      clearInterval(timerId);
+                      timerId = null;
+                      pauseBtn.textContent = 'Resume Timer';
+                    } else {
+                      if (timeLeft > 0) {
+                        timerId = setInterval(updateTimer, 1000);
+                        pauseBtn.textContent = 'Pause Timer';
+                      }
+                    }
+                  });
+                });</code>
+                        </pre>
+
+                        <p>The metadata to include in the package document would be:</p>
+                        <pre>
+                            <code>&lt;meta property="schema:accessibilityFeature"&gt;timingControl&lt;/meta&gt;</code>
+                        </pre>
+                    </aside>
+                </section> 
+
+                <section id="metadata-a11y-features-unlocked">
+                    <h5>Unlocked</h5>
+
+                    <p>No digital rights management or other content restriction protocols have been applied to the resource.</p>
+                    <p>The absence of DRM is a critical accessibility feature as it ensures that users can access the content with their preferred assistive technologies, which might otherwise be blocked by encryption. It allows for personal use and transformations of the content that may be necessary for a user to perceive and understand it (e.g., using it with specialized text-to-speech software).</p>
+
+                    <aside class="example" title="AccessibilityFeature: unlocked">
+                        <p>This accessibility feature is not represented by a specific code structure within the publication's content, but rather by the absence of any encryption or content restriction technology being applied to the EPUB container.</p>
+                        <p>A publication that is "unlocked" does not contain an <code>encryption.xml</code> file. The <code>container.xml</code> file, located in the <code>META-INF</code> directory, points to the package document but includes no references to encryption information.</p>
+
+                        <p><strong>Example of a standard <code>container.xml</code> for a DRM-free EPUB:</strong></p>
+                        <pre>
+                            <code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+                &lt;container version="1.0" xmlns="urn:oasis:names:tc:opendocument:xmlns:container"&gt;
+                  &lt;rootfiles&gt;
+                    &lt;!-- 
+                      This entry points to the package document. 
+                      The absence of a second rootfile entry for an encryption.xml file 
+                      is indicative that the book is not encrypted.
+                    --&gt;
+                    &lt;rootfile full-path="EPUB/package.opf"
+                              media-type="application/oebps-package+xml"/&gt;
+                  &lt;/rootfiles&gt;
+                &lt;/container&gt;</code>
+                        </pre>
+
+                        <p>The metadata to include in the package document to advertise this feature would be:</p>
+                        <pre>
+                            <code>&lt;meta property="schema:accessibilityFeature"&gt;unlocked&lt;/meta&gt;</code>
+                        </pre>
+                    </aside>
+                </section>
+                    </section>    
+                <section id="specialized-markup-terms">
 					<h4>Specialized Markup Terms</h4>
 
-					<section id="metadata-a11y-features-ChemML">
-						<h5>Chemistry Represented using ChemML</h5>
+                <section id="metadata-a11y-features-latex-chemistry">
+                    <h5>Chemistry Represented using LaTeX</h5>
 
-					</section>
+                    <p>Identifies that the LaTeX typesetting system is used to encode chemical equations and formulas.</p>
+                    <p>In this method, the raw LaTeX source is embedded directly in the content document. A JavaScript-based rendering engine, such as MathJax, should then be used to convert this source into a visually and accessibly rendered formula.</p>
 
-					<section id="metadata-a11y-features-latex-chemistry">
-						<h5>Chemistry Represented using LaTeX</h5>
+                    <aside class="example" title="AccessibilityFeature: latex-chemistry - Raw LaTeX Data in HTML">
+                        <p>The core of this method is the raw LaTeX source code embedded in the text. The example below shows the LaTeX for the formula for water, using the <code>\ce{...}</code> macro from the mhchem package.</p>
 
-					</section>
+                        <pre>
+                            <code>&lt;p&gt;The chemical formula for water is \(\ce{H2O}\).&lt;/p&gt;</code>
+                        </pre>
 
-					<section id="metadata-a11y-features-MathML-chemistry">
-						<h5>Chemistry Represented using MathML</h5>
+                        <div class="note">
+                           <p>The example above is incomplete on its own. Without a rendering engine, it would only display the literal text "\(\ce{H2O}\)" to the user. To be functional, a library must be included to process the LaTeX.</p>                     
+                        </div>
 
-					</section>
+                        
+                        <p>The metadata to include in the package document to advertise this feature would be:</p>
+                        <pre>
+                            <code>&lt;meta property="schema:accessibilityFeature"&gt;MathML-chemistry&lt;/meta&gt;</code>
+                        </pre>
+                   </aside>
+                   
+                    <aside class="example" title="AccessibilityFeature: latex-chemistry - Complete, Functional Example with a Rendering Library">
+                        <p>The following self-contained example shows how to include the MathJax library to find and render the raw LaTeX source code from the previous step.</p>
+                        <pre>
+                            <code>&lt;!DOCTYPE html&gt;
+                &lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;
+                &lt;head&gt;
+                  &lt;title&gt;Chemistry with MathJax&lt;/title&gt;
 
-					<section id="metadata-a11y-features-latex">
-						<h5>Math Represented using LaTeX</h5>
+                  &lt;!-- Configure MathJax to load the 'mhchem' package for chemistry --&gt;
+                  &lt;script&gt;
+                    MathJax = {
+                      tex: {
+                        packages: {'[+]': ['mhchem']}
+                      }
+                    };
+                  &lt;/script&gt;
 
-					</section>
+                  &lt;!-- Load the MathJax library --&gt;
+                  &lt;script id="MathJax-script" async
+                          src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"&gt;
+                  &lt;/script&gt;
+                &lt;/head&gt;
+                &lt;body&gt;
+                  &lt;p&gt;The chemical formula for water is \(\ce{H2O}\).&lt;/p&gt;
+                &lt;/body&gt;
+                &lt;/html&gt;</code>
+                        </pre>
 
-					<section id="metadata-a11y-features-MathML">
-						<h5>Math Represented using MathML</h5>
+                        <p>The metadata to include in the package document to advertise this feature would be:</p>
+                        <pre>
+                            <code>&lt;meta property="schema:accessibilityFeature"&gt;latex-chemistry&lt;/meta&gt;</code>
+                        </pre>
+                    </aside>
+                </section>
 
-					</section>
+				<section id="metadata-a11y-features-MathML-chemistry">
+                    <h5>Chemistry represented using MathML</h5>
 
-					<section id="metadata-a11y-features-ttsMarkup">
-						<h5>Text-To-Speech Markup</h5>
+                    <p>Identifies that the Mathematical Markup Language (MathML) is used to encode chemical equations and formulas. MathML provides a structured, semantic representation that can be rendered directly by modern browsers and assistive technologies.</p>
+                    <p>This method provides a robust, accessible alternative to images, as the notation can be resized, searched, copied, and interpreted correctly by screen readers.</p>
 
-					</section>
+                    <aside class="example" title="AccessibilityFeature: MathML-chemistry">
+                        <p>MathML uses markup to describe the structure of a formula. The following example shows the chemical formula for water (H₂O) embedded directly in the content document. Note the required <code>xmlns="http://www.w3.org/1998/Math/MathML"</code> namespace on the root <code>&lt;math&gt;</code> element.</p>
+
+                        <p><strong>Example of H₂O represented using MathML:</strong></p>
+                        <pre>
+                            <code>&lt;!DOCTYPE html&gt;
+                &lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;
+                &lt;head&gt;
+                  &lt;title&gt;Chemistry with MathML&lt;/title&gt;
+                &lt;/head&gt;
+                &lt;body&gt;
+                  &lt;p&gt;The chemical formula for water is shown below:&lt;/p&gt;
+
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                       &lt;msub&gt;
+                        &lt;mi mathvariant="normal"&gt;H&lt;/mi&gt;
+                        &lt;mn&gt;2&lt;/mn&gt;
+                      &lt;/msub&gt;
+                      &lt;mi mathvariant="normal"&gt;O&lt;/mi&gt;
+                   &lt;/math&gt;
+
+                &lt;/body&gt;
+                &lt;/html&gt;</code>
+                        </pre>
+
+                        <div class="note">
+                            <p>Future-facing (MathML 4): The upcoming MathML 4 specification, currently in development by the W3C as of June 2025, introduces an <code>intent</code> attribute to explicitly declare the semantic meaning of a formula or equation. This will allow authors to unambiguously state that a formula represents chemistry, greatly improving accessibility and machine-readability. An example might look like this:</p>
+                            <pre>
+                                <code>&lt;math intent=":chemical-formula" xmlns="http://www.w3.org/1998/Math/MathML">
+                                    &lt;msub>
+                                        &lt;mi mathvariant="normal">H&lt;/mi>
+                                        &lt;mn>2&lt;/mn>
+                                    &lt;/msub>
+                                    &lt;mi mathvariant="normal">O&lt;/mi>
+                                &lt;/math></code>
+                            </pre>
+                        </div>
+
+
+                        <p>The metadata to include in the package document to advertise this feature would be:</p>
+                        <pre>
+                            <code>&lt;meta property="schema:accessibilityFeature"&gt;MathML-chemistry&lt;/meta&gt;</code>
+                        </pre>
+                    </aside>
+                </section>
+
+				<section id="metadata-a11y-features-latex">
+                    <h5>Math represented using LaTeX</h5>
+
+                    <p>Identifies that the LaTeX typesetting system is used to encode mathematical or other scientific notations.</p>
+                    <p>In this method, the raw LaTeX source is embedded directly in the content document. A JavaScript-based rendering engine, such as MathJax, should then be used to convert this source into a visually and accessibly rendered formula.</p>
+
+                    <aside class="example" title="AccessibilityFeature: LaTex - Raw data in HTML">
+                        <p>The core of this method is the raw LaTeX source code embedded in the text. The example below shows the LaTeX for a common mathematical formula.</p>
+
+                        <pre>
+                            <code>&lt;p&gt;The quadratic formula is \[x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}\].&lt;/p&gt;</code>
+                        </pre>
+
+                        <div class="note">
+                            <p>The example above is incomplete on its own. Without a rendering engine, it would only display the literal text "\[x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}\]" to the user. To be functional, a library must be included to process it.</p>
+                        </div>
+
+                        <p>The metadata to include in the package document would be:</p>
+                        <pre>
+                            <code>&lt;meta property="schema:accessibilityFeature"&gt;latex&lt;/meta&gt;</code>
+                        </pre>
+                    </aside>
+
+                    <aside class="example" title="AccessibilityFeature: LaTeX - Complete, Functional Example with a Rendering Library">
+                        <p>The following self-contained example shows how to include the MathJax library to find and render the raw LaTeX source. Standard LaTeX mathematical commands do not require any special configuration.</p>
+                        <pre>
+                            <code>&lt;!DOCTYPE html&gt;
+                &lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;
+                &lt;head&gt;
+                  &lt;title&gt;LaTeX with MathJax&lt;/title&gt;
+
+                  &lt;!-- Load the MathJax library --&gt;
+                  &lt;script id="MathJax-script" async
+                          src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"&gt;
+                  &lt;/script&gt;
+                &lt;/head&gt;
+                &lt;body&gt;
+                  &lt;p&gt;The quadratic formula is \[x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}\].&lt;/p&gt;
+                &lt;/body&gt;
+                &lt;/html&gt;</code>
+                        </pre>
+
+                        <p>The metadata to include in the package document would be:</p>
+                        <pre>
+                            <code>&lt;meta property="schema:accessibilityFeature"&gt;latex&lt;/meta&gt;</code>
+                        </pre>
+                    </aside>
+                </section>
+
+				<section id="metadata-a11y-features-MathML">
+					<h5>Math Represented using MathML</h5>
+
+                    <p>Identifies that the Mathematical Markup Language (MathML) is used to encode mathematical equations and formulas. MathML provides a structured, semantic representation that can be rendered directly by modern browsers and assistive technologies.</p>
+                    <p>This method provides a robust, accessible alternative to images, as the notation can be resized, searched, copied, and interpreted correctly by screen readers for proper speech output or even braille display.</p>
+
+                    <aside class="example" title="AccessibilityFeature: MathML">
+                        <p>MathML uses markup to describe the structure of a formula, which modern reading systems can render directly without external libraries. Note the required <code>xmlns="http://www.w3.org/1998/Math/MathML"</code> namespace on the root <code>&lt;math&gt;</code> element.</p>
+
+                        <p><strong>Example of the quadratic formula represented using MathML:</strong></p>
+                        <pre>
+                            <code>&lt;!DOCTYPE html&gt;
+                &lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;
+                &lt;head&gt;
+                  &lt;title&gt;Math with MathML&lt;/title&gt;
+                &lt;/head&gt;
+                &lt;body&gt;
+                  &lt;p&gt;The quadratic formula is shown below:&lt;/p&gt;
+
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                    &lt;mi&gt;x&lt;/mi&gt;
+                    &lt;mo&gt;=&lt;/mo&gt;
+                    &lt;mfrac&gt;
+                      &lt;mrow&gt;
+                        &lt;mrow&gt;
+                          &lt;mo&gt;-&lt;/mo&gt;
+                          &lt;mi&gt;b&lt;/mi&gt;
+                        &lt;/mrow&gt;
+                        &lt;mo&gt;&amp;PlusMinus;&lt;/mo&gt;
+                        &lt;msqrt&gt;
+                          &lt;mrow&gt;
+                            &lt;msup&gt;
+                              &lt;mi&gt;b&lt;/mi&gt;
+                              &lt;mn&gt;2&lt;/mn&gt;
+                            &lt;/msup&gt;
+                            &lt;mo&gt;-&lt;/mo&gt;
+                            &lt;mrow&gt;
+                              &lt;mn&gt;4&lt;/mn&gt;
+                              &lt;mo&gt;&amp;InvisibleTimes;&lt;/mo&gt;
+                              &lt;mi&gt;a&lt;/mi&gt;
+                              &lt;mo&gt;&amp;InvisibleTimes;&lt;/mo&gt;
+                              &lt;mi&gt;c&lt;/mi&gt;
+                            &lt;/mrow&gt;
+                          &lt;/mrow&gt;
+                        &lt;/msqrt&gt;
+                      &lt;/mrow&gt;
+                      &lt;mrow&gt;
+                        &lt;mn&gt;2&lt;/mn&gt;
+                        &lt;mo&gt;&amp;InvisibleTimes;&lt;/mo&gt;
+                        &lt;mi&gt;a&lt;/mi&gt;
+                      &lt;/mrow&gt;
+                    &lt;/mfrac&gt;
+                  &lt;/math&gt;
+
+                &lt;/body&gt;
+                &lt;/html&gt;</code>
+                        </pre>
+
+                        <p>The metadata to include in the package document to advertise this feature would be:</p>
+                        <pre>
+                            <code>&lt;meta property="schema:accessibilityFeature"&gt;MathML&lt;/meta&gt;</code>
+                        </pre>
+                    </aside>
+                </section>
+
+				<section id="metadata-a11y-features-ttsMarkup">
+				    <h5>Text-To-Speech Markup</h5>
+
+                    <p>One or more of [SSML], [Pronunciation-Lexicon], and [CSS3-Speech] properties has been used to enhance text-to-speech playback quality.</p>
+                    <p>These technologies allow an author to resolve ambiguities and improve the clarity of synthesized speech by correcting mispronunciations of names or jargon, indicating emphasis, and controlling the pacing and prosody of the narration.</p>
+
+                    <aside class="example" title="AccessibilityFeature: ttsMarkup">
+                        <p>TTS Markup can be applied using inline SSML attributes in the XHTML or through CSS properties from the CSS3 Speech Module. The following example shows both methods being used to enhance a single sentence.</p>
+
+                        <p><strong>Example Content Document (<code>content.xhtml</code>):</strong></p>
+                        <p>The <code>ssml:say-as</code> attribute instructs the TTS engine to spell out the acronym "W3C". Note the required SSML namespace declaration on the <code>&lt;html&gt;</code> element.</p>
+                        <pre>
+                            <code>&lt;!DOCTYPE html&gt;
+                &lt;html xmlns="http://www.w3.org/1999/xhtml"
+                      xmlns:ssml="http://www.w3.org/2001/10/synthesis"&gt;
+                &lt;head&gt;
+                  &lt;title&gt;TTS Markup Example&lt;/title&gt;
+                  &lt;link rel="stylesheet" href="style.css" type="text/css" /&gt;
+                &lt;/head&gt;
+                &lt;body&gt;
+                  &lt;p&gt;The new standard is from the &lt;span ssml:say-as="spell-out"&gt;W3C&lt;/span&gt;. 
+                     It is &lt;span class="emphasis"&gt;very&lt;/span&gt; important.&lt;/p&gt;
+                &lt;/body&gt;
+                &lt;/html&gt;</code>
+                        </pre>
+
+                        <p><strong>Example Stylesheet (<code>style.css</code>):</strong></p>
+                        <p>The CSS3 Speech Module can be used to control how the text is spoken. Here, it adds emphasis to the targeted word.</p>
+                        <pre>
+                            <code>/* Use the CSS3 Speech Module to add emphasis */
+                .emphasis {
+                  /* A higher pitch can indicate emphasis to the listener */
+                  pitch: high;
+
+                  /* Other properties like voice-stress could also be used */
+                  /* voice-stress: strong; */
+                }</code>
+                        </pre>
+
+                        <p>The metadata to include in the package document to advertise this feature would be:</p>
+                        <pre>
+                            <code>&lt;meta property="schema:accessibilityFeature"&gt;ttsMarkup&lt;/meta&gt;</code>
+                        </pre>
+                    </aside>
+                </section>
 				</section>
 
 				<section id="clarity-terms">
@@ -1521,8 +2083,72 @@
 
 					<p>The unknown value must not be set with any other feature value.</p>
 				</section>
-			</section>
-		</section>
+                <section id="deprecated-unsupported-terms">
+					<h4>Deprecated and Unsupported Features</h4>
+                    
+                    <section id="metadata-a11y-features-unsupported-annotations">
+                        <h5>annotations</h5>
+                        <p><b>Definition:</b> The resource includes annotations from the author, instructor and/or others.</p>
+
+                        <p><b>Status:</b> Deprecated</p>
+                        
+                        <p><b>Reasoning:</b> The use of the <code>annotations</code> value is now deprecated due to the general nature of annotations in published works. When authors or publishers add annotations to a work, they provide information for all readers; they are not used as a means of enhancing otherwise inaccessible content.</p>
+                    </section>  
+                    
+                    <section id="metadata-a11y-features-unsupported-bookmarks">
+                        <h5>bookmarks</h5>
+                        <p><b>Definition:</b> The work includes bookmarks to facilitate navigation to key points.</p>
+
+                        <p><b>Status:</b> Deprecated</p>
+                        
+                        <p><b>Reasoning:</b> The use of the <code>bookmarks</code> value is now deprecated due to its ambiguity. Reading systems typically provide bookmark support not the EPUB itself.</p>
+                    </section>
+
+                    
+                     <section id="metadata-a11y-features-unsupported-captions">
+                        <h5>captions</h5>
+                        <p><b>Definition:</b> Indicates that synchronized captions are available for audio and video content.</p>
+
+                        <p><b>Status:</b> Deprecated</p>
+                        
+                        <p><b>Reasoning:</b> The use of the <code>captions</code> value is now deprecated. Authors should use the more specific <code><a href="#metadata-a11y-features-closedCaptions">closedCaptions</a></code> or <code><a href="#metadata-a11y-features-openCaptions">openCaptions</a></code> values, as appropriate.</p>
+                    </section>                       
+                    
+                    <section id="metadata-a11y-features-unsupported-ChemML">
+                        <h5>ChemML</h5>
+             
+                        <p><b>Definition:</b> Indicates that chemical notations, such as molecular formulas and reaction diagrams, are represented in a structured format.</p>
+
+                        <p><b>Status:</b> Unsupported. Although the metadata value is <code>ChemML</code>, the underlying format it actually identifies is the Chemical Markup Language (CML).</p>
+
+                        <p><b>Reasoning:</b> There is no native support for CML in HTML. Because EPUB content is built on web standards, the vast majority of e-reader devices cannot render CML visually, making this feature unreliable without a fallback image. The name also causes significant confusion with the unrelated 'ChemML' Python library for machine learning. Here is a link to the <a href="https://www.xml-cml.org/">CML (Chemical Markup Language)</a> specification.</p>
+                     </section>
+
+                     <section id="metadata-a11y-features-unsupported-printpagenumbers">
+                        <h5>printPageNumbers</h5>
+                        <p><b>Definition:</b> The resource includes print page numbers.</p>
+
+                        <p><b>Status:</b> Deprecated</p>
+                        
+                        <p><b>Reasoning:</b> The metadata term <code>printPageNumbers</code> value has been replaced by <code><a href="#metadata-a11y-features-pageBreakMarkers">pageBreakMarkers</a></code>.</p>
+                    </section>                     
+                    
+                    <section id="metadata-a11y-features-unsupported-taggedPDF">
+                        <h5>taggedPDF</h5>
+
+                        <p><b>Definition:</b> Indicates that a PDF document's contents have been tagged to create a logical structure, permitting access by assistive technologies.</p>
+
+                        <p><b>Status:</b> Unsupported. This metadata property is exclusively for describing PDF documents and is not relevant in the context of an EPUB file.</p>
+
+                        <p><b>Reasoning:</b> EPUB and PDF are fundamentally different technologies. An EPUB's accessibility is achieved through its use of semantic HTML and ARIA, while a PDF's accessibility relies on its internal tagging structure. An EPUB's metadata must describe the features of the EPUB itself. Applying a PDF-specific property like <code>taggedPDF</code> is inappropriate and would be ignored by reading systems. While an EPUB might link to an external PDF, the metadata for the EPUB should not describe the features of that external file.</p>
+                        
+                    </section>
+                     
+                    
+                </section>
+		  </section>
+        </section>
+        
 		<section id="accessibilityHazard">
 			<h2>Accessibility hazards</h2>
 
@@ -1651,6 +2277,7 @@
 				</section>
 			</section>
 		</section>
+        
 		<section id="accessibilitySummary">
 			<h2>Accessibility summary</h2>
 
@@ -1741,6 +2368,7 @@ This publication strives to meet accepted Web Content Accessibility Guidelines (
 					indicate a translation and could lead to wrong summary being rendered to users.</p>
 			</section>
 		</section>
+        
 		<section id="accessibilityAPI">
 			<h2>Accessibility APIs</h2>
 
@@ -1750,6 +2378,7 @@ This publication strives to meet accepted Web Content Accessibility Guidelines (
 				interaction between <a href="https://www.w3.org/TR/epub/#dfn-epub-reading-system">reading systems</a>
 				and the underlying platform APIs.</p>
 		</section>
+        
 		<section id="accessibilityControl">
 			<h2>Accessible Control</h2>
 
@@ -1762,6 +2391,7 @@ This publication strives to meet accepted Web Content Accessibility Guidelines (
 			<p>Meeting the requirements of [[wcag2]] will mitigate most known issues with the content and is sufficient
 				for authoring purposes.</p>
 		</section>
+        
 		<section id="metadata-examples" class="informative">
 			<h2>Examples</h2>
 
