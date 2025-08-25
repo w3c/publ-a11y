@@ -632,7 +632,16 @@
 					</li>
 					<li>
 						<span><b>IF</b> <var>certification_date</var>:</span>
-						<span><b>THEN</b> display <code id="conformance-details-certification-info">"The publication was certified on {certification_date}"</code> replacing <code>"{certification_date}"</code> with <var>certification_date</var> formatted based on the language of localization.</span>
+						<span><b>THEN</b></span>
+						<ol class="condition">
+							<li>
+								format <var>certification_date</var> based on the language of localization
+								<div class="note">
+									<p>The certification date in ONIX is provided as a string value and should be parsed and formatted according to the display locale's conventions. For example, if the certification date is "20240315", this may be displayed as "March 15, 2024" in US English, "15 marzo 2024" in Italian, or "15. März 2024" in German, depending on the localization language and regional settings.</p>
+								</div>
+							</li>
+							<li>display <code id="conformance-details-certification-info">"The publication was certified on {certification_date}"</code> replacing <code>"{certification_date}"</code> with <var>certification_date</var>.</li>
+						</ol>
 					</li>
 					<li>
 						<span><b>IF</b> <var>certifier_report</var>:</span>
