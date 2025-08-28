@@ -554,23 +554,15 @@
 					</li>
 					<li>
 						<span><b>ELSE</b>:</span>
-						<span><b>THEN</b> display <code id="conformance-no">"No information is available"</code>.</span>
+						<span>display <code id="conformance-no">"No information is available"</code>.</span>
 					</li>
 					<li>
 						<span><b>IF</b> <var>certifier</var> is <b>NOT</b> empty:</span>
-						<span><b>THEN</b></span>
-						<ol class="display">
-							<li>display <code id="conformance-certifier">"The publication was certified by "</code></li>
-							<li>display <var>certifier</var>.</li>
-						</ol>
+						<span><b>THEN</b> display <code id="conformance-certifier">"The publication was certified by {certifier}"</code> replacing <code>"{certifier}"</code> with <var>certifier</var>.</span>
 					</li>
 					<li>
 						<span><b>IF</b> <var>certifier_credentials</var> is <b>NOT</b> empty:</span>
-						<span><b>THEN</b></span>
-						<ol class="display">
-							<li>display <code id="conformance-certifier-credentials">"The certifier's credential is"</code></li>
-							<li>display <var>certifier_credentials</var> as link <b>IF</b> <var>certifier_credentials</var> is an URL.</li>
-						</ol>
+						<span><b>THEN</b> display <code id="conformance-certifier-credentials">"The certifier's credential is {certifier_credentials}"</code> replacing <code>"{certifier_credentials}"</code> with <var>certifier_credentials</var>.</span>
 						<div class="note">
 							<p>If the certifier metadata value is a text-based badge or a credential, then only the text is displayed. If the badge or credential is expressed as a URL, then the URL can be made a link for users to access. The display of image logos or badges is typically arranged between the certifier and the distributor. The distributor would be responsible for identifying the certifier's text or link credential and replacing it with the image or linked image.</p>
 						</div>
@@ -583,47 +575,70 @@
 								in the guidelines for more information on how to present these strings.</p>
 						</div>
 						
-						<span><b>IF</b> <var>epub_accessibility_10</var> <b>OR</b> <var>epub_accessibility_11</var> <b>OR</b> <var>wcag_20</var> <b>OR</b> <var>wcag_21</var> <b>OR</b> <var>wcag_22</var> <b>OR</b> <var>level_aaa</var> <b>OR</b> <var>level_aa</var> <b>OR</b> <var>level_a</var>:</span>
-						<span><b>THEN</b> display <code id="conformance-details-claim">"This publication claims to meet"</code>.</span>
-					</li>
-					<li>
-						<span><b>IF</b> <var>epub_accessibility_10</var>:</span>
-						<span><b>THEN</b> display <code id="conformance-details-epub-accessibility-1-0">" EPUB Accessibility 1.0"</code>.</span>
-					</li>
-					<li>
-						<span><b>ELSE IF</b> <var>epub_accessibility_11</var>:</span>
-						<span><b>THEN</b> display <code id="conformance-details-epub-accessibility-1-1">" EPUB Accessibility 1.1"</code>.</span>
-					</li>
-					<li>
-						<span><b>IF</b> <var>wcag_22</var>:</span>
-						<span><b>THEN</b> display <code id="conformance-details-wcag-2-2">" WCAG 2.2"</code>.</span>
-					</li>
-					<li>
-						<span><b>ELSE IF</b> <var>wcag_21</var>:</span>
-						<span><b>THEN</b> display <code id="conformance-details-wcag-2-1">" WCAG 2.1"</code>.</span>
-					</li>
-					<li>
-						<span><b>ELSE IF</b> <var>wcag_20</var>:</span>
-						<span><b>THEN</b> display <code id="conformance-details-wcag-2-0">" WCAG 2.0"</code>.</span>
-					</li>
-					<li>
-						<span><b>IF</b> <var>level_aaa</var>:</span>
-						<span><b>THEN</b> display <code id="conformance-details-level-aaa">" Level AAA"</code>.</span>
-					</li>
-					<li>
-						<span><b>ELSE IF</b> <var>level_aa</var>:</span>
-						<span><b>THEN</b> display <code id="conformance-details-level-aa">" Level AA"</code>.</span>
-					</li>
-					<li>
-						<span><b>ELSE IF</b> <var>level_a</var>:</span>
-						<span><b>THEN</b> display <code id="conformance-details-level-a">" Level A"</code>.</span>
+						<span><b>IF</b> (<var>epub_accessibility_10</var> <b>OR</b> <var>epub_accessibility_11</var>) <b>AND</b> (<var>wcag_20</var> <b>OR</b> <var>wcag_21</var> <b>OR</b> <var>wcag_22</var>) <b>AND</b> (<var>level_aaa</var> <b>OR</b> <var>level_aa</var> <b>OR</b> <var>level_a</var>):</span>
+						<span><b>THEN</b>:</span>
+						<ol class="condition">
+							<li>
+								<b>LET</b> <var>conformance_string</var> be <code id="conformance-details-claim">"This publication claims to meet {epub_accessibility} {wcag_version} {wcag_level}"</code>
+							</li>
+							<li>
+								<span><b>IF</b> <var>epub_accessibility_11</var>:</span>
+								<span><b>THEN</b> replace <code>"{epub_accessibility}"</code> with <code id="conformance-details-epub-accessibility-1-1">"EPUB Accessibility 1.1"</code> in <var>conformance_string</var></span>
+							</li>
+							<li>
+								<span><b>ELSE IF</b> <var>epub_accessibility_10</var>:</span>
+								<span><b>THEN</b> replace <code>"{epub_accessibility}"</code> with <code id="conformance-details-epub-accessibility-1-0">"EPUB Accessibility 1.0"</code> in <var>conformance_string</var></span>
+							</li>
+							<li>
+								<span><b>ELSE</b>:</span>
+								<span><b>THEN</b> replace <code>"{epub_accessibility}"</code> with <code>""</code> in <var>conformance_string</var></span>
+							</li>
+							<li>
+								<span><b>IF</b> <var>wcag_22</var>:</span>
+								<span><b>THEN</b> replace <code>"{wcag_version}"</code> with <code id="conformance-details-wcag-2-2">"WCAG 2.2"</code> in <var>conformance_string</var></span>
+							</li>
+							<li>
+								<span><b>ELSE IF</b> <var>wcag_21</var>:</span>
+								<span><b>THEN</b> replace <code>"{wcag_version}"</code> with <code id="conformance-details-wcag-2-1">"WCAG 2.1"</code> in <var>conformance_string</var></span>
+							</li>
+							<li>
+								<span><b>ELSE IF</b> <var>wcag_20</var>:</span>
+								<span><b>THEN</b> replace <code>"{wcag_version}"</code> with <code id="conformance-details-wcag-2-0">"WCAG 2.0"</code> in <var>conformance_string</var></span>
+							</li>
+							<li>
+								<span><b>ELSE</b>:</span>
+								<span><b>THEN</b> replace <code>"{wcag_version}"</code> with <code>""</code> in <var>conformance_string</var></span>
+							</li>
+							<li>
+								<span><b>IF</b> <var>level_aaa</var>:</span>
+								<span><b>THEN</b> replace <code>"{wcag_level}"</code> with <code id="conformance-details-level-aaa">"Level AAA"</code> in <var>conformance_string</var></span>
+							</li>
+							<li>
+								<span><b>ELSE IF</b> <var>level_aa</var>:</span>
+								<span><b>THEN</b> replace <code>"{wcag_level}"</code> with <code id="conformance-details-level-aa">"Level AA"</code> in <var>conformance_string</var></span>
+							</li>
+							<li>
+								<span><b>ELSE IF</b> <var>level_a</var>:</span>
+								<span><b>THEN</b> replace <code>"{wcag_level}"</code> with <code id="conformance-details-level-a">"Level A"</code> in <var>conformance_string</var></span>
+							</li>
+							<li>
+								<span><b>ELSE</b>:</span>
+								<span><b>THEN</b> replace <code>"{wcag_version}"</code> with <code>""</code> in <var>conformance_string</var></span>
+							</li>
+							<li>display <var>conformance_string</var>.</li>
+						</ol>
 					</li>
 					<li>
 						<span><b>IF</b> <var>certification_date</var>:</span>
 						<span><b>THEN</b></span>
-						<ol class="display">
-							<li>display <code id="conformance-details-certification-info">"The publication was certified on"</code></li>
-							<li>display <var>certification_date</var>.</li>
+						<ol class="condition">
+							<li>
+								format <var>certification_date</var> based on the language of localization
+								<div class="note">
+									<p>The certification date in ONIX is provided as a string value and should be parsed and formatted according to the display locale's conventions. For example, if the certification date is "20240315", this may be displayed as "March 15, 2024" in US English, "15 marzo 2024" in Italian, or "15. März 2024" in German, depending on the localization language and regional settings.</p>
+								</div>
+							</li>
+							<li>display <code id="conformance-details-certification-info">"The publication was certified on {certification_date}"</code> replacing <code>"{certification_date}"</code> with <var>certification_date</var>.</li>
 						</ol>
 					</li>
 					<li>
@@ -1056,11 +1071,7 @@
 					</li>
 					<li>
 						<span><b>IF</b> <var>publisher_contact_for_accessibility</var> is <b>NOT</b> empty:</span>
-						<span><b>THEN</b></span>
-						<ol class="display">
-							<li>display <code id="accessibility-summary-publisher-contact">"For more information about the accessibility of this product, please contact the publisher: "</code></li>
-							<li>display <var>publisher_contact_for_accessibility</var> as link <b>IF</b> <var>publisher_contact_for_accessibility</var> is an email address.</li>
-						</ol>
+						<span><b>THEN</b> display <code id="accessibility-summary-publisher-contact">"For more information about the accessibility of this product, please contact the publisher: {publisher_contact_for_accessibility}"</code> replacing <code>"{publisher_contact_for_accessibility}"</code> with <var>publisher_contact_for_accessibility</var> as a mailto link.</span>
 					</li>
 				</ol>
 			</section>
