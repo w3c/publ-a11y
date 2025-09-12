@@ -567,30 +567,38 @@
 
 					<li>
 						<span><b>IF</b> <var>conformance</var> is <b>NOT</b> empty:</span>
-						<span><b>THEN LET</b> <var>epub_version</var> = '1.1', and</span> <span><b>LET</b> <var>wcag_version</var> = replace(<var>conformance</var>, 'EPUB Accessibility 1\.1 - WCAG (2\.[0-2]) Level [A]+', '$1'), and</span>
-						<span><b>LET</b> <var>wcag_level</var> = replace(<var>conformance</var>, 'EPUB Accessibility 1\.1 - WCAG 2\.[0-2] Level ', '').</span>
+                        <div>
+                            <span><b>THEN LET</b> <var>epub_version</var> = '1.1', and</span> <span><b>LET</b> <var>wcag_version</var> = replace(<var>conformance</var>, 'EPUB Accessibility 1\.1 - WCAG (2\.[0-2]) Level [A]+', '$1'), and</span>
+                            <span><b>LET</b> <var>wcag_level</var> = replace(<var>conformance</var>, 'EPUB Accessibility 1\.1 - WCAG 2\.[0-2] Level ', '').</span>
+                        </div>
 					</li>
 
 					<!-- EPUB Accessibility 1.0 WCAG 2.0 (A/AA/AAA) -->
 					<li>
 						<span><b>ELSE IF</b> <var>epub10_wcag20aaa</var>:</span>
-						<span><b>THEN LET</b> <var>epub_version</var> = '1.0', and</span>
-						<span><b>LET</b> <var>wcag_version</var> = '2.0', and</span>
-						<span><b>LET</b> <var>wcag_level</var> = 'AAA'.</span>
+                        <div>
+				            <span><b>THEN LET</b> <var>epub_version</var> = '1.0', and</span>
+                            <span><b>LET</b> <var>wcag_version</var> = '2.0', and</span>
+						  <span><b>LET</b> <var>wcag_level</var> = 'AAA'.</span>
+                        </div>
 					</li>
 
 					<li>
 						<span><b>ELSE IF</b> <var>epub10_wcag20aa</var>:</span>
-						<span><b>THEN LET</b> <var>epub_version</var> = '1.0', and</span>
-						<span><b>LET</b> <var>wcag_version</var> = '2.0', and</span>
-						<span><b>LET</b> <var>wcag_level</var> = 'AA'.</span>
+                        <div>
+				            <span><b>THEN LET</b> <var>epub_version</var> = '1.0', and</span>
+				            <span><b>LET</b> <var>wcag_version</var> = '2.0', and</span>
+				            <span><b>LET</b> <var>wcag_level</var> = 'AA'.</span>
+                        </div>
 					</li>
 
 					<li>
 						<span><b>ELSE IF</b> <var>epub10_wcag20a</var>:</span>
-						<span><b>THEN LET</b> <var>epub_version</var> = '1.0', and</span>
-						<span><b>LET</b> <var>wcag_version</var> = '2.0', and</span>
-						<span><b>LET</b> <var>wcag_level</var> = 'A'.</span>
+                        <div>
+				            <span><b>THEN LET</b> <var>epub_version</var> = '1.0', and</span>
+                            <span><b>LET</b> <var>wcag_version</var> = '2.0', and</span>
+				            <span><b>LET</b> <var>wcag_level</var> = 'A'.</span>
+                        </div>
 					</li>
 
 					<li><b>LET</b>
@@ -689,7 +697,7 @@
                                 </li>
                                 <li>
                                     <span><b>ELSE</b>:</span>
-                                    <span><b>THEN</b> replace <code>"{epub_accessibility}"</code> with <code>""</code> in <var>conformance_string</var></span>
+                                    <span>replace <code>"{epub_accessibility}"</code> with <code>""</code> in <var>conformance_string</var></span>
                                 </li>
                                 <li>
                                     <span><b>IF</b> <var>wcag_version</var> == '2.2':</span>
@@ -705,7 +713,7 @@
                                 </li>
                                 <li>
                                     <span><b>ELSE</b>:</span>
-                                    <span><b>THEN</b> replace <code>"{wcag_version}"</code> with <code>""</code> in <var>conformance_string</var></span>
+                                    <span>replace <code>"{wcag_version}"</code> with <code>""</code> in <var>conformance_string</var></span>
                                 </li>
                                 <li>
                                     <span><b>IF</b> <var>wcag_level</var> == 'AAA':</span>
@@ -721,7 +729,7 @@
                                 </li>
                                 <li>
                                     <span><b>ELSE</b>:</span>
-                                    <span><b>THEN</b> replace <code>"{wcag_version}"</code> with <code>""</code> in <var>conformance_string</var></span>
+                                    <span>replace <code>"{wcag_version}"</code> with <code>""</code> in <var>conformance_string</var></span>
                                 </li>
                                 <li>display <var>conformance_string</var>.</li>
                             </ol>
