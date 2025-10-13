@@ -770,6 +770,7 @@
 				</section>
 			</section>
 		</section>
+        
 		<section id="accessibilityFeature">
 			<h2>Accessibility features</h2>
 
@@ -839,7 +840,7 @@
 						of contents or an index.</p>
 
 					<p><a href="#adaptation-terms">Adaptation Terms</a> identify content features that provide alternate
-						access to a resource. The inclusion of alternative text in an [HTML] alt attribute is one of the
+						access to a resource. The inclusion of alternative text in an [[HTML]] alt attribute is one of the
 						most commonly identifiable augmentation features.</p>
 
 					<p><a href="#rendering-control-terms">Rendering Control Terms</a> identify content rendering
@@ -862,7 +863,7 @@
                     <p><a href="#deprecated-unsupported-terms">Unsupported Terms</a> include those features that are currently not supported in EPUB.</p>
 				</section>
 
-				<section id="structure-navigation-terms">
+                <section id="structure-navigation-terms">
 					<h4>Structure and Navigation Terms</h4>
 
 					<section id="metadata-a11y-features-aria">
@@ -994,8 +995,7 @@
 	                    <p>The metadata to included in the package document would look like:</p>
 							<pre>
                                 <code>
-                                    <meta property="pageBreakSource"></meta>
-                                &lt;meta property="pageBreakSource"&gt;urn:isbn:978765432100&lt;/meta&gt;
+                                    &lt;meta property="pageBreakSource"&gt;urn:isbn:978765432100&lt;/meta&gt;
                                 </code>
                             </pre>
 					</section>
@@ -1111,7 +1111,7 @@
 					</section>
 				</section>
 
-				<section id="adaptation-terms">
+                <section id="adaptation-terms">
 					<h4>Adaptation Terms</h4>
 
 					<section id="metadata-a11y-features-alternativeText">
@@ -1442,10 +1442,10 @@
                         </pre>
                     </aside>
                 </section>
-                </section>
-                    
-				<section id="rendering-control-terms">
-					<h4>Rendering Control Terms</h4>
+            </section>
+            
+                <section id="rendering-control-terms">
+				<h4>Rendering Control Terms</h4>
    
                 <section id="metadata-a11y-features-displayTransformability">
                     <h5>Display Transformability</h5>
@@ -1731,7 +1731,8 @@
                         </pre>
                     </aside>
                 </section>
-                    </section>    
+            </section>    
+            
                 <section id="specialized-markup-terms">
 					<h4>Specialized Markup Terms</h4>
 
@@ -1755,7 +1756,7 @@
                         
                         <p>The metadata to include in the package document to advertise this feature would be:</p>
                         <pre>
-                            <code>&lt;meta property="schema:accessibilityFeature"&gt;MathML-chemistry&lt;/meta&gt;</code>
+                            <code>&lt;meta property="schema:accessibilityFeature"&gt;latex-chemistry&lt;/meta&gt;</code>
                         </pre>
                    </aside>
                    
@@ -2007,94 +2008,545 @@
                 </section>
 				</section>
 
-				<section id="clarity-terms">
+                <section id="clarity-terms">
 					<h4>Clarity Terms</h4>
 
 					<section id="metadata-a11y-features-highContrastAudio">
 						<h5>High Contrast Audio</h5>
+                        <p>Indicates that pre-recorded audio-only content with speech in the foreground meets the contrast requirements of <a href="https://www.w3.org/TR/WCAG22/#low-or-no-background-audio">WCAG 1.4.7 Low or No Background Audio</a> (AAA).</p>
+                            <p>This feature ensures that users who are hard of hearing or have difficulty processing speech with background noise can clearly understand the primary audio content.</p>
 
+                            <aside class="example" title="AccessibilityFeature: highContrastAudio">
+                                <div class="note">
+                                    <p>Information about how the audio meets the requirement should be provided in the accessibility summary (i.e., there is no background noise, at least 20db difference between foreground speech and background noise, or the background noise can be turned off.)</p>
+                                </div>
+                                <p>This feature is a property of the audio file itself. The content author is responsible for ensuring the recording and mixing of the audio meet the contrast threshold. The HTML simply presents this compliant audio file.</p>
+
+                                <p><strong>Example of an audio file produced with high contrast:</strong></p>
+                                <pre>
+                                    <code>&lt;!DOCTYPE html&gt;
+                        &lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;
+                        &lt;head&gt;
+                          &lt;title&gt;High Contrast Audio Example&lt;/title&gt;
+                        &lt;/head&gt;
+                        &lt;body&gt;
+                          &lt;h1&gt;Podcast Episode 5&lt;/h1&gt;
+
+                          &lt;audio controls
+                                 aria-label="Podcast Episode 5: The Science of Sound"&gt;
+                            &lt;!-- This audio file was produced to have no distracting background noise --&gt;
+                            &lt;source src="podcast-episode-5-clean.mp3" type="audio/mpeg"&gt;
+                            Your browser does not support the audio element.
+                          &lt;/audio&gt;
+
+                        &lt;/body&gt;
+                        &lt;/html&gt;</code>
+                                </pre>
+
+                                <p>The metadata to include in the package document to advertise this feature would be:</p>
+                                <pre>
+                                    <code>&lt;meta property="schema:accessibilityFeature"&gt;highContrastAudio&lt;/meta&gt;</code>
+                                </pre>
+                            </aside>
 					</section>
 
 					<section id="metadata-a11y-features-highContrastDisplay">
 						<h5>High Contrast Display</h5>
+                                <p>Indicates that the content's default visual presentation of text and images of text meets the enhanced contrast thresholds set out in <a href="https://www.w3.org/TR/WCAG22/#contrast-enhanced">WCAG Success Criterion 1.4.6</a> (AAA).</p>
+                                <p>This ensures legibility for users with low vision or color vision deficiencies who require a higher-than-normal contrast between text and its background to read comfortably.</p>
+
+                                <aside class="example" title="AccessibilityFeature: highContrastDisplay">
+                                    <p>This feature is implemented in the publication's stylesheet by defining default text and background color combinations that meet or exceed the 7:1 contrast ratio for normal-sized text.</p>
+
+                                    <p><strong>Example Content Document (<code>content.xhtml</code>):</strong></p>
+                                    <pre>
+                                        <code>&lt;!DOCTYPE html&gt;
+                            &lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;
+                            &lt;head&gt;
+                              &lt;title&gt;High Contrast Example&lt;/title&gt;
+                              &lt;link rel="stylesheet" href="style.css" type="text/css" /&gt;
+                            &lt;/head&gt;
+                            &lt;body&gt;
+                              &lt;p&gt;This text is designed with a high-contrast color scheme by default to ensure it is easy to read.&lt;/p&gt;
+                            &lt;/body&gt;
+                            &lt;/html&gt;</code>
+                                    </pre>
+
+                                    <p><strong>Example Stylesheet (<code>style.css</code>) with a WCAG AAA compliant color scheme:</strong></p>
+                                    <pre>
+                                        <code>body {
+                              /*
+                                The background color is white (#FFFFFF).
+                                The text color is a very dark grey (#222222).
+
+                                This combination has a contrast ratio of 15.75:1, which
+                                comfortably exceeds the WCAG AAA requirement of 7:1.
+                              */
+                              background-color: #FFFFFF;
+                              color: #222222;
+                              font-family: sans-serif;
+                              line-height: 1.5;
+                            }</code>
+                                    </pre>
+
+                                    <p>The metadata to include in the package document to advertise this feature would be:</p>
+                                    <pre>
+                                        <code>&lt;meta property="schema:accessibilityFeature"&gt;highContrastDisplay&lt;/meta&gt;</code>
+                                    </pre>
+                                </aside>
 
 					</section>
 
 					<section id="metadata-a11y-features-largePrint">
 						<h5>Large Print</h5>
+                            <p>The content has been formatted to meet large print guidelines.</p>
+                            <p>This property should only be used for <strong>fixed-layout</strong> content where the font size cannot be adjusted by the user. For reflowable content where the font size can be increased, the <a href="#metadata-a11y-features-displayTransformability">displayTransformability</a> property should be used instead.</p>
 
+                            <aside class="example" title="AccessibilityFeature: largePrint">
+                                <div class="note">
+                                    <p>Information about the type of large print (e.g., the font size) should be provided in the accessibility summary.</p>
+                                </div>
+
+                                <p>This feature is typically applied to fixed-layout EPUBs where the author has specifically designed the pages with a large font. The layout is declared as <code>pre-paginated</code> in the package document, and the font sizes are typically set in absolute units (e.g., <code>pt</code> or <code>px</code>) in the stylesheet.</p>
+
+                                <p><strong>Example Package Document (<code>package.opf</code>):</strong></p>
+                                <p>The <code>rendition:layout</code> property is set to <code>pre-paginated</code> to indicate a fixed-layout publication.</p>
+                                <pre>
+                                    <code>&lt;meta property="rendition:layout"&gt;pre-paginated&lt;/meta&gt;
+                                    </code>
+                                </pre>
+
+                                <p><strong>Example Stylesheet (<code>style.css</code>):</strong></p>
+                                <p>The font size is set to a large, absolute value.</p>
+                                <pre>
+                                    <code>.large-print-text {
+                          /* A large, absolute font size like 32pt is used for the fixed layout */
+                          font-family: "Georgia", serif;
+                          font-size: 32pt;
+                          line-height: 1.4;
+                        }</code>
+                                </pre>
+
+                                <p>The metadata to include in the package document to advertise this feature would be:</p>
+                                <pre>
+                                    <code>&lt;meta property="schema:accessibilityFeature"&gt;largePrint&lt;/meta&gt;</code>
+                                </pre>
+                            </aside>
 					</section>
 				</section>
 
-				<section id="tactile-terms">
+                <section id="tactile-terms">
 					<h4>Tactile Terms</h4>
 
 					<section id="metadata-a11y-features-braille">
 						<h5>Braille</h5>
+                           <p>The content is in braille format, or alternatives are available in braille.</p>
+                            <p>This feature indicates that the publication contains content represented by <strong>braille characters</strong>, which is essential for specialized notations like mathematics (Nemeth) or music that do not convert reliably from standard text. It can also refer to the availability of a separate, physical braille version.</p>
 
+                            <aside class="example" title="AccessibilityFeature: braille">
+                                <div class="note">
+                                  <p>Information about the type of braille (e.g., ASCII, unicode, nemeth), whether the braille is contracted or not, and what code the braille conforms to should be provided in the accessibility summary.</p>
+                                </div>
+
+                                <p>This feature is typically implemented by embedding <strong>Unicode braille patterns</strong> directly into the XHTML content. The <code>lang</code> and <code>dir</code> attributes should be used to ensure the characters are interpreted correctly.</p>
+
+                                <p><strong>Example of Unicode braille characters in a document:</strong></p>
+                                <pre>
+                                    <code>&lt;!DOCTYPE html&gt;
+                        &lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;
+                        &lt;body&gt;
+                          &lt;p&gt;
+                            &lt;h1&gt;⠠⠁ ⠉⠑⠝⠞⠑⠗⠑⠙ ⠓⠑⠁⠙⠊⠝⠛&lt;/h1&gt;
+                                &lt;h2&gt;⠠⠁ ⠉⠑⠇⠇⠤⠼⠑ ⠓⠑⠁⠙⠊⠝⠛&lt;/h2&gt;
+                                    &lt;p&gt;⠠⠞⠓⠑ ⠞⠑⠭⠞ ⠋⠕⠇⠇⠕⠺⠊⠝⠛ ⠁ ⠉⠑⠇⠇⠤⠼⠑ ⠓⠑⠁⠙⠊⠝⠛&lt;/p&gt;
+                                    &hellip;
+                        &lt;/body&gt;
+                        &lt;/html&gt;</code>
+                                </pre>
+
+                                <p>The metadata to include in the package document to advertise this feature would be:</p>
+                                <pre>
+                                    <code>&lt;meta property="schema:accessibilityFeature"&gt;braille&lt;/meta&gt;</code>
+                                </pre>
+                            </aside>
 					</section>
 
 					<section id="metadata-a11y-features-tactileGraphic">
-						<h5>Tactile Graphic</h5>
+                            <h5>Tactile Graphic</h5>
+                                <p>When used with creative works such as books, indicates that the resource includes tactile graphics. When used to describe an image resource or physical object, indicates that the resource is a tactile graphic.</p>
+                                <p>In a digital publication, this typically means that digital files for creating embossed graphics are included, or that a physical tactile version is available as a companion. <strong>Tactile graphics</strong> provide essential access to non-textual information like maps, charts, and diagrams for readers who are blind or have low vision.</p>
 
+                                <aside class="example" title="AccessibilityFeature: tactileGraphic">
+                                    <div class="note">
+                                      <p>Refer to the <a href="http://www.brailleauthority.org/tg/">BANA Guidelines and Standards for Tactile Graphics</a> for more information about tactile graphic formats and formatting.</p>
+                                    </div>
+
+                                    <p>In an EPUB, a visual graphic like a chart can be accompanied by a link to a downloadable, embossable file format (e.g., a BRF or PRN file). This allows a user to create their own physical tactile graphic using a <strong>braille embosser</strong>.</p>
+
+                                    <p><strong>Example of a visual graphic with a linked tactile version:</strong></p>
+                                    <pre>
+                                        <code>&lt;!DOCTYPE html&gt;
+                            &lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;
+                            &lt;head&gt;
+                              &lt;title&gt;Tactile Graphic Example&lt;/title&gt;
+                            &lt;/head&gt;
+                            &lt;body&gt;
+                              &lt;h2&gt;First Quarter Sales&lt;/h2&gt;
+
+                              &lt;figure role="figure" aria-label="Bar chart of monthly sales"&gt;
+                                &lt;!-- The standard visual graphic for sighted users --&gt;
+                                &lt;img src="images/sales-chart.svg" alt="Bar chart showing sales for January, February, and March." /&gt;
+
+                                &lt;figcaption&gt;
+                                  &lt;p&gt;Monthly sales data for the first quarter.&lt;/p&gt;
+
+                                  &lt;!-- A link to a downloadable file for a braille embosser --&gt;
+                                  &lt;a href="tactile/sales-chart.brf" download&gt;Download tactile graphic (BRF format)&lt;/a&gt;
+                                &lt;/figcaption&gt;
+                              &lt;/figure&gt;
+
+                            &lt;/body&gt;
+                            &lt;/html&gt;</code>
+                                    </pre>
+
+                                    <p>The metadata to include in the package document to advertise this feature would be:</p>
+                                    <pre>
+                                        <code>&lt;meta property="schema:accessibilityFeature"&gt;tactileGraphic&lt;/meta&gt;</code>
+                                    </pre>
+                                </aside>
 					</section>
 
 					<section id="metadata-a11y-features-tactileObject">
 						<h5>Tactile Object</h5>
+                            <p>When used with creative works such as books, indicates that the resource includes models to generate tactile 3D objects. When used to describe a physical object, indicates that the resource is a tactile 3D object.</p>
+                            <p>In a digital publication, this means the book provides downloadable files for use with devices like <strong>3D printers</strong>. Tactile objects provide crucial access to spatial and structural information for complex subjects like biology or architecture, allowing readers who are blind to explore shapes by touch.</p>
 
+                            <aside class="example" title="AccessibilityFeature: tactileObject">
+                                <p>In an EPUB, a visual representation of a complex object, like a DNA molecule, can be accompanied by a link to a downloadable 3D model (e.g., an <code>.stl</code> or <code>.obj</code> file). This allows a user to create their own physical object using a 3D printer for tactile exploration.</p>
+
+                                <p><strong>Example of a visual graphic with a linked 3D-printable model:</strong></p>
+                                <pre>
+                                    <code>&lt;!DOCTYPE html&gt;
+                        &lt;html xmlns="http://www.w.org/1999/xhtml"&gt;
+                        &lt;head&gt;
+                          &lt;title&gt;Tactile Object Example&lt;/title&gt;
+                        &lt;/head&gt;
+                        &lt;body&gt;
+                          &lt;h2&gt;Molecular Structure of DNA&lt;/h2&gt;
+
+                          &lt;figure role="figure" aria-label="Illustration of a DNA double helix"&gt;
+                            &lt;!-- The standard visual graphic for sighted users --&gt;
+                            &lt;img src="images/dna-helix.jpg" alt="A 3D rendering of a DNA double helix showing its twisted ladder structure." /&gt;
+
+                            &lt;figcaption&gt;
+                              &lt;p&gt;Figure 1.2: The structure of a DNA molecule.&lt;/p&gt;
+
+                              &lt;!-- A link to a downloadable file for a 3D printer --&gt;
+                              &lt;a href="3d-models/dna-helix.stl" download&gt;Download 3D model for printing (.stl format)&lt;/a&gt;
+                            &lt;/figcaption&gt;
+                          &lt;/figure&gt;
+
+                        &lt;/body&gt;
+                        &lt;/html&gt;</code>
+                                </pre>
+
+                                <p>The metadata to include in the package document to advertise this feature would be:</p>
+                                <pre>
+                                    <code>&lt;meta property="schema:accessibilityFeature"&gt;tactileObject&lt;/meta&gt;</code>
+                                </pre>
+                            </aside>
 					</section>
 				</section>
 
-				<section id="i18n-terms">
+                <section id="i18n-terms">
 					<h4>Internationalization Terms</h4>
 
 					<section id="metadata-a11y-features-fullRubyAnnotations">
 						<h5>Full Ruby Annotations</h5>
+                            <p>Indicates that <strong>ruby annotations</strong> are attached to every CJK ideographic character in the content.</p>
+                                <p>Ruby annotations are used as pronunciation guides for logographic characters in languages like Chinese, Japanese, and Korean. They make difficult <strong>CJK ideographic characters</strong> more accessible for language learners, native speakers of all reading levels, and people with reading disabilities. They also provide critical information for text-to-speech (TTS) engines.</p>
+                                <p>If some but not all CJK ideographic characters have ruby annotations, the <a href="#metadata-a11y-features-rubyAnnotations"><code>rubyAnnotations</code></a> value should be used instead.</p>
 
+                                <aside class="example" title="AccessibilityFeature: fullRubyAnnotations">
+                                    <p>This feature is implemented using the HTML <code>&lt;ruby&gt;</code> tag for every ideographic character. The <code>&lt;rt&gt;</code> tag contains the phonetic reading of the base character.</p>
+
+                                    <p><strong>Example of a Japanese sentence with full ruby (furigana):</strong></p>
+                                    <pre>
+                                        <code>&lt;!DOCTYPE html&gt;
+                            &lt;html xmlns="http://www.w3.org/1999/xhtml" lang="ja"&gt;
+                            &lt;head&gt;
+                              &lt;title&gt;Full Ruby Example&lt;/title&gt;
+                            &lt;/head&gt;
+                            &lt;body&gt;
+                              &lt;p&gt;
+                                &lt;!-- The sentence is "東京に行きます。" (Tōkyō ni ikimasu) --&gt;
+                                &lt;!-- Every kanji character (東, 京, 行) has a ruby annotation. --&gt;
+                                &lt;ruby&gt;東&lt;rt&gt;とう&lt;/rt&gt;&lt;/ruby&gt;&lt;ruby&gt;京&lt;rt&gt;きょう&lt;/rt&gt;&lt;/ruby&gt;に&lt;ruby&gt;行&lt;rt&gt;い&lt;/rt&gt;&lt;/ruby&gt;きます。
+                              &lt;/p&gt;
+                            &lt;/body&gt;
+                            &lt;/html&gt;</code>
+                                    </pre>
+
+                                    <p>The metadata to include in the package document to advertise this feature would be:</p>
+                                    <pre>
+                                        <code>&lt;meta property="schema:accessibilityFeature"&gt;fullRubyAnnotations&lt;/meta&gt;</code>
+                                    </pre>
+                                </aside>
 					</section>
 
 					<section id="metadata-a11y-features-horizontalWriting">
 						<h5>horizontalWriting</h5>
+                            <p>Indicates that the content can be laid out horizontally (e.g, using the <strong><code>horizontal-tb</code></strong> writing mode of [[css-writing-modes-3]]).</p>
+                        <p>This value should only be set when the language of the content allows both <b>horizontal</b> and <b>vertical</b> directions. Notable examples of such languages are Chinese, Japanese, and Korean. Providing a horizontal layout is a critical accessibility feature for some users with reading disabilities who find vertical text difficult to process.</p>
 
+                                <aside class="example" title="AccessibilityFeature: horizontalWriting">
+                                    <div class="note">
+                                      <p>Some dyslexic Japanese can read horizontal writing but cannot read vertical writing.</p>
+                                    </div>
+
+                                    <p>This feature is primarily declared in the <code>package.opf</code> file by setting the <strong><code>page-progression-direction</code></strong> attribute on the <code>&lt;spine&gt;</code> element to <code>ltr</code> (left-to-right). The CSS <code>writing-mode</code> property can also be used to ensure the text flows horizontally.</p>
+
+                                    <p><strong>Example Package Document (<code>package.opf</code>):</strong></p>
+                                    <pre>
+                                        <code>&lt;!-- 'ltr' sets the global direction for the publication to left-to-right. --&gt;
+                              &lt;spine page-progression-direction="ltr"&gt;
+                                &lt;itemref idref="chap1" /&gt;
+                                &hellip;
+                              &lt;/spine&gt;
+                                    </code>
+                                    </pre>
+
+                                    <p><strong>Example Stylesheet (<code>style.css</code>):</strong></p>
+                                    <pre>
+                                        <code>/*
+                              The 'horizontal-tb' value ensures text flows in horizontal lines
+                              from top to bottom. This is the default for most Western languages
+                              but is specified here for clarity.
+                            */
+                            body {
+                              writing-mode: horizontal-tb;
+                            }</code>
+                                    </pre>
+
+                                    <p><strong>Example Content Document (<code>chapter1.xhtml</code>):</strong></p>
+                                    <pre>
+                                        <code>&lt;!DOCTYPE html&gt;
+                            &lt;html xmlns="http://www.w3.org/1999/xhtml" lang="ja"&gt;
+                            &lt;head&gt;
+                              &lt;title&gt;Horizontal Writing Example&lt;/title&gt;
+                              &lt;link rel="stylesheet" href="style.css" type="text/css" /&gt;
+                            &lt;/head&gt;
+                            &lt;body&gt;
+                              &lt;p&gt;東京に行きます。&lt;/p&gt; &lt;!-- This text will be rendered horizontally. --&gt;
+                            &lt;/body&gt;
+                            &lt;/html&gt;</code>
+                                    </pre>
+
+                                    <p>The metadata to include in the package document to advertise this feature would be:</p>
+                                    <pre>
+                                        <code>&lt;meta property="schema:accessibilityFeature"&gt;horizontalWriting&lt;/meta&gt;</code>
+                                    </pre>
+                                </aside>
 					</section>
 
 					<section id="metadata-a11y-features-rubyAnnotations">
 						<h5>Ruby Annotations</h5>
+                            <p>Indicates that <b>ruby annotations</b> are attached to <b>some but not all</b> CJK ideographic characters in the content.</p>
+                                <p>This practice provides targeted pronunciation support for rarer characters, proper nouns, or key terms without cluttering the text with ruby on every single character. It's a common authoring pattern that aids comprehension for a wide range of readers.</p>
+                                <p>If all CJK ideographic characters have ruby annotations, use the <a href="#metadata-a11y-features-fullRubyAnnotations"><code>fullRubyAnnotations</code></a> value.</p>
 
+                                <aside class="example" title="AccessibilityFeature: rubyAnnotations">
+                                    <p>This feature is implemented using the HTML <code>&lt;ruby&gt;</code> tag, but only for select characters where pronunciation guidance is most needed, such as proper names.</p>
+
+                                    <p><b>Example of a Japanese sentence with partial ruby:</b></p>
+                                    <pre>
+                                        <code>&lt;!DOCTYPE html&gt;
+                            &lt;html xmlns="http://www.w3.org/1999/xhtml" lang="ja"&gt;
+                            &lt;head&gt;
+                              &lt;title&gt;Partial Ruby Example&lt;/title&gt;
+                            &lt;/head&gt;
+                            &lt;body&gt;
+                              &lt;p&gt;
+                                &lt;!-- The sentence is "私の名前は田中です。" (Watashi no namae wa Tanaka desu.) --&gt;
+                                &lt;!-- In this common case, only the proper name "Tanaka" (田中) has a ruby annotation. --&gt;
+                                私の名前は&lt;ruby&gt;田中&lt;rt&gt;たなか&lt;/rt&gt;&lt;/ruby&gt;です。
+                              &lt;/p&gt;
+                            &lt;/body&gt;
+                            &lt;/html&gt;</code>
+                                    </pre>
+
+                                    <p>The metadata to include in the package document to advertise this feature would be:</p>
+                                    <pre>
+                                        <code>&lt;meta property="schema:accessibilityFeature"&gt;rubyAnnotations&lt;/meta&gt;</code>
+                                    </pre>
+                                </aside>
 					</section>
 
 					<section id="metadata-a11y-features-verticalWriting">
 						<h5>Vertical Writing</h5>
+                            <p>Indicates that the content can be laid out vertically (e.g, using the <b><code>vertical-rl</code></b> of [[css-writing-modes-3]]).</p>
+                        <p>This value should only be set when the language of the content allows both <b>horizontal</b> and <b>vertical</b> directions. Notable examples of such languages are Chinese, Japanese, and Korean. Providing a vertical layout is essential for publications that follow traditional typesetting conventions for these languages and can improve readability for many native readers.</p>
 
+                                <aside class="example" title="AccessibilityFeature: verticalWriting">
+                                    <p>This feature is primarily declared in the <code>package.opf</code> file by setting the <b><code>page-progression-direction</code></b> attribute on the <code>&lt;spine&gt;</code> element to <code>rtl</code> (right-to-left). The CSS <code>writing-mode</code> property is then used to control the text flow within the content.</p>
+
+                                    <p><b>Example Package Document (<code>package.opf</code>):</b></p>
+                                    <pre>
+                                        <code>&lt;!-- 'rtl' sets the global page progression direction for vertical layouts. --&gt;
+                              &lt;spine page-progression-direction="rtl"&gt;
+                                &lt;itemref idref="chap1" /&gt;
+                                &hellip;
+                              &lt;/spine&gt;
+                                        </code>
+                                    </pre>
+
+                                    <p><b>Example Stylesheet (<code>style.css</code>):</b></p>
+                                    <pre>
+                                        <code>/*
+                              The 'vertical-rl' value sets the text to flow in vertical lines
+                              from right to left, which is standard for traditional Japanese.
+                            */
+                            body {
+                              writing-mode: vertical-rl;
+                            }</code>
+                                    </pre>
+
+                                    <p><b>Example Content Document (<code>chapter1.xhtml</code>):</b></p>
+                                    <pre>
+                                        <code>&lt;!DOCTYPE html&gt;
+                            &lt;html xmlns="http://www.w3.org/1999/xhtml" lang="ja"&gt;
+                            &lt;head&gt;
+                              &lt;title&gt;Vertical Writing Example&lt;/title&gt;
+                              &lt;link rel="stylesheet" href="style.css" type="text/css" /&gt;
+                            &lt;/head&gt;
+                            &lt;body&gt;
+                              &lt;p&gt;東京に行きます。&lt;/p&gt; &lt;!-- This text will be rendered vertically. --&gt;
+                            &lt;/body&gt;
+                            &lt;/html&gt;</code>
+                                    </pre>
+
+                                    <p>The metadata to include in the package document to advertise this feature would be:</p>
+                                    <pre>
+                                        <code>&lt;meta property="schema:accessibilityFeature"&gt;verticalWriting&lt;/meta&gt;</code>
+                                    </pre>
+                                </aside>
 					</section>
 
 					<section id="metadata-a11y-features-withAdditionalWordSegmentation">
 						<h5>With Additional Word Segmentation</h5>
+                            <p>Indicates that the content can be rendered with additional word segmentation.</p>
+                                <p>Adding visual separators between words in languages that do not typically use them is a critical accessibility feature for some users with reading disabilities, such as dyslexia, as well as for language learners.</p>
 
+                                <aside class="example" title="AccessibilityFeature: withAdditionalWordSegmentation">
+                                    <div class="note">
+                                      <p>Although the space character is not typically used for word segmentation in languages such as Chinese, Japanese, Thai and Lao, it may be used for accessibility reasons.</p>
+                                    </div>
+
+                                    <p>This feature is typically implemented by wrapping each word in an inline element, like a <b><code>&lt;span&gt;</code></b>. A user's reading system can then apply a custom stylesheet to add visual spacing (e.g., margins) between these elements, which is not possible with plain, un-segmented text.</p>
+
+                                    <p><b>Example Content Document (<code>content.xhtml</code>):</b></p>
+                                    <p>Each word in the Japanese sentence "東京に行きます" is wrapped in a <code>&lt;span&gt;</code>.</p>
+                                    <pre>
+                                        <code>&lt;!DOCTYPE html&gt;
+                            &lt;html xmlns="http://www.w3.org/1999/xhtml" lang="ja"&gt;
+                            &lt;head&gt;
+                              &lt;title&gt;Word Segmentation Example&lt;/title&gt;
+                              &lt;link rel="stylesheet" href="style.css" type="text/css" /&gt;
+                            &lt;/head&gt;
+                            &lt;body&gt;
+                              &lt;p class="segmented-text"&gt;
+                                &lt;span&gt;東京&lt;/span&gt;&lt;span&gt;に&lt;/span&gt;&lt;span&gt;行きます&lt;/span&gt;。
+                              &lt;/p&gt;
+                            &lt;/body&gt;
+                            &lt;/html&gt;</code>
+                                    </pre>
+
+                                    <p><b>Example Stylesheet (<code>style.css</code>):</b></p>
+                                    <p>A reading system could apply CSS like this to visually separate the words.</p>
+                                    <pre>
+                                        <code>/* This rule adds a small space to the right of each word span */
+                            .segmented-text > span {
+                              margin-right: 0.5em;
+                            }</code>
+                                    </pre>
+
+                                    <p>The metadata to include in the package document to advertise this feature would be:</p>
+                                    <pre>
+                                        <code>&lt;meta property="schema:accessibilityFeature"&gt;withAdditionalWordSegmentation&lt;/meta&gt;</code>
+                                    </pre>
+                                </aside>
 					</section>
 
 					<section id="metadata-a11y-features-withoutAdditionalWordSegmentation">
 						<h5>Without Additional Word Segmentation</h5>
+                            <p>Indicates that the content can be rendered without additional word segmentation.</p>
+                                <p>This indicates that the content is presented in its standard format for languages that do not typically use spaces between words (e.g., Japanese, Chinese, Thai). For fluent readers, this provides the expected, natural reading experience without the potential distraction of artificial word spacing.</p>
 
+                                <aside class="example" title="AccessibilityFeature: withoutAdditionalWordSegmentation">
+                                    <p>This feature represents the default authoring practice for these languages. The text is written as a continuous run of characters within its container element (like a <code>&lt;p&gt;</code> tag) without any special markup to delineate word boundaries. This provides a direct contrast to the <code>withAdditionalWordSegmentation</code> feature.</p>
+
+                                    <p><b>Example Content Document (<code>content.xhtml</code>):</b></p>
+                                    <p>The Japanese sentence "東京に行きます" is written as a single, unbroken string of text inside the <code>&lt;p&gt;</code> tag.</p>
+                                    <pre>
+                                        <code>&lt;!DOCTYPE html&gt;
+                            &lt;html xmlns="http://www.w3.org/1999/xhtml" lang="ja"&gt;
+                            &lt;head&gt;
+                              &lt;title&gt;No Word Segmentation Example&lt;/title&gt;
+                            &lt;/head&gt;
+                            &lt;body&gt;
+                              &lt;p&gt;東京に行きます。&lt;/p&gt;
+                            &lt;/body&gt;
+                            &lt;/html&gt;</code>
+                                    </pre>
+
+                                    <p>The metadata to include in the package document to advertise this feature would be:</p>
+                                    <pre>
+                                        <code>&lt;meta property="schema:accessibilityFeature"&gt;withoutAdditionalWordSegmentation&lt;/meta&gt;</code>
+                                    </pre>
+                                </aside>
 					</section>
 				</section>
 
-				<section id="accessibility-feature-none">
-					<h4>None</h4>
+                <section id="metadata-a11y-features-none">
+					<h4>none</h4>
+                        <p>Indicates that the resource does not contain any accessibility features.</p>
+                            <p>This value is mutually exclusive and <b>must not</b> be set if any other <code>accessibilityFeature</code> value is also present. Declaring the <code>none</code> value provides an explicit and unambiguous statement that no specific accessibility features have been included, which aids in content discovery. This is different from a publication that simply omits all accessibility metadata.</p>
 
-					<p>Indicates that the resource does not contain any accessibility features.</p>
+                            <aside class="example" title="AccessibilityFeature: none">
+                                <p>This value is only declared within the metadata of the <code>package.opf</code> file. No corresponding markup is required in the content documents. It must be the only <code>accessibilityFeature</code> declared.</p>
 
-					<p>The none value must not be set with any other feature value.</p>
+                                <p><b>Example Package Document (<code>package.opf</code>):</b></p>
+                                <pre>
+                                    <code>&lt;!-- Declaring 'none' means no other accessibility features are claimed. --&gt;
+                            &lt;meta property="schema:accessibilityFeature"&gt;none&lt;/meta&gt;
+
+                            &lt;meta property="schema:accessibilitySummary"&gt;This publication does not include any specialized accessibility features.&lt;/meta&gt;
+                          &lt;/metadata&gt;
+                                    </code>
+                                </pre>
+                            </aside>
 				</section>
 
-				<section id="accessibility-feature-unknown">
-					<h4>Unknown</h4>
+                <section id="metadata-a11y-features-unknown">
+					<h4>unknown</h4>
+                        <p>Indicates that the author has not yet checked if the resource contains accessibility features. This value is only intended as a placeholder until an accessibility review can be completed.</p>
+                        <p>This value is mutually exclusive and <b>must not</b> be set if any other <code>accessibilityFeature</code> value is also present. Declaring <code>unknown</code> acts as a temporary placeholder, explicitly stating that an accessibility audit has not yet been performed. It distinguishes the content from a publication that has been audited and confirmed to have no features (see <a href="#metadata-a11y-features-none"><code>none</code></a>).</p>
 
-					<p>Indicates that the author has not yet checked if the resource contains accessibility features.
-						This value is only intended as a placeholder until an accessibility review can be completed.</p>
 
-					<p>The unknown value must not be set with any other feature value.</p>
+                            <aside class="example" title="AccessibilityFeature: unknown">
+                                <p>This value is only declared within the metadata of the <code>package.opf</code> file. It should be replaced with a complete list of applicable accessibility features, or the <code>none</code> value, once an accessibility review is complete.</p>
+
+                                <p><b>Example Package Document (<code>package.opf</code>):</b></p>
+                                <pre>
+                                    <code>&lt;!-- 'unknown' is a placeholder until an accessibility audit is performed. --&gt;
+                            &lt;meta property="schema:accessibilityFeature"&gt;unknown&lt;/meta&gt;
+
+                            &lt;meta property="schema:accessibilitySummary"&gt;The accessibility features of this publication have not yet been evaluated.&lt;/meta&gt;
+                          &lt;/metadata&gt;</code>
+                                </pre>
+                            </aside>
 				</section>
+            
                 <section id="deprecated-unsupported-terms">
 					<h4>Deprecated and Unsupported Features</h4>
                     
@@ -2155,13 +2607,11 @@
                         <p><b>Reasoning:</b> EPUB and PDF are fundamentally different technologies. An EPUB's accessibility is achieved through its use of semantic HTML and ARIA, while a PDF's accessibility relies on its internal tagging structure. An EPUB's metadata must describe the features of the EPUB itself. Applying a PDF-specific property like <code>taggedPDF</code> is inappropriate and would be ignored by reading systems. While an EPUB might link to an external PDF, the metadata for the EPUB should not describe the features of that external file.</p>
                         
                     </section>
-                     
-                    
                 </section>
 		  </section>
         </section>
         
-		<section id="accessibilityHazard">
+        <section id="accessibilityHazard">
 			<h2>Accessibility hazards</h2>
 
 			<section id="hazards-overview">
@@ -2211,22 +2661,6 @@
 						"<code>noFlashingHazard</code>", "<code>noMotionSimulationHazard</code>", and
 						"<code>noSoundHazard</code>".</p>
 
-				<aside class="example"
-					title="Metadata entries for a flashing hazard but no motion simulation or sound hazards">
-					<pre>&lt;meta
-    property="schema:accessibilityHazard">
-   flashing
-&lt;/meta>
-&lt;meta
-    property="schema:accessibilityHazard">
-   noMotionSimulationHazard
-&lt;/meta>
-&lt;meta
-    property="schema:accessibilityHazard">
-   noSoundHazard
-&lt;/meta></pre>
-				</aside>
-
 				<p>Do not skip reporting hazards just because an EPUB publication does not contain any content that
 					could present risks. Users cannot infer a meaning when no metadata is present. The value
 						"<code>none</code>" can be used in such cases instead of repeating each non-hazard. When the
@@ -2244,22 +2678,6 @@
 					currently not well defined. In this case, EPUB creators may prefer to set the
 						"<code>unknownSoundHazard</code>" value, as in the following example.</p>
 
-				<aside class="example"
-					title="Metadata entries for an unknown sound hazard and no motion simulation or sound hazards">
-					<pre>&lt;meta
-    property="schema:accessibilityHazard">
-   noFlashingHazard
-&lt;/meta>
-&lt;meta
-    property="schema:accessibilityHazard">
-   noMotionSimulationHazard
-&lt;/meta>
-&lt;meta
-    property="schema:accessibilityHazard">
-   unknownSoundHazard
-&lt;/meta></pre>
-				</aside>
-
 				<p>If it is not possible to determine any hazards, the value "<code>unknown</code>" can be used in place
 					of setting the individual hazards to unknown. This value should be used sparingly, however, as it is
 					of no value to users. EPUB creators should make every effort to determine if hazards are present.
@@ -2273,23 +2691,378 @@
 					about this property and its values.</p>
 			</section>
 
-			<section id="hazards-values">
+            <section id="hazards-values">
 				<h3>Setting values</h3>
+                
+                <section id="hazards-affirmative">
+                    <h4>Affirmative Hazard Values</h4>
+                    <section id="metadata-a11y-hazards-flashing">
+                        <h5>Flashing hazards</h5>
 
-				<section id="hazards">
-					<h4>Hazards</h4>
-				</section>
+                        <p>Indicates that the resource presents a flashing hazard for photosensitive persons. This value should be set when the content contains flashing that fails to meet the safety thresholds described in <a href="https://www.w3.org/TR/WCAG2/#three-flashes-or-below-threshold">Success Criterion 2.3.1 Three Flashes or Below Threshold</a> (A).</p>
+                        <p>The <code>flashing</code> value <b>must not</b> be set when any of the <code>noFlashingHazard</code>, <code>unknownFlashingHazard</code>, <code>none</code>, or <code>unknown</code> values is set.</p>
 
-				<section id="hazards-unknown">
-					<h4>Unknown hazards</h4>
-				</section>
+                        <aside class="example" title="AccessibilityHazard: flashing">
+                            <p>This is a critical health and safety warning. It is declared in the <code>package.opf</code> metadata when content, such as a video or animated image, contains rapid or intense flashes that could trigger seizures in photosensitive individuals.</p>
+                            <p>For example, if a content document included a video file (e.g., <code>strobe-effect.mp4</code>) with sequences of rapid flashing, the author <b>must</b> declare this hazard in the publication's metadata and provide a human-readable warning in the accessibility summary.</p>
 
-				<section id="hazards-none">
-					<h4>No Hazards</h4>
-				</section>
-			</section>
-		</section>
-        
+                            <p><b>Example Package Document (<code>package.opf</code>) declaring a flashing hazard:</b></p>
+                            <pre>
+                                <code>&lt;!-- WARNING: This publication contains a known flashing hazard. --&gt;
+                        &lt;meta property="schema:accessibilityHazard"&gt;flashing&lt;/meta&gt;
+
+                        &lt;meta property="schema:accessibilitySummary"&gt;Warning: This book contains a video with rapid strobe effects that may affect users with photosensitive epilepsy.&lt;/meta&gt;
+                      &lt;/metadata&gt;
+
+                      &lt;manifest&gt;
+                        &lt;!-- ... manifest items including the video file ... --&gt;
+                      &lt;/manifest&gt;
+
+                    &lt;/package&gt;</code>
+                            </pre>
+
+                                <div class="note">
+          <p>It is a best practice to also declare the status of other potential hazards. For example, if the publication has been checked and confirmed to be free of sound and motion simulation hazards, those would also be included:</p>
+          <pre><code>&lt;meta property="schema:accessibilityHazard"&gt;noSoundHazard&lt;/meta&gt;
+&lt;meta property="schema:accessibilityHazard"&gt;noMotionSimulationHazard&lt;/meta&gt;</code></pre>
+          <p>Likewise, if the status of these hazards has not yet been evaluated, the <code>unknown</code> values should be used as placeholders:</p>
+          <pre><code>&lt;meta property="schema:accessibilityHazard"&gt;unknownSoundHazard&lt;/meta&gt;
+&lt;meta property="schema:accessibilityHazard"&gt;unknownMotionSimulationHazard&lt;/meta&gt;</code></pre>
+        </div>
+                        </aside>
+                    </section>
+
+                     <section id="metadata-a11y-hazards-motionSimulation">
+                        <h5>motionSimulation (Hazard)</h5>
+
+                        <p>Indicates that the resource contains instances of motion simulation that may affect some individuals. Some examples of motion simulation include video games with a first-person perspective and CSS-controlled backgrounds that move when a user scrolls a page.</p>
+                        <p>This hazard can trigger severe dizziness, nausea, and disorientation in users with vestibular disorders. Declaring this hazard is a critical safety warning.</p>
+                        <p>The <code>motionSimulation</code> value <b>must not</b> be set when any of the <a href="#metadata-a11y-hazards-noMotionSimulationHazard"><code>noMotionSimulationHazard</code></a>, <a href="#metadata-a11y-hazards-unknownMotionSimulationHazard"><code>unknownMotionSimulationHazard</code></a>, <a href="#metadata-a11y-features-none"><code>none</code></a>, or <a href="#metadata-a11y-features-unknown"><code>unknown</code></a> values is set.</p>
+
+                        <aside class="example" title="AccessibilityHazard: motionSimulation">
+                            <p>This hazard can be created by CSS effects like parallax scrolling, where a background image moves at a different rate than the foreground content. An author <b>must</b> declare this hazard in the publication's metadata and provide a human-readable warning in the accessibility summary.</p>
+
+                            <p><b>Example Stylesheet (<code>style.css</code>) causing a parallax effect:</b></p>
+                            <pre>
+                                <code>.parallax-container {
+                      /* This creates the motion simulation effect by keeping the background fixed during scroll */
+                      background-image: url("background.jpg");
+                      background-attachment: fixed;
+                      background-position: center;
+                      background-repeat: no-repeat;
+                      background-size: cover;
+                    }</code>
+                            </pre>
+
+                            <p><b>Example Package Document (<code>package.opf</code>) declaring a motion simulation hazard:</b></p>
+                            <pre>
+                                <code>&lt;!-- WARNING: This publication contains a known motion simulation hazard. --&gt;
+                        &lt;meta property="schema:accessibilityHazard"&gt;motionSimulation&lt;/meta&gt;
+
+                        &lt;meta property="schema:accessibilitySummary"&gt;Warning: This book contains parallax scrolling effects that may be problematic for users with vestibular disorders.&lt;/meta&gt;
+                      </code>
+                            </pre>
+
+                            <div class="note">
+                              <p>It is a best practice to also declare the status of other potential hazards. For example, if the publication has been checked and confirmed to be free of flashing and sound hazards, those would also be included:</p>
+                              <pre><code>&lt;meta property="schema:accessibilityHazard"&gt;noFlashingHazard&lt;/meta&gt;
+&lt;meta property="schema:accessibilityHazard"&gt;noSoundHazard&lt;/meta&gt;</code></pre>
+                              <p>Likewise, if the status of these hazards has not yet been evaluated, the <code>unknown</code> values should be used as placeholders:</p>
+                              <pre><code>&lt;meta property="schema:accessibilityHazard"&gt;unknownFlashingHazard&lt;/meta&gt;
+&lt;meta property="schema:accessibilityHazard"&gt;unknownSoundHazard&lt;/meta&gt;</code></pre>
+                            </div>
+                        </aside>
+                    </section>
+                    <section id="metadata-a11y-hazards-sound">
+                        <h5>sound (Hazard)</h5>
+
+                        <p>Indicates that the resource contains auditory sounds that may affect some individuals. This value should be set when any audio on the page plays automatically for more than three seconds without a user control mechanism, as this fails <a href="https://www.w3.org/TR/WCAG2/#audio-control">Success Criterion 1.4.2 Audio Control</a>.</p>
+                        <p>Automatically playing audio can interfere with screen reader output, making the page unusable for blind or low-vision users. Declaring this hazard is a critical usability warning.</p>
+                        <p>The <code>sound</code> value <b>must not</b> be set when any of the <a href="#metadata-a11y-hazards-noSoundHazard"><code>noSoundHazard</code></a>, <a href="#metadata-a11y-hazards-unknownSoundHazard"><code>unknownSoundHazard</code></a>, <a href="#metadata-a11y-features-none"><code>none</code></a>, or <a href="#metadata-a11y-features-unknown"><code>unknown</code></a> values is set.</p>
+
+                        <div class="ednote">
+                          <p>The application of this value is currently under discussion as its application is underspecified.</p>
+                        </div>
+
+                        <aside class="example" title="AccessibilityHazard: sound">
+                            <p>This hazard is typically caused by including an <code>&lt;audio&gt;</code> or <code>&lt;video&gt;</code> element with the <code>autoplay</code> attribute. An author <b>must</b> declare this hazard in the publication's metadata and provide a human-readable warning in the accessibility summary.</p>
+
+                            <p><b>Example Content Document (<code>content.xhtml</code>) with autoplaying audio:</b></p>
+                            <pre>
+                                <code>&lt;!DOCTYPE html&gt;
+                    &lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;
+                    &lt;head&gt;
+                      &lt;title&gt;Sound Hazard Example&lt;/title&gt;
+                    &lt;/head&gt;
+                    &lt;body&gt;
+                      &lt;h1&gt;Welcome&lt;/h1&gt;
+
+                      &lt;!-- The 'autoplay' attribute causes a sound hazard as it plays automatically on load --&gt;
+                      &lt;audio src="audio/background-music.mp3" autoplay loop&gt;
+                        Your browser does not support the audio element.
+                      &lt;/audio&gt;
+
+                      &lt;p&gt;This page has background music that starts automatically.&lt;/p&gt;
+                    &lt;/body&gt;
+                    &lt;/html&gt;</code>
+                            </pre>
+
+                            <p><b>Example Package Document (<code>package.opf</code>) declaring a sound hazard:</b></p>
+                            <pre>
+                                <code>&lt;!-- WARNING: This publication contains a known sound hazard. --&gt;
+                    &lt;meta property="schema:accessibilityHazard"&gt;sound&lt;/meta&gt;
+
+                    &lt;meta property="schema:accessibilitySummary"&gt;Warning: This book contains background audio that plays automatically.&lt;/meta&gt;</code>
+                            </pre>
+
+                            <div class="note">
+          <p>It is a best practice to also declare the status of other potential hazards. For example, if the publication has been checked and confirmed to be free of flashing and motion simulation hazards, those would also be included:</p>
+          <pre><code>&lt;meta property="schema:accessibilityHazard"&gt;noFlashingHazard&lt;/meta&gt;
+&lt;meta property="schema:accessibilityHazard"&gt;noMotionSimulationHazard&lt;/meta&gt;</code></pre>
+          <p>Likewise, if the status of these hazards has not yet been evaluated, the <code>unknown</code> values should be used as placeholders:</p>
+          <pre><code>&lt;meta property="schema:accessibilityHazard"&gt;unknownFlashingHazard&lt;/meta&gt;
+&lt;meta property="schema:accessibilityHazard"&gt;unknownMotionSimulationHazard&lt;/meta&gt;</code></pre>
+        </div>
+                        </aside>
+                    </section>
+                </section>
+                    
+                <section id="hazards-negative">
+                    <h4>Negative Hazard Values</h4>
+                    <section id="metadata-a11y-hazards-none">
+                        <h5>none (Hazard)</h5>
+
+                        <p>Indicates that the resource does not contain any hazards.</p>
+                        <div class="note">
+                            <p>It is recommended to use the <code>none</code> value when there are no hazards instead of individual statements for <a href="#metadata-a11y-hazards-noSoundHazard"><code>noSoundHazard</code></a>, <a href="#metadata-a11y-hazards-noMotionSimulationHazard"><code>noMotionSimulationHazard</code></a>, and <a href="#metadata-a11y-hazards-noFlashingHazard"><code>noFlashingHazard</code></a>.</p>
+
+                        </div>
+                        <p>The <code>none</code> value is mutually exclusive. It <b>must not</b> be set when specifying a known hazard (e.g., <a href="#metadata-a11y-hazards-flashing"><code>flashing</code></a>), an unknown hazard status (e.g., <a href="#metadata-a11y-hazards-unknownFlashingHazard"><code>unknownFlashingHazard</code></a>), or individual statements of safety (e.g., <a href="#metadata-a11y-hazards-noFlashingHazard"><code>noFlashingHazard</code></a>).</p>
+
+                        <aside class="example" title="AccessibilityHazard: none">
+                            <p>This value provides a single, summary statement that a publication has been checked and is free of all known accessibility hazards. It is the most efficient way to declare a publication as safe.</p>
+
+                            <p><b>Example Package Document (<code>package.opf</code>) declaring no hazards:</b></p>
+                            <pre>
+                                <code>&lt;!-- This publication has been audited and is free of all known hazards. --&gt;
+                    &lt;meta property="schema:accessibilityHazard"&gt;none&lt;/meta&gt;
+
+                    &lt;meta property="schema:accessibilitySummary"&gt;This publication is free of all known accessibility hazards.&lt;/meta&gt;</code>
+                            </pre>
+                        </aside>
+                    </section>
+
+                    <section id="metadata-a11y-hazards-noFlashingHazard">
+                        <h5>noFlashingHazard</h5>
+
+                        <p>Indicates that the resource does not present a flashing hazard. This means the content has been checked and meets the safety thresholds described in <a href="https://www.w3.org/TR/WCAG2/#three-flashes-or-below-threshold">Success Criterion 2.3.1 Three Flashes or Below Threshold</a> (A).</p>
+                        <p>This value provides a positive assertion that the content is safe for users with photosensitive epilepsy. It is a critical piece of metadata for ensuring user safety and building trust.</p>
+                        <p>The <code>noFlashingHazard</code> value <b>must not</b> be set when any of the <a href="#metadata-a11y-hazards-flashing"><code>flashing</code></a>, <a href="#metadata-a11y-hazards-unknownFlashingHazard"><code>unknownFlashingHazard</code></a>, <a href="#metadata-a11y-features-unknown"><code>unknown</code></a>, or <a href="#metadata-a11y-hazards-none"><code>none</code></a> values is set.</p>
+
+                        <aside class="example" title="AccessibilityHazard: noFlashingHazard">
+                            <p>This value is declared in the <code>package.opf</code> metadata after an author or publisher has audited the content (including all videos and animations) and confirmed that no flashing hazards are present.</p>
+
+                            <p><b>Example Package Document (<code>package.opf</code>) declaring no flashing hazard:</b></p>
+                            <pre>
+                                <code>&lt;!-- This publication has been verified to be free of flashing hazards. --&gt;
+                    &lt;meta property="schema:accessibilityHazard"&gt;noFlashingHazard&lt;/meta&gt;
+
+                    &lt;meta property="schema:accessibilitySummary"&gt;This publication is free of known flashing hazards.&lt;/meta&gt;</code>
+                            </pre>
+
+                            <div class="note">
+                                <p>It is a best practice to also declare the status of other potential hazards. For example, if the publication has also been checked and confirmed to be free of sound and motion simulation hazards, those would be included:</p>
+                                <pre><code>&lt;meta property="schema:accessibilityHazard"&gt;noSoundHazard&lt;/meta&gt;
+&lt;meta property="schema:accessibilityHazard"&gt;noMotionSimulationHazard&lt;/meta&gt;</code></pre>
+                                <p>Likewise, if the status of these hazards has not yet been evaluated, the <code>unknown</code> values should be used as placeholders:</p>
+                                <pre><code>&lt;meta property="schema:accessibilityHazard"&gt;unknownSoundHazard&lt;/meta&gt;
+&lt;meta property="schema:accessibilityHazard"&gt;unknownMotionSimulationHazard&lt;/meta&gt;</code></pre>
+                            </div>
+                        </aside>
+                    </section>
+
+                    <section id="metadata-a11y-hazards-noMotionSimulationHazard">
+                        <h5>noMotionSimulationHazard</h5>
+
+                        <p>Indicates that the resource does not contain instances of motion simulation.</p>
+                        <p>This value provides a positive assertion that the content is safe for users with vestibular disorders. It is a critical piece of metadata for ensuring user safety and building trust.</p>
+                        <p>The <code>noMotionSimulationHazard</code> value <b>must not</b> be set when any of the <a href="#metadata-a11y-hazards-motionSimulation"><code>motionSimulation</code></a>, <a href="#metadata-a11y-hazards-unknownMotionSimulationHazard"><code>unknownMotionSimulationHazard</code></a>, <a href="#metadata-a11y-features-unknown"><code>unknown</code></a>, or <a href="#metadata-a11y-hazards-none"><code>none</code></a> values is set.</p>
+
+                        <aside class="example" title="AccessibilityHazard: noMotionSimulationHazard">
+                            <p>This value is declared in the <code>package.opf</code> metadata after an author or publisher has audited the content and confirmed that no motion simulation hazards, such as parallax scrolling or other motion effects, are present.</p>
+
+                            <p><b>Example Package Document (<code>package.opf</code>) declaring no motion simulation hazard:</b></p>
+                            <pre>
+                                <code>&lt;!-- This publication has been verified to be free of motion simulation hazards. --&gt;
+                    &lt;meta property="schema:accessibilityHazard"&gt;noMotionSimulationHazard&lt;/meta&gt;
+
+                    &lt;meta property="schema:accessibilitySummary"&gt;This publication is free of known motion simulation hazards.&lt;/meta&gt;</code>
+                            </pre>
+
+                            <div class="note">
+                              <p>It is a best practice to also declare the status of other potential hazards. For example, if the publication has also been checked and confirmed to be free of flashing and sound hazards, those would be included:</p>
+                              <p>
+                                </p><pre><code>&lt;meta property="schema:accessibilityHazard"&gt;noFlashingHazard&lt;/meta&gt;
+&lt;meta property="schema:accessibilityHazard"&gt;noSoundHazard&lt;/meta&gt;</code></pre>
+                              <p></p>
+                              <p>Likewise, if the status of these hazards has not yet been evaluated, the <code>unknown</code> values should be used as placeholders:</p>
+                              <pre><code>&lt;meta property="schema:accessibilityHazard"&gt;unknownFlashingHazard&lt;/meta&gt;
+&lt;meta property="schema:accessibilityHazard"&gt;unknownSoundHazard&lt;/meta&gt;</code></pre>
+                            </div>
+                        </aside>
+                    </section>
+                    <section id="metadata-a11y-hazards-noSoundHazard">
+                        <h5>noSoundHazard</h5>
+
+                        <p>Indicates that the resource does not contain auditory hazards. This means the content has been checked and does not contain audio that plays automatically for more than three seconds, meeting <a href="https://www.w3.org/TR/WCAG2/#audio-control">Success Criterion 1.4.2 Audio Control</a>.</p>
+                        <p>This value provides a positive assertion that the content will not interfere with screen readers or other assistive technologies.</p>
+
+                        <div class="ednote">
+                          <p>Editor's note: The application of this value is currently under discussion as its application is underspecified.</p>
+                        </div>
+
+                        <p>The <code>noSoundHazard</code> value <b>must not</b> be set when any of the <a href="#metadata-a11y-hazards-sound"><code>sound</code></a>, <a href="#metadata-a11y-hazards-unknownSoundHazard"><code>unknownSoundHazard</code></a>, <a href="#metadata-a11y-features-unknown"><code>unknown</code></a>, or <a href="#metadata-a11y-hazards-none"><code>none</code></a> values is set.</p>
+
+                        <aside class="example" title="AccessibilityHazard: noSoundHazard">
+                            <p>This value is declared in the <code>package.opf</code> metadata after an author or publisher has audited the content and confirmed that no audio plays automatically.</p>
+
+                            <p><b>Example Package Document (<code>package.opf</code>) declaring no sound hazard:</b></p>
+                            <pre>
+                                <code>&lt;!-- This publication has been verified to be free of sound hazards. --&gt;
+                    &lt;meta property="schema:accessibilityHazard"&gt;noSoundHazard&lt;/meta&gt;
+
+                    &lt;meta property="schema:accessibilitySummary"&gt;This publication is free of known sound hazards.&lt;/meta&gt;</code>
+                            </pre>
+
+                            <div class="note">
+                              <p>It is a best practice to also declare the status of other potential hazards. For example, if the publication has also been checked and confirmed to be free of flashing and motion simulation hazards, those would be included:</p>
+                              <pre><code>&lt;meta property="schema:accessibilityHazard"&gt;noFlashingHazard&lt;/meta&gt;
+&lt;meta property="schema:accessibilityHazard"&gt;noMotionSimulationHazard&lt;/meta&gt;</code></pre>
+                              <p>Likewise, if the status of these hazards has not yet been evaluated, the <code>unknown</code> values should be used as placeholders:</p>
+                              <pre><code>&lt;meta property="schema:accessibilityHazard"&gt;unknownFlashingHazard&lt;/meta&gt;
+&lt;meta property="schema:accessibilityHazard"&gt;unknownMotionSimulationHazard&lt;/meta&gt;</code></pre>
+                            </div>
+                        </aside>
+                    </section>
+                </section>
+
+
+
+                <section id="hazards-unknown-values">
+                    <h4>Unknown Hazard Values</h4>
+
+                    <section id="metadata-a11y-hazards-unknown">
+                        <h5>unknown (Hazard)</h5>
+
+                        <p>Indicates that the author is not able to determine if the resource presents any hazards.</p>
+                        <div class="note">
+                            <p>It is recommended to use the <code>unknown</code> value when the status of all hazards is unknown, instead of listing individual statements for <a href="#metadata-a11y-hazards-unknownSoundHazard"><code>unknownSoundHazard</code></a>, <a href="#metadata-a11y-hazards-unknownMotionSimulationHazard"><code>unknownMotionSimulationHazard</code></a>, and <a href="#metadata-a11y-hazards-unknownFlashingHazard"><code>unknownFlashingHazard</code></a>.</p>
+                        </div>
+                        <p>The <code>unknown</code> value is mutually exclusive. It <b>must not</b> be used in combination with any known hazard (e.g., <a href="#metadata-a11y-hazards-flashing"><code>flashing</code></a>), the <a href="#metadata-a11y-hazards-none"><code>none</code></a> value, or any individual unknown hazard statement (e.g., <a href="#metadata-a11y-hazards-unknownFlashingHazard"><code>unknownFlashingHazard</code></a>).</p>
+
+                        <aside class="example" title="AccessibilityHazard: unknown">
+                            <p>This value acts as a global placeholder, indicating that a full hazard audit has not yet been performed on the publication. It should be replaced with specific hazard information or the <code>none</code> value once an audit is complete.</p>
+
+                            <p><b>Example Package Document (<code>package.opf</code>) declaring an unknown hazard status:</b></p>
+                            <pre>
+                                <code>&lt;!-- The hazard status of this publication has not yet been evaluated. --&gt;
+                    &lt;meta property="schema:accessibilityHazard"&gt;unknown&lt;/meta>
+
+                    &lt;meta property="schema:accessibilitySummary"&gt;The accessibility hazard status of this publication has not yet been evaluated.&lt;/meta&gt;</code>
+                            </pre>
+                        </aside>
+                    </section>
+                    
+                    <section id="metadata-a11y-hazards-unknownFlashingHazard">
+                        <h5>unknownFlashingHazard</h5>
+
+                        <p>Indicates that the author cannot determine if a flashing hazard exists.</p>
+                        <p>This value is a placeholder for a specific hazard, indicating that it has not yet been evaluated. It allows for a partially completed hazard assessment, unlike the global <a href="#metadata-a11y-hazards-unknown"><code>unknown</code></a> value.</p>
+                        <p>The <code>unknownFlashingHazard</code> value <b>must not</b> be set when any of the <a href="#metadata-a11y-hazards-flashing"><code>flashing</code></a>, <a href="#metadata-a11y-hazards-noFlashingHazard"><code>noFlashingHazard</code></a>, <a href="#metadata-a11y-hazards-none"><code>none</code></a>, or <a href="#metadata-a11y-hazards-unknown"><code>unknown</code></a> values is set.</p>
+
+                        <aside class="example" title="AccessibilityHazard: unknownFlashingHazard">
+                            <p>This value is used when the status of a specific hazard is undetermined. It can be combined with declarations for other hazards whose status is known.</p>
+
+                            <p><b>Example Package Document (<code>package.opf</code>) declaring a specific unknown hazard:</b></p>
+                            <pre>
+                                <code>&lt;!-- The flashing hazard status of this publication has not yet been evaluated. --&gt;
+                    &lt;meta property="schema:accessibilityHazard"&gt;unknownFlashingHazard&lt;/meta&gt;
+
+                    &lt;meta property="schema:accessibilitySummary"&gt;The flashing hazard status of this publication has not yet been evaluated.&lt;/meta&gt;</code>
+                            </pre>
+
+                            <div class="note">
+                              <p>It is a best practice to also declare the status of other potential hazards. For example, if the publication has been checked and confirmed to be free of sound and motion simulation hazards, those would also be included:</p>
+                              <pre><code>&lt;meta property="schema:accessibilityHazard"&gt;noSoundHazard&lt;/meta&gt;
+&lt;meta property="schema:accessibilityHazard"&gt;noMotionSimulationHazard&lt;/meta&gt;</code></pre>
+                              <p>Likewise, if the status of these other hazards has not yet been evaluated, the <code>unknown</code> values should be used as placeholders:</p>
+                              <pre><code>&lt;meta property="schema:accessibilityHazard"&gt;unknownSoundHazard&lt;/meta&gt;
+&lt;meta property="schema:accessibilityHazard"&gt;unknownMotionSimulationHazard&lt;/meta&gt;</code></pre>
+                            </div>
+                        </aside>
+                    </section>
+
+
+                    <section id="metadata-a11y-hazards-unknownMotionSimulationHazard">
+                        <h5>unknownMotionSimulationHazard</h5>
+
+                        <p>Indicates that it is unknown if a motion simulation hazard exists within the content.</p>
+                        <p>This value is a placeholder for a specific hazard, indicating that it has not yet been evaluated. It allows for a partially completed hazard assessment, unlike the global <a href="#metadata-a11y-hazards-unknown"><code>unknown</code></a> value.</p>
+                        <p>The <code>unknownMotionSimulationHazard</code> value <b>must not</b> be set when any of the <a href="#metadata-a11y-hazards-motionSimulation"><code>motionSimulation</code></a>, <a href="#metadata-a11y-hazards-noMotionSimulationHazard"><code>noMotionSimulationHazard</code></a>, <a href="#metadata-a11y-hazards-none"><code>none</code></a>, or <a href="#metadata-a11y-hazards-unknown"><code>unknown</code></a> values is set.</p>
+
+                        <aside class="example" title="AccessibilityHazard: unknownMotionSimulationHazard">
+                            <p>This value is used when the status of a specific hazard is undetermined. It can be combined with declarations for other hazards whose status is known.</p>
+
+                            <p><b>Example Package Document (<code>package.opf</code>) declaring a specific unknown hazard:</b></p>
+                            <pre>
+                                <code>&lt;!-- The motion simulation hazard status of this publication has not yet been evaluated. --&gt;
+                    &lt;meta property="schema:accessibilityHazard"&gt;unknownMotionSimulationHazard&lt;/meta&gt;
+
+                    &lt;meta property="schema:accessibilitySummary"&gt;The motion simulation hazard status of this publication has not yet been evaluated.&lt;/meta&gt;</code>
+                            </pre>
+
+                            <div class="note">
+                              <p>It is a best practice to also declare the status of other potential hazards. For example, if the publication has been checked and confirmed to be free of flashing and sound hazards, those would also be included:</p>
+                              <pre><code>&lt;meta property="schema:accessibilityHazard"&gt;noFlashingHazard&lt;/meta&gt;
+&lt;meta property="schema:accessibilityHazard"&gt;noSoundHazard&lt;/meta&gt;</code></pre>
+                              <p>Likewise, if the status of these other hazards has not yet been evaluated, the <code>unknown</code> values should be used as placeholders:</p>
+                              <pre><code>&lt;meta property="schema:accessibilityHazard"&gt;unknownFlashingHazard&lt;/meta&gt;
+&lt;meta property="schema:accessibilityHazard"&gt;unknownSoundHazard&lt;/meta&gt;</code></pre>
+                            </div>
+                        </aside>
+                    </section>
+
+                    <section id="metadata-a11y-hazards-unknownSoundHazard">
+                        <h5>unknownSoundHazard</h5>
+
+                        <p>Indicates that it is unknown if an auditory hazard exists within the content.</p>
+                        <p>This value is a placeholder for a specific hazard, indicating that it has not yet been evaluated. It allows for a partially completed hazard assessment, unlike the global <a href="#metadata-a11y-hazards-unknown"><code>unknown</code></a> value.</p>
+                        <p>The <code>unknownSoundHazard</code> value <b>must not</b> be set when any of the <a href="#metadata-a11y-hazards-sound"><code>sound</code></a>, <a href="#metadata-a11y-hazards-noSoundHazard"><code>noSoundHazard</code></a>, <a href="#metadata-a11y-hazards-none"><code>none</code></a>, or <a href="#metadata-a11y-hazards-unknown"><code>unknown</code></a> values is set.</p>
+
+                        <aside class="example" title="AccessibilityHazard: unknownSoundHazard">
+                            <p>This value is used when the status of a specific hazard is undetermined. It can be combined with declarations for other hazards whose status is known.</p>
+
+                            <p><b>Example Package Document (<code>package.opf</code>) declaring a specific unknown hazard:</b></p>
+                            <pre>
+                                <code>&lt;!-- The sound hazard status of this publication has not yet been evaluated. --&gt;
+                    &lt;meta property="schema:accessibilityHazard"&gt;unknownSoundHazard&lt;/meta&gt;
+
+                    &lt;meta property="schema:accessibilitySummary"&gt;The sound hazard status of this publication has not yet been evaluated.&lt;/meta&gt;</code>
+                            </pre>
+
+                            <div class="note">
+                              <p>It is a best practice to also declare the status of other potential hazards. For example, if the publication has been checked and confirmed to be free of flashing and motion simulation hazards, those would also be included:</p>
+                              <pre><code>&lt;meta property="schema:accessibilityHazard"&gt;noFlashingHazard&lt;/meta&gt;
+&lt;meta property="schema:accessibilityHazard"&gt;noMotionSimulationHazard&lt;/meta&gt;</code></pre>
+                              <p>Likewise, if the status of these other hazards has not yet been evaluated, the <code>unknown</code> values should be used as placeholders:</p>
+                              <pre><code>&lt;meta property="schema:accessibilityHazard"&gt;unknownFlashingHazard&lt;/meta&gt;
+&lt;meta property="schema:accessibilityHazard"&gt;unknownMotionSimulationHazard&lt;/meta&gt;</code></pre>
+                            </div>
+                        </aside>
+                    </section>
+                </section>
+        </section>
+        </section>
 		<section id="accessibilitySummary">
 			<h2>Accessibility summary</h2>
 
