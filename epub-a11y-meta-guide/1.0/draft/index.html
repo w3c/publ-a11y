@@ -961,50 +961,44 @@
 						<pre>&lt;meta property="schema:accessibilityFeature"&gt;readingOrder&lt;/meta&gt;</pre>
 					</section>
 
-					<section id="metadata-a11y-features-structuralNavigation">
-						<h5>Structural Navigation</h5>
+                    <section id="metadata-a11y-features-structuralNavigation">
+                        <h5>structuralNavigation</h5>
 
-						<p>The metadata <code>structuralNavigation</code> is used to indicate that an EPUB document has
-							been structured to support accessible navigation through its content. This is crucial for
-							users of assistive technologies.</p>
+                        <p>The use of headings in the resource fully and accurately reflects the document hierarchy, allowing navigation by assistive technologies.</p>
+                        <p>This creates a navigable "table of contents" that users of assistive technologies, such as screen readers, can use to quickly understand the document's structure and jump to any section.</p>
 
-						<p>The use of headings, lists, tables, asides, etc. in the resource fully and accurately
-							reflects the document hierarchy, allowing navigation by assistive technologies.</p>
+                        <aside class="example" title="AccessibilityFeature: structuralNavigation">
+                            <p>This feature is implemented by using HTML heading tags (<code>&lt;h1&gt;</code> through <code>&lt;h6&gt;</code>) to create a logical and nested outline of the content. Headings <b>must not</b> skip levels (e.g., an <code>&lt;h1&gt;</code> followed by an <code>&lt;h3&gt;</code> is incorrect).</p>
 
-						<p>You should use this metadata when your document meets the following criteria:</p>
+                            <p><b>Example of a correct heading structure:</b></p>
+                            <pre>
+                                <code>&lt;!DOCTYPE html&gt;
+                    &lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;
+                    &lt;head&gt;
+                      &lt;title&gt;Document Structure&lt;/title&gt;
+                    &lt;/head&gt;
+                    &lt;body&gt;
+                      &lt;h1&gt;The Solar System&lt;/h1&gt;
+                      &lt;p&gt;This document outlines the planets in our solar system.&lt;/p&gt;
 
-						<ul>
-							<li><b>Semantic Structure</b>: The document uses semantic HTML5 elements that accurately
-								represent the content's logical structure.</li>
-							<li><b>Heading Hierarchy</b>: Headings (h1-h6) are used in a meaningful, hierarchical manner
-								that reflects the document's outline.</li>
-							<li>
-								<p><b>Navigational Elements</b>: The document includes:</p>
-								<ul>
-									<li>Properly nested headings</li>
-									<li>Ordered and unordered lists where appropriate</li>
-									<li>Tables with appropriate headers and captions</li>
-									<li>Semantic elements like section, article, aside, etc.</li>
-									<li>Meaningful landmark roles</li>
-								</ul>
-							</li>
-						</ul>
+                      &lt;h2&gt;Inner Planets&lt;/h2&gt;
+                      &lt;p&gt;The four planets closest to the Sun.&lt;/p&gt;
 
-						<p>Benefits of Structural Navigation:</p>
+                      &lt;h2&gt;Outer Planets&lt;/h2&gt;
+                      &lt;p&gt;The four planets furthest from the Sun.&lt;/p&gt;
 
-						<ul>
-							<li>Enables screen readers to provide better navigation</li>
-							<li>Allows users to jump between sections easily</li>
-							<li>Provides a clear, logical understanding of the document's structure</li>
-							<li>Improves overall accessibility and usability</li>
-						</ul>
+                      &lt;h3&gt;Gas Giants&lt;/h3&gt;
+                      &lt;p&gt;Jupiter and Saturn are primarily composed of hydrogen and helium.&lt;/p&gt;
+                    &lt;/body&gt;
+                    &lt;/html&gt;</code>
+                            </pre>
 
-						<p>The metadata to include in the package document when proper structural elements are used to
-							facility accessible navigation would be:</p>
-
-						<pre>&lt;meta property="schema:accessibilityFeature"&gt;structuralNavigation&lt;/meta&gt;</pre>
-					</section>
-
+                            <p>The metadata to include in the package document to advertise this feature would be:</p>
+                            <pre>
+                                <code>&lt;meta property="schema:accessibilityFeature"&gt;structuralNavigation&lt;/meta&gt;</code>
+                            </pre>
+                        </aside>
+                    </section>
 					<section id="metadata-a11y-features-tableOfContents">
 						<h5>Table Of Contents</h5>
 
