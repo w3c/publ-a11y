@@ -961,50 +961,44 @@
 						<pre>&lt;meta property="schema:accessibilityFeature"&gt;readingOrder&lt;/meta&gt;</pre>
 					</section>
 
-					<section id="metadata-a11y-features-structuralNavigation">
-						<h5>Structural Navigation</h5>
+                    <section id="metadata-a11y-features-structuralNavigation">
+                        <h5>structuralNavigation</h5>
 
-						<p>The metadata <code>structuralNavigation</code> is used to indicate that an EPUB document has
-							been structured to support accessible navigation through its content. This is crucial for
-							users of assistive technologies.</p>
+                        <p>The use of headings in the resource fully and accurately reflects the document hierarchy, allowing navigation by assistive technologies.</p>
+                        <p>This creates a navigable "table of contents" that users of assistive technologies, such as screen readers, can use to quickly understand the document's structure and jump to any section.</p>
 
-						<p>The use of headings, lists, tables, asides, etc. in the resource fully and accurately
-							reflects the document hierarchy, allowing navigation by assistive technologies.</p>
+                        <aside class="example" title="AccessibilityFeature: structuralNavigation">
+                            <p>This feature is implemented by using HTML heading tags (<code>&lt;h1&gt;</code> through <code>&lt;h6&gt;</code>) to create a logical and nested outline of the content. Headings <b>should not</b> skip levels (e.g., an <code>&lt;h1&gt;</code> followed by an <code>&lt;h3&gt;</code> is incorrect).</p>
 
-						<p>You should use this metadata when your document meets the following criteria:</p>
+                            <p><b>Example of a correct heading structure:</b></p>
+                            <pre>
+                                <code>&lt;!DOCTYPE html&gt;
+                    &lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;
+                    &lt;head&gt;
+                      &lt;title&gt;Document Structure&lt;/title&gt;
+                    &lt;/head&gt;
+                    &lt;body&gt;
+                      &lt;h1&gt;The Solar System&lt;/h1&gt;
+                      &lt;p&gt;This document outlines the planets in our solar system.&lt;/p&gt;
 
-						<ul>
-							<li><b>Semantic Structure</b>: The document uses semantic HTML5 elements that accurately
-								represent the content's logical structure.</li>
-							<li><b>Heading Hierarchy</b>: Headings (h1-h6) are used in a meaningful, hierarchical manner
-								that reflects the document's outline.</li>
-							<li>
-								<p><b>Navigational Elements</b>: The document includes:</p>
-								<ul>
-									<li>Properly nested headings</li>
-									<li>Ordered and unordered lists where appropriate</li>
-									<li>Tables with appropriate headers and captions</li>
-									<li>Semantic elements like section, article, aside, etc.</li>
-									<li>Meaningful landmark roles</li>
-								</ul>
-							</li>
-						</ul>
+                      &lt;h2&gt;Inner Planets&lt;/h2&gt;
+                      &lt;p&gt;The four planets closest to the Sun.&lt;/p&gt;
 
-						<p>Benefits of Structural Navigation:</p>
+                      &lt;h2&gt;Outer Planets&lt;/h2&gt;
+                      &lt;p&gt;The four planets furthest from the Sun.&lt;/p&gt;
 
-						<ul>
-							<li>Enables screen readers to provide better navigation</li>
-							<li>Allows users to jump between sections easily</li>
-							<li>Provides a clear, logical understanding of the document's structure</li>
-							<li>Improves overall accessibility and usability</li>
-						</ul>
+                      &lt;h3&gt;Gas Giants&lt;/h3&gt;
+                      &lt;p&gt;Jupiter and Saturn are primarily composed of hydrogen and helium.&lt;/p&gt;
+                    &lt;/body&gt;
+                    &lt;/html&gt;</code>
+                            </pre>
 
-						<p>The metadata to include in the package document when proper structural elements are used to
-							facility accessible navigation would be:</p>
-
-						<pre>&lt;meta property="schema:accessibilityFeature"&gt;structuralNavigation&lt;/meta&gt;</pre>
-					</section>
-
+                            <p>The metadata to include in the package document to advertise this feature would be:</p>
+                            <pre>
+                                <code>&lt;meta property="schema:accessibilityFeature"&gt;structuralNavigation&lt;/meta&gt;</code>
+                            </pre>
+                        </aside>
+                    </section>
 					<section id="metadata-a11y-features-tableOfContents">
 						<h5>Table Of Contents</h5>
 
@@ -2548,11 +2542,7 @@ body {
 
 						<p><b>Example Package Document (<code>package.opf</code>):</b></p>
 
-						<pre>&lt;!-- Declaring 'none' means no other accessibility features are claimed. --&gt;
-    &lt;meta property="schema:accessibilityFeature"&gt;none&lt;/meta&gt;
-
-    &lt;meta property="schema:accessibilitySummary"&gt;This publication does not include any specialized accessibility features.&lt;/meta&gt;
-  &lt;/metadata&gt;</pre>
+						<pre>&lt;meta property="schema:accessibilityFeature"&gt;none&lt;/meta&gt;</pre>
 					</aside>
 				</section>
 
@@ -2575,11 +2565,7 @@ body {
 
 						<p><b>Example Package Document (<code>package.opf</code>):</b></p>
 
-						<pre>&lt;!-- 'unknown' is a placeholder until an accessibility audit is performed. --&gt;
-   &lt;meta property="schema:accessibilityFeature"&gt;unknown&lt;/meta&gt;
-
-   &lt;meta property="schema:accessibilitySummary"&gt;The accessibility features of this publication have not yet been evaluated.&lt;/meta&gt;
-&lt;/metadata&gt;</pre>
+						<pre>&lt;meta property="schema:accessibilityFeature"&gt;unknown&lt;/meta&gt;</pre>
 					</aside>
 				</section>
 
@@ -2785,17 +2771,9 @@ body {
 							<p><b>Example Package Document (<code>package.opf</code>) declaring a flashing
 								hazard:</b></p>
 
-							<pre>&lt;!-- WARNING: This publication contains a known flashing hazard. --&gt;
-    &lt;meta property="schema:accessibilityHazard"&gt;flashing&lt;/meta&gt;
+							<pre>&lt;meta property="schema:accessibilityHazard"&gt;flashing&lt;/meta&gt;
 
-    &lt;meta property="schema:accessibilitySummary"&gt;Warning: This book contains a video with rapid strobe effects that may affect users with photosensitive epilepsy.&lt;/meta&gt;
-  &lt;/metadata&gt;
-
-  &lt;manifest&gt;
-    &lt;!-- ... manifest items including the video file ... --&gt;
-  &lt;/manifest&gt;
-
-&lt;/package&gt;</pre>
+&lt;meta property="schema:accessibilitySummary"&gt;Approximately 30 seconds into the video on page 23, there is a rapid strobe effect lasting five seconds that may affect viewers with photosensitive epilepsy.&lt;/meta&gt;</pre>
 
 							<div class="note">
 								<p>It is a best practice to also declare the status of other potential hazards. For
@@ -2851,10 +2829,7 @@ body {
 
 							<p><b>Example Package Document (<code>package.opf</code>) declaring a motion simulation
 									hazard:</b></p>
-							<pre>&lt;!-- WARNING: This publication contains a known motion simulation hazard. --&gt;
-&lt;meta property="schema:accessibilityHazard"&gt;motionSimulation&lt;/meta&gt;
-
-&lt;meta property="schema:accessibilitySummary"&gt;Warning: This book contains parallax scrolling effects that may be problematic for users with vestibular disorders.&lt;/meta&gt;</pre>
+							<pre>&lt;meta property="schema:accessibilityHazard"&gt;motionSimulation&lt;/meta&gt;</pre>
 
 							<div class="note">
 								<p>It is a best practice to also declare the status of other potential hazards. For
@@ -2923,10 +2898,7 @@ body {
 
 							<p><b>Example Package Document (<code>package.opf</code>) declaring a sound hazard:</b></p>
 
-							<pre>&lt;!-- WARNING: This publication contains a known sound hazard. --&gt;
-&lt;meta property="schema:accessibilityHazard"&gt;sound&lt;/meta&gt;
-
-&lt;meta property="schema:accessibilitySummary"&gt;Warning: This book contains background audio that plays automatically.&lt;/meta&gt;</pre>
+							<pre>&lt;meta property="schema:accessibilityHazard"&gt;sound&lt;/meta&gt;</pre>
 
 							<div class="note">
 								<p>It is a best practice to also declare the status of other potential hazards. For
@@ -2979,10 +2951,8 @@ body {
 
 							<p><b>Example Package Document (<code>package.opf</code>) declaring no hazards:</b></p>
 
-							<pre>&lt;!-- This publication has been audited and is free of all known hazards. --&gt;
-&lt;meta property="schema:accessibilityHazard"&gt;none&lt;/meta&gt;
+                            <pre>&lt;meta property="schema:accessibilityHazard"&gt;none&lt;/meta&gt;</pre>
 
-&lt;meta property="schema:accessibilitySummary"&gt;This publication is free of all known accessibility hazards.&lt;/meta&gt;</pre>
 						</aside>
 					</section>
 
@@ -3013,10 +2983,7 @@ body {
 							<p><b>Example Package Document (<code>package.opf</code>) declaring no flashing
 								hazard:</b></p>
 
-							<pre>&lt;!-- This publication has been verified to be free of flashing hazards. --&gt;
-&lt;meta property="schema:accessibilityHazard"&gt;noFlashingHazard&lt;/meta&gt;
-
-&lt;meta property="schema:accessibilitySummary"&gt;This publication is free of known flashing hazards.&lt;/meta&gt;</pre>
+							<pre>&lt;meta property="schema:accessibilityHazard"&gt;noFlashingHazard&lt;/meta&gt;</pre>
 
 							<div class="note">
 								<p>It is a best practice to also declare the status of other potential hazards. For
@@ -3058,10 +3025,7 @@ body {
 
 							<p><b>Example Package Document (<code>package.opf</code>) declaring no motion simulation
 									hazard:</b></p>
-							<pre>&lt;!-- This publication has been verified to be free of motion simulation hazards. --&gt;
-&lt;meta property="schema:accessibilityHazard"&gt;noMotionSimulationHazard&lt;/meta&gt;
-
-&lt;meta property="schema:accessibilitySummary"&gt;This publication is free of known motion simulation hazards.&lt;/meta&gt;</pre>
+							<pre>&lt;meta property="schema:accessibilityHazard"&gt;noMotionSimulationHazard&lt;/meta&gt;</pre>
 
 							<div class="note">
 								<p>It is a best practice to also declare the status of other potential hazards. For
@@ -3108,10 +3072,7 @@ body {
 
 							<p><b>Example Package Document (<code>package.opf</code>) declaring no sound hazard:</b></p>
 
-							<pre>&lt;!-- This publication has been verified to be free of sound hazards. --&gt;
-&lt;meta property="schema:accessibilityHazard"&gt;noSoundHazard&lt;/meta&gt;
-
-&lt;meta property="schema:accessibilitySummary"&gt;This publication is free of known sound hazards.&lt;/meta&gt;</pre>
+							<pre>&lt;meta property="schema:accessibilityHazard"&gt;noSoundHazard&lt;/meta&gt;</pre>
 
 							<div class="note">
 								<p>It is a best practice to also declare the status of other potential hazards. For
@@ -3166,10 +3127,7 @@ body {
 
 							<p><b>Example Package Document (<code>package.opf</code>) declaring an unknown hazard
 									status:</b></p>
-							<pre>&lt;!-- The hazard status of this publication has not yet been evaluated. --&gt;
-&lt;meta property="schema:accessibilityHazard"&gt;unknown&lt;/meta>
-
-&lt;meta property="schema:accessibilitySummary"&gt;The accessibility hazard status of this publication has not yet been evaluated.&lt;/meta&gt;</pre>
+							<pre>&lt;meta property="schema:accessibilityHazard"&gt;unknown&lt;/meta></pre>
 						</aside>
 					</section>
 
@@ -3194,10 +3152,7 @@ body {
 
 							<p><b>Example Package Document (<code>package.opf</code>) declaring a specific unknown
 									hazard:</b></p>
-							<pre>&lt;!-- The flashing hazard status of this publication has not yet been evaluated. --&gt;
-&lt;meta property="schema:accessibilityHazard"&gt;unknownFlashingHazard&lt;/meta&gt;
-
-&lt;meta property="schema:accessibilitySummary"&gt;The flashing hazard status of this publication has not yet been evaluated.&lt;/meta&gt;</pre>
+							<pre>&lt;meta property="schema:accessibilityHazard"&gt;unknownFlashingHazard&lt;/meta&gt;</pre>
 
 							<div class="note">
 								<p>It is a best practice to also declare the status of other potential hazards. For
@@ -3237,12 +3192,8 @@ body {
 							<p>This value is used when the status of a specific hazard is undetermined. It can be
 								combined with declarations for other hazards whose status is known.</p>
 
-							<p><b>Example Package Document (<code>package.opf</code>) declaring a specific unknown
-									hazard:</b></p>
-							<pre>&lt;!-- The motion simulation hazard status of this publication has not yet been evaluated. --&gt;
-&lt;meta property="schema:accessibilityHazard"&gt;unknownMotionSimulationHazard&lt;/meta&gt;
-
-&lt;meta property="schema:accessibilitySummary"&gt;The motion simulation hazard status of this publication has not yet been evaluated.&lt;/meta&gt;</pre>
+							<p><b>Example Package Document (<code>package.opf</code>) declaring a specific unknown hazard:</b></p>
+							<pre>&lt;meta property="schema:accessibilityHazard"&gt;unknownMotionSimulationHazard&lt;/meta&gt;</pre>
 
 							<div class="note">
 								<p>It is a best practice to also declare the status of other potential hazards. For
@@ -3282,10 +3233,7 @@ body {
 
 							<p><b>Example Package Document (<code>package.opf</code>) declaring a specific unknown
 									hazard:</b></p>
-							<pre>&lt;!-- The sound hazard status of this publication has not yet been evaluated. --&gt;
-&lt;meta property="schema:accessibilityHazard"&gt;unknownSoundHazard&lt;/meta&gt;
-
-&lt;meta property="schema:accessibilitySummary"&gt;The sound hazard status of this publication has not yet been evaluated.&lt;/meta&gt;</pre>
+							<pre>&lt;meta property="schema:accessibilityHazard"&gt;unknownSoundHazard&lt;/meta&gt;</pre>
 
 							<div class="note">
 								<p>It is a best practice to also declare the status of other potential hazards. For
