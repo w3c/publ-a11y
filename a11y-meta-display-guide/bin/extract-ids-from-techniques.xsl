@@ -5,11 +5,11 @@
 
     <xsl:template match="/">
         <strings>
-            <xsl:apply-templates select="//xhtml:code[@id]"/>
+            <xsl:apply-templates select="//code[@id]"/>
         </strings>
     </xsl:template>
 
-    <xsl:template match="xhtml:code[@id]">
+    <xsl:template match="code[@id]">
         <string>
             <id><xsl:value-of select="@id"/></id>
             <value><xsl:value-of select="normalize-space(substring(., 2, string-length(.) - 2))"/></value>
