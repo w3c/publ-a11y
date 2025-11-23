@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
-	<meta charset="utf-8">
+	<meta charset="utf-8" />
 	<title>Accessibility Metadata Display Guide for Digital Publications
 		2.1</title>
 	<script src="https://www.w3.org/Tools/respec/respec-w3c"
@@ -274,7 +274,7 @@
 
 			<img class="responsive" src="media/MetadataProcessing.png"
 				aria-details="ecosystem"
-				alt="Outline of the processing for EPUB, PDF, ONIX and MARC metadata. Description follows.">
+				alt="Outline of the processing for EPUB, PDF, ONIX and MARC metadata. Description follows." />
 
 			<div class="note">
 				<p>Work on integrating PDF and MARC is ongoing. The
@@ -1080,17 +1080,16 @@
 						<dd>
 							<p><span
 									data-localization-id="conformance-certifier"
-									data-localization-mode="compact">The
-									publication was certified by </span>
-								<span class="placeholder">&lt;certifier name&gt;</span></p>
+									data-localization-mode="compact">The publication was certified by <span class="placeholder">{certifier}</span></span>
+							</p>
 						</dd>
 
 						<dt>If the certifier has a credential:</dt>
 						<dd>
 							<p><span
 									data-localization-id="conformance-certifier-credentials"
-									data-localization-mode="compact">The certifier's credential is </span>
-								<span class="placeholder">&lt;certifier credential&gt;</span></p>
+									data-localization-mode="compact">The certifier's credential is <span class="placeholder">{certifier_credentials}</span></span>
+							</p>
                             <div class="note">
 								<p>If the certifier metadata value is a text-based badge or a credential, then only the text is displayed. If the badge or credential is expressed as a URL, then the URL can be made a link for users to access. The display of image logos or badges is typically arranged between the certifier and the distributor. The distributor would be responsible for identifying the certifier's text credential and replacing it with the image.</p>
                             </div>
@@ -1114,31 +1113,7 @@
 						<dd>
 							<p data-localization-mode="compact">
 								<span data-localization-id="conformance-details-claim"
-									data-localization-mode="compact">This
-									publication claims to meet</span>
-
-								EPUB Accessibility
-								<span class="placeholder">&lt;1.X&gt;</span>
-
-								WCAG
-								<span class="placeholder">&lt;2.X&gt;</span>
-
-								Level
-								<span class="placeholder">&lt;A or AA or AAA&gt;</span>
-							</p>
-							<p data-localization-mode="descriptive">
-								<span data-localization-id="conformance-details-claim"
-									data-localization-mode="descriptive">This
-									publication claims to meet</span>
-
-								EPUB Accessibility
-								<span class="placeholder">&lt;1.X&gt;</span>
-
-								Web Content Accessibility Guidelines (WCAG)
-								<span class="placeholder">&lt;2.X&gt;</span>
-
-								Level
-								<span class="placeholder">&lt;A or AA or AAA&gt;</span>
+									data-localization-mode="compact">This publication claims to meet <span class="placeholder">{epub_accessibility}</span> <span class="placeholder">{wcag_version}</span> <span class="placeholder">{wcag_level}</span></span>
 							</p>
 
 							<div class="note">
@@ -1159,9 +1134,8 @@
 						<dd>
 							<p>
 								<span data-localization-id="conformance-details-certification-info"
-									data-localization-mode="compact">The
-									publication was certified on </span>
-								<span class="placeholder">&lt;certification date&gt;</span></p>
+									data-localization-mode="compact">The publication was certified on <span class="placeholder">{certification_date}</span></span>
+							</p>
 						</dd>
 
 						<dt>If the certifier provides an accessibility report:</dt>
