@@ -13,7 +13,6 @@ author: Publishing Maintenance Group Accessibility Task Force
 ## Participate
 
 - Issue tracker: 
-- Discussion: 
 
 ## Introduction
 
