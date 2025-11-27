@@ -61,7 +61,6 @@ Today, best practice relies on the use of `aria-details` to identify the link to
 - The link should have a unique ID.
 - In the external file, each description is in a `section` with a matching ID, a heading, a presentational copy of the image, the detailed description, and a backlink (`role="doc-backlink"`) to the main content.
 - Note: WAI-ARIA 1.2 specifies that content referenced by `aria-details` is not flattened into accessible name/description computation; it is intended to expose structured, potentially complex descriptions for discovery and navigation (see ARIA `aria-details` in References). Authors should ensure the referenced link is visible to all users and test the pattern across common reading systems and screen readers because user agent and AT support can vary.
-- In EPUB, mark the extended description file as `linear="no"` in the spine, so it does not affect the original published content.
 
 ### Current limitations
 
@@ -154,7 +153,7 @@ Similar semantic identification challenges have been successfully addressed, dem
 
 1. Socialize this explainer with APA, TAG, and the wider web platform community.
 2. Discuss ARIA role proposals and `aria-details` usage with the ARIA Working Group.
-3. Create sample EPUBs and web publications demonstrating the recommended patterns.
+3. Create samples HTML, EPUB and web publications demonstrating the recommended patterns.
 4. Produce authoring guidance and lint rules to encourage correct usage and prevent misuse.
 5. Coordinate with reading system and assistive technology vendors on implementation and UX affordances.
 
