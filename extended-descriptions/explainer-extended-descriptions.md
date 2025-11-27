@@ -71,12 +71,14 @@ Tests revealed limitations related to identifying extended descriptions with cer
 
 Additionally, testing showed declarative workarounds being impractical when parsed using XPath, including identification limited to a single document, expensive preprocessing and DOM traversals, and a requirement for sophisticated parsing logic that makes implementations less scalable for many images or large collections — more error-prone and resource-intensive compared with simple, explicit markup approaches.
 
+### The footnote precendent
+
 ## Proposed approach
 
 We propose two complementary ARIA roles to strengthen link semantics and make extended-description relationships explicit to assistive technologies:
 
-- `role="doc-extendeddescref"` to mark the forward link (the anchor in the primary content that points to the extended description).
-- `role="doc-extendeddesc"` to mark the container that holds the extended description (which can be in the same document or in an external resource).
+- `role="extendeddescriptionref"` to mark the forward link (the anchor in the primary content that points to the extended description).
+- `role="extendeddescription"` to mark the container that holds the extended description (which can be in the same document or in an external resource).
 
 
 Example pattern:
@@ -84,10 +86,10 @@ Example pattern:
 ```html
 <!-- Main content -->
 <img id="img1" src="figure1.png" alt="Schematic of the device" aria-details="extdesc-1">
-<a id="extdesc-1" role="doc-extendeddescref" href="extended-descriptions.xhtml#desc-img1">Extended description</a>
+<a id="extdesc-1" role="extendeddescriptionref" href="extended-descriptions.xhtml#desc-img1">Extended description</a>
 
 <!-- Extended description file -->
-<section id="desc-img1" role="doc-extendeddesc">
+<section id="desc-img1" role="extendeddescription">
     <h2>Extended description — Figure 1</h2>
     <img src="figure1.png" role="presentation" alt="">
     <p>...detailed structured description...</p>
@@ -95,10 +97,10 @@ Example pattern:
 ```html
 <!-- Main content -->
 <img id="img1" src="figure1.png" alt="Schematic of the device" aria-details="extdesc-1">
-<a id="extdesc-1" role="doc-extendeddescref" href="extended-descriptions.xhtml#desc-img1">Extended description</a>
+<a id="extdesc-1" role="extendeddescriptionref" href="extended-descriptions.xhtml#desc-img1">Extended description</a>
 
 <!-- Extended description file -->
-<section id="desc-img1" role="doc-extendeddesc">
+<section id="desc-img1" role="extendeddescription">
 	<h2>Extended description — Figure 1</h2>
 	<img src="figure1.png" role="presentation" alt="">
 	<p>...detailed structured description...</p>
@@ -110,9 +112,9 @@ Example pattern:
 
 Using explicit markup reduces the computational overhead associated with reverse-checking `aria-details` to identify links to extended descriptions.
 
-The combination of `aria-details`, `role="doc-extendeddescref"` and `role="doc-extendeddesc"` provides bidirectional programmatic relationships even when extended descriptions reside in separate HTML files.
+The combination of `aria-details`, `role="extendeddescriptionref"` and `role="extendeddescription"` provides bidirectional programmatic relationships even when extended descriptions reside in separate HTML files.
 
-`role="doc-extendeddesc"` would identify extended description containers across document boundaries.
+`role="extendeddescription"` would identify extended description containers across document boundaries.
 
 Similar semantic identification challenges have been successfully addressed, demonstrating the value of specific semantic roles for different types of linked supplementary content. For example, DPUB ARIA roles provide the `doc-footnote` and `doc-noteref` roles to identify notes and their references, enabling assistive technologies and text-to-speech engines to announce them appropriately and user agents to implement specialized navigation features.
 
@@ -132,7 +134,7 @@ Similar semantic identification challenges have been successfully addressed, dem
 
 - `<details>`: native HTML, but problematic in EPUB due to pagination and inconsistent support.
 - `longdesc`: rejected due to historical misuse, lack of adoption, and removal from HTML and EPUB specifications.
-- `rel="doc-extendeddesc"`: could provide additional context but is not considered by assistive technologies.
+- `rel="extendeddescription"`: could provide additional context but is not considered by assistive technologies.
 - `epub:type`: lacks sufficient granularity to distinguish extended descriptions from other supplementary content types; would require new values and coordination with the EPUB Working Group and is not currently supported by assistive technologies.
 - RDFa/microdata: structured data approaches that add semantic richness but require parsing infrastructure and do not directly expose relationships to assistive technologies via the accessibility tree.
 - Reusing `doc-noteref`/`doc-footnote` semantics: while structurally similar, extended descriptions differ in scope and purpose from footnotes; repurposing existing roles would create confusion for users and implementers.
