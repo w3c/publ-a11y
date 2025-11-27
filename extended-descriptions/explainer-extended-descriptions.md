@@ -23,7 +23,7 @@ The document summarizes goals, non-goals, candidate approaches, examples, altern
 
 ## User-Facing Problem
 
-Users encounter images and non-text content that convey complex information (e.g., technical diagrams, charts, mathematical notation, museum objects) where a short `alt` is insufficient and an extended eventually structured desrciption is provided. Without clear affordances, users may not discover them or understand linking between both.
+Users encounter images and non-text content that convey complex information (e.g., technical diagrams, charts, mathematical notation, museum objects) where a short `alt` is insufficient and an extended, structured description is provided. Without clear affordances, users may not discover these descriptions or understand the linking between them and the primary content.
 
 Authors and reading systems need a reliable, discoverable, and programmatic way to identify and surface extended descriptions in consistent ways without breaking reading flow or excluding non-AT users.
 
@@ -66,25 +66,51 @@ Today, best practice relies on the use of `aria-details` to identify the link to
 ### Current limitations
 
 Tests revealed limitations related to identifying extended descriptions with certainty. It manifests in two critical areas:
-* when a link points to an extended description, there is no standardized semantic marker to distinguish it from other types of links, preventing assistive technologies from announcing the link's purpose appropriately and limiting user agents' ability to provide specialized navigation or presentation features.
-* extended description content itself lacks a specific semantic role to distinguish it from generic sections, making it difficult to automatically locate and process extended descriptions within a document or across a collection of documents.
+- when a link points to an extended description, there is no standardized semantic marker to distinguish it from other types of links, preventing assistive technologies from announcing the link's purpose appropriately and limiting user agents' ability to provide specialized navigation or presentation features.
+- extended description content itself lacks a specific semantic role to distinguish it from generic sections, making it difficult to automatically locate and process extended descriptions within a document or across a collection of documents.
 
 Additionally, testing showed declarative workarounds being impractical when parsed using XPath, including identification limited to a single document, expensive preprocessing and DOM traversals, and a requirement for sophisticated parsing logic that makes implementations less scalable for many images or large collections — more error-prone and resource-intensive compared with simple, explicit markup approaches.
 
 ## Proposed approach
 
-We propose an additional ARIA role or attributes (e.g., `role="doc-extended-description"`) to expose semantics directly to assistive technologies.
+We propose two complementary ARIA roles to strengthen link semantics and make extended-description relationships explicit to assistive technologies:
 
-These semantic markers enable:
-- Assistive technologies to discover and announce the availability of extended descriptions.
-- Reading systems to reliably identify description content even in separate files.
-- Consistent user experience across different reading contexts.
+- `role="doc-extended-description-link"` to mark the forward link (the anchor in the primary content that points to the extended description).
+- `role="doc-extended-description"` to mark the container that holds the extended description (which can be in the same document or in an external resource).
+
+
+Example pattern:
+
+```html
+<!-- Main content -->
+<img id="img1" src="figure1.png" alt="Schematic of the device" aria-details="extdesc-1">
+<a id="extdesc-1" role="doc-extended-description-link" href="extended-descriptions.xhtml#desc-img1">Extended description</a>
+
+<!-- Extended description file -->
+<section id="desc-img1" role="doc-extended-description">
+    <h2>Extended description — Figure 1</h2>
+    <img src="figure1.png" role="presentation" alt="">
+    <p>...detailed structured description...</p>
+    <a role="doc-backlink" href="chapter01.xhtml#img1">Back to image</a>
+```html
+<!-- Main content -->
+<img id="img1" src="figure1.png" alt="Schematic of the device" aria-details="extdesc-1">
+<a id="extdesc-1" role="doc-extended-description-link" href="extended-descriptions.xhtml#desc-img1">Extended description</a>
+
+<!-- Extended description file -->
+<section id="desc-img1" role="doc-extended-description">
+	<h2>Extended description — Figure 1</h2>
+	<img src="figure1.png" role="presentation" alt="">
+	<p>...detailed structured description...</p>
+	<a role="doc-backlink" href="chapter01.xhtml#img1">Back to image</a>
+</section>
+```
 
 ### Approach sustainability
 
 Using explicit markup reduces the computational overhead associated with reverse-checking `aria-details` to identify links to extended descriptions.
 
-The combination of `aria-details` and `role="doc-extended-description"` provides bidirectional programmatic relationships even when extended descriptions reside in separate HTML files.
+The combination of `aria-details`, `role="doc-extended-description-link"` and `role="doc-extended-description"` provides bidirectional programmatic relationships even when extended descriptions reside in separate HTML files.
 
 `role="doc-extended-description"` would identify extended description containers across document boundaries.
 
@@ -98,6 +124,7 @@ Similar semantic identification challenges have been successfully addressed, dem
 
 - ARIA exposes semantics to assistive technologies.
 - Reading systems can implement strong affordances and a consistent user experience (for example, panels or a navigate-and-return flow).
+- Tools can extract together images and extended description.
 
 ## Alternatives considered
 
