@@ -135,4 +135,4 @@ Similar semantic identification challenges have been successfully addressed, dem
 
 ## Acknowledgements
 
-This explainer has been written by Gautier Chomel summarizing previous works from Charles Lapierre and Gregorio Pellegrino, discussed and reviewed by Matthew Atkinson, Matt Garrish, George Kerscher, Steve Noble, Wendy Reid, James Yanchack, and others. All works conducted under Avneesh Singh coordination.
+This explainer has been written by Gautier Chomel summarizing previous works from Charles LaPierre and Gregorio Pellegrino, discussed and reviewed by Matthew Atkinson, Matt Garrish, George Kerscher, Steve Noble, Wendy Reid, James Yanchack, and others. All works conducted under Avneesh Singh coordination.
