@@ -75,8 +75,8 @@ Additionally, testing showed declarative workarounds being impractical when pars
 
 We propose two complementary ARIA roles to strengthen link semantics and make extended-description relationships explicit to assistive technologies:
 
-- `role="doc-extended-description-link"` to mark the forward link (the anchor in the primary content that points to the extended description).
-- `role="doc-extended-description"` to mark the container that holds the extended description (which can be in the same document or in an external resource).
+- `role="doc-extendeddescref"` to mark the forward link (the anchor in the primary content that points to the extended description).
+- `role="doc-extendeddesc"` to mark the container that holds the extended description (which can be in the same document or in an external resource).
 
 
 Example pattern:
@@ -84,10 +84,10 @@ Example pattern:
 ```html
 <!-- Main content -->
 <img id="img1" src="figure1.png" alt="Schematic of the device" aria-details="extdesc-1">
-<a id="extdesc-1" role="doc-extended-description-link" href="extended-descriptions.xhtml#desc-img1">Extended description</a>
+<a id="extdesc-1" role="doc-extendeddescref" href="extended-descriptions.xhtml#desc-img1">Extended description</a>
 
 <!-- Extended description file -->
-<section id="desc-img1" role="doc-extended-description">
+<section id="desc-img1" role="doc-extendeddesc">
     <h2>Extended description — Figure 1</h2>
     <img src="figure1.png" role="presentation" alt="">
     <p>...detailed structured description...</p>
@@ -95,10 +95,10 @@ Example pattern:
 ```html
 <!-- Main content -->
 <img id="img1" src="figure1.png" alt="Schematic of the device" aria-details="extdesc-1">
-<a id="extdesc-1" role="doc-extended-description-link" href="extended-descriptions.xhtml#desc-img1">Extended description</a>
+<a id="extdesc-1" role="doc-extendeddescref" href="extended-descriptions.xhtml#desc-img1">Extended description</a>
 
 <!-- Extended description file -->
-<section id="desc-img1" role="doc-extended-description">
+<section id="desc-img1" role="doc-extendeddesc">
 	<h2>Extended description — Figure 1</h2>
 	<img src="figure1.png" role="presentation" alt="">
 	<p>...detailed structured description...</p>
@@ -110,9 +110,9 @@ Example pattern:
 
 Using explicit markup reduces the computational overhead associated with reverse-checking `aria-details` to identify links to extended descriptions.
 
-The combination of `aria-details`, `role="doc-extended-description-link"` and `role="doc-extended-description"` provides bidirectional programmatic relationships even when extended descriptions reside in separate HTML files.
+The combination of `aria-details`, `role="doc-extendeddescref"` and `role="doc-extendeddesc"` provides bidirectional programmatic relationships even when extended descriptions reside in separate HTML files.
 
-`role="doc-extended-description"` would identify extended description containers across document boundaries.
+`role="doc-extendeddesc"` would identify extended description containers across document boundaries.
 
 Similar semantic identification challenges have been successfully addressed, demonstrating the value of specific semantic roles for different types of linked supplementary content. For example, DPUB ARIA roles provide the `doc-footnote` and `doc-noteref` roles to identify notes and their references, enabling assistive technologies and text-to-speech engines to announce them appropriately and user agents to implement specialized navigation features.
 
@@ -130,7 +130,7 @@ Similar semantic identification challenges have been successfully addressed, dem
 
 - `<details>`: native HTML, but problematic in EPUB due to pagination and inconsistent support. 
 - `longdesc`: rejected due to historical misuse, lack of adoption, and removal from HTML and EPUB specifications.
-- `rel:"doc-extended-description"`: could provide additional context but is not considered by assistive technologies.
+- `rel:"doc-extendeddesc"`: could provide additional context but is not considered by assistive technologies.
 
 ## Accessibility, Internationalization, Privacy, and Security Considerations
 
