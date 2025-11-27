@@ -104,6 +104,7 @@ Example pattern:
     <img src="figure1.png" role="presentation" alt="">
     <p>...detailed structured description...</p>
     <a role="doc-backlink" href="chapter01.xhtml#img1">Back to image</a>
+
 ```html
 <!-- Main content -->
 <img id="img1" src="figure1.png" alt="Schematic of the device" aria-details="extdesc-1">
