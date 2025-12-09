@@ -344,6 +344,9 @@
                     	<li>
                             <span><b>ELSE IF</b> <var>real_text</var> <b>OR</b> <var>textual_alternatives</var>:</span>
                             <span><b>THEN</b> display <code id="ways-of-reading-nonvisual-reading-not-fully">"Not fully readable in read aloud or dynamic braille"</code>.</span>
+                        	<div class="note">
+								<p>This statement may appear when <a href="https://ns.editeur.org/onix/en/81/10">code 10 of codelist 81</a> (Text) is present without other accessibility metadata. This reflects that text-based digital publications are partially usable with assistive technologies, even without explicit accessibility optimization. Implementers may choose to suppress this statement when it is the only accessibility-related information.</p>
+							</div>
                         </li>
                     	<li>
                     		<span><b>ELSE IF</b> <var>audio_only_content</var>:</span>
