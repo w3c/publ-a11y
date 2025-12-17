@@ -25,7 +25,7 @@ curl \
     -G \
     --data-urlencode "type=respec" \
     --data-urlencode "url=https://w3c.github.io/publ-a11y/UX-Guide-Metadata/draft/principles/?specStatus=CG-FINAL&publishDate=$publishDate" \
-    https://labs.w3.org/spec-generator/ \
+    https://www.w3.org/publications/spec-generator/ \
     -o $BASEDIR/_tmp/index.html
 
 # generates the static version
