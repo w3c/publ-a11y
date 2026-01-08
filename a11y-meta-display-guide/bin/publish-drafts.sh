@@ -38,7 +38,7 @@ do
 		-G \
 		--data-urlencode "type=respec" \
 		--data-urlencode "url=https://w3c.github.io/publ-a11y/a11y-meta-display-guide/2.0/draft/$document/?specStatus=CG-DRAFT&publishDate=$publishDate&thisVersion=$versionURL" \
-		https://labs.w3.org/spec-generator/ \
+		https://www.w3.org/publications/spec-generator/ \
 		-o "$tmpdir/index.html"
 	
 	# runs nuchecker
