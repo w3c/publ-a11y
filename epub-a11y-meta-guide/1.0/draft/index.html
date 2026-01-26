@@ -2169,7 +2169,7 @@
 					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
    &lt;metadata>
       &#8230;
-      &lt;meta property="a11y:pageBreakSource"&gt;
+      &lt;meta property="a11y:pageBreakSource">
          urn:isbn:978765432100
       &lt;/meta>
       &#8230;
@@ -2190,7 +2190,7 @@
 					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
    &lt;metadata>
       &#8230;
-      &lt;meta property="a11y:pageBreakSource"&gt;
+      &lt;meta property="a11y:pageBreakSource">
          Moby Dick; or, the Whale, Herman Melville, New York: Harper and Brothers, 1851. 
       &lt;/meta>
       &#8230;
@@ -2205,7 +2205,7 @@
 					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
    &lt;metadata>
       &#8230;
-      &lt;meta property="a11y:pageBreakSource"&gt;
+      &lt;meta property="a11y:pageBreakSource">
          none
       &lt;/meta>
       &#8230;
@@ -3433,6 +3433,208 @@
 					for the accessibility of their products, that party's address can be used. The key point is that the
 					email should go directly to someone who can handle accessibility requests. It should not be a
 					general purpose feedback address unless there is no other option.</p>
+			</section>
+		</section>
+		<section id="features-identifying" class="appendix">
+			<h2>Identifying accessibility features</h2>
+
+			<p>This appendix provides guidance on how to determine if an EPUB publication contains accessibility
+				features for anyone unfamiliar with their use. Those already familiar with how the features are
+				implemented can skip this appendix.</p>
+
+			<section id="identify-alt">
+				<h3>Alternative text</h3>
+
+				<p>It is generally easy to determine if XHTML content documents have alternative text, as it only
+					requires checking that an <code>alt</code> attribute is present on each non-decorative
+						<code>img</code> tag.</p>
+
+				<pre>&lt;img src="images/hawk.jpg" 
+     alt="A majestic hawk perches on a tree branch" /></pre>
+
+				<p>For SVG content documents, the alternative text is usually contained in the <code>title</code>
+					element. If there is a <code>desc</code> element, it typically contains the extended
+					description.</p>
+
+				<pre>&lt;svg &#8230;>
+   &lt;title>A majestic hawk perches on a tree branch&lt;/title>
+   &#8230;
+&lt;/svg></pre>
+			</section>
+
+			<section id="identify-closed-captions">
+				<h3>Closed captions</h3>
+
+				<p>To determine if closed captions are being used for videos, search the XHTML content documents in the
+					publication for <code>track</code> elements with their <code>kind</code> attribute set to
+						<code>captions</code>.</p>
+
+				<aside class="example" title="Closed captions for English and Spanish">
+					<pre>&lt;video controls width="480" height="360">
+  &lt;source src="ch1-interview.mp4" type="video/mp4" />
+
+  &lt;track kind="captions"
+          src="ch1-interview-captions-en.vtt"
+          srclang="en"
+          label="English Captions"
+          default="" />
+
+  &lt;track kind="captions"
+          src="ch1-interview-captions-es.vtt"
+          srclang="es"
+          label="Spanish Captions" />
+
+  &lt;p>Your reading system does not support the video element.&lt;/p>
+&lt;/video></pre>
+				</aside>
+
+				<p>Make sure that the <code>track</code> elements are not associated with an <code>audio</code> element.
+					HTML does not support the display of closed captions with the <code>audio</code> element. Closed
+					captions only work with <code>video</code> elements.</p>
+			</section>
+
+			<section id="identify-extended-desc">
+				<h3>Extended descriptions</h3>
+
+				<p>There are many ways to associate extended descriptions with visual content, so it typically requires
+					checking images manually to determine if they are present.</p>
+
+				<p>Some common patterns to search for include the presence of an <code>aria-describedby</code> of
+						<code>aria-details</code> attribute on an <code>img</code> tag, but these attributes may not
+					always be set even when a description is available. As descriptions are often stored in a separate
+					file, it is also common to find a hyperlink after an image to its description. The description could
+					also be contained in a <code>figcaption</code> element if the image is in a <code>figure</code>.</p>
+
+				<aside class="example" title="Extended description using aria-details">
+					<pre>&lt;figure>
+  &lt;img src="complex-chart.jpg"
+       alt="Annual sales growth bar graph"
+       aria-details="sales-long-description">
+
+  &lt;details id="sales-long-description">
+    &lt;summary>Detailed description of sales growth chart&lt;/summary>
+    This bar graph illustrates the company's annual sales growth from 2019 to 2023.
+    The vertical axis represents revenue in millions of dollars &#8230;
+  &lt;/details>
+&lt;/figure></pre>
+				</aside>
+
+				<p>When checking for the presence of extended descriptions, also check that they have not been omitted
+					from visual content that requires them. If a publisher does not provide complete coverage, the
+					applicability of the feature has to be assessed.</p>
+			</section>
+
+			<section id="identify-latex">
+				<h3>Latex formatting</h3>
+
+				<p>As latex is a text-based formatting language, the only way to identify if it is present in an EPUB
+					publication is to search each EPUB content document.</p>
+
+				<p>Unfortunately, latex formatting does not always begin with a consistent sequence of characters.
+					Equations can be wrapped in any of the following depending on whether they are to be rendered inline
+					or as block equations:</p>
+
+				<ul>
+					<li><code>$&#8230;$</code></li>
+					<li><code>\(&#8230;\)</code></li>
+					<li><code>\[&#8230;\]</code></li>
+					<li><code>\begin{xzy}&#8230;\end{xyz}</code></li>
+				</ul>
+
+				<div class="note">
+					<p>In the last example, "<code>xyz</code>" is a palceholder for a specific latex formatting command,
+						like "<code>math</code>" or "<code>equation</code>".</p>
+				</div>
+
+				<p>For example, the quadratic equation could be represented as:</p>
+
+				<pre>\[x = \frac{-b \pm \sqrt{b^2-4ac}}{2a}\]</pre>
+
+				<p>or as:</p>
+
+				<pre>$x = \frac{-b \pm \sqrt{b^2-4ac}}{2a}$</pre>
+
+				<p>Regardless of how the latex syntax is formatted, whether it is being used for <a href="#math">math
+						equations</a> or <a href="#chemistry">chemical equations</a> needs to be determined so that the
+					appropriate accessibility feature is flagged.</p>
+
+				<div class="note">
+					<p>Latext equations are not likely to be found in EPUB 2 files as it did not support the scripting
+						necessary to transform them for presentation.</p>
+				</div>
+			</section>
+
+			<section id="identify-mathml">
+				<h3>MathML markup</h3>
+
+				<p>The fastest way to determine if an EPUB 3 publication contains MathML markup is to check the package
+					document manifest. Any EPUB content document that includes MathML markup has to have a
+						<code>properties</code> attribute that declares this is the case:</p>
+
+				<pre>&lt;item id="c01" src="xhtml/chapter01.xhtml" &#8230; properties="mathml" /></pre>
+
+				<p>If MathML is present but not declared, EPUBCheck will emit an error.</p>
+
+				<p>To manually check for MathML, every content document will have to be searched. MathML is typically
+					enclosed in <code>math</code> tags like the following:</p>
+
+				<pre>&lt;math xmlns="http://www.w3.org/2001/mathml">&#8230;&lt;/math></pre>
+
+				<p>But because EPUB is XML-based, the <code>math</code> tag could also have a prefix, so could be tagged
+					as <code>m:math</code> or <code>mml:math</code>. This kind of tagging is more common in legacy
+					content when reading systems relied on MathJAX to render equations. Modern reading systems, like
+					browsers, expect unprefixed elements as part of their support for HTML.</p>
+
+				<p>Regardless of how the MathML markup is tagged, whether it is being used for <a href="#math">math
+						equations</a> or <a href="#chemistry">chemical equations</a> needs to be determined so that the
+					appropriate accessibility feature is flagged.</p>
+
+				<div class="note">
+					<p>MathML markup is not likely to be found in EPUB 2 publications. Although it could be added using
+						the <code>epub:switch</code> element, reading systems never supported its rendering.</p>
+				</div>
+			</section>
+
+			<section id="identify-open-captions">
+				<h3>Open captions</h3>
+
+				<p>The only way to determine if open captions are included is to watch each video and see if captions
+					appear on screen. There will be no option in the video user to toggle the captions on or off.</p>
+
+				<p>To verify that open captions are being used, the <code>video</code> element for the clip can be
+					checked to ensure it does not have a <code>track</code> element that references a caption file.
+					(Refer to the section on <a href="#identify-closed-captions">identifying closed captions</a> for
+					more information.)</p>
+			</section>
+
+			<section id="identify-transcript">
+				<h3>Transcripts</h3>
+
+				<p>A transcript may be found by searching for an <code>aria-details</code> attribute on an HTML
+						<code>audio</code> or <code>video</code> element, although the use of the attribute for
+					transcripts is not widespread.</p>
+
+				<aside class="example" title="Transcript linked by an aria-details attribute">
+					<pre>&lt;audio controls 
+       aria-details="audio-transcript"
+       aria-label="Audio recording of the interview">
+       &#8230;
+&lt;/audio>
+
+&lt;details id="audio-transcript">
+    &lt;summary>View Transcript&lt;/summary>
+
+    &lt;div>
+        &lt;p>This is a transcript of the audio recording.&lt;/p>
+        &lt;p>[Interviewer] Welcome to the show.&lt;/p>
+        &lt;p>[Guest] Thank you for having me.&lt;/p>
+    &lt;/div>
+&lt;/details></pre>
+				</aside>
+
+				<p>A general text search for the word "transcript" (or the local language equivalent) could also help to
+					locate transcripts, but the results would need to be checked to ensure that they are indeed
+					transcripts for auditory content and not unrelated uses of the word.</p>
 			</section>
 		</section>
 		<section id="example" class="appendix informative">
