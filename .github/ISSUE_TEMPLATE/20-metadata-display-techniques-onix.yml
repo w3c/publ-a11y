@@ -1,10 +1,10 @@
 name: Display Techniques for ONIX Accessibility Metadata
-description: Issue related to the Display Techniques for ONIX Accessibility Metadata report 
-labels: a11y-display-techniques-onix
+description: Issue related to the Display Techniques for ONIX Accessibility Metadata
+labels: metadata-display-techniques-onix
 body: 
   - type: markdown
     attributes:
-     value: "## Issue on the Display Techniques for ONIX Accessibility Metadata report"
+     value: "## Issue on the [Display Techniques for ONIX Accessibility Metadata](https://www.w3.org/publishing/a11y/metadata-display-guide/techniques/onix/)"
   - type: markdown
     attributes:
      value: __Before opening an issue__, please check that it has not already been resolved in the [latest editor's draft](https://w3c.github.io/publ-a11y/metadata-display-guide/techniques/onix/)

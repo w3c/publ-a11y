@@ -1,10 +1,10 @@
 name: Accessibility Metadata Display Guide for Digital Publications
-description: Issue related to the "Accessibility Metadata Display Guide for Digital Publications" report 
-labels: a11y-display-guide
+description: Issue related to the "Accessibility Metadata Display Guide for Digital Publications" 
+labels: metadata-display-guide
 body: 
   - type: markdown
     attributes:
-     value: "## Issue on the Accessibility Metadata Display Guide for Digital Publications report"
+     value: "## Issue on the [Accessibility Metadata Display Guide for Digital Publications](https://www.w3.org/publishing/a11y/metadata-display-guide/guidelines/)"
   - type: markdown
     attributes:
      value: __Before opening an issue__, please check that it has not already been resolved in the [latest editor's draft](https://w3c.github.io/publ-a11y/metadata-display-guide/)

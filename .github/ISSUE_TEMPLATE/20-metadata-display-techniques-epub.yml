@@ -1,10 +1,10 @@
 name: Display Techniques for EPUB Accessibility Metadata
 description: Issue related to the Display Techniques for EPUB Accessibility Metadata report 
-labels: a11y-display-techniques-epub
+labels: metadata-display-techniques-epub
 body: 
   - type: markdown
     attributes:
-     value: "## Issue on the Display Techniques for EPUB Accessibility Metadata report"
+     value: "## Issue on the [Display Techniques for EPUB Accessibility Metadata](https://www.w3.org/publishing/a11y/metadata-display-guide/techniques/epub/)"
   - type: markdown
     attributes:
      value: __Before opening an issue__, please check that it has not already been resolved in the [latest editor's draft](https://w3c.github.io/publ-a11y/metadata-display-guide/techniques/epub/)
