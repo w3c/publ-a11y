@@ -1,0 +1,24 @@
+name: General issue template
+description: Issues on reports published by the accessibility task force of the Publishing Community Group
+body: 
+  - type: markdown
+    attributes:
+     value: "## Before opening an issue"
+  - type: markdown
+    attributes:
+     value: |
+       This repository is only for issues with the following Community Group reports; please, use the appropriate issue templates for questions/issues related to those documents.
+       * [EPUB 3](https://www.w3.org/TR/epub-34/), Recommendation
+  - type: textarea
+    id: problem
+    attributes:
+      label: Describe the problem
+      description: What is not working? What would you like to see improved? For bug reports, cite the relevant text from the report.
+    validations:
+      required: true
+  - type: textarea
+    id: fix
+    attributes:
+      label: Describe the fix or new feature you propose
+    validations:
+      required: false

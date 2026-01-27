@@ -1,0 +1,30 @@
+name: Accessibility Metadata Crosswalk
+description: Issue related to the "Digital Publishing - Accessibility Metadata Crosswalk" report
+labels: Report-MetadataCrosswalk
+body: 
+  - type: markdown
+    attributes:
+     value: "## Issue on the [Accessibility Metadata Crosswalk](https://www.w3.org/2021/a11y-discov-vocab/latest/crosswalk/) Report"
+  - type: markdown
+    attributes:
+     value: __Before opening an issue__, please check that it has not already been resolved in the [latest editor's draft](https://w3c.github.io/publ-a11y/metadata-crosswalk/)
+  - type: input
+    id: section
+    attributes:
+      label: Section
+      description: Please provide a link to the relevant section of the report
+    validations:
+      required: false 
+  - type: textarea
+    id: problem
+    attributes:
+      label: Describe the problem
+      description: What would you like to see improved? For bug reports, cite the relevant text from the specification.
+    validations:
+      required: true
+  - type: textarea
+    id: fix
+    attributes:
+      label: Describe the fix or new feature you propose
+    validations:
+      required: false
