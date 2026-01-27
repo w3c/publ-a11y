@@ -26,8 +26,8 @@
                 <group name="{$group}">
                     <!-- Collect unique IDs -->
                     <xsl:for-each select="document($guidelines)//*[@data-localization-id and starts-with(@data-localization-id, concat($group,'-'))]/@data-localization-id |
-                                        document($onix)//xhtml:code[@id and starts-with(@id, concat($group,'-'))]/@id |
-                                        document($epub)//xhtml:code[@id and starts-with(@id, concat($group,'-'))]/@id">
+                                        document($onix)//code[@id and starts-with(@id, concat($group,'-'))]/@id |
+                                        document($epub)//code[@id and starts-with(@id, concat($group,'-'))]/@id">
                         <xsl:sort select="."/>
                         <xsl:if test="not(preceding::*[.=current()])">
                             <id><xsl:value-of select="."/></id>
