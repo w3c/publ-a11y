@@ -26,8 +26,8 @@ read -p 'JSON version: ' jsonVersion
 
 # Input files
 guidelines="$basedir/../guidelines/index.html"
-epub_techniques="$basedir/../techniques/epub-metadata/index.html"
-onix_techniques="$basedir/../techniques/onix-metadata/index.html"
+epub_techniques="$basedir/../techniques/epub/index.html"
+onix_techniques="$basedir/../techniques/onix/index.html"
 
 # XSLT files
 xslt_extract_ids="$basedir/canonical-json-extract-ids.xsl"

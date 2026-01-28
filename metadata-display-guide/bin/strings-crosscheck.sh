@@ -25,8 +25,8 @@ tmpdir=$(mktemp -d)
 # input files
 guidelines="$basedir/../guidelines/index.html"
 xslt_guidelines="$basedir/extract-ids-from-guidelines.xsl"
-epub_techniques="$basedir/../techniques/epub-metadata/index.html"
-onix_techniques="$basedir/../techniques/onix-metadata/index.html"
+epub_techniques="$basedir/../techniques/epub/index.html"
+onix_techniques="$basedir/../techniques/onix/index.html"
 xslt_techniques="$basedir/extract-ids-from-techniques.xsl"
 #canonical_json="$basedir/../draft/localizations/en-US/display_guide_vocabulary_w3c_en-US.json"
 output_dir="$basedir/../localizations"

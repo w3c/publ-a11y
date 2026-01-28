@@ -9,7 +9,7 @@
 # pre-run: cleans and temporary directory...
 basedir=$(readlink -f "$0")
 basedir=$(dirname "$basedir")
-documents=( "guidelines" "techniques/epub-metadata" "techniques/onix-metadata" )
+documents=( "guidelines" "techniques/epub" "techniques/onix" )
 bold=$(tput bold)
 normal=$(tput sgr0)
 
