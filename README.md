@@ -19,17 +19,20 @@ Task force meetings are announced on the Publishing Community Group's [public ma
 
 The Accessibility Task Force maintains the following documents in this repository:
 
-- Accessibility Metadata Display Guide for Digital Publications ([Project Page](https://github.com/w3c/publ-a11y/tree/main/a11y-meta-display-guide/2.1))
-  - [Editor's Draft](https://w3c.github.io/publ-a11y/a11y-meta-display-guide/2.1/draft/guidelines/)
+- Accessibility Metadata Display Guide for Digital Publications ([Project Page](https://github.com/w3c/publ-a11y/tree/main/metadata-display-guide/))
+  - [Editor's Draft](https://w3c.github.io/publ-a11y/metadata-display-guide/guidelines/)
   - [Latest Version](https://www.w3.org/publishing/a11y/metadata-display-guide/guidelines/)
   - EPUB Techniques
-    - [Editor's Draft](https://w3c.github.io/publ-a11y/a11y-meta-display-guide/2.1/draft/techniques/epub-metadata/)
+    - [Editor's Draft](https://w3c.github.io/publ-a11y/metadata-display-guide/techniques/epub/)
     - [Latest Version](https://www.w3.org/publishing/a11y/metadata-display-guide/techniques/epub/)
   - ONIX Techniques
-    - [Editor's Draft](https://w3c.github.io/publ-a11y/a11y-meta-display-guide/2.1/draft/techniques/onix-metadata/)
+    - [Editor's Draft](https://w3c.github.io/publ-a11y/metadata-display-guide/techniques/onix/)
     - [Latest Version](https://www.w3.org/publishing/a11y/metadata-display-guide/techniques/onix/)
+- Digital Publishing - Accessibility Metadata Crosswalk
+  - [Editor's Draft](https://w3c.github.io/publ-a11y/metadata-crosswalk/)
+  - [Latest Version](https://www.w3.org/2021/a11y-discov-vocab/latest/crosswalk/)
 - Expressing Accessibility Metadata in the EPUB Package Document
-  - [Editor's Draft](https://w3c.github.io/publ-a11y/epub-a11y-meta-guide/1.0/draft/)
+  - [Editor's Draft](https://w3c.github.io/publ-a11y/package-metadata-authoring-guide/)
 - Publishing Guide to Audio Playback and Text-To-Speech
   - [Editor's Draft](https://w3c.github.io/publ-a11y/drafts/audio-playback/)
   - [Latest Version](https://www.w3.org/publishing/a11y/audio-playback/)
