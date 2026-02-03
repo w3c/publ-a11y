@@ -1,0 +1,1271 @@
+<!DOCTYPE html>
+<html lang="en-US">
+	<head>
+		<meta charset="utf-8" />
+		<title>Display Techniques for ONIX Accessibility Metadata 2.1</title>
+		<script src="https://www.w3.org/Tools/respec/respec-w3c" class="remove" defer="defer"></script>
+		<script src="../../common/js/add_ids.js" class="remove"></script>
+		<script class="remove">
+			var respecConfig = {
+				shortName: "onix-techniques",
+				group: "publishingcg",
+				specStatus: "CG-DRAFT",
+				noRecTrack: true,
+				latestVersion: "https://www.w3.org/publishing/a11y/metadata-display-guide/techniques/onix/",
+				edDraftURI: "https://w3c.github.io/publ-a11y/metadata-display-guide/techniques/onix/",
+				canonicalURI: "https://www.w3.org/publishing/a11y/metadata-display-guide/techniques/onix/",
+				editors: [
+					{
+						"name": "Gregorio Pellegrino",
+						"company": "Fondazione LIA",
+						"companyURL": "https://fondazionelia.org",
+						"w3cid": 97111
+					},
+					{
+						"name": "Gautier Chomel",
+						"company": "EDRLab",
+						"companyURL": "https://www.edrlab.org",
+						"w3cid": 136660
+					},
+					{
+						"name": "Christopher Saynor",
+						"company": "EDItEUR",
+						"companyURL": "https://www.editeur.org"
+					}
+				],
+				processVersion: 2020,
+				includePermalinks: false,
+				permalinkEdge:     true,
+				permalinkHide:     false,
+				diffTool:          "http://www.aptest.com/standards/htmldiff/htmldiff.pl",
+				github:			 {
+					repoURL: "https://github.com/w3c/publ-a11y/",
+					branch: "main"
+				},
+				preProcess: [addStringIDs]
+			};
+	  </script>
+	  <style>
+	  	var {
+			color: brown;
+		}
+		li > ol.condition {
+			list-style-type: lower-alpha;
+		}
+		
+		li > ol.condition > li >  ol.condition {
+			list-style-type: upper-roman;
+		}
+		ol.display {
+			list-style-type: disc;
+		}
+	  	ol.condition > li {
+	  		margin-top: 1rem;
+	  		margin-left: 0;
+	  		padding-left: 0;
+	  	}
+	  	ol.condition > li > span {
+	  		display: block;
+	  	}
+	  	ol.condition > li > span:nth-child(2) {
+	  		margin-left: 2rem;
+	  	}
+	  	code.xpath {
+	  		word-break: keep-all;
+	  	}
+	  	span.str-id {
+			background: #faa;
+			border-radius: 3px;
+			font: normal normal 400 1em/1.2 monospace;
+			margin-left: 0.5em;
+			padding: 0.1em;
+			display: inline !important;
+	  	}
+	  </style>
+	</head>
+	<body>
+		<section id="abstract">
+			<p>This document provides techniques for meeting the guidelines of the 
+				<a href="https://www.w3.org/publishing/a11y/metadata-display-guide/guidelines/">Accessibility Metadata Display Guide for Digital Publications 2.1</a>.
+				It provides practical examples on how to extract information from an ONIX record and show it to 
+				end users.</p>
+		</section>
+		<section id="sotd"></section>
+        <section id="introduction">
+            <h2>Introduction</h2>
+        	
+        	<section>
+        		<h3>ONIX metadata</h3>
+        		
+        		<p>
+        			ONIX messages describe products for the global book supply chain and will be sent from publisher or creator of the EPUB or digital books with full audio to those who will make the products available for sale, lending or subscription.
+        			These platforms may not yet have the actual files, as they may not yet be ready, or may only choose to list them for sale if they have certain accessibility features.
+        			ONIX also only describes a product, it cannot describe the features of the reading systems on which a product may be accessed.
+        			It is important to use ONIX metadata as a complement to the accessibility data embedded within the publication itself, if describing accessible books, books with full audio and related products for the global book supply chain.
+        			An ONIX file can be used to display accessibility information in advance of publication or when you do not have access to the metadata in the digital file itself.
+        			Some accessibility information may only be available when you have access to the file itself.
+        			If you are unfamiliar with ONIX, then there is more documentation available from <a href="https://www.editeur.org/83/Overview/">EDItEUR.org</a>.
+        		</p>
+        		
+        		<p>
+        			It is important to note that ONIX 3.0 includes a number of new accessibility metadata codes, some of which may not be expressible in earlier versions of ONIX.
+        		</p>
+        		
+        		<div class="note">
+        			<p>Techniques for displaying accessibility metadata in other metadata formats can be found in the <a href="https://www.w3.org/publishing/a11y/metadata-display-guide/guidelines/#techniques">Display Techniques for Displaying Accessibility Metadata</a></p>
+        		</div>
+        	</section>
+            
+			<section id="conventions">
+				<h3>Implementation conventions</h3>
+				
+				<section>
+					<h4>Heading structure</h4>
+					<p>The algorithms defined in this document do not include instructions for outputting their respective headings because if a given technique does not result in any information (i.e., would output a statement that no information is available), the section may be omitted (i.e., no heading would be displayed). Whether there is any information to display is only known after an algorithm is processed, which would lead to the algorithms having to include instructions to remove headings.</p>
+					
+					<p>The headings structure to use for the techniques is defined in the guidelines but is repeated here to help guide implementations. The headings are linked to the algorithm they are associated with.</p>
+					
+					<ol>
+						<li><code id="ways-of-reading-title">"<a href="#ways-of-reading">Ways of reading</a>"</code></li>
+						<li><code id="conformance-title">"<a href="#conformance-instructions">Conformance</a>"</code></li>
+						<li><code id="navigation-title">"<a href="#navigation-instructions">Navigation</a>"</code></li>
+						<li><code id="rich-content-title">"<a href="#rich-content-instructions">Rich content</a>"</code></li>
+						<li><code id="hazards-title">"<a href="#hazards-instructions">Hazards</a>"</code></li>
+						<li><code id="accessibility-summary-title">"<a href="#accessibility-summary-instructions">Accessibility summary</a>"</code></li>
+						<li><code id="legal-considerations-title">"<a href="#legal-considerations-instructions">Legal considerations</a>"</code></li>
+						<li><code id="additional-accessibility-information-title">"<a href="#additional-accessibility-information">Additional accessibility information</a>"</code></li>
+					</ol>
+				</section>
+				
+				<section>
+					<h4>Coding conventions</h4>
+					<p>The code conventions used in the provided code snippet follow a structure commonly found in programming languages like Python, Java, or C++. Here&#39;s an explanation of the conventions:</p>
+					<dl>
+						<dt>Conditionals and Control Flow:</dt>
+						<dd><b>IF</b>, <b>ELSE IF</b>, and <b>ELSE</b> (in bold and capital letters) statements are used to define different conditions and the corresponding actions to be taken.</dd>
+						<dt>Operators:</dt>
+						<dd>Written operators (<i>is present</i>) are used to check if a particular code or codelist is present (or not) in the metadata record.</dd>
+						<dt>Logical operators:</dt>
+						<dd>Logical operators (<b>AND</b>, <b>OR</b>, <b>NOT</b>, in bold and capital letters) are used to combine conditions.</dd>
+						<dt>String Literals:</dt>
+						<dd>String literals are used to represent the text that should be displayed when a particular condition is met.</dd>
+						<dt>Variable Naming:</dt>
+						<dd>The terms like &quot;property&quot; and &quot;value&quot; are used in a way that suggests a variable or data structure representing the metadata record.</dd>
+						<dt>Indentation:</dt>
+						<dd>The code uses consistent indentation to define blocks of code within conditional statements. This is crucial for readability and maintaining a clear structure.</dd>
+						<dt>Readability:</dt>
+						<dd>The code is written in a way that is intended to be easily readable and understandable even by non-coders.</dd>
+					</dl>
+				</section>
+				
+				<section id="node-selectors">
+					<h4>Node selectors</h4>
+					
+					<p>These techniques use XPath 1.0 expressions [[xpath-10]] to verify the presence of 
+						accessibility metadata in an ONIX record and to select information from it.
+						Some of the selectors can be optimized for processors that support newer versions of XPath 
+						(e.g., to match an element against a sequence of values rather than repeat the element for each 
+						possible value).</p>
+					
+					<p>Translation of these XPath selectors may be necessary if the input record is transformed into
+						another form, such as a JSON structure.</p>
+					
+					<p>Note that the node selectors in this document only account for ONIX records that use <a 
+							href="https://www.editeur.org/74/faqs/#q10">reference names</a>. To process records that 
+						use short tags, the records will either need to be <a 
+							href="https://www.editeur.org/93/release-3.0-downloads/#Tools">transformed to use reference
+							names</a> or compatible XPaths will need to be provided.</p>
+				</section>
+				
+				<section id="output-statements">
+					<h4>Output statements</h4>
+					
+					<p>The outputs provided in this document demonstrate the compact strings to display. For every text 
+						string, however, both a compact and descriptive option is available. These strings are provided
+						in a JSON structure, as shown in the following example.</p>
+					
+					<aside class="example" title="Display string encoding" id="ex-str-json">
+						<pre><code>"ways-of-reading": {
+   &#8230;
+   "ways-of-reading-visual-adjustments-modifiable": {
+      "compact": "Appearance can be modified",
+      "descriptive": " Appearance of the text and page layout can be modified according to the capabilities of the reading system (font family and font size, spaces between paragraphs, sentences, words, and letters, as well as color of background and text)",
+   },
+   &#8230;
+},</code></pre>
+					</aside>
+					
+					<p>This document does not set a default output. Either the compact or descriptive statements can be 
+						presented to the end user, or they can even be provided the option to choose their own preference.</p>
+					
+					<p>At the end of each output statement is an ID in brackets. This ID corresponds to a key in the JSON
+						file containing both the compact and descriptive display statements (see the <a 
+							href="#ex-str-json">preceding example</a>). To use the descriptive statement instead of the
+						compact, simply select the "descriptive" subkey instead of the "compact" one associated with the ID.</p>
+					
+					<div class="note">
+						The canonical English JSON file containing the compact and descriptive strings is available
+						at <a href="https://github.com/w3c/publ-a11y-display-guide-localizations/tree/main/lang/en-US/">https://github.com/w3c/publ-a11y-display-guide-localizations/tree/main/lang/en-US/</a>.
+					</div>
+				</section>
+			</section>
+		</section>
+		<section id="common-functions">
+			<h2>Common Functions</h2>
+			<p>In this section we define the functions common to all techniques, which are called by them during execution.</p>
+			<section id="preprocessing">
+				<h3>Preprocessing</h3>
+				<p>Before working directly with the metadata we must read the ONIX record. This is a common starting point for all techniques that allows us to query the record directly.</p>
+				<aside class="note">
+					<p>This algorithm does not describe how the ONIX record is discovered and obtained.</p>
+				</aside>
+				<p>This algorithm takes the <var>onix_record_as_text</var> argument: a UTF-8 string representing the ONIX record.</p>
+				<p>To generate the internal representation, run the following steps:</p>
+				<ul class="variable">
+					<li><b>LET</b> <var>record</var> be textual representation of the ONIX record for the publication given <var>onix_record_as_text</var>.</li>
+					<li><b>LET</b> <var>onix</var> be the DOM tree that results from parsing <var>record</var> using an XML DOM parser.</li>
+					<li>return <var>onix</var>.</li>
+				</ul>
+				<aside class="note">
+					<p>The XML file being processed may contain namespaces, in the techniques when we use XPath we will assume that the default namespace of the root record is used.</p>
+				</aside>
+			</section>
+			<section id="check-for-node">
+				<h3>Check for node</h3>
+				<p>Many of the techniques rely on checking for the presence or absence of metadata in the ONIX record.</p>
+				<p>This algorithm takes:</p>
+				<ul>
+					<li>the <var>onix</var> argument: the internal representation of ONIX record (output of <a href="#preprocessing">preprocessing</a>);</li>
+					<li>the <var>path</var> argument: the XPath of the node to check the presence of.</li>
+				</ul>
+				<p>To check for node, run the following steps:</p>
+				<ol class="condition">
+					<li>
+						<span><b>IF</b> <var>onix</var> contains <var>path</var>:</span>
+						<span><b>THEN</b> return <code>True</code>.</span>
+					</li>
+					<li><b>ELSE</b> return <code>False</code>.</li>
+				</ol>
+			</section>
+		</section>
+		<section id="techniques">
+			<h2>Techniques</h2>
+			
+			<section id="ways-of-reading">
+                <h3>Ways of reading</h3>
+
+                <p>This technique relates to the <a href="https://www.w3.org/publishing/a11y/metadata-display-guide/guidelines/#ways-of-reading">Ways of reading accessibility display field</a>.</p>
+  
+				<p>This algorithm takes the <var>onix_record_as_text</var> argument: a UTF-8 string representing the ONIX record.</p>
+
+
+				<section id="visual-adjustments">
+					<h3>Visual adjustments</h3>
+					<p>This technique relates to the <a href="https://www.w3.org/publishing/a11y/metadata-display-guide/guidelines/#visual-adjustments">Visual adjustments accessibility display field</a>.</p>
+					<h4>Understanding the variables</h4>
+					<dl>
+						<dt><var>all_textual_content_can_be_modified</var></dt>
+						<dd>
+							<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/196/36">code 36 of codelist 196</a> (All textual content can be modified) is present in the ONIX record.</p>
+							<p><i>All textual content can be modified</i> means that the digital publication does not restrict the ability of users to modify and reflow the display of any textual content to the full extent allowed by the reading system (i.e. to change the text size or typeface, line height and word spacing, colors).</p>
+						</dd>
+						<dt><var>is_fixed_layout</var></dt>
+						<dd>
+							<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/175/E201">code E201 of codelist 175</a> (Fixed format) is present in the ONIX record.</p>
+							<p><i>Fixed format</i> means that digital publication is in fixed format (e.g. EPUB Fixed Layout).</p>
+						</dd>
+					</dl>
+					<h4>Variables setup</h4>
+					<ul class="variable">
+						<li><b>LET</b> <var>onix</var> be the result of calling <a href="#preprocessing">preprocessing</a> given <var>onix_record_as_text</var>.</li>
+						<li><b>LET</b> <var>all_textual_content_can_be_modified</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "36"]</code>.</li>
+						<li><b>LET</b> <var>is_fixed_layout</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormDetail[normalize-space() = "E201"]</code> <b>AND</b> <b>NOT</b> the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormDetail[normalize-space() = "E200"]</code>.</li>
+					</ul>
+					<h4>Instructions</h4>
+					<ol class="condition">
+						<li>
+							<span><b>IF</b> <var>all_textual_content_can_be_modified</var>:</span>
+							<span><b>THEN</b> display <code id="ways-of-reading-visual-adjustments-modifiable">"Appearance can be modified"</code>.</span>
+						</li>
+						<li>
+							<span><b>ELSE IF</b> <var>is_fixed_layout</var>:</span>
+							<span><b>THEN</b> display <code id="ways-of-reading-visual-adjustments-unmodifiable">"Appearance cannot be modified"</code>.</span>
+						</li>
+						<li><b>ELSE</b> display <code id="ways-of-reading-visual-adjustments-unknown">"No information about appearance modifiability is available"</code>.</li>
+					</ol>
+				</section>
+	
+				<section id="supports-nonvisual-reading">
+					<h3>Supports nonvisual reading</h3>
+					<p>This technique relates to the <a href="https://www.w3.org/publishing/a11y/metadata-display-guide/guidelines/#supports-nonvisual-reading">Supports nonvisual reading accessibility display field</a>.</p>
+					<h4>Understanding the variables</h4>
+					<dl>
+						<dt><var>all_necessary_content_textual</var></dt>
+						<dd>
+							<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/196/52">code 52 of codelist 196</a> (All non-decorative content supports reading without sight) is present in the ONIX record.</p>
+							<p><i>All non-decorative content supports reading without sight</i> means that all contents of the digital publication necessary to use and understanding, including text, images (via their alternative descriptions), audio and video material (via their transcripts, descriptions, captions or subtitles) are fully accessible via suitable reading devices, for example text-to-speech screen readers or tactile reading devices (‘Braille displays’), and nothing in the digital publication prevents or blocks the use of alternative reading modes. The entire publication can be navigated and ‘read’ using only text rendered via sound or touch, and does not require visual perception.</p>
+						</dd>
+                    	<dt><var>audio_only_content</var></dt>
+						<dd>
+							<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/81/01">code 01 of codelist 81</a> (Audiobook) is present in the ONIX record.</p>
+							<p>This means that the primary content is an Audio recording of a reading of a book or other text.</p>
+						</dd>
+						<dt><var>real_text</var></dt>
+						<dd>
+							<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/81/10">code 10 of codelist 81</a> (Text) is present in the ONIX record.</p>
+							<p><i>Text</i> means that digital publication contains "real" text (user-selectable) as its main content (or as secondary content).</p>
+						</dd>
+                    	<dt><var>textual_alternatives</var></dt>
+						<dd>
+							<p>If true, it indicates that at least one of the following is present in the ONIX record:</p>
+							<ul>
+								<li><a href="https://ns.editeur.org/onix/en/196/14">code 14 of codelist 196</a> (Short alternative textual descriptions);</li>
+								<li><a href="https://ns.editeur.org/onix/en/196/15">code 15 of codelist 196</a> (Full alternative textual descriptions);</li>
+								<li><a href="https://ns.editeur.org/onix/en/196/16">code 16 of codelist 196</a> (Visualized data also available as non-graphical data);</li>
+								<li><a href="https://ns.editeur.org/onix/en/175/V212">code V212 of codelist 175</a> (Transcript);</li>
+							</ul>
+                            <p>This means that there are textual alternatives for the non-textual content.</p>
+						</dd>
+					</dl>
+					<h4>Variables setup</h4>
+					<ul class="variable">
+						<li><b>LET</b> <var>onix</var> be the result of calling <a href="#preprocessing">preprocessing</a> given <var>onix_record_as_text</var>.</li>
+						<li><b>LET</b> <var>all_necessary_content_textual</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "52"]</code>.</li>
+						<li><b>LET</b> <var>audio_only_content</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail[PrimaryContentType = "01" or ProductContentType = "01"] </code>.</li>
+						<li><b>LET</b> <var>real_text</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail[PrimaryContentType = "10" or ProductContentType = "10"]</code>.</li>
+						<li><b>LET</b> <var>textual_alternatives</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and (ProductFormFeatureValue = "14" or ProductFormFeatureValue = "15" or ProductFormFeatureValue = "16")]</code> <b>OR</b> calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormDetail[normalize-space() = "V212"]</code>.</li>
+					</ul>
+					<h4>Instructions</h4>
+					<ol class="condition">
+                        <li>
+                            <span><b>IF</b> <var>all_necessary_content_textual</var>:</span>
+                            <span><b>THEN</b> display <code id="ways-of-reading-nonvisual-reading-readable">"Readable in read aloud or dynamic braille"</code>.</span>
+                        </li>
+                    	<li>
+                            <span><b>ELSE IF</b> <var>real_text</var> <b>OR</b> <var>textual_alternatives</var>:</span>
+                            <span><b>THEN</b> display <code id="ways-of-reading-nonvisual-reading-not-fully">"Not fully readable in read aloud or dynamic braille"</code>.</span>
+                    		<div class="note">
+                    			<p>This statement may appear when <a href="https://ns.editeur.org/onix/en/81/10">code 10 of codelist 81</a> (Text) is present without other accessibility metadata. This reflects that text-based digital publications are partially usable with assistive technologies, even without explicit accessibility optimization. Implementers may choose to suppress this statement when it is the only accessibility-related information.</p>
+                    		</div>
+                    	</li>
+                    	<li>
+                    		<span><b>ELSE IF</b> <var>audio_only_content</var>:</span>
+                    		<span><b>THEN</b> display <code id="ways-of-reading-nonvisual-reading-none">"Not readable in read aloud or dynamic braille"</code>.</span>
+                    	</li>
+                    	<li><b>ELSE</b> display <code id="ways-of-reading-nonvisual-reading-no-metadata">"No information about nonvisual reading is available"</code>.</li>
+                    	<li>
+                    		<span><b>IF</b> <var>textual_alternatives</var>:</span>
+                    		<span><b>THEN</b> display <code id="ways-of-reading-nonvisual-reading-alt-text">"Has alternative text"</code>.</span>
+                    	</li>
+                    </ol>
+				</section>
+				
+				<section id="prerecorded-audio">
+					<h3>Prerecorded audio</h3>
+					<p>This technique relates to the <a href="https://www.w3.org/publishing/a11y/metadata-display-guide/guidelines/#prerecorded-audio">Pre-recorded audio accessibility display field</a>.</p>
+					<h4>Understanding the variables</h4>
+					<dl>
+						<dt><var>all_content_audio</var></dt>
+						<dd>
+							<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/196/39">code 39 of codelist 196</a> (Supplementary material to an audiobook is accessible) is present in the ONIX record.</p>
+							<p>This means that all supplementary visual or textual material necessary for understanding of an audiobook, is available as pre-recorded audio, or has full alternative text that can be read via text-to- speech. Only for use in ONIX 3.0 or later.</p>
+						</dd>
+						<dt><var>all_content_pre_recorded</var></dt>
+						<dd>
+							<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/196/51">code 51 of codelist 196</a> (All non-decorative content supports reading via pre-recorded audio) is present in the ONIX record.</p>
+							<p>This means that all contents of the digital publication necessary to use and understanding, including any text, images (via alternative descriptions), video (via audio description) is fully accessible via suitable audio reproduction. The entire publication can be navigated and ‘read’ using only pre-recorded sound, and does not require visual or tactile perception.</p>
+						</dd>
+						<dt><var>audiobook</var></dt>
+						<dd>
+							<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/81/01">code 01 of codelist 81</a> (Audiobook) is present in the ONIX record.</p>
+							<p>This means that the primary content is an Audio recording of a reading of a book or other text.</p>
+						</dd>
+						<dt><var>non_textual_content_audio</var></dt>
+						<dd>
+							<p>If true, it indicates that one of the following codes is present in the ONIX record: </p>
+							<ul>
+								<li><a href="https://ns.editeur.org/onix/en/81/21">code 21 of codelist 81</a> (Partial performance – spoken word);</li>
+								<li><a href="https://ns.editeur.org/onix/en/81/22">code 22 of codelist 81</a> (Additional audio content not part of main content);</li>
+							</ul>
+							<p>This indicates that pre-recorded audio content is included as part of the work. It can be Audio recording of a reading, performance or dramatization of part of the work	or additional pre-recorded audio of any supplementary material such as full or partial reading, lecture, performance, dramatization, interview, background documentary or other audio content not included in the primary or un-enhanced version</p>
+						</dd>
+						<dt><var>non_textual_content_audio_in_video</var></dt>
+						<dd>
+							<p>If true, it indicates that one of the following codes is present in the ONIX record: </p>
+								<ul>
+									<li><a href="https://ns.editeur.org/onix/en/81/06">code 06 of codelist 81</a> (Video);</li>
+									<li><a href="https://ns.editeur.org/onix/en/81/25">code 25 of codelist 81</a> (Narrative animation);</li>
+									<li><a href="https://ns.editeur.org/onix/en/81/26">code 26 of codelist 81</a> (Video recording of a reading);</li>
+									<li><a href="https://ns.editeur.org/onix/en/81/27">code 27 of codelist 81</a> (Performance – visual);</li>
+									<li><a href="https://ns.editeur.org/onix/en/81/28">code 28 of codelist 81</a> (Other video);</li>
+									<li><a href="https://ns.editeur.org/onix/en/81/29">code 29 of codelist 81</a> (Partial performance – video);</li>
+									<li><a href="https://ns.editeur.org/onix/en/81/30">code 30 of codelist 81</a> (Additional video content not part of main work);</li>
+								</ul>
+								<p>This indicates that pre-recorded video including audio content is included as part of the work. It can be video recording of a reading, performance of part of the work or additional pre-recorded video of any supplementary material such as full or partial reading, lecture, performance, dramatization, interview, background documentary or other video containing audio content.</p>
+						</dd>
+						<dt><var>synchronised_pre_recorded_audio</var></dt>
+						<dd>
+							<p>If true, it indicates that one of the following codes is present in the ONIX record: </p>
+								<ul>
+									<li><a href="https://ns.editeur.org/onix/en/196/20">code 20 of codelist 196</a> (Synchronised pre-recorded audio)</li>
+									<li><a href="https://ns.editeur.org/onix/en/175/A305">code A305 of codelist 175</a> (Synchronised audio)</li>
+								</ul>
+							<p>This indicates that text-synchronised pre-recorded audio narration (natural or synthesized voice) is included for substantially all textual matter, including all alternative descriptions, e.g. via a SMIL media overlay.</p>
+						</dd>
+					</dl>
+					<h4>Variables setup</h4>
+					<ul class="variable">
+						<li><b>LET</b> <var>onix</var> be the result of calling <a href="#preprocessing">preprocessing</a> given <var>onix_record_as_text</var>.</li>
+						<li><b>LET</b> <var>all_content_audio</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "39"]</code>.</li>
+						<li><b>LET</b> <var>all_content_pre_recorded</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "51"]</code>.</li>
+						<li><b>LET</b> <var>audiobook</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail[PrimaryContentType = "01" or ProductContentType = "01"] </code>.</li>
+						<li><b>LET</b> <var>non_textual_content_audio</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail[PrimaryContentType = "21" or ProductContentType = "22" or ProductContentType = "21" or ProductContentType = "22"] </code>.</li>
+						<li><b>LET</b> <var>non_textual_content_audio_in_video</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail[PrimaryContentType = "06" or PrimaryContentType = "25" or PrimaryContentType = "26" or PrimaryContentType = "27" or PrimaryContentType = "28" or PrimaryContentType = "29" or PrimaryContentType = "30" or ProductContentType = "06" or ProductContentType = "25" or ProductContentType = "26" or ProductContentType = "27" or ProductContentType = "28" or ProductContentType = "29" or ProductContentType = "30"] </code>.</li>
+						<li><b>LET</b> <var>synchronised_pre_recorded_audio</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "20"]</code> <b>AND</b> calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormDetail[normalize-space() = "A305"]</code>.</li>
+					</ul>
+					<h4>Instructions</h4>
+					<ol class="condition">
+						<li>
+							<span><b>IF</b> <var>all_content_audio</var> <b>AND</b> <b>NOT</b> <var>synchronised_pre_recorded_audio</var>:</span>
+							<span><b>THEN</b> display <code id="ways-of-reading-prerecorded-audio-only">"Prerecorded audio only"</code>.</span>
+						</li>
+						<li>
+							<span><b>ELSE IF</b> <var>audiobook</var> OR <var>non_textual_content_audio</var> OR <var>non_textual_content_audio_in_video</var> <b>AND</b> <b>NOT</b> <var>all_content_pre_recorded</var>:</span>
+							<span><b>THEN</b> display <code id="ways-of-reading-prerecorded-audio-complementary">"Prerecorded audio clips"</code>.</span>
+						</li>
+						<li>
+							<span><b>ELSE IF</b> <var>all_content_pre_recorded</var> <b>AND</b> <var>synchronised_pre_recorded_audio</var>:</span>
+							<span><b>THEN</b> display <code id="ways-of-reading-prerecorded-audio-synchronized">"Prerecorded audio synchronized with text"</code>.</span>
+						</li>
+						<li>
+							<b>ELSE</b> either omit this display field if metadata is missing or display <code id="ways-of-reading-prerecorded-audio-no-metadata">"No information about prerecorded audio is available"</code>.
+						</li>
+					</ol>
+				</section>
+			</section>
+
+			<section id="conformance-group">
+				<h3>Conformance</h3>
+				<p>This technique relates to the <a href="https://www.w3.org/publishing/a11y/metadata-display-guide/guidelines/#conformance-group">Conformance accessibility display field</a>.</p>
+				<p>This algorithm takes the <var>onix_record_as_text</var> argument: a UTF-8 string representing the ONIX record.</p>
+				<h4>Understanding the variables</h4>
+				<dl>
+					<dt><var>certifier</var></dt>
+					<dd>
+						<p>Returns the description of <a href="https://ns.editeur.org/onix/en/196/90">code 90 of codelist 196</a> (Compliance certification by (name)) if present in the ONIX record.</p>
+						<p>This means that the name of the organization responsible for compliance testing and certification of the product is present.</p>
+					</dd>
+					<dt><var>certification_date</var></dt>
+					<dd>
+						<p>Returns the description of <a href="https://ns.editeur.org/onix/en/196/91">code 91 of codelist 196</a> (Latest accessibility assessment date) if present in the ONIX record.</p>
+						<p>This means that the date of the latest assessment or re-assessment of the accessibility of the product is present.</p>
+					</dd>
+					<dt><var>certifier_credentials</var></dt>
+					<dd>
+						<p>Returns the description of <a href="https://ns.editeur.org/onix/en/196/93">code 93 of codelist 196</a> (Compliance certification by (URL)) if present in the ONIX record.</p>
+						<p>This means that the the URL of a web page belonging to an organization responsible for compliance testing and certification of the product is present – typically a ‘home page’ or a page describing the certification scheme itself.</p>
+					</dd>
+					<dt><var>certifier_report</var></dt>
+					<dd>
+						<p>Returns the description of <a href="https://ns.editeur.org/onix/en/196/94">code 94 of codelist 196</a> (Compliance web page for detailed accessibility information) if present in the ONIX record.</p>
+						<p>This means that is present the URL of a compliance web page for detailed accessibility information. The web page should be maintained by an independent compliance scheme or testing organization. Note the web page may include information about specific national requirements or voluntary conformance reports.</p>
+					</dd>
+					<dt><var>epub_accessibility_10</var></dt>
+					<dd>
+						<p>If true, it indicates that either the <a href="https://ns.editeur.org/onix/en/196/02">code 02 of codelist 196</a> (EPUB Accessibility Specification 1.0 A) or the <a href="https://ns.editeur.org/onix/en/196/03">code 03 of codelist 196</a> (EPUB Accessibility Specification 1.0 AA) are present in the ONIX record.</p>
+						<p>This means that the publication conforms with either the requirements of EPUB Accessibility Spec 1.0, at level A or level AA.</p>
+					</dd>
+					<dt><var>epub_accessibility_11</var></dt>
+					<dd>
+						<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/196/04">code 04 of codelist 196</a> (EPUB Accessibility Specification 1.1) is present in the ONIX record.</p>
+						<p>This means that the publication conforms with the requirements of EPUB Accessibility Spec 1.1.</p>
+					</dd>
+					<dt><var>level_a</var></dt>
+					<dd>
+						<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/196/84">code 84 of codelist 196</a> (WCAG level A) or the <a href="https://ns.editeur.org/onix/en/196/02">code 02 of codelist 196</a> (EPUB Accessibility Specification 1.0 A) are present in the ONIX record.</p>
+						<p>This means that the publication conforms with the requirements of WCAG level A or with the requirements of EPUB Accessibility Spec 1.0 level A.</p>
+					</dd>
+					<dt><var>level_aa</var></dt>
+					<dd>
+						<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/196/85">code 85 of codelist 196</a> (WCAG level AA) or the <a href="https://ns.editeur.org/onix/en/196/03">code 03 of codelist 196</a> (EPUB Accessibility Specification 1.0 AA) are present in the ONIX record.</p>
+						<p>This means that the publication conforms with the requirements of WCAG level AA or with the requirements of EPUB Accessibility Spec 1.0 level AA.</p>
+					</dd>
+					<dt><var>level_aaa</var></dt>
+					<dd>
+						<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/196/86">code 86 of codelist 196</a> (WCAG level AAA) is present in the ONIX record.</p>
+						<p>This means that the publication conforms with the requirements of WCAG level AAA.</p>
+					</dd>
+					<dt><var>lia_compliant</var></dt>
+					<dd>
+						<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/196/01">code 01 of codelist 196</a> (LIA Compliance Scheme) is present in the ONIX record.</p>
+						<p>This means that the publication conforms with the requirements of Fondazione LIA.</p>
+					</dd>
+					<dt><var>wcag_20</var></dt>
+					<dd>
+						<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/196/80">code 80 of codelist 196</a> (WCAG v2.0) or the <a href="https://ns.editeur.org/onix/en/196/02">code 02 of codelist 196</a> (EPUB Accessibility Specification 1.0 A) or the <a href="https://ns.editeur.org/onix/en/196/03">code 03 of codelist 196</a> (EPUB Accessibility Specification 1.0 AA) are present in the ONIX record.</p>
+						<p>This means that the publication conforms with the requirements of WCAG version 2.0 or with the requirements of EPUB Accessibility Spec 1.0 (at level A or level AA). This is because being compliant with EPUB Accessibility 1.0 specification means at least being compliant with WCAG 2.0 specification.</p>
+					</dd>
+					<dt><var>wcag_21</var></dt>
+					<dd>
+						<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/196/81">code 81 of codelist 196</a> (WCAG v2.1) is present in the ONIX record.</p>
+						<p>This means that the publication conforms with the requirements of WCAG version 2.1.</p>
+					</dd>
+					<dt><var>wcag_22</var></dt>
+					<dd>
+						<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/196/82">code 82 of codelist 196</a> (WCAG v2.2) is present in the ONIX record.</p>
+						<p>This means that the publication conforms with the requirements of WCAG version 2.2.</p>
+					</dd>
+				</dl>
+
+				<h4>Variables setup</h4>
+				<ul class="variable">
+					<li><b>LET</b> <var>onix</var> be the result of calling <a href="#preprocessing">preprocessing</a> given <var>onix_record_as_text</var>.</li>
+					<li><b>LET</b> <var>certifier</var> be the value of the node extracted from <var>onix</var>, using the xpath <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "90"]/ProductFormFeatureDescription</code>.</li>
+					<li><b>LET</b> <var>certification_date</var> be the value of the node extracted from <var>onix</var>, using the xpath <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "91"]/ProductFormFeatureDescription</code>.</li>
+					<li><b>LET</b> <var>certifier_credentials</var> be the value of the node extracted from <var>onix</var>, using the xpath <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "93"]/ProductFormFeatureDescription</code>.</li>
+					<li><b>LET</b> <var>certifier_report</var> be the value of the node extracted from <var>onix</var>, using the xpath <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "94"]/ProductFormFeatureDescription</code>.</li>
+					<li><b>LET</b> <var>epub_accessibility_10</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "02"]</code> <b>OR</b> calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "03"]</code>.</li>
+					<li><b>LET</b> <var>epub_accessibility_11</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "04"]</code>.</li>
+					<li><b>LET</b> <var>level_a</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "84"]</code> <b>OR</b> calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "02"]</code>.</li>
+					<li><b>LET</b> <var>level_aa</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "85"]</code> <b>OR</b> calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "03"]</code>.</li>
+					<li><b>LET</b> <var>level_aaa</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "86"]</code>.</li>
+					<li><b>LET</b> <var>lia_compliant</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "01"]</code>.</li>
+					<li><b>LET</b> <var>wcag_20</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "80"]</code> <b>OR</b> calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "02"]</code> <b>OR</b> calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "03"]</code>.</li>
+					<li><b>LET</b> <var>wcag_21</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "81"]</code>.</li>
+					<li><b>LET</b> <var>wcag_22</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "82"]</code>.</li>
+				</ul>
+
+				<h4 id="conformance-instructions">Instructions</h4>
+				<ol class="condition">
+					<li>
+						<span><b>IF</b> ((<var>epub_accessibility_10</var> <b>OR</b> <var>epub_accessibility_11</var> <b>OR</b> <var>wcag_20</var> <b>OR</b> <var>wcag_21</var> <b>OR</b> <var>wcag_22</var>) <b>AND</b> (<var>level_a</var> <b>OR</b> <var>level_aa</var> <b>OR</b> <var>level_aaa</var>)) <b>OR</b> <var>lia_compliant</var>:</span>
+						<span><b>THEN</b></span>
+						<ol class="condition">
+							<li>
+								<span><b>IF</b> <var>level_aaa</var>:</span>
+								<span><b>THEN</b> display <code id="conformance-aaa">"This publication exceeds accepted accessibility standards"</code>.</span>
+							</li>
+							<li>
+								<span><b>ELSE IF</b> <var>level_aa</var> <b>OR</b> <var>lia_compliant</var>:</span>
+								<span><b>THEN</b> display <code id="conformance-aa">"This publication meets accepted accessibility standards"</code>.</span>
+							</li>
+							<li>
+								<span><b>ELSE IF</b> <var>level_a</var>:</span>
+								<span><b>THEN</b> display <code id="conformance-a">"This publication meets minimum accessibility standards"</code>.</span>
+							</li>
+						</ol>
+					</li>
+					<li>
+						<span><b>ELSE</b>:</span>
+						<span>display <code id="conformance-no">"No information is available"</code>.</span>
+					</li>
+					<li>
+						<span><b>IF</b> <var>certifier</var> is <b>NOT</b> empty:</span>
+						<span><b>THEN</b> display <code id="conformance-certifier">"The publication was certified by {certifier}"</code> replacing <code>"{certifier}"</code> with <var>certifier</var>.</span>
+					</li>
+					<li>
+						<span><b>IF</b> <var>certifier_credentials</var> is <b>NOT</b> empty:</span>
+						<span><b>THEN</b> display <code id="conformance-certifier-credentials">"The certifier's credential is {certifier_credentials}"</code> replacing <code>"{certifier_credentials}"</code> with <var>certifier_credentials</var>.</span>
+						<div class="note">
+							<p>If the certifier metadata value is a text-based badge or a credential, then only the text is displayed. If the badge or credential is expressed as a URL, then the URL can be made a link for users to access. The display of image logos or badges is typically arranged between the certifier and the distributor. The distributor would be responsible for identifying the certifier's text or link credential and replacing it with the image or linked image.</p>
+						</div>
+					</li>
+					<li>
+						<div class="note">
+							<p>The instructions from here on define the output for the detailed conformance
+								information. Refer to the 
+								<a href="https://www.w3.org/publishing/a11y/metadata-display-guide/guidelines/#detailed-conformance-information">Detailed Conformance section</a>
+								in the guidelines for more information on how to present these strings.</p>
+						</div>
+						
+						<span><b>IF</b> (<var>epub_accessibility_10</var> <b>OR</b> <var>epub_accessibility_11</var>) <b>AND</b> (<var>wcag_20</var> <b>OR</b> <var>wcag_21</var> <b>OR</b> <var>wcag_22</var>) <b>AND</b> (<var>level_aaa</var> <b>OR</b> <var>level_aa</var> <b>OR</b> <var>level_a</var>):</span>
+						<span><b>THEN</b>:</span>
+						<ol class="condition">
+							<li>
+								<b>LET</b> <var>conformance_string</var> be <code id="conformance-details-claim">"This publication claims to meet {epub_accessibility} {wcag_version} {wcag_level}"</code>
+							</li>
+							<li>
+								<span><b>IF</b> <var>epub_accessibility_11</var>:</span>
+								<span><b>THEN</b> replace <code>"{epub_accessibility}"</code> with <code id="conformance-details-epub-accessibility-1-1">"EPUB Accessibility 1.1"</code> in <var>conformance_string</var></span>
+							</li>
+							<li>
+								<span><b>ELSE IF</b> <var>epub_accessibility_10</var>:</span>
+								<span><b>THEN</b> replace <code>"{epub_accessibility}"</code> with <code id="conformance-details-epub-accessibility-1-0">"EPUB Accessibility 1.0"</code> in <var>conformance_string</var></span>
+							</li>
+							<li>
+								<span><b>ELSE</b>:</span>
+								<span><b>THEN</b> replace <code>"{epub_accessibility}"</code> with <code>""</code> in <var>conformance_string</var></span>
+							</li>
+							<li>
+								<span><b>IF</b> <var>wcag_22</var>:</span>
+								<span><b>THEN</b> replace <code>"{wcag_version}"</code> with <code id="conformance-details-wcag-2-2">"WCAG 2.2"</code> in <var>conformance_string</var></span>
+							</li>
+							<li>
+								<span><b>ELSE IF</b> <var>wcag_21</var>:</span>
+								<span><b>THEN</b> replace <code>"{wcag_version}"</code> with <code id="conformance-details-wcag-2-1">"WCAG 2.1"</code> in <var>conformance_string</var></span>
+							</li>
+							<li>
+								<span><b>ELSE IF</b> <var>wcag_20</var>:</span>
+								<span><b>THEN</b> replace <code>"{wcag_version}"</code> with <code id="conformance-details-wcag-2-0">"WCAG 2.0"</code> in <var>conformance_string</var></span>
+							</li>
+							<li>
+								<span><b>ELSE</b>:</span>
+								<span><b>THEN</b> replace <code>"{wcag_version}"</code> with <code>""</code> in <var>conformance_string</var></span>
+							</li>
+							<li>
+								<span><b>IF</b> <var>level_aaa</var>:</span>
+								<span><b>THEN</b> replace <code>"{wcag_level}"</code> with <code id="conformance-details-level-aaa">"Level AAA"</code> in <var>conformance_string</var></span>
+							</li>
+							<li>
+								<span><b>ELSE IF</b> <var>level_aa</var>:</span>
+								<span><b>THEN</b> replace <code>"{wcag_level}"</code> with <code id="conformance-details-level-aa">"Level AA"</code> in <var>conformance_string</var></span>
+							</li>
+							<li>
+								<span><b>ELSE IF</b> <var>level_a</var>:</span>
+								<span><b>THEN</b> replace <code>"{wcag_level}"</code> with <code id="conformance-details-level-a">"Level A"</code> in <var>conformance_string</var></span>
+							</li>
+							<li>
+								<span><b>ELSE</b>:</span>
+								<span><b>THEN</b> replace <code>"{wcag_version}"</code> with <code>""</code> in <var>conformance_string</var></span>
+							</li>
+							<li>display <var>conformance_string</var>.</li>
+						</ol>
+					</li>
+					<li>
+						<span><b>IF</b> <var>certification_date</var>:</span>
+						<span><b>THEN</b></span>
+						<ol class="condition">
+							<li>
+								format <var>certification_date</var> based on the language of localization
+								<div class="note">
+									<p>The certification date in ONIX is provided as a string value and should be parsed and formatted according to the display locale's conventions. For example, if the certification date is "20240315", this may be displayed as "March 15, 2024" in US English, "15 marzo 2024" in Italian, or "15. März 2024" in German, depending on the localization language and regional settings.</p>
+								</div>
+							</li>
+							<li>display <code id="conformance-details-certification-info">"The publication was certified on {certification_date}"</code> replacing <code>"{certification_date}"</code> with <var>certification_date</var>.</li>
+						</ol>
+					</li>
+					<li>
+						<span><b>IF</b> <var>certifier_report</var>:</span>
+						<span><b>THEN</b> display <code id="conformance-details-certifier-report">"For more information refer to the certifier's report"</code> as a named link with <var>certifier_report</var> as the URL used.</span>
+					</li>
+				</ol>
+			</section>
+
+			<section id="navigation">
+				<h3>Navigation</h3>
+				<p>This technique relates to the <a href="https://www.w3.org/publishing/a11y/metadata-display-guide/guidelines/#navigation">Navigation accessibility display field</a>.</p>
+				<p>This algorithm takes the <var>onix_record_as_text</var> argument: a UTF-8 string representing the ONIX record.</p>
+				<h4>Understanding the variables</h4>
+				<dl>
+					<dt><var>index_navigation</var></dt>
+					<dd>
+						<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/196/12">code 12 of codelist 196</a> (Index navigation) is present in the ONIX record.</p>
+						<p>This means that there is an index that provides direct (eg hyperlinked) access to uses of the index terms in the document body.</p>
+					</dd>
+					<dt><var>next_previous_structural_navigation</var></dt>
+					<dd>
+						<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/196/29">code 29 of codelist 196</a> (Next / Previous structural navigation) is present in the ONIX record.</p>
+						<p>This means that all levels of heading and other structural elements of the content are correctly marked up and (if applicable) numbered, to enable fast next heading / previous heading, next chapter / previous chapter navigation without returning to the table of contents.</p>
+					</dd>
+					<dt><var>page_navigation</var></dt>
+					<dd>
+						<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/196/41">code 41 of codelist 196</a> (Page list navigation) is present in the ONIX record.</p>
+						<p>This means that in the publication includes page number navigation, based on print-equivalent page numbers or digital-only static page breaks.</p>
+					</dd>
+					<dt><var>table_of_contents_navigation</var></dt>
+					<dd>
+						<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/196/11">code 11 of codelist 196</a> (Table of contents navigation) is present in the ONIX record.</p>
+						<p>This means that there is a Table of Contents in the publication that allows direct (eg hyperlinked) access to all levels of text organization above individual paragraphs (eg to all sections and subsections) and to all tables, figures, illustrations etc.</p>
+					</dd>
+				</dl>
+				<h4>Variables setup</h4>
+				<ul class="variable">
+					<li><b>LET</b> <var>onix</var> be the result of calling <a href="#preprocessing">preprocessing</a> given <var>onix_record_as_text</var>.</li>
+					<li><b>LET</b> <var>index_navigation</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "12"]</code>.</li>
+					<li><b>LET</b> <var>next_previous_structural_navigation</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "29"]</code>.</li>
+					<li><b>LET</b> <var>page_navigation</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "41"]</code>.</li>
+					<li><b>LET</b> <var>table_of_contents_navigation</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "11"]</code>.</li>
+				</ul>
+				<h4 id="navigation-instructions">Instructions</h4>
+				<ol class="condition">
+					<li>
+						<span><b>IF</b> <var>table_of_contents_navigation</var> <b>OR</b> <var>index_navigation</var> <b>OR</b> <var>page_navigation</var> <b>OR</b> <var>next_previous_structural_navigation</var>:</span>
+						<ol class="condition">
+							<li>
+								<span><b>IF</b> <var>table_of_contents_navigation</var>:</span>
+								<span><b>THEN</b> display <code id="navigation-toc">"Table of contents"</code>.</span>
+							</li>
+							<li>
+								<span><b>IF</b> <var>index_navigation</var>:</span>
+								<span><b>THEN</b> display <code id="navigation-index">"Index"</code>.</span>
+							</li>
+							<li>
+								<span><b>IF</b> <var>page_navigation</var>:</span>
+								<span><b>THEN</b> display <code id="navigation-page-navigation">"Go to page"</code>.</span>
+							</li>
+							<li>
+								<span><b>IF</b> <var>next_previous_structural_navigation</var>:</span>
+								<span><b>THEN</b> display <code id="navigation-structural">"Headings"</code>.</span>
+							</li>
+						</ol>
+					</li>
+					<li>
+						<b>ELSE</b> either omit this display field if metadata is missing or display <code id="navigation-no-metadata">"No information is available"</code>.
+					</li>
+				</ol>
+			</section>
+
+			<section id="rich-content">
+				<h3>Rich content</h3>
+				<p>This technique relates to the <a href="https://www.w3.org/publishing/a11y/metadata-display-guide/guidelines/#rich-content">Rich content accessibility display field</a>.</p>
+				<p>This algorithm takes the <var>onix_record_as_text</var> argument: a UTF-8 string representing the ONIX record.</p>
+				<h4>Understanding the variables</h4>
+				<dl>
+					<dt><var>charts_diagrams_as_non_graphical_data</var></dt>
+					<dd>
+						<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/196/16">code 16 of codelist 196</a> (Visualized data also available as non-graphical data) is present in the ONIX record.</p>
+						<p>This means that there is a positive indication that all data presented in a visual format (graph, chart, etc) has an alternative non-graphical presentation of the same data.</p>
+					</dd>
+					<dt><var>chemical_formula_as_latex</var></dt>
+					<dd>
+						<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/196/54">code 54 of codelist 196</a> (Accessible chemistry content as LaTeX) is present in the ONIX record.</p>
+						<p>This means that there is a positive indication that the chemical formulae are presented using LaTeX and works with compatible assistive technology.</p>
+					</dd>
+					<dt><var>chemical_formula_as_mathml</var></dt>
+					<dd>
+						<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/196/34">code 34 of codelist 196</a> (Accessible chemistry content as MathML) is present in the ONIX record.</p>
+						<p>This means that there is a positive indication that the chemical formulae are presented using MathML and works with compatible assistive technology.</p>
+					</dd>
+					<dt><var>closed_captions</var></dt>
+					<dd>
+						<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/175/V210">code V210 of codelist 175</a> (Closed captions) is present in the ONIX record.</p>
+						<p>This means that the publication contains videos with closed captions or subtitles.</p>
+					</dd>
+					<dt><var>described_math</var></dt>
+					<dd>
+						<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/196/53">code 53 of codelist 196</a> (Described math content) is present in the ONIX record.</p>
+						<p>This means that there is a positive indication that textual descriptions of mathematical content are present, either as alternative descriptions attached to an image of the content, or in addition to MathML or LaTeX.</p>
+					</dd>
+					<dt><var>full_alternative_textual_descriptions</var></dt>
+					<dd>
+						<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/196/15">code 15 of codelist 196</a> (Full alternative textual description) is present in the ONIX record.</p>
+						<p>This means that there is a positive indication that a full alternative textual description has been supplied for all of the graphs, charts, diagrams, or figures necessary to understand the content.</p>
+					</dd>
+					<dt><var>math_formula_as_latex</var></dt>
+					<dd>
+						<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/196/35">code 35 of codelist 196</a> (Accessible math content as LaTeX) is present in the ONIX record.</p>
+						<p>This means that there is a positive indication that the chemical formulae are presented using LaTeX and works with compatible assistive technology.</p>
+					</dd>
+					<dt><var>math_formula_as_mathml</var></dt>
+					<dd>
+						<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/196/17">code 17 of codelist 196</a> (Accessible math content as MathML) is present in the ONIX record.</p>
+						<p>This means that there is a positive indication that all mathematical content is presented using MathML and works with compatible assistive technology.</p>
+					</dd>
+					<dt><var>open_captions</var></dt>
+					<dd>
+						<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/175/V211">code V211 of codelist 175</a> (Open captions) is present in the ONIX record.</p>
+						<p>This means that the publication contains videos with ‘burnt-in’ or hard captions or subtitles.</p>
+					</dd>
+					<dt><var>transcript</var></dt>
+					<dd>
+						<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/175/V212">code V212 of codelist 175</a> (Transcript) is present in the ONIX record.</p>
+						<p>This means that the publication contains full transcript of audio and audiovisual content.</p>
+					</dd>
+				</dl>
+				<h4>Variables setup</h4>
+				<ul class="variable">
+					<li><b>LET</b> <var>onix</var> be the result of calling <a href="#preprocessing">preprocessing</a> given <var>onix_record_as_text</var>.</li>
+					<li><b>LET</b> <var>charts_diagrams_as_non_graphical_data</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "16"]</code>.</li>
+					<li><b>LET</b> <var>chemical_formula_as_latex</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "54"]</code>.</li>
+					<li><b>LET</b> <var>chemical_formula_as_mathml</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "34"]</code>.</li>
+					<li><b>LET</b> <var>closed_captions</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail[ProductFormDetail = "V210"]</code>.</li>
+					<li><b>LET</b> <var>described_math</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "53"]</code>.</li>
+					<li><b>LET</b> <var>full_alternative_textual_descriptions</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "15"]</code>.</li>
+					<li><b>LET</b> <var>math_formula_as_latex</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "35"]</code>.</li>
+					<li><b>LET</b> <var>math_formula_as_mathml</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "17"]</code>.</li>
+					<li><b>LET</b> <var>open_captions</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail[ProductFormDetail = "V211"]</code>.</li>
+					<li><b>LET</b> <var>transcript</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail[ProductFormDetail = "V212"]</code>.</li>
+				</ul>
+				<h4 id="rich-content-instructions">Instructions</h4>
+				<ol class="condition">
+					<li>
+						<span><b>IF</b> <var>math_formula_as_mathml</var>:</span>
+						<span><b>THEN</b> display <code id="rich-content-accessible-math-as-mathml">"Math as MathML"</code>.</span>
+					</li>
+					<li>
+						<span><b>IF</b> <var>math_formula_as_latex</var>:</span>
+						<span><b>THEN</b> display <code id="rich-content-accessible-math-as-latex">"Math as LaTeX"</code>.</span>
+					</li>
+					<li>
+						<span><b>IF</b> <var>described_math</var>:</span>
+						<span><b>THEN</b> display <code id="rich-content-accessible-math-described">"Text descriptions of math are provided"</code>.</span>
+					</li>
+					<li>
+						<span><b>IF</b> <var>chemical_formula_as_mathml</var>:</span>
+						<span><b>THEN</b> display <code id="rich-content-accessible-chemistry-as-mathml">"Chemical formulas in MathML"</code>.</span>
+					</li>
+					<li>
+						<span><b>IF</b> <var>chemical_formula_as_latex</var>:</span>
+						<span><b>THEN</b> display <code id="rich-content-accessible-chemistry-as-latex">"Chemical formulas in LaTeX"</code>.</span>
+					</li>
+					<li>
+						<span><b>IF</b> <var>charts_diagrams_as_non_graphical_data</var> <b>OR</b> <var>full_alternative_textual_descriptions</var>:</span>
+						<span><b>THEN</b> display <code id="rich-content-extended">"Information-rich images are described by extended descriptions"</code>.</span>
+					</li>
+					<li>
+						<span><b>IF</b> <var>closed_captions</var>:</span>
+						<span><b>THEN</b> display <code id="rich-content-closed-captions">"Videos have closed captions"</code>.</span>
+					</li>
+					<li>
+						<span><b>IF</b> <var>open_captions</var>:</span>
+						<span><b>THEN</b> display <code id="rich-content-open-captions">"Videos have open captions"</code>.</span>
+					</li>
+					<li>
+						<span><b>IF</b> <var>transcript</var>:</span>
+						<span><b>THEN</b> display <code id="rich-content-transcript">"Transcript(s) provided"</code>.</span>
+					</li>
+					<li>
+						<span><b>IF</b> <b>NOT</b> (<var>math_formula_as_mathml</var> <b>OR</b> <var>math_formula_as_latex</var> <b>OR</b> <var>described_math</var> <b>OR</b> <var>chemical_formula_as_mathml</var> <b>OR</b> <var>chemical_formula_as_latex</var> <b>OR</b> <var>charts_diagrams_as_non_graphical_data</var> <b>OR</b> <var>full_alternative_textual_descriptions</var> <b>OR</b> <var>closed_captions</var> <b>OR</b> <var>open_captions</var> <b>OR</b> <var>transcript</var>):</span>
+						<span><b>THEN</b> either omit this display field if metadata is missing or display <code id="rich-content-unknown">"No information is available"</code>.</span>
+					</li>
+				</ol>
+			</section>
+
+			<section id="hazards">
+				<h3>Hazards</h3>
+				<p>This technique relates to the <a href="https://www.w3.org/publishing/a11y/metadata-display-guide/guidelines/#hazards">Hazards accessibility display field</a>.</p>
+				<p>This algorithm takes the <var>onix_record_as_text</var> argument: a UTF-8 string representing the ONIX record.</p>
+				<h4>Understanding the variables</h4>
+				<dl>
+					<dt><var>flashing_hazard</var></dt>
+					<dd>
+						<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/143/13">code 13 of codelist 143</a> (WARNING - Flashing hazard) is present in the ONIX record.</p>
+						<p>This means that there is a positive indication that the product has a flashing hazard which must be displayed.</p>
+					</dd>
+					<dt><var>motion_simulation_hazard</var></dt>
+					<dd>
+						<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/143/17">code 17 of codelist 143</a> (WARNING - Motion simulation hazard) is present in the ONIX record.</p>
+						<p>This means that there is a positive indication that the product has a motion simulation hazard which must be displayed.</p>
+					</dd>
+					<dt><var>no_flashing_hazard</var></dt>
+					<dd>
+						<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/143/14">code 14 of codelist 143</a> (No flashing hazard warning necessary) is present in the ONIX record.</p>
+						<p>This means there is a positive indication in the ONIX record confirming there are no flashing hazards associated with this product.</p>
+					</dd>
+					<dt><var>no_hazards_or_warnings_confirmed</var></dt>
+					<dd>
+						<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/143/00">code 00 of codelist 143</a> (No known hazards or warnings) is present in the ONIX record.</p>
+						<p>This means there is a positive indication in the ONIX record confirming there are no associated hazard warnings with this product.</p>
+					</dd>
+					<dt><var>no_motion_hazard</var></dt>
+					<dd>
+						<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/143/18">code 18 of codelist 143</a> (No motion simulation hazard warning necessary) is present in the ONIX record.</p>
+						<p>This means there is a positive indication in the ONIX record confirming there are no motion simulation hazards associated with this product.</p>
+					</dd>
+					<dt><var>no_sound_hazard</var></dt>
+					<dd>
+						<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/143/16">code 16 of codelist 143</a> (No sound hazard warning necessary) is present in the ONIX record.</p>
+						<p>This means there is a positive indication in the ONIX record confirming there are no sound hazards associated with this product.</p>
+					</dd>
+					<dt><var>sound_hazard</var></dt>
+					<dd>
+						<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/143/15">code 15 of codelist 143</a> (WARNING - Sound hazard) is present in the ONIX record.</p>
+						<p>This means that there is a positive indication that the product has a sound hazard which must be displayed.</p>
+					</dd>
+					<dt><var>unknown_flashing_hazard</var></dt>
+					<dd>
+						<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/143/24">code 24 of codelist 143</a> (Flashing risk unknown) is present in the ONIX record.</p>
+						<p>This means the presence of flashing hazards could not be determined.</p>
+					</dd>
+					<dt><var>unknown_if_contains_hazards</var></dt>
+					<dd>
+						<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/196/08">code 08 of codelist 196</a> (Unknown accessibility) is present in the ONIX record.</p>
+						<p>This means that the product has not been assessed for hazards and there is no information about potential hazards.</p>
+					</dd>
+					<dt><var>unknown_motion_hazard</var></dt>
+					<dd>
+						<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/143/26">code 26 of codelist 143</a> (Motion simulation risk unknown) is present in the ONIX record.</p>
+						<p>This means the presence of motion simulation hazards could not be determined.</p>
+					</dd>
+					<dt><var>unknown_sound_hazard</var></dt>
+					<dd>
+						<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/143/25">code 25 of codelist 143</a> (Sound risk unknown) is present in the ONIX record.</p>
+						<p>This means the presence of sound hazards could not be determined.</p>
+					</dd>
+				</dl>
+				<h4>Variables setup</h4>
+				<ul class="variable">
+					<li><b>LET</b> <var>onix</var> be the result of calling <a href="#preprocessing">preprocessing</a> given <var>onix_record_as_text</var>.</li>
+					<li><b>LET</b> <var>flashing_hazard</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "12" and ProductFormFeatureValue = "13"]</code>.</li>
+					<li><b>LET</b> <var>motion_simulation_hazard</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "12" and ProductFormFeatureValue = "17"]</code>.</li>
+					<li><b>LET</b> <var>no_flashing_hazard</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "12" and ProductFormFeatureValue = "14"]</code>.</li>
+					<li><b>LET</b> <var>no_hazards_or_warnings_confirmed</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "12" and ProductFormFeatureValue = "00"]</code>.</li>
+					<li><b>LET</b> <var>no_motion_hazard</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "12" and ProductFormFeatureValue = "18"]</code>.</li>
+					<li><b>LET</b> <var>no_sound_hazard</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "12" and ProductFormFeatureValue = "16"]</code>.</li>
+					<li><b>LET</b> <var>sound_hazard</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "12" and ProductFormFeatureValue = "15"]</code>.</li>
+					<li><b>LET</b> <var>unknown_flashing_hazard</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "12" and ProductFormFeatureValue = "24"]</code>.</li>
+					<li><b>LET</b> <var>unknown_if_contains_hazards</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "08"]</code>.</li>
+					<li><b>LET</b> <var>unknown_motion_hazard</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "12" and ProductFormFeatureValue = "26"]</code>.</li>
+					<li><b>LET</b> <var>unknown_sound_hazard</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "12" and ProductFormFeatureValue = "25"]</code>.</li>
+				</ul>
+				<h4 id="hazards-instructions">Instructions</h4>
+				<ol class="condition">
+					<li>
+						<span><b>IF</b> <var>no_hazards_or_warnings_confirmed</var> <b>OR</b>  (<var>no_flashing_hazard</var> <b>AND</b> <var>no_motion_hazard</var> <b>AND</b> <var>no_sound_hazard</var>):</span>
+						<span><b>THEN</b> display <code id="hazards-none">"No hazards"</code>.</span>
+					</li>
+					<li>
+						<span><b>ELSE IF</b> <var>unknown_if_contains_hazards</var> <b>OR</b> (<var>unknown_flashing_hazard</var> <b>AND</b> <var>unknown_motion_hazard</var> <b>AND</b> <var>unknown_sound_hazard</var>):</span>
+						<span><b>THEN</b> display <code id="hazards-unknown">"The presence of hazards is unknown"</code>.</span>
+					</li>
+					<li>
+						<span><b>ELSE IF</b> <var>flashing_hazard</var> <b>OR</b> <var>motion_simulation_hazard</var> <b>OR</b> <var>sound_hazard</var>
+							<b>OR</b> <var>no_flashing_hazard</var> <b>OR</b> <var>no_motion_hazard</var> <b>OR</b> <var>no_sound_hazard</var>
+							<b>OR</b> <var>unknown_flashing_hazard</var> <b>OR</b> <var>unknown_motion_hazard</var> <b>OR</b> <var>unknown_sound_hazard</var>:</span>
+						<span><b>THEN</b></span>
+						<ol class="condition">
+							<li>
+								<span><b>IF</b> <var>flashing_hazard</var>:</span>
+								<span><b>THEN</b> display <code id="hazards-flashing">"Flashing content"</code>.</span>
+							</li>
+							<li>
+								<span><b>IF</b> <var>motion_simulation_hazard</var>:</span>
+								<span><b>THEN</b> display <code id="hazards-motion">"Motion simulation"</code>.</span>
+							</li>
+							<li>
+								<span><b>IF</b> <var>sound_hazard</var>:</span>
+								<span><b>THEN</b> display <code id="hazards-sound">"Sounds"</code>.</span>
+							</li>
+							<li>
+								<span><b>IF</b> <var>unknown_flashing_hazard</var>:</span>
+								<span><b>THEN</b> display <code id="hazards-flashing-unknown">"Flashing hazards not known"</code>.</span>
+							</li>
+							<li>
+								<span><b>IF</b> <var>unknown_motion_hazard</var>:</span>
+								<span><b>THEN</b> display <code id="hazards-motion-unknown">"Motion simulation hazards not known"</code>.</span>
+							</li>
+							<li>
+								<span><b>IF</b> <var>unknown_sound_hazard</var>:</span>
+								<span><b>THEN</b> display <code id="hazards-sound-unknown">"Sound hazards not known"</code>.</span>
+							</li>
+							<li>
+								<span><b>IF</b> <var>no_flashing_hazard</var>:</span>
+								<span><b>THEN</b> display <code id="hazards-flashing-none">"No flashing hazards"</code>.</span>
+							</li>
+							<li>
+								<span><b>IF</b> <var>no_motion_hazard</var>:</span>
+								<span><b>THEN</b> display <code id="hazards-motion-none">"No motion simulation hazards"</code>.</span>
+							</li>
+							<li>
+								<span><b>IF</b> <var>no_sound_hazard</var>:</span>
+								<span><b>THEN</b> display <code id="hazards-sound-none">"No sound hazards"</code>.</span>
+							</li>
+						</ol>
+					</li>
+					<li>
+						<b>ELSE</b> display <code id="hazards-no-metadata">"No information is available"</code>.
+						<aside class="note">This display field can be hidden if metadata is missing.</aside>
+					</li>
+				</ol>
+			</section>
+
+			<section id="accessibility-summary">
+				<h3>Accessibility summary</h3>
+				<p>This technique relates to the <a href="https://www.w3.org/publishing/a11y/metadata-display-guide/guidelines/#accessibility-summary">Accessibility summary accessibility display field</a>.</p>
+				<p>This algorithm takes the <var>onix_record_as_text</var> argument: a UTF-8 string representing the ONIX record.</p>
+				<aside class="note">
+					Being human-written, the accessibility summary and addendum will appear in the original language of the publication. Therefore it is necessary of take care of setting up the correct language tag information.
+				</aside>
+
+				<aside class="note">Accessibility summary existed when no system exposed the computed accessibility metadata. With more and more systems displaying this information, most of the accessibility summary may be redundant. It may be advised to display only the accessibility addendum.</aside>
+
+				<h4>Understanding the variables</h4>
+				<dl>
+					<dt><var>accessibility_addendum</var></dt>
+					<dd>
+						<p>Returns the description of <a href="https://ns.editeur.org/onix/en/196/92">code 92 of codelist 196</a> (Accessibility addendum) if present in the ONIX record.</p>
+						<p>This means there is a human-written text containing a short addendum to the accessibility detail of the product. It contains precise information that the publisher could not express with the other's codes.</p>
+					</dd>
+					<dt><var>accessibility_summary</var></dt>
+					<dd>
+						<p>Returns the description of <a href="https://ns.editeur.org/onix/en/196/00">code 00 of codelist 196</a>  (Accessibility summary) if present in the ONIX record.</p>
+						<p>This means there is a human-written text containing a short explanatory summary of the accessibility of the product or the URL of a web page comprising such a summary. Summarizes the already existent information and may add information that the publisher could not express with the other codes.</p>
+					</dd>
+					<dt><var>known_limited_accessibility</var></dt>
+					<dd>
+						<p>Returns the description of <a href="https://ns.editeur.org/onix/en/196/09">code 09 of codelist 196</a> (Inaccessible, or known limited accessibility) if present in the ONIX record.</p>
+						<p>This means there is a human-written text containing details of and reasons for limitations on accessibility of an ebook.</p>
+					</dd>
+					<dt><var>lang_attribute_accessibility_addendum</var></dt>
+					<dd>
+						<p>Returns the lang attribute of the node containing the <var>accessibility_addendum</var>, or the lang attribute of the nearest ancestor.</p>
+						<p>This is the language code in which the text of the Accessibility addendum was written.</p>
+					</dd>
+					<dt><var>lang_attribute_accessibility_summary</var></dt>
+					<dd>
+						<p>Returns the lang attribute of the node containing the <var>accessibility_summary</var>, or the lang attribute of the nearest ancestor.</p>
+						<p>This is the language code in which the text of the Accessibility summary was written.</p>
+					</dd>
+					<dt><var>lang_known_limited_accessibility</var></dt>
+					<dd>
+						<p>Returns the lang attribute of the node containing the <var>known_limited_accessibility</var>, or the lang attribute of the nearest ancestor.</p>
+						<p>This is the language code in which the text of the Inaccessible, or known limited accessibility was written.</p>
+					</dd>
+					<dt><var>language_of_text</var></dt>
+					<dd>
+						<p>Returns the value of nearest  <a href="https://ns.editeur.org/onix/en/22/01">code 01 of codelist 22</a> (Language of text)  if present in the ONIX record.</p>
+						<p>This indicates the main language of the content and therefore the most probable language of accessibility summary and addendum.</p>
+					</dd>
+					<dt><var>publisher_contact_for_accessibility</var></dt>
+					<dd>
+						<p>Returns the description of <a href="https://ns.editeur.org/onix/en/196/99">code 99 of codelist 196</a> (Publisher contact for further accessibility information) if present in the ONIX record.</p>
+						<p>This means there is an e-mail address of the publisher to whom detailed questions about accessibility of this product may be directed.</p>
+					</dd>
+				</dl>
+				<h4>Variables setup</h4>
+				<ul class="variable">
+					<li><b>LET</b> <var>onix</var> be the result of calling <a href="#preprocessing">preprocessing</a> given <var>onix_record_as_text</var>.</li>
+					<li><b>LET</b> <var>accessibility_addendum</var> be the value of the node extracted from <var>onix</var>, using the xpath <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "92"]/ProductFormFeatureDescription</code>.</li>
+					<li><b>LET</b> <var>accessibility_summary</var> be the value of the node extracted from <var>onix</var>, using the xpath <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "00"]/ProductFormFeatureDescription</code>.</li>
+					<li><b>LET</b> <var>known_limited_accessibility</var> be the value of the node extracted from <var>onix</var>, using the xpath <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "09"]/ProductFormFeatureDescription</code>.</li>
+					<li><b>LET</b> <var>lang_attribute_accessibility_addendum</var> be the value extracted from <var>onix</var>, using the xpath <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "92"]/ProductFormFeatureDescription/(@lang|ancestor::*/@lang)[last()]</code>.</li>
+					<li><b>LET</b> <var>lang_attribute_accessibility_summary</var> be the value extracted from <var>onix</var>, using the xpath <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "00"]/ProductFormFeatureDescription/(@lang|ancestor::*/@lang)[last()]</code>.</li>
+					<li><b>LET</b> <var>lang_known_limited_accessibility</var> be the value extracted from <var>onix</var>, using the xpath <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "09"]/ProductFormFeatureDescription/(@lang|ancestor::*/@lang)[last()]</code>.</li>
+					<li><b>LET</b> <var>language_of_text</var> be the value of the node extracted from <var>onix</var>, using the xpath <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/Language[LanguageRole="01"]/LanguageCode</code>.</li>
+					<li><b>LET</b> <var>publisher_contact_for_accessibility</var> be the value of the node extracted from <var>onix</var>, using the xpath <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "99"]/ProductFormFeatureDescription</code>.</li>
+				</ul>
+				<h4 id="accessibility-summary-instructions">Instructions</h4>
+				<ol class="condition">
+					<li>
+						<span><b>IF</b> <var>lang_attribute_accessibility_addendum</var> is <b>NOT</b> empty:</span>
+						<span><b>THEN</b> <b>LET</b> <var>language_accessibility_addendum</var> be the value of <var>lang_attribute_accessibility_addendum</var>.</span>
+					</li>
+					<li>
+						<b>ELSE</b> <b>LET</b> <var>language_accessibility_addendum</var> be the value of <var>language_of_text</var>.
+					</li>
+					<li>
+						<span><b>IF</b> <var>lang_known_limited_accessibility</var> is <b>NOT</b> empty:</span>
+						<span><b>THEN</b> <b>LET</b> <var>language_known_limited_accessibility</var> be the value of <var>lang_known_limited_accessibility</var>.</span>
+					</li>
+					<li>
+						<b>ELSE</b> <b>LET</b> <var>language_known_limited_accessibility</var> be the value of <var>language_of_text</var>.
+					</li>
+					<li>
+						<span><b>IF</b> <var>lang_attribute_accessibility_summary</var> is <b>NOT</b> empty:</span>
+						<span><b>THEN</b> <b>LET</b> <var>language_accessibility_summary</var> be the value of <var>lang_attribute_accessibility_summary</var>.</span>
+					</li>
+					<li>
+						<b>ELSE</b> <b>LET</b> <var>language_accessibility_summary</var> be the value of <var>language_of_text</var>.
+					</li>
+					<li>
+						<span><b>IF</b> <var>known_limited_accessibility</var> is <b>NOT</b> empty:</span>
+						<span><b>THEN</b> display the content of <var>known_limited_accessibility</var> with <var>language_known_limited_accessibility</var> as language.</span>
+					</li>
+					<li>
+						<span><b>IF</b> <var>accessibility_addendum</var> is <b>NOT</b> empty:</span>
+						<span><b>THEN</b> display the content of <var>accessibility_addendum</var> with <var>language_accessibility_addendum</var> as language.</span>
+					</li>
+					<li>
+						<span><b>ELSE IF</b> <var>accessibility_summary</var> is <b>NOT</b> empty:</span>
+						<span><b>THEN</b> display the content of <var>accessibility_summary</var> with <var>language_accessibility_summary</var> as language.</span>
+					</li>
+					<li>
+						<b>ELSE</b> either omit this display field if metadata is missing or display <code id="accessibility-summary-no-metadata">"No information is available"</code>.
+					</li>
+					<li>
+						<span><b>IF</b> <var>publisher_contact_for_accessibility</var> is <b>NOT</b> empty:</span>
+						<span><b>THEN</b> display <code id="accessibility-summary-publisher-contact">"For more information about the accessibility of this product, please contact the publisher: {publisher_contact_for_accessibility}"</code> replacing <code>"{publisher_contact_for_accessibility}"</code> with <var>publisher_contact_for_accessibility</var> as a mailto link.</span>
+					</li>
+				</ol>
+			</section>
+
+			<section id="legal-considerations">
+				<h3>Legal considerations</h3>
+				<p class="issue" data-number="350">We are actively seeking comments on this "legal consideration" section. If you are a publisher, we want your feedback! Please visit the GitHub Issue tracking linked above to leave a comment.</p>
+				<p>This technique relates to the <a href="https://www.w3.org/publishing/a11y/metadata-display-guide/guidelines/#legal-considerations">Legal considerations accessibility display field</a>.</p>
+				<p>This algorithm takes the <var>onix_record_as_text</var> argument: a UTF-8 string representing the ONIX record.</p>
+				<h4>Understanding the variables</h4>
+				<dl>
+					<dt><var>eaa_exception_disproportionate_burden</var></dt>
+					<dd>
+						<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/196/76">code 76 of codelist 196</a> (EAA exception 2 – Disproportionate burden) is present in the ONIX record.</p>
+						<p>This means that the digital product falls under European Accessibility Act exception for Disproportionate burden (as defined by current regulations). The product may not have to comply with requirements of the EAA if doing so would financially overburden the publisher.</p>
+					</dd>
+					<dt><var>eaa_exception_fundamental_modification</var></dt>
+					<dd>
+						<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/196/77">code 77 of codelist 196</a> (EAA exception 3 – Fundamental modification) is present in the ONIX record.</p>
+						<p>This means that the digital product falls under European Accessibility Act exception for Fundamental modification (as defined by current regulations). The product may not have to comply with requirements of the EAA if doing so requires a fundamental modification of the nature of the product or service.</p>
+					</dd>
+					<dt><var>eaa_exemption_micro_enterprises</var></dt>
+					<dd>
+						<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/196/75">code 75 of codelist 196</a> (EEA exception 1 – Micro-enterprises) is present in the ONIX record.</p>
+						<p>This means that the digital product falls under European Accessibility Act exemption for Micro-enterprises (as defined by current regulations). The product may not have to comply with requirements of the EAA if the publisher is a micro-enterprise.</p>
+					</dd>
+				</dl>
+				<h4>Variables setup</h4>
+				<ul class="variable">
+					<li><b>LET</b> <var>onix</var> be the result of calling <a href="#preprocessing">preprocessing</a> given <var>onix_record_as_text</var>.</li>
+					<li><b>LET</b> <var>eaa_exception_disproportionate_burden</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "76"]</code>.</li>
+					<li><b>LET</b> <var>eaa_exception_fundamental_modification</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "77"]</code>.</li>
+					<li><b>LET</b> <var>eaa_exemption_micro_enterprises</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "75"]</code>.</li>
+				</ul>
+				<h4 id="legal-considerations-instructions">Instructions</h4>
+				<ol class="condition">
+					<li>
+						<span><b>IF</b> <var>eaa_exemption_micro_enterprises</var> <b>OR</b> <var>eaa_exception_disproportionate_burden</var> <b>OR</b> <var>eaa_exception_fundamental_modification</var>:</span>
+						<span><b>THEN</b> display <code id="legal-considerations-exempt">"Claims an accessibility exemption in some jurisdictions"</code>.</span>
+					</li>
+					<li>
+						<b>ELSE</b> either omit this display field if metadata is missing or display <code id="legal-considerations-no-metadata">"No information is available"</code>.
+					</li>
+				</ol>
+			</section>
+
+			<section id="additional-accessibility-information">
+				<h3>Additional accessibility information</h3>
+				<p>This technique relates to the <a href="https://www.w3.org/publishing/a11y/metadata-display-guide/guidelines/#additional-accessibility-information">Additional accessibility information accessibility display field</a>.</p>
+				<p>This algorithm takes the <var>onix_record_as_text</var> argument: a UTF-8 string representing the ONIX record.</p>
+
+		
+				<h4>Understanding the variables</h4>
+				<dl>
+					<dt><var>color_not_sole_means_of_conveying_information</var></dt>
+					<dd>
+						<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/196/25">code 25 of codelist 196</a> (Use of color is not sole means of conveying information) is present in the ONIX record.</p>
+						<p>This means that for readers with color vision deficiency, use of color (eg in diagrams, graphs and charts, in prompts or on buttons inviting a response) is not the sole means of graphical distinction or of conveying information.</p>
+					</dd>
+					<dt><var>dyslexia_readability</var></dt>
+					<dd>
+						<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/196/24">code 24 of codelist 196</a> (Dyslexia readability) is present in the ONIX record.</p>
+						<p>This means that the product has been specifically adapted or has features specifically to improve readability for dyslexic readers, for example specialized font, character and/or line spacing, justification and paragraph spacing, coloring and other options provided specifically to improve readability for dyslexic readers.</p>
+					</dd>
+					<dt><var>high_contrast_between_foreground_and_background_audio</var></dt>
+					<dd>
+						<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/196/27">code 27 of codelist 196</a> (Use of high contrast between foreground and background audio) is present in the ONIX record.</p>
+						<p>This means that foreground audio content (eg voice) is presented with no or low background noise (eg ambient sounds, music), at least 20dB below the level of the foreground, or background noise can be switched off (eg via an alternative audio track). Brief and occasional sound effects may be as loud as foreground voice so long as they are isolated from the foreground.</p>
+					</dd>
+					<dt><var>high_contrast_between_text_and_background</var></dt>
+					<dd>
+						<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/196/26">code 26 of codelist 196</a> (Use of high contrast between text and background color) is present in the ONIX record.</p>
+						<p>This means that body text is presented with a contrast ratio of at least 4.5:1 (or 3:1 for large/heading text).</p>
+					</dd>
+					<dt><var>print_equivalent_page_numbering</var></dt>
+					<dd>
+						<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/196/19">code 19 of codelist 196</a> (Print-equivalent page numbering) is present in the ONIX record.</p>
+						<p>This means that in the publication contains references to the page numbering of an equivalent printed product.</p>
+					</dd>
+					<dt><var>sign_language</var></dt>
+					<dd>
+						<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/175/V213">code V213 of codelist 175</a> (Sign language interpretation) is present in the ONIX record.</p>
+						<p>This means that a full signing of audio content of the product supplied with the video file.</p>
+					</dd>
+					<dt><var>text_to_speech_hinting</var></dt>
+					<dd>
+						<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/196/21">code 21 of codelist 196</a> (Text-to-speech hinting provided) is present in the ONIX record.</p>
+						<p>This means that text-to-speech has been optimized through provision of PLS lexicons, SSML or CSS Speech synthesis hints or other speech synthesis markup languages or hinting.</p>
+					</dd>
+					<dt><var>ultra_high_contrast_between_text_and_background</var></dt>
+					<dd>
+						<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/196/37">code 37 of codelist 196</a> (Use of ultra-high contrast between text foreground and background) is present in the ONIX record.</p>
+						<p>This means that body text is presented with a contrast ratio of at least 7:1 (or 4.5:1 for large/heading text).</p>
+					</dd>
+					<dt><var>visible_page_numbering</var></dt>
+					<dd>
+						<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/175/E205">code E205 of codelist 175</a> (Visible page numbering) is present in the ONIX record.</p>
+						<p>This means that the e-publication (mostly in the case of a fixed-format) contains visible page numbers.</p>
+					</dd>
+					
+					<dt><var>without_background_sounds</var></dt>
+					<dd>
+						<p>If true, it indicates that <a href="https://ns.editeur.org/onix/en/175/A312">code A312 of codelist 175</a> (Without background sounds) is present in the ONIX record.</p>
+						<p>This means that pre-recorded audiobook narration does not contain any background sounds, including music, sound effects, etc, though music and effects may be present if isolated from the speech (ie the sounds do not overlap).</p>
+					</dd>
+				</dl>
+
+				<h4>Variables setup</h4>
+				<ul class="variable">
+					<li><b>LET</b> <var>onix</var> be the result of calling <a href="#preprocessing">preprocessing</a> given <var>onix_record_as_text</var>.</li>
+					<li><b>LET</b> <var>color_not_sole_means_of_conveying_information</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "25"]</code>.</li>
+					<li><b>LET</b> <var>dyslexia_readability</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "24"]</code>.</li>
+					<li><b>LET</b> <var>high_contrast_between_foreground_and_background_audio</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "27"]</code>.</li>
+					<li><b>LET</b> <var>high_contrast_between_text_and_background</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "26"]</code>.</li>
+					<li><b>LET</b> <var>print_equivalent_page_numbering</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "19"]</code>.</li>
+					<li><b>LET</b> <var>sign_language</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail[ProductFormDetail = "V213"]</code>.</li>
+					<li><b>LET</b> <var>text_to_speech_hinting</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "21"]</code>.</li>
+					<li><b>LET</b> <var>ultra_high_contrast_between_text_and_background</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail/ProductFormFeature[ProductFormFeatureType = "09" and ProductFormFeatureValue = "37"]</code>.</li>
+					<li><b>LET</b> <var>visible_page_numbering</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail[ProductFormDetail = "E205"]</code>.</li>
+					<li><b>LET</b> <var>without_background_sounds</var> be the result of calling <a href="#check-for-node">check for node</a> on <var>onix</var>, <code class="xpath">/ONIXMessage/Product/DescriptiveDetail[ProductFormDetail = "A312"]</code>.</li>
+				</ul>
+
+				<h4>Instructions</h4>
+				<ol class="condition">
+					<li>
+						<span><b>IF</b> <var>color_not_sole_means_of_conveying_information</var>:</span>
+						<span><b>THEN</b> display <code id="additional-accessibility-information-color-not-sole-means-of-conveying-information">"Color is not the sole means of conveying information"</code>.</span>
+					</li>
+					<li>
+						<span><b>IF</b> <var>dyslexia_readability</var>:</span>
+						<span><b>THEN</b> display <code id="additional-accessibility-information-dyslexia-readability">"Dyslexia readability"</code>.</span>
+					</li>
+					<li>
+						<span><b>IF</b> <var>high_contrast_between_foreground_and_background_audio</var>:</span>
+						<span><b>THEN</b> display <code id="additional-accessibility-information-high-contrast-between-foreground-and-background-audio">"High contrast between foreground and background audio"</code>.</span>
+					</li>
+					<li>
+						<span><b>IF</b> <var>high_contrast_between_text_and_background</var>:</span>
+						<span><b>THEN</b> display <code id="additional-accessibility-information-high-contrast-between-text-and-background">"High contrast between text and background"</code>.</span>
+					</li>
+					<li>
+						<span><b>IF</b> <var>print_equivalent_page_numbering</var>:</span>
+						<span><b>THEN</b> display <code id="additional-accessibility-information-page-breaks">"Page breaks included"</code>.</span>
+					</li>
+					<li>
+						<span><b>IF</b> <var>sign_language</var>:</span>
+						<span><b>THEN</b> display <code id="additional-accessibility-information-sign-language">"Sign language"</code>.</span>
+					</li>
+					<li>
+						<span><b>IF</b> <var>text_to_speech_hinting</var>:</span>
+						<span><b>THEN</b> display <code id="additional-accessibility-information-text-to-speech-hinting">"Text-to-speech hinting provided"</code>.</span>
+					</li>
+					<li>
+						<span><b>IF</b> <var>ultra_high_contrast_between_text_and_background</var>:</span>
+						<span><b>THEN</b> display <code id="additional-accessibility-information-ultra-high-contrast-between-text-and-background">"Ultra high contrast between text and background"</code>.</span>
+					</li>
+					<li>
+						<span><b>IF</b> <var>visible_page_numbering</var>:</span>
+						<span><b>THEN</b> display <code id="additional-accessibility-information-visible-page-numbering">"Visible page numbering"</code>.</span>
+					</li>
+					
+					<li>
+						<span><b>IF</b> <var>without_background_sounds</var>:</span>
+						<span><b>THEN</b> display <code id="additional-accessibility-information-without-background-sounds">"Without background sounds"</code>.</span>
+					</li>
+				</ol>
+			</section>
+		</section>
+		<section id="change-log" class="informative">
+			<h2>Change log</h2>
+			
+			<div class="note">
+				<p>This section identifies substantive changes between versions. For a list of all changes, refer to 
+					the <a
+						href="https://github.com/w3c/publ-a11y/issues?q=is%3Aissue%20state%3Aclosed%20label%3Aa11y-display-techniques-onix">issue tracker</a>.</p>
+			</div>
+			
+			<details open="">
+				<summary>Changes since the <a 
+						href="https://www.w3.org/community/reports/publishingcg/CG-FINAL-onix-techniques-20250422/">2025-04-22
+						Final Draft of the Display Techniques for ONIX Accessibility Metadata 2.0</a></summary>
+				<ul>
+					<li>11-Sep-2025: Introduced placeholders for the following strings (ID in parentheses): conformance
+						certifier (conformance-certifier), certifier's credential (conformance-certifier-credentials),
+						conformance claim (conformance-details-claim), and certification date
+						(conformance-details-certification-info). Refer to <a
+							href="https://github.com/w3c/publ-a11y/issues/688">issue 688</a> and <a
+								href="https://github.com/w3c/publ-a11y/pull/732">pull request 732</a>.</li>
+				</ul>
+			</details>
+		</section>
+		<div data-include="../../common/acknowledgements.html" data-include-replace="true"></div>
+	</body>
+</html>
