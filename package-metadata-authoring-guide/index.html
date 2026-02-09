@@ -94,6 +94,11 @@
 			p.feature-hd {
 				text-indent: 1rem;
 				font-weight: bold;
+			}
+			dl.defs > dt {
+				font-size: 105%;
+				margin-top: 2rem;
+				margin-bottom: 1rem;
 			}</style>
 	</head>
 	<body>
@@ -304,11 +309,11 @@
 					<aside class="example" title="Package document markup for a textual access mode">
 						<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
    &lt;metadata>
-      &#8230;
+      …
       &lt;meta property="schema:accessMode">textual&lt;/meta>
-      &#8230;
+      …
    &lt;/metadata>
-   &#8230;
+   …
 &lt;/package></pre>
 					</aside>
 
@@ -359,11 +364,11 @@
 					<aside class="example" title="Package document markup for a visual access mode">
 						<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
    &lt;metadata>
-      &#8230;
+      …
       &lt;meta property="schema:accessMode">visual&lt;/meta>
-      &#8230;
+      …
    &lt;/metadata>
-   &#8230;
+   …
 &lt;/package></pre>
 					</aside>
 
@@ -397,11 +402,11 @@
 					<aside class="example" title="Package document markup for a auditory access mode">
 						<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
    &lt;metadata>
-      &#8230;
+      …
       &lt;meta property="schema:accessMode">auditory&lt;/meta>
-      &#8230;
+      …
    &lt;/metadata>
-   &#8230;
+   …
 &lt;/package></pre>
 					</aside>
 
@@ -521,11 +526,11 @@
 					<aside class="example" title="Package document markup for a tactile access mode">
 						<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
    &lt;metadata>
-      &#8230;
+      …
       &lt;meta property="schema:accessMode">tactile&lt;/meta>
-      &#8230;
+      …
    &lt;/metadata>
-   &#8230;
+   …
 &lt;/package></pre>
 					</aside>
 
@@ -589,241 +594,219 @@
 					visual content indicator must never occur without a declaration a visual access mode accompanying
 					it.</p>
 
-				<p>The following sections describe the visual content indicator types and how to apply them.</p>
+				<p>The following list describes the visual content indicator types and how to apply them.</p>
 
-				<section id="visual-indicator-charts">
-					<h5>Charts</h5>
-
-					<p>The <dfn id="chartOnVisual">chartOnVisual</dfn> indicator is used to declare that there are
-						visual representations of data, such as pie charts, bar charts, scatter plots, and line
-						charts.</p>
-
-					<aside class="example" title="Package document markup for visual charts">
-						<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
+				<dl class="defs">
+					<dt id="visual-indicator-charts">Charts</dt>
+					<dd>
+						<p>The <dfn id="chartOnVisual">chartOnVisual</dfn> indicator is used to declare that there are
+							visual representations of data, such as pie charts, bar charts, scatter plots, and line
+							charts.</p>
+						<aside class="example" title="Package document markup for visual charts">
+							<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
    &lt;metadata>
-      &#8230;
+      …
       &lt;meta property="schema:accessMode">visual&lt;/meta>
       &lt;meta property="schema:accessMode">chartOnVisual&lt;/meta>
-      &#8230;
+      …
    &lt;/metadata>
-   &#8230;
+   …
 &lt;/package></pre>
-					</aside>
+						</aside>
+						<div class="note">
+							<p>For visual representations of concepts, such as in flowcharts, refer to the <a
+									href="#diagramOnVisual"><code>diagramOnVisual</code> indicator</a>.</p>
+						</div>
+					</dd>
 
-					<div class="note">
-						<p>For visual representations of concepts, such as in flowcharts, refer to the <a
-								href="#diagramOnVisual"><code>diagramOnVisual</code> indicator</a>.</p>
-					</div>
-				</section>
-
-				<section id="visual-indicator-chemistry">
-					<h5>Chemistry</h5>
-
-					<p>The <dfn id="chemOnVisual">chemOnVisual</dfn> indicator is used to declare that chemical
-						equations and formulas are represented only in visual form.</p>
-
-					<aside class="example" title="Package document markup for visual chemical content">
-						<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
+					<dt id="visual-indicator-chemistry">Chemistry</dt>
+					<dd>
+						<p>The <dfn id="chemOnVisual">chemOnVisual</dfn> indicator is used to declare that chemical
+							equations and formulas are represented only in visual form.</p>
+						<aside class="example" title="Package document markup for visual chemical content">
+							<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
    &lt;metadata>
-      &#8230;
+      …
       &lt;meta property="schema:accessMode">visual&lt;/meta>
       &lt;meta property="schema:accessMode">chemOnVisual&lt;/meta>
-      &#8230;
+      …
    &lt;/metadata>
-   &#8230;
+   …
 &lt;/package></pre>
-					</aside>
+						</aside>
+						<p>The <code>chemOnVisual</code> indicator is typically used to indicate that chemical content
+							is represented using static image formats like JPEGs and PNGs. It could also apply if a
+							publication includes a video that, for example, shows chemical formulas and equations on
+							screen that the reader needs to understand but that are not described in an audio track.</p>
+						<p>If the chemical content is decorative, then this value is not declared. For example, a
+							cartoon might show a character with a swirl of superficial equations over their head to
+							indicate confusion. As the actual equations are irrelevant to understanding the content,
+							this would not represent a case of visual chemical content.</p>
+						<p>MathML and LaTeX are sometimes used to represent chemical content in a publication. In these
+							cases, although the final equation is drawn visually, the fact that the drawing is based on
+							structured markup or formatting means it is not purely visual; assistive technologies can
+							help users step through the underlying structure. The use of <a href="#MathML-chemistry"
+								>MathML</a> and <a href="#latex-chemistry">LaTeX</a> are instead represented as
+							accessibility features.</p>
+					</dd>
 
-					<p>The <code>chemOnVisual</code> indicator is typically used to indicate that chemical content is
-						represented using static image formats like JPEGs and PNGs. It could also apply if a publication
-						includes a video that, for example, shows chemical formulas and equations on screen that the
-						reader needs to understand but that are not described in an audio track.</p>
-
-					<p>If the chemical content is decorative, then this value is not declared. For example, a cartoon
-						might show a character with a swirl of superficial equations over their head to indicate
-						confusion. As the actual equations are irrelevant to understanding the content, this would not
-						represent a case of visual chemical content.</p>
-
-					<p>MathML and LaTeX are sometimes used to represent chemical content in a publication. In these
-						cases, although the final equation is drawn visually, the fact that the drawing is based on
-						structured markup or formatting means it is not purely visual; assistive technologies can help
-						users step through the underlying structure. The use of <a href="#MathML-chemistry">MathML</a>
-						and <a href="#latex-chemistry">LaTeX</a> are instead represented as accessibility features.</p>
-				</section>
-
-				<section id="visual-indicator-color">
-					<h5>Color dependence</h5>
-
-					<p>The <dfn id="colorDependent">colorDependent</dfn> indicator is used to declare that visual
-						content requires the ability to perceive color in order to understand the information being
-						conveyed.</p>
-
-					<aside class="example" title="Package document markup for color dependence">
-						<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
+					<dt id="visual-indicator-color">Color dependence</dt>
+					<dd>
+						<p>The <dfn id="colorDependent">colorDependent</dfn> indicator is used to declare that visual
+							content requires the ability to perceive color in order to understand the information being
+							conveyed.</p>
+						<aside class="example" title="Package document markup for color dependence">
+							<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
    &lt;metadata>
-      &#8230;
+      …
       &lt;meta property="schema:accessMode">visual&lt;/meta>
       &lt;meta property="schema:accessMode">colorDependent&lt;/meta>
-      &#8230;
+      …
    &lt;/metadata>
-   &#8230;
+   …
 &lt;/package></pre>
-					</aside>
+						</aside>
+						<p>An example of color dependence would be a bar chart where each bar is a different color and a
+							color-coded key is the only way to determine the meaning of each color. A user who cannot
+							differentiate the colors could not match the key values to the each bar.</p>
+						<p>This value does not apply if there are secondary indicators that allow users to distinguish
+							the information. For example, if the bar chart in the previous example also had lines
+							running in different directions to differentiate each bar, then a user could use those
+							patterns to match the bars to the key. Similarly if keywords are placed within each bar
+							instead of using a separate color key, there would be no chance for confusion.</p>
+						<div class="note">
+							<p>The color dependence indicator is not intended to capture issues with CSS styling, such
+								as hyperlinks that might not be perceivable or student exercises coded by border or
+								background color. If a book fails accessibility conformance for these kinds of color
+								problems, it should be noted in the accessibility summary.</p>
+						</div>
+					</dd>
 
-					<p>An example of color dependence would be a bar chart where each bar is a different color and a
-						color-coded key is the only way to determine the meaning of each color. A user who cannot
-						differentiate the colors could not match the key values to the each bar.</p>
-
-					<p>This value does not apply if there are secondary indicators that allow users to distinguish the
-						information. For example, if the bar chart in the previous example also had lines running in
-						different directions to differentiate each bar, then a user could use those patterns to match
-						the bars to the key. Similarly if keywords are placed within each bar instead of using a
-						separate color key, there would be no chance for confusion.</p>
-
-					<div class="note">
-						<p>The color dependence indicator is not intended to capture issues with CSS styling, such as
-							hyperlinks that might not be perceivable or student exercises coded by border or background
-							color. If a book fails accessibility conformance for these kinds of color problems, it
-							should be noted in the accessibility summary.</p>
-					</div>
-				</section>
-
-				<section id="visual-indicator-diagrams">
-					<h5>Diagrams</h5>
-
-					<p>The <dfn id="diagramOnVisual">diagramOnVisual</dfn> indicator is used to declare that there are
-						visual representations of concepts, such as Venn diagrams, flowcharts, mind maps, and family
-						trees.</p>
-
-					<aside class="example" title="Package document markup for visual diagrams">
-						<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
+					<dt id="visual-indicator-diagrams">Diagrams</dt>
+					<dd>
+						<p>The <dfn id="diagramOnVisual">diagramOnVisual</dfn> indicator is used to declare that there
+							are visual representations of concepts, such as Venn diagrams, flowcharts, mind maps, and
+							family trees.</p>
+						<aside class="example" title="Package document markup for visual diagrams">
+							<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
    &lt;metadata>
-      &#8230;
+      …
       &lt;meta property="schema:accessMode">visual&lt;/meta>
       &lt;meta property="schema:accessMode">diagramOnVisual&lt;/meta>
-      &#8230;
+      …
    &lt;/metadata>
-   &#8230;
+   …
 &lt;/package></pre>
-					</aside>
+						</aside>
+						<div class="note">
+							<p>For visual representations of data, such as in pie and bar charts, refer to the <a
+									href="#chartOnVisual"><code>chartOnVisual</code> indicator</a>.</p>
+						</div>
+					</dd>
 
-					<div class="note">
-						<p>For visual representations of data, such as in pie and bar charts, refer to the <a
-								href="#chartOnVisual"><code>chartOnVisual</code> indicator</a>.</p>
-					</div>
-				</section>
-
-				<section id="visual-indicator-math">
-					<h5>Math</h5>
-
-					<p>The <dfn id="mathOnVisual">mathOnVisual</dfn> indicator is used to declare that math equations
-						and formulas are represented in visual form.</p>
-
-					<aside class="example" title="Package document markup for color dependence">
-						<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
+					<dt id="visual-indicator-math">Math</dt>
+					<dd>
+						<p>The <dfn id="mathOnVisual">mathOnVisual</dfn> indicator is used to declare that math
+							equations and formulas are represented in visual form.</p>
+						<aside class="example" title="Package document markup for color dependence">
+							<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
    &lt;metadata>
-      &#8230;
+      …
       &lt;meta property="schema:accessMode">visual&lt;/meta>
       &lt;meta property="schema:accessMode">mathOnVisual&lt;/meta>
-      &#8230;
+      …
    &lt;/metadata>
-   &#8230;
+   …
 &lt;/package></pre>
 
-						<p>The <code>mathOnVisual</code> indicator is typically used to indicate that chemical content
-							is represented using static image formats like JPEGs and PNGs. It could also apply if a
-							publication includes a video that, for example, shows mathematical formulas and equations on
-							screen that the reader needs to understand but that are not described in an audio track.</p>
+							<p>The <code>mathOnVisual</code> indicator is typically used to indicate that chemical
+								content is represented using static image formats like JPEGs and PNGs. It could also
+								apply if a publication includes a video that, for example, shows mathematical formulas
+								and equations on screen that the reader needs to understand but that are not described
+								in an audio track.</p>
 
-						<p>If the math content is decorative, then this value is not declared. For example, a decorative
-							image at the start of a chapter might depict equations that will be covered but the actual
-							equations in the body use MathML markup.</p>
+							<p>If the math content is decorative, then this value is not declared. For example, a
+								decorative image at the start of a chapter might depict equations that will be covered
+								but the actual equations in the body use MathML markup.</p>
 
-						<p>MathML and LaTeX are also used to represent mathematical content in a publication. In these
-							cases, although the content is drawn visually, the fact that the equation or formula is
-							based on structured markup or formatting means it is not purely visual; assistive
-							technologies can help users step through the underlying structure. The use of <a
-								href="#MathML">MathML</a> and <a href="#latex">LaTeX</a> are instead represented as
-							accessibility features.</p>
-					</aside>
-				</section>
+							<p>MathML and LaTeX are also used to represent mathematical content in a publication. In
+								these cases, although the content is drawn visually, the fact that the equation or
+								formula is based on structured markup or formatting means it is not purely visual;
+								assistive technologies can help users step through the underlying structure. The use of
+									<a href="#MathML">MathML</a> and <a href="#latex">LaTeX</a> are instead represented
+								as accessibility features.</p>
+						</aside>
+					</dd>
 
-				<section id="visual-indicator-music">
-					<h5>Music</h5>
-
-					<p>The <dfn id="musicOnVisual">musicOnVisual</dfn> indicator is used to declare that musical
-						notation is represented visually.</p>
-
-					<aside class="example" title="Package document markup for visual musical content">
-						<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
+					<dt id="visual-indicator-music">Music</dt>
+					<dd>
+						<p>The <dfn id="musicOnVisual">musicOnVisual</dfn> indicator is used to declare that musical
+							notation is represented visually.</p>
+						<aside class="example" title="Package document markup for visual musical content">
+							<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
    &lt;metadata>
-      &#8230;
+      …
       &lt;meta property="schema:accessMode">visual&lt;/meta>
       &lt;meta property="schema:accessMode">musicOnVisual&lt;/meta>
-      &#8230;
+      …
    &lt;/metadata>
-   &#8230;
+   …
 &lt;/package></pre>
-					</aside>
+						</aside>
+						<p>Unlike math and chemical content, there is no support for rendering a markup language for
+							music, such as MusicXML. Visual representation, often in image form, is the most common way
+							to add music notation. (Text tablature notation can be added to EPUBs for stringed
+							instruments, but as unstructured text it is also not easily accessible to users who cannot
+							visually read the text.)</p>
+						<p>Images are not the only way that music can be visually encoded. An instructional video in a
+							music book could show musical notation to allow the user to play along with a recorded
+							sample. This would also necessitate declaring a visual music indicator.</p>
+					</dd>
 
-					<p>Unlike math and chemical content, there is no support for rendering a markup language for music,
-						such as MusicXML. Visual representation, often in image form, is the most common way to add
-						music notation. (Text tablature notation can be added to EPUBs for stringed instruments, but as
-						unstructured text it is also not easily accessible to users who cannot visually read the
-						text.)</p>
-
-					<p>Images are not the only way that music can be visually encoded. An instructional video in a music
-						book could show musical notation to allow the user to play along with a recorded sample. This
-						would also necessitate declaring a visual music indicator.</p>
-				</section>
-
-				<section id="visual-indicator-text">
-					<h5>Text</h5>
-
-					<p>The <dfn id="textOnVisual">textOnVisual</dfn> indicator is used to declare that there are images
-						of text.</p>
-
-					<aside class="example" title="Package document markup for visual text content">
-						<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
+					<dt id="visual-indicator-text">Text</dt>
+					<dd>
+						<p>The <dfn id="textOnVisual">textOnVisual</dfn> indicator is used to declare that there are
+							images of text.</p>
+						<aside class="example" title="Package document markup for visual text content">
+							<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
    &lt;metadata>
-      &#8230;
+      …
       &lt;meta property="schema:accessMode">visual&lt;/meta>
       &lt;meta property="schema:accessMode">textOnVisual&lt;/meta>
-      &#8230;
+      …
    &lt;/metadata>
-   &#8230;
+   …
 &lt;/package></pre>
-					</aside>
-
-					<p>There are many reasons why images of text are included in EPUB publications. Appearance is one,
-						as having to faithfully represent the appearance of the text in a print edition because font and
-						CSS support cannot reliably replicate an effect is sometimes non-negotiable for a publisher. Or
-						an original document, like a newspaper clipping or historical document, is reproduced exactly as
-						it was printed. It also includes the text encoded in the images of comics and manga, children's
-						books, cookbooks, and other image-based fixed layout publications.</p>
-
-					<p>As with the other visual indicators, the representation of text in visual form also encompasses
-						video content. A silent instructional video, for example, might include text directives directly
-						in the video.</p>
-
-					<p>In all these cases, it would be appropriate to list <code>textOnVisual</code> as an access mode.
-						Only if the text in the visual content is in a decorative image or not directly relevant to
-						understanding the text is there no need to specify the <code>textOnVisual</code> indicator.</p>
-
-					<p>For example, the text on signs and billboards in the background of a photograph do not represent
-						text on visual imagery if they are incidental to what the image is conveying. Similarly, a
-						publisher's name in their logo should not be declared as text in visual content.</p>
-
-					<div class="note">
-						<p>The use of SVG is a special case when semantic elements are used to add the text to the
-							image. When this is done in reflowable EPUBs, the text on visual indicator can be omitted as
-							there is the possibility to access and change the appearance of the text. But it would not
-							be true in a fixed layout EPUB as reading systems restrict control over the appearance of
-							the pages.</p>
-						<p>If SVG's text elements are not used to display the text, then <code>textOnVisual</code> is
-							specified since the text is not separate from the drawn image.</p>
-					</div>
-				</section>
+						</aside>
+						<p>There are many reasons why images of text are included in EPUB publications. Appearance is
+							one, as having to faithfully represent the appearance of the text in a print edition because
+							font and CSS support cannot reliably replicate an effect is sometimes non-negotiable for a
+							publisher. Or an original document, like a newspaper clipping or historical document, is
+							reproduced exactly as it was printed. It also includes the text encoded in the images of
+							comics and manga, children's books, cookbooks, and other image-based fixed layout
+							publications.</p>
+						<p>As with the other visual indicators, the representation of text in visual form also
+							encompasses video content. A silent instructional video, for example, might include text
+							directives directly in the video.</p>
+						<p>In all these cases, it would be appropriate to list <code>textOnVisual</code> as an access
+							mode. Only if the text in the visual content is in a decorative image or not directly
+							relevant to understanding the text is there no need to specify the <code>textOnVisual</code>
+							indicator.</p>
+						<p>For example, the text on signs and billboards in the background of a photograph do not
+							represent text on visual imagery if they are incidental to what the image is conveying.
+							Similarly, a publisher's name in their logo should not be declared as text in visual
+							content.</p>
+						<div class="note">
+							<p>The use of SVG is a special case when semantic elements are used to add the text to the
+								image. When this is done in reflowable EPUBs, the text on visual indicator can be
+								omitted as there is the possibility to access and change the appearance of the text. But
+								it would not be true in a fixed layout EPUB as reading systems restrict control over the
+								appearance of the pages.</p>
+							<p>If SVG's text elements are not used to display the text, then <code>textOnVisual</code>
+								is specified since the text is not separate from the drawn image.</p>
+						</div>
+					</dd>
+				</dl>
 			</section>
 		</section>
 		<section id="accessModeSufficient">
@@ -915,66 +898,83 @@
 					access mode based on the primary access modes), as the visual content is problematic without the
 					provision of alternative text and long descriptions.</p>
 
-				<p>The possible single sufficient access mode values are identical to the primary access modes:</p>
+				<p>The possible single sufficient access mode values are identical to the primary access modes, as
+					described in the following sections.</p>
 
-				<dl>
-					<dt><dfn id="ams-textual">textual <span hidden="hidden">(sufficient access mode)</span></dfn></dt>
-					<dd>
-						<p>Setting this value indicates that information necessary to read a publication is available in
-							textual form.</p>
-						<p>Unlike a textual primary access mode, the inclusion of text alternatives such as alternative
-							text, extended descriptions, closed captions, and transcripts does allow a textual
-							sufficient access mode to be set.</p>
-						<p>When <code>textual</code> is the only sufficient access mode set, it means that all the
-							information necessary to read the publication is available in textual form, so it is
-							generally interpreted as indicating that the publication is screen-reader and dynamic
-							braille display friendly.</p>
-						<p>A single textual sufficient access mode can be set for EPUB publications that conform to <a
-								href="https://www.w3.org/TR/WCAG2/#cc1_A">Level A</a> [[wcag2]] or higher, for example,
-							as there must be textual alternatives for non-text content to meet these thresholds.</p>
-					</dd>
+				<section id="ams-single-textual">
+					<h4>Textual</h4>
 
-					<dt><dfn id="ams-auditory">auditory <span hidden="hidden">(sufficient access mode)</span></dfn></dt>
-					<dd>
-						<p>Setting this value indicates that information necessary to read a publication is available as
-							prerecorded audio (whether prerecorded human speech or synthetic speech).</p>
-						<p>When <code>auditory</code> is the only sufficient access mode set, it means that all the
-							information necessary to read the publication is available as prerecorded audio.</p>
-						<p>A single auditory sufficient access mode typically indicates that media overlays have been
-							used to provide audio for all the text and visual content, but it could also set if, for
-							example, a book of poetry also contained (non-synchronized) recordings for each poem.</p>
-					</dd>
+					<p>Setting the <dfn id="ams-textual">textual <span hidden="hidden">(sufficient access
+							mode)</span></dfn> value indicates that information necessary to read a publication is
+						available in textual form.</p>
 
-					<dt><dfn id="ams-visual">visual <span hidden="hidden">(sufficient access mode)</span></dfn></dt>
-					<dd>
-						<p>Setting this value indicates that information necessary to read a publication is available in
-							visual form, such as images and video.</p>
-						<p>When <code>visual</code> is the only sufficient access mode set, it means that all the
-							information necessary to read the publication is available in visual form. It is most often
-							applied to works like comics and manga.</p>
-						<p>A single visual sufficient access mode is typically the least accessible single sufficient
-							access mode that can be set, as it indicates that only sighted readers can access the
-							information of the publication. It does not, by itself, mean the publication is not
-							accessible, but there would need to be another single sufficient access mode declaration to
-							indicate the publication is readable by non-visual users.</p>
-					</dd>
+					<p>Unlike a textual primary access mode, the inclusion of text alternatives such as alternative
+						text, extended descriptions, closed captions, and transcripts does allow a textual sufficient
+						access mode to be set.</p>
 
-					<dt><dfn id="ams-tactile">tactile <span hidden="hidden">(sufficient access mode)</span></dfn></dt>
-					<dd>
-						<p>Setting this value indicates that information necessary to read a publication is available in
-							tactile form. It indicates some mix of braille Unicode characters, tactile graphics, and
-							tactile objects are included in the publication.</p>
-						<p>Unlike a tactile primary access mode, the provision of links to tactile graphics and objects
-							does allow a tactile sufficient access mode to be set. Such linked content rarely correlates
-							with a publication being fully readable in tactile form; see the next section on <a
-								href="#ams-combined-values">combined reading modes</a>.</p>
-						<p>When <code>tactile</code> is the only sufficient access mode set, it means that all the
-							information necessary to read the publication is available in tactile form.</p>
-						<p>A single tactile sufficient access mode is the least common single sufficient access mode, at
-							least for mainstream publishing. It is typically associated with a braille publication
-							produced in the EPUB format.</p>
-					</dd>
-				</dl>
+					<p>When <code>textual</code> is the only sufficient access mode set, it means that all the
+						information necessary to read the publication is available in textual form, so it is generally
+						interpreted as indicating that the publication is screen-reader and dynamic braille display
+						friendly.</p>
+
+					<p>A single textual sufficient access mode can be set for EPUB publications that conform to <a
+							href="https://www.w3.org/TR/WCAG2/#cc1_A">Level A</a> [[wcag2]] or higher, for example, as
+						there must be textual alternatives for non-text content to meet these thresholds.</p>
+				</section>
+
+				<section id="ams-single-visual">
+					<h4>Visual</h4>
+
+					<p>Setting the <dfn id="ams-visual">visual <span hidden="hidden">(sufficient access
+							mode)</span></dfn> value indicates that information necessary to read a publication is
+						available in visual form, such as images and video.</p>
+
+					<p>When <code>visual</code> is the only sufficient access mode set, it means that all the
+						information necessary to read the publication is available in visual form. It is most often
+						applied to works like comics and manga.</p>
+
+					<p>A single visual sufficient access mode is typically the least accessible single sufficient access
+						mode that can be set, as it indicates that only sighted readers can access the information of
+						the publication. It does not, by itself, mean the publication is not accessible, but there would
+						need to be another single sufficient access mode declaration to indicate the publication is
+						readable by non-visual users.</p>
+				</section>
+
+				<section id="ams-single-auditory">
+					<h4>Auditory</h4>
+
+					<p>Setting the <dfn id="ams-auditory">auditory <span hidden="hidden">(sufficient access
+							mode)</span></dfn> value indicates that information necessary to read a publication is
+						available as prerecorded audio (whether prerecorded human speech or synthetic speech).</p>
+
+					<p>When <code>auditory</code> is the only sufficient access mode set, it means that all the
+						information necessary to read the publication is available as prerecorded audio.</p>
+
+					<p>A single auditory sufficient access mode typically indicates that media overlays have been used
+						to provide audio for all the text and visual content, but it could also set if, for example, a
+						book of poetry also contained (non-synchronized) recordings for each poem.</p>
+				</section>
+
+				<section id="ams-single-tactile">
+					<h4>Tactile</h4>
+
+					<p>Setting the <dfn id="ams-tactile">tactile <span hidden="hidden">(sufficient access
+							mode)</span></dfn> value indicates that information necessary to read a publication is
+						available in tactile form. It indicates some mix of braille Unicode characters, tactile
+						graphics, and tactile objects are included in the publication.</p>
+
+					<p>Unlike a tactile primary access mode, the provision of links to tactile graphics and objects does
+						allow a tactile sufficient access mode to be set. Such linked content rarely correlates with a
+						publication being fully readable in tactile form; see the next section on <a
+							href="#ams-combined-values">combined reading modes</a>.</p>
+
+					<p>When <code>tactile</code> is the only sufficient access mode set, it means that all the
+						information necessary to read the publication is available in tactile form.</p>
+
+					<p>A single tactile sufficient access mode is the least common single sufficient access mode, at
+						least for mainstream publishing. It is typically associated with a braille publication produced
+						in the EPUB format.</p>
+				</section>
 			</section>
 
 			<section id="ams-combined-values">
@@ -1143,11 +1143,11 @@
 					<aside class="example" title="Package document markup for unknown features">
 						<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
    &lt;metadata>
-      &#8230;
+      …
       &lt;meta property="schema:accessibilityFeature">unknown&lt;/meta>
-      &#8230;
+      …
    &lt;/metadata>
-   &#8230;
+   …
 &lt;/package></pre>
 					</aside>
 
@@ -1180,11 +1180,11 @@
 					<aside class="example" title="Package document markup for no accessibility features">
 						<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
    &lt;metadata>
-      &#8230;
+      …
       &lt;meta property="schema:accessibilityFeature">none&lt;/meta>
-      &#8230;
+      …
    &lt;/metadata>
-   &#8230;
+   …
 &lt;/package></pre>
 					</aside>
 
@@ -1237,8 +1237,8 @@
 
 				<p>It is possible to provide enhancements in the markup of EPUB publications to help TTS engines render
 					text accurately. EPUB 3's SSML attribute, for example, were intended to allow the inlining of
-					pronunciation information, while PLS lexicons [[Pronunciation-Lexicon]] were designed to provide a
-					reusable library of pronunciations. CSS Speech Level 1 [[CSS-Speech]] properties address the issues
+					pronunciation information, while PLS lexicons [[pronunciation-lexicon]] were designed to provide a
+					reusable library of pronunciations. CSS Speech Level 1 [[css-speech]] properties address the issues
 					text-to-speech playback quality (for example, the voice to use, whether to spell out words, and when
 					to provide emphasis).</p>
 
@@ -1256,11 +1256,11 @@
 				<aside class="example" title="Package document markup for the text-to-speech feature">
 					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
    &lt;metadata>
-      &#8230;
+      …
       &lt;meta property="schema:accessibilityFeature">ttsMarkup&lt;/meta>
-      &#8230;
+      …
    &lt;/metadata>
-   &#8230;
+   …
 &lt;/package></pre>
 				</aside>
 
@@ -1271,7 +1271,7 @@
 				<p>Media overlays differ from text-to-speech playback in that they provide prerecorded audio
 					synchronized with the text. The synchronization, and granularity of playback synchronization, is set
 					by the creator of the EPUB publication through markup files that conform to a profile of the SMIL
-					[[SMIL]] standard.</p>
+					[[smil]] standard.</p>
 
 				<p>When including media overlays, the <dfn id="synchronizedAudioText">synchronizedAudioText</dfn>
 					feature is specified in the package document.</p>
@@ -1279,11 +1279,11 @@
 				<aside class="example" title="Package document markup for the synchronized audio and text feature">
 					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
    &lt;metadata>
-      &#8230;
+      …
       &lt;meta property="schema:accessibilityFeature">synchronizedAudioText&lt;/meta>
-      &#8230;
+      …
    &lt;/metadata>
-   &#8230;
+   …
 &lt;/package></pre>
 				</aside>
 
@@ -1342,11 +1342,11 @@
 				<aside class="example" title="Package document markup for the MathML chemistry feature">
 					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
    &lt;metadata>
-      &#8230;
+      …
       &lt;meta property="schema:accessibilityFeature">MathML-chemistry&lt;/meta>
-      &#8230;
+      …
    &lt;/metadata>
-   &#8230;
+   …
 &lt;/package></pre>
 				</aside>
 
@@ -1377,11 +1377,11 @@
 				<aside class="example" title="Package document markup for the LaTeX chemistry feature">
 					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
    &lt;metadata>
-      &#8230;
+      …
       &lt;meta property="schema:accessibilityFeature">latext-chemistry&lt;/meta>
-      &#8230;
+      …
    &lt;/metadata>
-   &#8230;
+   …
 &lt;/package></pre>
 				</aside>
 
@@ -1413,11 +1413,11 @@
 				<aside class="example" title="Package document markup for the display transformability feature">
 					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
    &lt;metadata>
-      &#8230;
+      …
       &lt;meta property="schema:accessibilityFeature">displayTransformability&lt;/meta>
-      &#8230;
+      …
    &lt;/metadata>
-   &#8230;
+   …
 &lt;/package></pre>
 				</aside>
 
@@ -1491,11 +1491,11 @@
 				<aside class="example" title="Package document markup for the high contrast display feature">
 					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
    &lt;metadata>
-      &#8230;
+      …
       &lt;meta property="schema:accessibilityFeature">highContrastDisplay&lt;/meta>
-      &#8230;
+      …
    &lt;/metadata>
-   &#8230;
+   …
 &lt;/package></pre>
 				</aside>
 
@@ -1518,11 +1518,11 @@
 				<aside class="example" title="Package document markup for the large print feature">
 					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
    &lt;metadata>
-      &#8230;
+      …
       &lt;meta property="schema:accessibilityFeature">largePrint&lt;/meta>
-      &#8230;
+      …
    &lt;/metadata>
-   &#8230;
+   …
 &lt;/package></pre>
 				</aside>
 
@@ -1578,11 +1578,11 @@
 				<aside class="example" title="Package document markup for the alternative text feature">
 					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
    &lt;metadata>
-      &#8230;
+      …
       &lt;meta property="schema:accessibilityFeature">alternativeText&lt;/meta>
-      &#8230;
+      …
    &lt;/metadata>
-   &#8230;
+   …
 &lt;/package></pre>
 				</aside>
 
@@ -1602,11 +1602,11 @@
 				<aside class="example" title="Package document markup for the long description feature">
 					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
    &lt;metadata>
-      &#8230;
+      …
       &lt;meta property="schema:accessibilityFeature">longDescription&lt;/meta>
-      &#8230;
+      …
    &lt;/metadata>
-   &#8230;
+   …
 &lt;/package></pre>
 				</aside>
 
@@ -1650,11 +1650,11 @@
 				<aside class="example" title="Package document markup for the MathML feature">
 					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
    &lt;metadata>
-      &#8230;
+      …
       &lt;meta property="schema:accessibilityFeature">MathML&lt;/meta>
-      &#8230;
+      …
    &lt;/metadata>
-   &#8230;
+   …
 &lt;/package></pre>
 				</aside>
 
@@ -1682,11 +1682,11 @@
 				<aside class="example" title="Package document markup for the latex feature">
 					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
    &lt;metadata>
-      &#8230;
+      …
       &lt;meta property="schema:accessibilityFeature">latex&lt;/meta>
-      &#8230;
+      …
    &lt;/metadata>
-   &#8230;
+   …
 &lt;/package></pre>
 				</aside>
 
@@ -1725,11 +1725,11 @@
 				<aside class="example" title="Package document markup for the described math feature">
 					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
    &lt;metadata>
-      &#8230;
+      …
       &lt;meta property="schema:accessibilityFeature">describedMath&lt;/meta>
-      &#8230;
+      …
    &lt;/metadata>
-   &#8230;
+   …
 &lt;/package></pre>
 				</aside>
 
@@ -1741,6 +1741,11 @@
 
 				<p>Images of math are still prevalent in EPUB, however, because improvements to MathML rendering are
 					recent and there are many current and legacy reading systems that do not render MathML well.</p>
+
+				<p>When the <code>describedMath</code> property applies to an EPUB publication, the <a
+						href="#alternativeText"><code>alternativeText</code></a> and <a href="#longDescription"
+							><code>longDescription</code></a> features are also set, depending on how the math is
+					described.</p>
 			</section>
 
 			<section id="multimedia">
@@ -1779,11 +1784,11 @@
 				<aside class="example" title="Package document markup for the closed captions feature">
 					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
    &lt;metadata>
-      &#8230;
+      …
       &lt;meta property="schema:accessibilityFeature">closedCaptions&lt;/meta>
-      &#8230;
+      …
    &lt;/metadata>
-   &#8230;
+   …
 &lt;/package></pre>
 				</aside>
 
@@ -1794,7 +1799,7 @@
 						>transcripts</a> are generally more helpful for users who cannot see the content.</p>
 
 				<p>The typical way to add closed captions for audio in XHTML content documents is using the [^track^]
-					element [[html]], with [[WebVTT]] being the most commonly used technology for captioning.</p>
+					element [[html]], with [[webvtt]] being the most commonly used technology for captioning.</p>
 
 				<div class="note">
 					<p>It is not possible to add closed captions natively to an audio-only clip in HTML. Although the
@@ -1811,11 +1816,11 @@
 				<aside class="example" title="Package document markup for the open captions feature">
 					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
    &lt;metadata>
-      &#8230;
+      …
       &lt;meta property="schema:accessibilityFeature">openCaptions&lt;/meta>
-      &#8230;
+      …
    &lt;/metadata>
-   &#8230;
+   …
 &lt;/package></pre>
 				</aside>
 
@@ -1839,11 +1844,11 @@
 				<aside class="example" title="Package document markup for the audio descriptions feature">
 					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
    &lt;metadata>
-      &#8230;
+      …
       &lt;meta property="schema:accessibilityFeature">signLanguage&lt;/meta>
-      &#8230;
+      …
    &lt;/metadata>
-   &#8230;
+   …
 &lt;/package></pre>
 				</aside>
 
@@ -1868,11 +1873,11 @@
 				<aside class="example" title="Package document markup for the audio descriptions feature">
 					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
    &lt;metadata>
-      &#8230;
+      …
       &lt;meta property="schema:accessibilityFeature">audioDescription&lt;/meta>
-      &#8230;
+      …
    &lt;/metadata>
-   &#8230;
+   …
 &lt;/package></pre>
 				</aside>
 
@@ -1886,11 +1891,11 @@
 				<aside class="example" title="Package document markup for the transcript feature">
 					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
    &lt;metadata>
-      &#8230;
+      …
       &lt;meta property="schema:accessibilityFeature">transcript&lt;/meta>
-      &#8230;
+      …
    &lt;/metadata>
-   &#8230;
+   …
 &lt;/package></pre>
 				</aside>
 
@@ -1910,11 +1915,11 @@
 				<aside class="example" title="Package document markup for the high contrast audio feature">
 					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
    &lt;metadata>
-      &#8230;
+      …
       &lt;meta property="schema:accessibilityFeature">highContrastAudio&lt;/meta>
-      &#8230;
+      …
    &lt;/metadata>
-   &#8230;
+   …
 &lt;/package></pre>
 				</aside>
 
@@ -1955,11 +1960,11 @@
 				<aside class="example" title="Package document markup for the table of contents feature">
 					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
    &lt;metadata>
-      &#8230;
+      …
       &lt;meta property="schema:accessibilityFeature">tableOfContents&lt;/meta>
-      &#8230;
+      …
    &lt;/metadata>
-   &#8230;
+   …
 &lt;/package></pre>
 				</aside>
 
@@ -1986,11 +1991,11 @@
 				<aside class="example" title="Package document markup for the index feature">
 					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
    &lt;metadata>
-      &#8230;
+      …
       &lt;meta property="schema:accessibilityFeature">index&lt;/meta>
-      &#8230;
+      …
    &lt;/metadata>
-   &#8230;
+   …
 &lt;/package></pre>
 				</aside>
 
@@ -2012,11 +2017,11 @@
 				<aside class="example" title="Package document markup for the ARIA feature">
 					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
    &lt;metadata>
-      &#8230;
+      …
       &lt;meta property="schema:accessibilityFeature">ARIA&lt;/meta>
-      &#8230;
+      …
    &lt;/metadata>
-   &#8230;
+   …
 &lt;/package></pre>
 				</aside>
 
@@ -2040,11 +2045,11 @@
 				<aside class="example" title="Package document markup for the structural navigation feature">
 					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
    &lt;metadata>
-      &#8230;
+      …
       &lt;meta property="schema:accessibilityFeature">structuralNavigation&lt;/meta>
-      &#8230;
+      …
    &lt;/metadata>
-   &#8230;
+   …
 &lt;/package></pre>
 				</aside>
 
@@ -2080,15 +2085,13 @@
 					useful in educational settings, for example, where a users who are blind might use an EPUB to read
 					an assignment instead of the print version their peers are using.</p>
 
-				<p>The first feature for identifying static pagination is page break markers. These markers are inserted
-					into the markup XHTML content documents using the <code>doc-pagebreak</code> role to make them
-					readable by assistive technologies.</p>
+				<p>The first feature for identifying static pagination is static page break markers. These markers are
+					inserted into the markup XHTML content documents using the <code>doc-pagebreak</code> role to make
+					them readable by assistive technologies.</p>
 
-				<div class="note">
-					<p>The <code>epub:type</code> attribute value <code>pagebreak</code> is also often paired with
-							<code>doc-pagebreak</code> role for historical reasons, but the value does not provide any
-						accessibility benefits.</p>
-				</div>
+				<p>Static page break markers, as their name suggests, do not change depending on the device being used
+					or the font and spacing preferences of the user. The pagination built into many reading systems is
+					not static because it changes depending on these display factors.</p>
 
 				<p>The presence of static page break markers is indicated in the package document metadata using the
 						<dfn id="pageBreakMarkers">pageBreakMarkers</dfn> accessibility feature.</p>
@@ -2096,18 +2099,20 @@
 				<aside class="example" title="Package document markup for the page break markers feature">
 					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
    &lt;metadata>
-      &#8230;
+      …
       &lt;meta property="schema:accessibilityFeature">pageBreakMarkers&lt;/meta>
-      &#8230;
+      …
    &lt;/metadata>
-   &#8230;
+   …
 &lt;/package></pre>
 				</aside>
 
 				<div class="note">
-					<p>Static page break markers, as their name suggests, do not change depending on the device being
-						used or the font and spacing preferences of the user. The pagination built into many reading
-						systems is not static because it changes depending on these display factors.</p>
+					<p>The <code>epub:type</code> attribute value <code>pagebreak</code> is also often paired with
+							<code>doc-pagebreak</code> role for historical reasons, but the value does not provide any
+						accessibility benefits.</p>
+					<p>The <code>pageBreakMarkers</code> feature must not be set if only the <code>epub:type</code>
+						attribute is specified.</p>
 				</div>
 
 				<p>It is not required that every page break marker from the source be present, or that they be in the
@@ -2138,11 +2143,11 @@
 				<aside class="example" title="Package document markup for the page navigation feature">
 					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
    &lt;metadata>
-      &#8230;
+      …
       &lt;meta property="schema:accessibilityFeature">pageNavigation&lt;/meta>
-      &#8230;
+      …
    &lt;/metadata>
-   &#8230;
+   …
 &lt;/package></pre>
 				</aside>
 
@@ -2168,13 +2173,13 @@
 				<aside class="example" title="Page break source with unique identifier">
 					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
    &lt;metadata>
-      &#8230;
-      &lt;meta property="a11y:pageBreakSource"&gt;
+      …
+      &lt;meta property="a11y:pageBreakSource">
          urn:isbn:978765432100
       &lt;/meta>
-      &#8230;
+      …
    &lt;/metadata>
-   &#8230;
+   …
 &lt;/package></pre>
 				</aside>
 
@@ -2189,13 +2194,13 @@
 				<aside class="example" title="Page break source without a unique identifier">
 					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
    &lt;metadata>
-      &#8230;
-      &lt;meta property="a11y:pageBreakSource"&gt;
+      …
+      &lt;meta property="a11y:pageBreakSource">
          Moby Dick; or, the Whale, Herman Melville, New York: Harper and Brothers, 1851. 
       &lt;/meta>
-      &#8230;
+      …
    &lt;/metadata>
-   &#8230;
+   …
 &lt;/package></pre>
 				</aside>
 
@@ -2204,13 +2209,13 @@
 				<aside class="example" title="Package document markup when there is no page break source">
 					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
    &lt;metadata>
-      &#8230;
-      &lt;meta property="a11y:pageBreakSource"&gt;
+      …
+      &lt;meta property="a11y:pageBreakSource">
          none
       &lt;/meta>
-      &#8230;
+      …
    &lt;/metadata>
-   &#8230;
+   …
 &lt;/package></pre>
 				</aside>
 			</section>
@@ -2237,11 +2242,11 @@
 				<aside class="example" title="Package document markup for the unlocked feature">
 					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
    &lt;metadata>
-      &#8230;
+      …
       &lt;meta property="schema:accessibilityFeature">unlocked&lt;/meta>
-      &#8230;
+      …
    &lt;/metadata>
-   &#8230;
+   …
 &lt;/package></pre>
 				</aside>
 
@@ -2279,11 +2284,11 @@
 				<aside class="example" title="Package document markup for the reading order feature">
 					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
    &lt;metadata>
-      &#8230;
+      …
       &lt;meta property="schema:accessibilityFeature">readingOrder&lt;/meta>
-      &#8230;
+      …
    &lt;/metadata>
-   &#8230;
+   …
 &lt;/package></pre>
 				</aside>
 
@@ -2345,11 +2350,11 @@
 				<aside class="example" title="Package document markup for the full ruby annotations feature">
 					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
    &lt;metadata>
-      &#8230;
+      …
       &lt;meta property="schema:accessibilityFeature">fullRubyAnnotations&lt;/meta>
-      &#8230;
+      …
    &lt;/metadata>
-   &#8230;
+   …
 &lt;/package></pre>
 				</aside>
 
@@ -2359,11 +2364,11 @@
 				<aside class="example" title="Package document markup for partial ruby annotations feature">
 					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
    &lt;metadata>
-      &#8230;
+      …
       &lt;meta property="schema:accessibilityFeature">rubyAnnotations&lt;/meta>
-      &#8230;
+      …
    &lt;/metadata>
-   &#8230;
+   …
 &lt;/package></pre>
 				</aside>
 			</section>
@@ -2381,32 +2386,29 @@
 				</div>
 
 				<p>As EPUB publications can be read on refreshable braille devices, it is possible for a publication to
-					be authored using Unicode braille characters (see <a
-						href="https://www.unicode.org/charts/nameslist/c_2800.html">Braille Patterns</a>). The advantage
-					of using braille characters is that it allows the text to be optimized for braille users. This
-					avoids the user having to rely on their braille device to translate the text, which can be
-					problematic especially for specialized notations like mathematics and music.</p>
+					include textual alternatives encoded using Unicode braille characters (see <a
+						href="https://www.unicode.org/charts/nameslist/c_2800.html">Braille Patterns</a>).</p>
 
-				<p>The presence of braille Unicode characters is indicated in the package document metadata using the
-						<dfn id="braille">braille</dfn> accessibility feature.</p>
+				<p>The presence of braille encoded content is indicated in the package document metadata using the <dfn
+						id="braille">braille</dfn> accessibility feature.</p>
 
 				<aside class="example" title="Package document markup for the braille feature">
 					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
    &lt;metadata>
-      &#8230;
+      …
       &lt;meta property="schema:accessibilityFeature">braille&lt;/meta>
-      &#8230;
+      …
    &lt;/metadata>
-   &#8230;
+   …
 &lt;/package></pre>
 				</aside>
 
-				<p>The <a href="https://daisy.org/s/ebraille/">eBraille format</a> is designed to represent braille
-					character data in an EPUB-conformant package and is a better choice for authoring braille in EPUB.
-					It is not necessary to declare that en eBraille file has a <code>braille</code> feature, however,
-					since the format itself and its required metadata already make this fact clear. The
-						<code>braille</code> feature is expected only when braille character data supplements the
-					standard text.</p>
+				<p><strong>Do not</strong> use the <code>braille</code> feature for publications whose primary format is
+					braille. The <a href="https://daisy.org/s/ebraille/">eBraille format</a>, for example, is designed
+					to represent braille character data in an EPUB-conformant package. It is not necessary to declare
+					that en eBraille file has a <code>braille</code> feature, however, since the format itself and its
+					required metadata already make this fact clear. The <code>braille</code> feature is expected only
+					when braille character data supplements the standard text.</p>
 
 				<div class="note">
 					<p>Another advantage of the eBraille format is that it provides metadata to indicate the type of
@@ -2425,11 +2427,11 @@
 				<aside class="example" title="Package document markup for the tactile graphic feature">
 					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
    &lt;metadata>
-      &#8230;
+      …
       &lt;meta property="schema:accessibilityFeature">braille&lt;/meta>
-      &#8230;
+      …
    &lt;/metadata>
-   &#8230;
+   …
 &lt;/package></pre>
 				</aside>
 
@@ -2451,11 +2453,11 @@
 				<aside class="example" title="Package document markup for the tactile object feature">
 					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
    &lt;metadata>
-      &#8230;
+      …
       &lt;meta property="schema:accessibilityFeature">tactileObject&lt;/meta>
-      &#8230;
+      …
    &lt;/metadata>
-   &#8230;
+   …
 &lt;/package></pre>
 				</aside>
 			</section>
@@ -2483,11 +2485,11 @@
 				<aside class="example" title="Package document markup for the additional segmentation feature">
 					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
    &lt;metadata>
-      &#8230;
+      …
       &lt;meta property="schema:accessibilityFeature">withAdditionalWordSegmentation&lt;/meta>
-      &#8230;
+      …
    &lt;/metadata>
-   &#8230;
+   …
 &lt;/package></pre>
 				</aside>
 
@@ -2502,11 +2504,11 @@
 				<aside class="example" title="Package document markup for no additional segmentation feature">
 					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
    &lt;metadata>
-      &#8230;
+      …
       &lt;meta property="schema:accessibilityFeature">withoutAdditionalWordSegmentation&lt;/meta>
-      &#8230;
+      …
    &lt;/metadata>
-   &#8230;
+   …
 &lt;/package></pre>
 				</aside>
 
@@ -2541,11 +2543,11 @@
 				<aside class="example" title="Package document markup for the horizontal writing feature">
 					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
    &lt;metadata>
-      &#8230;
+      …
       &lt;meta property="schema:accessibilityFeature">horizontalWriting&lt;/meta>
-      &#8230;
+      …
    &lt;/metadata>
-   &#8230;
+   …
 &lt;/package></pre>
 				</aside>
 
@@ -2555,11 +2557,11 @@
 				<aside class="example" title="Package document markup for the vertical writing feature">
 					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
    &lt;metadata>
-      &#8230;
+      …
       &lt;meta property="schema:accessibilityFeature">verticalWriting&lt;/meta>
-      &#8230;
+      …
    &lt;/metadata>
-   &#8230;
+   …
 &lt;/package></pre>
 				</aside>
 
@@ -2731,11 +2733,11 @@
 				<aside class="example" title="Package document markup for a flashing hazard">
 					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
    &lt;metadata>
-      &#8230;
+      …
       &lt;meta property="schema:accessibilityHazard">flashing&lt;/meta>
-      &#8230;
+      …
    &lt;/metadata>
-   &#8230;
+   …
 &lt;/package></pre>
 				</aside>
 
@@ -2759,11 +2761,11 @@
 				<aside class="example" title="Package document markup for a motion simulation hazard">
 					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
    &lt;metadata>
-      &#8230;
+      …
       &lt;meta property="schema:accessibilityHazard">motionSimulation&lt;/meta>
-      &#8230;
+      …
    &lt;/metadata>
-   &#8230;
+   …
 &lt;/package></pre>
 				</aside>
 
@@ -2777,11 +2779,11 @@
 				<aside class="example" title="Package document markup for a sound hazard">
 					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
    &lt;metadata>
-      &#8230;
+      …
       &lt;meta property="schema:accessibilityHazard">sound&lt;/meta>
-      &#8230;
+      …
    &lt;/metadata>
-   &#8230;
+   …
 &lt;/package></pre>
 				</aside>
 			</section>
@@ -2807,11 +2809,11 @@
 				<aside class="example" title="Package document markup for no hazards">
 					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
    &lt;metadata>
-      &#8230;
+      …
       &lt;meta property="schema:accessibilityHazard">none&lt;/meta>
-      &#8230;
+      …
    &lt;/metadata>
-   &#8230;
+   …
 &lt;/package></pre>
 				</aside>
 
@@ -2833,11 +2835,11 @@
 				<aside class="example" title="Package document markup for no flashing hazard">
 					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
    &lt;metadata>
-      &#8230;
+      …
       &lt;meta property="schema:accessibilityHazard">noFlashingHazard&lt;/meta>
-      &#8230;
+      …
    &lt;/metadata>
-   &#8230;
+   …
 &lt;/package></pre>
 				</aside>
 
@@ -2848,11 +2850,11 @@
 				<aside class="example" title="Package document markup for no motion simulation hazard">
 					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
    &lt;metadata>
-      &#8230;
+      …
       &lt;meta property="schema:accessibilityHazard">noMotionSimulationHazard&lt;/meta>
-      &#8230;
+      …
    &lt;/metadata>
-   &#8230;
+   …
 &lt;/package></pre>
 				</aside>
 
@@ -2862,11 +2864,11 @@
 				<aside class="example" title="Package document markup for no sound hazard">
 					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
    &lt;metadata>
-      &#8230;
+      …
       &lt;meta property="schema:accessibilityHazard">noSoundHazard&lt;/meta>
-      &#8230;
+      …
    &lt;/metadata>
-   &#8230;
+   …
 &lt;/package></pre>
 				</aside>
 
@@ -2897,11 +2899,11 @@
 				<aside class="example" title="Package document markup for unknown hazards">
 					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
    &lt;metadata>
-      &#8230;
+      …
       &lt;meta property="schema:accessibilityHazard">unknown&lt;/meta>
-      &#8230;
+      …
    &lt;/metadata>
-   &#8230;
+   …
 &lt;/package></pre>
 				</aside>
 
@@ -2929,11 +2931,11 @@
 				<aside class="example" title="Package document markup for an unknown flashing hazard">
 					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
    &lt;metadata>
-      &#8230;
+      …
       &lt;meta property="schema:accessibilityHazard">unknownFlashingHazard&lt;/meta>
-      &#8230;
+      …
    &lt;/metadata>
-   &#8230;
+   …
 &lt;/package></pre>
 				</aside>
 
@@ -2944,11 +2946,11 @@
 				<aside class="example" title="Package document markup for an unknown motion simulation hazard">
 					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
    &lt;metadata>
-      &#8230;
+      …
       &lt;meta property="schema:accessibilityHazard">unknownMotionSimulationHazard&lt;/meta>
-      &#8230;
+      …
    &lt;/metadata>
-   &#8230;
+   …
 &lt;/package></pre>
 				</aside>
 
@@ -2959,11 +2961,11 @@
 				<aside class="example" title="Package document markup for unknown sound hazards">
 					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
    &lt;metadata>
-      &#8230;
+      …
       &lt;meta property="schema:accessibilityHazard">unknownSoundHazard&lt;/meta>
-      &#8230;
+      …
    &lt;/metadata>
-   &#8230;
+   …
 &lt;/package></pre>
 				</aside>
 			</section>
@@ -2994,7 +2996,7 @@
     property="schema:accessibilitySummary">
    In addition to the requirements of its conformance claim,
    this publication includes sign language interpretation
-   for all audio content.&#8230;
+   for all audio content.…
 &lt;/meta>
 					</pre>
 			</aside>
@@ -3194,16 +3196,16 @@
 					<aside class="example" title="Evaluator of a conformance claim identified">
 						<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
    &lt;metadata>
-      &#8230;
+      …
       &lt;meta id="conformance" property="dcterms:conformsTo">
          EPUB Accessibility 1.2 - WCAG 2.2 Level AA
       &lt;/meta>
       &lt;meta id="evaluator" property="a11y:certifiedBy">
          John Doe Evaluation Services
       &lt;/meta>
-      &#8230;
+      …
    &lt;/metadata>
-   &#8230;
+   …
 &lt;/package></pre>
 					</aside>
 
@@ -3232,16 +3234,16 @@
 						<aside class="example" title="Evaluator of a conformance claim identified">
 							<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
    &lt;metadata>
-      &#8230;
+      …
       &lt;meta id="evaluator" property="a11y:certifiedBy">
          John Doe Evaluation Services
       &lt;/meta>
       &lt;meta refines="#evaluator" property="a11y:certifierCredential">
          Acme Certified Evaluator
       &lt;/meta>
-      &#8230;
+      …
    &lt;/metadata>
-   &#8230;
+   …
 &lt;/package></pre>
 						</aside>
 
@@ -3270,16 +3272,16 @@
 					<aside class="example" title="Evaluator of a conformance claim identified">
 						<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
    &lt;metadata>
-      &#8230;
+      …
       &lt;meta id="evaluator" property="a11y:certifiedBy">
          John Doe Evaluation Services
       &lt;/meta>
       &lt;meta refines="#evaluator" property="dcterms:date">
          2026-01-31
       &lt;/meta>
-      &#8230;
+      …
    &lt;/metadata>
-   &#8230;
+   …
 &lt;/package></pre>
 					</aside>
 
@@ -3314,15 +3316,15 @@
 					<aside class="example" title="Link to a detailed evaluation report">
 						<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
    &lt;metadata>
-      &#8230;
+      …
       &lt;meta id="evaluator" property="a11y:certifiedBy">
          John Doe Evaluation Services
       &lt;/meta>
       &lt;link refines="#evaluator" rel="a11y:certifierReport"
             href="https://jdes.example.com/reports/a11y/moby-dick.html"/>
-      &#8230;
+      …
    &lt;/metadata>
-   &#8230;
+   …
 &lt;/package></pre>
 					</aside>
 
@@ -3360,13 +3362,13 @@
 				<aside class="example" title="Publication claiming a European Accessibility Act exemption">
 					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
    &lt;metadata>
-      &#8230;
+      …
       &lt;meta property="a11y:exemption">
          eaa-microenterprise
       &lt;/meta>
-      &#8230;
+      …
    &lt;/metadata>
-   &#8230;
+   …
 &lt;/package></pre>
 				</aside>
 
@@ -3419,13 +3421,13 @@
 				<aside class="example" title="Contact email">
 					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
    &lt;metadata>
-      &#8230;
+      …
       &lt;meta property="a11y:contactEmail">
          a11y@example.com
       &lt;/meta>
-      &#8230;
+      …
    &lt;/metadata>
-   &#8230;
+   …
 &lt;/package></pre>
 				</aside>
 
@@ -3435,156 +3437,102 @@
 					general purpose feedback address unless there is no other option.</p>
 			</section>
 		</section>
-		<section id="example" class="appendix informative">
+		<section id="examples" class="appendix informative">
 			<h2>Examples</h2>
 
 			<section id="examples-am-ams-combination">
 				<h3>Primary and sufficient access modes</h3>
 
+				<p>The following examples show the complete set of access modes and sufficient access modes that can be
+					specified for common content scenarios.</p>
+
+				<p>Note that these examples only show the required metadata to meet the EPUB Accessibility standard
+					[[epub-a11y]]. In particular, when there is more than one access mode, the standard prioritizes
+					setting the single sufficient access modes over repeating all possible sufficient access mode sets.
+					These examples do not include all the possible permutations of sufficient access modes.</p>
+
 				<dl>
 					<dt>Fully textual works</dt>
 					<dd>
-						<ul>
-							<li>
-								<p>Without media overlays:</p>
-								<pre>&lt;meta property="schema:accessMode">textual&lt;/meta>
+						<p>These are works that do not have any visual or auditory content. They include such content
+							types and novels and works of non-fiction.</p>
+						<pre>&lt;meta property="schema:accessMode">textual&lt;/meta>
 &lt;meta property="schema:accessModeSufficient">textual&lt;/meta></pre>
-							</li>
-							<li>
-								<p>With media overlays:</p>
-								<pre>&lt;meta property="schema:accessMode">textual&lt;/meta>
-&lt;meta property="schema:accessModeSufficient">textual&lt;/meta>
-&lt;meta property="schema:accessModeSufficient">auditory&lt;/meta></pre>
-							</li>
-						</ul>
-					</dd>
-					<dt>Primarily textual works with some images</dt>
-					<dd>
-						<ul>
-							<li>
-								<p>If text alternatives are provided and they sufficiently capture the visual
-									content:</p>
-								<pre>&lt;meta property="schema:accessMode">textual&lt;/meta>
-&lt;meta property="schema:accessMode">visual&lt;/meta>
-&lt;meta property="schema:accessModeSufficient">visual,textual&lt;/meta>
-&lt;meta property="schema:accessModeSufficient">textual&lt;/meta></pre>
-							</li>
-							<li>
-								<p>If no text alternatives are provided, or they do not sufficiently capture the visual
-									content:</p>
-								<pre>&lt;meta property="schema:accessMode">textual&lt;/meta>
-&lt;meta property="schema:accessMode">visual&lt;/meta>
-&lt;meta property="schema:accessModeSufficient">visual,textual&lt;/meta></pre>
-							</li>
-						</ul>
 					</dd>
 
-					<dt>Primarily text works with some video content</dt>
+					<dt>Primarily textual works with some visual content</dt>
 					<dd>
-						<ul>
-							<li>
-								<p>If the video has audio essential to its understanding and the auditory and visual
-									information is fully described with textual alternatives:</p>
-								<pre>&lt;meta property="schema:accessMode">textual&lt;/meta>
+						<p>These works combine text with some images. They run the spectrum of content types, from a
+							novel with illustrations, to textbooks with graphs and charts, and on.</p>
+						<p>In this example, the visual content is also readable in textual form (e.g., through
+							alternative text and extended descriptions).</p>
+						<pre>&lt;meta property="schema:accessMode">textual&lt;/meta>
 &lt;meta property="schema:accessMode">visual&lt;/meta>
-&lt;meta property="schema:accessMode">auditory&lt;/meta>
-&lt;meta property="schema:accessModeSufficient">textual,visual,auditory&lt;/meta>
-&lt;meta property="schema:accessModeSufficient">textual,visual&lt;/meta>
 &lt;meta property="schema:accessModeSufficient">textual&lt;/meta></pre>
-							</li>
-							<li>
-								<p>If no text alternatives are provided, or they do not sufficiently capture the visual
-									content:</p>
-								<pre>&lt;meta property="schema:accessMode">textual&lt;/meta>
+					</dd>
+
+					<dt>Primaily textual works with some auditory content</dt>
+					<dd>
+						<p>These works are primarily text but may embed some auditory content. An example would be a
+							work of non-fiction that includes clips of speeches.</p>
+						<p>In this example, the auditory content is also readable in textual form (e.g.,
+							transcripts).</p>
+						<pre>&lt;meta property="schema:accessMode">textual&lt;/meta>
 &lt;meta property="schema:accessMode">visual&lt;/meta>
 &lt;meta property="schema:accessModeSufficient">visual,textual&lt;/meta></pre>
-							</li>
-						</ul>
+					</dd>
+
+					<dt>Primaily textual works with some visual and auditory content</dt>
+					<dd>
+						<p>These works are primarily text but also include a mix of visual and auditory content. The
+							visual content could be images or could be video, while the auditory content could be
+							individual clips, like speeches, or the audio tracks to videos. Textbooks and non-fiction
+							works typically have rich multimedia experiences like this.</p>
+						<p>In this example, the visual and auditory content is also readable in textual form.</p>
+						<pre>&lt;meta property="schema:accessMode">textual&lt;/meta>
+&lt;meta property="schema:accessMode">visual&lt;/meta>
+&lt;meta property="schema:accessMode">auditory&lt;/meta>
+&lt;meta property="schema:accessModeSufficient">textual&lt;/meta></pre>
 					</dd>
 
 					<dt>Fully visual works</dt>
 					<dd>
-						<ul>
-							<li>
-								<p>Without no text alternatives:</p>
-								<pre>&lt;meta property="schema:accessMode">visual&lt;/meta>
-&lt;meta property="schema:accessModeSufficient">visual&lt;/meta></pre>
-							</li>
-							<li>
-								<p>With partial text alternatives:</p>
-								<pre>&lt;meta property="schema:accessMode">visual&lt;/meta>
-&lt;meta property="schema:accessModeSufficient">visual&lt;/meta>
-&lt;meta property="schema:accessModeSufficient">visual,textual&lt;/meta></pre>
-							</li>
-							<li>
-								<p>With full text alternatives:</p>
-								<pre>&lt;meta property="schema:accessMode">visual&lt;/meta>
+						<p>Fully visual works are represented using EPUB 3's fixed layouts, where each page is an image.
+							Comics and manga are commonly represented this way, for example.</p>
+						<p>In this example, the visual content is also readable in textual form (e.g., through
+							alternative text and extended descriptions).</p>
+						<pre>&lt;meta property="schema:accessMode">visual&lt;/meta>
 &lt;meta property="schema:accessModeSufficient">visual&lt;/meta>
 &lt;meta property="schema:accessModeSufficient">textual&lt;/meta></pre>
-							</li>
-							<li>
-								<p>With media overlays and partial or no text alternatives:</p>
-								<pre>&lt;meta property="schema:accessMode">visual&lt;/meta>
-&lt;meta property="schema:accessModeSufficient">visual&lt;/meta>
-&lt;meta property="schema:accessModeSufficient">visual,auditory&lt;/meta></pre>
-							</li>
-							<li>
-								<p>With media overlays and full text alternatives:</p>
-								<pre>&lt;meta property="schema:accessMode">visual&lt;/meta>
-&lt;meta property="schema:accessModeSufficient">visual&lt;/meta>
-&lt;meta property="schema:accessModeSufficient">auditory&lt;/meta></pre>
-							</li>
-						</ul>
 					</dd>
 
 					<dt>Primarily visual works with some text</dt>
 					<dd>
-						<ul>
-							<li>
-								<p>Without no text alternatives:</p>
-								<pre>&lt;meta property="schema:accessMode">visual&lt;/meta>
+						<p>These works are also represented using EPUB 3's fixed layouts but have some text content
+							overlaid on the images. Children's books are a common example.</p>
+						<p>In this example, the visual content is also readable in textual form (e.g., through
+							alternative text and extended descriptions).</p>
+						<pre>&lt;meta property="schema:accessMode">visual&lt;/meta>
 &lt;meta property="schema:accessMode">textual&lt;/meta>
-&lt;meta property="schema:accessModeSufficient">visual,textual&lt;/meta></pre>
-							</li>
-							<li>
-								<p>With partial text alternatives:</p>
-								<pre>&lt;meta property="schema:accessMode">visual&lt;/meta>
-&lt;meta property="schema:accessMode">textual&lt;/meta>
-&lt;meta property="schema:accessModeSufficient">visual,textual&lt;/meta></pre>
-							</li>
-							<li>
-								<p>With full text alternatives:</p>
-								<pre>&lt;meta property="schema:accessMode">visual&lt;/meta>
-&lt;meta property="schema:accessMode">textual&lt;/meta>
-&lt;meta property="schema:accessModeSufficient">visual,textual&lt;/meta>
 &lt;meta property="schema:accessModeSufficient">textual&lt;/meta></pre>
-							</li>
-							<li>
-								<p>With media overlays and partial or no text alternatives:</p>
-								<pre>&lt;meta property="schema:accessMode">visual&lt;/meta>
-&lt;meta property="schema:accessMode">textual&lt;/meta>
-&lt;meta property="schema:accessModeSufficient">visual,textual&lt;/meta>
-&lt;meta property="schema:accessModeSufficient">visual,auditory&lt;/meta></pre>
-							</li>
-							<li>
-								<p>With media overlays and full text alternatives:</p>
-								<pre>&lt;meta property="schema:accessMode">visual&lt;/meta>
-&lt;meta property="schema:accessMode">textual&lt;/meta>
-&lt;meta property="schema:accessModeSufficient">visual,textual&lt;/meta>
-&lt;meta property="schema:accessModeSufficient">textual&lt;/meta>
-&lt;meta property="schema:accessModeSufficient">auditory&lt;/meta></pre>
-							</li>
-						</ul>
 					</dd>
 
-					<dt>Fully auditory works</dt>
+					<dt>Media overlays</dt>
 					<dd>
+						<p>If any of the above publication types include audio narration synchronized by EPUB 3's media
+							overlays feature, and the auditory content fully covers the same information, an additional
+								<code>auditory</code> sufficient access mode can be added:</p>
+						<pre>&lt;meta property="schema:accessModeSufficient">tactile&lt;/meta></pre>
+						<p>If the content uses media overlays to create primarily auditory works (i.e., there is little
+							to no text beyond the major headings), the following metadata would be specified:</p>
 						<pre>&lt;meta property="schema:accessMode">auditory&lt;/meta>
 &lt;meta property="schema:accessModeSufficient">auditory&lt;/meta></pre>
 					</dd>
 
 					<dt>Fully tactile works</dt>
 					<dd>
+						<p>The text of the publication is encoded using Unicode braille characters. This metadata is
+							typically only applied to formats like eBraille.</p>
 						<pre>&lt;meta property="schema:accessMode">tactile&lt;/meta>
 &lt;meta property="schema:accessModeSufficient">tactile&lt;/meta></pre>
 					</dd>
@@ -3710,7 +3658,658 @@
 				</aside>
 			</section>
 		</section>
-		<section id="obsolete" class="appendix">
+		<section id="features-identifying" class="appendix informative">
+			<h2>Identifying accessibility features</h2>
+
+			<p>This appendix provides guidance on how to determine if an EPUB publication contains accessibility
+				features for anyone unfamiliar with their markup or styling.</p>
+
+			<section id="identify-alt">
+				<h3>Alternative text</h3>
+
+				<p>It is generally easy to determine if XHTML content documents have alternative text, as it only
+					requires checking that an <code>alt</code> attribute is present on each non-decorative
+						<code>img</code> tag.</p>
+
+				<pre>&lt;img src="images/hawk.jpg" 
+     alt="A majestic hawk perches on a tree branch" /></pre>
+
+				<p>For SVG content documents, the alternative text is usually contained in the <code>title</code>
+					element. If there is a <code>desc</code> element, it typically contains the extended
+					description.</p>
+
+				<pre>&lt;svg …>
+   &lt;title>A majestic hawk perches on a tree branch&lt;/title>
+   …
+&lt;/svg></pre>
+			</section>
+
+			<section id="identify-aria">
+				<h3>ARIA structural roles</h3>
+
+				<p>To check if the <a href="#ARIA">ARIA</a> accessibility feature applies to an EPUB 3 publication, it
+					is necessary to determine if structural roles have been used. This first requires searching the
+					content documents in an EPUB publication for instances of the <code>role</code> attribute:</p>
+
+				<aside class="example" title="DPUB-ARIA chapter role">
+					<pre>&lt;section id="c01" role="doc-chapter" aria-labelledby="c01-hd">
+   &lt;h2 id="c01-hd">A new beginning...&lt;/h2>
+   …
+&lt;/section></pre>
+				</aside>
+
+				<p>Next, the type of role has to be verified. Only apply the feature when roles have a <code>doc-</code>
+					prefix &#8212; which indicates they are from [[dpub-aria]] &#8212; or are taken from the
+					[[wai-aria]] <a data-cite="wai-aria#document_structure_roles">document structure</a> or <a
+						data-cite="wai-aria#landmark_roles">landmark</a> categories.</p>
+
+				<div class="note">
+					<p>EPUB 2 did not support the use of ARIA roles.</p>
+				</div>
+			</section>
+
+			<section id="identify-audio-desc">
+				<h3>Audio descriptions</h3>
+
+				<p>To determine if the <code>audioDescriptions</code> feature is applicable to an EPUB 3 publication,
+					search for <code>track</code> elements with their <code>kind</code> attribute set to the value
+						"<code>descriptions</code>".</p>
+
+				<aside class="example" title="Audio description provided via ah HTML track">
+					<pre>&lt;video controls="">
+   &lt;source src="chapter4-video.mp4" type="video/mp4"/>
+
+   &lt;track kind="descriptions"
+         src="chapter4-video-audio-description.vtt"
+         srclang="en"
+         label="English Audio Description"/>
+
+  &lt;p>Your browser does not support the video tag.&lt;/p>
+&lt;/video></pre>
+				</aside>
+
+				<div class="example">
+					<p>Although Flash video had the ability to include audio descriptions, Flash support has been
+						discontinued. EPUB 2 publications that had Flash video with audio descriptions should not
+						declare this feature.</p>
+				</div>
+			</section>
+
+			<section id="identify-closed-captions">
+				<h3>Closed captions</h3>
+
+				<p>To determine if closed captions are being used for videos, search the XHTML content documents in the
+					publication for <code>track</code> elements with their <code>kind</code> attribute set to
+						<code>captions</code>.</p>
+
+				<aside class="example" title="Closed captions for English and Spanish">
+					<pre>&lt;video controls width="480" height="360">
+  &lt;source src="ch1-interview.mp4" type="video/mp4" />
+
+  &lt;track kind="captions"
+          src="ch1-interview-captions-en.vtt"
+          srclang="en"
+          label="English Captions"
+          default="" />
+
+  &lt;track kind="captions"
+          src="ch1-interview-captions-es.vtt"
+          srclang="es"
+          label="Spanish Captions" />
+
+  &lt;p>Your reading system does not support the video element.&lt;/p>
+&lt;/video></pre>
+				</aside>
+
+				<p>Make sure that the <code>track</code> elements are not associated with an <code>audio</code> element.
+					HTML does not support the display of closed captions with the <code>audio</code> element. Closed
+					captions only work with <code>video</code> elements.</p>
+
+				<div class="note">
+					<p>Although EPUB 2 had limited support for Flash video at one time, the Flash format has since been
+						discontinued. Consequently, even if an EPUB 2 publication had a video with closed captions, it
+						will no longer work so the feature must not be declared.</p>
+				</div>
+			</section>
+
+			<section id="identify-described-math">
+				<p>The processing of checking for described math is the same as checking for <a href="#identify-alt"
+						>alternative text</a> and <a href="#identify-extended-desc">extended descriptions</a>. The only
+					difference is that the content of the described images has to be checked to verify that it depicts
+					mathematical forumlas and equations.</p>
+			</section>
+
+			<section id="identify-display-transformability">
+				<h3>Display transformability</h3>
+
+				<p>There is no simple check to determine if an EPUB publication is display transformable. It requires
+					inspecting both the markup and styling of the content, as described in <a href="#display-control"
+					></a>.</p>
+			</section>
+
+			<section id="identify-extended-desc">
+				<h3>Extended descriptions</h3>
+
+				<p>There are many ways to associate extended descriptions with visual content, so it typically requires
+					checking images manually to determine if they are present.</p>
+
+				<p>Some common patterns to search for include the presence of an <code>aria-describedby</code> of
+						<code>aria-details</code> attribute on an <code>img</code> tag, but these attributes may not
+					always be set even when a description is available. As descriptions are often stored in a separate
+					file, it is also common to find a hyperlink after an image to its description. The description could
+					also be contained in a <code>figcaption</code> element if the image is in a <code>figure</code>.</p>
+
+				<aside class="example" title="Extended description using aria-details">
+					<pre>&lt;figure>
+  &lt;img src="complex-chart.jpg"
+       alt="Annual sales growth bar graph"
+       aria-details="sales-long-description">
+
+  &lt;details id="sales-long-description">
+    &lt;summary>Detailed description of sales growth chart&lt;/summary>
+    This bar graph illustrates the company's annual sales growth from 2019 to 2023.
+    The vertical axis represents revenue in millions of dollars …
+  &lt;/details>
+&lt;/figure></pre>
+				</aside>
+
+				<p>When checking for the presence of extended descriptions, also check that they have not been omitted
+					from visual content that requires them. If a publisher does not provide complete coverage, the
+					applicability of the feature has to be assessed.</p>
+			</section>
+
+			<section id="identify-high-contrast-audio">
+				<p>The presence of <a href="#highContrastAudio">high contrast audio</a> cannot be determined from markup
+					alone. The presence of audio and video can be checked by searching for the HTML <code>audio</code>
+					and <code>video</code> elements, but testing for audio contrast typically requires an audio analysis
+					tool (unless there is no background noise).</p>
+			</section>
+
+			<section id="identify-high-contrast-display">
+				<p>The presence of <a href="#highContrastDisplay">high contrast display</a> cannot be determined from
+					markup alone. Testing foreground and background contrast requires a validator with color analysis,
+					such as <a href="https://daisy.org/activities/software/ace/">Ace by DAISY</a>.</p>
+			</section>
+
+			<section id="identify-index">
+				<h3>Indexes</h3>
+
+				<p>The fastest way to check for indexes is to look in the table of contents. They are usually contained
+					in HTML <code>nav</code> or <code>section</code> tags with a <code>role</code> attribute value of
+						<code>doc-index</code>.</p>
+
+				<aside class="example" title="Index">
+					<pre>&lt;nav role="doc-index" aria-labelledby="index">
+   &lt;h1 id="index">Index&lt;/h1>
+   &lt;div>
+       &lt;p>
+           &lt;span>Artificial Intelligence&lt;/span>
+           &lt;a href="chapter2.xhtml#ai-def">12&lt;/a>
+       &lt;/p>
+       &lt;p>
+           &lt;span>Machine Learning&lt;/span>
+           &lt;a href="chapter3.xhtml#ml-basics">45&lt;/a>
+       &lt;/p>
+       &#8230;
+   &lt;/div>
+&lt;/nav></pre>
+				</aside>
+
+				<p>The presence of indexes is not enough to set the <a href="#index">index</a> feature, though. Refer to
+					the feature definition for more information.</p>
+			</section>
+
+			<section id="identify-latex">
+				<h3>Latex formatting</h3>
+
+				<p>As latex is a text-based formatting language, the only way to identify if it is present in an EPUB
+					publication is to search each EPUB content document.</p>
+
+				<p>Unfortunately, latex formatting does not always begin with a consistent sequence of characters.
+					Equations can be wrapped in any of the following depending on whether they are to be rendered inline
+					or as block equations:</p>
+
+				<ul>
+					<li><code>$…$</code></li>
+					<li><code>\(…\)</code></li>
+					<li><code>\[…\]</code></li>
+					<li><code>\begin{xzy}…\end{xyz}</code></li>
+				</ul>
+
+				<div class="note">
+					<p>In the last example, "<code>xyz</code>" is a palceholder for a specific latex formatting command,
+						like "<code>math</code>" or "<code>equation</code>".</p>
+				</div>
+
+				<p>For example, the quadratic equation could be represented as:</p>
+
+				<pre>\[x = \frac{-b \pm \sqrt{b^2-4ac}}{2a}\]</pre>
+
+				<p>or as:</p>
+
+				<pre>$x = \frac{-b \pm \sqrt{b^2-4ac}}{2a}$</pre>
+
+				<p>Regardless of how the latex syntax is formatted, whether it is being used for <a href="#math">math
+						equations</a> or <a href="#chemistry">chemical equations</a> needs to be determined so that the
+					appropriate accessibility feature is flagged.</p>
+
+				<div class="note">
+					<p>Latext equations are not likely to be found in EPUB 2 files as it did not support the scripting
+						necessary to transform them for presentation.</p>
+				</div>
+			</section>
+
+			<section id="identify-large-print">
+				<h3>Large print</h3>
+
+				<p>The best way to determine if an EPUB publication is large print is to rely on the publisher's
+					description.</p>
+
+				<p>It may be possible to read the default styles applied to the content to determine the overall font
+					size, but this is often non-trivial to do. Opening the publication in a reading system might also
+					give an indication, but visually determining the size of fonts can be error prone.</p>
+			</section>
+
+			<section id="identify-mathml">
+				<h3>MathML markup</h3>
+
+				<p>The fastest way to determine if an EPUB 3 publication contains MathML markup is to check the package
+					document manifest. Any EPUB content document that includes MathML markup has to have a
+						<code>properties</code> attribute that declares this is the case:</p>
+
+				<pre>&lt;item id="c01" src="xhtml/chapter01.xhtml" … properties="mathml" /></pre>
+
+				<p>If MathML is present but not declared, EPUBCheck will emit an error.</p>
+
+				<p>To manually check for MathML, every content document will have to be searched. MathML is typically
+					enclosed in <code>math</code> tags like the following:</p>
+
+				<pre>&lt;math xmlns="http://www.w3.org/2001/mathml">…&lt;/math></pre>
+
+				<p>But because EPUB is XML-based, the <code>math</code> tag could also have a prefix, so could be tagged
+					as <code>m:math</code> or <code>mml:math</code>. This kind of tagging is more common in legacy
+					content when reading systems relied on MathJAX to render equations. Modern reading systems, like
+					browsers, expect unprefixed elements as part of their support for HTML.</p>
+
+				<p>Regardless of how the MathML markup is tagged, whether it is being used for <a href="#math">math
+						equations</a> or <a href="#chemistry">chemical equations</a> needs to be determined so that the
+					appropriate accessibility feature is flagged.</p>
+
+				<div class="note">
+					<p>MathML markup is not likely to be found in EPUB 2 publications. Although it could be added using
+						the <code>epub:switch</code> element, reading systems never supported its rendering.</p>
+				</div>
+			</section>
+
+			<section id="identify-open-captions">
+				<h3>Open captions</h3>
+
+				<p>The only way to determine if open captions are included in an EPUB 3 publication is to watch each
+					video and see if captions appear on screen. There will be no option in the video for the user to
+					toggle the captions on or off.</p>
+
+				<p>To verify that open captions are being used, the <code>video</code> element for the clip can be
+					checked to ensure it does not have a <code>track</code> element that references a caption file.
+					(Refer to the section on <a href="#identify-closed-captions">identifying closed captions</a> for
+					more information.)</p>
+
+				<div class="note">
+					<p>Although EPUB 2 had limited support for Flash video at one time, the Flash format has since been
+						discontinued. Consequently, even if an EPUB 2 publication had a video with open captions, it
+						will no longer work so the feature must not be declared.</p>
+				</div>
+			</section>
+
+			<section id="identify-page-breaks">
+				<h3>Page break markers</h3>
+
+				<p>To check if page breaks are included in an EPUB publication, search for the
+						<code>doc-pagebreak</code> role.</p>
+
+				<aside class="example" title="Pagebreak marker">
+					<pre>&lt;span id="page_5"
+      role="doc-pagebreak"
+      aria-label="5"/&gt;</pre>
+				</aside>
+
+				<div class="note">
+					<p>EPUB 2 did not support page break markers.</p>
+				</div>
+			</section>
+
+			<section id="identify-page-nav">
+				<h3>Page list</h3>
+
+				<p>To determine if an EPUB 3 publication includes a page list, check the EPUB navigation document for a
+						<code>nav</code> element with the <code>epub:type</code> attribute value
+					"<code>pagelist</code>".</p>
+
+				<aside class="example" title="EPUB 3 page list">
+					<pre>&lt;nav epub:type="page-list">
+   &lt;h2 id="pglist">Page list&lt;/h1>
+   &lt;ol>
+      &lt;li>&lt;a href="chapter1.xhtml#p01">1&lt;/a>&lt;/li>
+      &lt;li>&lt;a href="chapter1.xhtml#p02">2&lt;/a>&lt;/li>
+      …
+   &lt;/ol>
+&lt;/nav></pre>
+				</aside>
+
+				<p>For EPUB 2 publications, check the NCX document for a <code>pageList</code> element.</p>
+
+				<aside class="example" title="EPUB 2 page list">
+					<pre>&lt;ncx …>
+    …
+    &lt;pageList>
+        &lt;navLabel>
+            &lt;text>Pages&lt;/text>
+        &lt;/navLabel>
+        &lt;pageTarget type="normal" id="page01" value="1" playOrder="1">
+            &lt;navLabel>
+                &lt;text>1&lt;/text>
+            &lt;/navLabel>
+            &lt;content src="chapter01.xhtml#p01"/>
+        &lt;/pageTarget>
+        &lt;pageTarget type="normal" id="page02" value="2" playOrder="2">
+            &lt;navLabel>
+                &lt;text>2&lt;/text>
+            &lt;/navLabel>
+            &lt;content src="chapter01.xhtml#p02"/>
+        &lt;/pageTarget>
+        …
+    &lt;/pageList>
+&lt;/ncx></pre>
+				</aside>
+			</section>
+
+			<section id="identify-reading-order">
+				<h3>Reading order</h3>
+
+				<p>The reading order can only be determined by checking how the content is ordered between the
+						<code>body</code> tags of each XHTML content document, as well as across documents.</p>
+			</section>
+
+			<section id="identify-ruby">
+				<h3>Ruby annotations</h3>
+
+				<p>To check for ruby annotations in an EPUB 3 publication, search the XHTML content documents for
+					instances of the <code>ruby</code> tag.</p>
+
+				<aside class="example" title="Ruby markup">
+					<pre>&lt;ruby>東&lt;rt>とう&lt;/rt>&lt;/ruby>&lt;ruby>京&lt;rt>きょう&lt;/rt>&lt;/ruby>に&lt;ruby>行&lt;rt>い&lt;/rt>&lt;/ruby>きます。</pre>
+				</aside>
+
+				<p>If every kanji character is annotated, then the publication would declare the <a
+						href="#fullRubyAnnotations">fullRubyAnnotations</a> feature. Otherwise, it would declare <a
+						href="#rubyAnnotations">rubyAnnotations</a>.</p>
+
+				<div class="note">
+					<p>EPUB 2 did not support ruby markup.</p>
+				</div>
+			</section>
+
+			<section id="identify-sign-language">
+				<h3>Sign language</h3>
+
+				<p>The only way to determine if sign language interpretation is provided is to play each video in the
+					EPUB publication to see if an interpreter is present (usually overlaying the video in a corner).</p>
+			</section>
+
+			<section id="identify-structural-navigation">
+				<h3>Structural navigation</h3>
+
+				<p>Checking for structural navigation requires inspecting each heading to ensure that it is represented
+					using one of the HTML <code>h1</code> through <code>h6</code> elements.</p>
+			</section>
+
+			<section id="identify-sync-audio-text">
+				<h3>Synchronized audio and text</h3>
+
+				<p>To determine if an EPUB 3 publication should declare the <code>synchronizedAudioText</code> feature,
+					check if the <code>media-overlay</code> attribute has been set on any items in the package document
+					manifest.</p>
+
+				<p>It is also possible to search the package document manifest for the resources with the media type
+						<code>application/smil+xml</code>.</p>
+
+				<aside class="example" title="Linked media overlays">
+					<pre>&lt;?xml version="1.0" encoding="UTF-8"?>
+&lt;package xmlns="http://www.idpf.org/2007/opf" version="3.0" unique-identifier="pub-id">
+   &#8230;
+   &lt;manifest>
+      &lt;item id="chap1" href="content.xhtml" media-type="application/xhtml+xml" media-overlay="chap1-overlay" />
+      &lt;item id="chap1-overlay" href="overlay.smil" media-type="application/smil+xml" />
+      &#8230;
+   &lt;/manifest>
+   &#8230;
+&lt;/package></pre>
+				</aside>
+
+				<div class="note">
+					<p>EPUB 2 did not support synchronized text and audio playback.</p>
+				</div>
+			</section>
+
+			<section id="identify-toc">
+				<h3>Table of contents</h3>
+
+				<p>A table of contents is a required part of EPUB 2 and 3 so it should always be present. For EPUB 3,
+					check for a manifest item with its <code>properties</code> attribute set to "<code>nav</code>".
+					Inside this file will be a <code>nav</code> element with the <code>epub:type</code> attribute value
+					"toc".</p>
+
+				<aside class="example" title="EPUB 3 navigation document">
+					<p>Manifest entry for the navigation document:</p>
+					<pre>&lt;manifest>
+   &lt;item id="nav" href="nav.html" media-type="application/xhtml+xml" properties="nav"/>
+   &#8230;
+&lt;/manifest></pre>
+					<p><code>nav</code> element declaring the table of contents in the <code>nav.html</code> file:</p>
+					<pre>&lt;nav epub:type="toc">
+   &lt;h2>Table of Contents&lt;/h2>
+   &lt;ol>
+      &lt;li>
+         &lt;a href="wasteland-content.html#ch1">I. THE BURIAL OF THE DEAD&lt;/a>
+      &lt;/li>
+      &#8230;
+   &lt;/ol>
+&lt;/nav></pre>
+				</aside>
+
+				<p>For EPUB 2, check the NCX file for a <code>navMap</code> element.</p>
+
+				<aside class="example" title="EPUB 2 NCX">
+					<pre>&lt;ncx &#8230;>
+   &#8230;
+   &lt;navMap>
+      &lt;navPoint id="ch1">
+         &lt;navLabel>
+            &lt;text>I. THE BURIAL OF THE DEAD&lt;/text>
+         &lt;/navLabel>
+         &lt;content src="wasteland-content.xhtml#ch1"/>
+      &lt;/navPoint>
+      &#8230;
+   &lt;/navMap>
+   &#8230;
+&lt;/ncx></pre>
+				</aside>
+			</section>
+
+			<section id="identify-tactile-content">
+				<h3>Tactile content</h3>
+
+				<p>None of the tactile content types is easy to find.</p>
+
+				<p>Braille unicode characters can be searched for, but without knowing what text is encoded as braille
+					it might take a few character searches to be sure (e.g., if braille is only used for text
+					alternatives).</p>
+
+				<aside class="example" title="Braille unicode characters">
+					<pre>&lt;img &#8230; alt="⠠⠉⠕⠇⠇⠁⠛⠑ ⠷ ⠊⠍⠁⠛⠑⠎ ⠷ ⠡⠝"/></pre>
+				</aside>
+
+				<p>There are no reliable checks for tactile images and objects. Tactile images are only likely to be
+					discovered by inspecting each image. Tactile objects are typically only hyperlinked to, so their
+					presence requires a search of the outbound hyperlinks. Searching for common 3D file format
+					extensions like <code>.obj</code> and <code>.stl</code> file extensions could help speed up the
+					process.</p>
+			</section>
+
+			<section id="identify-timing-control">
+				<h3>Timing control</h3>
+
+				<p>Searching for HTML form elements will help narrow down whether an EPUB 3 publication has interactive
+					content, but whether that content involves timed interactions, and whether additional time can be
+					added, will likely only be determinable by live testing the content.</p>
+
+				<div class="note">
+					<p>EPUB 2 did not support scripting so timed content will never be present.</p>
+				</div>
+			</section>
+
+			<section id="identify-tts-markup">
+				<h3>Text-to-speech enhancements</h3>
+
+				<p>To determine if SSML attributes are present, an EPUB 3 publication can be searched for the
+						<code>ssml:ph</code> or <code>ssml:alphabet</code> attributes.</p>
+
+				<aside class="example" title="EPUB 3's SSML attributes">
+					<pre>&lt;p ssml:alphabet="ipa"> &#8230; situated between &lt;span ssml:ph="ˈθɜrti dɪˈgriz">30°&lt;/span>
+    &lt;span ssml:ph="ˈθɜrtiˈwʌn ˈmɪnɪtz">31′&lt;/span> 
+    &lt;span ssml:ph="ˈθɜrtiˈnaɪn ˈsɛkəndz">39″&lt;/span>
+    &#8230; &lt;/p></pre>
+				</aside>
+
+				<p>To determine if PLS lexicons are present, the package document can be searched for the media type
+						<code>application/pls+xml</code>. The XHTML content documents can also be checked for a
+						<code>link</code> element declaring the lexicon.</p>
+
+				<aside class="example" title="PLS lexicon declarations">
+					<p>Package document manifest declaration:</p>
+					<pre>&lt;manifest>
+   &#8230;
+   &lt;item id="pls" src="lexicon.pls" media-type="application/pls+xml"/>
+   &#8230;
+&lt;/manifest></pre>
+
+					<p>XHTML content document declaration:</p>
+					<pre>&lt;html &#8230;>
+   &lt;head>
+      &#8230;
+      &lt;link rel="pronunciation" type="application/pls+xml" href="lexicon.pls"/>
+   &lt;/head>
+   &#8230;
+&lt;/html></pre>
+				</aside>
+
+				<p>Checking if <a href="https://www.w3.org/TR/css-speech-1/">CSS Speech properties</a> have been used
+					will require searching for them individually. They could appear in separate CSS style sheet files,
+					in <code>style</code> elements within XHTML content documents, or even in inline <code>style</code>
+					attributes (although this practice is generally discouraged).</p>
+
+				<aside class="example" title="Speech property declarations">
+					<pre>body {
+   voice-family: young female;
+   voice-rate: normal;
+}
+
+section {
+   pause: 0 20ms;
+}</pre>
+				</aside>
+			</section>
+
+			<section id="identify-transcript">
+				<h3>Transcripts</h3>
+
+				<p>A transcript may be found by searching an EPUB 3 publication for an <code>aria-details</code>
+					attribute on an HTML <code>audio</code> or <code>video</code> element, although the use of the
+					attribute for transcripts is not widespread.</p>
+
+				<aside class="example" title="Transcript linked by an aria-details attribute">
+					<pre>&lt;audio controls 
+       aria-details="audio-transcript"
+       aria-label="Audio recording of the interview">
+       …
+&lt;/audio>
+
+&lt;details id="audio-transcript">
+    &lt;summary>View Transcript&lt;/summary>
+
+    &lt;div>
+        &lt;p>This is a transcript of the audio recording.&lt;/p>
+        &lt;p>[Interviewer] Welcome to the show.&lt;/p>
+        &lt;p>[Guest] Thank you for having me.&lt;/p>
+    &lt;/div>
+&lt;/details></pre>
+				</aside>
+
+				<p>A general text search for the word "transcript" (or the local language equivalent) could also help to
+					locate transcripts, but the results would need to be checked to ensure that they are indeed
+					transcripts for auditory content and not unrelated uses of the word.</p>
+
+				<div class="note">
+					<p>EPUB 2 had limited support for Flash video at one time, so it is possible that some EPUB 2
+						publications could also contain transcripts even though the video will no longer work.</p>
+				</div>
+			</section>
+
+			<section id="identify-unlocked">
+				<h3>Unlocked content</h3>
+
+				<p>If an EPUB publication has digital rights management applied to it, the <code>rights.xml</code>
+					and/or <code>encryption.xml</code> files will be included under the <code>META-INF</code>
+					directory.</p>
+
+				<p>These files are typically added by the distributor/vendor, so stating that a publication is unlocked
+					more typically requires knowing how it will be distributed.</p>
+			</section>
+
+			<section id="identify-writing-mode">
+				<h3>Writing mode</h3>
+
+				<p>The fastest way to determine the writing mode of an EPUB publication is to open it in a reading
+					system that supports both horizontal and vertical writing to see which way the text gets laid
+					out.</p>
+
+				<p>A more complicated method would be to search for instances of the CSS <code>writing-mode</code>
+					property. When it is set to the value "<code>vertical-lr</code>" or "<code>vertical-rl</code>", it
+					indicates that vertical writing is present. When it is set to "<code>horizontal-tb</code>", it
+					indicates that horizontal writing is present (this is also the default when the property is not
+					set). This method is not reliable, however, as the raw CSS declarations may get overridden or not
+					used during the cascade process.</p>
+
+				<p>Knowing the default direction is not enough on its own. Whether to set the <a href="#verticalWriting"
+						>verticalWriting</a> or <a href="#horizontalWriting">horizontalWriting</a> features also depends
+					on whether the language supports both types of writing (e.g., the Chinese, Japanese, and Korean
+					languages support both).</p>
+			</section>
+
+			<section id="identify-word-segementation">
+				<h3>Word segmentation</h3>
+
+				<p>For languages that do not have word segmentation by default, the fastest way to determine if an EPUB
+					publication does or does not include segmentation is to open it in a reading system and visually
+					inspect the content.</p>
+
+				<p>Checking the markup may indicate if additional word segmentation is provided (e.g., if there are
+						<code>span</code> elements around each group of characters to separate), but this kind of check
+					is not reliable unless the CSS styling to add space is also easily verifiable.</p>
+
+				<aside class="example" title="Text with word spacing">
+					<pre>&lt;p class="segmented-text">
+   &lt;span>東京&lt;/span>&lt;span>に&lt;/span>&lt;span>行きます&lt;/span>。
+&lt;/p></pre>
+
+					<p>CSS styling to add a margin on the right:</p>
+
+					<pre>.segmented-text > span {
+  margin-right: 0.5em;
+}</pre>
+				</aside>
+			</section>
+		</section>
+		<section id="obsolete" class="appendix informative">
 			<h2>Obsolete metadata</h2>
 
 			<section id="obs-properties">
