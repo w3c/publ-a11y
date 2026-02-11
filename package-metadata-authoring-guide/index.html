@@ -13,12 +13,17 @@
                 edDraftURI: "https://w3c.github.io/publ-a11y/epub-a11y-meta-guide/1.0/draft/",
                 copyrightStart: "2025",
                 editors:[ {
+					name: "Matt Garrish",
+					company: "DAISY Consortium",
+					companyURL: "https://daisy.org",
+					w3cid: 51655
+				},
+				{
                     name: "Charles LaPierre",
                     company: "Benetech",
                     companyURL: "http://www.benetech.org",
                     w3cid: 72055
-                }
-                ],
+                } ],
                 includePermalinks: true,
                 permalinkEdge: true,
                 permalinkHide: false,
@@ -35,7 +40,19 @@
 							"Charles LaPierre",
 							"Madeleine Rothberg",
 							"Matt Garrish"
-						]
+						],
+						"publisher": "W3C Schema.org Accessibility Properties for Content Discoverability Community Group"
+					},
+					"a11y-display-guide": {
+						"title": "Accessibility Metadata Display Guide for Digital Publications",
+						"href": "https://www.w3.org/publishing/a11y/metadata-display-guide/guidelines/",
+						"editors": [
+							"George Kerscher",
+							"Charles LaPierre",
+							"Gregorio Pellegrino",
+							"Gautier Chomel"
+						],
+						"publisher": "W3C Publishing Community Group"
 					},
 					"dpub-aria":{
 						"title": "Digital Publishing WAI-ARIA Module 1.1",
@@ -103,8 +120,8 @@
 	</head>
 	<body>
 		<section id="abstract">
-			<p>The EPUB Accessibility Metadata Guide details when to set the Schema.org accessibility metadata
-				properties in the EPUB package document.</p>
+			<p>The EPUB Accessibility Metadata Guide details when and how to set accessibility metadata properties in
+				the EPUB package document.</p>
 			<p>This guide only details usage for EPUB publications. The guidance in this document may not be relevant to
 				other formats.</p>
 		</section>
@@ -113,11 +130,12 @@
 		<section id="overview">
 			<h2>Overview</h2>
 
-			<p>Accessibility metadata expressed in the EPUB 3 package document is derived from three main sources: <a
-					href="https://schema.org">Schema.org</a> [[schema-org]], the <a
-					data-cite="epub-a11y-12#app-a11y-vocab">EPUB accessibility vocabulary</a> [[epub-a11y-12]] and its
-				related properties, and <a href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/"
-					>Dublin Core</a> [[dcterms]].</p>
+			<p>Accessibility metadata expressed in the EPUB 3 <a data-cite="epub-3#sec-package-doc">package document</a>
+				[[epub-3]] is derived from three main sources: <a href="https://schema.org">Schema.org</a>
+				[[schema-org]], the <a data-cite="epub-a11y#app-a11y-vocab">EPUB accessibility vocabulary</a>
+				[[epub-a11y]] and its related properties, and <a
+					href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/">Dublin Core</a>
+				[[dcterms]].</p>
 
 			<p>Schema.org is described as a <q>collaborative, community activity with a mission to create, maintain, and
 					promote schemas for structured data.</q> Of particular importance is that it includes the following
@@ -132,59 +150,64 @@
 			</ul>
 
 			<p>These properties are key to the discoverability of EPUB publications and are central to the requirements
-				of the EPUB Accessibility standard [[epub-a11y]]. They are also used to generate accessibility
-				statements about a publication, as described in the <a
+				of the <a href="https://www.w3.org/TR/epub-a11y/">EPUB Accessibility standard</a> [[epub-a11y]]. They
+				are also used to generate accessibility statements about a publication, as described in the <a
 					href="https://www.w3.org/publishing/a11y/metadata-display-guide/guidelines/">Accessibility Metadata
-					Display Guide for Digital Publications</a>.</p>
+					Display Guide for Digital Publications</a> [[a11y-display-guide]].</p>
 
 			<p>To provide maximum value for readers, the metadata needs to be consistent, which is where the <a
 					href="https://www.w3.org/2021/a11y-discov-vocab/latest/">Schema.org Accessibility Properties for
 					Discoverability Vocabulary</a> [[a11y-discov-vocab]] comes in. This vocabulary defines controlled
-				sets values to use with each property (with the exception of summaries, which are free-form text).</p>
+				sets terms to use with each applicable property.</p>
 
-			<p>But even with a controlled vocabulary, as schema.org is intended to describe any resource on or
-				referenced from the web, the value definitions do not always fully reflect how to apply them to EPUB
-				publications. That is where this guide fits in. Its goal is to add clarity on how to apply the metadata
-				to both reflowable and fixed-layout EPUB publications.</p>
+			<p>But as schema.org is intended to describe any resource on or referenced from the web, the vocabulary
+				definitions do not always fully reflect how to apply the terms to EPUB publications. That is where this
+				guide fits in. Its goal is to add clarity on how to apply the metadata to both reflowable and
+				fixed-layout EPUB publications.</p>
 
-			<p>The EPUB accessibility vocabulary defines accessibility properties do not have a single focus in the same
-				way as the schema.org properties. They are identifiable by the use of the <code>a11y</code> prefix.</p>
+			<p>The accessibility properties defined in the EPUB accessibility vocabulary are identifiable by the use of
+				the <code>a11y</code> prefix (e.g., <code>a11y:certifiedBy</code>). They do not have a single focus in
+				the same way as the schema.org properties &#8212; new properties are typically only added if there are
+				gaps in other metadata standards.</p>
 
-			<p>One of their primary uses is to provide additional information about a conformance claim. The Dublin Core
-					<a
-					href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/conformsTo"
+			<p>One of their primary uses is to provide additional information about conformance claims. The Dublin Core
+					<a href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#conformsTo"
 						><code>dcterms:conformsTo</code> property</a> [[dcterms]] is used to declare conformance to a
-				standard such as the EPUB Accessibility [[epub-a11y-12]] specification, while the EPUB accessibility
+				standard such as the EPUB Accessibility [[epub-a11y]] specification, while the EPUB accessibility
 				properties provide additional context, such as:</p>
 
 			<ul>
-				<li>who evaluated the publication (<a data-cite="epub-a11y-12#certifiedBy"
+				<li>who evaluated the publication (<a data-cite="epub-a11y#certifiedBy"
 						><code>a11y:certifiedBy</code></a>);</li>
-				<li>any credentials help by the evaluator (<a data-cite="epub-a11y-12#certifierCredential"
+				<li>any credentials help by the evaluator (<a data-cite="epub-a11y#certifierCredential"
 							><code>a11y:certifierCredential</code></a>);</li>
-				<li>if a full evaluation report is available (<a data-cite="epub-a11y-12#certifierReport"
+				<li>if a full evaluation report is available (<a data-cite="epub-a11y#certifierReport"
 							><code>a11y:certifierReport</code></a>); and</li>
 				<li>who to contact for more information about the accessibility of a publication (<a
-						data-cite="epub-a11y-12#contactEmail"><code>a11y:contactEmail</code></a>).</li>
+						data-cite="epub-a11y#contactEmail"><code>a11y:contactEmail</code></a>).</li>
 			</ul>
 
-			<p>The Dublin Core vocabulary also includes the <code>dcterms:date</code> property that is used to indicate
-				when the evaluation was performed.</p>
+			<p>The Dublin Core vocabulary also includes the <a
+					href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#date"
+						><code>dcterms:date</code> property</a> [[dcterms]] that is used to indicate when an evaluation
+				was performed.</p>
 
-			<p>The EPUB accessibility vocabulary also includes properties that are not yet, or may never, be officially
-				added to the vocabulary in [[epub-a11y-12]]. The most notable of these properties is
-					<code>a11y:exemption</code>, which is used to indicate that a publication fails accessibility
-				conformance but is exempted from conformance under the laws of a jurisdiction.</p>
+			<p>The EPUB accessibility vocabulary additionally includes properties that are not yet, or may never be,
+				officially added to the vocabulary in the EPUB Accessibility standard [[epub-a11y]]. The most notable of
+				these properties is <a href="https://www.w3.org/TR/epub-a11y-exemption/"><code>a11y:exemption</code></a>
+				[[epub-a11y-exemption]], which is used to indicate that a publication fails accessibility conformance
+				but is exempted from conformance under the laws of a jurisdiction.</p>
 
-			<p>The combination of all this accessibility information in the EPUB package document provides users with a
-				better picture of whether the content is going to meet their specific needs. The rest of this document
-				delves into the specifics of when and how to apply this metadata.</p>
+			<p>The combination of all this accessibility information in the <a data-cite="epub-3#dfn-package-document"
+					>package document</a> [[epub-3]] provides users with a better picture of whether the content is
+				going to meet their specific needs. The rest of this document delves into the specifics of when and how
+				to apply this metadata.</p>
 
 			<div class="note">
 				<p>Accessibility metadata can also be expressed in supply chains through the provision of ONIX records,
 					but that is outside of the scope of this document. For more information, refer to the <a
-						href="https://www.w3.org/2021/a11y-discov-vocab/latest/crosswalk/">crosswalk between package
-						document and ONIX metadata</a> as well as the <a
+						href="https://www.w3.org/2021/a11y-discov-vocab/latest/crosswalk/">Digital Publishing -
+						Accessibility Metadata Crosswalk</a> as well as the ONIX <a
 						href="https://www.editeur.org/files/ONIX%203/APPNOTE%20Accessibility%20metadata%20in%20ONIX.pdf"
 						>essentials accessibility metadata guide</a> and <a
 						href="https://www.editeur.org/files/ONIX%203/APPNOTE%20Accessibility%20metadata%20in%20ONIX%20(advanced).pdf"
@@ -199,35 +222,37 @@
 
 				<p>An access mode is defined as a "human sense perceptual system or cognitive faculty through which a
 					user may process or perceive the content of a digital resource." [[iso24751-3]] For example, if an
-						<a href="https://www.w3.org/TR/epub/#dfn-epub-publication">EPUB publication</a> contains images
-					and video, visual perception is required to consume the content exactly as it was created.</p>
+						<a data-cite="epub-3#dfn-epub-publication">EPUB publication</a> [[epub-3]] contains images and
+					video, visual perception is required to consume the content exactly as it was created.</p>
 
 				<p>There are four access modes that are typically specified for EPUB publications:</p>
 
 				<ul>
 					<li>
-						<p><strong>textual</strong> — the publication contains text content (headings, paragraphs,
-							etc.).</p>
+						<p><a href="#accessmode-textual"><strong>textual</strong></a> — the publication contains text
+							content (headings, paragraphs, etc.).</p>
 					</li>
 					<li>
-						<p><strong>visual</strong> — the publication contains visual content such as images, graphics,
-							diagrams, animations, and video.</p>
+						<p><a href="#accessmode-visual"><strong>visual</strong></a> — the publication contains visual
+							content such as images, graphics, diagrams, animations, and video.</p>
 					</li>
 					<li>
-						<p><strong>auditory</strong> — the publication contains auditory content such as standalone
-							audio clips and audio soundtracks for video content.</p>
+						<p><a href="#accessmode-auditory"><strong>auditory</strong></a> — the publication contains
+							auditory content such as standalone audio clips and audio soundtracks for video content.</p>
 					</li>
 					<li>
-						<p><strong>tactile</strong> — the publication contains tactile content such as embedded braille
-							and tactile diagrams.</p>
+						<p><a href="#accessmode-tactile"><strong>tactile</strong></a> — the publication contains tactile
+							content such as embedded braille and tactile diagrams.</p>
 					</li>
 				</ul>
 
-				<p>For a user to determine whether an EPUB publication is suitable for their needs, they need to know
-					which access modes are required to consume the content. List all applicable access modes in the <a
+				<p>For users to determine whether an EPUB publication is suitable for their needs, they need to know
+					which of these access modes are required to consume the content.</p>
+
+				<p>To provide this information, the applicable access modes are specified using the <a
 						href="https://schema.org/accessMode"><dfn id="schema:accessMode"
 							><code>schema:accessMode</code></dfn> property</a> [[schema-org]], repeating the property
-					for each applicable mode. Do not group all the access modes together in a single tag.</p>
+					for each applicable mode — the access modes must not be grouped together in a single tag.</p>
 
 				<aside class="example" title="Metadata entries for textual and visual access modes">
 					<pre>&lt;meta
@@ -240,7 +265,7 @@
 &lt;/meta></pre>
 				</aside>
 
-				<p>The order in which the access modes are declared currently does not carry any meaning, but best
+				<p>The order in which the access modes are declared currently does not carry any meaning, but a useful
 					practice is to list the access modes by their relevance to reading the content. For example, if a
 					book is primarily text but has some images, list <code>textual</code> first and <code>visual</code>
 					second.</p>
@@ -249,8 +274,8 @@
 					understand a publication. Most EPUB publications contain cover images, for example, but it is not
 					necessary to see the cover image to read the publication. The same is true of publisher logos and
 					images in the content are only for presentational purposes (i.e., have no information so have empty
-					[[html]] <code>alt</code> attribute values). If these are the only visual content, then it is not
-					valid to list a visual access mode. Similarly, if the only audio an EPUB publication contains is
+					[[html]] [^img/alt^] attribute values). If these are the only visual content, then it is not valid
+					to list a visual access mode. Similarly, if the only audio an EPUB publication contains is
 					background music (e.g., for an instructional video with text captions, or as mood music while
 					reading), listing an auditory access mode is not valid.</p>
 
@@ -268,9 +293,8 @@
 				<section id="accessmode-conformance">
 					<h4>EPUB Accessibility conformance</h4>
 
-					<p>[[[epub-a11y-12]]] [[epub-a11y-12]] only recommends that the access modes of a publication be
-						specified in the <a
-							href="https://www.w3.org/2021/a11y-discov-vocab/latest/#accessibilityFeature"
+					<p>[[[epub-a11y]]] [[epub-a11y]] only recommends that the access modes of a publication be specified
+						in the <a href="https://www.w3.org/2021/a11y-discov-vocab/latest/#accessibilityFeature"
 								><code>accessMode</code> property</a> [[a11y-discov-vocab]] as they are not as important
 						for determining usability as the <a href="#accessModeSufficient">sufficient access
 						modes</a>.</p>
@@ -301,10 +325,11 @@
 				<section id="accessmode-textual">
 					<h5>Text content</h5>
 
-					<p>The most common access mode for EPUB publications is textual. It indicates that at least some of
-						the information necessary to read a publication is encoded using Unicode text characters, and is
-						declared by setting a <dfn id="textual">textual <span hidden="hidden">(access mode)</span></dfn>
-						access mode in the package document.</p>
+					<p>The most common access mode for <a data-cite="epub-3#dfn-epub-publication">EPUB publications</a>
+						[[epub-3]] is textual. It indicates that at least some of the information necessary to read a
+						publication is encoded using Unicode characters [[unicode]], and is declared by setting a <dfn
+							id="textual">textual <span hidden="hidden">(access mode)</span></dfn> access mode in the <a
+							data-cite="epub-3#dfn-package-document">package document</a> [[epub-3]].</p>
 
 					<aside class="example" title="Package document markup for a textual access mode">
 						<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
@@ -317,49 +342,57 @@
 &lt;/package></pre>
 					</aside>
 
-					<p>Note that the emphasis for declaring a textual access mode is that the information is necessary
-						to read the publication. This means that not all the textual data that might be found in a
-						publication counts towards declaring a textual access mode.</p>
-
-					<p>Some exceptions where a textual access mode would not be declared include:</p>
+					<p>Not all the text content in a publication is necessary to read it, so when declaring a
+							<code>textual</code> access mode ensure that the text data conveys information necessary to
+						read the authored content. Some instances that would not count toward a <code>textual</code>
+						access mode include:</p>
 
 					<ul>
-						<li>only the table of contents in the EPUB navigation document contains text;</li>
-						<li>the text is extraneous information added by the publisher, such as a list of other works by
-							the author or a biography of the author;</li>
+						<li>when only the table of contents in the <a data-cite="epub-3#sec-nav">EPUB navigation
+								document</a> [[epub-3]] contains text;</li>
+						<li>when the text is extraneous information added by the publisher, such as a list of other
+							works by the author or a biography of the author;</li>
 						<li>cataloging, copyright, and other publisher information found on the title page verso;</li>
-						<li>an audio book that includes only the major section headings for synchronization using EPUB
-							3's media overlays functionality.</li>
+						<li>an audio book that includes only the major section headings for synchronization using <a
+								data-cite="epub-3#sec-media-overlays">media overlays</a> [[epub-3]].</li>
 					</ul>
+
+					<p>Excluding this kind of text content avoids giving a misleading picture of the publication. A
+						comic, for example, might only have a page of text content that displays the publisher's info
+						while the body is composed entirely of images. The text content in this case will not be useful
+						to anyone wanting to read the story.</p>
 
 					<p>As access modes do not take into account any affordances used to make non-textual content
 						accessible (such as alternative text and descriptions for images or transcripts for audio), do
 						not declare a textual access mode if these are the only text content (e.g., for a manga or
-						comic).</p>
+						comics).</p>
 
 					<p>A textual access mode is also not declared if the only text content is encoded as images. For
 						example, headings represented as images in order to preserve unique styling and images of text
 						in the panels of comics are not considered in determining if there is a textual access mode.</p>
 
 					<div class="note">
-						<p>If the text data is preserved separately from the image data, for example by using SVG's text
-							elements, then a textual access mode would be declared as such data is accessible to
-							assistive technologies and can sometimes have its appearance modified by reading
-							systems.</p>
+						<p>If the text data is preserved separately from the image data &#8212; for example, by using
+							the [[svg2]] <a data-cite="svg2/struct.html#TitleElement"><code>title</code></a> or <a
+								data-cite="svg2/struct.html#DescElement"><code>desc</code></a> elements &#8212; then a
+							textual access mode would be declared as such data is accessible to assistive technologies
+							and can sometimes have its appearance modified by <a
+								data-cite="epub-3#dfn-epub-reading-system">reading systems</a> [[epub-3]].</p>
 					</div>
 				</section>
 
 				<section id="accessmode-visual">
 					<h5>Visual content</h5>
 
-					<p>It is common for EPUB publications to contain some visual content, and even be entirely image
-						based as in the case of comics and manga. Visual does not mean the information is only in static
-						images, either. Visual content also encompasses videos as well any dynamic content, such as
-						interactive images or games drawn on the [[html]] [^canvas^] element.</p>
+					<p>It is common for <a data-cite="epub-3#dfn-epub-publication">EPUB publications</a> [[epub-3]] to
+						contain some visual content, and even be entirely image based as in the case of comics and
+						manga. Visual does not mean the information is only in static images, either. Visual content
+						also encompasses videos as well any dynamic content, such as interactive images or games drawn
+						on the [[html]] [^canvas^] element.</p>
 
 					<p>When at least some of the information necessary to read a publication is encoded in visual form,
 						a <dfn id="visual">visual <span hidden="hidden">(access mode)</span></dfn> access mode is
-						declared in the package document.</p>
+						declared in the <a data-cite="epub-3#dfn-package-document">package document</a> [[epub-3]].</p>
 
 					<aside class="example" title="Package document markup for a visual access mode">
 						<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
@@ -373,7 +406,7 @@
 					</aside>
 
 					<p>Not all visual content in a publication carries information necessary to its understanding.
-						Examples of when a visual access mode would not be set include:</p>
+						Examples of when a <code>visual</code> access mode would not be set include:</p>
 
 					<ul>
 						<li>for the cover page;</li>
@@ -382,6 +415,10 @@
 						<li>for visual content that is extraneous information added by the publisher (e.g., corporate
 							logos, author headshot, etc.)</li>
 					</ul>
+
+					<p>Not setting a <code>visual</code> access mode for these kinds of cases avoids users mistakenly
+						believing that they have to be able to see the authored content in order to read and understand
+						it.</p>
 				</section>
 
 				<section id="accessmode-auditory">
@@ -392,14 +429,15 @@
 						a publication and any video that is accompanied by an auditory track, but sounds can be
 						important in other ways, too. If an interactive graphic drawn on the [[html]] [^canvas^] element
 						includes auditory cues or announcements, for example, or if auditory cues are the only
-						indication to users that time is running out on an interaction, an auditory perception is
+						indication to users that time is running out on an interaction, auditory perception is
 						required.</p>
 
 					<p>When at least some of the information necessary to read a publication is encoded in auditory
-						form, a <dfn id="auditory">auditory <span hidden="hidden">(access mode)</span></dfn> access mode
-						is declared in the package document.</p>
+						form, an <dfn id="auditory">auditory <span hidden="hidden">(access mode)</span></dfn> access
+						mode is declared in the <a data-cite="epub-3#dfn-package-document">package document</a>
+						[[epub-3]].</p>
 
-					<aside class="example" title="Package document markup for a auditory access mode">
+					<aside class="example" title="Package document markup for an auditory access mode">
 						<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
    &lt;metadata>
       …
@@ -411,7 +449,7 @@
 					</aside>
 
 					<p>Not all auditory content in a publication carries information necessary to its understanding.
-						Examples of when an auditory access mode would not be set include:</p>
+						Examples of when an <code>auditory</code> access mode would not be set include:</p>
 
 					<ul>
 						<li>for mood music that plays in the background while reading;</li>
@@ -421,6 +459,10 @@
 							value;</li>
 					</ul>
 
+					<p>Not setting an <code>auditory</code> access mode for these kinds of cases avoids users mistakenly
+						believing that they have to be able to hear the authored content in order to read and understand
+						it.</p>
+
 					<section id="accessMode-sync">
 						<h6>Synchronized text and audio</h6>
 
@@ -428,7 +470,8 @@
 								href="https://www.w3.org/TR/epub/#sec-media-overlays">media overlays feature</a>
 							[[epub-3]]. Setting the correct access modes and sufficient access modes for EPUB 3
 							publications that contain synchronized text-audio playback requires evaluating whether
-							playback is essential to reading the publication or an additional feature.</p>
+							playback is essential to reading the publication or whether it is included as an optional
+							feature.</p>
 
 						<p>One of the more common features of media overlays, particularly in mainstream publishing, is
 							to provide synchronized playback of the full text of a publication with full audio
@@ -442,9 +485,9 @@
 								href="#synchronizedAudioText"><code>synchronizedAudioText</code> accessibility
 								feature</a>.</p>
 
-						<p>Having full audio playback capability in this case instead mean that an <a
-								href="#ams-auditory">auditory sufficient access mode</a> needs to be declared — the user
-							can listen to the complete publication as an alternative to reading the text.</p>
+						<p>Having full audio playback capability in this case means that an <a href="#ams-auditory"
+								>auditory sufficient access mode</a> needs to be declared — the user can listen to the
+							complete publication as an alternative to reading the text.</p>
 
 						<aside class="example"
 							title="Package document markup for a book with full text and audio synchronization">
@@ -455,7 +498,7 @@
 						</aside>
 
 						<div class="note">
-							<p>When media overlays are present, EPUB creators should not add "<code>auditory</code>" to
+							<p>When media overlays are present, the "<code>auditory</code>" value should not be added to
 								all the possible sufficient access modes just because it is possible to turn on
 								text-audio playback.</p>
 
@@ -480,13 +523,12 @@
 						<p>In this case, being able to hear the audio is essential to being able to read the
 							publication, so an auditory access mode <strong>is</strong> declared.</p>
 
-						<p>In a reverse of the first case discussed, EPUB creators will <strong>not</strong> identify
-							text-audio synchronization as a feature of the publication since the amount of text provided
-							is trivial.</p>
+						<p>In a reverse of the first case discussed, text-audio synchronization is <strong>not</strong>
+							identified as a feature of the publication since the amount of text provided is trivial.</p>
 
-						<p>Likewise, since the text in the publication only provides heading navigation, EPUB creators
-							will <strong>not</strong> list a textual access mode. The user does not need to, and is not
-							expected to, visually read this text.</p>
+						<p>Likewise, since the text in the publication only provides heading navigation, a
+								<code>textual</code> access mode is <strong>not</strong> listed. The user does not need
+							to, and is not expected to, visually read this text.</p>
 
 						<aside class="example"
 							title="Package document markup for a book with full audio and partial text synchronization">
@@ -505,23 +547,28 @@
 				<section id="accessmode-tactile">
 					<h5>Tactile content</h5>
 
-					<p>Tactile is less common in mainstream EPUB publications but it is sometimes found in content
-						produced specially for users who are blind. Tactile partly overlaps with both textual and visual
-						in what it represents, but the difference is in how. Using braille Unicode characters to
-						represent the text content is a direct corollary to a textual access mode, while tactile
-						graphics and objects are how visual imagery get represented.</p>
+					<p>Tactile content is less common in mainstream <a data-cite="epub-3#dfn-epub-publication">EPUB
+							publications</a> [[epub-3]] but it is sometimes found in content produced specially for
+						users who are blind, and in particular is central to the <a href="https://daisy.org/s/ebraille/"
+							>eBraille format</a> which is based on EPUB 3.</p>
+
+					<p>The <code>tactile</code> access mode partly overlaps with both <a href="#accessmode-textual"
+								><code>textual</code></a> and <a href="#accessmode-visual"><code>visual</code></a> in
+						what it represents, but the difference is in how. Using braille Unicode characters (see <a
+							href="https://www.unicode.org/charts/nameslist/n_2800.html">Braille Patterns</a>
+						[[unicode]]) to represent the text content is a direct corollary to a textual access mode, while
+						tactile graphics and objects are how visual imagery get represented.</p>
 
 					<div class="note">
-						<p>Tactile for text only refers to the use of Unicode braille characters (see <a
-								href="https://www.unicode.org/charts/nameslist/n_2800.html">Braille Patterns</a>). A
-							tactile access mode is never declared simply because it is possible to convert standard text
-							content into braille on the fly. Users seeking to find content that can be converted in this
-							way will look for a fully textual sufficient access mode.</p>
+						<p>A tactile access mode is never declared simply because it is possible to convert standard
+							text content into braille on the fly. Users seeking to find content that can be converted in
+							this way will look for a fully textual <a href="#accessModeSufficient">sufficient access
+								mode</a>.</p>
 					</div>
 
 					<p>When at least some of the information necessary to read a publication is encoded in tactile form,
 						a <dfn id="tactile">tactile <span hidden="hidden">(access mode)</span></dfn> access mode is
-						declared in the package document.</p>
+						declared in the <a data-cite="epub-3#dfn-package-document">package document</a> [[epub-3]].</p>
 
 					<aside class="example" title="Package document markup for a tactile access mode">
 						<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
@@ -536,10 +583,10 @@
 
 					<p>The same as with the textual and visual content it represents, not all tactile content in a
 						publication may carry information necessary to its understanding. The inclusion of inessential
-						textual and visual content in a fully tactile edition, however, is generally quite rare. But, a
+						textual and visual content in a fully tactile edition, however, is generally quite rare. But a
 						mainstream publication could, for example, include links to embossable tactile graphics or
-						printable 3D objects. As this linked content would be considered affordances, or at least
-						supplementary aids, a tactile access mode would not be declared.</p>
+						printable 3D objects. As this type of content would typically be added as an affordance, or at
+						least a supplementary aid, a tactile access mode would not be declared.</p>
 
 					<div class="note">
 						<p>In the case of linked content, a <a href="tactileGraphic">tactile graphic</a> or <a
@@ -565,34 +612,35 @@
 					</ul>
 				</div>
 
-				<p>The visual content indicators are a special class of access mode that extend the <a
+				<p>The visual content indicators are a special class of values that extend the <a
 						href="#accessmode-visual">visual access mode</a>. They provide additional information about the
-					type of content that is encoded as images.</p>
+					type of content that is encoded visually.</p>
 
 				<p>The most common method of encoding visual content in EPUB is as images. Although support for MathML
-					has improved in recent years, it is still common, for example, to find math equations in EPUB
-					publications represented as images to ensure their rendering. Informing users who are blind that a
-					publication has <a href="#mathOnVisual">images of math</a> lets them know that they will have to
-					rely on alternative text and extended descriptions instead of being able to inspect the equations in
-					the kind of detail that MathML allows. It is also an aid to visual readers, as it indicates that the
+					[[mathml3]] has improved in recent years, it is still common, for example, to find math equations in
+						<a data-cite="epub-3#dfn-epub-publication">EPUB publications</a> [[epub-3]] represented as
+					images to ensure their rendering. Informing users who are blind that a publication has <a
+						href="#mathOnVisual">images of math</a> lets them know that they will have to rely on
+					alternative text and extended descriptions instead of being able to inspect the equations in the
+					kind of detail that MathML allows. It is also an aid to visual readers, as it indicates that the
 					text cannot be resized (only zoomed) or have its appearance changed as necessary to make it more
 					accessible.</p>
 
 				<p>But the visual content indicators are not exclusive to image formats. If a video has information that
 					requires color perception to understand, for example, a <a href="#colorDependent">color dependence
-						indicator</a> could be set. Or if an interactive chart is drawn on an [[html]] [^canvas^]
+						indicator</a> could be set. Or, if an interactive chart is drawn on an [[html]] [^canvas^]
 					element, the <a href="#chartOnVisual">chart on visual</a> could be set.</p>
 
-				<p>More than one visual content indicator can apply to an piece of visual content. A publication with an
+				<p>More than one visual content indicator can apply to a piece of visual content. A publication with an
 					image of a chart that uses color to represent the data, for example, would include both the <a
 						href="#chartOnVisual">chart on visual</a> and <a href="colorDependent">color dependence</a>
 					indicators. When declaring visual content indicators, make sure to check a publication's visual
 					content for all that apply.</p>
 
 				<p>As the visual content indicators are a supplementary piece of information, their use is only
-					advisory. It is more important to ensure that a visual access mode is set, and a declaration of a
-					visual content indicator must never occur without a declaration a visual access mode accompanying
-					it.</p>
+					advisory. It is more important to ensure that a <code>visual</code> access mode is set. Moreover,
+					the declaration of a visual content indicator must never occur without the declaration a
+						<code>visual</code> access mode.</p>
 
 				<p>The following list describes the visual content indicator types and how to apply them.</p>
 
@@ -668,17 +716,18 @@
 						</aside>
 						<p>An example of color dependence would be a bar chart where each bar is a different color and a
 							color-coded key is the only way to determine the meaning of each color. A user who cannot
-							differentiate the colors could not match the key values to the each bar.</p>
+							differentiate the colors could not match the key values to each bar.</p>
 						<p>This value does not apply if there are secondary indicators that allow users to distinguish
 							the information. For example, if the bar chart in the previous example also had lines
 							running in different directions to differentiate each bar, then a user could use those
-							patterns to match the bars to the key. Similarly if keywords are placed within each bar
+							patterns to match the bars to the key. Similarly, if keywords are placed within each bar
 							instead of using a separate color key, there would be no chance for confusion.</p>
 						<div class="note">
 							<p>The color dependence indicator is not intended to capture issues with CSS styling, such
-								as hyperlinks that might not be perceivable or student exercises coded by border or
+								as hyperlinks that might not be perceivable, or student exercises coded by border or
 								background color. If a book fails accessibility conformance for these kinds of color
-								problems, it should be noted in the accessibility summary.</p>
+								problems, it should be noted in the <a href="#accessibilitySummary">accessibility
+									summary</a>.</p>
 						</div>
 					</dd>
 
@@ -718,24 +767,20 @@
    &lt;/metadata>
    …
 &lt;/package></pre>
-
-							<p>The <code>mathOnVisual</code> indicator is typically used to indicate that chemical
-								content is represented using static image formats like JPEGs and PNGs. It could also
-								apply if a publication includes a video that, for example, shows mathematical formulas
-								and equations on screen that the reader needs to understand but that are not described
-								in an audio track.</p>
-
-							<p>If the math content is decorative, then this value is not declared. For example, a
-								decorative image at the start of a chapter might depict equations that will be covered
-								but the actual equations in the body use MathML markup.</p>
-
-							<p>MathML and LaTeX are also used to represent mathematical content in a publication. In
-								these cases, although the content is drawn visually, the fact that the equation or
-								formula is based on structured markup or formatting means it is not purely visual;
-								assistive technologies can help users step through the underlying structure. The use of
-									<a href="#MathML">MathML</a> and <a href="#latex">LaTeX</a> are instead represented
-								as accessibility features.</p>
 						</aside>
+						<p>The <code>mathOnVisual</code> indicator is typically used to indicate that chemical content
+							is represented using static image formats like JPEGs and PNGs. It could also apply if a
+							publication includes a video that, for example, shows mathematical formulas and equations on
+							screen that the reader needs to understand but that are not described in an audio track.</p>
+						<p>If the math content is decorative, then this value is not declared. For example, a decorative
+							image at the start of a chapter might depict equations that will be covered but the actual
+							equations in the body use MathML markup.</p>
+						<p>MathML and LaTeX are also used to represent mathematical content in a publication. In these
+							cases, although the content is drawn visually, the fact that the equation or formula is
+							based on structured markup or formatting means it is not purely visual; assistive
+							technologies can help users step through the underlying structure. The use of <a
+								href="#MathML">MathML</a> and <a href="#latex">LaTeX</a> are instead represented as
+							accessibility features.</p>
 					</dd>
 
 					<dt id="visual-indicator-music">Music</dt>
@@ -753,11 +798,11 @@
    …
 &lt;/package></pre>
 						</aside>
-						<p>Unlike math and chemical content, there is no support for rendering a markup language for
-							music, such as MusicXML. Visual representation, often in image form, is the most common way
-							to add music notation. (Text tablature notation can be added to EPUBs for stringed
-							instruments, but as unstructured text it is also not easily accessible to users who cannot
-							visually read the text.)</p>
+						<p>Unlike math and chemical content, there is no support for rendering a music markup language,
+							such as MusicXML. Visual representation, often in image form, is the most common way to add
+							music notation. (Text tablature notation can be added to EPUBs for stringed instruments, but
+							as unstructured text it is also not easily accessible to users who cannot visually read the
+							text.)</p>
 						<p>Images are not the only way that music can be visually encoded. An instructional video in a
 							music book could show musical notation to allow the user to play along with a recorded
 							sample. This would also necessitate declaring a visual music indicator.</p>
@@ -794,14 +839,15 @@
 							indicator.</p>
 						<p>For example, the text on signs and billboards in the background of a photograph do not
 							represent text on visual imagery if they are incidental to what the image is conveying.
-							Similarly, a publisher's name in their logo should not be declared as text in visual
+							Similarly, a publisher's name in their logo should not be declared as text on visual
 							content.</p>
 						<div class="note">
 							<p>The use of SVG is a special case when semantic elements are used to add the text to the
 								image. When this is done in reflowable EPUBs, the text on visual indicator can be
 								omitted as there is the possibility to access and change the appearance of the text. But
-								it would not be true in a fixed layout EPUB as reading systems restrict control over the
-								appearance of the pages.</p>
+								it would not be true in a fixed layout EPUB as <a
+									data-cite="epub-3#dfn-epub-reading-system">reading systems</a> [[epub-3]] restrict
+								control over the appearance of the pages.</p>
 							<p>If SVG's text elements are not used to display the text, then <code>textOnVisual</code>
 								is specified since the text is not separate from the drawn image.</p>
 						</div>
@@ -815,11 +861,11 @@
 			<section id="ams-setting">
 				<h3>Setting sufficient access modes</h3>
 
-				<p>The access modes sufficient to consume an <a href="https://www.w3.org/TR/epub/#dfn-epub-publication"
-						>EPUB publication</a> express a broader picture of the potential usability than do the <a
+				<p>The access modes sufficient to consume an <a data-cite="epub-3#dfn-epub-publication">EPUB
+						publication</a> [[epub-3]] express a broader picture of the potential usability than do the <a
 						href="#accessMode">primary access modes</a>. The primary access modes identify the default
 					nature of the media used in the publication (e.g., that it has text and images). Sufficient access
-					modes, on the hand, account for all the ways that a user can read that content.</p>
+					modes, on the other hand, account for all the ways that a user can read that content.</p>
 
 				<p>Another way of thinking of the difference between the primary access modes and the sufficient access
 					modes is that the sufficient access modes also account for the affordances and adaptations that have
@@ -839,10 +885,11 @@
 &lt;/meta></pre>
 				</aside>
 
-				<p>Unlike the other Schema.org metadata expressed in the EPUB 3 package document, sufficient access
-					modes can consist of one or more values separated by a comma and optional space. Because sufficient
-					access modes are telling users the different ways that the content can be read, each set is
-					expressed in a separate tag rather than each individual value.</p>
+				<p>Unlike the other Schema.org metadata expressed in the <a data-cite="epub-3#dfn-package-document"
+						>package document</a> [[epub-3]], sufficient access modes can consist of one or more values
+					separated by a comma and optional space. Because sufficient access modes are telling users the
+					different ways that the content can be read, each set is expressed in a separate tag rather than
+					each individual value.</p>
 
 				<p>The most common reason for having multiple <code>schema:accessModeSufficient</code> declarations is
 					to capture both the default nature of a publication as well as the alternative reading pathways
@@ -875,10 +922,14 @@
 				<section id="ams-conformance">
 					<h4>EPUB Accessibility conformance</h4>
 
-					<p>[[[epub-a11y-12]]] [[epub-a11y-12]] requires that the sufficient access modes of a publication be
+					<p>[[[epub-a11y]]] [[epub-a11y]] requires that the sufficient access modes of a publication be
 						specified in the <a
 							href="https://www.w3.org/2021/a11y-discov-vocab/latest/#accessModeSufficient"
 								><code>accessModeSufficient</code> property</a> [[a11y-discov-vocab]].</p>
+
+					<p>The <a href="#ams-single-values">single sufficient access modes</a>, when applicable, are the
+						most important to list. <a href="#ams-combined-values">Combined sets</a> can also be listed but
+						are not as critical.</p>
 				</section>
 			</section>
 
@@ -886,38 +937,40 @@
 				<h3>Single reading modes</h3>
 
 				<p>Although sufficient access mode are expressed as sets consisting of one or more values, the most
-					strongly recommended sets to list are the ones that in fact consist of only a single value. The
-					reason why these are the most important is that they tell users that all the content can be read in
-					the specified method.</p>
+					strongly recommended sets to list are the ones that consist of only a single value. The reason why
+					these are the most important is that they tell users that all the content can be read in the
+					specified method.</p>
 
 				<p>Someone who is blind, for example, might want to know that all the content is available in text form
-					so they can use an assistive technology or their reading system's built-in read aloud functionality
-					to read the book. Or they might want to know that all the content is available as pre-recorded audio
-					for enhanced legibility. They are going to be less interested that if you can perceive text, visual,
-					and auditory content that you can also read the book (even though this is the default sufficient
-					access mode based on the primary access modes), as the visual content is problematic without the
-					provision of alternative text and long descriptions.</p>
+					so they can use an assistive technology or their <a data-cite="epub-3#dfn-epub-reading-system"
+						>reading system's</a> [[epub-3]] built-in read aloud functionality to read the book. Or they
+					might want to know that all the content is available as pre-recorded audio for enhanced legibility.
+					They are going to be less interested that if you can perceive text, visual, and auditory content
+					that you can also read the book (even though this is the default sufficient access mode based on the
+					primary access modes), as the visual content is problematic without the provision of alternative
+					text and long descriptions.</p>
 
-				<p>The possible single sufficient access mode values are identical to the primary access modes, as
-					described in the following sections.</p>
+				<p>The possible single sufficient access mode values are identical to the <a href="#accessMode">primary
+						access modes</a>, as described in the following sections.</p>
 
 				<section id="ams-single-textual">
 					<h4>Textual</h4>
 
 					<p>Setting the <dfn id="ams-textual">textual <span hidden="hidden">(sufficient access
 							mode)</span></dfn> value indicates that information necessary to read a publication is
-						available in textual form.</p>
+						available in text form.</p>
 
-					<p>Unlike a textual primary access mode, the inclusion of text alternatives such as alternative
-						text, extended descriptions, closed captions, and transcripts does allow a textual sufficient
-						access mode to be set.</p>
+					<p>Unlike a <a href="#accessmode-textual">textual primary access mode</a>, the inclusion of text
+						alternatives such as alternative text, extended descriptions, closed captions, and transcripts
+						does allow a textual sufficient access mode to be set.</p>
 
 					<p>When <code>textual</code> is the only sufficient access mode set, it means that all the
 						information necessary to read the publication is available in textual form, so it is generally
 						interpreted as indicating that the publication is screen-reader and dynamic braille display
 						friendly.</p>
 
-					<p>A single textual sufficient access mode can be set for EPUB publications that conform to <a
+					<p>A single textual sufficient access mode can be set for <a data-cite="epub-3#dfn-epub-publication"
+							>EPUB publications</a> [[epub-3]] that conform to <a
 							href="https://www.w3.org/TR/WCAG2/#cc1_A">Level A</a> [[wcag2]] or higher, for example, as
 						there must be textual alternatives for non-text content to meet these thresholds.</p>
 				</section>
@@ -945,7 +998,8 @@
 
 					<p>Setting the <dfn id="ams-auditory">auditory <span hidden="hidden">(sufficient access
 							mode)</span></dfn> value indicates that information necessary to read a publication is
-						available as prerecorded audio (whether prerecorded human speech or synthetic speech).</p>
+						available as prerecorded audio (whether prerecorded human speech or prerecorded synthetic
+						speech).</p>
 
 					<p>When <code>auditory</code> is the only sufficient access mode set, it means that all the
 						information necessary to read the publication is available as prerecorded audio.</p>
@@ -953,6 +1007,13 @@
 					<p>A single auditory sufficient access mode typically indicates that media overlays have been used
 						to provide audio for all the text and visual content, but it could also set if, for example, a
 						book of poetry also contained (non-synchronized) recordings for each poem.</p>
+
+					<div class="note">
+						<p>An <code>auditory</code> sufficient access mode is not set for textual content that the user
+							might be able to get rendered as synthetic speech via their <a
+								data-cite="epub-3#dfn-epub-reading-system">reading system</a> [[epub-3]]. The auditory
+							content must come prerecorded with the publication.</p>
+					</div>
 				</section>
 
 				<section id="ams-single-tactile">
@@ -963,10 +1024,10 @@
 						available in tactile form. It indicates some mix of braille Unicode characters, tactile
 						graphics, and tactile objects are included in the publication.</p>
 
-					<p>Unlike a tactile primary access mode, the provision of links to tactile graphics and objects does
-						allow a tactile sufficient access mode to be set. Such linked content rarely correlates with a
-						publication being fully readable in tactile form; see the next section on <a
-							href="#ams-combined-values">combined reading modes</a>.</p>
+					<p>Unlike a <a href="#accessmode-tactile">tactile primary access mode</a>, providing links to
+						tactile graphics and objects does allow a tactile sufficient access mode to be set. Such linked
+						content, however, rarely correlates with a publication being fully readable in tactile form; see
+						the next section on <a href="#ams-combined-values">combined reading modes</a>.</p>
 
 					<p>When <code>tactile</code> is the only sufficient access mode set, it means that all the
 						information necessary to read the publication is available in tactile form.</p>
@@ -985,10 +1046,11 @@
 					can be read, especially if the primary access modes are not set.</p>
 
 				<p>Publications that have more than one primary access mode always have a sufficient access mode set
-					that is the combination of all those primary modes. For example, a book with text and images has
-						<code>textual</code> and <code>visual</code> primary access modes. Since those two values tell
-					the user that they have to be able to read text content and perceive visual content, the content has
-					a sufficient reading mode that is also those two values.</p>
+					that is the combination of all those primary modes. For example, a book with text and images has <a
+						href="#textual"><code>textual</code></a> and <a href="#visual"><code>visual</code></a> primary
+					access modes. Since those two values tell the user that they have to be able to read text content
+					and perceive visual content, the content has a sufficient reading mode that combines the
+						<code>textual</code> and <code>visual</code> values.</p>
 
 				<aside class="example"
 					title="Metadata showing primary access modes combined into a default sufficient access mode">
@@ -1006,16 +1068,12 @@
 &lt;/meta></pre>
 				</aside>
 
-				<div class="note">
-					<p>Not all publications have more than one sufficient access mode. Novels, for example, are often
-						purely textual and in such cases only have a single textual sufficient access mode.</p>
-				</div>
-
 				<p>Because sufficient access modes account for affordances, the possible sets of sufficient access modes
 					are not always strictly combinations of the primary modes, even if there is always one set that
 					equals all the primary modes. An example would be a comic that only provides alternative text so is
 					not fully accessible as text. In this case, it would have a <code>visual</code> primary access mode
-					but also a set of sufficient access modes that includes <code>textual</code>.</p>
+					but also a sufficient access mode set that includes <code>visual</code> and
+					<code>textual</code>.</p>
 
 				<aside class="example" title="Sufficient access modes for a visual work with alternative text">
 					<pre>&lt;meta
@@ -1046,8 +1104,8 @@
 				<section id="features-setting">
 					<h4>Setting features</h4>
 
-					<p>Identifying all the accessibility features and adaptations included in an <a
-							href="https://www.w3.org/TR/epub/#dfn-epub-publication">EPUB publication</a> allows users to
+					<p>Identifying the accessibility features and adaptations included in an <a
+							data-cite="epub-3#dfn-epub-publication">EPUB publication</a> [[epub-3]] allows users to
 						determine whether the content is usable at a more fine-grained level than the access modes
 						do.</p>
 
@@ -1059,7 +1117,7 @@
 					<p>Accessibility features are identified in the <a href="https://schema.org/accessibilityFeature"
 								><dfn id="schema:accessibilityFeature"
 							><code>schema:accessibilityFeature</code></dfn> property</a> [[schema-org]]. The property is
-						repeated for each feature; do not group all the features into one tag.</p>
+						repeated for each feature &#8212; do not group all the features into one tag.</p>
 
 					<aside class="example" title="Metadata for MathML and alternative text">
 						<pre>&lt;meta
@@ -1080,11 +1138,12 @@
 					<section id="features-conformance">
 						<h5>EPUB Accessibility conformance</h5>
 
-						<p>[[[epub-a11y-12]]] [[epub-a11y-12]] requires that the accessibility features of a publication
-							be specified in the <a
-								href="https://www.w3.org/2021/a11y-discov-vocab/latest/#accessibilityFeature"
+						<p>[[[epub-a11y]]] [[epub-a11y]] requires that the accessibility features of an <a
+								data-cite="epub-3#dfn-epub-publication">EPUB publication</a> [[epub-3]] be specified in
+							the <a href="https://www.w3.org/2021/a11y-discov-vocab/latest/#accessibilityFeature"
 									><code>accessibilityFeature</code> property</a> [[a11y-discov-vocab]]. This means
-							that at least one accessibility feature must be declared in the package document metadata in
+							that at least one accessibility feature must be declared in the <a
+								data-cite="epub-3#dfn-package-document">package document</a> [[epub-3]] metadata in
 							order for an EPUB publication to claim conformance.</p>
 
 						<div class="note">
@@ -1101,17 +1160,18 @@
 					<h4>When to claim features</h4>
 
 					<p>One of the most common questions about accessibility features is not what they refer to but when
-						they can be claimed in the package document metadata. Features may not be applicable in every
-						situation, for example, such as is the case for extended descriptions. Or a mix of features
-						might be used, such as to provide alternatives for audio and video content.</p>
+						they can be claimed in the <a data-cite="epub-3#dfn-package-document">package document</a>
+						[[epub-3]] metadata. Features may not be applicable in every situation, for example, such as is
+						the case for extended descriptions. Or a mix of features might be used, such as to provide
+						alternatives for audio and video content.</p>
 
-					<p>Ideally, a feature will only be claimed when it, possibly in combination with other features,
-						covers all cases, as this will make the content optimally accessible. But limiting reporting to
-						this standard would mean that users will have difficulty determining if content that may not be
-						fully conforming to accessibility standards may still be usable to them.</p>
+					<p>Ideally, a feature will only be claimed when it covers all applicable cases, as this will make
+						the content optimally accessible. But limiting reporting to this standard would mean that users
+						will have difficulty determining if content that may not be fully conforming to accessibility
+						standards may still be usable to them.</p>
 
-					<p>Consequently, a measure of common sense is necessary when deciding whether to apply a feature
-						that is not universal in application. The goal of this metadata is to help users determine the
+					<p>Consequently, a measure of common sense is necessary when deciding whether to declare a feature
+						that is not applied universally. The goal of this metadata is to help users determine the
 						suitability of the content, not to make publishers feel better about content that they know they
 						have not made fully accessible.</p>
 
@@ -1119,14 +1179,15 @@
 						claiming that the publication provides this feature is clearly stretching the truth. But if half
 						the images are described, there is some value to users.</p>
 
-					<p>The key when not providing full coverage is to detail why not in the accessibility summary so
-						that users are aware of the limitations up front. The following information is especially useful
-						to provide when making claims against incomplete coverage:</p>
+					<p>The key when not providing full coverage is to detail why not in the <a
+							href="#accessibilitySummary">accessibility summary</a> so that users are aware of the
+						limitations up front. The following information is especially useful to provide when making
+						claims against incomplete coverage:</p>
 
 					<ul>
 						<li>why there are coverage gaps and if an update is planned to fix them;</li>
 						<li>a rough estimate of how complete the coverage is; and</li>
-						<li>if possible, which sections or chapters have complete coverage and which do not;</li>
+						<li>if possible, which sections or chapters have complete coverage and which do not.</li>
 					</ul>
 				</section>
 
@@ -1134,8 +1195,9 @@
 					<h4>When features are not known</h4>
 
 					<p>There may be times when the presence of accessibility features is not known but a statement is
-						still needed in the package document metadata. This usually happens if a placeholder is needed
-						until an accessibility evaluation is carried out.</p>
+						still needed in the <a data-cite="epub-3#dfn-package-document">package document</a> [[epub-3]]
+						metadata. This usually happens if a placeholder is needed until an accessibility evaluation is
+						carried out.</p>
 
 					<p>To indicate that the presence of accessibility features is not known, the <dfn id="unknown"
 							>unknown <span hidden="hidden">(feature)</span></dfn> accessibility feature is declared.</p>
@@ -1166,16 +1228,18 @@
 				<section id="features-none">
 					<h4>When there are no features</h4>
 
-					<p>It is first worth noting that it is rare that there are no accessibility features in an EPUB
-						publication, even if the publication as a whole does not meet minimum accessibility conformance
-						standards. Except for some edge cases, all EPUBs can typically claim to provide a <a
-							href="#tableOfContents">table of contents</a>, for example, since this is a required
-						component of the standard. It is also most often the case that reflowable EPUB publications can
-						claim a <a href="#readingOrder">reading order</a>.</p>
+					<p>It is first worth noting that it is rare that there are no accessibility features in an <a
+							data-cite="epub-3#dfn-epub-publication">EPUB publication</a> [[epub-3]], even if the
+						publication as a whole does not meet minimum accessibility conformance standards. Except for
+						some edge cases, all EPUBs can typically claim to provide a <a href="#tableOfContents">table of
+							contents</a>, for example, since this is a required component of the standard. It is also
+						most often the case that reflowable EPUB publications can claim a <a href="#readingOrder"
+							>reading order</a>.</p>
 
 					<p>But in the case where an EPUB publication provides no accessibility features, the lack of
-						features is indicated in the package document metadata using the <dfn id="none">none <span
-								hidden="hidden">(feature)</span></dfn> value.</p>
+						features is indicated in the <a data-cite="epub-3#dfn-package-document">package document</a>
+						[[epub-3]] metadata using the <dfn id="none">none <span hidden="hidden">(feature)</span></dfn>
+						value.</p>
 
 					<aside class="example" title="Package document markup for no accessibility features">
 						<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
@@ -1202,9 +1266,9 @@
 						individual values in isolation.</p>
 
 					<p>All the features that are used to address the accessibility of audio and video are discussed
-						together, for example, to better explain the purpose and complimentary uses of the features.
-						This also allows features to be discussed that have exclusive values, such as whether full or
-						partial ruby annotations are provided.</p>
+						together, for example, to better explain the complimentary uses of the features. This also
+						allows features to be discussed that have exclusive values, such as whether full or partial ruby
+						annotations are provided.</p>
 
 					<p>A navigation menu is included at the start of each section to help locate which features are
 						addressed in it. In addition, the <a href="#index-defined-here">index of terms</a> provides
@@ -1224,34 +1288,30 @@
 				</div>
 
 				<p>EPUB 3 publications allow the aural rendering of text content through the use of text-to-speech (TTS)
-					playback (commonly referred to as "read aloud" capability) and media overlays. Both renderings are
-					capable of providing audio playback of the text synchronized with highlighting of the associated
-					text.</p>
+					playback (commonly referred to as "read aloud" capability) and <a
+						data-cite="epub-3#sec-media-overlays">media overlays</a> [[epub-3]]. Both renderings are capable
+					of providing audio playback of the text synchronized with highlighting of the associated text.</p>
 
 				<p>Text-to-speech engines, however, often fail to provide accurate readings of the text. Heteronyms, for
 					example, where two words are spelled the same but have different pronunciations, often result in the
 					wrong word being pronounced. Complex words, such as chemical names and technical jargon, also result
 					in illegible playback, as do fictional words and names created by an author (for example, in works
-					of science fiction). TTS playback also suffers from an inability to indicating emphasis or to
-					controlling the pacing and prosody of the narration.</p>
+					of science fiction). TTS playback also suffers from an inability to indicate emphasis or to control
+					the pacing and prosody of the narration.</p>
 
-				<p>It is possible to provide enhancements in the markup of EPUB publications to help TTS engines render
-					text accurately. EPUB 3's SSML attribute, for example, were intended to allow the inlining of
-					pronunciation information, while PLS lexicons [[pronunciation-lexicon]] were designed to provide a
-					reusable library of pronunciations. CSS Speech Level 1 [[css-speech]] properties address the issues
-					text-to-speech playback quality (for example, the voice to use, whether to spell out words, and when
-					to provide emphasis).</p>
+				<p>It is possible to provide enhancements in the markup of <a data-cite="epub-3#dfn-epub-publication"
+						>EPUB publications</a> [[epub-3]] to help TTS engines render text accurately. EPUB 3's <a
+						data-cite="epub-tts#ssml">SSML attributes</a> [[epub-tts]], for example, were intended to allow
+					the inlining of pronunciation information, while PLS lexicons [[pronunciation-lexicon]] were
+					designed to provide a reusable library of pronunciations. CSS Speech [[css-speech]] properties
+					address the issues text-to-speech playback quality (for example, the voice to use, whether to spell
+					out words, and when to provide emphasis).</p>
 
 				<p>Unfortunately, at this time none of these technologies have been proven to work at any kind of scale
-					in EPUB reading systems. EPUB 3's SSML attributes will likely never be implemented and are best
-					avoided. PLS lexicons are theoretically very useful but there are no known implementations after
-					over fifteen years of existence. And CSS Speech has only had limited experimental support in Safari
-					browsers. There is a possibility that PLS lexicons and CSS Speech will find support some day, and
-					other technologies may come along to fix the problem of inlining SSML pronunciation information.</p>
-
-				<p>Despite these shortcomings, if a publisher makes the effort to enhance TTS playback, they can
-					indicate this by adding the <dfn id="ttsMarkup">ttsMarkup</dfn> feature to the EPUB package
-					document.</p>
+					in EPUB <a data-cite="epub-3#dfn-epub-reading-system">reading systems</a> [[epub-3]]. Despite this
+					shortcoming, if a publisher makes the effort to enhance TTS playback for a specific regional use
+					case, they can indicate this by adding the <dfn id="ttsMarkup">ttsMarkup</dfn> feature to the <a
+						data-cite="epub-3#dfn-package-document">package document</a> [[epub-3]].</p>
 
 				<aside class="example" title="Package document markup for the text-to-speech feature">
 					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
@@ -1288,16 +1348,11 @@
 				</aside>
 
 				<p>The audio provided with media overlays is typically human narrated but some producers will also use
-					text-to-speech engines to create the audio. TTS is often used when providing audio-synchronized
-					playback of backmatter, which is tedious for humans to read.</p>
-
-				<p>Although this prerecorded synthetic speech is prone to the same failings as dynamic TTS generation,
-					the <code>ttsMarkup</code> is not set in the package document metadata if the producer makes an
-					effort to improve their audio. There currently is no feature to differentiate the quality of
-					prerecorded synthetic speech.</p>
+					text-to-speech engines to create the audio. Prerecorded text-to-speech narration is often used when
+					providing audio-synchronized playback of backmatter, which is tedious for humans to read.</p>
 
 				<div class="note">
-					<p>It is possible with media overlays to synchronize dynamic text-to-speech rendering with text
+					<p>Media overlays also makes it possible to synchronize dynamic text-to-speech rendering with text
 						highlighting, although this is not commonly done or supported by reading systems.</p>
 				</div>
 
@@ -1319,9 +1374,9 @@
 				</div>
 
 				<p>Providing accessible markup for chemical formulas and equations allows users to inspect the equations
-					themselves rather than relying images of the content with alternative text and descriptions provided
-					by the publisher. Even when care is taken in the writing of descriptions, ambiguities can arise
-					because human language is not always as precise as the equations themselves.</p>
+					themselves rather than rely on images of the content with alternative text and descriptions. Even
+					when care is taken in the writing of descriptions, ambiguities can arise because human language is
+					not always as precise as the equations themselves.</p>
 
 				<p>Accessible markup also provides a robust, accessible alternative to images, as the notation can be
 					resized, searched, copied, and interpreted correctly by screen readers.</p>
@@ -1330,14 +1385,16 @@
 					>ChemML</a>, there are still two markup syntaxes that can be used to add accessible chemical
 					formulas and equations.</p>
 
-				<p>The first of these, despite its name, is MathML. MathML provides a structured, semantic
+				<p>The first of these, despite its name, is MathML [[mathml3]]. MathML provides a structured, semantic
 					representation that can be rendered directly by modern browsers and assistive technologies. MathML
-					markup can be added directly to HTML documents or stored in separate files and embedded using the
-					[^object^] element. Just as it is able to represent mathematical equations, its syntax is also
-					adaptable to representing chemical equations and formulas.</p>
+					markup is added directly to <a data-cite="epub-3#dfn-xhtml-content-document">XHTML content
+						document</a> [[epub-3]]. Just as it is able to represent mathematical equations, its syntax is
+					also adaptable to representing chemical equations and formulas.</p>
 
-				<p>When an EPUB publication contains chemical formulas and equations marked up as MathML, the <dfn
-						id="MathML-chemistry">MathML-chemistry</dfn> feature is set in the package document.</p>
+				<p>When an <a data-cite="epub-3#dfn-epub-publication">EPUB publication</a> [[epub-3]] contains chemical
+					formulas and equations marked up as MathML, the <dfn id="MathML-chemistry">MathML-chemistry</dfn>
+					feature is set in the <a data-cite="epub-3#dfn-package-document">package document</a>
+					[[epub-3]].</p>
 
 				<aside class="example" title="Package document markup for the MathML chemistry feature">
 					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
@@ -1356,11 +1413,11 @@
 					additional markup overhead.</p>
 
 				<p>The other way to represent chemical equations and formulas is using the LaTeX typesetting system.
-					LaTeX rendering is not natively supported in reading systems, so it is often only used by publishers
-					for preparing print manuscripts and transformed into another form, like images, for digital
-					publications. But it is possible to embed LaTeX-formatted equations and use a JavaScript library
-					like MathJAX to translate them for visual reading (the caveat, of course, is that not all reading
-					systems support scripting).</p>
+					LaTeX rendering is not natively supported in <a data-cite="epub-3#dfn-epub-reading-system">reading
+						systems</a> [[epub-3]], so it is often only used by publishers for preparing print manuscripts
+					and transformed into another form, like images, for digital publications. But it is possible to
+					embed LaTeX-formatted equations and use a JavaScript library like MathJAX to translate them for
+					visual reading (the caveat, of course, is that not all reading systems support scripting).</p>
 
 				<p>Another possible use for LaTeX-formatted equations is as the alternative text for images, although
 					this can lead to poor pronunciation by assistive technologies.</p>
@@ -1391,8 +1448,8 @@
 
 				<div class="note">
 					<p>Although in theory it is possible for an EPUB publication to contain chemical equations and
-						formulas encoded both in MathML and LaTeX, such dual encoding is not found in practice.
-						Publishers use one or the other syntax.</p>
+						formulas encoded both in MathML [[mathml3]] and LaTeX, such dual encoding is not found in
+						practice. Publishers use one or the other syntax.</p>
 				</div>
 			</section>
 
@@ -1407,8 +1464,9 @@
 				</div>
 
 				<p>The <dfn id="displayTransformability">displayTransformability</dfn> accessibility feature value is
-					used to indicate that the user can modify the presentation of the text content of an EPUB
-					publication to their own preferences without negatively affecting the readability.</p>
+					used to indicate that the user can modify the presentation of the text content of an <a
+						data-cite="epub-3#dfn-epub-publication">EPUB publication</a> [[epub-3]] to their own preferences
+					without negatively affecting the readability.</p>
 
 				<aside class="example" title="Package document markup for the display transformability feature">
 					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
@@ -1446,16 +1504,16 @@
 
 				<div class="note">
 					<p>Providing guidelines tailored to every language is outside the scope of this guide so publishers
-						will need to take into consideration the local accessibility of needs when determining if the
-						content is sufficiently transformable. One measure of conformance is to match the
-						transformability to common display control properties provided by reading systems tailored to
-						the local language.</p>
+						will need to take into consideration local accessibility needs when determining if the content
+						is sufficiently transformable. One measure of conformance is to match the transformability to
+						common display control properties provided by <a data-cite="epub-3#dfn-epub-reading-system"
+							>reading systems</a> [[epub-3]] tailored to the local language.</p>
 				</div>
 
-				<p>To claim this feature, note that text must not be represented as images unless it falls under one of
-					the exceptions specified in <a data-cite="wcag2#images-of-text">success criterion 1.4.5</a>
-					[[wcag2]] or the text is incidental to the purpose of the image (e.g., text on a billboard or street
-					sign in the background of an image).</p>
+				<p>To claim this feature, text must not be represented as images unless it falls under one of the
+					exceptions specified in <a data-cite="wcag2#images-of-text">success criterion 1.4.5</a> [[wcag2]] or
+					the text is incidental to the purpose of the image (e.g., text on a billboard or street sign in the
+					background of an image).</p>
 
 				<p>In general, reflowable EPUB publications will meet display transformability requirements so long as
 					none of the content is constrained visually by its bounding box. This typically only happens if
@@ -1480,8 +1538,8 @@
 					</ul>
 				</div>
 
-				<p>The <code>schema:accessibilityFeature</code> property defines two values for indicating that the
-					display of an EPUB publication has been enhanced by the publisher.</p>
+				<p>There are two values for indicating that the display of an <a data-cite="epub-3#dfn-epub-publication"
+						>EPUB publication</a> [[epub-3]] has been enhanced by the publisher.</p>
 
 				<p>The first of these is the <dfn id="highContrastDisplay">highContrastDisplay</dfn> feature, which is
 					used to state that there is a higher-than-normal contrast between text and its background.
@@ -1501,15 +1559,15 @@
 
 				<p>This feature can be set when text and background color combinations meet or exceed the 7:1 contrast
 					ratio for normal-sized text. It is the equivalent of meeting [[wcag2]] <a
-						data-cite="wcag2#contrast-enhanced">success criteria 1.4.6</a>.</p>
+						data-cite="wcag2#contrast-enhanced">success criterion 1.4.6</a>.</p>
 
 				<p>Note that to meet the requirements for setting this feature that images of text also have to meet the
-					contrast requirements. The only exceptions are defined in SC 1.4.6, with the most typical exception
-					for digital publications being for publisher and imprint logos.</p>
+					contrast requirements. The only exceptions are defined in success criterion 1.4.6, with the most
+					typical exception for digital publications being for publisher and imprint logos.</p>
 
 				<div class="note">
-					<p>There is no feature for meeting the minimal contrast requirements defined in [[wcag2]] <a
-							data-cite="wcag2#contrast-minimum">success criteria 1.4.3</a>.</p>
+					<p>The schema.org vocabulary does not define feature for meeting the minimal contrast requirements
+						defined in [[wcag2]] <a data-cite="wcag2#contrast-minimum">success criteria 1.4.3</a>.</p>
 				</div>
 
 				<p>The other feature for enhanced display is <dfn id="largePrint">largePrint</dfn> which is used to
@@ -1542,8 +1600,8 @@
 					publisher has provided may not be viewable unless the user reverts their own preferences.</p>
 
 				<p>The <code>largePrint</code> feature must never be used to indicate that it is possible to reformat
-					the text (i.e., that the display is transformable). Features are set based on the defaults of a
-					publication not on what it might be possible to achieve.</p>
+					the text to a larger size (i.e., that the display is transformable). Features are set based on the
+					defaults of a publication not on what it might be possible to achieve.</p>
 
 				<p>The most likely scenario for setting the <code>largePrint</code> feature is when a print-equivalent
 					reproduction of a physical large print book is created using EPUB 3 fixed layouts. But the reality
@@ -1566,12 +1624,13 @@
 
 				<p>There are two primary features that identify that accessible alternatives have been provided:
 					alternative text and extended descriptions. Alternative text is a short description that can stand
-					in for the image (usually added to the <code>alt</code> attribute in HTML documents) while extended
-					descriptions provide additional detail when images express information that cannot be conveyed
-					through a brief description.</p>
+					in for the image (usually added to the [[html]] [^img/alt^] attribute in <a
+						data-cite="epub-3#dfn-xhtml-content-document">XHTML content documents</a> [[epub-3]]) while
+					extended descriptions provide additional detail when images express information that cannot be
+					conveyed through a brief description.</p>
 
-				<p>With the exception of decorative images (those that convey no information needed to understand the
-					text), all images require alternative text to be accessible. The accessibility feature for
+				<p>With the exception of decorative images &#8212; those that convey no information needed to understand
+					the text &#8212; all images require alternative text to be accessible. The accessibility feature for
 					indicating that alternative text has been provided is <dfn id="alternativeText"
 						>alternativeText</dfn>.</p>
 
@@ -1586,12 +1645,9 @@
 &lt;/package></pre>
 				</aside>
 
-				<p>Publishers can declare that alternative text is provided even if not every image is described,
-					although omitting alternative text is never recommended.</p>
-
 				<p>The alternative text provided for images must be meaningful both to meet accessibility requirements
 					and to claim the <code>alternativeText</code> accessibility feature. A publication that simply
-					auto-fills every <code>alt</code> attribute with the text "Image", for example, is not providing
+					auto-fills every [[html]] [^img/alt^] attribute with the text "Image", for example, is not providing
 					users with a meaningful alternative.</p>
 
 				<p>Sometimes images will contain more information than can be expressed in a short alternative text
@@ -1621,7 +1677,7 @@
 						misnomer, however, as the descriptions provide additional detail and complement alternative
 						text, they are not simply longer in length. That is why "extended description" is now the common
 						name. Changing the schema.org vocabulary would only add development costs, so the old name is
-						still used for metadata.</p>
+						still used in it.</p>
 				</div>
 			</section>
 
@@ -1637,15 +1693,24 @@
 					</ul>
 				</div>
 
-				<p>There are several ways to provide accessible math equations in EPUB publications, but support in
-					reading systems has historically been a barrier to the adoption of the most accessible. For example,
-					although MathML would intuitively seem to be the most accessible way to add math, it was not well
-					supported in HTML until recently. Its rendering in older reading systems still often relies on a
-					JavaScript library that greatly slows the presentation the more equations there are to render.</p>
+				<p>There are several ways to provide accessible math equations in <a
+						data-cite="epub-3#dfn-epub-publication">EPUB publications</a> but support in <a
+						data-cite="epub-3#dfn-epub-reading-system">reading systems</a> [[epub-3]] has historically been
+					a barrier to the adoption of the most accessible methods. For example, although MathML [[mathml3]]
+					would intuitively be the most accessible way to add math, it was not well supported in <a
+						data-cite="epub-3#dfn-epub-reading-system">reading systems</a> [[epub-3]] until recently. Its
+					rendering in older reading systems still often relies on a JavaScript library that greatly slows the
+					presentation the more equations there are to render.</p>
 
-				<p>With improved rendering in newer reading systems, it is now recommended as the most accessible way to
-					provide math content. When MathML is provided for math content, the <dfn id="MathML">MathML</dfn>
-					accessibility feature is set in the package document metadata.</p>
+				<p>Despite the past support issues, MathML markup is the optimal way to represent math content because
+					it allows for intelligent interpretation and voice rendering by assistive technologies, allows users
+					to explore the components of an equation, and even allows copying and pasting of equations into
+					external applications. And with improved rendering in newer reading systems, publishers can be
+					assured that their content will display as intended.</p>
+
+				<p>When MathML markup is included in a publication, the <dfn id="MathML">MathML</dfn> accessibility
+					feature is set in the <a data-cite="epub-3#dfn-package-document">package document</a> [[epub-3]]
+					metadata.</p>
 
 				<aside class="example" title="Package document markup for the MathML feature">
 					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
@@ -1658,26 +1723,28 @@
 &lt;/package></pre>
 				</aside>
 
-				<p>MathML markup allows for intelligent interpretation and voice rendering by assistive technologies,
-					allows users to explore the components of an equation, and even allows copying and pasting of
-					equations into external applications.</p>
-
 				<div class="note">
 					<p>Because of the history of poor support for MathML in reading systems, there is also a legacy
-						requirement to identify all documents that contain MathML in the manifest. This was to allow
-						reading systems to selectively turn on MathJAX rendering without slowing down the rendering of
-						documents that had no math, for example, or to present a fallback document with math encoded as
-						images. Do not rely on vendors inferring that MathML is present from this information.</p>
+						requirement to identify all documents that contain MathML in the <a
+							data-cite="epub-3#dfn-epub-manifest">manifest</a> [[epub-3]]. This was to allow reading
+						systems to selectively turn on MathJAX rendering without slowing down the rendering of documents
+						that had no math, for example, or to present a fallback document with math encoded as images.
+						This metadata is not typically exposed to users, so there is still the need to report the
+						accessibility feature.</p>
 				</div>
 
 				<p>Although ideally all math equations would be represented as MathML, in practice this is often
 					impractical to do. Basic math equations can often be represented using ASCII text without any loss
-					of information, for example. When claiming that MathML is available as accessible feature, however,
-					all, or substantively all, equations that would be ambiguous in pure text form should be represented
-					using MathML markup.</p>
+					of information, for example. When claiming that MathML is available as an accessible feature,
+					however, all, or substantively all, equations that would be ambiguous in pure text form should be
+					represented using MathML markup.</p>
 
-				<p>LaTeX is another formatting syntax for expressing math equations and its presence is indicated in
-					accessibility metadata using the <dfn id="latex">latex</dfn> accessibility feature.</p>
+				<p><a href="https://www.latex-project.org/">LaTeX</a> is another formatting syntax for expressing math
+					equations. Unlike MathML, which is XML-based, LaTeX is a typesetting language that uses a system of
+					text escapes to format equations.</p>
+
+				<p>When LaTeX is included in an EPUB publication, it is indicated in accessibility metadata using the
+						<dfn id="latex">latex</dfn> accessibility feature.</p>
 
 				<aside class="example" title="Package document markup for the latex feature">
 					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
@@ -1696,30 +1763,18 @@
 						lowercase vocabulary spelling to avoid issues with processors that are case-sensitive.</p>
 				</div>
 
-				<p>Unlike MathML, which is markup based, LaTeX uses text commands (identifiable by a starting slash) to
-					structure the different components of an equation.</p>
-
-				<aside class="example" title="Quadratic equation expressed in LaTeX">
-					<pre>\[x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}\]</pre>
-				</aside>
-
 				<p>Reading systems do not natively support the rendering of LaTeX equations the way they do MathML, but
-					it is possible to add a JavaScript library like MathJAX to visually render the equations. Due to the
-					lack of consistent support for scripting in EPUB, however, most publishers do not include LaTeX
-					formatting directly in their publications. It is more commonly found in the source from which an
-					EPUB is generated, and converted to an image for the EPUB, otherwise users without a
-					scripting-capable reading system will have to view and read the raw LaTeX formatting.</p>
+					it is possible to add a JavaScript library like <a href="https://www.mathjax.org/">MathJAX</a> to
+					visually render the equations. Due to the lack of consistent support for scripting in EPUB, however,
+					most publishers do not include LaTeX formatting directly in their publications. It is more commonly
+					found in the source from which an EPUB is generated, and converted to an image for the EPUB,
+					otherwise users without a scripting-capable reading system will have to view and read the raw LaTeX
+					formatting. As a result, it is not common for the <code>latex</code> feature to be declared in a
+					publication's metadata.</p>
 
-				<p>Even though direct rendering of LaTeX is not well supported, a possible accessible compromise would
-					be to include the raw LaTeX formatted equation as the alternative text for an image. This would
-					potentially allow users to copy the LaTeX to another application to inspect it. As assistive
-					technologies would only expect text as the alternative, so would not be able to meaningfully read or
-					display the syntax, this practice is really only recommended when advanced math users are the target
-					audience.</p>
-
-				<p>While not the most desirable from an accessibility perspective, it is possible to provide accessible
-					images of math equations if high quality alternative text and descriptions are provided. The
-					presence of described images is indicated in the metadata using the <dfn id="describedMath"
+				<p>While not the most desirable from an accessibility perspective, it is also possible to provide
+					accessible images of math equations if high quality alternative text and descriptions are provided.
+					The presence of described images is indicated in the metadata using the <dfn id="describedMath"
 						>describedMath</dfn> accessibility feature.</p>
 
 				<aside class="example" title="Package document markup for the described math feature">
@@ -1765,8 +1820,8 @@
 
 				<p>Audio and video content often require a mix of features to improve their accessibility. While
 					audio-only files only have to take their sound into consideration, video content typically mixes
-					both important visual information with audio that needs to be conveyed to users. Moreover, a video
-					without any sound still conveys information that has to be captured for users.</p>
+					both important visual information with essential audio. But even a video without any sound may still
+					convey information that has to be captured for users.</p>
 
 				<p>The practices for making audio accessible are generally the same regardless of whether the audio is
 					part of a video or is a standalone clip. The biggest difference between the two cases is that audio
@@ -1778,8 +1833,8 @@
 
 				<p>Closed captions are when the captions are defined separately from the audio content, allowing users
 					to control their appearance and turn them on or off as they prefer. Their presence is indicated in
-					the package document metadata using the <dfn id="closedCaptions">closedCaptions</dfn> accessibility
-					feature.</p>
+					the <a data-cite="epub-3#dfn-package-document">package document</a> [[epub-3]] metadata using the
+						<dfn id="closedCaptions">closedCaptions</dfn> accessibility feature.</p>
 
 				<aside class="example" title="Package document markup for the closed captions feature">
 					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
@@ -1794,22 +1849,24 @@
 
 				<p>Although closed captions are most beneficial to users who are deaf or hard of hearing, they can also
 					be helpful to users who are blind or have low vision. It is possible for assistive technologies to
-					read aloud the captions or render them as braille (although this is not common in EPUB reading
-					systems). <a href="#audioDescription">Audio descriptions</a> and <a href="#transcript"
-						>transcripts</a> are generally more helpful for users who cannot see the content.</p>
+					read aloud the captions or render them as braille (although this is not common in <a
+						data-cite="epub-3#dfn-epub-reading-system">EPUB reading systems</a> [[epub-3]]). <a
+						href="#audioDescription">Audio descriptions</a> and <a href="#transcript">transcripts</a> are
+					generally more helpful for users who cannot see the content.</p>
 
-				<p>The typical way to add closed captions for audio in XHTML content documents is using the [^track^]
-					element [[html]], with [[webvtt]] being the most commonly used technology for captioning.</p>
+				<p>The typical way to add closed captions for audio in <a data-cite="epub-3#dfn-xhtml-content-document"
+						>XHTML content documents</a> [[epub-3]] is using the [^track^] element [[html]], with [[webvtt]]
+					being the most commonly used technology for captioning.</p>
 
 				<div class="note">
 					<p>It is not possible to add closed captions natively to an audio-only clip in HTML. Although the
-						[^audio^] element [[html]] supports tracks, unlike the video element it does not render any
+						[^audio^] element [[html]] supports tracks, unlike the [^video^] element it does not render any
 						visual content. To work around this, the [^video^] element can be used to play audio-only clips
 						with closed captions.</p>
 				</div>
 
-				<p>Open captions are the opposite of closed captions — they are a part of the visual display of a video
-					and cannot be turned off or have their appearance modified, and cannot be accessed by assistive
+				<p>Open captions are the opposite of closed captions — they are a part of the visual display of a video.
+					They cannot be turned off or have their appearance modified, and cannot be accessed by assistive
 					technologies. Their presence is indicated in the package document metadata using the <dfn
 						id="openCaptions">openCaptions</dfn> accessibility feature.</p>
 
@@ -1830,9 +1887,9 @@
 					be discussed later in this section.)</p>
 
 				<div class="note">
-					<p>Open captions cannot be used with audio-only clips in HTML unless the audio is converted to a
-						video (e.g., with a black background) and rendered in a [[html]] [^video^] element. The [[html]]
-						[^audio^] element has no display.</p>
+					<p>Open captions cannot be used with audio-only clips in HTML unless the audio is rendered as a
+						video (e.g., with a black background) in a [[html]] [^video^] element. The [[html]] [^audio^]
+						element has no display.</p>
 				</div>
 
 				<p>While captions are helpful for those who cannot hear the audio, they are not always the ideal. Many
@@ -1883,7 +1940,7 @@
 
 				<p>Another common method of making both the audio and video content accessible is through a transcript.
 					A transcript, like an audio descriptions, can also describe more than just what is being said. For
-					example, it can be structured more like a screen play. For this reason, they are also useful for
+					example, it can be structured more like a screenplay. For this reason, they are also useful for
 					explaining what is happening in video-only content like animated instructional videos. When
 					transcripts are provided, their presence is indicated in the package document metadata using the
 						<dfn id="transcript">transcript</dfn> accessibility feature.</p>
@@ -1924,9 +1981,9 @@
 				</aside>
 
 				<p>For specific details on evaluating when auditory content meets the requirements to be classified as
-					high contrast, refer to <a data-cite="wcag2#low-or-no-background-audio">success criterion 1.4.7</a>.
-					Not all audio has to meet this requirement, for example. The audio must be primarily speech and
-					there is an exemption for musical content.</p>
+					high contrast, refer to [[wcag2]] <a data-cite="wcag2#low-or-no-background-audio">success criterion
+						1.4.7</a>. Not all audio has to meet this requirement, for example. The audio must be primarily
+					speech and there is an exemption for musical content.</p>
 
 				<div class="note">
 					<p>Information about how the audio meets the requirement should be provided in the accessibility
@@ -1934,10 +1991,11 @@
 						and background noise, or the background noise can be turned off.)</p>
 				</div>
 
-				<p>EPUB publications will often contain a mix of the above features to make audio and video content
-					accessible. It is not required to pick only one feature for all audio and video clips, nor should
-					publishers feel they have to limit themselves to providing only one accessible alternative per clip.
-					As already discussed, different users will prefer different options.</p>
+				<p><a data-cite="epub-3#dfn-epub-publication">EPUB publications</a> [[epub-3]] will often contain a mix
+					of the above features to make audio and video content accessible. It is not required to pick only
+					one feature for all audio and video clips, nor should publishers feel they have to limit themselves
+					to providing only one accessible alternative per clip. As already discussed, different users will
+					prefer different options.</p>
 			</section>
 
 			<section id="navigation">
@@ -1969,24 +2027,28 @@
 				</aside>
 
 				<p>The only time it would not be appropriate to claim <code>tableOfContents</code> is if the table of
-					contents does not even cover all the major top level chapters or sections.</p>
+					contents is incomplete &#8212; for example, if a publisher only links to one chapter to meet the
+					absolute minimum requirements for a table of contents to be valid.</p>
 
 				<p>It is not required that the table of contents provide links to every sublevel heading in the
-					publication, either. If the publisher wants to keep the table of contents in the navigation document
-					simpler for reading system use, they can also provide a more detailed table of contents in a regular
-					XHTML content document in the publication spine. The <code>tableOfContents</code> value does not
-					only apply to the table of contents in the navigation document, although this is the one easily
-					access by users.</p>
+					publication. If the publisher wants to keep the table of contents in the navigation document simpler
+					for <a data-cite="epub-3#dfn-epub-reading-system">reading system</a> [[epub-3]] use, they can also
+					provide a more detailed table of contents in a regular <a
+						data-cite="epub-3#dfn-xhtml-content-document">XHTML content document</a> in the publication <a
+						data-cite="epub-3#dfn-epub-spine">spine</a> [[epub-3]]. The <code>tableOfContents</code> value
+					does not only apply to the table of contents in the navigation document, although this is the one
+					most easily accessed by users.</p>
 
 				<p>Providing users access into the major sections of the publication through the table of contents is
-					one of EPUB 3's built-in methods of meeting <a data-cite="wcag2#multiple-ways">WCAG 2's multiple
-						ways success criterion</a>, the other being via the page-to-page navigation offered from the
-					spine. Publisher should also consider adding indexes to make it easier for users to more rapidly
-					locate specific information if interest. These can include general indexes, such as by subject or
-					name, or more content-specific indexes, such as an index of recipes for a cookbook.</p>
+					one of EPUB 3's built-in methods of meeting the [[wcag2]] <a data-cite="wcag2#multiple-ways"
+						>multiple ways success criterion</a>, the other being via the page-to-page navigation offered
+					from the spine. Publishers should also consider adding indexes to make it easier for users to more
+					rapidly locate specific information of interest. These can include general indexes, such as by
+					subject or name, or more content-specific indexes, such as an index of recipes for a cookbook.</p>
 
-				<p>The presence of an index is indicated in the package document metadata using the <dfn
-						id="feature-index">index</dfn> accessibility feature.</p>
+				<p>The presence of an index is indicated in the <a data-cite="epub-3#dfn-package-document">package
+						document</a> [[epub-3]] metadata using the <dfn id="feature-index">index</dfn> accessibility
+					feature.</p>
 
 				<aside class="example" title="Package document markup for the index feature">
 					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
@@ -2011,8 +2073,8 @@
 					is loaded, assistive technology typically check for the presence of landmark roles and provide users
 					with a quick navigation menu.</p>
 
-				<p>The presence of a table of contents is indicated in the package document metadata using the <dfn
-						id="ARIA">ARIA</dfn> accessibility feature.</p>
+				<p>The presence of ARIA landmarks is indicated in the package document metadata using the <dfn id="ARIA"
+						>ARIA</dfn> accessibility feature.</p>
 
 				<aside class="example" title="Package document markup for the ARIA feature">
 					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
@@ -2030,9 +2092,9 @@
 					as the banner, search bar, navigation menu, main body, etc. A common mistake with publications is to
 					replicate the entire table of contents as landmarks. Such practice is not helpful as the
 					hierarchical structure of the sections and subsections in the page is lost when using landmarks —
-					the landmark links are always present as a single flat list, there is no ability to nest levels like
-					in a table of contents. A general rule of thumb for ARIA is that the usefulness of landmarks begins
-					to diminish once you have more than a half-dozen or so in a page.</p>
+					the landmark links are always presented as a single flat list; there is no ability to nest levels
+					like in a table of contents. A general rule of thumb for ARIA is that the usefulness of landmarks
+					begins to diminish once you have more than a half-dozen or so in a page.</p>
 
 				<p>The final accessible navigation feature is the ability to move through the structure of a publication
 					by heading level in the markup. When headings are properly marked up using the [[html]]
@@ -2053,12 +2115,12 @@
 &lt;/package></pre>
 				</aside>
 
-				<p>This feature is similar to having a table of contents, but does not require the user to leave their
+				<p>This feature is similar to having a table of contents but does not require the user to leave their
 					current position and search the table of contents to skip forward to the next heading.</p>
 
 				<p>Publications that claim to provide structural navigation should ensure that the number of each
 					heading element used matches the hierarchy of the heading within the publication. Although this is
-					not required to conform to <a data-cite="wcag2#info-and-relationships">WCAG 2's info and
+					not required to conform to the [[wcag2]] <a data-cite="wcag2#info-and-relationships">info and
 						relationships success criterion</a>, claiming structural navigation is more than just ensuring
 					some heading tag has been used to identify each heading.</p>
 
@@ -2080,21 +2142,26 @@
 					</ul>
 				</div>
 
-				<p>Whether an EPUB publication is produced with a print equivalent or not, being able to locate and move
-					to static page break locations is an feature important to help users navigate the content. It is
-					useful in educational settings, for example, where a users who are blind might use an EPUB to read
-					an assignment instead of the print version their peers are using.</p>
+				<p>Whether an <a data-cite="epub-3#dfn-epub-publication">EPUB publication</a> [[epub-3]] is produced
+					with a print equivalent or not, being able to locate and move to static page break locations is an
+					important feature to help users navigate the content. It is useful in educational settings, for
+					example, where users who are blind might use an EPUB to read an assignment instead of the print
+					version their peers are using.</p>
 
 				<p>The first feature for identifying static pagination is static page break markers. These markers are
-					inserted into the markup XHTML content documents using the <code>doc-pagebreak</code> role to make
-					them readable by assistive technologies.</p>
+					inserted into the markup <a data-cite="epub-3#dfn-xhtml-content-document">XHTML content
+						documents</a> [[epub-3]] using the <a data-cite="dpub-aria#doc-pagebreak"
+							><code>doc-pagebreak</code> role</a> [[dpub-aria]] to make them readable by assistive
+					technologies.</p>
 
 				<p>Static page break markers, as their name suggests, do not change depending on the device being used
-					or the font and spacing preferences of the user. The pagination built into many reading systems is
-					not static because it changes depending on these display factors.</p>
+					or the font and spacing preferences of the user. The pagination built into many <a
+						data-cite="epub-3#dfn-epub-reading-system">reading systems</a> [[epub-3]] is not static because
+					it changes depending on these display factors.</p>
 
-				<p>The presence of static page break markers is indicated in the package document metadata using the
-						<dfn id="pageBreakMarkers">pageBreakMarkers</dfn> accessibility feature.</p>
+				<p>The presence of static page break markers is indicated in the <a
+						data-cite="epub-3#dfn-package-document">package document</a> [[epub-3]] metadata using the <dfn
+						id="pageBreakMarkers">pageBreakMarkers</dfn> accessibility feature.</p>
 
 				<aside class="example" title="Package document markup for the page break markers feature">
 					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
@@ -2108,8 +2175,9 @@
 				</aside>
 
 				<div class="note">
-					<p>The <code>epub:type</code> attribute value <code>pagebreak</code> is also often paired with
-							<code>doc-pagebreak</code> role for historical reasons, but the value does not provide any
+					<p>The <a data-cite="epub-3#sec-epub-type-attribute"><code>epub:type</code> attribute</a> [[epub-3]]
+						value <a data-cite="epub-ssv#pagebreak"><code>pagebreak</code></a> [[epub-ssv]] is often paired
+						with <code>doc-pagebreak</code> role for historical reasons but the value does not provide any
 						accessibility benefits.</p>
 					<p>The <code>pageBreakMarkers</code> feature must not be set if only the <code>epub:type</code>
 						attribute is specified.</p>
@@ -2131,12 +2199,6 @@
 					list to allow users to quickly find a destination. The page list, as its name suggests, is a list of
 					hyperlinks to each static page break location.</p>
 
-				<div class="note">
-					<p>It is not required static page break markers, as identified by a <code>role</code> or
-							<code>epub:type</code> attribute value, be present at the page list's hyperlink
-						destinations. A destination ID for each page break location is all that is required.</p>
-				</div>
-
 				<p>The presence of a page list is indicated in the package document metadata using the <dfn
 						id="pageNavigation">pageNavigation</dfn> accessibility feature.</p>
 
@@ -2157,9 +2219,11 @@
 					breaks are only provided for chapter start locations, it is recommended not to claim it as an
 					accessibility feature.</p>
 
-				<p>The resource includes the source of pagination so users can safely cite and retrieve citations, or
-					synchronize reading in mixed reading environments where both printed and digital versions are
-					used.</p>
+				<div class="note">
+					<p>It is not required that a page list link to static page break markers identified by an [[html]]
+						[^/role^] or <code>epub:type</code> attribute values. A destination ID for each page break
+						location is all that is required.</p>
+				</div>
 
 				<p>Regardless of whether static page break markers or a page list, or both, are included, the source of
 					the pagination needs to be identified, even when there is no source (EPUBs with no print or other
@@ -2231,12 +2295,14 @@
 				</div>
 
 				<p>The absence of digital rights management (DRM) schemes is a critical accessibility feature as it
-					ensures that users can access the content with their preferred reading systems and assistive
+					ensures that users can access the content with their preferred <a
+						data-cite="epub-3#dfn-epub-reading-system">reading systems</a> [[epub-3]] and assistive
 					technologies, which might otherwise be blocked by encryption. It also allows for personal use and
 					transformations of the content that may be necessary for a user to perceive and understand it (e.g.,
 					using it with specialized text-to-speech software).</p>
 
-				<p>That a publication is not DRM protected is indicated in the package document metadata using the <dfn
+				<p>That a publication is not DRM protected is indicated in the <a
+						data-cite="epub-3#dfn-package-document">package document</a> [[epub-3]] metadata using the <dfn
 						id="unlocked">unlocked</dfn> accessibility feature.</p>
 
 				<aside class="example" title="Package document markup for the unlocked feature">
@@ -2278,8 +2344,9 @@
 					of the content does not match the order in the markup, it makes it harder for non-visual readers to
 					understand the text.</p>
 
-				<p>The presence of a reading order is indicated in the package document metadata using the <dfn
-						id="readingOrder">readingOrder</dfn> accessibility feature.</p>
+				<p>The presence of a reading order is indicated in the <a data-cite="epub-3#dfn-package-document"
+						>package document</a> [[epub-3]] metadata using the <dfn id="readingOrder">readingOrder</dfn>
+					accessibility feature.</p>
 
 				<aside class="example" title="Package document markup for the reading order feature">
 					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
@@ -2344,8 +2411,8 @@
 					cluttering the text with ruby on every single character.</p>
 
 				<p>The presence of full ruby coverage, where all ideographic characters have annotations, is indicated
-					in the package document metadata using the <dfn id="fullRubyAnnotations">fullRubyAnnotations</dfn>
-					accessibility feature.</p>
+					in the <a data-cite="epub-3#dfn-package-document">package document</a> [[epub-3]] metadata using the
+						<dfn id="fullRubyAnnotations">fullRubyAnnotations</dfn> accessibility feature.</p>
 
 				<aside class="example" title="Package document markup for the full ruby annotations feature">
 					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
@@ -2385,11 +2452,14 @@
 					</ul>
 				</div>
 
-				<p>As EPUB publications can be read on refreshable braille devices, it is possible for a publication to
-					include textual alternatives encoded using Unicode braille characters (see <a
-						href="https://www.unicode.org/charts/nameslist/c_2800.html">Braille Patterns</a>).</p>
+				<p>As <a data-cite="epub-3#dfn-epub-publication">EPUB publications</a> [[epub-3]] can be read on
+					refreshable braille devices, it is possible for a publication to include textual alternatives
+					encoded using Unicode braille characters (see <a
+						href="https://www.unicode.org/charts/nameslist/c_2800.html">Braille Patterns</a>
+					[[unicode]]).</p>
 
-				<p>The presence of braille encoded content is indicated in the package document metadata using the <dfn
+				<p>The presence of braille encoded content is indicated in the <a
+						data-cite="epub-3#dfn-package-document">package document</a> [[epub-3]] metadata using the <dfn
 						id="braille">braille</dfn> accessibility feature.</p>
 
 				<aside class="example" title="Package document markup for the braille feature">
@@ -2406,15 +2476,16 @@
 				<p><strong>Do not</strong> use the <code>braille</code> feature for publications whose primary format is
 					braille. The <a href="https://daisy.org/s/ebraille/">eBraille format</a>, for example, is designed
 					to represent braille character data in an EPUB-conformant package. It is not necessary to declare
-					that en eBraille file has a <code>braille</code> feature, however, since the format itself and its
-					required metadata already make this fact clear. The <code>braille</code> feature is expected only
-					when braille character data supplements the standard text.</p>
+					that an eBraille file has a <code>braille</code> feature since the format itself and its required
+					metadata already make this fact clear. The <code>braille</code> feature is expected only when
+					braille character data supplements the standard text.</p>
 
 				<div class="note">
 					<p>Another advantage of the eBraille format is that it provides metadata to indicate the type of
 						braille being included (language, code, grade, etc.). When braille is added to a standard EPUB,
 						the accessibility summary is likely the only reliable way to provide this information to users,
-						as distributors and reading systems are unlikely to check or report braille metadata.</p>
+						as distributors and <a data-cite="epub-3#dfn-epub-reading-system">reading systems</a> [[epub-3]]
+						are unlikely to check or report braille metadata.</p>
 				</div>
 
 				<p>Both eBraille and standard EPUB publications may contain tactile graphics. These are images that are
@@ -2428,7 +2499,7 @@
 					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
    &lt;metadata>
       …
-      &lt;meta property="schema:accessibilityFeature">braille&lt;/meta>
+      &lt;meta property="schema:accessibilityFeature">tactileObject&lt;/meta>
       …
    &lt;/metadata>
    …
@@ -2478,8 +2549,9 @@
 					whitespace can make it easier to read for some users, especially those with cognitive or visual
 					impairments who have difficulty following visually when there are no spaces.</p>
 
-				<p>The presence of additional word segmentation is indicated in the package document metadata using the
-						<dfn id="withAdditionalWordSegmentation">withAdditionalWordSegmentation</dfn> accessibility
+				<p>The presence of additional word segmentation is indicated in the <a
+						data-cite="epub-3#dfn-package-document">package document</a> [[epub-3]] metadata using the <dfn
+						id="withAdditionalWordSegmentation">withAdditionalWordSegmentation</dfn> accessibility
 					feature.</p>
 
 				<aside class="example" title="Package document markup for the additional segmentation feature">
@@ -2537,8 +2609,9 @@
 					horizontally, but the choice of writing direction can make it harder for some users to follow the
 					text.</p>
 
-				<p>To indicate that horizontal writing is used, the package document metadata must indicate the <dfn
-						id="horizontalWriting">horizontalWriting</dfn> accessibility feature.</p>
+				<p>To indicate that horizontal writing is used, the <a data-cite="epub-3#dfn-package-document">package
+						document</a> [[epub-3]] metadata must indicate the <dfn id="horizontalWriting"
+						>horizontalWriting</dfn> accessibility feature.</p>
 
 				<aside class="example" title="Package document markup for the horizontal writing feature">
 					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
@@ -2565,9 +2638,9 @@
 &lt;/package></pre>
 				</aside>
 
-				<p>Setting the appropriate writing direction is always recommended, but <strong>do not</strong>, set
-					either value for languages that are normally only written in one direction. For example, it adds no
-					benefit to users to declare that English is written horizontally.</p>
+				<p>Setting the appropriate writing direction is always recommended, but <strong>do not</strong> set
+					either value for languages that are only written in one direction. For example, it adds no benefit
+					to users to declare that English is written horizontally.</p>
 
 				<p>If a publication combines writing directions (for significant amounts of text, not for minor
 					formatting like representing foreign language text), whichever method is predominant should be set
@@ -2621,10 +2694,11 @@
 								><code>unknownSoundHazard</code></a>.</li>
 				</ul>
 
-				<p>Each hazard status is identified in the EPUB package document using a <a
-						href="https://schema.org/accessibilityHazard"><dfn id="schema:accessibilityHazard"
-								><code>schema:accessibilityHazard</code></dfn> property</a> [[schema-org]]. The property
-					is repeated for each status; do not group all the hazard statuses into a single tag.</p>
+				<p>Each hazard status is identified in the <a data-cite="epub-3#dfn-package-document">package
+						document</a> [[epub-3]] using a <a href="https://schema.org/accessibilityHazard"><dfn
+							id="schema:accessibilityHazard"><code>schema:accessibilityHazard</code></dfn> property</a>
+					[[schema-org]]. The property is repeated for each status &#8212; do not group all the hazard
+					statuses into a single tag.</p>
 
 				<aside class="example" title="Metadata for a publication with only a flashing hazard">
 					<pre>&lt;meta
@@ -2641,10 +2715,10 @@
 &lt;/meta></pre>
 				</aside>
 
-				<p>These values can be paired together to identify each risk, but authors have to ensure they do not
+				<p>These values can be paired together to identify each risk but authors have to ensure they do not
 					accidentally declare conflicting statements for the same hazard type. For example,
 						<code>flashing</code>, <code>noFlashingHazard</code> and <code>unknownFlashingHazard</code> must
-					never be declared for the same publication.</p>
+					never be declared together in the same publication.</p>
 
 				<p>To help simplify authoring hazard metadata, there are also two global values that can be
 					declared:</p>
@@ -2677,21 +2751,21 @@
 						and/or <code>noSoundHazard</code>, since these statements are stating the same thing
 							(<code>none</code> is equivalent to declaring the three individual statements). But it is
 						strongly advised not to include redundant statements as they add no value and can lead to errors
-						in the future if the status of hazards has to change.</p>
+						in the future if the hazard statuses have to change.</p>
 				</div>
 
-				<p>If an EPUB publication contains a hazard, or if the presence of a hazard type is not known, provide
-					additional information in the <a href="#accessibilitySummary">accessibility summary</a>. For
-					hazards, this could include where the hazard occurs (both location within the publication and the
-					point within the resource, when applicable). For unknown hazards, the reason why the hazard is not
-					known should be stated, as well as whether and when a future update to the publication will provide
-					more information.</p>
+				<p>If an <a data-cite="epub-3#dfn-epub-publication">EPUB publication</a> [[epub-3]] contains a hazard,
+					or if the presence of a hazard type is not known, provide additional information in the <a
+						href="#accessibilitySummary">accessibility summary</a>. For hazards, this could include where
+					the hazard occurs (both location within the publication and the point within the resource, when
+					applicable). For unknown hazards, the reason why the hazard is not known should be stated, as well
+					as whether and when a future update to the publication will provide more information.</p>
 
 				<section id="hazards-conformance">
 					<h4>EPUB Accessibility conformance</h4>
 
-					<p>[[[epub-a11y-12]]] [[epub-a11y-12]] requires the status of all content hazards be identified
-						using the <a href="https://www.w3.org/2021/a11y-discov-vocab/latest/#accessibilityHazard"
+					<p>[[[epub-a11y]]] [[epub-a11y]] requires the status of all content hazards be identified using the
+							<a href="https://www.w3.org/2021/a11y-discov-vocab/latest/#accessibilityHazard"
 								><code>accessibilityHazard</code> property</a> [[a11y-discov-vocab]].</p>
 
 					<div class="note">
@@ -2714,7 +2788,7 @@
 					</ul>
 				</div>
 
-				<p id="flashing-desc">It is critical health and safety issue to alert photosensitive users if a
+				<p id="flashing-desc">It is a critical health and safety issue to alert photosensitive users if a
 					publication is known to contain content that flashes more than three times in any one second period
 					or where the flash is below the general flash and red flash thresholds.</p>
 
@@ -2728,7 +2802,8 @@
 					drawn on the [[html]] [^canvas^] element, and CSS animations.</p>
 
 				<p>To indicate that there is a flashing hazard, the <dfn id="flashing">flashing</dfn> hazard value must
-					be declared in the package document metadata.</p>
+					be declared in the <a data-cite="epub-3#dfn-package-document">package document</a> [[epub-3]]
+					metadata.</p>
 
 				<aside class="example" title="Package document markup for a flashing hazard">
 					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
@@ -2771,7 +2846,7 @@
 
 				<p id="sound-desc">What precisely constitutes a sound hazard, and how to test for these hazards, is not
 					yet standardized. As a result, it is particularly important when declaring a sound hazard to explain
-					what the hazard is being declared in the accessibility summary.</p>
+					what the hazard is in the accessibility summary.</p>
 
 				<p>To indicate that there is a sound hazard, the <dfn id="sound">sound</dfn> hazard value must be
 					declared in the package document metadata.</p>
@@ -2828,9 +2903,9 @@
 				<p>If a publication consists of a mix of known, not applicable, and unknown hazards, then each hazard
 					that is not present needs to be separately identified.</p>
 
-				<p>To indicate that there are no <a href="#flashing-desc">flashing hazards</a>, the <dfn
-						id="noFlashingHazard">noFlashingHazard</dfn> value must be declared in the package document
-					metadata.</p>
+				<p>To indicate that there are no <a href="#flashing-desc">flashing hazards</a>, for example, the <dfn
+						id="noFlashingHazard">noFlashingHazard</dfn> value must be declared in the <a
+						data-cite="epub-3#dfn-package-document">package document</a> [[epub-3]] metadata.</p>
 
 				<aside class="example" title="Package document markup for no flashing hazard">
 					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
@@ -2844,8 +2919,8 @@
 				</aside>
 
 				<p>To indicate that there are no <a href="#motionSimulation-desc">motion simulation hazards</a>, the
-						<dfn id="noMotionSimulationHazard">noMotionSimulationHazard</dfn> hazard value must be declared
-					in the package document metadata.</p>
+						<dfn id="noMotionSimulationHazard">noMotionSimulationHazard</dfn> hazard value must be
+					declared.</p>
 
 				<aside class="example" title="Package document markup for no motion simulation hazard">
 					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
@@ -2858,8 +2933,8 @@
 &lt;/package></pre>
 				</aside>
 
-				<p>To indicate that there are no <a href="#sound-desc">sound hazards</a>, the <dfn id="noSoundHazard"
-						>noSoundHazard</dfn> hazard value must be declared in the package document metadata.</p>
+				<p>And to indicate that there are no <a href="#sound-desc">sound hazards</a>, the <dfn
+						id="noSoundHazard">noSoundHazard</dfn> hazard value must be declared.</p>
 
 				<aside class="example" title="Package document markup for no sound hazard">
 					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
@@ -2871,9 +2946,6 @@
    …
 &lt;/package></pre>
 				</aside>
-
-				<p>The <code>noSoundHazard</code> value provides a positive assertion that the content will not
-					interfere with screen readers or other assistive technologies.</p>
 			</section>
 
 			<section id="hazards-unknown">
@@ -2890,8 +2962,9 @@
 				</div>
 
 				<p>There may be times when the presence of accessibility hazards is not known but a statement is still
-					needed in the package document metadata. This usually happens if a placeholder is needed until an
-					accessibility evaluation is carried out.</p>
+					needed in the <a data-cite="epub-3#dfn-package-document">package document</a> [[epub-3]] metadata.
+					This usually happens if a placeholder is needed until an accessibility evaluation is carried
+					out.</p>
 
 				<p>To indicate that no hazards are known, the <dfn id="hazard-unknown">unknown <span hidden="hidden"
 							>(hazard)</span></dfn> hazard value must be declared in the package document metadata.</p>
@@ -2924,9 +2997,9 @@
 				<p>If a publication consists of a mix of known, not applicable, and unknown hazards, then each hazard
 					that is not known needs to be separately identified.</p>
 
-				<p>To indicate that the presence of <a href="#flashing-desc">flashing hazards</a> is not known, the <dfn
-						id="unknownFlashingHazard">unknownFlashingHazard</dfn> value must be declared in the package
-					document metadata.</p>
+				<p>To indicate that the presence of <a href="#flashing-desc">flashing hazards</a> is not known, for
+					example, the <dfn id="unknownFlashingHazard">unknownFlashingHazard</dfn> value must be declared in
+					the package document metadata.</p>
 
 				<aside class="example" title="Package document markup for an unknown flashing hazard">
 					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
@@ -2941,7 +3014,7 @@
 
 				<p>To indicate that <a href="#motionSimulation-desc">motion simulation hazards</a> are not known, the
 						<dfn id="unknownMotionSimulationHazard">unknownMotionSimulationHazard</dfn> hazard value must be
-					declared in the package document metadata.</p>
+					declared.</p>
 
 				<aside class="example" title="Package document markup for an unknown motion simulation hazard">
 					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
@@ -2954,9 +3027,8 @@
 &lt;/package></pre>
 				</aside>
 
-				<p>To indicate that the presence of <a href="#sound-desc">sound hazards</a> is not known, the <dfn
-						id="unknownSoundHazard">unknownSoundHazard</dfn> hazard value must be declared in the package
-					document metadata.</p>
+				<p>And to indicate that the presence of <a href="#sound-desc">sound hazards</a> is not known, the <dfn
+						id="unknownSoundHazard">unknownSoundHazard</dfn> hazard value must be declared.</p>
 
 				<aside class="example" title="Package document markup for unknown sound hazards">
 					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
@@ -2974,26 +3046,31 @@
 			<h2>Accessibility summary</h2>
 
 			<p>An accessibility summary provides a brief, human-readable description of the accessibility
-				characteristics of an <a href="https://www.w3.org/TR/epub/#dfn-epub-publication">EPUB publication</a>
-				that cannot be expressed through the other discovery metadata.</p>
+				characteristics of an <a data-cite="epub-3#dfn-epub-publication">EPUB publication</a> [[epub-3]] that
+				cannot be expressed through the other discovery metadata. It is provided using the <a
+					href="https://schema.org/accessibilitySummary"><dfn id="schema:accessibilitySummary"
+							><code>schema:accessibilitySummary</code></dfn> property</a> [[schema-org]].</p>
 
-			<p>An accessibility summary is provided using the <a href="https://schema.org/accessibilitySummary"><dfn
-						id="schema:accessibilitySummary"><code>schema:accessibilitySummary</code></dfn> property</a>
-				[[schema-org]].</p>
+			<aside class="example" title="Accessibility summary">
+				<pre>&lt;meta property="schema:accessibilitySummary">
+   …
+&lt;/meta>
+					</pre>
+			</aside>
 
-			<p>The accessibility summary should not simply repeat the conformance information provided in the
-					<code>dcterms:conformsTo</code> property, for example, or the features listed in the
-					<code>schema:accessibilityFeature</code> properties. When other accessibility metadata is present in
-				the package document, systems that process EPUB publications can already present it to users. Repeating
-				it in the summary only makes them hear the information again.</p>
+			<p>The accessibility summary should not simply repeat the conformance information provided in the <a
+					href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#conformsTo"
+						><code>dcterms:conformsTo</code> property</a> [[dcterms]], for example, or the features listed
+				in the <code>schema:accessibilityFeature</code> properties. When other accessibility metadata is present
+				in the <a data-cite="epub-3#dfn-package-document">package document</a> [[epub-3]], systems that process
+				EPUB publications can already present it to users. Repeating it in the summary only makes them hear the
+				information again.</p>
 
 			<aside class="example" title="Accessibility summary that complements the conformance statement">
-				<pre>&lt;meta
-    property="dcterms:conformsTo">
+				<pre>&lt;meta property="dcterms:conformsTo">
    EPUB Accessibility 1.1 - WCAG 2.1 Level AA
 &lt;/meta>
-&lt;meta
-    property="schema:accessibilitySummary">
+&lt;meta property="schema:accessibilitySummary">
    In addition to the requirements of its conformance claim,
    this publication includes sign language interpretation
    for all audio content.…
@@ -3001,10 +3078,7 @@
 					</pre>
 			</aside>
 
-			<p>Do not include an accessibility summary when there is nothing more to add to the conformance claim and
-				other discovery metadata. It is not required metadata.</p>
-
-			<p>If an EPUB publication does not meet the requirements for content accessibility in [[epub-a11y-12]], the
+			<p>If an EPUB publication does not meet the requirements for content accessibility in [[epub-a11y]], the
 				reason(s) it fails should be noted in the summary. Similarly, if an EPUB creator is hesitant to make a
 				formal claim of conformance, the reasons why can be explained in the summary.</p>
 
@@ -3063,6 +3137,18 @@
 						<code>xml:lang</code> attributes on properties does not indicate a translation and could lead to
 					wrong summary being rendered to users.</p>
 			</div>
+
+			<section id="summary-conformance">
+				<h4>EPUB Accessibility conformance</h4>
+
+				<p>[[[epub-a11y]]] [[epub-a11y]] only recommends an <a
+						href="https://www.w3.org/2021/a11y-discov-vocab/latest/#accessibilityHazard"
+							><code>accessibilitySummary</code> property</a> [[a11y-discov-vocab]] be included if there
+					is information not already capture by the other accessibility metadata.</p>
+
+				<p>Do not include an accessibility summary when there is nothing more to add to the conformance claim
+					and other discovery metadata.</p>
+			</section>
 		</section>
 		<section id="conformance-metadata">
 			<h2>Conformance metadata</h2>
@@ -3083,17 +3169,16 @@
 			<section id="conformance-overview">
 				<h3>Overview</h3>
 
-				<p>[[[epub-a11y-12]]] [[epub-a11y-12]] defines metadata for indicating whether a publication meets its
+				<p>[[[epub-a11y]]] [[epub-a11y]] defines metadata for indicating whether a publication meets its
 					conformance requirements, as well as how to report information such as who performed the evaluation,
 					what credentials the evaluator holds, and who to contact for more information about the
 					accessibility of a publication.</p>
 
-				<p>Although this metadata is not as descriptive about the specific accessible characteristics of the
-					content, it is just as important to set for multiple reasons. Primary among them is that reporting
-					accessibility conformance to an accepted standard shows users that the content is broadly
-					accessible, without them having to go through all the specific details to build a picture. The level
-					of conformance, whether WCAG 2 Level A or AA, also provides insight into the user groups that will
-					benefit from the accessibility affordances provided.</p>
+				<p>Although this metadata is not as descriptive as the schema.org properties, it is just as important to
+					set. Reporting accessibility conformance to an accepted standard shows users that the content is
+					broadly accessible without them having to go through all the specific features and access modes. The
+					level of conformance, whether WCAG 2 Level A or AA, also provides insight into the user groups that
+					will benefit from the accessibility affordances provided.</p>
 
 				<p>Reporting conformance also directly benefits publishers as it establishes trust with their customers.
 					When customers see that a publisher consistently does the work to make their content accessible,
@@ -3109,21 +3194,24 @@
 
 				<div class="note">
 					<p>For historical reasons, the EPUB accessibility vocabulary uses "certifier" and "certified" in the
-						names of its properties. No official authority was intended from this name, but it often causes
-						confusion, especially in regions where certification has legal meaning. The conformance metadata
-						is only intended to describe an evaluator performing an evaluation of the content, which is why
-						this document and others refer to these concepts in the descriptions of the metadata.</p>
+						names of its properties. No official authority was intended from this choice of name, but it
+						often causes confusion in regions where certification has legal meaning. The conformance
+						metadata is only intended to describe an evaluator performing an evaluation of the content,
+						which is why this document uses to the "evaluator" concepts to describe their uses.</p>
 				</div>
 
 				<section id="conformance-statement">
 					<h4>Conformance statement</h4>
 
-					<p>When an EPUB publication meets the discovery and accessibility requirements of the EPUB
-						Accessibility specification, a conformance claim can be made using the <dfn
-							id="dcterms:conformsTo">dcterms:conformsTo</dfn> property [[dcterms]].</p>
+					<p>When an <a data-cite="epub-3#dfn-epub-publication">EPUB publication</a> [[epub-3]] meets the
+						discovery and accessibility requirements of [[[epub-a11y]]] [[epub-a11y]], a conformance claim
+						can be made using the <a
+							href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#conformsTo"><dfn
+								id="dcterms:conformsTo">dcterms:conformsTo</dfn> property</a> [[dcterms]].</p>
 
-					<p>The EPUB Accessibility specification defines a controlled vocabulary of values that are allowed
-						in the conformance statement. These values follow the pattern:</p>
+					<p>The EPUB Accessibility specification defines a <a data-cite="epub-a11y#sec-conf-reporting-pub"
+							>controlled vocabulary of values</a> [[epub-a11y]] that are allowed in the conformance
+						statement. These values follow the pattern:</p>
 
 					<ol>
 						<li>the name and version of the EPUB Accessibility specification being conformed to (e.g., "EPUB
@@ -3142,8 +3230,9 @@
 
 					<div class="note">
 						<p>These patterns only apply to EPUB Accessibility 1.1 [[epub-a11y-11]] specification and above.
-							The EPUB Accessibility 1.0 [[epub-a11y-10]] specification was produced by a different
-							organization and used URLs to identify conformance.</p>
+							The <a href="https://idpf.org/epub/a11y/">EPUB Accessibility 1.0</a> [[epub-a11y-10]]
+							specification was produced by a different organization and used URLs to identify
+							conformance.</p>
 						<p>Conforming to the 1.0 standard is no longer recommended both due to its age and because it
 							allowed conformance claims to WCAG 2 without fully meeting the requirements of that
 							standard. Claiming conformance to EPUB Accessibility 1.0 makes it ambiguous whether the
@@ -3153,9 +3242,9 @@
 
 					<p>It is important to ensure that an EPUB publication fully meets the requirements of the EPUB
 						Accessibility specification and the version and level of WCAG specified. It is not sufficient,
-						for example, to make a conformance claim based solely on an EPUB publication passing a automated
-						conformance checker. While these tools are helpful for finding machine-identifiable issues,
-						there are many checks that only a human can carry out.</p>
+						for example, to make a conformance claim based solely on an EPUB publication passing an
+						automated conformance checker. While these tools are helpful for finding machine-identifiable
+						issues, there are many checks that only a human can carry out.</p>
 
 					<p>Although omitted from the previous examples for simplicity of reading, it is typical for a
 						conformance claim <code>meta</code> tag to also declare an <code>id</code>. As will be detailed
@@ -3168,14 +3257,15 @@
 						as publishers typically omit any claims when a publication fails to meet minimum standards. One
 						option is to use the word "none" in a <code>dctems:conformsTo</code> statement, but this might
 						not be recognized as an accessibility claim if it is not accompanied by other evaluator
-						information. It could also cause display issues in bookstores and reading systems, as they will
-						not expect a failing conformance statement and, for example, would not translate or modify the
-						value to make more sense for users.</p>
+						information. It could also cause display issues in bookstores and <a
+							data-cite="epub-3#dfn-epub-reading-system">reading systems</a> [[epub-3]], as they will not
+						expect a failing conformance statement and, for example, would not translate or modify the value
+						to make more sense for users.</p>
 
 					<div class="note">
-						<p>The <code>dcterms:conformsTo</code> is not exclusive to making accessibility claims. It can
-							be used to make other types of claims, including additional accessibility claims (e.g., to a
-							publisher's internal conformance standard or to another regional accessibility
+						<p>The <code>dcterms:conformsTo</code> property is not exclusive to making accessibility claims.
+							It can be used to make other types of claims, including additional accessibility claims
+							(e.g., to a publisher's internal conformance standard or to another regional accessibility
 							standard).</p>
 					</div>
 				</section>
@@ -3188,10 +3278,12 @@
 						of a publisher self-certifying their work, for example, especially if they do not declare any <a
 							href="#credential">evaluation credentials</a>, than a trusted evaluation agency.</p>
 
-					<p>The name of the evaluator is provided in the package document metadata using the <dfn
-							id="a11y:certifiedBy">a11y:certifiedBy</dfn> property. It is strongly recommended to attach
-						the evaluator name to the conformance statement using the <code>refines</code> attribute, where
-						the value of the attribute is a reference to the ID of the conformance claim.</p>
+					<p>The name of the evaluator is provided in the <a data-cite="epub-3#dfn-package-document">package
+							document</a> [[epub-3]] metadata using the <a data-cite="epub-a11y#certifiedBy"><dfn
+								id="a11y:certifiedBy">a11y:certifiedBy</dfn> property</a> [[epub-a11y]]. It is strongly
+						recommended to attach the evaluator name to the conformance statement using the
+							<code>refines</code> attribute, where the value of the attribute is a reference to the ID of
+						the conformance claim.</p>
 
 					<aside class="example" title="Evaluator of a conformance claim identified">
 						<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
@@ -3215,21 +3307,23 @@
 
 					<p>If multiple parties performed an evaluation, it is possible to provide more than one
 							<code>a11y:certifiedBy</code> property that links back to the conformance claim, but there
-						is no guarantee if all, or even which one, will be displayed in a bookstore or reading system's
-						metadata. As per the recommendation for other EPUB metadata, such as author names, it is advised
-						to put all the names in one tag if it is important that they all be displayed.</p>
+						is no guarantee if all, or even which one, will be displayed in a bookstore or <a
+							data-cite="epub-3#dfn-epub-reading-system">reading system's</a> [[epub-3]] metadata. As per
+						the recommendation for other EPUB metadata, such as author names, it is advised to put all the
+						names in one tag if it is important that they all be displayed.</p>
 
 					<p>It is also possible to provide the evaluator's name in another language or script in EPUB 3
-						publications using the <a data-cite="epub-34#alternate-script"><code>alternate-script</code>
-							property</a>, but this metadata is not often used.</p>
+						publications using the <a data-cite="epub-3#alternate-script"><code>alternate-script</code>
+							property</a> [[epub-3]], but this metadata is not often used.</p>
 
 					<section id="credential">
 						<h5>Adding an evaluator's credential</h5>
 
 						<p>To help users establish trust that the evaluator of the publication has the skills necessary
-							to properly evaluate an EPUB publication for conformance, a credential can be attached to
-							their name using the <dfn id="a11y:certifierCredential">a11y:certifierCredential</dfn>
-							property.</p>
+							to properly evaluate an <a data-cite="epub-3#dfn-epub-publication">EPUB publication</a>
+							[[epub-3]] for conformance, a credential can be attached to their name using the <a
+								data-cite="epub-a11y#certifierCredential"><dfn id="a11y:certifierCredential"
+									>a11y:certifierCredential</dfn> property</a> [[epub-a11y]].</p>
 
 						<aside class="example" title="Evaluator of a conformance claim identified">
 							<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
@@ -3252,6 +3346,10 @@
 
 						<p>Ensure that the credential is not attached to the conformance statement, as it does not make
 							sense that a conformance claim can have a credential.</p>
+
+						<div class="note">
+							<p>The text to use for a credential is provided by the certifying agency.</p>
+						</div>
 					</section>
 				</section>
 
@@ -3259,15 +3357,17 @@
 					<h4>Adding the evaluation date</h4>
 
 					<p>Although users will typically assume that an evaluation was performed prior to the release of an
-						EPUB publication, it can be helpful to users to have the date explicitly stated. More often,
-						though, this date is helpful for the publisher to be able to determine when an evaluation was
-						last performed.</p>
+							<a data-cite="epub-3#dfn-epub-publication">EPUB publication</a> [[epub-3]], it can be
+						helpful to users to have the date explicitly stated. More often, though, this date is helpful
+						for the publisher to be able to determine when an evaluation was last performed.</p>
 
-					<p>The date of the evaluation is attached to the evaluator's name metadata using a <dfn
-							id="dcterms:date">dcterms:date</dfn> property. The format of the data must be expressed as
-						an ISO 8601-1 conforming date string. These typically take the form of a single four-digit year,
-						a four-digit year followed by a two-digit month, or a four-digit year followed by a two-digit
-						month followed by a two-digit day (with hyphens used to separate the values in all cases).</p>
+					<p>The date of the evaluation is attached to the evaluator's name metadata using a <a
+							href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#date"><dfn
+								id="dcterms:date">dcterms:date</dfn> property</a> [[dcterms]]. The format of the data
+						must be expressed as an [[iso8601-1]] conforming date string. These typically take the form of a
+						single four-digit year, a four-digit year followed by a two-digit month, or a four-digit year
+						followed by a two-digit month followed by a two-digit day (with hyphens used to separate the
+						values in all cases).</p>
 
 					<aside class="example" title="Evaluator of a conformance claim identified">
 						<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
@@ -3307,11 +3407,13 @@
 					<p>When performing a conformance evaluation, a detailed report is often produced to prove that a
 						publication meets all the requirements of the EPUB Accessibility specification and WCAG success
 						criteria. Making this report available can aid users who need more detailed information about
-						the content, and may be legally necessary to provide in order to sell a publication.</p>
+						the content and may be legally necessary to provide in order to sell a publication.</p>
 
-					<p>When a detailed report is available, it is possible to also link to it from the package document.
-						Unlike the other conformance metadata, however, the link is provided in a <code>link</code>
-						element using the <dfn id="a11y:certifierReport">a11y:certifierReport</dfn> property.</p>
+					<p>When a detailed report is available, it is possible to link to it from the <a
+							data-cite="epub-3#dfn-package-document">package document</a> [[epub-3]]. Unlike the other
+						conformance metadata, however, the link is provided in a <code>link</code> element using the <a
+							data-cite="epub-a11y#certifierReport"><dfn id="a11y:certifierReport"
+								>a11y:certifierReport</dfn> property</a> [[epub-a11y]].</p>
 
 					<aside class="example" title="Link to a detailed evaluation report">
 						<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
@@ -3328,22 +3430,25 @@
 &lt;/package></pre>
 					</aside>
 
-					<p>Ensure that the report is hosted in a publicly readable location. Providing a link to a internal
+					<p>Ensure that the report is hosted in a publicly readable location. Providing a link to an internal
 						publisher document, for example, will prevent users from accessing it. The link should be stable
 						so that the report remains accessible over time and to prevent security issues (e.g., to prevent
 						broken-link hijacking when a domain expires and gets bought by a malicious party).</p>
 
 					<div class="note">
-						<p>It is possible to include a copy of the report in the EPUB publication if it cannot be hosted
-							on a secure, public server. Including reports in the EPUB container is not common practice,
-							however, because it increases the difficulty for users to access it. Vendors and reading
-							systems are required to extract the report and put it someplace readable so that users can
-							read it prior to buying or opening the publication. Otherwise, the only option is for the
-							user to unzip the EPUB publication and locate the report themselves.</p>
+						<p>It is possible to include a copy of the report in the <a
+								data-cite="epub-3#dfn-epub-publication">EPUB publication</a> [[epub-3]] if it cannot be
+							hosted on a secure, public server. Including reports in the EPUB container is not common
+							practice, however, because it increases the difficulty to access it. Vendors and <a
+								data-cite="epub-3#dfn-epub-reading-system">reading systems</a> [[epub-3]] would have to
+							extract the report and put it someplace accessible so that users can read it prior to buying
+							or opening a publication. Otherwise, the only option is for the user to unzip the EPUB
+							publication and locate the report themselves.</p>
 
 						<p>When embedding a report, the <code>link</code> element's <code>href</code> attribute would
 							contain a relative path to the location of the file in the zip container. Because the report
-							is not a publication resource, it does not have to be listed in the manifest.</p>
+							is not a publication resource, it does not have to be listed in the <a
+								data-cite="epub-3#dfn-epub-manifest">manifest</a> [[epub-3]].</p>
 					</div>
 				</section>
 			</section>
@@ -3356,8 +3461,10 @@
 					small and self-publishers who cannot afford the full costs of making their publications accessible
 					or for content that cannot be made accessible without fundamentally altering its presentation.</p>
 
-				<p>The <dfn id="a11y:exemption">a11y:exemption</dfn> property is used in these cases to indicate that an
-					EPUB publication is exempt from a jurisdiction's accessibility requirements.</p>
+				<p>The <a data-cite="epub-a11y-exemption#exemption-property"><dfn id="a11y:exemption"
+							>a11y:exemption</dfn> property</a> [[epub-a11y-exemption]] is used in these cases to
+					indicate that an <a data-cite="epub-3#dfn-epub-publication">EPUB publication</a> [[epub-3]] is
+					exempt from a jurisdiction's accessibility requirements.</p>
 
 				<aside class="example" title="Publication claiming a European Accessibility Act exemption">
 					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
@@ -3378,10 +3485,10 @@
 					conformance. For this reason, the exemption is not linked to a conformance claim or an evaluator
 					using the <code>refines</code> attribute.</p>
 
-				<p>At the time of writing, the European Accessibility Act (EAA) is the only legislation known to provide
-					these types of exemptions. Publications must meet the minimum accessibility requirements of the Act
-					or fall under one of the following three exemptions in order to be distributed within the bloc of
-					member countries:</p>
+				<p>At the time of writing, the <a href="http://data.europa.eu/eli/dir/2019/882/oj">European
+						Accessibility Act (EAA)</a> is the only legislation known to provide these types of exemptions.
+					Publications must meet the minimum accessibility requirements of the Act or fall under one of the
+					following three exemptions in order to be distributed within the bloc of member countries:</p>
 
 				<ul>
 					<li>disproportionate burden &#8212; the accessibility requirements of the Act <q>shall apply only to
@@ -3415,8 +3522,9 @@
 					while user testing before release, is ideal, it is not always possible and cannot verify every
 					user's needs are met.</p>
 
-				<p>The email address to use to contact the publisher is specified in an <dfn id="a11y:contactEmail"
-						>a11y:contactEmail</dfn> property.</p>
+				<p>The email address to use to contact the publisher is specified in an <a
+						data-cite="epub-a11y#contactEmail"><dfn id="a11y:contactEmail">a11y:contactEmail</dfn>
+						property</a> [[epub-a11y]].</p>
 
 				<aside class="example" title="Contact email">
 					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
@@ -3434,7 +3542,7 @@
 				<p>The contact email does not have to go to the publisher. If they use a third-party that is responsible
 					for the accessibility of their products, that party's address can be used. The key point is that the
 					email should go directly to someone who can handle accessibility requests. It should not be a
-					general purpose feedback address unless there is no other option.</p>
+					general-purpose feedback address unless there is no other option.</p>
 			</section>
 		</section>
 		<section id="examples" class="appendix informative">
@@ -3543,9 +3651,9 @@
 				<h3>Complete metadata sets</h3>
 
 				<p>The following examples show the metadata that would be added to an <a
-						href="https://www.w3.org/TR/epub/#dfn-epub-publication">EPUB publication</a> that has textual
-					and visual access modes, is sufficient for reading by text, contains alternative text and MathML
-					markup, and has a flashing hazard.</p>
+						data-cite="epub-3#dfn-epub-publication">EPUB publication</a> [[epub-3]] that has textual and
+					visual access modes, is sufficient for reading by text, contains alternative text and MathML markup,
+					and has a flashing hazard.</p>
 
 				<aside class="example" title="EPUB 3">
 					<pre>&lt;package … >
@@ -3661,15 +3769,16 @@
 		<section id="features-identifying" class="appendix informative">
 			<h2>Identifying accessibility features</h2>
 
-			<p>This appendix provides guidance on how to determine if an EPUB publication contains accessibility
-				features for anyone unfamiliar with their markup or styling.</p>
+			<p>This appendix provides guidance on how to determine if an <a data-cite="epub-3#dfn-epub-publication">EPUB
+					publication</a> [[epub-3]] contains accessibility features for anyone unfamiliar with their markup
+				or styling.</p>
 
 			<section id="identify-alt">
 				<h3>Alternative text</h3>
 
-				<p>It is generally easy to determine if XHTML content documents have alternative text, as it only
-					requires checking that an <code>alt</code> attribute is present on each non-decorative
-						<code>img</code> tag.</p>
+				<p>It is generally easy to determine if <a data-cite="epub-3#dfn-xhtml-content-document">XHTML content
+						documents</a> [[epub-3]] have alternative text, as it only requires checking that an [[html]]
+					[^img/alt^] attribute is present on each non-decorative <code>img</code> tag.</p>
 
 				<pre>&lt;img src="images/hawk.jpg" 
      alt="A majestic hawk perches on a tree branch" /></pre>
@@ -3689,7 +3798,8 @@
 
 				<p>To check if the <a href="#ARIA">ARIA</a> accessibility feature applies to an EPUB 3 publication, it
 					is necessary to determine if structural roles have been used. This first requires searching the
-					content documents in an EPUB publication for instances of the <code>role</code> attribute:</p>
+					content documents in an <a data-cite="epub-3#dfn-epub-publication">EPUB publication</a> [[epub-3]]
+					for instances of the [[html]] [^/role^] attribute:</p>
 
 				<aside class="example" title="DPUB-ARIA chapter role">
 					<pre>&lt;section id="c01" role="doc-chapter" aria-labelledby="c01-hd">
@@ -3712,7 +3822,7 @@
 				<h3>Audio descriptions</h3>
 
 				<p>To determine if the <code>audioDescriptions</code> feature is applicable to an EPUB 3 publication,
-					search for <code>track</code> elements with their <code>kind</code> attribute set to the value
+					search for [[html]] [^track^] elements with their [^track/kind^] attribute set to the value
 						"<code>descriptions</code>".</p>
 
 				<aside class="example" title="Audio description provided via ah HTML track">
@@ -3738,8 +3848,9 @@
 			<section id="identify-closed-captions">
 				<h3>Closed captions</h3>
 
-				<p>To determine if closed captions are being used for videos, search the XHTML content documents in the
-					publication for <code>track</code> elements with their <code>kind</code> attribute set to
+				<p>To determine if closed captions are being used for videos, search the <a
+						data-cite="epub-3#dfn-xhtml-content-document">XHTML content documents</a> [[epub-3]] in the
+					publication for [[html]] [^track^] elements with their [^track/kind^] attribute set to
 						<code>captions</code>.</p>
 
 				<aside class="example" title="Closed captions for English and Spanish">
@@ -3773,6 +3884,8 @@
 			</section>
 
 			<section id="identify-described-math">
+				<h3>Described math</h3>
+
 				<p>The processing of checking for described math is the same as checking for <a href="#identify-alt"
 						>alternative text</a> and <a href="#identify-extended-desc">extended descriptions</a>. The only
 					difference is that the content of the described images has to be checked to verify that it depicts
@@ -3782,9 +3895,9 @@
 			<section id="identify-display-transformability">
 				<h3>Display transformability</h3>
 
-				<p>There is no simple check to determine if an EPUB publication is display transformable. It requires
-					inspecting both the markup and styling of the content, as described in <a href="#display-control"
-					></a>.</p>
+				<p>There is no simple check to determine if an <a data-cite="epub-3#dfn-epub-publication">EPUB
+						publication</a> [[epub-3]] is display transformable. It requires inspecting both the markup and
+					styling of the content, as described in <a href="#display-control"></a>.</p>
 			</section>
 
 			<section id="identify-extended-desc">
@@ -3819,6 +3932,8 @@
 			</section>
 
 			<section id="identify-high-contrast-audio">
+				<h3>High contrast audio</h3>
+
 				<p>The presence of <a href="#highContrastAudio">high contrast audio</a> cannot be determined from markup
 					alone. The presence of audio and video can be checked by searching for the HTML <code>audio</code>
 					and <code>video</code> elements, but testing for audio contrast typically requires an audio analysis
@@ -3826,6 +3941,8 @@
 			</section>
 
 			<section id="identify-high-contrast-display">
+				<h3>High contrast display</h3>
+
 				<p>The presence of <a href="#highContrastDisplay">high contrast display</a> cannot be determined from
 					markup alone. Testing foreground and background contrast requires a validator with color analysis,
 					such as <a href="https://daisy.org/activities/software/ace/">Ace by DAISY</a>.</p>
@@ -3835,8 +3952,8 @@
 				<h3>Indexes</h3>
 
 				<p>The fastest way to check for indexes is to look in the table of contents. They are usually contained
-					in HTML <code>nav</code> or <code>section</code> tags with a <code>role</code> attribute value of
-						<code>doc-index</code>.</p>
+					in [[html]] [^nav^] or [^section^] tags with a [^/role^] attribute value of <a
+						data-cite="dpub-aria#doc-index"><code>doc-index</code></a> [[dpub-aria]].</p>
 
 				<aside class="example" title="Index">
 					<pre>&lt;nav role="doc-index" aria-labelledby="index">
@@ -3862,8 +3979,9 @@
 			<section id="identify-latex">
 				<h3>Latex formatting</h3>
 
-				<p>As latex is a text-based formatting language, the only way to identify if it is present in an EPUB
-					publication is to search each EPUB content document.</p>
+				<p>As latex is a text-based formatting language, the only way to identify if it is present in an <a
+						data-cite="epub-3#dfn-epub-publication">EPUB publication</a> is to search each <a
+						data-cite="epub-3#dfn-epub-content-document">EPUB content document</a> [[epub-3]].</p>
 
 				<p>Unfortunately, latex formatting does not always begin with a consistent sequence of characters.
 					Equations can be wrapped in any of the following depending on whether they are to be rendered inline
@@ -3902,20 +4020,23 @@
 			<section id="identify-large-print">
 				<h3>Large print</h3>
 
-				<p>The best way to determine if an EPUB publication is large print is to rely on the publisher's
-					description.</p>
+				<p>The best way to determine if an <a data-cite="epub-3#dfn-epub-publication">EPUB publication</a>
+					[[epub-3]] is large print is to rely on the publisher's description.</p>
 
 				<p>It may be possible to read the default styles applied to the content to determine the overall font
-					size, but this is often non-trivial to do. Opening the publication in a reading system might also
-					give an indication, but visually determining the size of fonts can be error prone.</p>
+					size, but this is often non-trivial to do. Opening the publication in a <a
+						data-cite="epub-3#dfn-epub-reading-system">reading system</a> [[epub-3]] might also give an
+					indication, but visually determining the size of fonts can be error prone.</p>
 			</section>
 
 			<section id="identify-mathml">
 				<h3>MathML markup</h3>
 
-				<p>The fastest way to determine if an EPUB 3 publication contains MathML markup is to check the package
-					document manifest. Any EPUB content document that includes MathML markup has to have a
-						<code>properties</code> attribute that declares this is the case:</p>
+				<p>The fastest way to determine if an EPUB 3 publication contains MathML [[mathml3]] markup is to check
+					the <a data-cite="epub-3#dfn-package-document">package document</a>
+					<a data-cite="epub-3#dfn-epub-manifest">manifest</a> [[epub-3]]. Any <a
+						data-cite="epub-3#dfn-epub-content-document">EPUB content document</a> [[epub-3]] that includes
+					MathML markup has to have a <code>properties</code> attribute that declares this is the case:</p>
 
 				<pre>&lt;item id="c01" src="xhtml/chapter01.xhtml" … properties="mathml" /></pre>
 
@@ -3928,8 +4049,9 @@
 
 				<p>But because EPUB is XML-based, the <code>math</code> tag could also have a prefix, so could be tagged
 					as <code>m:math</code> or <code>mml:math</code>. This kind of tagging is more common in legacy
-					content when reading systems relied on MathJAX to render equations. Modern reading systems, like
-					browsers, expect unprefixed elements as part of their support for HTML.</p>
+					content when <a data-cite="epub-3#dfn-epub-reading-system">reading systems</a> [[epub-3]] relied on
+					MathJAX to render equations. Modern reading systems, like browsers, expect unprefixed elements as
+					part of their support for HTML.</p>
 
 				<p>Regardless of how the MathML markup is tagged, whether it is being used for <a href="#math">math
 						equations</a> or <a href="#chemistry">chemical equations</a> needs to be determined so that the
@@ -3963,8 +4085,8 @@
 			<section id="identify-page-breaks">
 				<h3>Page break markers</h3>
 
-				<p>To check if page breaks are included in an EPUB publication, search for the
-						<code>doc-pagebreak</code> role.</p>
+				<p>To check if page breaks are included in an <a data-cite="epub-3#dfn-epub-publication">EPUB
+						publication</a> [[epub-3]], search for the <code>doc-pagebreak</code> role.</p>
 
 				<aside class="example" title="Pagebreak marker">
 					<pre>&lt;span id="page_5"
@@ -3981,8 +4103,9 @@
 				<h3>Page list</h3>
 
 				<p>To determine if an EPUB 3 publication includes a page list, check the EPUB navigation document for a
-						<code>nav</code> element with the <code>epub:type</code> attribute value
-					"<code>pagelist</code>".</p>
+					[[html]] [^nav^] element with the <a data-cite="epub-3#sec-epub-type-attribute"
+							><code>epub:type</code> attribute</a> [[epub-3]] value "<a data-cite="epub-ssv#page-list"
+							><code>page-list</code></a>" [[epub-ssv]].</p>
 
 				<aside class="example" title="EPUB 3 page list">
 					<pre>&lt;nav epub:type="page-list">
@@ -4026,13 +4149,15 @@
 				<h3>Reading order</h3>
 
 				<p>The reading order can only be determined by checking how the content is ordered between the
-						<code>body</code> tags of each XHTML content document, as well as across documents.</p>
+						<code>body</code> tags of each <a data-cite="epub-3#dfn-xhtml-content-document">XHTML content
+						document</a> [[epub-3]], as well as across documents.</p>
 			</section>
 
 			<section id="identify-ruby">
 				<h3>Ruby annotations</h3>
 
-				<p>To check for ruby annotations in an EPUB 3 publication, search the XHTML content documents for
+				<p>To check for ruby annotations in an EPUB 3 publication, search the <a
+						data-cite="epub-3#dfn-xhtml-content-document">XHTML content documents</a> [[epub-3]] for
 					instances of the <code>ruby</code> tag.</p>
 
 				<aside class="example" title="Ruby markup">
@@ -4051,8 +4176,9 @@
 			<section id="identify-sign-language">
 				<h3>Sign language</h3>
 
-				<p>The only way to determine if sign language interpretation is provided is to play each video in the
-					EPUB publication to see if an interpreter is present (usually overlaying the video in a corner).</p>
+				<p>The only way to determine if sign language interpretation is provided is to play each video in the <a
+						data-cite="epub-3#dfn-epub-publication">EPUB publication</a> [[epub-3]] to see if an interpreter
+					is present (usually overlaying the video in a corner).</p>
 			</section>
 
 			<section id="identify-structural-navigation">
@@ -4066,8 +4192,9 @@
 				<h3>Synchronized audio and text</h3>
 
 				<p>To determine if an EPUB 3 publication should declare the <code>synchronizedAudioText</code> feature,
-					check if the <code>media-overlay</code> attribute has been set on any items in the package document
-					manifest.</p>
+					check if the <code>media-overlay</code> attribute has been set on any items in the <a
+						data-cite="epub-3#dfn-package-document">package document</a>
+					<a data-cite="epub-3#dfn-epub-manifest">manifest</a> [[epub-3]].</p>
 
 				<p>It is also possible to search the package document manifest for the resources with the media type
 						<code>application/smil+xml</code>.</p>
@@ -4094,9 +4221,11 @@
 				<h3>Table of contents</h3>
 
 				<p>A table of contents is a required part of EPUB 2 and 3 so it should always be present. For EPUB 3,
-					check for a manifest item with its <code>properties</code> attribute set to "<code>nav</code>".
-					Inside this file will be a <code>nav</code> element with the <code>epub:type</code> attribute value
-					"toc".</p>
+					check for a <a data-cite="epub-3#dfn-epub-manifest">manifest</a> [[epub-3]] item with its
+						<code>properties</code> attribute set to "<code>nav</code>". Inside this file will be a [[html]]
+					[^nav^] element with the <a data-cite="epub-3#sec-epub-type-attribute"><code>epub:type</code>
+						attribute</a> [[epub-3]] value "<a data-cite="epub-ssv#toc"><code>toc</code></a>"
+					[[epub-ssv]].</p>
 
 				<aside class="example" title="EPUB 3 navigation document">
 					<p>Manifest entry for the navigation document:</p>
@@ -4180,9 +4309,10 @@
     &#8230; &lt;/p></pre>
 				</aside>
 
-				<p>To determine if PLS lexicons are present, the package document can be searched for the media type
-						<code>application/pls+xml</code>. The XHTML content documents can also be checked for a
-						<code>link</code> element declaring the lexicon.</p>
+				<p>To determine if PLS lexicons are present, the <a data-cite="epub-3#dfn-package-document">package
+						document</a> [[epub-3]] can be searched for the media type <code>application/pls+xml</code>. The
+						<a data-cite="epub-3#dfn-xhtml-content-document">XHTML content documents</a> [[epub-3]] can also
+					be checked for a <code>link</code> element declaring the lexicon.</p>
 
 				<aside class="example" title="PLS lexicon declarations">
 					<p>Package document manifest declaration:</p>
@@ -4257,9 +4387,9 @@ section {
 			<section id="identify-unlocked">
 				<h3>Unlocked content</h3>
 
-				<p>If an EPUB publication has digital rights management applied to it, the <code>rights.xml</code>
-					and/or <code>encryption.xml</code> files will be included under the <code>META-INF</code>
-					directory.</p>
+				<p>If an <a data-cite="epub-3#dfn-epub-publication">EPUB publication</a> [[epub-3]] has digital rights
+					management applied to it, the <code>rights.xml</code> and/or <code>encryption.xml</code> files will
+					be included under the <code>META-INF</code> directory.</p>
 
 				<p>These files are typically added by the distributor/vendor, so stating that a publication is unlocked
 					more typically requires knowing how it will be distributed.</p>
@@ -4268,9 +4398,10 @@ section {
 			<section id="identify-writing-mode">
 				<h3>Writing mode</h3>
 
-				<p>The fastest way to determine the writing mode of an EPUB publication is to open it in a reading
-					system that supports both horizontal and vertical writing to see which way the text gets laid
-					out.</p>
+				<p>The fastest way to determine the writing mode of an <a data-cite="epub-3#dfn-epub-publication">EPUB
+						publication</a> [[epub-3]] is to open it in a <a data-cite="epub-3#dfn-epub-reading-system"
+						>reading system</a> [[epub-3]] that supports both horizontal and vertical writing to see which
+					way the text gets laid out.</p>
 
 				<p>A more complicated method would be to search for instances of the CSS <code>writing-mode</code>
 					property. When it is set to the value "<code>vertical-lr</code>" or "<code>vertical-rl</code>", it
@@ -4288,9 +4419,10 @@ section {
 			<section id="identify-word-segementation">
 				<h3>Word segmentation</h3>
 
-				<p>For languages that do not have word segmentation by default, the fastest way to determine if an EPUB
-					publication does or does not include segmentation is to open it in a reading system and visually
-					inspect the content.</p>
+				<p>For languages that do not have word segmentation by default, the fastest way to determine if an <a
+						data-cite="epub-3#dfn-epub-publication">EPUB publication</a> [[epub-3]] does or does not include
+					segmentation is to open it in a <a data-cite="epub-3#dfn-epub-reading-system">reading system</a>
+					[[epub-3]] and visually inspect the content.</p>
 
 				<p>Checking the markup may indicate if additional word segmentation is provided (e.g., if there are
 						<code>span</code> elements around each group of characters to separate), but this kind of check
@@ -4327,20 +4459,18 @@ section {
 					<dt><dfn id="schema:accessibilityAPI">schema:accessibilityAPI</dfn></dt>
 					<dd>
 						<p>It is not necessary to set the <code>schema:accessibilityAPI</code> property for <a
-								href="https://www.w3.org/TR/epub/#dfn-epub-publication">EPUB publications</a>. <a
-								href="https://www.w3.org/TR/epub/#dfn-epub-creator">EPUB creators</a> are not
-							responsible for the interaction between <a
-								href="https://www.w3.org/TR/epub/#dfn-epub-reading-system">reading systems</a> and the
-							underlying platform APIs.</p>
+								data-cite="epub-3#dfn-epub-publication">EPUB publications</a> [[epub-3]]. The creator of
+							the content is not responsible for the interaction between <a
+								data-cite="epub-3#dfn-epub-reading-system">reading systems</a> and the underlying
+							platform APIs.</p>
 					</dd>
 
 					<dt><dfn id="schema:accessibilityControl">schema:accessibilityControl</dfn></dt>
 					<dd>
-						<p>It is not necessary to set the <code>schema:accessibilityControl</code> property for <a
-								href="https://www.w3.org/TR/epub/#dfn-epub-publication">EPUB publications</a>. This
-							property does not differentiate issues arising from the <a
-								href="https://www.w3.org/TR/epub/#dfn-epub-reading-system">reading system</a> interface
-							from those in the underlying content, which has led to confusion about its use.</p>
+						<p>It is not necessary to set the <code>schema:accessibilityControl</code> property for EPUB
+							publications. This property does not differentiate issues arising from the reading system
+							interface from those in the underlying content, which has led to confusion about its
+							use.</p>
 						<p>Meeting the requirements of [[wcag2]] will mitigate most known issues with the content and is
 							sufficient for authoring purposes.</p>
 					</dd>
@@ -4361,8 +4491,9 @@ section {
 
 					<dt><dfn id="bookmarks">bookmarks</dfn></dt>
 					<dd>
-						<p>The use of the <code>bookmarks</code> value is now deprecated due to its ambiguity. Reading
-							systems typically provide bookmark support not the EPUB itself.</p>
+						<p>The use of the <code>bookmarks</code> value is now deprecated due to its ambiguity. <a
+								data-cite="epub-3#dfn-epub-reading-system">Reading systems</a> [[epub-3]] typically
+							provide bookmark support not the publication itself.</p>
 					</dd>
 
 					<dt><dfn id="captions">captions</dfn></dt>
