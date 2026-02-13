@@ -133,92 +133,132 @@
 		</section>
 		<section id="sotd"></section>
 		<section id="toc"></section>
-		<section id="overview">
-			<h2>Overview</h2>
+		<section id="intro">
+			<h2>Introduction</h2>
 
-			<p>Accessibility metadata expressed in the EPUB 3 <a data-cite="epub-3#sec-package-doc">package document</a>
-				[[epub-3]] is derived from three main sources: <a href="https://schema.org">Schema.org</a>
-				[[schema-org]], the <a data-cite="epub-a11y#app-a11y-vocab">EPUB accessibility vocabulary</a>
-				[[epub-a11y]] and its related properties, and <a
-					href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/">Dublin Core</a>
-				[[dcterms]].</p>
+			<section id="overview">
+				<h2>Overview</h2>
 
-			<p>Schema.org is described as a <q>collaborative, community activity with a mission to create, maintain, and
-					promote schemas for structured data.</q> Of particular importance is that it includes the following
-				set of accessibility properties for describing creative works:</p>
+				<p>Accessibility metadata expressed in the EPUB 3 <a data-cite="epub-3#sec-package-doc">package
+						document</a> [[epub-3]] is derived from three main sources: <a href="https://schema.org"
+						>Schema.org</a> [[schema-org]], the <a data-cite="epub-a11y#app-a11y-vocab">EPUB accessibility
+						vocabulary</a> [[epub-a11y]] and its related properties, and <a
+						href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/">Dublin Core</a>
+					[[dcterms]].</p>
 
-			<ul>
-				<li><a href="https://schema.org/accessMode">accessMode</a></li>
-				<li><a href="https://schema.org/accessModeSufficient">accessModeSufficient</a></li>
-				<li><a href="https://schema.org/accessibilityFeature">accessibilityFeature</a></li>
-				<li><a href="https://schema.org/accessibilityHazard">accessibilityHazard</a></li>
-				<li><a href="https://schema.org/accessibilitySummary">accessibilitySummary</a></li>
-			</ul>
+				<p>Schema.org is described as a <q>collaborative, community activity with a mission to create, maintain,
+						and promote schemas for structured data.</q> Of particular importance is that it includes the
+					following set of accessibility properties for describing creative works:</p>
 
-			<p>These properties are key to the discoverability of EPUB publications and are central to the requirements
-				of the <a href="https://www.w3.org/TR/epub-a11y/">EPUB Accessibility standard</a> [[epub-a11y]]. They
-				are also used to generate accessibility statements about a publication, as described in the <a
-					href="https://www.w3.org/publishing/a11y/metadata-display-guide/guidelines/">Accessibility Metadata
-					Display Guide for Digital Publications</a> [[a11y-display-guide]].</p>
+				<ul>
+					<li><a href="https://schema.org/accessMode">accessMode</a></li>
+					<li><a href="https://schema.org/accessModeSufficient">accessModeSufficient</a></li>
+					<li><a href="https://schema.org/accessibilityFeature">accessibilityFeature</a></li>
+					<li><a href="https://schema.org/accessibilityHazard">accessibilityHazard</a></li>
+					<li><a href="https://schema.org/accessibilitySummary">accessibilitySummary</a></li>
+				</ul>
 
-			<p>To provide maximum value for readers, the metadata needs to be consistent, which is where the <a
-					href="https://www.w3.org/2021/a11y-discov-vocab/latest/">Schema.org Accessibility Properties for
-					Discoverability Vocabulary</a> [[a11y-discov-vocab]] comes in. This vocabulary defines controlled
-				sets terms to use with each applicable property.</p>
+				<p>These properties are key to the discoverability of EPUB publications and are central to the
+					requirements of the <a href="https://www.w3.org/TR/epub-a11y/">EPUB Accessibility standard</a>
+					[[epub-a11y]]. They are also used to generate accessibility statements about a publication, as
+					described in the <a href="https://www.w3.org/publishing/a11y/metadata-display-guide/guidelines/"
+						>Accessibility Metadata Display Guide for Digital Publications</a> [[a11y-display-guide]].</p>
 
-			<p>But as schema.org is intended to describe any resource on or referenced from the web, the vocabulary
-				definitions do not always fully reflect how to apply the terms to EPUB publications. That is where this
-				guide fits in. Its goal is to add clarity on how to apply the metadata to both reflowable and
-				fixed-layout EPUB publications.</p>
+				<p>To provide maximum value for readers, the metadata needs to be consistent, which is where the <a
+						href="https://www.w3.org/2021/a11y-discov-vocab/latest/">Schema.org Accessibility Properties for
+						Discoverability Vocabulary</a> [[a11y-discov-vocab]] comes in. This vocabulary defines
+					controlled sets terms to use with each applicable property.</p>
 
-			<p>The accessibility properties defined in the EPUB accessibility vocabulary are identifiable by the use of
-				the <code>a11y</code> prefix (e.g., <code>a11y:certifiedBy</code>). They do not have a single focus in
-				the same way as the schema.org properties &#8212; new properties are typically only added if there are
-				gaps in other metadata standards.</p>
+				<p>But as schema.org is intended to describe any resource on or referenced from the web, the vocabulary
+					definitions do not always fully reflect how to apply the terms to EPUB publications. That is where
+					this guide fits in. Its goal is to add clarity on how to apply the metadata to both reflowable and
+					fixed-layout EPUB publications.</p>
 
-			<p>One of their primary uses is to provide additional information about conformance claims. The Dublin Core
-					<a href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#conformsTo"
-						><code>dcterms:conformsTo</code> property</a> [[dcterms]] is used to declare conformance to a
-				standard such as the EPUB Accessibility [[epub-a11y]] specification, while the EPUB accessibility
-				properties provide additional context, such as:</p>
+				<p>The accessibility properties defined in the EPUB accessibility vocabulary are identifiable by the use
+					of the <code>a11y</code> prefix (e.g., <code>a11y:certifiedBy</code>). They do not have a single
+					focus in the same way as the schema.org properties &#8212; new properties are typically only added
+					if there are gaps in other metadata standards.</p>
 
-			<ul>
-				<li>who evaluated the publication (<a data-cite="epub-a11y#certifiedBy"
-						><code>a11y:certifiedBy</code></a>);</li>
-				<li>any credentials help by the evaluator (<a data-cite="epub-a11y#certifierCredential"
-							><code>a11y:certifierCredential</code></a>);</li>
-				<li>if a full evaluation report is available (<a data-cite="epub-a11y#certifierReport"
-							><code>a11y:certifierReport</code></a>); and</li>
-				<li>who to contact for more information about the accessibility of a publication (<a
-						data-cite="epub-a11y#contactEmail"><code>a11y:contactEmail</code></a>).</li>
-			</ul>
+				<p>One of their primary uses is to provide additional information about conformance claims. The Dublin
+					Core <a href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#conformsTo"
+							><code>dcterms:conformsTo</code> property</a> [[dcterms]] is used to declare conformance to
+					a standard such as the EPUB Accessibility [[epub-a11y]] specification, while the EPUB accessibility
+					properties provide additional context, such as:</p>
 
-			<p>The Dublin Core vocabulary also includes the <a
-					href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#date"
-						><code>dcterms:date</code> property</a> [[dcterms]] that is used to indicate when an evaluation
-				was performed.</p>
+				<ul>
+					<li>who evaluated the publication (<a data-cite="epub-a11y#certifiedBy"
+								><code>a11y:certifiedBy</code></a>);</li>
+					<li>any credentials help by the evaluator (<a data-cite="epub-a11y#certifierCredential"
+								><code>a11y:certifierCredential</code></a>);</li>
+					<li>if a full evaluation report is available (<a data-cite="epub-a11y#certifierReport"
+								><code>a11y:certifierReport</code></a>); and</li>
+					<li>who to contact for more information about the accessibility of a publication (<a
+							data-cite="epub-a11y#contactEmail"><code>a11y:contactEmail</code></a>).</li>
+				</ul>
 
-			<p>The EPUB accessibility vocabulary additionally includes properties that are not yet, or may never be,
-				officially added to the vocabulary in the EPUB Accessibility standard [[epub-a11y]]. The most notable of
-				these properties is <a href="https://www.w3.org/TR/epub-a11y-exemption/"><code>a11y:exemption</code></a>
-				[[epub-a11y-exemption]], which is used to indicate that a publication fails accessibility conformance
-				but is exempted from conformance under the laws of a jurisdiction.</p>
+				<p>The Dublin Core vocabulary also includes the <a
+						href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#date"
+							><code>dcterms:date</code> property</a> [[dcterms]] that is used to indicate when an
+					evaluation was performed.</p>
 
-			<p>The combination of all this accessibility information in the <a data-cite="epub-3#dfn-package-document"
-					>package document</a> [[epub-3]] provides users with a better picture of whether the content is
-				going to meet their specific needs. The rest of this document delves into the specifics of when and how
-				to apply this metadata.</p>
+				<p>The EPUB accessibility vocabulary additionally includes properties that are not yet, or may never be,
+					officially added to the vocabulary in the EPUB Accessibility standard [[epub-a11y]]. The most
+					notable of these properties is <a href="https://www.w3.org/TR/epub-a11y-exemption/"
+							><code>a11y:exemption</code></a> [[epub-a11y-exemption]], which is used to indicate that a
+					publication fails accessibility conformance but is exempted from conformance under the laws of a
+					jurisdiction.</p>
 
-			<div class="note">
-				<p>Accessibility metadata can also be expressed in supply chains through the provision of ONIX records,
-					but that is outside of the scope of this document. For more information, refer to the <a
-						href="https://www.w3.org/2021/a11y-discov-vocab/latest/crosswalk/">Digital Publishing -
-						Accessibility Metadata Crosswalk</a> as well as the ONIX <a
-						href="https://www.editeur.org/files/ONIX%203/APPNOTE%20Accessibility%20metadata%20in%20ONIX.pdf"
-						>essentials accessibility metadata guide</a> and <a
-						href="https://www.editeur.org/files/ONIX%203/APPNOTE%20Accessibility%20metadata%20in%20ONIX%20(advanced).pdf"
-						>advanced accessibility metadata guide</a>.</p>
-			</div>
+				<p>The combination of all this accessibility information in the <a
+						data-cite="epub-3#dfn-package-document">package document</a> [[epub-3]] provides users with a
+					better picture of whether the content is going to meet their specific needs. The rest of this
+					document delves into the specifics of when and how to apply this metadata.</p>
+
+				<div class="note">
+					<p>Accessibility metadata can also be expressed in supply chains through the provision of ONIX
+						records, but that is outside of the scope of this document. For more information, refer to the
+							<a href="https://www.w3.org/2021/a11y-discov-vocab/latest/crosswalk/">Digital Publishing -
+							Accessibility Metadata Crosswalk</a> as well as the ONIX <a
+							href="https://www.editeur.org/files/ONIX%203/APPNOTE%20Accessibility%20metadata%20in%20ONIX.pdf"
+							>essentials accessibility metadata guide</a> and <a
+							href="https://www.editeur.org/files/ONIX%203/APPNOTE%20Accessibility%20metadata%20in%20ONIX%20(advanced).pdf"
+							>advanced accessibility metadata guide</a>.</p>
+				</div>
+			</section>
+
+			<section id="rel-epub2">
+				<h3>Relationship to EPUB 2</h3>
+
+				<p>Although the primary focus of this document is on EPUB 3 [[epub-3]], it is also expected that it can
+					be used as a reference for adding accessibility metadata to EPUB 2 publications [[opf-201]].</p>
+
+				<p>Not all of the accessibility features detailed in this document apply to EPUB 2, however; in large
+					part because it is based on the older [[xhtml11]] standard so lacks the advanced markup features of
+					EPUB 3. The <a href="#features-identifying">appendix on identifying features</a> indicates when a
+					feature does not apply to EPUB 2.</p>
+
+				<p>In addition, the syntax for adding metadata to the EPUB 2 package document is not the same as adding
+					metadata to the EPUB 3 package document. The <code>meta</code> tag changed significantly between
+					versions. In particular, the <code>name</code> attribute was changed to <code>property</code> and
+					the <code>content</code> attribute was replaced with text between the <code>meta</code> opening and
+					closing tags. Examples in the body of the document will have to be adapted to EPUB 2's syntax.</p>
+
+				<aside class="example" title="Metadata differences">
+					<p>EPUB 3 declaration of an <a href="#accessibilityFeature">accessibility feature</a>:</p>
+					<pre>&lt;meta property="schema:accessibilityFeature">alternativeText&lt;/meta></pre>
+					<p>Equivalent EPUB 2 declaration:</p>
+					<pre>&lt;meta name="schema:accessibilityFeature" content="alternativeText"/></pre>
+				</aside>
+
+				<p>EPUB 2 also lacks the <a data-cite="epub-3#attrdef-refines"><code>refines</code> attribute</a>
+					[[epub-3]] for connecting metadata properties. This primarily affects conformance metadata claims
+					where certain assumptions will have to be made by any agent that processes the metadata. It is not
+					possible, for example, to link a certifier to a credential they hold, but a processing agent could
+					assume that a credential belongs to an evaluator if the metadata only declares one evaluator.</p>
+
+				<p>One field where this will not work, however, is with the <a href="#report-date">evaluation date</a>.
+					Without an explicit link to the conformance statement, the <code>dcterms:date</code> property will
+					appear to be a generic date associated with the publication.</p>
+			</section>
 		</section>
 		<section id="accessMode">
 			<h2>Access modes</h2>
