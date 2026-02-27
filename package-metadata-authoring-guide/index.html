@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en-US">
 	<head>
-		<meta charset="utf-8" />
+		<meta charset="utf-8">
 		<title>Expressing Accessibility Metadata in the EPUB Package Document</title>
 		<script src="https://www.w3.org/Tools/respec/respec-w3c" class="remove"></script>
 		<script class="remove">
@@ -105,6 +105,9 @@
 			/*prevent examples from horizontal scrolling*/
 			pre {
 				white-space: break-spaces !important;
+			}
+			pre.nohighlight {
+				margin-left: 1rem;
 			}
 			div.feature-list {
 				font-size: 90%;
@@ -4253,7 +4256,7 @@
 							checks.</p>
 						<p>For example, if a publication has textual and visual access modes, a sufficient access mode
 							set like the following would be added at this check:</p>
-						<pre>&lt;meta property="schema:accessMode">textual,visual&lt;/meta></pre>
+						<pre class="nohighlight">&lt;meta property="schema:accessMode">textual,visual&lt;/meta></pre>
 					</details>
 				</li>
 			</ol>
