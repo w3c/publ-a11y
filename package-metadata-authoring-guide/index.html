@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en-US">
 	<head>
-		<meta charset="utf-8" />
+		<meta charset="utf-8">
 		<title>Expressing Accessibility Metadata in the EPUB Package Document</title>
 		<script src="https://www.w3.org/Tools/respec/respec-w3c" class="remove"></script>
 		<script class="remove">
@@ -106,6 +106,9 @@
 			pre {
 				white-space: break-spaces !important;
 			}
+			pre.nohighlight {
+				margin-left: 1rem;
+			}
 			div.feature-list {
 				font-size: 90%;
 				float: right;
@@ -122,6 +125,42 @@
 				font-size: 105%;
 				margin-top: 2rem;
 				margin-bottom: 1rem;
+			}
+			ol.checklist {
+				list-style-type: none;
+			}
+			ol.checklist > li {
+				margin-top: 3rem;
+				margin-left: -2rem;
+			}
+			ol.checklist > li:first-child {
+				margin-top: 2rem;
+			}
+			li#check-multi > *:not(:first-child) {
+				margin-left: 2rem;
+			}
+			ol.checklist details {
+				font-size: 90%;
+				margin: -0.5rem 0 1rem 1.2rem;
+			}
+			ol.checklist details > summary {
+				font-style: italic;
+				font-weight: normal;
+			}
+			ol.checklist details > p {
+				margin-left: 1rem;
+			}
+			ol.checklist details.expl {
+				margin-top: 2rem;
+			}
+			p.question {
+				font-weight: bold;
+			}
+			p.subq {
+				font-weight: bold;
+				font-size: 95%;
+				margin-left: 1.2rem;
+				margin-top: 2rem;
 			}</style>
 	</head>
 	<body>
@@ -804,10 +843,10 @@
 						[^canvas^] element, the <a href="#chartOnVisual">chart on visual</a> could be set.</p>
 
 					<div class="note">
-						<p>Similar to setting any of the <a href="#accessmode-primary">primary access modes</a>, whether
-							or not the content identified by a visual indicator is also accessible in another mode
-							(e.g., through the provision of alternative text) is not considered. Affordances are only
-							used to determine the sufficient access modes.</p>
+						<p>Similar to setting any of the <a href="#accessMode">primary access modes</a>, whether or not
+							the content identified by a visual indicator is also accessible in another mode (e.g.,
+							through the provision of alternative text) is not considered. Affordances are only used to
+							determine the sufficient access modes.</p>
 					</div>
 
 					<p>More than one visual content indicator can apply to a piece of visual content. A publication with
@@ -3929,6 +3968,298 @@
 &lt;/package></pre>
 				</aside>
 			</section>
+		</section>
+		<section id="access-modes-eval" class="appendix informative">
+			<h2>Evaluating access modes</h2>
+
+			<p>This appendix provides a process for evaluating which access modes and sufficient access modes to declare
+				for an EPUB publication.</p>
+
+			<p>The order in which the checks are performed is significant. Begin with the <a href="#check-text">first
+					check</a> and only skip checks as instructed in the evaluation.</p>
+
+			<ol class="checklist" role="list">
+				<li id="check-text">
+					<p class="question">Check 1: Does the publication contain text content?</p>
+					<details>
+						<summary>How to evaluate</summary>
+						<p>Verify if there is textual content encoded using Unicode characters. Images of text are not
+							included in this check.</p>
+						<p>In addition, any textual content that precedes or follows the work itself, such as copyright
+							information, author biographies, lists of other works by the author or related works,
+							promotional quotations, and similar is excluded from this check.</p>
+						<p>For this check, recall that textual adaptations, such as alternative text and descriptions
+							for images, or transcripts for audio, do not constitute textual content.</p>
+					</details>
+					<ul>
+						<li>
+							<p>If the answer is <strong>no</strong>, skip to <a href="#check-visual">check 2</a>.</p>
+						</li>
+						<li>
+							<p>Otherwise, add a textual access mode declaration to the package document metadata:</p>
+							<pre>&lt;meta property="schema:accessMode">textual&lt;/meta></pre>
+						</li>
+					</ul>
+					<p class="subq">Check 1.1: Does the publication only contain textual content?</p>
+					<ul>
+						<li>
+							<p>If the answer is <strong>no</strong>, skip to <a href="#check-visual">check 2</a>.</p>
+						</li>
+						<li>
+							<p>Otherwise, add a textual sufficient mode declaration to the package document
+								metadata:</p>
+							<pre>&lt;meta property="schema:accessModeSufficient">textual&lt;/meta></pre>
+							<p>Skip to <a href="#check-mo">check 6</a>.</p>
+						</li>
+					</ul>
+					<details class="expl">
+						<summary>Explanation of check 1</summary>
+						<p>The first part of this check is to determine if a textual access mode applies. Most EPUB
+							publications will have at least some text content. Only some fixed layout works, such as
+							comics, manga, and children's books, are entirely image based.</p>
+						<p>In the case there is no text content, or the work is not entirely textual, the evaluation
+							continues at the next check for visual content.</p>
+						<p>If the work consists entirely of text content, such as is often the case with novels, there
+							is no need to perform the additional access mode checks. A textual sufficient access mode
+							can be declared and the next check jumps ahead to determine if there is audio
+							synchronization.</p>
+					</details>
+				</li>
+				<li id="check-visual">
+					<p class="question">Check 2: Does the publication contain visual content?</p>
+					<details>
+						<summary>How to evaluate</summary>
+						<p>Check if there are graphics, photos, video, games, images or text, or other visual
+							representations that carry information that a user must be able to access.</p>
+						<p>Do not include the cover page image, publisher and imprint logos, author portraits, and
+							purely decorative images in the determination. These are not essential visual content.</p>
+					</details>
+					<ul>
+						<li>
+							<p>If the answer is <strong>no</strong>, skip to <a href="#check-auditory">check 3</a>.</p>
+						</li>
+						<li>
+							<p>Otherwise, add a visual access mode declaration to the package document metadata:</p>
+							<pre>&lt;meta property="schema:accessMode">visual&lt;/meta></pre>
+						</li>
+					</ul>
+					<p class="subq">Check 2.1: Does the publication only contain visual content?</p>
+					<ul>
+						<li>
+							<p>If the answer is <strong>no</strong>, skip to <a href="#check-auditory">check 3</a>.</p>
+						</li>
+						<li>
+							<p>Otherwise, add a visual sufficient mode declaration to the package document metadata:</p>
+							<pre>&lt;meta property="schema:accessModeSufficient">visual&lt;/meta></pre>
+							<p>Skip to <a href="#check-text-alt">check 5</a>.</p>
+						</li>
+					</ul>
+					<details class="expl">
+						<summary>Explanation of check 2</summary>
+						<p>The first part of this check is to determine if a visual access mode applies. Many EPUB
+							publications will have at least some visual content that is essential to understanding the
+							work.</p>
+						<p>In the case there is no visual content, or the work is not entirely visual, the evaluation
+							continues at the next check for auditory content.</p>
+						<p>If the work consists entirely of visual content, such as is typically the case with comics
+							and manga, there is no need to perform the additional access mode checks. A visual
+							sufficient access mode can be declared and the next check jumps ahead to determine if there
+							is audio synchronization.</p>
+					</details>
+				</li>
+				<li id="check-auditory">
+					<p class="question">Check 3: Does the publication contain auditory content?</p>
+					<details>
+						<summary>How to evaluate</summary>
+						<p>Check for standalone audio clips, such as speeches or readings, or audio tracks for video
+							that include information necessary to understand the work.</p>
+						<p>Do no include audio that has no informational value, such as mood music or background music
+							to an instructional video. Also, do not include audio synchronized via media overlays.</p>
+					</details>
+					<ul>
+						<li>
+							<p>If the answer is <strong>no</strong>, skip to <a href="#check-tactile">check 4</a>.</p>
+						</li>
+						<li>
+							<p>Otherwise, add an auditory access mode declaration to the package document metadata:</p>
+							<pre>&lt;meta property="schema:accessMode">auditory&lt;/meta></pre>
+						</li>
+					</ul>
+					<details class="expl">
+						<summary>Explanation of check 3</summary>
+						<p>This check determines if an auditory access mode applies. Some EPUB publications contain
+							auditory information, such as prerecorded speeches or as part of a video, but as EPUB is not
+							an audiobook format it is generally never the case that an entire EPUB publication is
+							authored as auditory content. That is why, unlike the first two checks, there is not an
+							additional check that all the content is auditory.</p>
+						<p>Note that audio synchronization is a special case and is handled later by the check for media
+							overlays. An EPUB may be fully readable in auditory form via media overlays, but that is a
+							different case from the primary authored content being auditory.</p>
+						<p>In the case there is no auditory content the evaluation continues at the next check for
+							tactile content.</p>
+					</details>
+				</li>
+				<li id="check-tactile">
+					<p class="question">Check 4: Does the publication contain tactile content?</p>
+					<details>
+						<summary>How to evaluate</summary>
+						<p>Check if the text of the publication is authored using Unicode braille characters and/or if
+							tactile graphics are embedded in the publication.</p>
+						<p>Do not include adaptations links to tactile graphics or objects, or braille text when it is
+							only used as a text alternatives to visual content.</p>
+					</details>
+					<ul>
+						<li>
+							<p>If the answer is <strong>no</strong>, skip to <a href="#check-text-alt">check 5</a>.</p>
+						</li>
+						<li>
+							<p>Otherwise, add a tactile access mode declaration to the package document metadata:</p>
+							<pre>&lt;meta property="schema:accessMode">tactile&lt;/meta></pre>
+						</li>
+					</ul>
+					<p class="subq">Check 4.1: Does the publication only contain tactile content?</p>
+					<ul>
+						<li>
+							<p>If the answer is <strong>no</strong>, skip to <a href="#check-text-alt">check 5</a>.</p>
+						</li>
+						<li>
+							<p>Otherwise, add a visual sufficient mode declaration to the package document metadata:</p>
+							<pre>&lt;meta property="schema:accessModeSufficient">tactile&lt;/meta></pre>
+							<p>Skip to <a href="#check-mo">check 6</a>.</p>
+						</li>
+					</ul>
+					<details class="expl">
+						<summary>Explanation of check 4</summary>
+						<p>The first part of this check is to determine if a tactile access mode applies. It is
+							generally not common for mainstream EPUB publications to have tactile content as a primary
+							means of conveying information (it is rare for them to have tactile content even as
+							adaptations). Tactile content is more typically found in formats like eBraille.</p>
+						<p>In the case where there is no tactile content, or the work is not entirely tactile, the
+							evaluation continues at the next check for text alternatives.</p>
+						<p>If the work consists entirely of tactile content, such as is the case with eBraille, there is
+							no need to perform the additional access mode checks. A tactile sufficient access mode can
+							be declared and the next check jumps ahead to determine if there is audio
+							synchronization.</p>
+					</details>
+				</li>
+				<li id="check-text-alt">
+					<p class="question">Check 5: Are there sufficient text alternatives for all non-text content?</p>
+					<details>
+						<summary>How to evaluate</summary>
+						<p>For this check, all the visual and auditory content identified in checks <a
+								href="#check-visual">2</a> and <a href="#check-auditory">3</a> needs to evaluated to
+							verify that it includes textual adaptations that convey equivalent information. Images, for
+							example, will need a combination of alternative text and extended descriptions to convey the
+							same information in text form.</p>
+					</details>
+					<ul>
+						<li>
+							<p>If the answer is <strong>no</strong>, skip to <a href="#check-multi">check 7</a>.</p>
+						</li>
+						<li>
+							<p>Otherwise, add a textual sufficient access mode to the package document metadata:</p>
+							<pre>&lt;meta property="schema:accessModeSufficient">textual&lt;/meta></pre>
+						</li>
+					</ul>
+					<details class="expl">
+						<summary>Explanation of check 5</summary>
+						<p>This check is only reached for publications that contain a mix of more than one access mode.
+							It is used to determine whether there is also a fully textual pathway to reading the
+							content, making the publication useful for text-to-speech or dynamic braille
+							translation.</p>
+						<p>Note that this evaluation process does not consider the presence of single visual or tactile
+							sufficient access modes for publications with a mix of primary access modes. Such single
+							access modes are either not realistic, in the case of tactile, or extremely unlikely given
+							the technological limitations of the format (e.g., alternative sign-language interpretation
+							of an entire work).</p>
+					</details>
+				</li>
+				<li id="check-mo">
+					<p class="question">Check 6: Does the publication provide synchronized playback of prerecorded audio
+						with the text?</p>
+					<details>
+						<summary>How to evaluate</summary>
+						<p>Check for the presence of <a data-cite="epub-3#sec-media-overlays">media overlays</a>
+							[[epub-3]] that synchronize the text of the publication with prerecorded audio.</p>
+						<p>The coverage of the overlays also needs to be verified &#8212; whether it covers the entire
+							publication and whether all the equivalent information is available in auditory form.</p>
+						<p>For example, if a media overlay for a children's picture book only provides audio for the
+							words on a page and omits any description of accompanying image, the overlay does not
+							provide an equivalent reading experience. The ability to perceive the image is still
+							needed.</p>
+					</details>
+					<ul>
+						<li>
+							<p>If the answer is <strong>no</strong>, skip to <a href="#check-multi">check 7</a>.</p>
+						</li>
+						<li>
+							<p>Otherwise:</p>
+							<ul>
+								<li>
+									<p>If the audio covers the entire work:</p>
+									<ul>
+										<li>
+											<p>If full audio is synchronized to partial text, set both an auditory
+												access mode and sufficient access mode in the package document
+												metadata:</p>
+											<pre>&lt;meta property="schema:accessMode">auditory&lt;/meta>
+&lt;meta property="schema:accessModeSufficient">auditory&lt;/meta></pre>
+										</li>
+										<li>
+											<p>Otherwise, set only an auditory sufficient access mode in the package
+												document metadata:</p>
+											<pre>&lt;meta property="schema:accessModeSufficient">auditory&lt;/meta></pre>
+										</li>
+									</ul>
+								</li>
+								<li>
+									<p>In the case where the audio coverage is not complete, neither an auditory access
+										mode nor a single auditory sufficient access mode is set.</p>
+									<p>A sufficient access mode that combines the auditory content covered by the
+										partial media overlay with the access mode(s) of the content not covered by the
+										overlay could be declared in this case, but such a calculation has to be done
+										manually.</p>
+								</li>
+							</ul>
+						</li>
+					</ul>
+					<details class="expl">
+						<summary>Explanation of check 6</summary>
+						<p>This check determines if the inclusion of synchronized audio via a media overlay represents
+							an auditory access mode, a sufficient access mode, a combination, or neither.</p>
+						<p>Media overlays are a special case in EPUB because they approximate an audiobook but are more
+							like an adaptation in most mainstream production cases. When the audio fully captures the
+							information of the work, whether the overlay represents an audiobook or an add-on audio
+							experience is determined by the content the audio is synchronized to.</p>
+						<p>For most mainstream publications, the audio is a complement to the content produced by the
+							author. In this case, it is treated as an adaptation and an auditory sufficient access mode
+							is added to the access modes of the content.</p>
+						<p>For accessible republishers, EPUB is used as a delivery format for the audio, usually only
+							including the major headings of the work to allow structured navigation. In this case, both
+							an auditory access mode and an auditory sufficient access mode are specified.</p>
+						<p>In the final case, where the audio overlay is incomplete, it is not required to set a
+							sufficient access mode that mixes the auditory content with the access modes of the content
+							it does not cover. Users can be made aware that there is incomplete coverage by the lack of
+							a single auditory sufficient access mode couple with the presence of the <a
+								href="#synchronizedAudioText"><code>synchronizedAudioText</code> feature</a>.</p>
+					</details>
+				</li>
+				<li id="check-multi">
+					<p class="question">Check 7: Did checking the content result in more than one
+							<code>schema:accessMode</code> property being added to the package document metadata?</p>
+					<p>If the answer is yes, another set of sufficient access modes can be added that compiles all the
+						declared access modes.</p>
+					<details class="expl">
+						<summary>Explanation of check 7</summary>
+						<p>For publications with a mix of content types, this final check adds a last sufficient access
+							mode set that accounts for all the access modes that were identified in the first three
+							checks.</p>
+						<p>For example, if a publication has textual and visual access modes, a sufficient access mode
+							set like the following would be added at this check:</p>
+						<pre class="nohighlight">&lt;meta property="schema:accessMode">textual,visual&lt;/meta></pre>
+					</details>
+				</li>
+			</ol>
 		</section>
 		<section id="features-identifying" class="appendix informative">
 			<h2>Identifying accessibility features</h2>
