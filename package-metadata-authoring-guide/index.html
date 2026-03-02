@@ -4128,6 +4128,10 @@
 							<p>If the answer is <strong>no</strong>, skip to <a href="#check-visual">check 2</a>.</p>
 						</li>
 						<li>
+							<p>If the answer is <strong>yes</strong> but the only content of the publication is a list
+								of headings for audio synchronization, skip to <a href="#check-mo">check 6</a>.</p>
+						</li>
+						<li>
 							<p>Otherwise, add a textual access mode declaration to the package document metadata:</p>
 							<pre>&lt;meta property="schema:accessMode">textual&lt;/meta></pre>
 						</li>
@@ -4151,6 +4155,10 @@
 							comics, manga, and children's books, are entirely image based.</p>
 						<p>In the case there is no text content, or the work is not entirely textual, the evaluation
 							continues at the next check for visual content.</p>
+						<p>If the only text is the headings of the work &#8212; to provide support for structured audio
+							playback via media overlays &#8212; there is no need to perform the subsequent checks for
+							the other access modes. A textual access mode is not reported because in this case the work
+							will be treated like an audiobook.</p>
 						<p>If the work consists entirely of text content, such as is often the case with novels, there
 							is no need to perform the additional access mode checks. A textual sufficient access mode
 							can be declared and the next check jumps ahead to determine if there is audio
