@@ -447,6 +447,10 @@
 						again as a sufficient access mode set. For accessibility purposes, only the sufficient access
 						mode sets that consist of a single value are important (i.e., that the content is fully readable
 						in the specified mode).</p>
+					<p>Media overlays also present a complex case because they are like combining two formats into one
+						&#8212; an ebook and an audiobook. For more detailed information about how to set access modes
+						and sufficient access modes when media overlays are present, refer to <a href="#accessMode-sync"
+						></a>.</p>
 				</div>
 
 				<p>This example helps to explain another distinction between the two types of metadata. Each access mode
@@ -472,6 +476,9 @@
 				<div class="note">
 					<p>For additional examples of how to express primary and sufficient access modes in real world
 						situations, refer to <a href="#examples-am-ams-combination"></a>.</p>
+
+					<p>For help determining which access modes and sufficient access modes to set for a publication,
+						refer to <a href="#access-modes-eval"></a>.</p>
 				</div>
 			</section>
 
@@ -677,6 +684,10 @@
 								value;</li>
 						</ul>
 
+						<p>Audio synchronized with the text of an EPUB publication also represents a unique case as it
+							is often considered an adaptation. This case is discussed in detail in the <a
+								href="#accessMode-sync">next section</a>.</p>
+
 						<p>Not setting an <code>auditory</code> access mode for these kinds of cases avoids users
 							mistakenly believing that they have to be able to hear the authored content in order to read
 							and understand it.</p>
@@ -699,13 +710,11 @@
 
 							<p>In this case, because the audio playback is an extra feature, and is not required for
 								reading the publication, it is <strong>not</strong> listed as an auditory access mode.
-								Instead, the presence of text and audio synchronization is declared using the <a
-									href="#synchronizedAudioText"><code>synchronizedAudioText</code> accessibility
-									feature</a>.</p>
-
-							<p>Having full audio playback capability in this case means that an <a href="#ams-auditory"
+								Having full audio playback capability in this case means that an <a href="#ams-auditory"
 									>auditory sufficient access mode</a> needs to be declared — the user can listen to
-								the complete publication as an alternative to reading the text.</p>
+								the complete publication as an alternative to reading the text. The presence of text and
+								audio synchronization is also declared using the <a href="#synchronizedAudioText"
+										><code>synchronizedAudioText</code> accessibility feature</a>.</p>
 
 							<aside class="example"
 								title="Package document markup for a book with full text and audio synchronization">
@@ -716,19 +725,16 @@
 							</aside>
 
 							<div class="note">
-								<p>When media overlays are present, the "<code>auditory</code>" value should not be
-									added to all the possible sufficient access modes just because it is possible to
-									turn on text-audio playback.</p>
-
-								<p>For example, a publication with media overlays that has text and images (with text
-									alternatives) would only declare the following sufficient access modes:</p>
-
-								<pre>&lt;meta property="schema:accessModeSufficient">textual&lt;/meta>
-&lt;meta property="schema:accessModeSufficient">auditory&lt;/meta>
-&lt;meta property="schema:accessModeSufficient">textual,visual&lt;/meta></pre>
-
-								<p>It would <strong>not</strong> include declarations for
-									"<code>textual,auditory</code>" or "<code>textual,visual,auditory</code>".</p>
+								<p>For metadata purposes, an EPUB can only be one type of publication. It cannot be
+									separately declared that a publication is both an ebook and an audiobook &#8212;
+									EPUB's metadata is too limited in its expressivity to handle this kind of dual
+									role.</p>
+								<p>That is why when media overlays provide a fully synchronized audio experience one
+									presentation has to be defined as primary and the other an affordance. Because EPUB
+									is primarily considered an ebook format, the audiobook-like experience is treated as
+									an affordance for the metadata to make sense. The ability for users to discover that
+									the publication is readable entirely by audio is not lost because of this choice; it
+									is just transferred to the sufficient access modes.</p>
 							</div>
 
 							<p>Another use for media overlays — more typical among accessible republishers such as
@@ -756,9 +762,8 @@
 							</aside>
 
 							<div class="note">
-								<p>Some publications that provide the body in auditory form may include the backmatter
-									in text form, allowing users to use text-to-speech playback to render it. In this
-									case, there would be a textual component.</p>
+								<p>For additional help setting access modes and sufficient access modes when media
+									overlays are used, refer to <a href="#access-modes-eval"></a>.</p>
 							</div>
 						</section>
 					</section>
@@ -1231,7 +1236,25 @@
 
 						<p>A single auditory sufficient access mode typically indicates that media overlays have been
 							used to provide audio for all the text and visual content, but it could also set if, for
-							example, a book of poetry also contained (non-synchronized) recordings for each poem.</p>
+							example, a book of poetry also contained (non-synchronized) recordings for each poem. More
+							information about how to set sufficient access modes when media overlays are used is
+							available in <a href="#accessMode-sync"></a>.</p>
+
+						<div class="note">
+							<p>When media overlays are present, the "<code>auditory</code>" value should not be added to
+								all the possible sufficient access modes just because it is possible to turn on
+								synchronized text-audio playback.</p>
+
+							<p>For example, a publication with media overlays that has text and images (with text
+								alternatives) would only declare the following sufficient access modes:</p>
+
+							<pre>&lt;meta property="schema:accessModeSufficient">textual&lt;/meta>
+&lt;meta property="schema:accessModeSufficient">auditory&lt;/meta>
+&lt;meta property="schema:accessModeSufficient">textual,visual&lt;/meta></pre>
+
+							<p>It would <strong>not</strong> include declarations for "<code>textual,auditory</code>" or
+									"<code>textual,visual,auditory</code>".</p>
+						</div>
 
 						<div class="note">
 							<p>An <code>auditory</code> sufficient access mode is not set for textual content that the
@@ -1555,9 +1578,18 @@
 &lt;/package></pre>
 				</aside>
 
+				<p>It is not required that all the TTS enhancements be used in order to specify this feature. If only
+					one applies to a publication, or is known to work in reading systems, the feature can still be
+					specified. It can also be used if new TTS enhancements are developed beyond those listed in this
+					section.</p>
+
 				<p>It is only recommended to set this feature if the TTS enhancements substantively cover the rendering
 					issues that are likely to arise — recognizing that different TTS engines have different capabilities
 					and authors cannot anticipate every misreading they might make.</p>
+
+				<p>Setting the feature does not specify which TTS enhancement feature(s) have been used, so it is also
+					good practice to indicate why the feature is being set in the <a href="#accessibilitySummary"
+						>accessibility summary</a>.</p>
 
 				<p>Media overlays differ from text-to-speech playback in that they provide prerecorded audio
 					synchronized with the text. The synchronization, and granularity of playback synchronization, is set
@@ -1582,10 +1614,24 @@
 					text-to-speech engines to create the audio. Prerecorded text-to-speech narration is often used when
 					providing audio-synchronized playback of backmatter, which is tedious for humans to read.</p>
 
+				<p>The use of the word "text" in the feature name should not be interpreted solely as the audio having
+					to be synchronized with Unicode text character content. It is intended to be understood more like
+					the <code>text</code> element that media overlays use to synchronize playback. The <code>text</code>
+					element can also be used to refer to any type of content, spans of Unicode text, images with text,
+					images of text, images with no direct text in them but that have alt text and/or (possibly hidden)
+					extended descriptions, as well as other possibilities. In other words, only focus on whether media
+					overlays are provided, not on what each <code>text</code> element refers to, when setting this
+					feature.</p>
+
 				<div class="note">
 					<p>Media overlays also makes it possible to synchronize dynamic text-to-speech rendering with text
 						highlighting, although this is not commonly done or supported by reading systems.</p>
 				</div>
+
+				<p>Whether all or only some of a publication's content is covered by synchronized text and audio
+					playback cannot be determined by the presence of this feature alone. Completeness of coverage can be
+					calculated by inspecting the access modes and sufficient access modes that have been set. For more
+					information, refer to <a href="#accessMode-sync"></a>.</p>
 
 				<p>The use of the TTS enhancements and media overlays is not mutually exclusive. TTS markup enhancements
 					could be provided, for example, to improve the quality of the media overlays dynamic TTS generation
