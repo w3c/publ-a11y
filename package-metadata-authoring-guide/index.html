@@ -1246,7 +1246,8 @@
 								synchronized text-audio playback.</p>
 
 							<p>For example, a publication with media overlays that has text and images (with text
-								alternatives) would only declare the following sufficient access modes:</p>
+								alternatives sufficient to understand their content) would only declare the following
+								sufficient access modes:</p>
 
 							<pre>&lt;meta property="schema:accessModeSufficient">textual&lt;/meta>
 &lt;meta property="schema:accessModeSufficient">auditory&lt;/meta>
@@ -1254,6 +1255,10 @@
 
 							<p>It would <strong>not</strong> include declarations for "<code>textual,auditory</code>" or
 									"<code>textual,visual,auditory</code>".</p>
+
+							<p>(Note that the final "<code>textual,visual</code>" set captures the two access modes
+								needed to read the default content &#8212; <code>textual</code> for the text content and
+									<code>visual</code> for the images.)</p>
 						</div>
 
 						<div class="note">
