@@ -1584,6 +1584,308 @@
 						addressed in it. In addition, the <a href="#index-defined-here">index of terms</a> provides
 						links to all the features and other properties defined in this document.</p>
 				</section>
+
+				<section id="features-epub2">
+					<h4>Application to EPUB 2</h4>
+
+					<p>The following table identifies whether accessibility features can be found in EPUB 2
+						publications.</p>
+
+					<table class="zebra">
+						<thead>
+							<tr>
+								<th>Feature</th>
+								<th>Applicable to EPUB 2</th>
+								<th>Notes</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>
+									<a href="#alternativeText">
+										<code>alternativeText</code>
+									</a>
+								</td>
+								<td class="yes">Yes</td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>
+									<a href="#ARIA">
+										<code>ARIA</code>
+									</a>
+								</td>
+								<td class="no">No</td>
+								<td>XHTML 1.1 does not support ARIA roles, states, and properties</td>
+							</tr>
+							<tr>
+								<td>
+									<a href="#audioDescription">
+										<code>audioDescription</code>
+									</a>
+								</td>
+								<td class="no">No</td>
+								<td>EPUB 2 does not support video</td>
+							</tr>
+							<tr>
+								<td>
+									<a href="#closedCaptions">
+										<code>closedCaptions</code>
+									</a>
+								</td>
+								<td class="no">No</td>
+								<td>EPUB 2 does not support video</td>
+							</tr>
+							<tr>
+								<td>
+									<a href="#describedMath">
+										<code>describedMath</code>
+									</a>
+								</td>
+								<td class="yes">Yes</td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>
+									<a href="#displayTransformability">
+										<code>displayTransformability</code>
+									</a>
+								</td>
+								<td class="yes">Yes</td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>
+									<a href="#fullRubyAnnotations">
+										<code>fullRubyAnnotations</code>
+									</a>
+								</td>
+								<td class="no">No</td>
+								<td>XHTML 1.1 does not support ruby markup</td>
+							</tr>
+							<tr>
+								<td>
+									<a href="#highContrastAudio">
+										<code>highContrastAudio</code>
+									</a>
+								</td>
+								<td class="no">No</td>
+								<td>EPUB 2 does not support audio or video</td>
+							</tr>
+							<tr>
+								<td>
+									<a href="#highContrastDisplay">
+										<code>highContrastDisplay</code>
+									</a>
+								</td>
+								<td class="yes">Yes</td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>
+									<a href="#horizontalWriting">
+										<code>horizontalWriting</code>
+									</a>
+								</td>
+								<td class="yes">Yes</td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>
+									<a href="#index">
+										<code>index</code>
+									</a>
+								</td>
+								<td class="yes">Yes</td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>
+									<a href="#latex">
+										<code>latex</code>
+									</a>
+								</td>
+								<td class="yes">Yes</td>
+								<td>Although LaTeX-formatted equations can be added to EPUB 2 publications, EPUB 2 does
+									not support the scripting necessary to transform the equations for presentation</td>
+							</tr>
+							<tr>
+								<td>
+									<a href="#largePrint">
+										<code>largePrint</code>
+									</a>
+								</td>
+								<td class="yes">Yes</td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>
+									<a href="#longDescription">
+										<code>longDescription</code>
+									</a>
+								</td>
+								<td class="yes">Yes</td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>
+									<a href="#MathML">
+										<code>MathML</code>
+									</a>
+								</td>
+								<td class="yes">Yes</td>
+								<td>MathML markup is not likely to be found in EPUB 2 publications. Although it could be
+									added using the <code>epub:switch</code> element, reading systems never supported
+									its rendering</td>
+							</tr>
+							<tr>
+								<td>
+									<a href="#openCaptions">
+										<code>openCaptions</code>
+									</a>
+								</td>
+								<td class="no">No</td>
+								<td>EPUB 2 does not support video</td>
+							</tr>
+							<tr>
+								<td>
+									<a href="#pageBreakMarkers">
+										<code>pageBreakMarkers</code>
+									</a>
+								</td>
+								<td class="no">No</td>
+								<td>XHTML 1.1 does not support ARIA roles</td>
+							</tr>
+							<tr>
+								<td>
+									<a href="#pageNavigation">
+										<code>pageNavigation</code>
+									</a>
+								</td>
+								<td class="yes">Yes</td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>
+									<a href="#readingOrder">
+										<code>readingOrder</code>
+									</a>
+								</td>
+								<td class="yes">Yes</td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>
+									<a href="#rubyAnnotations">
+										<code>rubyAnnotations</code>
+									</a>
+								</td>
+								<td class="no">No</td>
+								<td>XHTML 1.1 does not support ruby markup</td>
+							</tr>
+							<tr>
+								<td>
+									<a href="#signLanguage">
+										<code>signLanguage</code>
+									</a>
+								</td>
+								<td class="no">No</td>
+								<td>EPUB 2 does not support audio or video</td>
+							</tr>
+							<tr>
+								<td>
+									<a href="#structuralNavigation">
+										<code>structuralNavigation</code>
+									</a>
+								</td>
+								<td class="yes">Yes</td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>
+									<a href="#synchronizedAudioText">
+										<code>synchronizedAudioText</code>
+									</a>
+								</td>
+								<td class="no">No</td>
+								<td>EPUB 2 does not support media overlays</td>
+							</tr>
+							<tr>
+								<td>
+									<a href="#tableOfContents">
+										<code>tableOfContents</code>
+									</a>
+								</td>
+								<td class="yes">Yes</td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>
+									<a href="#timingControl">
+										<code>timingControl</code>
+									</a>
+								</td>
+								<td class="no">No</td>
+								<td>EPUB 2 does not support scripting</td>
+							</tr>
+							<tr>
+								<td>
+									<a href="#ttsMarkup">
+										<code>ttsMarkup</code>
+									</a>
+								</td>
+								<td class="no">No</td>
+								<td>EPUB 2 only supports CSS Speech properties</td>
+							</tr>
+							<tr>
+								<td>
+									<a href="#transcript">
+										<code>transcript</code>
+									</a>
+								</td>
+								<td class="yes">Yes</td>
+								<td>EPUB 2 had limited support for Flash video at one time so it is possible that some
+									publications could still contain transcripts</td>
+							</tr>
+							<tr>
+								<td>
+									<a href="#unlocked">
+										<code>unlocked</code>
+									</a>
+								</td>
+								<td class="yes">Yes</td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>
+									<a href="#verticalWriting">
+										<code>verticalWriting</code>
+									</a>
+								</td>
+								<td class="no">No</td>
+								<td>EPUB 2 does not support the CSS <code>writing-mode</code> property</td>
+							</tr>
+							<tr>
+								<td>
+									<a href="#withAdditionalWordSegmentation">
+										<code>withAdditionalWordSegmentation</code>
+									</a>
+								</td>
+								<td class="yes">Yes</td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>
+									<a href="#withoutAdditionalWordSegmentation">
+										<code>withoutAdditionalWordSegmentation</code>
+									</a>
+								</td>
+								<td class="yes">Yes</td>
+								<td></td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
 			</section>
 
 			<section id="aural-rendering">
@@ -2829,6 +3131,59 @@
    …
 &lt;/package></pre>
 				</aside>
+			</section>
+
+			<section id="scripting">
+				<h3>Scripting</h3>
+
+				<div class="feature-list">
+					<p class="feature-hd">In this section:</p>
+					<ul>
+						<li>
+							<a href="#timingControl">timingControl</a>
+						</li>
+					</ul>
+				</div>
+
+				<p>The accessibility of scripted content is generally covered by conformance to WCAG 2 [[wcag2]]. As a
+					result, the schema.org vocabulary currently only contains a single term related to scripting.</p>
+
+				<p>Timing is essential to much scripted interactivity. For example, a quiz will often have a time limit
+					and interactive games often set a limit to complete activities. These time limits typically not
+					account for the additional time required for users with, for example, dexterity limitations or
+					cognitive issues. For non-essential activities, it should be possible for users to control or turn
+					off the timing so that they can complete the activity or better interact with it.</p>
+
+				<p>The ability to control the timing of scripted content is indicated in the <a
+						data-cite="epub-3#dfn-package-document">package document</a> [[epub-3]] metadata using the <dfn
+						id="timingControl">timingControl</dfn> accessibility feature.</p>
+
+				<aside class="example" title="Package document markup for the timing control feature">
+					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
+   &lt;metadata>
+      …
+      &lt;meta property="schema:accessibilityFeature">timingControl&lt;/meta>
+      …
+   &lt;/metadata>
+   …
+&lt;/package></pre>
+				</aside>
+
+				<p>The <code>timingControl</code> feature is aligned with <a data-cite="wcag2#timing-adjustable">success
+						criterion 2.2.1 Timing adjustable</a> [[wcag2]]. Scripted content should meet the requirements
+					of this success criterion to set the feature, by providing either the option to turn off timing or
+					the ability to adjust or extend it.</p>
+
+				<div class="note">
+					<p>Essential interactions, such as time limits on logins or for certain sessions to expire, that are
+						exempted from conformance by the success criterion are also exempt for the purposes of setting
+						this feature. These types of interactions are less common in EPUB publications.</p>
+				</div>
+
+				<p>Timing control is not limited to content with an explicit timer. The WCAG success criterion also
+					consider text that scrolls across a banner or content that updates periodically as having a timed
+					interaction component. It is important to check for these other cases even if they are not common in
+					digital publications.</p>
 			</section>
 
 			<section id="tactile-content">
@@ -4516,309 +4871,6 @@
 			<p>This appendix provides guidance on how to determine if an <a data-cite="epub-3#dfn-epub-publication">EPUB
 					publication</a> [[epub-3]] contains accessibility features for anyone unfamiliar with their markup
 				or styling.</p>
-
-			<section id="features-epub2">
-				<h3>Application to EPUB 2</h3>
-
-				<p>The following table identifies whether accessibility features can be found in EPUB 2
-					publications.</p>
-
-				<table class="zebra">
-					<thead>
-						<tr>
-							<th>Feature</th>
-							<th>Applicable to EPUB 2</th>
-							<th>Notes</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>
-								<a href="#identify-alt">
-									<code>alternativeText</code>
-								</a>
-							</td>
-							<td class="yes">Yes</td>
-							<td></td>
-						</tr>
-						<tr>
-							<td>
-								<a href="#identify-aria">
-									<code>ARIA</code>
-								</a>
-							</td>
-							<td class="no">No</td>
-							<td>XHTML 1.1 does not support ARIA roles, states, and properties</td>
-						</tr>
-						<tr>
-							<td>
-								<a href="#identify-audio-desc">
-									<code>audioDescription</code>
-								</a>
-							</td>
-							<td class="no">No</td>
-							<td>EPUB 2 does not support video</td>
-						</tr>
-						<tr>
-							<td>
-								<a href="#identify-closed-captions">
-									<code>closedCaptions</code>
-								</a>
-							</td>
-							<td class="no">No</td>
-							<td>EPUB 2 does not support video</td>
-						</tr>
-						<tr>
-							<td>
-								<a href="#identify-described-math">
-									<code>describedMath</code>
-								</a>
-							</td>
-							<td class="yes">Yes</td>
-							<td></td>
-						</tr>
-						<tr>
-							<td>
-								<a href="#identify-display-transformability">
-									<code>displayTransformability</code>
-								</a>
-							</td>
-							<td class="yes">Yes</td>
-							<td></td>
-						</tr>
-						<tr>
-							<td>
-								<a href="#identify-ruby">
-									<code>fullRubyAnnotations</code>
-								</a>
-							</td>
-							<td class="no">No</td>
-							<td>XHTML 1.1 does not support ruby markup</td>
-						</tr>
-						<tr>
-							<td>
-								<a href="#identify-high-contrast-audio">
-									<code>highContrastAudio</code>
-								</a>
-							</td>
-							<td class="no">No</td>
-							<td>EPUB 2 does not support audio or video</td>
-						</tr>
-						<tr>
-							<td>
-								<a href="#identify-high-contrast-display">
-									<code>highContrastDisplay</code>
-								</a>
-							</td>
-							<td class="yes">Yes</td>
-							<td></td>
-						</tr>
-						<tr>
-							<td>
-								<a href="#identify-writing-mode">
-									<code>horizontalWriting</code>
-								</a>
-							</td>
-							<td class="yes">Yes</td>
-							<td></td>
-						</tr>
-						<tr>
-							<td>
-								<a href="#identify-index">
-									<code>index</code>
-								</a>
-							</td>
-							<td class="yes">Yes</td>
-							<td></td>
-						</tr>
-						<tr>
-							<td>
-								<a href="#identify-latex">
-									<code>latex</code>
-								</a>
-							</td>
-							<td class="yes">Yes</td>
-							<td>Although LaTeX can be added to EPUB 2 publications, it does not support the scripting
-								necessary to transform LaTeX for presentation. Inspecting for latex is generally
-								pointless.</td>
-						</tr>
-						<tr>
-							<td>
-								<a href="#identify-large-print">
-									<code>largePrint</code>
-								</a>
-							</td>
-							<td class="yes">Yes</td>
-							<td></td>
-						</tr>
-						<tr>
-							<td>
-								<a href="#identify-extended-desc">
-									<code>longDescription</code>
-								</a>
-							</td>
-							<td class="yes">Yes</td>
-							<td></td>
-						</tr>
-						<tr>
-							<td>
-								<a href="#identify-mathml">
-									<code>MathML</code>
-								</a>
-							</td>
-							<td class="yes">Yes</td>
-							<td>MathML markup is not likely to be found in EPUB 2 publications. Although it could be
-								added using the <code>epub:switch</code> element, reading systems never supported its
-								rendering</td>
-						</tr>
-						<tr>
-							<td>
-								<a href="#identify-open-captions">
-									<code>openCaptions</code>
-								</a>
-							</td>
-							<td class="no">No</td>
-							<td>EPUB 2 does not support video</td>
-						</tr>
-						<tr>
-							<td>
-								<a href="#identify-page-breaks">
-									<code>pageBreakMarkers</code>
-								</a>
-							</td>
-							<td class="no">No</td>
-							<td>XHTML 1.1 does not support ARIA roles</td>
-						</tr>
-						<tr>
-							<td>
-								<a href="#identify-page-nav">
-									<code>pageNavigation</code>
-								</a>
-							</td>
-							<td class="yes">Yes</td>
-							<td></td>
-						</tr>
-						<tr>
-							<td>
-								<a href="#identify-reading-order">
-									<code>readingOrder</code>
-								</a>
-							</td>
-							<td class="yes">Yes</td>
-							<td></td>
-						</tr>
-						<tr>
-							<td>
-								<a href="#identify-ruby">
-									<code>rubyAnnotations</code>
-								</a>
-							</td>
-							<td class="no">No</td>
-							<td>XHTML 1.1 does not support ruby markup</td>
-						</tr>
-						<tr>
-							<td>
-								<a href="#identify-sign-language">
-									<code>signLanguage</code>
-								</a>
-							</td>
-							<td class="no">No</td>
-							<td>EPUB 2 does not support audio or video</td>
-						</tr>
-						<tr>
-							<td>
-								<a href="#identify-structural-navigation">
-									<code>structuralNavigation</code>
-								</a>
-							</td>
-							<td class="yes">Yes</td>
-							<td></td>
-						</tr>
-						<tr>
-							<td>
-								<a href="#identify-sync-audio-text">
-									<code>synchronizedAudioText</code>
-								</a>
-							</td>
-							<td class="no">No</td>
-							<td>EPUB 2 does not support media overlays</td>
-						</tr>
-						<tr>
-							<td>
-								<a href="#identify-toc">
-									<code>tableOfContents</code>
-								</a>
-							</td>
-							<td class="yes">Yes</td>
-							<td></td>
-						</tr>
-						<tr>
-							<td>
-								<a href="#identify-timing-control">
-									<code>timingControl</code>
-								</a>
-							</td>
-							<td class="no">No</td>
-							<td>EPUB 2 does not support scripting</td>
-						</tr>
-						<tr>
-							<td>
-								<a href="#identify-tts-markup">
-									<code>ttsMarkup</code>
-								</a>
-							</td>
-							<td class="no">No</td>
-							<td>EPUB 2 only supports CSS Speech properties</td>
-						</tr>
-						<tr>
-							<td>
-								<a href="#identify-transcript">
-									<code>transcript</code>
-								</a>
-							</td>
-							<td class="yes">Yes</td>
-							<td>EPUB 2 had limited support for Flash video at one time so it is possible that some
-								publications could still contain transcripts</td>
-						</tr>
-						<tr>
-							<td>
-								<a href="#identify-unlocked">
-									<code>unlocked</code>
-								</a>
-							</td>
-							<td class="yes">Yes</td>
-							<td></td>
-						</tr>
-						<tr>
-							<td>
-								<a href="#identify-writing-mode">
-									<code>verticalWriting</code>
-								</a>
-							</td>
-							<td class="no">No</td>
-							<td>EPUB 2 does not support the CSS <code>writing-mode</code> property</td>
-						</tr>
-						<tr>
-							<td>
-								<a href="#identify-word-segmentation">
-									<code>withAdditionalWordSegmentation</code>
-								</a>
-							</td>
-							<td class="yes">Yes</td>
-							<td></td>
-						</tr>
-						<tr>
-							<td>
-								<a href="#identify-word-segmentation">
-									<code>withoutAdditionalWordSegmentation</code>
-								</a>
-							</td>
-							<td class="yes">Yes</td>
-							<td></td>
-						</tr>
-					</tbody>
-				</table>
-			</section>
 
 			<section id="identify-alt">
 				<h3>Alternative text</h3>
