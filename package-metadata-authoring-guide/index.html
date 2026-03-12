@@ -337,8 +337,8 @@
 
 				<p>Not all of the accessibility features detailed in this document apply to EPUB 2, however; in large
 					part because it is based on the older XHTML 1.1 specification [[xhtml11]] so lacks the advanced
-					markup features of EPUB 3. The <a href="#features-identifying">appendix on identifying features</a>
-					indicates when a feature does not apply to EPUB 2.</p>
+					markup features of EPUB 3. (A <a href="#features-epub2">support table</a> has been included that
+					identifies which features apply to EPUB 2.)</p>
 
 				<p>In addition, the syntax for adding metadata to the EPUB 2 package document is not the same as adding
 					metadata to the EPUB 3 package document. The <code>meta</code> tag changed significantly between
@@ -533,28 +533,31 @@
 						situations, refer to <a href="#examples-am-ams-combination"></a>.</p>
 
 					<p>For help determining which access modes and sufficient access modes to set for a publication,
-						refer to <a href="#access-modes-eval"></a>.</p>
+						refer to <a href="#readability-eval"></a>.</p>
 				</div>
 			</section>
 
 			<section id="accessMode">
 				<h3>Access modes</h3>
 
+				<div class="note">
+					<p>For an introduction to access modes and how they differ from sufficient access modes, refer to
+						the <a href="#readability-explainer">readability metadata explainer</a>.</p>
+				</div>
+
 				<section id="accessmode-setting">
 					<h4>Declaring access modes</h4>
 
-					<p>The applicable access modes are declared using the <a href="https://schema.org/accessMode"><dfn
+					<p>Access modes are declared using the <a href="https://schema.org/accessMode"><dfn
 								id="schema:accessMode"><code>schema:accessMode</code></dfn> property</a> [[schema-org]],
-						repeating the property for each applicable mode — the access modes must not be grouped together
-						in a single tag.</p>
+						repeating the property for each applicable mode. The access modes <strong>must not</strong> be
+						grouped together in a single tag.</p>
 
 					<aside class="example" title="Metadata entries for textual and visual access modes">
-						<pre>&lt;meta
-    property="schema:accessMode">
+						<pre>&lt;meta property="schema:accessMode">
    textual
 &lt;/meta>
-&lt;meta
-    property="schema:accessMode">
+&lt;meta property="schema:accessMode">
    visual
 &lt;/meta></pre>
 					</aside>
@@ -568,8 +571,8 @@
 						contains is background music (e.g., for an instructional video with text captions, or as mood
 						music while reading), listing an auditory access mode is not valid.</p>
 
-					<p>The access modes of adaptations are also <strong>not</strong> declared. For more information on
-						why note, refer to the <a href="#readability-explainer">explainer</a>.</p>
+					<p>The access modes of adaptations are also <strong>not</strong> declared. (For more information on
+						why not, refer to the <a href="#readability-explainer">explainer</a>.)</p>
 
 					<p>The order in which the access modes are declared currently does not carry any meaning, but a
 						useful practice is to list the access modes by their relevance to reading the content. For
@@ -635,10 +638,10 @@
 									data-cite="epub-3#sec-media-overlays">media overlays</a> [[epub-3]].</li>
 						</ul>
 
-						<p>Excluding this kind of text content avoids giving a misleading picture of the publication. A
-							comic, for example, might only have a page of text content that displays the publisher's
-							info while the body is composed entirely of images. The text content in this case will not
-							be useful to anyone wanting to read the story.</p>
+						<p>Excluding this type of text content avoids giving a misleading picture of the publication. A
+							comic, for example, might only have a page of text content for the publication info
+							(publisher, publication date, ISBN, etc.) while the body is composed entirely of images. The
+							text content in this case is not relevant to reading the story.</p>
 
 						<p>As access modes do not take into account any affordances used to make non-textual content
 							accessible (such as alternative text and descriptions for images or transcripts for audio),
@@ -664,9 +667,9 @@
 						<h5>Visual content</h5>
 
 						<p>It is common for <a data-cite="epub-3#dfn-epub-publication">EPUB publications</a> [[epub-3]]
-							to contain some visual content, and even be entirely image based as in the case of comics
-							and manga. Visual does not mean the information is only in static images, either. Visual
-							content also encompasses videos as well any dynamic content, such as interactive images or
+							to contain some visual content. Some publications, such as comics and manga, will even be
+							entirely image based. But visual does not mean the information is only in static images.
+							Visual content also encompasses videos as well dynamic content such as interactive images or
 							games drawn on the [[html]] [^canvas^] element.</p>
 
 						<p>When at least some of the information necessary to read a publication is encoded in visual
@@ -699,6 +702,299 @@
 						<p>Not setting a <code>visual</code> access mode for these kinds of cases avoids users
 							mistakenly believing that they have to be able to see the authored content in order to read
 							and understand it.</p>
+
+						<section id="accessmode-visual-indicators">
+							<h4>Visual content indicators</h4>
+
+							<div class="feature-list">
+								<p class="feature-hd">In this section:</p>
+								<ul>
+									<li>
+										<a href="#chartOnVisual">chartOnVisual</a>
+									</li>
+									<li>
+										<a href="#chemOnVisual">chemOnVisual</a>
+									</li>
+									<li>
+										<a href="#colorDependent">colorDependent</a>
+									</li>
+									<li>
+										<a href="#diagramOnVisual">diagramOnVisual</a>
+									</li>
+									<li>
+										<a href="#mathOnVisual">mathOnVisual</a>
+									</li>
+									<li>
+										<a href="#musicOnVisual">musicOnVisual</a>
+									</li>
+									<li>
+										<a href="#textOnVisual">textOnVisual</a>
+									</li>
+								</ul>
+							</div>
+
+							<p>The visual content indicators are a special class of values that extend the <a
+									href="#accessmode-visual">visual access mode</a>. As a supplementary piece of
+								information, their use is only advisory and they <strong>must always</strong> be paired
+								with a <code>visual</code> access mode declaration.</p>
+
+							<p>The visual content indicators go beyond the basic need to visually perceive the content
+								to provide additional information about the type of content that is encoded visually.
+								For example, although support for MathML [[mathml3]] has improved in recent years, it is
+								still common to find images used for math equations to ensure their rendering. Being
+								able to inform users who are blind that a publication has <a href="#mathOnVisual">images
+									of math</a> lets them know that they will have to rely on alternative text and
+								extended descriptions instead of being able to inspect the equations in the kind of
+								detail that MathML allows.</p>
+
+							<p>The visual content indicators are also useful for visual readers as they indicate that
+								which types of content cannot be resized (only zoomed) or have its appearance changed to
+								represent it more accessibly.</p>
+
+							<p>Like with the visual access mode, the visual content indicators are not exclusive to
+								image formats. If a video has information that requires color perception to understand,
+								for example, a <a href="#colorDependent">color dependence indicator</a> could be set.
+								Or, if an interactive chart is drawn on an [[html]] [^canvas^] element, the <a
+									href="#chartOnVisual">chart on visual</a> could be set.</p>
+
+							<div class="note">
+								<p>Whether or not the content identified by a visual indicator is made accessible in
+									another form (e.g., through the provision of alternative text) is not considered
+									when setting these values. Whether the content is fully readable in a non-visual
+									form is captured by the <a href="#accessModeSufficient">sufficient access
+									modes</a>.</p>
+							</div>
+
+							<p>More than one visual content indicator can apply to a piece of visual content. A
+								publication with an image of a chart that uses color to represent the data, for example,
+								would include both the <a href="#chartOnVisual">chart on visual</a> and <a
+									href="colorDependent">color dependence</a> indicators. When declaring visual content
+								indicators, make sure to check the publication for all that apply.</p>
+
+							<p>The following list describes the types of visual content indicators and how to apply
+								them.</p>
+
+							<dl class="defs">
+								<dt id="visual-indicator-charts">Charts</dt>
+								<dd>
+									<p>The <dfn id="chartOnVisual">chartOnVisual</dfn> indicator is used to declare that
+										there are visual representations of data, such as pie charts, bar charts,
+										scatter plots, and line charts.</p>
+									<aside class="example" title="Package document markup for visual charts">
+										<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
+   &lt;metadata>
+      …
+      &lt;meta property="schema:accessMode">visual&lt;/meta>
+      &lt;meta property="schema:accessMode">chartOnVisual&lt;/meta>
+      …
+   &lt;/metadata>
+   …
+&lt;/package></pre>
+									</aside>
+									<div class="note">
+										<p>For visual representations of concepts, such as in flowcharts, refer to the
+												<a href="#diagramOnVisual"><code>diagramOnVisual</code>
+											indicator</a>.</p>
+									</div>
+								</dd>
+
+								<dt id="visual-indicator-chemistry">Chemistry</dt>
+								<dd>
+									<p>The <dfn id="chemOnVisual">chemOnVisual</dfn> indicator is used to declare that
+										chemical equations and formulas are represented only in visual form.</p>
+									<aside class="example" title="Package document markup for visual chemical content">
+										<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
+   &lt;metadata>
+      …
+      &lt;meta property="schema:accessMode">visual&lt;/meta>
+      &lt;meta property="schema:accessMode">chemOnVisual&lt;/meta>
+      …
+   &lt;/metadata>
+   …
+&lt;/package></pre>
+									</aside>
+									<p>The <code>chemOnVisual</code> indicator is typically used to indicate that
+										chemical content is represented using static image formats like JPEGs and PNGs.
+										It could also apply if a publication includes a video that, for example, shows
+										chemical formulas and equations on screen that the reader needs to understand
+										but that are not described in an audio track.</p>
+									<p>If the chemical content is decorative, then this value is not declared. For
+										example, a cartoon might show a character with a swirl of superficial equations
+										over their head to indicate confusion. As the actual equations are irrelevant to
+										understanding the content, this would not represent a case of visual chemical
+										content.</p>
+									<p>MathML and LaTeX are sometimes used to represent chemical content in a
+										publication. In these cases, although the final equation is drawn visually, the
+										fact that the drawing is based on structured markup or formatting means it is
+										not purely visual; assistive technologies can help users step through the
+										underlying structure. The use of <a href="#MathML-chemistry">MathML</a> and <a
+											href="#latex-chemistry">LaTeX</a> are instead represented as accessibility
+										features.</p>
+								</dd>
+
+								<dt id="visual-indicator-color">Color dependence</dt>
+								<dd>
+									<p>The <dfn id="colorDependent">colorDependent</dfn> indicator is used to declare
+										that visual content requires the ability to perceive color in order to
+										understand the information being conveyed.</p>
+									<aside class="example" title="Package document markup for color dependence">
+										<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
+   &lt;metadata>
+      …
+      &lt;meta property="schema:accessMode">visual&lt;/meta>
+      &lt;meta property="schema:accessMode">colorDependent&lt;/meta>
+      …
+   &lt;/metadata>
+   …
+&lt;/package></pre>
+									</aside>
+									<p>An example of color dependence would be a bar chart where each bar is a different
+										color and a color-coded key is the only way to determine the meaning of each
+										color. A user who cannot differentiate the colors could not match the key values
+										to each bar.</p>
+									<p>This value does not apply if there are secondary indicators that allow users to
+										distinguish the information. For example, if the bar chart in the previous
+										example also had lines running in different directions to differentiate each
+										bar, then a user could use those patterns to match the bars to the key.
+										Similarly, if keywords are placed within each bar instead of using a separate
+										color key, there would be no chance for confusion.</p>
+									<div class="note">
+										<p>The color dependence indicator is not intended to capture issues with CSS
+											styling, such as hyperlinks that might not be perceivable, or student
+											exercises coded by border or background color. If a book fails accessibility
+											conformance for these kinds of color problems, it should be noted in the <a
+												href="#accessibilitySummary">accessibility summary</a>.</p>
+									</div>
+								</dd>
+
+								<dt id="visual-indicator-diagrams">Diagrams</dt>
+								<dd>
+									<p>The <dfn id="diagramOnVisual">diagramOnVisual</dfn> indicator is used to declare
+										that there are visual representations of concepts, such as Venn diagrams,
+										flowcharts, mind maps, and family trees.</p>
+									<aside class="example" title="Package document markup for visual diagrams">
+										<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
+   &lt;metadata>
+      …
+      &lt;meta property="schema:accessMode">visual&lt;/meta>
+      &lt;meta property="schema:accessMode">diagramOnVisual&lt;/meta>
+      …
+   &lt;/metadata>
+   …
+&lt;/package></pre>
+									</aside>
+									<div class="note">
+										<p>For visual representations of data, such as in pie and bar charts, refer to
+											the <a href="#chartOnVisual"><code>chartOnVisual</code> indicator</a>.</p>
+									</div>
+								</dd>
+
+								<dt id="visual-indicator-math">Math</dt>
+								<dd>
+									<p>The <dfn id="mathOnVisual">mathOnVisual</dfn> indicator is used to declare that
+										math equations and formulas are represented in visual form.</p>
+									<aside class="example" title="Package document markup for color dependence">
+										<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
+   &lt;metadata>
+      …
+      &lt;meta property="schema:accessMode">visual&lt;/meta>
+      &lt;meta property="schema:accessMode">mathOnVisual&lt;/meta>
+      …
+   &lt;/metadata>
+   …
+&lt;/package></pre>
+									</aside>
+									<p>The <code>mathOnVisual</code> indicator is typically used to indicate that
+										chemical content is represented using static image formats like JPEGs and PNGs.
+										It could also apply if a publication includes a video that, for example, shows
+										mathematical formulas and equations on screen that the reader needs to
+										understand but that are not described in an audio track.</p>
+									<p>If the math content is decorative, then this value is not declared. For example,
+										a decorative image at the start of a chapter might depict equations that will be
+										covered but the actual equations in the body use MathML markup.</p>
+									<p>MathML and LaTeX are also used to represent mathematical content in a
+										publication. In these cases, although the content is drawn visually, the fact
+										that the equation or formula is based on structured markup or formatting means
+										it is not purely visual; assistive technologies can help users step through the
+										underlying structure. The use of <a href="#MathML">MathML</a> and <a
+											href="#latex">LaTeX</a> are instead represented as accessibility
+										features.</p>
+								</dd>
+
+								<dt id="visual-indicator-music">Music</dt>
+								<dd>
+									<p>The <dfn id="musicOnVisual">musicOnVisual</dfn> indicator is used to declare that
+										musical notation is represented visually.</p>
+									<aside class="example" title="Package document markup for visual musical content">
+										<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
+   &lt;metadata>
+      …
+      &lt;meta property="schema:accessMode">visual&lt;/meta>
+      &lt;meta property="schema:accessMode">musicOnVisual&lt;/meta>
+      …
+   &lt;/metadata>
+   …
+&lt;/package></pre>
+									</aside>
+									<p>Unlike math and chemical content, there is no support for rendering a music
+										markup language such as MusicXML. Visual representation, often in image form, is
+										the most common way to add music notation. (Text tablature notation can be added
+										to EPUBs for stringed instruments, but as unstructured text it is also not
+										easily accessible to users who cannot visually read the notation.)</p>
+									<p>Images are not the only way that music can be visually encoded. An instructional
+										video in a music book could show musical notation to allow the user to play
+										along with a recorded sample. This would also necessitate declaring a visual
+										music indicator.</p>
+								</dd>
+
+								<dt id="visual-indicator-text">Text</dt>
+								<dd>
+									<p>The <dfn id="textOnVisual">textOnVisual</dfn> indicator is used to declare that
+										there are images of text.</p>
+									<aside class="example" title="Package document markup for visual text content">
+										<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
+   &lt;metadata>
+      …
+      &lt;meta property="schema:accessMode">visual&lt;/meta>
+      &lt;meta property="schema:accessMode">textOnVisual&lt;/meta>
+      …
+   &lt;/metadata>
+   …
+&lt;/package></pre>
+									</aside>
+									<p>There are many reasons why images of text are included in EPUB publications.
+										Appearance is one, as having to faithfully represent the appearance of the text
+										in a print edition because font and CSS support cannot reliably replicate an
+										effect is sometimes non-negotiable for a publisher. Or an original document,
+										like a newspaper clipping or historical document, is reproduced exactly as it
+										was printed. It also includes the text encoded in the images of comics and
+										manga, children's books, cookbooks, and other image-based fixed layout
+										publications.</p>
+									<p>As with the other visual indicators, the representation of text in visual form
+										also encompasses video content. A silent instructional video, for example, might
+										include text directives directly in the video.</p>
+									<p>In all these cases, it would be appropriate to list <code>textOnVisual</code> as
+										an access mode. Only if the text in the visual content is in a decorative image
+										or not directly relevant to understanding the text is there no need to specify
+										the <code>textOnVisual</code> indicator.</p>
+									<p>For example, the text on signs and billboards in the background of a photograph
+										do not represent text on visual imagery if they are incidental to what the image
+										is conveying. Similarly, a publisher's name in their logo should not be declared
+										as text on visual content.</p>
+									<div class="note">
+										<p>The use of SVG is a special case when semantic elements are used to add the
+											text to the image. When this is done in reflowable EPUBs, the text on visual
+											indicator can be omitted as there is the possibility to access and change
+											the appearance of the text. But it would not be true in a fixed layout EPUB
+											as <a data-cite="epub-3#dfn-epub-reading-system">reading systems</a>
+											[[epub-3]] restrict control over the appearance of the pages.</p>
+										<p>If SVG's text elements are not used to display the text, then
+												<code>textOnVisual</code> is specified since the text is not separate
+											from the drawn image.</p>
+									</div>
+								</dd>
+							</dl>
+						</section>
 					</section>
 
 					<section id="accessmode-auditory">
@@ -707,9 +1003,9 @@
 						<p>Auditory content includes any content that requires a user to be able to hear it in order to
 							understand it. The most common forms of auditory content are standalone audio clips embedded
 							in a publication and any video that is accompanied by an auditory track, but sounds can be
-							important in other ways, too. If an interactive graphic drawn on the [[html]] [^canvas^]
-							element includes auditory cues or announcements, for example, or if auditory cues are the
-							only indication to users that time is running out on an interaction, auditory perception is
+							important in other ways. If an interactive graphic drawn on the [[html]] [^canvas^] element
+							includes auditory cues or announcements, for example, or if auditory cues are the only
+							indication to users that time is running out on an interaction, auditory perception is
 							required.</p>
 
 						<p>When at least some of the information necessary to read a publication is encoded in auditory
@@ -736,7 +1032,7 @@
 							<li>for background music in an instructional video when all the information is conveyed
 								visually;</li>
 							<li>for the background sound to an interactive game when it is solely for entertainment
-								value;</li>
+								value.</li>
 						</ul>
 
 						<p>Audio synchronized with the text of an EPUB publication also represents a unique case as it
@@ -757,19 +1053,20 @@
 								playback is essential to reading the publication or whether it is included as an
 								optional feature.</p>
 
-							<p>One of the more common features of media overlays, particularly in mainstream publishing,
-								is to provide synchronized playback of the full text of a publication with full audio
+							<p>One of the more common uses of media overlays, particularly in mainstream publishing, is
+								to provide synchronized playback of the full text of a publication with full audio
 								narration. These types of publications are commonly referred to as "read aloud" books,
 								as the user chooses whether or not to turn on the narration (unlike traditional
 								audiobooks where only the audio is available).</p>
 
 							<p>In this case, because the audio playback is an extra feature, and is not required for
 								reading the publication, it is <strong>not</strong> listed as an auditory access mode.
-								Having full audio playback capability in this case means that an <a href="#ams-auditory"
-									>auditory sufficient access mode</a> needs to be declared — the user can listen to
-								the complete publication as an alternative to reading the text. The presence of text and
-								audio synchronization is also declared using the <a href="#synchronizedAudioText"
-										><code>synchronizedAudioText</code> accessibility feature</a>.</p>
+								Having full audio playback capability in this case instead means that an <a
+									href="#ams-auditory">auditory sufficient access mode</a> needs to be declared — the
+								user can listen to the complete publication as an alternative to reading the text. (The
+								presence of text and audio synchronization is also declared using the <a
+									href="#synchronizedAudioText"><code>synchronizedAudioText</code> accessibility
+									feature</a>.)</p>
 
 							<aside class="example"
 								title="Package document markup for a book with full text and audio synchronization">
@@ -794,10 +1091,11 @@
 
 							<p>Another use for media overlays — more typical among accessible republishers such as
 								libraries that serve blind and low vision readers — is to provide full audio
-								synchronized to the major headings of a publication. These types of publications are
-								more like traditional audiobooks, as all the information in the work is typically
-								available in auditory form. The minimal text does not allow meaningful visual reading or
-								text-to-speech playback; it is only to provide structured navigation capabilities.</p>
+								synchronized to the major headings of a publication (typically referred to as
+								"structured audio"). These types of publications are more like traditional audiobooks,
+								as all the information in the work is typically available in auditory form. The minimal
+								text does not allow meaningful visual reading or text-to-speech playback; it is only to
+								provide structured navigation of the audio.</p>
 
 							<p>In this case, being able to hear the audio is essential to being able to read the
 								publication, so an auditory access mode <strong>is</strong> declared.</p>
@@ -810,15 +1108,14 @@
 									<code>textual</code> access mode is <strong>not</strong> listed. The user does not
 								need to, and is not expected to, visually read this text.</p>
 
-							<aside class="example"
-								title="Package document markup for a book with full audio and partial text synchronization">
+							<aside class="example" title="Package document markup for a book with structured audio">
 								<pre>&lt;meta property="schema:accessMode">auditory&lt;/meta>
 &lt;meta property="schema:accessModeSufficient">auditory&lt;/meta></pre>
 							</aside>
 
 							<div class="note">
 								<p>For additional help setting access modes and sufficient access modes when media
-									overlays are used, refer to <a href="#access-modes-eval"></a>.</p>
+									overlays are used, refer to <a href="#readability-eval"></a>.</p>
 							</div>
 						</section>
 					</section>
@@ -841,8 +1138,8 @@
 						<div class="note">
 							<p>A tactile access mode is never declared simply because it is possible to convert standard
 								text content into braille on the fly. Users seeking to find content that can be
-								converted in this way will look for a fully textual <a href="#accessModeSufficient"
-									>sufficient access mode</a>.</p>
+								converted in this way will look for a <a href="#ams-single-textual">single textual
+									sufficient access mode</a>.</p>
 						</div>
 
 						<p>When at least some of the information necessary to read a publication is encoded in tactile
@@ -876,294 +1173,15 @@
 						</div>
 					</section>
 				</section>
-
-				<section id="accessmode-visual-indicators">
-					<h4>Visual content indicators</h4>
-
-					<div class="feature-list">
-						<p class="feature-hd">In this section:</p>
-						<ul>
-							<li>
-								<a href="#chartOnVisual">chartOnVisual</a>
-							</li>
-							<li>
-								<a href="#chemOnVisual">chemOnVisual</a>
-							</li>
-							<li>
-								<a href="#colorDependent">colorDependent</a>
-							</li>
-							<li>
-								<a href="#diagramOnVisual">diagramOnVisual</a>
-							</li>
-							<li>
-								<a href="#mathOnVisual">mathOnVisual</a>
-							</li>
-							<li>
-								<a href="#musicOnVisual">musicOnVisual</a>
-							</li>
-							<li>
-								<a href="#textOnVisual">textOnVisual</a>
-							</li>
-						</ul>
-					</div>
-
-					<p>The visual content indicators are a special class of values that extend the <a
-							href="#accessmode-visual">visual access mode</a>. They provide additional information about
-						the type of content that is encoded visually.</p>
-
-					<p>The most common method of encoding visual content in EPUB is as images. Although support for
-						MathML [[mathml3]] has improved in recent years, it is still common, for example, to find math
-						equations in <a data-cite="epub-3#dfn-epub-publication">EPUB publications</a> [[epub-3]]
-						represented as images to ensure their rendering. Informing users who are blind that a
-						publication has <a href="#mathOnVisual">images of math</a> lets them know that they will have to
-						rely on alternative text and extended descriptions instead of being able to inspect the
-						equations in the kind of detail that MathML allows. It is also an aid to visual readers, as it
-						indicates that the text cannot be resized (only zoomed) or have its appearance changed as
-						necessary to make it more accessible.</p>
-
-					<p>But the visual content indicators are not exclusive to image formats. If a video has information
-						that requires color perception to understand, for example, a <a href="#colorDependent">color
-							dependence indicator</a> could be set. Or, if an interactive chart is drawn on an [[html]]
-						[^canvas^] element, the <a href="#chartOnVisual">chart on visual</a> could be set.</p>
-
-					<div class="note">
-						<p>Similar to setting any of the <a href="#accessMode">primary access modes</a>, whether or not
-							the content identified by a visual indicator is also accessible in another mode (e.g.,
-							through the provision of alternative text) is not considered. Affordances are only used to
-							determine the sufficient access modes.</p>
-					</div>
-
-					<p>More than one visual content indicator can apply to a piece of visual content. A publication with
-						an image of a chart that uses color to represent the data, for example, would include both the
-							<a href="#chartOnVisual">chart on visual</a> and <a href="colorDependent">color
-							dependence</a> indicators. When declaring visual content indicators, make sure to check the
-						publication for all that apply.</p>
-
-					<p>As the visual content indicators are a supplementary piece of information, their use is only
-						advisory. It is more important to ensure that a <code>visual</code> access mode is set.
-						Moreover, the declaration of a visual content indicator must never occur without the declaration
-						a <code>visual</code> access mode.</p>
-
-					<p>The following list describes the visual content indicator types and how to apply them.</p>
-
-					<dl class="defs">
-						<dt id="visual-indicator-charts">Charts</dt>
-						<dd>
-							<p>The <dfn id="chartOnVisual">chartOnVisual</dfn> indicator is used to declare that there
-								are visual representations of data, such as pie charts, bar charts, scatter plots, and
-								line charts.</p>
-							<aside class="example" title="Package document markup for visual charts">
-								<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
-   &lt;metadata>
-      …
-      &lt;meta property="schema:accessMode">visual&lt;/meta>
-      &lt;meta property="schema:accessMode">chartOnVisual&lt;/meta>
-      …
-   &lt;/metadata>
-   …
-&lt;/package></pre>
-							</aside>
-							<div class="note">
-								<p>For visual representations of concepts, such as in flowcharts, refer to the <a
-										href="#diagramOnVisual"><code>diagramOnVisual</code> indicator</a>.</p>
-							</div>
-						</dd>
-
-						<dt id="visual-indicator-chemistry">Chemistry</dt>
-						<dd>
-							<p>The <dfn id="chemOnVisual">chemOnVisual</dfn> indicator is used to declare that chemical
-								equations and formulas are represented only in visual form.</p>
-							<aside class="example" title="Package document markup for visual chemical content">
-								<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
-   &lt;metadata>
-      …
-      &lt;meta property="schema:accessMode">visual&lt;/meta>
-      &lt;meta property="schema:accessMode">chemOnVisual&lt;/meta>
-      …
-   &lt;/metadata>
-   …
-&lt;/package></pre>
-							</aside>
-							<p>The <code>chemOnVisual</code> indicator is typically used to indicate that chemical
-								content is represented using static image formats like JPEGs and PNGs. It could also
-								apply if a publication includes a video that, for example, shows chemical formulas and
-								equations on screen that the reader needs to understand but that are not described in an
-								audio track.</p>
-							<p>If the chemical content is decorative, then this value is not declared. For example, a
-								cartoon might show a character with a swirl of superficial equations over their head to
-								indicate confusion. As the actual equations are irrelevant to understanding the content,
-								this would not represent a case of visual chemical content.</p>
-							<p>MathML and LaTeX are sometimes used to represent chemical content in a publication. In
-								these cases, although the final equation is drawn visually, the fact that the drawing is
-								based on structured markup or formatting means it is not purely visual; assistive
-								technologies can help users step through the underlying structure. The use of <a
-									href="#MathML-chemistry">MathML</a> and <a href="#latex-chemistry">LaTeX</a> are
-								instead represented as accessibility features.</p>
-						</dd>
-
-						<dt id="visual-indicator-color">Color dependence</dt>
-						<dd>
-							<p>The <dfn id="colorDependent">colorDependent</dfn> indicator is used to declare that
-								visual content requires the ability to perceive color in order to understand the
-								information being conveyed.</p>
-							<aside class="example" title="Package document markup for color dependence">
-								<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
-   &lt;metadata>
-      …
-      &lt;meta property="schema:accessMode">visual&lt;/meta>
-      &lt;meta property="schema:accessMode">colorDependent&lt;/meta>
-      …
-   &lt;/metadata>
-   …
-&lt;/package></pre>
-							</aside>
-							<p>An example of color dependence would be a bar chart where each bar is a different color
-								and a color-coded key is the only way to determine the meaning of each color. A user who
-								cannot differentiate the colors could not match the key values to each bar.</p>
-							<p>This value does not apply if there are secondary indicators that allow users to
-								distinguish the information. For example, if the bar chart in the previous example also
-								had lines running in different directions to differentiate each bar, then a user could
-								use those patterns to match the bars to the key. Similarly, if keywords are placed
-								within each bar instead of using a separate color key, there would be no chance for
-								confusion.</p>
-							<div class="note">
-								<p>The color dependence indicator is not intended to capture issues with CSS styling,
-									such as hyperlinks that might not be perceivable, or student exercises coded by
-									border or background color. If a book fails accessibility conformance for these
-									kinds of color problems, it should be noted in the <a href="#accessibilitySummary"
-										>accessibility summary</a>.</p>
-							</div>
-						</dd>
-
-						<dt id="visual-indicator-diagrams">Diagrams</dt>
-						<dd>
-							<p>The <dfn id="diagramOnVisual">diagramOnVisual</dfn> indicator is used to declare that
-								there are visual representations of concepts, such as Venn diagrams, flowcharts, mind
-								maps, and family trees.</p>
-							<aside class="example" title="Package document markup for visual diagrams">
-								<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
-   &lt;metadata>
-      …
-      &lt;meta property="schema:accessMode">visual&lt;/meta>
-      &lt;meta property="schema:accessMode">diagramOnVisual&lt;/meta>
-      …
-   &lt;/metadata>
-   …
-&lt;/package></pre>
-							</aside>
-							<div class="note">
-								<p>For visual representations of data, such as in pie and bar charts, refer to the <a
-										href="#chartOnVisual"><code>chartOnVisual</code> indicator</a>.</p>
-							</div>
-						</dd>
-
-						<dt id="visual-indicator-math">Math</dt>
-						<dd>
-							<p>The <dfn id="mathOnVisual">mathOnVisual</dfn> indicator is used to declare that math
-								equations and formulas are represented in visual form.</p>
-							<aside class="example" title="Package document markup for color dependence">
-								<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
-   &lt;metadata>
-      …
-      &lt;meta property="schema:accessMode">visual&lt;/meta>
-      &lt;meta property="schema:accessMode">mathOnVisual&lt;/meta>
-      …
-   &lt;/metadata>
-   …
-&lt;/package></pre>
-							</aside>
-							<p>The <code>mathOnVisual</code> indicator is typically used to indicate that chemical
-								content is represented using static image formats like JPEGs and PNGs. It could also
-								apply if a publication includes a video that, for example, shows mathematical formulas
-								and equations on screen that the reader needs to understand but that are not described
-								in an audio track.</p>
-							<p>If the math content is decorative, then this value is not declared. For example, a
-								decorative image at the start of a chapter might depict equations that will be covered
-								but the actual equations in the body use MathML markup.</p>
-							<p>MathML and LaTeX are also used to represent mathematical content in a publication. In
-								these cases, although the content is drawn visually, the fact that the equation or
-								formula is based on structured markup or formatting means it is not purely visual;
-								assistive technologies can help users step through the underlying structure. The use of
-									<a href="#MathML">MathML</a> and <a href="#latex">LaTeX</a> are instead represented
-								as accessibility features.</p>
-						</dd>
-
-						<dt id="visual-indicator-music">Music</dt>
-						<dd>
-							<p>The <dfn id="musicOnVisual">musicOnVisual</dfn> indicator is used to declare that musical
-								notation is represented visually.</p>
-							<aside class="example" title="Package document markup for visual musical content">
-								<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
-   &lt;metadata>
-      …
-      &lt;meta property="schema:accessMode">visual&lt;/meta>
-      &lt;meta property="schema:accessMode">musicOnVisual&lt;/meta>
-      …
-   &lt;/metadata>
-   …
-&lt;/package></pre>
-							</aside>
-							<p>Unlike math and chemical content, there is no support for rendering a music markup
-								language, such as MusicXML. Visual representation, often in image form, is the most
-								common way to add music notation. (Text tablature notation can be added to EPUBs for
-								stringed instruments, but as unstructured text it is also not easily accessible to users
-								who cannot visually read the text.)</p>
-							<p>Images are not the only way that music can be visually encoded. An instructional video in
-								a music book could show musical notation to allow the user to play along with a recorded
-								sample. This would also necessitate declaring a visual music indicator.</p>
-						</dd>
-
-						<dt id="visual-indicator-text">Text</dt>
-						<dd>
-							<p>The <dfn id="textOnVisual">textOnVisual</dfn> indicator is used to declare that there are
-								images of text.</p>
-							<aside class="example" title="Package document markup for visual text content">
-								<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
-   &lt;metadata>
-      …
-      &lt;meta property="schema:accessMode">visual&lt;/meta>
-      &lt;meta property="schema:accessMode">textOnVisual&lt;/meta>
-      …
-   &lt;/metadata>
-   …
-&lt;/package></pre>
-							</aside>
-							<p>There are many reasons why images of text are included in EPUB publications. Appearance
-								is one, as having to faithfully represent the appearance of the text in a print edition
-								because font and CSS support cannot reliably replicate an effect is sometimes
-								non-negotiable for a publisher. Or an original document, like a newspaper clipping or
-								historical document, is reproduced exactly as it was printed. It also includes the text
-								encoded in the images of comics and manga, children's books, cookbooks, and other
-								image-based fixed layout publications.</p>
-							<p>As with the other visual indicators, the representation of text in visual form also
-								encompasses video content. A silent instructional video, for example, might include text
-								directives directly in the video.</p>
-							<p>In all these cases, it would be appropriate to list <code>textOnVisual</code> as an
-								access mode. Only if the text in the visual content is in a decorative image or not
-								directly relevant to understanding the text is there no need to specify the
-									<code>textOnVisual</code> indicator.</p>
-							<p>For example, the text on signs and billboards in the background of a photograph do not
-								represent text on visual imagery if they are incidental to what the image is conveying.
-								Similarly, a publisher's name in their logo should not be declared as text on visual
-								content.</p>
-							<div class="note">
-								<p>The use of SVG is a special case when semantic elements are used to add the text to
-									the image. When this is done in reflowable EPUBs, the text on visual indicator can
-									be omitted as there is the possibility to access and change the appearance of the
-									text. But it would not be true in a fixed layout EPUB as <a
-										data-cite="epub-3#dfn-epub-reading-system">reading systems</a> [[epub-3]]
-									restrict control over the appearance of the pages.</p>
-								<p>If SVG's text elements are not used to display the text, then
-										<code>textOnVisual</code> is specified since the text is not separate from the
-									drawn image.</p>
-							</div>
-						</dd>
-					</dl>
-				</section>
 			</section>
 
 			<section id="accessModeSufficient">
 				<h3>Sufficient access modes</h3>
+
+				<div class="note">
+					<p>For an introduction to sufficient access modes and how they differ from access modes, refer to
+						the <a href="#readability-explainer">readability metadata explainer</a>.</p>
+				</div>
 
 				<section id="ams-setting">
 					<h4>Declaring sufficient access modes</h4>
@@ -1173,8 +1191,7 @@
 							><code>schema:accessModeSufficient</code></dfn> property</a> [[schema-org]].</p>
 
 					<aside class="example" title="Metadata entries for a fully textual sufficient access mode">
-						<pre>&lt;meta
-    property="schema:accessModeSufficient">
+						<pre>&lt;meta property="schema:accessModeSufficient">
    textual
 &lt;/meta></pre>
 					</aside>
@@ -1182,8 +1199,8 @@
 					<p>Unlike the other schema.org metadata expressed in the <a data-cite="epub-3#dfn-package-document"
 							>package document</a> [[epub-3]], sufficient access modes can consist of one or more values
 						separated by a comma and optional space. Because sufficient access modes are telling users the
-						different ways that the content can be read, each set is expressed in a separate tag rather than
-						each individual value.</p>
+						different ways that the content can be read, each set is expressed in a separate tag (unlike
+						access modes where each applicable value goes in its own tag).</p>
 
 					<p>The most common reason for having multiple <code>schema:accessModeSufficient</code> declarations
 						is to capture both the default nature of a publication as well as the alternative reading
@@ -1192,12 +1209,13 @@
 
 					<aside class="example"
 						title="Metadata entries for a publication with multiple ways of fully reading the content">
-						<pre>&lt;meta
-    property="schema:accessModeSufficient">
+						<p>The first declaration indicates that the content is readable if text and visual content can
+							be processed while the second indicates that there is a purely textual means of reading the
+							content (i.e., text alternatives are available for the visual content). 
+						<pre>&lt;meta property="schema:accessModeSufficient">
    textual,visual
 &lt;/meta>
-&lt;meta
-    property="schema:accessModeSufficient">
+&lt;meta property="schema:accessModeSufficient">
    textual
 &lt;/meta></pre>
 					</aside>
@@ -1221,21 +1239,20 @@
 
 					<p>Although sufficient access mode are expressed as sets consisting of one or more values, the most
 						strongly recommended sets to list are the ones that consist of only a single value. The reason
-						why these are the most important is that they tell users that all the content can be read in the
-						specified method.</p>
+						why these are so important is because they tell users that <em>all</em> the content can be read
+						in the specified method.</p>
 
 					<p>Someone who is blind, for example, might want to know that all the content is available in text
-						form so they can use an assistive technology or their <a
-							data-cite="epub-3#dfn-epub-reading-system">reading system's</a> [[epub-3]] built-in read
-						aloud functionality to read the book. Or they might want to know that all the content is
-						available as pre-recorded audio for enhanced legibility. They are going to be less interested
-						that if you can perceive text, visual, and auditory content that you can also read the book
-						(even though this is the default sufficient access mode based on the primary access modes), as
-						the visual content is problematic without the provision of alternative text and long
-						descriptions.</p>
+						form so that they can use their <a data-cite="epub-3#dfn-epub-reading-system">reading
+							system's</a> [[epub-3]] built-in read aloud functionality to read the book. Or they might
+						want to know that all the content is available as pre-recorded audio for enhanced playback.</p>
 
-					<p>The possible single sufficient access mode values are identical to the <a href="#accessMode"
-							>primary access modes</a>, as described in the following sections.</p>
+					<p><a href="#ams-combined-values">Combinations</a> are, of course, still of value to list, but when
+						multiple modes are required it is often the case that one or more will be problematic. A book
+						that has a sufficient access mode set that indicates textual and auditory content, for example,
+						will be usable by a user who is blind but not by a user who is deaf.</p>
+
+					<p>The possible single sufficient access mode values are described in the following sections.</p>
 
 					<section id="ams-single-textual">
 						<h5>Textual</h5>
@@ -1246,12 +1263,19 @@
 
 						<p>Unlike a <a href="#accessmode-textual">textual primary access mode</a>, the inclusion of text
 							alternatives such as alternative text, extended descriptions, closed captions, and
-							transcripts does allow a textual sufficient access mode to be set.</p>
+							transcripts are considered when determing whether there is a textual sufficient access
+							mode.</p>
 
 						<p>When <code>textual</code> is the only sufficient access mode set, it means that all the
 							information necessary to read the publication is available in textual form, so it is
 							generally interpreted as indicating that the publication is screen-reader and dynamic
 							braille display friendly.</p>
+
+						<aside class="example" title="Sufficient access mode declaration for fully textual readability">
+							<pre>&lt;meta property="schema:accessModeSufficient">
+   textual
+&lt;/meta></pre>
+						</aside>
 
 						<p>A single textual sufficient access mode can be set for <a
 								data-cite="epub-3#dfn-epub-publication">EPUB publications</a> [[epub-3]] that conform to
@@ -1265,11 +1289,17 @@
 
 						<p>Setting the <dfn id="ams-visual">visual <span hidden="hidden">(sufficient access
 								mode)</span></dfn> value indicates that information necessary to read a publication is
-							available in visual form, such as images and video.</p>
+							available in visual form, such as in images and video.</p>
 
 						<p>When <code>visual</code> is the only sufficient access mode set, it means that all the
 							information necessary to read the publication is available in visual form. It is most often
 							applied to works like comics and manga.</p>
+
+						<aside class="example" title="Sufficient access mode declaration for fully visual readability">
+							<pre>&lt;meta property="schema:accessModeSufficient">
+   visual
+&lt;/meta></pre>
+						</aside>
 
 						<p>A single visual sufficient access mode is typically the least accessible single sufficient
 							access mode that can be set, as it indicates that only sighted readers can access the
@@ -1288,6 +1318,12 @@
 
 						<p>When <code>auditory</code> is the only sufficient access mode set, it means that all the
 							information necessary to read the publication is available as prerecorded audio.</p>
+
+						<aside class="example" title="Sufficient access mode declaration for fully auditory readability">
+							<pre>&lt;meta property="schema:accessModeSufficient">
+   auditory
+&lt;/meta></pre>
+						</aside>
 
 						<p>A single auditory sufficient access mode typically indicates that media overlays have been
 							used to provide audio for all the text and visual content, but it could also set if, for
@@ -1329,8 +1365,8 @@
 
 						<p>Setting the <dfn id="ams-tactile">tactile <span hidden="hidden">(sufficient access
 									mode)</span></dfn> value indicates that information necessary to read a publication
-							is available in tactile form. It indicates some mix of braille Unicode characters, tactile
-							graphics, and tactile objects are included in the publication.</p>
+							is available in tactile form. It indicates some mix of braille Unicode characters
+							[[unicode]], tactile graphics, and tactile objects are included in the publication.</p>
 
 						<p>Unlike a <a href="#accessmode-tactile">tactile primary access mode</a>, providing links to
 							tactile graphics and objects does allow a tactile sufficient access mode to be set. Such
@@ -1341,9 +1377,15 @@
 						<p>When <code>tactile</code> is the only sufficient access mode set, it means that all the
 							information necessary to read the publication is available in tactile form.</p>
 
+						<aside class="example" title="Sufficient access mode declaration for fully tactile readability">
+							<pre>&lt;meta property="schema:accessModeSufficient">
+   tactile
+&lt;/meta></pre>
+						</aside>
+
 						<p>A single tactile sufficient access mode is the least common single sufficient access mode, at
 							least for mainstream publishing. It is typically associated with a braille publication
-							produced in the EPUB format.</p>
+							produced using the eBraille format.</p>
 					</section>
 				</section>
 
@@ -1363,38 +1405,34 @@
 
 					<aside class="example"
 						title="Metadata showing primary access modes combined into a default sufficient access mode">
-						<pre>&lt;meta
-    property="schema:accessMode">
+						<pre>&lt;meta property="schema:accessMode">
    textual
 &lt;/meta>
-&lt;meta
-    property="schema:accessMode">
+&lt;meta property="schema:accessMode">
    visual
 &lt;/meta>
-&lt;meta
-    property="schema:accessModeSufficient">
+&lt;meta property="schema:accessModeSufficient">
    textual,visual
 &lt;/meta></pre>
 					</aside>
 
 					<p>Because sufficient access modes account for affordances, the possible sets of sufficient access
-						modes are not always strictly combinations of the primary modes, even if there is always one set
-						that equals all the primary modes. An example would be a comic that only provides alternative
-						text so is not fully accessible as text. In this case, it would have a <code>visual</code>
-						primary access mode but also a sufficient access mode set that includes <code>visual</code> and
-							<code>textual</code>.</p>
+						modes are not always strictly combinations of the primary modes (even though there is always one
+						set that equals all the primary modes).</p>
 
-					<aside class="example" title="Sufficient access modes for a visual work with alternative text">
-						<pre>&lt;meta
-    property="schema:accessMode">
+					<aside class="example"
+						title="Sufficient access modes for a visual work missing extended descriptions">
+						<p>In this example, a comic provides alternative text but omits needed extended descriptions to
+							make the panels fully accessible. It has a sufficient access mode set that includes
+								<code>visual</code> and <code>textual</code> because the text only makes the content
+							partially readable (visual perception is still necessary).</p>
+						<pre>&lt;meta property="schema:accessMode">
    visual
 &lt;/meta>
-&lt;meta
-    property="schema:accessModeSufficient">
+&lt;meta property="schema:accessModeSufficient">
    visual
 &lt;/meta>
-&lt;meta
-    property="schema:accessModeSufficient">
+&lt;meta property="schema:accessModeSufficient">
    visual,textual
 &lt;/meta></pre>
 					</aside>
@@ -1430,12 +1468,10 @@
 						repeated for each feature &#8212; do not group all the features into one tag.</p>
 
 					<aside class="example" title="Metadata for MathML and alternative text">
-						<pre>&lt;meta
-    property="schema:accessibilityFeature">
+						<pre>&lt;meta property="schema:accessibilityFeature">
    MathML
 &lt;/meta>
-&lt;meta
-    property="schema:accessibilityFeature">
+&lt;meta property="schema:accessibilityFeature">
    alternativeText
 &lt;/meta></pre>
 					</aside>
@@ -1461,7 +1497,7 @@
 								values "<a href="#features-none"><code>none</code></a>" and "<a href="#features-unknown"
 										><code>unknown</code></a>", these terms cannot be used to meet the reporting
 								requirements for the property. At least one feature that is not one of these values is
-								required to claim conformance to EPUB Accessibility 1.2.</p>
+								required to claim conformance to [[[epub-a11y]]].</p>
 						</div>
 					</section>
 				</section>
@@ -1470,15 +1506,15 @@
 					<h4>When to claim features</h4>
 
 					<p>One of the most common questions about accessibility features is not what they refer to but when
-						they can be claimed in the <a data-cite="epub-3#dfn-package-document">package document</a>
-						[[epub-3]] metadata. Features may not be applicable in every situation, for example, such as is
-						the case for extended descriptions. Or a mix of features might be used, such as to provide
-						alternatives for audio and video content.</p>
+						they can be claimed for an <a data-cite="epub-3#dfn-epub-publication">EPUB publication</a>
+						[[epub-3]]. Features may not be applicable in every situation, for example, such as extended
+						descriptions when there is no visual content. Or the features may not be provided in every
+						situation where they might be needed.</p>
 
-					<p>Ideally, a feature will only be claimed when it covers all applicable cases, as this will make
-						the content optimally accessible. But limiting reporting to this standard would mean that users
-						will have difficulty determining if content that may not be fully conforming to accessibility
-						standards may still be usable to them.</p>
+					<p>Ideally, an accessibility feature will only be claimed when it covers all applicable cases, as
+						this will make the content optimally accessible. But limiting reporting to this standard would
+						mean that users will have difficulty determining if content that may not be fully conforming to
+						accessibility standards may still be usable to them.</p>
 
 					<p>Consequently, a measure of common sense is necessary when deciding whether to declare a feature
 						that is not applied universally. The goal of this metadata is to help users determine the
@@ -1572,13 +1608,13 @@
 				<section id="features-organization">
 					<h4>Organization of this section</h4>
 
-					<p>This section addresses accessibility features based on common use patterns rather than as
+					<p>Accessibility features are addressed in this document based on common use patterns rather than as
 						individual values in isolation.</p>
 
 					<p>All the features that are used to address the accessibility of audio and video are discussed
 						together, for example, to better explain the complimentary uses of the features. This also
-						allows features to be discussed that have exclusive values, such as whether full or partial ruby
-						annotations are provided.</p>
+						allows features to be discussed that have mutually-exclusive values, such as whether full or
+						partial ruby annotations are provided.</p>
 
 					<p>A navigation menu is included at the start of each section to help locate which features are
 						addressed in it. In addition, the <a href="#index-defined-here">index of terms</a> provides
@@ -1588,8 +1624,9 @@
 				<section id="features-epub2">
 					<h4>Application to EPUB 2</h4>
 
-					<p>The following table identifies whether accessibility features can be found in EPUB 2
-						publications.</p>
+					<p>As EPUB 2 uses XHTML 1.1 [[xhtml11]] for authoring content, it lacks many of the enhanced
+						features of EPUB 3. The following table identifies whether accessibility features can be
+						authored in EPUB 2 publications.</p>
 
 					<table class="zebra">
 						<thead>
@@ -1971,6 +2008,13 @@
    …
 &lt;/package></pre>
 				</aside>
+
+				<div class="note">
+					<p>The <code>synchronizedAudioText</code> feature is not declared for publications that only contain
+						structured audio &#8212; where the only text is the major headings of the work to facilitate
+						basic navigation of the audio. The text in these cases does not sufficiently match the audio and
+						is not typically expected to be displayed.</p>
+				</div>
 
 				<p>The audio provided with media overlays is typically human narrated but some producers will also use
 					text-to-speech engines to create the audio. Prerecorded text-to-speech narration is often used when
@@ -3461,16 +3505,13 @@
 					statuses into a single tag.</p>
 
 				<aside class="example" title="Metadata for a publication with only a flashing hazard">
-					<pre>&lt;meta
-    property="schema:accessibilityHazard">
+					<pre>&lt;meta property="schema:accessibilityHazard">
    flashing
 &lt;/meta>
-&lt;meta
-    property="schema:accessibilityHazard">
+&lt;meta property="schema:accessibilityHazard">
    noMotionSimulationHazard
 &lt;/meta>
-&lt;meta
-    property="schema:accessibilityHazard">
+&lt;meta property="schema:accessibilityHazard">
    noSoundHazard
 &lt;/meta></pre>
 				</aside>
@@ -3492,8 +3533,7 @@
 				</ul>
 
 				<aside class="example" title="Metadata for a publication with no hazards">
-					<pre>&lt;meta
-    property="schema:accessibilityHazard">
+					<pre>&lt;meta property="schema:accessibilityHazard">
    none
 &lt;/meta></pre>
 				</aside>
@@ -3866,16 +3906,14 @@
 
 			<aside class="example"
 				title="Accessibility summary for a publication that fails the content accessibility requirements">
-				<pre>&lt;meta
-    property="schema:accessibilitySummary">
+				<pre>&lt;meta property="schema:accessibilitySummary">
     The publication is missing alternative text for complex diagrams.
     The publication otherwise meets WCAG 2.0 Level A.
 &lt;/meta></pre>
 			</aside>
 
 			<aside class="example" title="Accessibility summary for a publication with a motion simulation hazard">
-				<pre>&lt;meta
-    property="schema:accessibilitySummary">
+				<pre>&lt;meta property="schema:accessibilitySummary">
     Although this publication meets the requirements of its accessibility
     claim, the publication contains a motion hazard in chapter 8 page 202., 
     which could cause motion sickness in certain individuals. There is a video 
@@ -3887,8 +3925,7 @@
 
 			<aside class="example"
 				title="Accessibility summary for a publication with a conformance nuance and additional details">
-				<pre>&lt;meta
-    property="schema:accessibilitySummary">
+				<pre>&lt;meta property="schema:accessibilitySummary">
     This publication strives to meet accepted Web Content Accessibility 
     Guidelines (WCAG) at the AA level. Subject experts were used to create 
     the alternative text. A comprehensive index is included with links to 
@@ -3898,8 +3935,7 @@
 
 			<aside class="example"
 				title="Accessibility summary for a publication that used AI for the generation of alt text">
-				<pre>&lt;meta
-    property="schema:accessibilitySummary">
+				<pre>&lt;meta property="schema:accessibilitySummary">
 	AI was used to generate the alt text without review by people familiar 
 	with the material.
 &lt;/meta></pre>
@@ -3907,8 +3943,7 @@
 
 			<aside class="example"
 				title="Accessibility summary for a publication where experts used AI to assist in the generation of alt text ">
-				<pre>&lt;meta
-    property="schema:accessibilitySummary">
+				<pre>&lt;meta property="schema:accessibilitySummary">
 	People familiar with the material used AI to assist in the generation of Alt text.
 &lt;/meta></pre>
 			</aside>
@@ -4455,58 +4490,47 @@
 					<pre>&lt;package … >
    &lt;metadata …>
       …
-      &lt;meta
-          property="schema:accessMode">
+      &lt;meta property="schema:accessMode">
          textual
       &lt;/meta>
 
-      &lt;meta
-          property="schema:accessMode">
+      &lt;meta property="schema:accessMode">
          visual
       &lt;/meta>
 
-      &lt;meta
-          property="schema:accessModeSufficient">
+      &lt;meta property="schema:accessModeSufficient">
          textual,visual
       &lt;/meta>
 
-      &lt;meta
-          property="schema:accessModeSufficient">
+      &lt;meta property="schema:accessModeSufficient">
          textual
       &lt;/meta>
 
-      &lt;meta
-          property="schema:accessibilityFeature">
+      &lt;meta property="schema:accessibilityFeature">
          transcript
       &lt;/meta>
 
-      &lt;meta
-          property="schema:accessibilityFeature">
+      &lt;meta property="schema:accessibilityFeature">
          MathML
       &lt;/meta>
 
-      &lt;meta
-          property="schema:accessibilityFeature">
+      &lt;meta property="schema:accessibilityFeature">
          alternativeText
       &lt;/meta>
 
-      &lt;meta
-          property="schema:accessibilityHazard">
+      &lt;meta property="schema:accessibilityHazard">
          flashing
       &lt;/meta>
 
-      &lt;meta
-          property="schema:accessibilityHazard">
+      &lt;meta property="schema:accessibilityHazard">
          noMotionSimulationHazard
       &lt;/meta>
     
-      &lt;meta
-          property="schema:accessibilityHazard">
+      &lt;meta property="schema:accessibilityHazard">
          noSoundHazard
       &lt;/meta>
 
-      &lt;meta
-          property="schema:accessibilitySummary">
+      &lt;meta property="schema:accessibilitySummary">
          The video in chapter 2 presents a flashing hazard. A transcript is
          provided that covers all the essential information contained in the
          video. The publication otherwise meets WCAG 2.0 Level A.
@@ -4562,8 +4586,8 @@
 				</aside>
 			</section>
 		</section>
-		<section id="access-modes-eval" class="appendix">
-			<h2>Evaluating access modes</h2>
+		<section id="readability-eval" class="appendix">
+			<h2>Evaluating content readability</h2>
 
 			<p>This appendix provides a process for evaluating which access modes and sufficient access modes to declare
 				for an EPUB publication.</p>
