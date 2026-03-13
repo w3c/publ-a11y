@@ -704,7 +704,7 @@
 							and understand it.</p>
 
 						<section id="accessmode-visual-indicators">
-							<h4>Visual content indicators</h4>
+							<h6>Visual content indicators</h6>
 
 							<div class="feature-list">
 								<p class="feature-hd">In this section:</p>
@@ -1942,8 +1942,8 @@
 
 				<p>EPUB 3 publications allow the aural rendering of text content through the use of text-to-speech (TTS)
 					playback (commonly referred to as "read aloud" capability) and <a
-						data-cite="epub-3#sec-media-overlays">media overlays</a> [[epub-3]]. Both renderings are capable
-					of providing audio playback of the text synchronized with highlighting of the associated text.</p>
+						data-cite="epub-3#sec-media-overlays">media overlays</a> [[epub-3]]. Both are capable of
+					providing audio playback of the text synchronized with highlighting of the associated text.</p>
 
 				<p>Text-to-speech engines, however, often fail to provide accurate readings of the text. Heteronyms, for
 					example, where two words are spelled the same but have different pronunciations, often result in the
@@ -2016,9 +2016,10 @@
 						is not typically expected to be displayed.</p>
 				</div>
 
-				<p>The audio provided with media overlays is typically human narrated but some producers will also use
-					text-to-speech engines to create the audio. Prerecorded text-to-speech narration is often used when
-					providing audio-synchronized playback of backmatter, which is tedious for humans to read.</p>
+				<p>The audio provided with media overlays is typically human narrated but some producers also use
+					text-to-speech engines to create the audio. For example, prerecorded text-to-speech narration is
+					often used when providing audio-synchronized playback of backmatter, which is tedious for humans to
+					read.</p>
 
 				<p>The use of the word "text" in the feature name should not be interpreted solely as the audio having
 					to be synchronized with Unicode text character content. It is intended to be understood more like
@@ -2074,14 +2075,13 @@
 
 				<p>The first of these, despite its name, is MathML [[mathml3]]. MathML provides a structured, semantic
 					representation that can be rendered directly by modern browsers and assistive technologies. MathML
-					markup is added directly to <a data-cite="epub-3#dfn-xhtml-content-document">XHTML content
-						document</a> [[epub-3]]. Just as it is able to represent mathematical equations, its syntax is
+					markup can be added directly to <a data-cite="epub-3#dfn-xhtml-content-document">XHTML content
+						documents</a> [[epub-3]]. Just as it is able to represent mathematical equations, its syntax is
 					also adaptable to representing chemical equations and formulas.</p>
 
-				<p>When an <a data-cite="epub-3#dfn-epub-publication">EPUB publication</a> [[epub-3]] contains chemical
-					formulas and equations marked up as MathML, the <dfn id="MathML-chemistry">MathML-chemistry</dfn>
-					feature is set in the <a data-cite="epub-3#dfn-package-document">package document</a>
-					[[epub-3]].</p>
+				<p>When an <a data-cite="epub-3#dfn-epub-publication">EPUB publication</a> contains chemical formulas
+					and equations marked up as MathML, the <dfn id="MathML-chemistry">MathML-chemistry</dfn> feature is
+					set in the <a data-cite="epub-3#dfn-package-document">package document</a> [[epub-3]].</p>
 
 				<aside class="example" title="Package document markup for the MathML chemistry feature">
 					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
@@ -2122,7 +2122,7 @@
 					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
    &lt;metadata>
       …
-      &lt;meta property="schema:accessibilityFeature">latext-chemistry&lt;/meta>
+      &lt;meta property="schema:accessibilityFeature">latex-chemistry&lt;/meta>
       …
    &lt;/metadata>
    …
@@ -2154,8 +2154,8 @@
 
 				<p>The <dfn id="displayTransformability">displayTransformability</dfn> accessibility feature value is
 					used to indicate that the user can modify the presentation of the text content of an <a
-						data-cite="epub-3#dfn-epub-publication">EPUB publication</a> [[epub-3]] to their own preferences
-					without negatively affecting the readability.</p>
+						data-cite="epub-3#dfn-epub-publication">EPUB publication</a> [[epub-3]] without negatively
+					affecting the readability.</p>
 
 				<aside class="example" title="Package document markup for the display transformability feature">
 					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
@@ -2173,22 +2173,22 @@
 					what must be modifiable:</p>
 
 				<ul>
-					<li>the text foreground and background colors</li>
-					<li>the font family and size</li>
-					<li>the paragraph spacing</li>
-					<li>the line height</li>
-					<li>the letter and word spacing</li>
-					<li>the text alignment</li>
+					<li>the text foreground and background colors;</li>
+					<li>the font family and size;</li>
+					<li>the paragraph spacing;</li>
+					<li>the line height;</li>
+					<li>the letter and word spacing;</li>
+					<li>the text alignment.</li>
 				</ul>
 
-				<p>Making sure content is transformable on these characteristics will be sufficient for many languages.
-					But not all of these characteristics will apply to all languages. And depending on the language,
-					other requirements can be equally important to ensure are modifiable, such as:</p>
+				<p>Making sure content is transformable on these characteristics will be sufficient for many languages,
+					but not all of these characteristics will apply to all languages. And depending on the language, it
+					can be as important, or more so, to ensure that other requirements are modifiable, such as:</p>
 
 				<ul>
-					<li>the writing direction (horizontal or vertical)</li>
-					<li>the display of ruby (both visibility and text color)</li>
-					<li>the inclusion of space characters as word separators</li>
+					<li>the writing direction (horizontal or vertical);</li>
+					<li>the display of ruby (both visibility and text color);</li>
+					<li>the inclusion of space characters as word separators.</li>
 				</ul>
 
 				<div class="note">
@@ -2209,7 +2209,7 @@
 					overflow is clipped using CSS to prevent scroll bars from appearing. An example would be if a
 					publisher adds a sidebar with a fixed height and width and clips any content that exceeds these
 					dimensions. If the text is sized to neatly fit in this box only at the publisher's preferred
-					display, increasing the font size or spacing would cause text to progressively disappear.</p>
+					setting, increasing the font size or spacing would cause text to progressively disappear.</p>
 
 				<p>This feature is not applicable to fixed layout EPUBs because reading systems do not allow users to
 					modify the display. Reading systems must support the accessibility of a feature before it can be
@@ -2235,9 +2235,9 @@
 						>EPUB publication</a> [[epub-3]] has been enhanced by the publisher.</p>
 
 				<p>The first of these is the <dfn id="highContrastDisplay">highContrastDisplay</dfn> feature, which is
-					used to state that there is a higher-than-normal contrast between text and its background.
-					legibility for users with low vision or color vision deficiencies who require a to read
-					comfortably.</p>
+					used to state that there is a higher-than-normal contrast between text and its background. Providing
+					a high level of contrast increases the legibility of the text for users with low vision or color
+					vision deficiencies.</p>
 
 				<aside class="example" title="Package document markup for the high contrast display feature">
 					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
@@ -2281,7 +2281,8 @@
 					regional guidelines, when available, for what is acceptable. In general, though, a font size of 14pt
 					to 16pt is considered enlarged print, while a font size of 18pt and above is considered large print.
 					For this reason, it is recommended to include information about the large print formatting used in
-					the accessibility summary so that users are not left guessing which size has been used.</p>
+					the <a href="#accessibilitySummary">accessibility summary</a> so that users are not left guessing
+					which size has been used.</p>
 
 				<p>In practice, large print is rarely used in EPUB publications. Reflowable EPUBs can typically have
 					their font size, family, line spacing, and other properties adjusted to whatever the user prefers
@@ -2400,10 +2401,10 @@
 						data-cite="epub-3#dfn-epub-publication">EPUB publications</a> but support in <a
 						data-cite="epub-3#dfn-epub-reading-system">reading systems</a> [[epub-3]] has historically been
 					a barrier to the adoption of the most accessible methods. For example, although MathML [[mathml3]]
-					would intuitively be the most accessible way to add math, it was not well supported in <a
-						data-cite="epub-3#dfn-epub-reading-system">reading systems</a> [[epub-3]] until recently. Its
-					rendering in older reading systems still often relies on a JavaScript library that greatly slows the
-					presentation the more equations there are to render.</p>
+					would intuitively be the most accessible way to add math, it was not well supported in reading
+					systems until recently. Its rendering in older reading systems relied on a JavaScript library that
+					greatly slowed the presentation the more equations there are to render so MathML was often
+					avoided.</p>
 
 				<p>Despite the past support issues, MathML markup is the optimal way to represent math content because
 					it allows for intelligent interpretation and voice rendering by assistive technologies, allows users
@@ -2432,7 +2433,8 @@
 							data-cite="epub-3#dfn-epub-manifest">manifest</a> [[epub-3]]. This was to allow reading
 						systems to selectively turn on MathJAX rendering without slowing down the rendering of documents
 						that had no math, for example, or to present a fallback document with math encoded as images.
-						This metadata is not typically exposed to users, so there is still the need to report the
+						The presence of MathML could be inferred from this metadata, but most agents that process
+						metadata will not try to infer information because the practice is unreliable. Always set the
 						accessibility feature.</p>
 				</div>
 
@@ -2493,9 +2495,9 @@
 
 				<p>The problem with describing math images is that human language is often not as precise as the
 					equations it tries to describe and there is no way for the user to inspect the original equation to
-					try and clarify. For example, the description "the square root of x and y" could be interpreted as
-					either taking the square root of x and adding that value to y, or adding x and y together and taking
-					the square root of the result.</p>
+					try and clarify ambiguities. For example, the description "the square root of x and y" could be
+					interpreted as either taking the square root of x and adding that value to y, or adding x and y
+					together and taking the square root of the result.</p>
 
 				<p>Images of math are still prevalent in EPUB, however, because improvements to MathML rendering are
 					recent and there are many current and legacy reading systems that do not render MathML well.</p>
@@ -2570,8 +2572,8 @@
 					generally more helpful for users who cannot see the content.</p>
 
 				<p>The typical way to add closed captions for audio in <a data-cite="epub-3#dfn-xhtml-content-document"
-						>XHTML content documents</a> [[epub-3]] is using the [^track^] element [[html]], with [[webvtt]]
-					being the most commonly used technology for captioning.</p>
+						>XHTML content documents</a> [[epub-3]] is using the [^track^] element [[html]], with WebVTT
+					[[webvtt]] being the most commonly used technology for captioning.</p>
 
 				<div class="note">
 					<p>It is not possible to add closed captions natively to an audio-only clip in HTML. Although the
@@ -2607,8 +2609,8 @@
 						element has no display.</p>
 				</div>
 
-				<p>While captions are helpful for those who cannot hear the audio, they are not always the ideal. Many
-					users who are deaf are more proficient at reading sign language than they are written text. For
+				<p>While captions are helpful for those who cannot hear the audio, they are not always ideal. Many users
+					who are deaf are more proficient at reading sign language than they are at reading written text. For
 					these users, having an interpreter to translate what is being said on screen is preferable. The
 					inclusion of sign language interpretation is indicated in the package document metadata using the
 						<dfn id="signLanguage">signLanguage</dfn> accessibility feature.</p>
@@ -2671,11 +2673,11 @@
 &lt;/package></pre>
 				</aside>
 
-				<p>The one drawback of using transcripts is that they are not available in real time like captions and
-					audio descriptions. As a result, users who can see the content but not hear it may have to watch the
-					video once in silence and then try to match up through memory what they are reading in the
-					transcript against what they just watched. Even with detailed transcripts that include the actions
-					to help orient the user, the time to process the video is greatly increased.</p>
+				<p>One drawback of using transcripts is that they are not available in real time like captions and audio
+					descriptions. As a result, users who can see the content but not hear it may have to watch the video
+					once in silence and then try to match up through memory what they are reading in the transcript
+					against what they just watched. Even with detailed transcripts that include the actions to help
+					orient the user, the time to process the video is greatly increased.</p>
 
 				<p>A final audio consideration for users who are hard of hearing or have difficult processing speech is
 					to provide greater contrast between spoken content and background noises. High contrast audio refers
@@ -2696,8 +2698,8 @@
 				</aside>
 
 				<p>For specific details on evaluating when auditory content meets the requirements to be classified as
-					high contrast, refer to [[wcag2]] <a data-cite="wcag2#low-or-no-background-audio">success criterion
-						1.4.7</a>. Not all audio has to meet this requirement, for example. The audio must be primarily
+					high contrast, refer to <a data-cite="wcag2#low-or-no-background-audio">success criterion 1.4.7</a>
+					[[wcag2]]. Not all audio has to meet this requirement, for example. The audio must be primarily
 					speech and there is an exemption for musical content.</p>
 
 				<div class="note">
@@ -2758,14 +2760,14 @@
 					for <a data-cite="epub-3#dfn-epub-reading-system">reading system</a> [[epub-3]] use, they can also
 					provide a more detailed table of contents in a regular <a
 						data-cite="epub-3#dfn-xhtml-content-document">XHTML content document</a> in the publication <a
-						data-cite="epub-3#dfn-epub-spine">spine</a> [[epub-3]]. The <code>tableOfContents</code> value
+						data-cite="epub-3#dfn-epub-spine">spine</a> [[epub-3]]. (The <code>tableOfContents</code> value
 					does not only apply to the table of contents in the navigation document, although this is the one
-					most easily accessed by users.</p>
+					most easily accessed by users.)</p>
 
 				<p>Providing users access into the major sections of the publication through the table of contents is
-					one of EPUB 3's built-in methods of meeting the [[wcag2]] <a data-cite="wcag2#multiple-ways"
-						>multiple ways success criterion</a>, the other being via the page-to-page navigation offered
-					from the spine. Publishers should also consider adding indexes to make it easier for users to more
+					one of EPUB 3's built-in methods of meeting the <a data-cite="wcag2#multiple-ways">multiple ways
+						success criterion</a> [[wcag2]], the other being via the page-to-page navigation offered from
+					the spine. Publishers should also consider adding indexes to make it easier for users to more
 					rapidly locate specific information of interest. These can include general indexes, such as by
 					subject or name, or more content-specific indexes, such as an index of recipes for a cookbook.</p>
 
@@ -2793,8 +2795,8 @@
 				<p>Another method for users of assistive technologies to navigate a publication is through ARIA
 					landmarks [[wai-aria]]. These are expressed using the [[html]] [^/role^] attribute and, particularly
 					for EPUB, using the roles in the DPUB-ARIA extension [[dpub-aria]]. When an XHTML content document
-					is loaded, assistive technology typically check for the presence of landmark roles and provide users
-					with a quick navigation menu.</p>
+					is loaded, assistive technologies typically check for the presence of landmark roles and provide
+					users with a quick navigation menu.</p>
 
 				<p>The presence of ARIA landmarks is indicated in the package document metadata using the <dfn id="ARIA"
 						>ARIA</dfn> accessibility feature.</p>
@@ -2813,11 +2815,11 @@
 				<p>ARIA landmarks should be used sparingly as their usefulness diminishes the more there are in a
 					document. On the web, they are used to direct users to the major components of a page's layout, such
 					as the banner, search bar, navigation menu, main body, etc. A common mistake with publications is to
-					replicate the entire table of contents as landmarks. Such practice is not helpful as the
+					replicate the entire table of contents as landmarks. This practice is not helpful as the
 					hierarchical structure of the sections and subsections in the page is lost when using landmarks —
 					the landmark links are always presented as a single flat list; there is no ability to nest levels
 					like in a table of contents. A general rule of thumb for ARIA is that the usefulness of landmarks
-					begins to diminish once you have more than a half-dozen or so in a page.</p>
+					begins to diminish once you have more than a half-dozen or so in a document.</p>
 
 				<p>The final accessible navigation feature is the ability to move through the structure of a publication
 					by heading level in the markup. When headings are properly marked up using the [[html]]
@@ -2839,13 +2841,13 @@
 				</aside>
 
 				<p>This feature is similar to having a table of contents but does not require the user to leave their
-					current position and search the table of contents to skip forward to the next heading.</p>
+					current position and search the table of contents to find the next heading.</p>
 
 				<p>Publications that claim to provide structural navigation should ensure that the number of each
 					heading element used matches the hierarchy of the heading within the publication. Although this is
-					not required to conform to the [[wcag2]] <a data-cite="wcag2#info-and-relationships">info and
-						relationships success criterion</a>, claiming structural navigation is more than just ensuring
-					some heading tag has been used to identify each heading.</p>
+					not required to conform to the <a data-cite="wcag2#info-and-relationships">info and relationships
+						success criterion</a> [[wcag2]], claiming structural navigation is more than just ensuring some
+					heading tag has been used to identify each heading.</p>
 
 				<p>Some minor deviations from this rule are acceptable so long as the variations are consistent and
 					users are informed of the change in structure in the accessibility summary or in front matter on how
@@ -2903,20 +2905,17 @@
 &lt;/package></pre>
 				</aside>
 
-				<div class="note">
-					<p>The <a data-cite="epub-3#sec-epub-type-attribute"><code>epub:type</code> attribute</a> [[epub-3]]
-						value <a data-cite="epub-ssv#pagebreak"><code>pagebreak</code></a> [[epub-ssv]] is often paired
-						with <code>doc-pagebreak</code> role for historical reasons but the value does not provide any
-						accessibility benefits.</p>
-					<p>The <code>pageBreakMarkers</code> feature must not be set if only the <code>epub:type</code>
-						attribute is specified.</p>
-				</div>
+				<p>The <a data-cite="epub-3#sec-epub-type-attribute"><code>epub:type</code> attribute</a> [[epub-3]]
+					value <a data-cite="epub-ssv#pagebreak"><code>pagebreak</code></a> [[epub-ssv]] is often paired with
+						<code>doc-pagebreak</code> role for historical reasons but the value does not provide any
+					accessibility benefits. The <code>pageBreakMarkers</code> feature <strong>must not</strong> be set
+					if only the <code>epub:type</code> attribute is specified.</p>
 
 				<p>It is not required that every page break marker from the source be present, or that they be in the
 					same order as the source, as digital publications often omit material that is only relevant to print
 					and have front and back matter rearranged. The markers for blank pages at the end of chapters and
-					sections are also often omitted from digital publications. When page markers are omitted, the
-					accessibility summary should be used to explain why.</p>
+					sections are also often omitted from digital publications. When page markers are omitted, the <a
+						href="#accessibilitySummary">accessibility summary</a> should be used to explain why.</p>
 
 				<p>If the page breaks markers provided have limited utility, the <code>pageBreakMarkers</code> feature
 					should not be claimed. For example, if only the page breaks at the start of chapters are identified,
@@ -2954,9 +2953,9 @@
 						location is all that is required.</p>
 				</div>
 
-				<p>Regardless of whether static page break markers or a page list, or both, are included, the source of
-					the pagination needs to be identified, even when there is no source (EPUBs with no print or other
-					statically paginated version). As there may be multiple print editions of a work, all with different
+				<p>When static page break markers, a page list, or both, are included, the source of the pagination
+					needs to be identified, even when there is no source (publications with no print or other statically
+					paginated version). As there may be multiple print editions of a work, all with different
 					pagination, it is important for users to know which one the EPUB's pagination matches up with.</p>
 
 				<p>The source of the pagination is identified in a <dfn id="a11y:pageBreakSource"
@@ -2997,7 +2996,8 @@
 &lt;/package></pre>
 				</aside>
 
-				<p>If the pagination is unique to the EPUB, use the value "<code>none</code>".</p>
+				<p>If the pagination is unique to the digital publication (there is no static source), use the value
+						"<code>none</code>".</p>
 
 				<aside class="example" title="Package document markup when there is no page break source">
 					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
@@ -3190,10 +3190,11 @@
 				</div>
 
 				<p>The accessibility of scripted content is generally covered by conformance to WCAG 2 [[wcag2]]. As a
-					result, the schema.org vocabulary currently only contains a single term related to scripting.</p>
+					result, the schema.org vocabulary currently only contains a single term related to timed
+					content.</p>
 
 				<p>Timing is essential to much scripted interactivity. For example, a quiz will often have a time limit
-					and interactive games often set a limit to complete activities. These time limits typically not
+					and interactive games often set a limit to complete activities. These time limits typically do not
 					account for the additional time required for users with, for example, dexterity limitations or
 					cognitive issues. For non-essential activities, it should be possible for users to control or turn
 					off the timing so that they can complete the activity or better interact with it.</p>
@@ -3221,7 +3222,7 @@
 				<div class="note">
 					<p>Essential interactions, such as time limits on logins or for certain sessions to expire, that are
 						exempted from conformance by the success criterion are also exempt for the purposes of setting
-						this feature. These types of interactions are less common in EPUB publications.</p>
+						this feature. However, these types of interactions are less common in EPUB publications.</p>
 				</div>
 
 				<p>Timing control is not limited to content with an explicit timer. The WCAG success criterion also
@@ -3250,7 +3251,7 @@
 
 				<p>As <a data-cite="epub-3#dfn-epub-publication">EPUB publications</a> [[epub-3]] can be read on
 					refreshable braille devices, it is possible for a publication to include textual alternatives
-					encoded using Unicode braille characters (see <a
+					encoded using Unicode braille characters (see the <a
 						href="https://www.unicode.org/charts/nameslist/c_2800.html">Braille Patterns</a>
 					[[unicode]]).</p>
 
@@ -3279,9 +3280,10 @@
 				<div class="note">
 					<p>Another advantage of the eBraille format is that it provides metadata to indicate the type of
 						braille being included (language, code, grade, etc.). When braille is added to a standard EPUB,
-						the accessibility summary is likely the only reliable way to provide this information to users,
-						as distributors and <a data-cite="epub-3#dfn-epub-reading-system">reading systems</a> [[epub-3]]
-						are unlikely to check or report braille metadata.</p>
+						the <a href="#accessibilitySummary">accessibility summary</a> is the only reliable way to
+						provide this information to users, as distributors and <a
+							data-cite="epub-3#dfn-epub-reading-system">reading systems</a> [[epub-3]] are unlikely to
+						check or report braille metadata.</p>
 				</div>
 
 				<p>Both eBraille and standard EPUB publications may contain tactile graphics. These are images that are
@@ -3366,8 +3368,8 @@
 				</aside>
 
 				<p>The lack of word segmentation is not an accessibility feature in the strictest sense, but it is
-					included as a feature represents to indicate that the default authoring practice has been followed
-					for these languages.</p>
+					included as a feature to indicate that the standard authoring practice for these languages &#8212;
+					to not include extra space &#8212; has been followed.</p>
 
 				<p>The lack of additional word segmentation is indicated in the package document metadata using the <dfn
 						id="withoutAdditionalWordSegmentation">withoutAdditionalWordSegmentation</dfn> accessibility
