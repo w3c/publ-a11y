@@ -612,14 +612,7 @@
 								>package document</a> [[epub-3]].</p>
 
 						<aside class="example" title="Package document markup for a textual access mode">
-							<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
-   &lt;metadata>
-      …
-      &lt;meta property="schema:accessMode">textual&lt;/meta>
-      …
-   &lt;/metadata>
-   …
-&lt;/package></pre>
+							<pre>&lt;meta property="schema:accessMode">textual&lt;/meta></pre>
 						</aside>
 
 						<p>Not all the text content in a publication is necessary to read it, so when declaring a
@@ -678,14 +671,7 @@
 							[[epub-3]].</p>
 
 						<aside class="example" title="Package document markup for a visual access mode">
-							<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
-   &lt;metadata>
-      …
-      &lt;meta property="schema:accessMode">visual&lt;/meta>
-      …
-   &lt;/metadata>
-   …
-&lt;/package></pre>
+							<pre>&lt;meta property="schema:accessMode">visual&lt;/meta></pre>
 						</aside>
 
 						<p>Not all visual content in a publication carries information necessary to its understanding.
@@ -781,15 +767,8 @@
 										there are visual representations of data, such as pie charts, bar charts,
 										scatter plots, and line charts.</p>
 									<aside class="example" title="Package document markup for visual charts">
-										<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
-   &lt;metadata>
-      …
-      &lt;meta property="schema:accessMode">visual&lt;/meta>
-      &lt;meta property="schema:accessMode">chartOnVisual&lt;/meta>
-      …
-   &lt;/metadata>
-   …
-&lt;/package></pre>
+										<pre>&lt;meta property="schema:accessMode">visual&lt;/meta>
+&lt;meta property="schema:accessMode">chartOnVisual&lt;/meta></pre>
 									</aside>
 									<div class="note">
 										<p>For visual representations of concepts, such as in flowcharts, refer to the
@@ -803,15 +782,8 @@
 									<p>The <dfn id="chemOnVisual">chemOnVisual</dfn> indicator is used to declare that
 										chemical equations and formulas are represented only in visual form.</p>
 									<aside class="example" title="Package document markup for visual chemical content">
-										<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
-   &lt;metadata>
-      …
-      &lt;meta property="schema:accessMode">visual&lt;/meta>
-      &lt;meta property="schema:accessMode">chemOnVisual&lt;/meta>
-      …
-   &lt;/metadata>
-   …
-&lt;/package></pre>
+										<pre>&lt;meta property="schema:accessMode">visual&lt;/meta>
+&lt;meta property="schema:accessMode">chemOnVisual&lt;/meta></pre>
 									</aside>
 									<p>The <code>chemOnVisual</code> indicator is typically used to indicate that
 										chemical content is represented using static image formats like JPEGs and PNGs.
@@ -838,15 +810,8 @@
 										that visual content requires the ability to perceive color in order to
 										understand the information being conveyed.</p>
 									<aside class="example" title="Package document markup for color dependence">
-										<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
-   &lt;metadata>
-      …
-      &lt;meta property="schema:accessMode">visual&lt;/meta>
-      &lt;meta property="schema:accessMode">colorDependent&lt;/meta>
-      …
-   &lt;/metadata>
-   …
-&lt;/package></pre>
+										<pre>&lt;meta property="schema:accessMode">visual&lt;/meta>
+&lt;meta property="schema:accessMode">colorDependent&lt;/meta></pre>
 									</aside>
 									<p>An example of color dependence would be a bar chart where each bar is a different
 										color and a color-coded key is the only way to determine the meaning of each
@@ -873,15 +838,8 @@
 										that there are visual representations of concepts, such as Venn diagrams,
 										flowcharts, mind maps, and family trees.</p>
 									<aside class="example" title="Package document markup for visual diagrams">
-										<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
-   &lt;metadata>
-      …
-      &lt;meta property="schema:accessMode">visual&lt;/meta>
-      &lt;meta property="schema:accessMode">diagramOnVisual&lt;/meta>
-      …
-   &lt;/metadata>
-   …
-&lt;/package></pre>
+										<pre>&lt;meta property="schema:accessMode">visual&lt;/meta>
+      &lt;meta property="schema:accessMode">diagramOnVisual&lt;/meta></pre>
 									</aside>
 									<div class="note">
 										<p>For visual representations of data, such as in pie and bar charts, refer to
@@ -894,15 +852,8 @@
 									<p>The <dfn id="mathOnVisual">mathOnVisual</dfn> indicator is used to declare that
 										math equations and formulas are represented in visual form.</p>
 									<aside class="example" title="Package document markup for color dependence">
-										<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
-   &lt;metadata>
-      …
-      &lt;meta property="schema:accessMode">visual&lt;/meta>
-      &lt;meta property="schema:accessMode">mathOnVisual&lt;/meta>
-      …
-   &lt;/metadata>
-   …
-&lt;/package></pre>
+										<pre>&lt;meta property="schema:accessMode">visual&lt;/meta>
+&lt;meta property="schema:accessMode">mathOnVisual&lt;/meta></pre>
 									</aside>
 									<p>The <code>mathOnVisual</code> indicator is typically used to indicate that
 										chemical content is represented using static image formats like JPEGs and PNGs.
@@ -926,15 +877,8 @@
 									<p>The <dfn id="musicOnVisual">musicOnVisual</dfn> indicator is used to declare that
 										musical notation is represented visually.</p>
 									<aside class="example" title="Package document markup for visual musical content">
-										<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
-   &lt;metadata>
-      …
-      &lt;meta property="schema:accessMode">visual&lt;/meta>
-      &lt;meta property="schema:accessMode">musicOnVisual&lt;/meta>
-      …
-   &lt;/metadata>
-   …
-&lt;/package></pre>
+										<pre>&lt;meta property="schema:accessMode">visual&lt;/meta>
+&lt;meta property="schema:accessMode">musicOnVisual&lt;/meta></pre>
 									</aside>
 									<p>Unlike math and chemical content, there is no support for rendering a music
 										markup language such as MusicXML. Visual representation, often in image form, is
@@ -952,15 +896,8 @@
 									<p>The <dfn id="textOnVisual">textOnVisual</dfn> indicator is used to declare that
 										there are images of text.</p>
 									<aside class="example" title="Package document markup for visual text content">
-										<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
-   &lt;metadata>
-      …
-      &lt;meta property="schema:accessMode">visual&lt;/meta>
-      &lt;meta property="schema:accessMode">textOnVisual&lt;/meta>
-      …
-   &lt;/metadata>
-   …
-&lt;/package></pre>
+										<pre>&lt;meta property="schema:accessMode">visual&lt;/meta>
+&lt;meta property="schema:accessMode">textOnVisual&lt;/meta></pre>
 									</aside>
 									<p>There are many reasons why images of text are included in EPUB publications.
 										Appearance is one, as having to faithfully represent the appearance of the text
@@ -1014,14 +951,7 @@
 							[[epub-3]].</p>
 
 						<aside class="example" title="Package document markup for an auditory access mode">
-							<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
-   &lt;metadata>
-      …
-      &lt;meta property="schema:accessMode">auditory&lt;/meta>
-      …
-   &lt;/metadata>
-   …
-&lt;/package></pre>
+							<pre>&lt;meta property="schema:accessMode">auditory&lt;/meta></pre>
 						</aside>
 
 						<p>Not all auditory content in a publication carries information necessary to its understanding.
@@ -1148,14 +1078,7 @@
 							[[epub-3]].</p>
 
 						<aside class="example" title="Package document markup for a tactile access mode">
-							<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
-   &lt;metadata>
-      …
-      &lt;meta property="schema:accessMode">tactile&lt;/meta>
-      …
-   &lt;/metadata>
-   …
-&lt;/package></pre>
+							<pre>&lt;meta property="schema:accessMode">tactile&lt;/meta></pre>
 						</aside>
 
 						<p>The same as with the textual and visual content it represents, not all tactile content in a
@@ -1549,14 +1472,7 @@
 							>unknown <span hidden="hidden">(feature)</span></dfn> accessibility feature is declared.</p>
 
 					<aside class="example" title="Package document markup for unknown features">
-						<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
-   &lt;metadata>
-      …
-      &lt;meta property="schema:accessibilityFeature">unknown&lt;/meta>
-      …
-   &lt;/metadata>
-   …
-&lt;/package></pre>
+						<pre>&lt;meta property="schema:accessibilityFeature">unknown&lt;/meta></pre>
 					</aside>
 
 					<p>The <code>unknown</code> value is not intended for permanent use in an EPUB. If a publication is
@@ -1588,14 +1504,7 @@
 						value.</p>
 
 					<aside class="example" title="Package document markup for no accessibility features">
-						<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
-   &lt;metadata>
-      …
-      &lt;meta property="schema:accessibilityFeature">none&lt;/meta>
-      …
-   &lt;/metadata>
-   …
-&lt;/package></pre>
+						<pre>&lt;meta property="schema:accessibilityFeature">none&lt;/meta></pre>
 					</aside>
 
 					<p>This value <strong>must not</strong> be set if any other <code>accessibilityFeature</code> value
@@ -1967,14 +1876,7 @@
 						data-cite="epub-3#dfn-package-document">package document</a> [[epub-3]].</p>
 
 				<aside class="example" title="Package document markup for the text-to-speech feature">
-					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
-   &lt;metadata>
-      …
-      &lt;meta property="schema:accessibilityFeature">ttsMarkup&lt;/meta>
-      …
-   &lt;/metadata>
-   …
-&lt;/package></pre>
+					<pre>&lt;meta property="schema:accessibilityFeature">ttsMarkup&lt;/meta></pre>
 				</aside>
 
 				<p>It is not required that all the TTS enhancements be used in order to specify this feature. If only
@@ -1999,14 +1901,7 @@
 					feature is specified in the package document.</p>
 
 				<aside class="example" title="Package document markup for the synchronized audio and text feature">
-					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
-   &lt;metadata>
-      …
-      &lt;meta property="schema:accessibilityFeature">synchronizedAudioText&lt;/meta>
-      …
-   &lt;/metadata>
-   …
-&lt;/package></pre>
+					<pre>&lt;meta property="schema:accessibilityFeature">synchronizedAudioText&lt;/meta></pre>
 				</aside>
 
 				<div class="note">
@@ -2084,14 +1979,7 @@
 					set in the <a data-cite="epub-3#dfn-package-document">package document</a> [[epub-3]].</p>
 
 				<aside class="example" title="Package document markup for the MathML chemistry feature">
-					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
-   &lt;metadata>
-      …
-      &lt;meta property="schema:accessibilityFeature">MathML-chemistry&lt;/meta>
-      …
-   &lt;/metadata>
-   …
-&lt;/package></pre>
+					<pre>&lt;meta property="schema:accessibilityFeature">MathML-chemistry&lt;/meta></pre>
 				</aside>
 
 				<p>It is not required that every chemical equation or formula be represented as MathML in order to set
@@ -2119,14 +2007,7 @@
 					the package document.</p>
 
 				<aside class="example" title="Package document markup for the LaTeX chemistry feature">
-					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
-   &lt;metadata>
-      …
-      &lt;meta property="schema:accessibilityFeature">latex-chemistry&lt;/meta>
-      …
-   &lt;/metadata>
-   …
-&lt;/package></pre>
+					<pre>&lt;meta property="schema:accessibilityFeature">latex-chemistry&lt;/meta></pre>
 				</aside>
 
 				<p>Similar to setting <code>MathML-chemistry</code>, it is not required that every chemical equation or
@@ -2158,14 +2039,7 @@
 					affecting the readability.</p>
 
 				<aside class="example" title="Package document markup for the display transformability feature">
-					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
-   &lt;metadata>
-      …
-      &lt;meta property="schema:accessibilityFeature">displayTransformability&lt;/meta>
-      …
-   &lt;/metadata>
-   …
-&lt;/package></pre>
+					<pre>&lt;meta property="schema:accessibilityFeature">displayTransformability&lt;/meta></pre>
 				</aside>
 
 				<p>When to set the <code>displayTransformability</code> value depends on the characteristics of the
@@ -2240,14 +2114,7 @@
 					vision deficiencies.</p>
 
 				<aside class="example" title="Package document markup for the high contrast display feature">
-					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
-   &lt;metadata>
-      …
-      &lt;meta property="schema:accessibilityFeature">highContrastDisplay&lt;/meta>
-      …
-   &lt;/metadata>
-   …
-&lt;/package></pre>
+					<pre>&lt;meta property="schema:accessibilityFeature">highContrastDisplay&lt;/meta></pre>
 				</aside>
 
 				<p>This feature can be set when text and background color combinations meet or exceed the 7:1 contrast
@@ -2267,14 +2134,7 @@
 					indicate that a publication has been formatted for users who require larger font sizes to read.</p>
 
 				<aside class="example" title="Package document markup for the large print feature">
-					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
-   &lt;metadata>
-      …
-      &lt;meta property="schema:accessibilityFeature">largePrint&lt;/meta>
-      …
-   &lt;/metadata>
-   …
-&lt;/package></pre>
+					<pre>&lt;meta property="schema:accessibilityFeature">largePrint&lt;/meta></pre>
 				</aside>
 
 				<p>There is no single accepted definition of what constitutes large print, so publishers should consult
@@ -2333,14 +2193,7 @@
 						>alternativeText</dfn>.</p>
 
 				<aside class="example" title="Package document markup for the alternative text feature">
-					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
-   &lt;metadata>
-      …
-      &lt;meta property="schema:accessibilityFeature">alternativeText&lt;/meta>
-      …
-   &lt;/metadata>
-   …
-&lt;/package></pre>
+					<pre>&lt;meta property="schema:accessibilityFeature">alternativeText&lt;/meta></pre>
 				</aside>
 
 				<p>The alternative text provided for images must be meaningful both to meet accessibility requirements
@@ -2354,14 +2207,7 @@
 						>longDescription</dfn>.</p>
 
 				<aside class="example" title="Package document markup for the long description feature">
-					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
-   &lt;metadata>
-      …
-      &lt;meta property="schema:accessibilityFeature">longDescription&lt;/meta>
-      …
-   &lt;/metadata>
-   …
-&lt;/package></pre>
+					<pre>&lt;meta property="schema:accessibilityFeature">longDescription&lt;/meta></pre>
 				</aside>
 
 				<p>Similar to the requirement for claiming that alternative text has been provided, the extended
@@ -2417,14 +2263,7 @@
 					metadata.</p>
 
 				<aside class="example" title="Package document markup for the MathML feature">
-					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
-   &lt;metadata>
-      …
-      &lt;meta property="schema:accessibilityFeature">MathML&lt;/meta>
-      …
-   &lt;/metadata>
-   …
-&lt;/package></pre>
+					<pre>&lt;meta property="schema:accessibilityFeature">MathML&lt;/meta></pre>
 				</aside>
 
 				<div class="note">
@@ -2452,14 +2291,7 @@
 						<dfn id="latex">latex</dfn> accessibility feature.</p>
 
 				<aside class="example" title="Package document markup for the latex feature">
-					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
-   &lt;metadata>
-      …
-      &lt;meta property="schema:accessibilityFeature">latex&lt;/meta>
-      …
-   &lt;/metadata>
-   …
-&lt;/package></pre>
+					<pre>&lt;meta property="schema:accessibilityFeature">latex&lt;/meta></pre>
 				</aside>
 
 				<div class="note">
@@ -2483,14 +2315,7 @@
 						>describedMath</dfn> accessibility feature.</p>
 
 				<aside class="example" title="Package document markup for the described math feature">
-					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
-   &lt;metadata>
-      …
-      &lt;meta property="schema:accessibilityFeature">describedMath&lt;/meta>
-      …
-   &lt;/metadata>
-   …
-&lt;/package></pre>
+					<pre>&lt;meta property="schema:accessibilityFeature">describedMath&lt;/meta></pre>
 				</aside>
 
 				<p>The problem with describing math images is that human language is often not as precise as the
@@ -2554,14 +2379,7 @@
 						<dfn id="closedCaptions">closedCaptions</dfn> accessibility feature.</p>
 
 				<aside class="example" title="Package document markup for the closed captions feature">
-					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
-   &lt;metadata>
-      …
-      &lt;meta property="schema:accessibilityFeature">closedCaptions&lt;/meta>
-      …
-   &lt;/metadata>
-   …
-&lt;/package></pre>
+					<pre>&lt;meta property="schema:accessibilityFeature">closedCaptions&lt;/meta></pre>
 				</aside>
 
 				<p>Although closed captions are most beneficial to users who are deaf or hard of hearing, they can also
@@ -2588,14 +2406,7 @@
 						id="openCaptions">openCaptions</dfn> accessibility feature.</p>
 
 				<aside class="example" title="Package document markup for the open captions feature">
-					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
-   &lt;metadata>
-      …
-      &lt;meta property="schema:accessibilityFeature">openCaptions&lt;/meta>
-      …
-   &lt;/metadata>
-   …
-&lt;/package></pre>
+					<pre>&lt;meta property="schema:accessibilityFeature">openCaptions&lt;/meta></pre>
 				</aside>
 
 				<p>Open captions are most beneficial to users who are deaf or hard of hearing; they do not make auditory
@@ -2616,14 +2427,7 @@
 						<dfn id="signLanguage">signLanguage</dfn> accessibility feature.</p>
 
 				<aside class="example" title="Package document markup for the audio descriptions feature">
-					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
-   &lt;metadata>
-      …
-      &lt;meta property="schema:accessibilityFeature">signLanguage&lt;/meta>
-      …
-   &lt;/metadata>
-   …
-&lt;/package></pre>
+					<pre>&lt;meta property="schema:accessibilityFeature">signLanguage&lt;/meta></pre>
 				</aside>
 
 				<p>Similar to captioning, there are two common ways to provide sign language interpretation. One is to
@@ -2645,14 +2449,7 @@
 						<dfn id="audioDescription">audioDescription</dfn> accessibility feature.</p>
 
 				<aside class="example" title="Package document markup for the audio descriptions feature">
-					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
-   &lt;metadata>
-      …
-      &lt;meta property="schema:accessibilityFeature">audioDescription&lt;/meta>
-      …
-   &lt;/metadata>
-   …
-&lt;/package></pre>
+					<pre>&lt;meta property="schema:accessibilityFeature">audioDescription&lt;/meta></pre>
 				</aside>
 
 				<p>Another common method of making both the audio and video content accessible is through a transcript.
@@ -2663,14 +2460,7 @@
 						<dfn id="transcript">transcript</dfn> accessibility feature.</p>
 
 				<aside class="example" title="Package document markup for the transcript feature">
-					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
-   &lt;metadata>
-      …
-      &lt;meta property="schema:accessibilityFeature">transcript&lt;/meta>
-      …
-   &lt;/metadata>
-   …
-&lt;/package></pre>
+					<pre>&lt;meta property="schema:accessibilityFeature">transcript&lt;/meta></pre>
 				</aside>
 
 				<p>One drawback of using transcripts is that they are not available in real time like captions and audio
@@ -2687,14 +2477,7 @@
 						id="highContrastAudio">highContrastAudio</dfn> accessibility feature.</p>
 
 				<aside class="example" title="Package document markup for the high contrast audio feature">
-					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
-   &lt;metadata>
-      …
-      &lt;meta property="schema:accessibilityFeature">highContrastAudio&lt;/meta>
-      …
-   &lt;/metadata>
-   …
-&lt;/package></pre>
+					<pre>&lt;meta property="schema:accessibilityFeature">highContrastAudio&lt;/meta></pre>
 				</aside>
 
 				<p>For specific details on evaluating when auditory content meets the requirements to be classified as
@@ -2741,14 +2524,7 @@
 					feature.</p>
 
 				<aside class="example" title="Package document markup for the table of contents feature">
-					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
-   &lt;metadata>
-      …
-      &lt;meta property="schema:accessibilityFeature">tableOfContents&lt;/meta>
-      …
-   &lt;/metadata>
-   …
-&lt;/package></pre>
+					<pre>&lt;meta property="schema:accessibilityFeature">tableOfContents&lt;/meta></pre>
 				</aside>
 
 				<p>The only time it would not be appropriate to claim <code>tableOfContents</code> is if the table of
@@ -2776,14 +2552,7 @@
 					feature.</p>
 
 				<aside class="example" title="Package document markup for the index feature">
-					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
-   &lt;metadata>
-      …
-      &lt;meta property="schema:accessibilityFeature">index&lt;/meta>
-      …
-   &lt;/metadata>
-   …
-&lt;/package></pre>
+					<pre>&lt;meta property="schema:accessibilityFeature">index&lt;/meta></pre>
 				</aside>
 
 				<p>The type of index provided does not matter when setting the <code>index</code> feature, but to set
@@ -2802,14 +2571,7 @@
 						>ARIA</dfn> accessibility feature.</p>
 
 				<aside class="example" title="Package document markup for the ARIA feature">
-					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
-   &lt;metadata>
-      …
-      &lt;meta property="schema:accessibilityFeature">ARIA&lt;/meta>
-      …
-   &lt;/metadata>
-   …
-&lt;/package></pre>
+					<pre>&lt;meta property="schema:accessibilityFeature">ARIA&lt;/meta></pre>
 				</aside>
 
 				<p>ARIA landmarks should be used sparingly as their usefulness diminishes the more there are in a
@@ -2830,14 +2592,7 @@
 					the <dfn id="structuralNavigation">structuralNavigation</dfn> accessibility feature.</p>
 
 				<aside class="example" title="Package document markup for the structural navigation feature">
-					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
-   &lt;metadata>
-      …
-      &lt;meta property="schema:accessibilityFeature">structuralNavigation&lt;/meta>
-      …
-   &lt;/metadata>
-   …
-&lt;/package></pre>
+					<pre>&lt;meta property="schema:accessibilityFeature">structuralNavigation&lt;/meta></pre>
 				</aside>
 
 				<p>This feature is similar to having a table of contents but does not require the user to leave their
@@ -2895,14 +2650,7 @@
 						id="pageBreakMarkers">pageBreakMarkers</dfn> accessibility feature.</p>
 
 				<aside class="example" title="Package document markup for the page break markers feature">
-					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
-   &lt;metadata>
-      …
-      &lt;meta property="schema:accessibilityFeature">pageBreakMarkers&lt;/meta>
-      …
-   &lt;/metadata>
-   …
-&lt;/package></pre>
+					<pre>&lt;meta property="schema:accessibilityFeature">pageBreakMarkers&lt;/meta></pre>
 				</aside>
 
 				<p>The <a data-cite="epub-3#sec-epub-type-attribute"><code>epub:type</code> attribute</a> [[epub-3]]
@@ -2931,14 +2679,7 @@
 						id="pageNavigation">pageNavigation</dfn> accessibility feature.</p>
 
 				<aside class="example" title="Package document markup for the page navigation feature">
-					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
-   &lt;metadata>
-      …
-      &lt;meta property="schema:accessibilityFeature">pageNavigation&lt;/meta>
-      …
-   &lt;/metadata>
-   …
-&lt;/package></pre>
+					<pre>&lt;meta property="schema:accessibilityFeature">pageNavigation&lt;/meta></pre>
 				</aside>
 
 				<p>Similar to page break markers, a page list is most useful when it includes links to all the static
@@ -2963,16 +2704,9 @@
 					ISBN or ISSN to identify the source, when available.</p>
 
 				<aside class="example" title="Page break source with unique identifier">
-					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
-   &lt;metadata>
-      …
-      &lt;meta property="a11y:pageBreakSource">
-         urn:isbn:978765432100
-      &lt;/meta>
-      …
-   &lt;/metadata>
-   …
-&lt;/package></pre>
+					<pre>&lt;meta property="a11y:pageBreakSource">
+   urn:isbn:978765432100
+&lt;/meta></pre>
 				</aside>
 
 				<div class="note">
@@ -2984,32 +2718,16 @@
 					identify the source.</p>
 
 				<aside class="example" title="Page break source without a unique identifier">
-					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
-   &lt;metadata>
-      …
-      &lt;meta property="a11y:pageBreakSource">
-         Moby Dick; or, the Whale, Herman Melville, New York: Harper and Brothers, 1851. 
-      &lt;/meta>
-      …
-   &lt;/metadata>
-   …
-&lt;/package></pre>
+					<pre>&lt;meta property="a11y:pageBreakSource">
+   Moby Dick; or, the Whale, Herman Melville, New York: Harper and Brothers, 1851. 
+&lt;/meta></pre>
 				</aside>
 
 				<p>If the pagination is unique to the digital publication (there is no static source), use the value
 						"<code>none</code>".</p>
 
 				<aside class="example" title="Package document markup when there is no page break source">
-					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
-   &lt;metadata>
-      …
-      &lt;meta property="a11y:pageBreakSource">
-         none
-      &lt;/meta>
-      …
-   &lt;/metadata>
-   …
-&lt;/package></pre>
+					<pre>&lt;meta property="a11y:pageBreakSource">none&lt;/meta></pre>
 				</aside>
 			</section>
 
@@ -3037,14 +2755,7 @@
 						id="unlocked">unlocked</dfn> accessibility feature.</p>
 
 				<aside class="example" title="Package document markup for the unlocked feature">
-					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
-   &lt;metadata>
-      …
-      &lt;meta property="schema:accessibilityFeature">unlocked&lt;/meta>
-      …
-   &lt;/metadata>
-   …
-&lt;/package></pre>
+					<pre>&lt;meta property="schema:accessibilityFeature">unlocked&lt;/meta></pre>
 				</aside>
 
 				<p>Do not set the <code>unlocked</code> feature unless it is known for certain that the publication will
@@ -3082,14 +2793,7 @@
 					accessibility feature.</p>
 
 				<aside class="example" title="Package document markup for the reading order feature">
-					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
-   &lt;metadata>
-      …
-      &lt;meta property="schema:accessibilityFeature">readingOrder&lt;/meta>
-      …
-   &lt;/metadata>
-   …
-&lt;/package></pre>
+					<pre>&lt;meta property="schema:accessibilityFeature">readingOrder&lt;/meta></pre>
 				</aside>
 
 				<p>Unlike many of the other accessibility features, where claims can be made even if coverage is not
@@ -3152,28 +2856,14 @@
 						<dfn id="fullRubyAnnotations">fullRubyAnnotations</dfn> accessibility feature.</p>
 
 				<aside class="example" title="Package document markup for the full ruby annotations feature">
-					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
-   &lt;metadata>
-      …
-      &lt;meta property="schema:accessibilityFeature">fullRubyAnnotations&lt;/meta>
-      …
-   &lt;/metadata>
-   …
-&lt;/package></pre>
+					<pre>&lt;meta property="schema:accessibilityFeature">fullRubyAnnotations&lt;/meta></pre>
 				</aside>
 
 				<p>When not all CJK ideographic characters have ruby annotations, the <dfn id="rubyAnnotations"
 						>rubyAnnotations</dfn> value is used instead.</p>
 
 				<aside class="example" title="Package document markup for partial ruby annotations feature">
-					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
-   &lt;metadata>
-      …
-      &lt;meta property="schema:accessibilityFeature">rubyAnnotations&lt;/meta>
-      …
-   &lt;/metadata>
-   …
-&lt;/package></pre>
+					<pre>&lt;meta property="schema:accessibilityFeature">rubyAnnotations&lt;/meta></pre>
 				</aside>
 			</section>
 
@@ -3204,14 +2894,7 @@
 						id="timingControl">timingControl</dfn> accessibility feature.</p>
 
 				<aside class="example" title="Package document markup for the timing control feature">
-					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
-   &lt;metadata>
-      …
-      &lt;meta property="schema:accessibilityFeature">timingControl&lt;/meta>
-      …
-   &lt;/metadata>
-   …
-&lt;/package></pre>
+					<pre>&lt;meta property="schema:accessibilityFeature">timingControl&lt;/meta></pre>
 				</aside>
 
 				<p>The <code>timingControl</code> feature is aligned with <a data-cite="wcag2#timing-adjustable">success
@@ -3260,14 +2943,7 @@
 						id="braille">braille</dfn> accessibility feature.</p>
 
 				<aside class="example" title="Package document markup for the braille feature">
-					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
-   &lt;metadata>
-      …
-      &lt;meta property="schema:accessibilityFeature">braille&lt;/meta>
-      …
-   &lt;/metadata>
-   …
-&lt;/package></pre>
+					<pre>&lt;meta property="schema:accessibilityFeature">braille&lt;/meta></pre>
 				</aside>
 
 				<p><strong>Do not</strong> use the <code>braille</code> feature for publications whose primary format is
@@ -3294,14 +2970,7 @@
 						id="tactileGraphic">tactileGraphic</dfn> accessibility feature.</p>
 
 				<aside class="example" title="Package document markup for the tactile graphic feature">
-					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
-   &lt;metadata>
-      …
-      &lt;meta property="schema:accessibilityFeature">tactileObject&lt;/meta>
-      …
-   &lt;/metadata>
-   …
-&lt;/package></pre>
+					<pre>&lt;meta property="schema:accessibilityFeature">tactileObject&lt;/meta></pre>
 				</aside>
 
 				<p>The tactile graphic does not have to be displayed in the content to claim this feature. If links are
@@ -3320,14 +2989,7 @@
 						id="tactileObject">tactileObject</dfn> accessibility feature.</p>
 
 				<aside class="example" title="Package document markup for the tactile object feature">
-					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
-   &lt;metadata>
-      …
-      &lt;meta property="schema:accessibilityFeature">tactileObject&lt;/meta>
-      …
-   &lt;/metadata>
-   …
-&lt;/package></pre>
+					<pre>&lt;meta property="schema:accessibilityFeature">tactileObject&lt;/meta></pre>
 				</aside>
 			</section>
 
@@ -3357,14 +3019,9 @@
 					feature.</p>
 
 				<aside class="example" title="Package document markup for the additional segmentation feature">
-					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
-   &lt;metadata>
-      …
-      &lt;meta property="schema:accessibilityFeature">withAdditionalWordSegmentation&lt;/meta>
-      …
-   &lt;/metadata>
-   …
-&lt;/package></pre>
+					<pre>&lt;meta property="schema:accessibilityFeature">
+   withAdditionalWordSegmentation
+&lt;/meta></pre>
 				</aside>
 
 				<p>The lack of word segmentation is not an accessibility feature in the strictest sense, but it is
@@ -3376,14 +3033,9 @@
 					feature.</p>
 
 				<aside class="example" title="Package document markup for no additional segmentation feature">
-					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
-   &lt;metadata>
-      …
-      &lt;meta property="schema:accessibilityFeature">withoutAdditionalWordSegmentation&lt;/meta>
-      …
-   &lt;/metadata>
-   …
-&lt;/package></pre>
+					<pre>&lt;meta property="schema:accessibilityFeature">
+   withoutAdditionalWordSegmentation
+&lt;/meta></pre>
 				</aside>
 
 				<p>Setting one or the other of these values, as appropriate, is recommended to avoid ambiguity (i.e.,
@@ -3420,28 +3072,18 @@
 						>horizontalWriting</dfn> accessibility feature.</p>
 
 				<aside class="example" title="Package document markup for the horizontal writing feature">
-					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
-   &lt;metadata>
-      …
-      &lt;meta property="schema:accessibilityFeature">horizontalWriting&lt;/meta>
-      …
-   &lt;/metadata>
-   …
-&lt;/package></pre>
+					<pre>&lt;meta property="schema:accessibilityFeature">
+   horizontalWriting
+&lt;/meta></pre>
 				</aside>
 
 				<p>To indicate that vertical writing is used, the package document metadata must indicate the <dfn
 						id="verticalWriting">verticalWriting</dfn> accessibility feature.</p>
 
 				<aside class="example" title="Package document markup for the vertical writing feature">
-					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
-   &lt;metadata>
-      …
-      &lt;meta property="schema:accessibilityFeature">verticalWriting&lt;/meta>
-      …
-   &lt;/metadata>
-   …
-&lt;/package></pre>
+					<pre>&lt;meta property="schema:accessibilityFeature">
+   verticalWriting
+&lt;/meta></pre>
 				</aside>
 
 				<p>Setting the appropriate writing direction is always recommended, but <strong>do not</strong> set
@@ -3478,7 +3120,7 @@
 					</li>
 				</ul>
 
-				<p>It is not only important for users to be aware if these hazards are present, but also if they are not
+				<p>It is not only important for users to be aware if these hazards are present but also if they are not
 					present or if their status is unknown. Without this information, users would have no way of knowing
 					if a publication is free from hazards or simply has not been checked, potentially leading them to
 					obtain content which could be physically harmful to them.</p>
@@ -3510,9 +3152,11 @@
 					<pre>&lt;meta property="schema:accessibilityHazard">
    flashing
 &lt;/meta>
+
 &lt;meta property="schema:accessibilityHazard">
    noMotionSimulationHazard
 &lt;/meta>
+
 &lt;meta property="schema:accessibilityHazard">
    noSoundHazard
 &lt;/meta></pre>
@@ -3527,18 +3171,26 @@
 					declared:</p>
 
 				<ul>
-					<li>When there are no hazards of any type, the value <a href="#hazard-none"><code>none</code></a>
-						can be declared instead of setting a status for each individual hazard type.</li>
-					<li>When none of the possible hazards is known, the value <a href="#hazard-unknown"
-								><code>unknown</code></a> can be declared instead of setting a status for each
-						individual hazard type.</li>
-				</ul>
-
-				<aside class="example" title="Metadata for a publication with no hazards">
-					<pre>&lt;meta property="schema:accessibilityHazard">
+					<li>
+						<p>When there are no hazards of any type, the value <a href="#hazard-none"><code>none</code></a>
+							can be declared instead of setting a status for each individual hazard type.</p>
+						<aside class="example" title="Metadata for a publication with no hazards">
+							<pre>&lt;meta property="schema:accessibilityHazard">
    none
 &lt;/meta></pre>
-				</aside>
+						</aside>
+					</li>
+					<li>
+						<p>When none of the possible hazards is known, the value <a href="#hazard-unknown"
+									><code>unknown</code></a> can be declared instead of setting a status for each
+							individual hazard type.</p>
+						<aside class="example" title="Metadata for a publication with unknown hazards">
+							<pre>&lt;meta property="schema:accessibilityHazard">
+   unknown
+&lt;/meta></pre>
+						</aside>
+					</li>
+				</ul>
 
 				<p>These values are mutually exclusive and must never be declared for the same publication. Also, when
 					either of these global values is declared, no individual hazard statuses should be declared as it is
@@ -3571,9 +3223,9 @@
 								><code>accessibilityHazard</code> property</a> [[a11y-discov-vocab]].</p>
 
 					<div class="note">
-						<p>Although the vocabulary for the <code>accessibilityHazard</code> property contains the value
-								"<a href="#features-unknown"><code>unknown</code></a>", this terms cannot be used to
-							meet the reporting requirements for the property.</p>
+						<p>The values <code>unknown</code>, <code>unknownFlashingHazard</code>,
+								<code>unknownMotionSimulationHazard</code>, and <code>unknownSoundHazard</code> cannot
+							be used to meet the reporting requirements for the property.</p>
 					</div>
 				</section>
 			</section>
@@ -3614,14 +3266,7 @@
 					metadata.</p>
 
 				<aside class="example" title="Package document markup for a flashing hazard">
-					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
-   &lt;metadata>
-      …
-      &lt;meta property="schema:accessibilityHazard">flashing&lt;/meta>
-      …
-   &lt;/metadata>
-   …
-&lt;/package></pre>
+					<pre>&lt;meta property="schema:accessibilityHazard">flashing&lt;/meta></pre>
 				</aside>
 
 				<p id="motionSimulation-desc">Motion simulation is equally problematic as it can trigger severe
@@ -3642,14 +3287,7 @@
 						>motionSimulation</dfn> hazard value must be declared in the package document metadata.</p>
 
 				<aside class="example" title="Package document markup for a motion simulation hazard">
-					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
-   &lt;metadata>
-      …
-      &lt;meta property="schema:accessibilityHazard">motionSimulation&lt;/meta>
-      …
-   &lt;/metadata>
-   …
-&lt;/package></pre>
+					<pre>&lt;meta property="schema:accessibilityHazard">motionSimulation&lt;/meta></pre>
 				</aside>
 
 				<p id="sound-desc">What precisely constitutes a sound hazard, and how to test for these hazards, is not
@@ -3660,14 +3298,7 @@
 					declared in the package document metadata.</p>
 
 				<aside class="example" title="Package document markup for a sound hazard">
-					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
-   &lt;metadata>
-      …
-      &lt;meta property="schema:accessibilityHazard">sound&lt;/meta>
-      …
-   &lt;/metadata>
-   …
-&lt;/package></pre>
+					<pre>&lt;meta property="schema:accessibilityHazard">sound&lt;/meta></pre>
 				</aside>
 			</section>
 
@@ -3698,14 +3329,7 @@
 						id="hazard-none">none <span hidden="hidden">(hazard)</span></dfn> hazard value.</p>
 
 				<aside class="example" title="Package document markup for no hazards">
-					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
-   &lt;metadata>
-      …
-      &lt;meta property="schema:accessibilityHazard">none&lt;/meta>
-      …
-   &lt;/metadata>
-   …
-&lt;/package></pre>
+					<pre>&lt;meta property="schema:accessibilityHazard">none&lt;/meta></pre>
 				</aside>
 
 				<div class="note">
@@ -3724,14 +3348,9 @@
 						data-cite="epub-3#dfn-package-document">package document</a> [[epub-3]] metadata.</p>
 
 				<aside class="example" title="Package document markup for no flashing hazard">
-					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
-   &lt;metadata>
-      …
-      &lt;meta property="schema:accessibilityHazard">noFlashingHazard&lt;/meta>
-      …
-   &lt;/metadata>
-   …
-&lt;/package></pre>
+					<pre>&lt;meta property="schema:accessibilityHazard">
+   noFlashingHazard
+&lt;/meta></pre>
 				</aside>
 
 				<p>To indicate that there are no <a href="#motionSimulation-desc">motion simulation hazards</a>, the
@@ -3739,28 +3358,18 @@
 					declared.</p>
 
 				<aside class="example" title="Package document markup for no motion simulation hazard">
-					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
-   &lt;metadata>
-      …
-      &lt;meta property="schema:accessibilityHazard">noMotionSimulationHazard&lt;/meta>
-      …
-   &lt;/metadata>
-   …
-&lt;/package></pre>
+					<pre>&lt;meta property="schema:accessibilityHazard">
+   noMotionSimulationHazard
+&lt;/meta></pre>
 				</aside>
 
 				<p>And to indicate that there are no <a href="#sound-desc">sound hazards</a>, the <dfn
 						id="noSoundHazard">noSoundHazard</dfn> hazard value must be declared.</p>
 
 				<aside class="example" title="Package document markup for no sound hazard">
-					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
-   &lt;metadata>
-      …
-      &lt;meta property="schema:accessibilityHazard">noSoundHazard&lt;/meta>
-      …
-   &lt;/metadata>
-   …
-&lt;/package></pre>
+					<pre>&lt;meta property="schema:accessibilityHazard">
+   noSoundHazard
+&lt;/meta></pre>
 				</aside>
 			</section>
 
@@ -3794,14 +3403,7 @@
 							>(hazard)</span></dfn> hazard value must be declared in the package document metadata.</p>
 
 				<aside class="example" title="Package document markup for unknown hazards">
-					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
-   &lt;metadata>
-      …
-      &lt;meta property="schema:accessibilityHazard">unknown&lt;/meta>
-      …
-   &lt;/metadata>
-   …
-&lt;/package></pre>
+					<pre>&lt;meta property="schema:accessibilityHazard">unknown&lt;/meta></pre>
 				</aside>
 
 				<div class="note">
@@ -3826,14 +3428,9 @@
 					the package document metadata.</p>
 
 				<aside class="example" title="Package document markup for an unknown flashing hazard">
-					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
-   &lt;metadata>
-      …
-      &lt;meta property="schema:accessibilityHazard">unknownFlashingHazard&lt;/meta>
-      …
-   &lt;/metadata>
-   …
-&lt;/package></pre>
+					<pre>&lt;meta property="schema:accessibilityHazard">
+   unknownFlashingHazard
+&lt;/meta></pre>
 				</aside>
 
 				<p>To indicate that <a href="#motionSimulation-desc">motion simulation hazards</a> are not known, the
@@ -3841,28 +3438,18 @@
 					declared.</p>
 
 				<aside class="example" title="Package document markup for an unknown motion simulation hazard">
-					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
-   &lt;metadata>
-      …
-      &lt;meta property="schema:accessibilityHazard">unknownMotionSimulationHazard&lt;/meta>
-      …
-   &lt;/metadata>
-   …
-&lt;/package></pre>
+					<pre>&lt;meta property="schema:accessibilityHazard">
+   unknownMotionSimulationHazard
+&lt;/meta></pre>
 				</aside>
 
 				<p>And to indicate that the presence of <a href="#sound-desc">sound hazards</a> is not known, the <dfn
 						id="unknownSoundHazard">unknownSoundHazard</dfn> hazard value must be declared.</p>
 
 				<aside class="example" title="Package document markup for unknown sound hazards">
-					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
-   &lt;metadata>
-      …
-      &lt;meta property="schema:accessibilityHazard">unknownSoundHazard&lt;/meta>
-      …
-   &lt;/metadata>
-   …
-&lt;/package></pre>
+					<pre>&lt;meta property="schema:accessibilityHazard">
+   unknownSoundHazard
+&lt;/meta></pre>
 				</aside>
 			</section>
 		</section>
@@ -3871,13 +3458,17 @@
 
 			<p>An accessibility summary provides a brief, human-readable description of the accessibility
 				characteristics of an <a data-cite="epub-3#dfn-epub-publication">EPUB publication</a> [[epub-3]] that
-				cannot be expressed through the other discovery metadata. It is provided using the <a
-					href="https://schema.org/accessibilitySummary"><dfn id="schema:accessibilitySummary"
-							><code>schema:accessibilitySummary</code></dfn> property</a> [[schema-org]].</p>
+				cannot be expressed through the other discovery metadata. It is also used to provide additional context
+				for accessibility feature claims.</p>
+
+			<p>The summary is provided using the <a href="https://schema.org/accessibilitySummary"><dfn
+						id="schema:accessibilitySummary"><code>schema:accessibilitySummary</code></dfn> property</a>
+				[[schema-org]].</p>
 
 			<aside class="example" title="Accessibility summary">
 				<pre>&lt;meta property="schema:accessibilitySummary">
-   …
+   MathML markup is only provided for complex equations.
+   In all other cases, &#8230;
 &lt;/meta>
 					</pre>
 			</aside>
@@ -3909,44 +3500,44 @@
 			<aside class="example"
 				title="Accessibility summary for a publication that fails the content accessibility requirements">
 				<pre>&lt;meta property="schema:accessibilitySummary">
-    The publication is missing alternative text for complex diagrams.
-    The publication otherwise meets WCAG 2.0 Level A.
+   The publication is missing alternative text for complex diagrams.
+   The publication otherwise meets WCAG 2.0 Level A.
 &lt;/meta></pre>
 			</aside>
 
 			<aside class="example" title="Accessibility summary for a publication with a motion simulation hazard">
 				<pre>&lt;meta property="schema:accessibilitySummary">
-    Although this publication meets the requirements of its accessibility
-    claim, the publication contains a motion hazard in chapter 8 page 202., 
-    which could cause motion sickness in certain individuals. There is a video 
-    showing a rollercoaster going up and down rapidly. Watching the video is 
-    interesting, but not essential for understanding the concept of elevation 
-    loss and gain.
+   Although this publication meets the requirements of its accessibility
+   claim, the publication contains a motion hazard in chapter 8 page 202., 
+   which could cause motion sickness in certain individuals. There is a video 
+   showing a rollercoaster going up and down rapidly. Watching the video is 
+   interesting, but not essential for understanding the concept of elevation 
+   loss and gain.
 &lt;/meta></pre>
 			</aside>
 
 			<aside class="example"
 				title="Accessibility summary for a publication with a conformance nuance and additional details">
 				<pre>&lt;meta property="schema:accessibilitySummary">
-    This publication strives to meet accepted Web Content Accessibility 
-    Guidelines (WCAG) at the AA level. Subject experts were used to create 
-    the alternative text. A comprehensive index is included with links to 
-    the top of the page.
+   This publication strives to meet accepted Web Content Accessibility 
+   Guidelines (WCAG) at the AA level. Subject experts were used to create 
+   the alternative text. A comprehensive index is included with links to 
+   the top of the page.
 &lt;/meta></pre>
 			</aside>
 
 			<aside class="example"
 				title="Accessibility summary for a publication that used AI for the generation of alt text">
 				<pre>&lt;meta property="schema:accessibilitySummary">
-	AI was used to generate the alt text without review by people familiar 
-	with the material.
+   AI was used to generate the alt text without review by people familiar 
+   with the material.
 &lt;/meta></pre>
 			</aside>
 
 			<aside class="example"
 				title="Accessibility summary for a publication where experts used AI to assist in the generation of alt text ">
 				<pre>&lt;meta property="schema:accessibilitySummary">
-	People familiar with the material used AI to assist in the generation of Alt text.
+   People familiar with the material used AI to assist in the generation of Alt text.
 &lt;/meta></pre>
 			</aside>
 
@@ -3963,7 +3554,7 @@
 				<p>[[[epub-a11y]]] [[epub-a11y]] only recommends an <a
 						href="https://www.w3.org/2021/a11y-discov-vocab/latest/#accessibilityHazard"
 							><code>accessibilitySummary</code> property</a> [[a11y-discov-vocab]] be included if there
-					is information not already capture by the other accessibility metadata.</p>
+					is information to express that is not already captured by the other accessibility metadata.</p>
 
 				<p>Do not include an accessibility summary when there is nothing more to add to the conformance claim
 					and other discovery metadata.</p>
@@ -4097,9 +3688,9 @@
 
 					<div class="note">
 						<p>The <code>dcterms:conformsTo</code> property is not exclusive to making accessibility claims.
-							It can be used to make other types of claims, including additional accessibility claims
-							(e.g., to a publisher's internal conformance standard or to another regional accessibility
-							standard).</p>
+							against the EPUB Accessibility standard. It can be used to make other types of claims,
+							including additional accessibility claims (e.g., to a publisher's internal conformance
+							standard or to another regional accessibility standard).</p>
 					</div>
 				</section>
 
@@ -4119,19 +3710,13 @@
 						the conformance claim.</p>
 
 					<aside class="example" title="Evaluator of a conformance claim identified">
-						<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
-   &lt;metadata>
-      …
-      &lt;meta id="conformance" property="dcterms:conformsTo">
-         EPUB Accessibility 1.2 - WCAG 2.2 Level AA
-      &lt;/meta>
-      &lt;meta id="evaluator" property="a11y:certifiedBy">
-         John Doe Evaluation Services
-      &lt;/meta>
-      …
-   &lt;/metadata>
-   …
-&lt;/package></pre>
+						<pre>&lt;meta id="conformance" property="dcterms:conformsTo">
+   EPUB Accessibility 1.2 - WCAG 2.2 Level AA
+&lt;/meta>
+
+&lt;meta id="evaluator" property="a11y:certifiedBy">
+   John Doe Evaluation Services
+&lt;/meta></pre>
 					</aside>
 
 					<p>It is only necessary to add an ID to the <code>meta</code> tag for the evaluator's name if a
@@ -4159,19 +3744,13 @@
 									>a11y:certifierCredential</dfn> property</a> [[epub-a11y]].</p>
 
 						<aside class="example" title="Evaluator of a conformance claim identified">
-							<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
-   &lt;metadata>
-      …
-      &lt;meta id="evaluator" property="a11y:certifiedBy">
-         John Doe Evaluation Services
-      &lt;/meta>
-      &lt;meta refines="#evaluator" property="a11y:certifierCredential">
-         Acme Certified Evaluator
-      &lt;/meta>
-      …
-   &lt;/metadata>
-   …
-&lt;/package></pre>
+							<pre>&lt;meta id="evaluator" property="a11y:certifiedBy">
+   John Doe Evaluation Services
+&lt;/meta>
+
+&lt;meta refines="#evaluator" property="a11y:certifierCredential">
+   Acme Certified Evaluator
+&lt;/meta></pre>
 						</aside>
 
 						<p>Note that there is no need for the credential <code>meta</code> tag to have an
@@ -4191,8 +3770,8 @@
 
 					<p>Although users will typically assume that an evaluation was performed prior to the release of an
 							<a data-cite="epub-3#dfn-epub-publication">EPUB publication</a> [[epub-3]], it can be
-						helpful to users to have the date explicitly stated. More often, though, this date is helpful
-						for the publisher to be able to determine when an evaluation was last performed.</p>
+						helpful to users to have the date explicitly stated. More often, though, this date is only used
+						by the publisher to be able to determine when an evaluation was last performed.</p>
 
 					<p>The date of the evaluation is attached to the evaluator's name metadata using a <a
 							href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#date"><dfn
@@ -4203,19 +3782,13 @@
 						values in all cases).</p>
 
 					<aside class="example" title="Evaluator of a conformance claim identified">
-						<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
-   &lt;metadata>
-      …
-      &lt;meta id="evaluator" property="a11y:certifiedBy">
-         John Doe Evaluation Services
-      &lt;/meta>
-      &lt;meta refines="#evaluator" property="dcterms:date">
-         2026-01-31
-      &lt;/meta>
-      …
-   &lt;/metadata>
-   …
-&lt;/package></pre>
+						<pre>&lt;meta id="evaluator" property="a11y:certifiedBy">
+   John Doe Evaluation Services
+&lt;/meta>
+
+&lt;meta refines="#evaluator" property="dcterms:date">
+   2026-01-31
+&lt;/meta></pre>
 					</aside>
 
 					<p>More information about the recommended date format can be found in [[[datetime]]]
@@ -4238,9 +3811,10 @@
 					<h4>Adding an evaluator's report</h4>
 
 					<p>When performing a conformance evaluation, a detailed report is often produced to prove that a
-						publication meets all the requirements of the EPUB Accessibility specification and WCAG success
-						criteria. Making this report available can aid users who need more detailed information about
-						the content and may be legally necessary to provide in order to sell a publication.</p>
+						publication meets all the requirements of the EPUB Accessibility standard [[epub-a11y]] and WCAG
+						success criteria [[wcag2]]. Making this report available can aid users who need more detailed
+						information about the content and may be legally necessary to provide in order to sell a
+						publication.</p>
 
 					<p>When a detailed report is available, it is possible to link to it from the <a
 							data-cite="epub-3#dfn-package-document">package document</a> [[epub-3]]. Unlike the other
@@ -4249,18 +3823,11 @@
 								>a11y:certifierReport</dfn> property</a> [[epub-a11y]].</p>
 
 					<aside class="example" title="Link to a detailed evaluation report">
-						<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
-   &lt;metadata>
-      …
-      &lt;meta id="evaluator" property="a11y:certifiedBy">
-         John Doe Evaluation Services
-      &lt;/meta>
-      &lt;link refines="#evaluator" rel="a11y:certifierReport"
-            href="https://jdes.example.com/reports/a11y/moby-dick.html"/>
-      …
-   &lt;/metadata>
-   …
-&lt;/package></pre>
+						<pre>&lt;meta id="evaluator" property="a11y:certifiedBy">
+   John Doe Evaluation Services
+&lt;/meta>
+&lt;link refines="#evaluator" rel="a11y:certifierReport"
+      href="https://jdes.example.com/reports/a11y/moby-dick.html"/></pre>
 					</aside>
 
 					<p>Ensure that the report is hosted in a publicly readable location. Providing a link to an internal
@@ -4300,16 +3867,9 @@
 					exempt from a jurisdiction's accessibility requirements.</p>
 
 				<aside class="example" title="Publication claiming a European Accessibility Act exemption">
-					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
-   &lt;metadata>
-      …
-      &lt;meta property="a11y:exemption">
-         eaa-microenterprise
-      &lt;/meta>
-      …
-   &lt;/metadata>
-   …
-&lt;/package></pre>
+					<pre>&lt;meta property="a11y:exemption">
+   eaa-microenterprise
+&lt;/meta></pre>
 				</aside>
 
 				<p>A publication can fail the minimum accessibility requirements for a jurisdiction while still meeting
@@ -4360,16 +3920,9 @@
 						property</a> [[epub-a11y]].</p>
 
 				<aside class="example" title="Contact email">
-					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf" xml:lang="en">
-   &lt;metadata>
-      …
-      &lt;meta property="a11y:contactEmail">
-         a11y@example.com
-      &lt;/meta>
-      …
-   &lt;/metadata>
-   …
-&lt;/package></pre>
+					<pre>&lt;meta property="a11y:contactEmail">
+   a11y@example.com
+&lt;/meta></pre>
 				</aside>
 
 				<p>The contact email does not have to go to the publisher. If they use a third-party that is responsible
