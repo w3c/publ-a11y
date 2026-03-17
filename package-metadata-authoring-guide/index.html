@@ -1171,7 +1171,7 @@
 						want to know that all the content is available as pre-recorded audio for enhanced playback.</p>
 
 					<p><a href="#ams-combined-values">Combinations</a> are, of course, still of value to list, but when
-						multiple modes are required it is often the case that one or more will be problematic. A book
+						multiple modes are required, it is often the case that one or more will be problematic. A book
 						that has a sufficient access mode set that indicates textual and auditory content, for example,
 						will be usable by a user who is blind but not by a user who is deaf.</p>
 
@@ -1186,7 +1186,7 @@
 
 						<p>Unlike a <a href="#accessmode-textual">textual primary access mode</a>, the inclusion of text
 							alternatives such as alternative text, extended descriptions, closed captions, and
-							transcripts are considered when determing whether there is a textual sufficient access
+							transcripts are considered when determining whether there is a textual sufficient access
 							mode.</p>
 
 						<p>When <code>textual</code> is the only sufficient access mode set, it means that all the
@@ -2401,7 +2401,7 @@
 				</div>
 
 				<p>Open captions are the opposite of closed captions — they are a part of the visual display of a video.
-					They cannot be turned off or have their appearance modified, and cannot be accessed by assistive
+					They cannot be turned off or have their appearance modified and cannot be accessed by assistive
 					technologies. Their presence is indicated in the package document metadata using the <dfn
 						id="openCaptions">openCaptions</dfn> accessibility feature.</p>
 
@@ -3965,7 +3965,7 @@
 &lt;meta property="schema:accessModeSufficient">textual&lt;/meta></pre>
 					</dd>
 
-					<dt>Primaily textual works with some auditory content</dt>
+					<dt>Primarily textual works with some auditory content</dt>
 					<dd>
 						<p>These works are primarily text but may embed some auditory content. An example would be a
 							work of non-fiction that includes clips of speeches.</p>
@@ -3976,7 +3976,7 @@
 &lt;meta property="schema:accessModeSufficient">textual&lt;/meta></pre>
 					</dd>
 
-					<dt>Primaily textual works with some visual and auditory content</dt>
+					<dt>Primarily textual works with some visual and auditory content</dt>
 					<dd>
 						<p>These works are primarily text but also include a mix of visual and auditory content. The
 							visual content could be images or could be video, while the auditory content could be
@@ -4411,7 +4411,7 @@
 							like an adaptation in most mainstream production cases. When the audio fully captures the
 							information of the work, whether the overlay represents an audiobook or an add-on audio
 							experience is determined by the content the audio is synchronized to.</p>
-						<p>For accessible republishers, EPUB is used as a delivery format for the audio, and may only
+						<p>For accessible republishers, EPUB is used as a delivery format for the audio and may only
 							include the major headings of the work to allow structured navigation. In this case, both an
 							auditory access mode and an auditory sufficient access mode are specified since the work can
 							only be read in full auditorily.</p>
@@ -4454,16 +4454,18 @@
 			<section id="identify-alt">
 				<h3>Alternative text</h3>
 
-				<p>To check if the <a href="#alternativeText"><code>alternativeText</code></a> accessibility can be
-					applied requires checking all <a data-cite="epub-3#dfn-epub-content-document">EPUB content
-						documents</a>.</p>
+				<p>To check if the <a href="#alternativeText"><code>alternativeText</code></a> accessibility feature can
+					be declared requires checking all the images in an <a data-cite="epub-3#dfn-epub-publication">EPUB
+						publication</a> [[epub-3]].</p>
 
 				<p>It is generally easy to determine if <a data-cite="epub-3#dfn-xhtml-content-document">XHTML content
-						documents</a> [[epub-3]] have alternative text, as it only requires checking that an [[html]]
+						documents</a> [[epub-3]] have alternative text as it only requires checking that an [[html]]
 					[^img/alt^] attribute is present on each non-decorative [^img^] tag.</p>
 
-				<pre>&lt;img src="images/hawk.jpg" 
+				<aside class="example" title="HTML img tag with alternative text">
+					<pre>&lt;img src="images/hawk.jpg" 
      alt="A majestic hawk perches on a tree branch" /></pre>
+				</aside>
 
 				<p>For <a data-cite="epub-3#dfn-svg-content-document">SVG content documents</a> [[epub-3]], the
 					alternative text is usually contained in the <a data-cite="svg2/struct.html#TitleElement"
@@ -4471,10 +4473,12 @@
 						data-cite="svg2/struct.html#DescElement"><code>desc</code> element</a> [[svg2]], it typically
 					contains the extended description.</p>
 
-				<pre>&lt;svg …>
+				<aside class="example" title="SVG with alternative text in title">
+					<pre>&lt;svg …>
    &lt;title>A majestic hawk perches on a tree branch&lt;/title>
    …
 &lt;/svg></pre>
+				</aside>
 			</section>
 
 			<section id="identify-aria">
@@ -4486,7 +4490,7 @@
 						data-cite="epub-3#dfn-xhtml-content-document">XHTML content documents</a> [[epub-3]] for
 					instances of the [[html]] [^/role^] attribute:</p>
 
-				<aside class="example" title="DPUB-ARIA chapter role">
+				<aside class="example" title="DPUB-ARIA chapter role declared on section tag">
 					<pre>&lt;section id="c01" role="doc-chapter" aria-labelledby="c01-hd">
    &lt;h2 id="c01-hd">A new beginning...&lt;/h2>
    …
@@ -4494,9 +4498,10 @@
 				</aside>
 
 				<p>Next, the type of role has to be verified. The feature only applies when roles have a
-						<code>doc-</code> prefix &#8212; which indicates they are from [[dpub-aria]] &#8212; or are
-					taken from the [[wai-aria]] <a data-cite="wai-aria#document_structure_roles">document structure</a>
-					or <a data-cite="wai-aria#landmark_roles">landmark</a> categories.</p>
+						<code>doc-</code> prefix &#8212; which indicates they are from the DPUB-ARIA module
+					[[dpub-aria]] &#8212; or are taken from the WAI-ARIA <a
+						data-cite="wai-aria#document_structure_roles">document structure</a> or <a
+						data-cite="wai-aria#landmark_roles">landmark</a> categories [[wai-aria]].</p>
 			</section>
 
 			<section id="identify-audio-desc">
@@ -4507,7 +4512,7 @@
 					[[html]] [^track^] elements with their [^track/kind^] attribute set to the value
 						"<code>descriptions</code>".</p>
 
-				<aside class="example" title="Audio description provided via ah HTML track">
+				<aside class="example" title="Audio description provided via an HTML track tag">
 					<pre>&lt;video controls="">
    &lt;source src="chapter4-video.mp4" type="video/mp4"/>
 
@@ -4524,10 +4529,10 @@
 			<section id="identify-closed-captions">
 				<h3>Closed captions</h3>
 
-				<p>To determine if the <a href="#closedCaptions"><code>closedCaptions</code></a> feature applies, search
-					the <a data-cite="epub-3#dfn-xhtml-content-document">XHTML content documents</a> [[epub-3]] in the
-					publication for [[html]] [^track^] elements with their [^track/kind^] attribute set to
-						<code>captions</code>.</p>
+				<p>To determine if the <a href="#closedCaptions"><code>closedCaptions</code></a> feature applies to an
+						<a data-cite="epub-3#dfn-epub-publication">EPUB publication</a> [[epub-3]], search the <a
+						data-cite="epub-3#dfn-xhtml-content-document">XHTML content documents</a> [[epub-3]] for
+					[[html]] [^track^] elements with their [^track/kind^] attribute set to <code>captions</code>.</p>
 
 				<aside class="example" title="Closed captions for English and Spanish">
 					<pre>&lt;video controls width="480" height="360">
@@ -4559,7 +4564,7 @@
 				<p>Checking if the <a href="#describedMath"><code>describedMath</code></a> feature applies is the same
 					process as checking for <a href="#identify-alt">alternative text</a> and <a
 						href="#identify-extended-desc">extended descriptions</a>. The only difference is that the
-					content of the described images has to be checked to verify that it depicts mathematical forumlas
+					content of the described images has to be checked to verify that it depicts mathematical formulas
 					and equations.</p>
 			</section>
 
@@ -4679,17 +4684,14 @@
 				</ul>
 
 				<div class="note">
-					<p>In the last example, "<code>xyz</code>" is a palceholder for a specific latex formatting command,
+					<p>In the last example, "<code>xyz</code>" is a placeholder for a specific latex formatting command,
 						like "<code>math</code>" or "<code>equation</code>".</p>
 				</div>
 
-				<p>For example, the quadratic equation could be represented as:</p>
-
-				<pre>\[x = \frac{-b \pm \sqrt{b^2-4ac}}{2a}\]</pre>
-
-				<p>or as:</p>
-
-				<pre>$x = \frac{-b \pm \sqrt{b^2-4ac}}{2a}$</pre>
+				<aside class="example" title="Possible LaTeX representations of the quadratic equation">
+					<pre>\[x = \frac{-b \pm \sqrt{b^2-4ac}}{2a}\]</pre>
+					<pre>$x = \frac{-b \pm \sqrt{b^2-4ac}}{2a}$</pre>
+				</aside>
 
 				<p>Regardless of how the LaTeX syntax is formatted, whether it is being used for <a href="#math">math
 						equations</a> or <a href="#chemistry">chemical equations</a> needs to be determined so that the
@@ -4706,7 +4708,8 @@
 					size, but this is often non-trivial to do. Opening the individual <a
 						data-cite="epub-3#dfn-xhtml-content-document">XHTML content document</a> [[epub-3]] in a browser
 					and using the browser's markup inspection tools to review the calculated styles is the most reliable
-					way to figure out font sizes. Reading systems do not typically provide this kind of information.</p>
+					way to figure out font sizes. Reading systems do not typically provide this kind of information and
+					may reformat the font size from what the author specified.</p>
 			</section>
 
 			<section id="identify-mathml">
@@ -4717,21 +4720,25 @@
 						data-cite="epub-3#dfn-epub-manifest">manifest</a> [[epub-3]]. Any <a
 						data-cite="epub-3#dfn-epub-content-document">EPUB content document</a> [[epub-3]] that includes
 					MathML [[mathml3]] markup has to have a <a data-cite="epub-3#attrdef-properties"
-							><code>properties</code> attribute</a> [[epub-3]] that declares this is the case:</p>
+							><code>properties</code> attribute</a> [[epub-3]] that declares this is the case.</p>
 
-				<pre>&lt;item id="c01" src="xhtml/chapter01.xhtml" … properties="mathml" /></pre>
+				<aside class="example" title="MathML declaration in a properties attribute">
+					<pre>&lt;item id="c01" src="xhtml/chapter01.xhtml" … properties="mathml" /></pre>
+				</aside>
 
 				<p>If MathML is present but not declared, running EPUBCheck will cause an error to be reported.</p>
 
 				<p>To manually check for MathML, every content document would have to be searched. MathML is typically
-					enclosed in <code>math</code> tags like the following:</p>
+					enclosed in <code>math</code> tags.</p>
 
-				<pre>&lt;math xmlns="http://www.w3.org/2001/mathml">…&lt;/math></pre>
+				<aside class="example" title="MathML start and end tags">
+					<pre>&lt;math xmlns="http://www.w3.org/2001/mathml">…&lt;/math></pre>
+				</aside>
 
 				<p>But because EPUB is XML-based, the <code>math</code> tag could also have a prefix, so could be tagged
 					as <code>m:math</code> or <code>mml:math</code>. This kind of tagging is more common in legacy
-					content when <a data-cite="epub-3#dfn-epub-reading-system">reading systems</a> [[epub-3]] relied on
-					the MathJAX application to render equations. Modern reading systems, like browsers, expect
+					content as <a data-cite="epub-3#dfn-epub-reading-system">reading systems</a> [[epub-3]] used to rely
+					on the MathJAX application to render equations. Modern reading systems, like browsers, expect
 					unprefixed elements as part of their support for HTML.</p>
 
 				<p>Regardless of how the MathML markup is tagged, whether it is being used for <a href="#math">math
@@ -4759,10 +4766,12 @@
 					for the <a data-cite="dpub-aria#doc-pagebreak"><code>doc-pagebreak</code> role</a>
 					[[dpub-aria]].</p>
 
-				<aside class="example" title="Pagebreak marker">
+				<aside class="example" title="Markup for a hidden and visible page break marker">
 					<pre>&lt;span id="page_5"
       role="doc-pagebreak"
-      aria-label="5"/&gt;</pre>
+      aria-label="5"/&gt;
+
+&lt;div id="page_6" role="doc-pagebreak">6&lt;/div></pre>
 				</aside>
 			</section>
 
@@ -4772,9 +4781,10 @@
 				<p>To check if the <a href="#pageNavigation"><code>pageNavigation</code></a> feature applies depends on
 					the version of EPUB.</p>
 
-				<p>For an EPUB 3 publication, check the EPUB navigation document for a [[html]] [^nav^] element with the
-						<a data-cite="epub-3#sec-epub-type-attribute"><code>epub:type</code> attribute</a> [[epub-3]]
-					value "<a data-cite="epub-ssv#page-list"><code>page-list</code></a>" [[epub-ssv]].</p>
+				<p>For an EPUB 3 publication, check the <a data-cite="epub-3#dfn-epub-navigation-document">EPUB
+						navigation document</a> [[epub-3]] for a [[html]] [^nav^] element with the <a
+						data-cite="epub-3#sec-epub-type-attribute"><code>epub:type</code> attribute</a> [[epub-3]] value
+						"<a data-cite="epub-ssv#page-list"><code>page-list</code></a>" [[epub-ssv]].</p>
 
 				<aside class="example" title="EPUB 3 page list">
 					<pre>&lt;nav epub:type="page-list">
@@ -4787,7 +4797,9 @@
 &lt;/nav></pre>
 				</aside>
 
-				<p>For EPUB 2 publications, check the NCX document for a <code>pageList</code> element.</p>
+				<p>For EPUB 2 publications, check the <a
+						href="https://idpf.org/epub/20/spec/OPF_2.0_final_spec.html#Section2.4.1">NCX document</a>
+					[[opf-201]] for a <code>pageList</code> element.</p>
 
 				<aside class="example" title="EPUB 2 page list">
 					<pre>&lt;ncx …>
@@ -4827,9 +4839,9 @@
 			<section id="identify-ruby">
 				<h3>Ruby annotations</h3>
 
-				<p>To check for ruby annotations in an EPUB 3 publication, search the <a
-						data-cite="epub-3#dfn-xhtml-content-document">XHTML content documents</a> [[epub-3]] for
-					instances of the <code>ruby</code> tag.</p>
+				<p>To check for ruby annotations in an <a data-cite="epub-3#dfn-epub-publication">EPUB publication</a>,
+					search the <a data-cite="epub-3#dfn-xhtml-content-document">XHTML content documents</a> [[epub-3]]
+					for instances of the [[html]] [^ruby^] tag.</p>
 
 				<aside class="example" title="Ruby markup">
 					<pre>&lt;ruby>東&lt;rt>とう&lt;/rt>&lt;/ruby>&lt;ruby>京&lt;rt>きょう&lt;/rt>&lt;/ruby>に&lt;ruby>行&lt;rt>い&lt;/rt>&lt;/ruby>きます。</pre>
@@ -4838,10 +4850,6 @@
 				<p>If every kanji character is annotated, then the publication would declare the <a
 						href="#fullRubyAnnotations">fullRubyAnnotations</a> feature. Otherwise, it would declare <a
 						href="#rubyAnnotations">rubyAnnotations</a>.</p>
-
-				<div class="note">
-					<p>EPUB 2 did not support ruby markup so this feature would never be declared.</p>
-				</div>
 			</section>
 
 			<section id="identify-sign-language">
@@ -4885,6 +4893,11 @@
 				<p>It is also possible to search the package document manifest for the resources with the media type
 						<code>application/smil+xml</code>.</p>
 
+				<div class="note">
+					<p>The <code>synchronizedAudioText</code> feature is not set for structured audio even though media
+						overlays are present. Refer to <a href="#accessMode-sync"></a> for more information.</p>
+				</div>
+
 				<aside class="example" title="Linked media overlays">
 					<pre>&lt;?xml version="1.0" encoding="UTF-8"?>
 &lt;package xmlns="http://www.idpf.org/2007/opf" version="3.0" unique-identifier="pub-id">
@@ -4903,7 +4916,8 @@
 				<h3>Table of contents</h3>
 
 				<p>A table of contents is a required part of EPUB 2 and 3 so the <a href="#tableOfContents"
-							><code>tableOfContents</code></a> feature will typically apply.</p>
+							><code>tableOfContents</code></a> feature can usually be declared (so long as it allows all
+					the major sections to be reached).</p>
 
 				<p>To check EPUB 3 publications, locate a <a data-cite="epub-3#dfn-epub-manifest">manifest</a>
 					[[epub-3]] item with its <code>properties</code> attribute set to "<code>nav</code>". Inside this
@@ -4917,6 +4931,7 @@
    &lt;item id="nav" href="nav.html" media-type="application/xhtml+xml" properties="nav"/>
    &#8230;
 &lt;/manifest></pre>
+
 					<p><code>nav</code> element declaring the table of contents in the <code>nav.html</code> file:</p>
 					<pre>&lt;nav epub:type="toc">
    &lt;h2>Table of Contents&lt;/h2>
@@ -4930,7 +4945,7 @@
 				</aside>
 
 				<p>For EPUB 2, check the <a href="https://idpf.org/epub/20/spec/OPF_2.0_final_spec.html#Section2.4.1"
-						>NCX file</a> [[opf-201]] for a <code>navMap</code> element.</p>
+						>NCX document</a> [[opf-201]] for a <code>navMap</code> element.</p>
 
 				<aside class="example" title="EPUB 2 NCX">
 					<pre>&lt;ncx &#8230;>
@@ -4954,10 +4969,10 @@
 
 				<p>None of the <a href="#tactile-content">tactile content features</a> is easy to locate.</p>
 
-				<p>Braille unicode characters can be searched for, but without knowing what text is encoded as braille
+				<p>Braille Unicode characters can be searched for, but without knowing what text is encoded as braille
 					it might take a few character searches to be sure.</p>
 
-				<aside class="example" title="Braille unicode characters">
+				<aside class="example" title="Braille Unicode characters">
 					<pre>&lt;img &#8230; alt="⠠⠉⠕⠇⠇⠁⠛⠑ ⠷ ⠊⠍⠁⠛⠑⠎ ⠷ ⠡⠝"/></pre>
 				</aside>
 
@@ -4971,18 +4986,18 @@
 			<section id="identify-timing-control">
 				<h3>Timing control</h3>
 
-				<p>Checking if the <code>timingControl</code> feature applies is complex. Searching for [[html]] <a
-						data-cite="html/forms.html#categories">form elements</a> can help narrow down whether an EPUB 3
-					publication has interactive content, but whether that content involves timed interactions, and
-					whether additional time can be added, will likely only be determinable by live testing the
-					content.</p>
+				<p>Checking if the <a href="#timingControl"><code>timingControl</code></a> feature applies is complex.
+					Searching for [[html]] <a data-cite="html/forms.html#categories">form elements</a> can help narrow
+					down whether an EPUB 3 publication has interactive content, but whether that content involves timed
+					interactions, and whether additional time can be added, will likely only be determinable by live
+					testing the content.</p>
 			</section>
 
 			<section id="identify-tts-markup">
 				<h3>Text-to-speech enhancements</h3>
 
 				<p>To determine if the <a href="ttsMarkup"><code>ttsMarkup</code></a> feature applies, the three
-					different technologies need to be search for.</p>
+					different text-to-speech enhancement technologies need to be search for.</p>
 
 				<p>For SSML, an EPUB 3 publication can be searched for the <a data-cite="epub-tts#ssml-ph-attribute"
 							><code>ssml:ph</code></a> or <a data-cite="epub-tts#ssml-alphabet-attribute"
@@ -5073,8 +5088,9 @@ section {
 					management applied to it, the <code>rights.xml</code> and/or <code>encryption.xml</code> files will
 					be included under the <code>META-INF</code> directory.</p>
 
-				<p>These files are typically added by the distributor/vendor, so stating that a publication is unlocked
-					more typically requires knowing how it will be distributed.</p>
+				<p>These files are typically added by the distributor/vendor, so declaring that a publication is <a
+						href="#unlocked"><code>unlocked</code></a> more typically requires knowing how it will be
+					distributed.</p>
 			</section>
 
 			<section id="identify-writing-mode">
@@ -5093,16 +5109,16 @@ section {
 					used during the cascade process.</p>
 
 				<p>Knowing the default direction is not enough on its own. Whether to set the <a href="#verticalWriting"
-						>verticalWriting</a> or <a href="#horizontalWriting">horizontalWriting</a> features also depends
-					on whether the language supports both types of writing (e.g., the Chinese, Japanese, and Korean
-					languages support both).</p>
+							><code>verticalWriting</code></a> or <a href="#horizontalWriting"
+							><code>horizontalWriting</code></a> features also depends on whether the language supports
+					both types of writing (e.g., the Chinese, Japanese, and Korean languages support both).</p>
 			</section>
 
 			<section id="identify-word-segmentation">
 				<h3>Word segmentation</h3>
 
 				<p>For languages that do not have word segmentation by default, the fastest way to determine if an <a
-						data-cite="epub-3#dfn-epub-publication">EPUB publication</a> [[epub-3]] does or does not include
+						data-cite="epub-3#dfn-epub-publication">EPUB publication</a> does or does not include
 					segmentation is to open it in a <a data-cite="epub-3#dfn-epub-reading-system">reading system</a>
 					[[epub-3]] and visually inspect the content.</p>
 
@@ -5129,38 +5145,28 @@ section {
 			<section id="obs-properties">
 				<h3>Obsolete properties</h3>
 
-				<div class="feature-list">
-					<p class="feature-hd">In this section:</p>
-					<ul>
-						<li>
-							<a href="#schema:accessibilityAPI">schema:accessibilityAPI</a>
-						</li>
-						<li>
-							<a href="#schema:accessibilityControl">schema:accessibilityControl</a>
-						</li>
-					</ul>
-				</div>
+				<p>The following schema.org properties [[schema-org]] are no longer recommended for use.</p>
 
 				<dl>
 					<dt>
-						<dfn id="schema:accessibilityAPI">schema:accessibilityAPI</dfn>
+						<a href="https://schema.org/accessibilityAPI">
+							<dfn id="schema:accessibilityAPI">schema:accessibilityAPI</dfn>
+						</a>
 					</dt>
 					<dd>
-						<p>It is not necessary to set the <code>schema:accessibilityAPI</code> property for <a
-								data-cite="epub-3#dfn-epub-publication">EPUB publications</a> [[epub-3]]. The creator of
-							the content is not responsible for the interaction between <a
-								data-cite="epub-3#dfn-epub-reading-system">reading systems</a> and the underlying
-							platform APIs.</p>
+						<p>The creator of the content is not responsible for the interaction between <a
+								data-cite="epub-3#dfn-epub-reading-system">reading systems</a> [[epub-3]] and the
+							underlying platform APIs.</p>
 					</dd>
 
 					<dt>
-						<dfn id="schema:accessibilityControl">schema:accessibilityControl</dfn>
+						<a href="https://schema.org/accessibilityControl">
+							<dfn id="schema:accessibilityControl">schema:accessibilityControl</dfn>
+						</a>
 					</dt>
 					<dd>
-						<p>It is not necessary to set the <code>schema:accessibilityControl</code> property for EPUB
-							publications. This property does not differentiate issues arising from the reading system
-							interface from those in the underlying content, which has led to confusion about its
-							use.</p>
+						<p>This property does not differentiate issues arising from the reading system interface from
+							those in the underlying content, which has led to confusion about its use.</p>
 						<p>Meeting the requirements of [[wcag2]] will mitigate most known issues with the content and is
 							sufficient for authoring purposes.</p>
 					</dd>
@@ -5170,9 +5176,14 @@ section {
 			<section id="obs-features">
 				<h3>Obsolete accessibility features</h3>
 
+				<p>The following <a href="#accessibilityFeature">accessibility features</a> from the
+					[[[a11y-discov-vocab]]] [[a11y-discov-vocab]] are no longer recommended for use.</p>
+
 				<dl>
 					<dt>
-						<dfn id="annotations">annotations</dfn>
+						<a data-cite="a11y-discov-vocab#annotations">
+							<dfn id="annotations">annotations</dfn>
+						</a>
 					</dt>
 					<dd>
 						<p>The use of the <code>annotations</code> value is now deprecated due to the general nature of
@@ -5182,7 +5193,9 @@ section {
 					</dd>
 
 					<dt>
-						<dfn id="bookmarks">bookmarks</dfn>
+						<a data-cite="a11y-discov-vocab#bookmarks">
+							<dfn id="bookmarks">bookmarks</dfn>
+						</a>
 					</dt>
 					<dd>
 						<p>The use of the <code>bookmarks</code> value is now deprecated due to its ambiguity. <a
@@ -5191,7 +5204,9 @@ section {
 					</dd>
 
 					<dt>
-						<dfn id="captions">captions</dfn>
+						<a data-cite="a11y-discov-vocab#captions">
+							<dfn id="captions">captions</dfn>
+						</a>
 					</dt>
 					<dd>
 						<p>The use of the <code>captions</code> value is now deprecated. Authors should use the more
@@ -5200,7 +5215,9 @@ section {
 					</dd>
 
 					<dt>
-						<dfn id="printPageNumbers">printPageNumbers</dfn>
+						<a data-cite="a11y-discov-vocab#printPageNumbers">
+							<dfn id="printPageNumbers">printPageNumbers</dfn>
+						</a>
 					</dt>
 					<dd>
 						<p>The metadata term <code>printPageNumbers</code> value has been replaced by <code><a
@@ -5211,9 +5228,14 @@ section {
 			<section id="inapplicable-features">
 				<h3>Inapplicable features</h3>
 
+				<p>The following <a href="#accessibilityFeature">accessibility features</a> from the
+					[[[a11y-discov-vocab]]] [[a11y-discov-vocab]] do not apply to EPUB publications.</p>
+
 				<dl>
 					<dt>
-						<dfn id="ChemML">ChemML</dfn>
+						<a data-cite="a11y-discov-vocab#ChemML">
+							<dfn id="ChemML">ChemML</dfn>
+						</a>
 					</dt>
 					<dd>
 						<p>There is no native support for rendering <a href="https://www.xml-cml.org/">Chemical Markup
@@ -5225,7 +5247,9 @@ section {
 					</dd>
 
 					<dt>
-						<dfn id="taggedPDF">taggedPDF</dfn>
+						<a data-cite="a11y-discov-vocab#taggedPDF">
+							<dfn id="taggedPDF">taggedPDF</dfn>
+						</a>
 					</dt>
 					<dd>
 						<p>EPUB and PDF are fundamentally different technologies.</p>
