@@ -384,21 +384,35 @@
 				<p>Unfortunately, this clarity through naming does not extend as easily to the <a href="#accessMode"
 							><code>accessMode</code></a> and <a href="#accessModeSufficient"
 							><code>accessModeSufficient</code></a> properties, which often leads to initial confusion
-					about what their different roles are. Their definitions are also nuanced:</p>
+					about their different roles. Their definitions also build on each other, so they can mistakenly be
+					seen as identifying the same qualities of a publication:</p>
 
 				<ul>
 					<li><a href="https://schema.org/accessMode"><code>accessMode</code></a> [[schema-org]] identifies a
-						"human sensory perceptual system or cognitive faculty through which a person may process or
-						perceive information";</li>
+							<q>human sensory perceptual system or cognitive faculty through which a person may process
+							or perceive the intellectual content of a resource, not including any adaptations of the
+							content (e.g., text alternatives for images)</q>;</li>
 
 					<li><a href="https://schema.org/accessModeSufficient"><code>accessModeSufficient</code></a>
-						[[schema-org]], on the other hand, identifies "a list of single or combined [access modes] that
-						are sufficient to understand all the intellectual content of a resource". [[schema-org]].</li>
+						[[schema-org]], on the other hand, identifies a <q>list of single or combined access modes that
+							are sufficient to understand all the intellectual content of a resource, including any
+							adaptations.</q></li>
 				</ul>
 
-				<p>Somewhat lost in the definition of access mode is that it describes the intellectual content of the
-					EPUB publication it is declared for. That is the information that is being processed or
-					perceived.</p>
+				<p>The key difference to note is that access modes do not take into account adaptations while sufficient
+					access modes do. Why this distinction matters will be made clear as their meanings are unpacked.</p>
+
+				<p>So what does it mean for a work to have an access mode?</p>
+
+				<p>A helpful way of thinking about an EPUB publication is to consider that it actually has two types of
+					access mode: the access modes of the content for its primary audience and the access modes for
+					adaptations provided to make that content more universally accessible.</p>
+
+				<p>To illustrate, consider a comic in which every page is a JPEG image. The publication has a visual
+					access mode because the primary expectation is that users will have to see the pages to read the
+					comic.</p>
+
+				<pre>&lt;meta property="schema:accessMode">visual&lt;/meta></pre>
 
 				<div class="note">
 					<p>There are four primary types of access mode: <a href="#accessmode-textual"
@@ -406,21 +420,6 @@
 							<a href="#accessmode-auditory"><strong>auditory</strong></a>, and <a
 							href="#accessmode-tactile"><strong>tactile</strong></a>.</p>
 				</div>
-
-				<p>But what does it mean for a work to have an access mode? That is what causes the most confusion with
-					this metadata.</p>
-
-				<p>A helpful way of thinking about an EPUB publication is to consider that it actually has two types of
-					access mode: the access modes of the content for its primary audience and the access modes for
-					adaptations provided to make that content more universally accessible. The initial expectation for
-					most metadata practitioners is that the access modes cover both, but in fact only the former are
-					considered when setting the <code>accessMode</code> property.</p>
-
-				<p>To illustrate, consider a comic in which every page is a JPEG image. The publication has a visual
-					access mode because the primary expectation is that users will have to see the pages to read the
-					comic.</p>
-
-				<pre>&lt;meta property="schema:accessMode">visual&lt;/meta></pre>
 
 				<p>But assume the publisher has also provided alternative text for each image and extended descriptions
 					to make each page more accessible. It might seem like it should now get a textual access mode added
@@ -4404,7 +4403,7 @@
 					</li>
 				</ol>
 			</section>
-			
+
 			<section id="readability-eval-examples">
 				<h3>Example results</h3>
 
