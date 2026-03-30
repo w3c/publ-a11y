@@ -1,15 +1,15 @@
 
 ![W3C Logo](https://www.w3.org/Icons/w3c_home)
 
-# Publishing Accessibility Task Force
+# Publishing Accessibility Task Forces
 
-This is the repository for the Accessibility Task Force of the Publishing Community Group.
+This is the repository for the Accessibility focused work of publishing (used by publishing working groups and community groups).
 
-## Participation
+## Participation in accessibility task force of Publishing CG
 
 To join the task force, please first become a member of the [Publishing Community Group](https://www.w3.org/community/publishingcg/).
 
-## Meetings
+## Meetings of accessibility task force (Publishing CG)
 
 Task force meetings are announced on the Publishing Community Group's [public mailing list](https://lists.w3.org/Archives/Public/public-publishingcg/). All members of the group are welcome to join.
 
