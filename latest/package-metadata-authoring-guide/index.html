@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en-US">
+	<head>
+		<meta charset="utf-8">
+		<title>Expressing Accessibility Metadata in the EPUB Package Document</title>
+		
+		<script>
+			
+			// update the following URL after publishing a new version of the guide - no other changes to this file are necessary
+			var latest_url = 'https://w3c.github.io/publ-a11y/package-metadata-authoring-guide/';
+			
+			var full_url = latest_url + window.location.hash;
+			
+			var meta = document.createElement('meta');
+				meta.setAttribute('http-equiv', 'refresh');
+				meta.setAttribute('content', '0;url='+full_url);
+			
+			document.head.appendChild(meta);
+		</script>
+	</head>
+	<body>
+		<p>The latest version of the guide is available at
+			<a id="latest-manual-link"></a>
+		</p>
+		<script>
+			var manual_link = document.getElementById('latest-manual-link');
+				manual_link.href = latest_url;
+				manual_link.innerHTML = latest_url;
+		</script>
+	</body>
+</html>
