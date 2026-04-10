@@ -4,6 +4,7 @@
 		<meta charset="utf-8">
 		<title>Expressing Accessibility Metadata in the EPUB Package Document</title>
 		<script src="https://www.w3.org/Tools/respec/respec-w3c" class="remove"></script>
+		<script src="https://w3c.github.io/epub-specs/common/js/add-caution-hd.js" class="remove"></script>
 		<script class="remove">
             var respecConfig = {
 				shortName: "epub-a11y-meta-guide",
@@ -32,6 +33,7 @@
                     branch: "main"
                 },
                 pluralize: true,
+                postProcess:[addCautionHeaders],
                 localBiblio: {
 					"a11y-discov-vocab": {
 						"title": "Schema.org Accessibility Properties for Discoverability Vocabulary",
@@ -100,7 +102,7 @@
                 },
 				lint: { "no-unused-dfns": false }
 			};
-      </script>
+		</script>
 		<style>
 			/*prevent examples from horizontal scrolling*/
 			pre {
@@ -218,6 +220,22 @@
 			span[data-check]::after {
 				color: rgb(180, 0, 0);
 				content: " - Check " attr(data-check);
+			}
+			
+			/* caution boxes */
+			
+			p.caution,
+			div.caution {
+				border: 1px solid rgb(255, 140, 0);
+				border-left-width: 0.4rem;
+				color: var(--note-text);
+				background-color: rgb(254, 236, 207);
+				padding: 0.7rem;
+			}
+			
+			div.caution-title > span {
+				color: rgb(140, 40, 0);
+				text-transform: uppercase;
 			}</style>
 	</head>
 	<body>
@@ -4653,16 +4671,20 @@
 					publication</a> [[epub-3]] contains accessibility features for anyone unfamiliar with their markup
 				or styling.</p>
 
+			<div class="caution">
+				<p>Finding features in the markup does not always mean the corresponding metadata applies to a
+					publication. An [[html]] [^img^] tag, for example, might have an [^img/alt^] attribute but the
+					actual alternative text could not be sufficient to identify the image. Always check the <a
+						href="#accessibilityFeature">usage requirements</a> for a property before declaring it.</p>
+			</div>
+
 			<section id="identify-alt">
 				<h3>Alternative text</h3>
 
-				<p>To check if the <a href="#alternativeText"><code>alternativeText</code></a> accessibility feature can
-					be declared requires checking all the images in an <a data-cite="epub-3#dfn-epub-publication">EPUB
-						publication</a> [[epub-3]].</p>
+				<p>Alternative text provides a brief description of an image.</p>
 
-				<p>It is generally easy to determine if <a data-cite="epub-3#dfn-xhtml-content-document">XHTML content
-						documents</a> [[epub-3]] have alternative text as it only requires checking that an [[html]]
-					[^img/alt^] attribute is present on each non-decorative [^img^] tag.</p>
+				<p>For <a data-cite="epub-3#dfn-xhtml-content-document">XHTML content documents</a> [[epub-3]]
+					this text is found in [[html]] [^img/alt^] attributes on non-decorative [^img^] tag.</p>
 
 				<aside class="example" title="HTML img tag with alternative text">
 					<pre>&lt;img src="images/hawk.jpg" 
@@ -4681,16 +4703,18 @@
    …
 &lt;/svg></pre>
 				</aside>
+
+				<div class="note">
+					<p>Refer to the <a href="#alternativeText"><code>alternativeText</code> feature</a> for the
+						specifics of when it applies.</p>
+				</div>
 			</section>
 
 			<section id="identify-aria">
 				<h3>ARIA structural roles</h3>
 
-				<p>To check if the <a href="#ARIA"><code>ARIA</code></a> accessibility feature applies to an <a
-						data-cite="epub-3#dfn-epub-publication">EPUB publication</a> [[epub-3]], it is necessary to
-					determine if structural roles have been used. This first requires searching the <a
-						data-cite="epub-3#dfn-xhtml-content-document">XHTML content documents</a> [[epub-3]] for
-					instances of the [[html]] [^/role^] attribute:</p>
+				<p>ARIA roles are expressed in <a data-cite="epub-3#dfn-xhtml-content-document">XHTML content
+						documents</a> [[epub-3]] using the [[html]] [^/role^] attribute:</p>
 
 				<aside class="example" title="DPUB-ARIA chapter role declared on section tag">
 					<pre>&lt;section id="c01" role="doc-chapter" aria-labelledby="c01-hd">
@@ -4699,20 +4723,16 @@
 &lt;/section></pre>
 				</aside>
 
-				<p>Next, the type of role has to be verified. The feature only applies when roles have a
-						<code>doc-</code> prefix &#8212; which indicates they are from the DPUB-ARIA module
-					[[dpub-aria]] &#8212; or are taken from the WAI-ARIA <a
-						data-cite="wai-aria#document_structure_roles">document structure</a> or <a
-						data-cite="wai-aria#landmark_roles">landmark</a> categories [[wai-aria]].</p>
+				<div class="note">
+					<p>Refer to the <a href="#ARIA"><code>ARIA</code> feature</a> for the specifics of when it applies.</p>
+				</div>
 			</section>
 
 			<section id="identify-audio-desc">
 				<h3>Audio descriptions</h3>
 
-				<p>To determine if the <a href="#audioDescription"><code>audioDescription</code></a> feature applies to
-					an <a data-cite="epub-3#dfn-epub-publication">EPUB publication</a> [[epub-3]], search the for
-					[[html]] [^track^] elements with their [^track/kind^] attribute set to the value
-						"<code>descriptions</code>".</p>
+				<p>Audio descriptions are found in [[html]] [^track^] elements with their [^track/kind^] attribute set
+					to the value "<code>descriptions</code>".</p>
 
 				<aside class="example" title="Audio description provided via an HTML track tag">
 					<pre>&lt;video controls="">
@@ -4726,15 +4746,18 @@
   &lt;p>Your browser does not support the video tag.&lt;/p>
 &lt;/video></pre>
 				</aside>
+
+				<div class="note">
+					<p>Refer to the <a href="#audioDescription"><code>audioDescription</code> feature</a> for the
+						specifics of when it applies.</p>
+				</div>
 			</section>
 
 			<section id="identify-closed-captions">
 				<h3>Closed captions</h3>
 
-				<p>To determine if the <a href="#closedCaptions"><code>closedCaptions</code></a> feature applies to an
-						<a data-cite="epub-3#dfn-epub-publication">EPUB publication</a> [[epub-3]], search the <a
-						data-cite="epub-3#dfn-xhtml-content-document">XHTML content documents</a> [[epub-3]] for
-					[[html]] [^track^] elements with their [^track/kind^] attribute set to <code>captions</code>.</p>
+				<p>Closed captions are found in [[html]] [^track^] elements with their [^track/kind^] attribute set to
+						<code>captions</code>.</p>
 
 				<aside class="example" title="Closed captions for English and Spanish">
 					<pre>&lt;video controls width="480" height="360">
@@ -4755,38 +4778,44 @@
 &lt;/video></pre>
 				</aside>
 
-				<p>Make sure that the <code>track</code> elements are not associated with an [[html]] [^audio^] element.
-					HTML does not support the display of closed captions with the <code>audio</code> element. Closed
-					captions only work with the [[html]] [^video^] element.</p>
+				<div class="note">
+					<p>Refer to the <a href="#closedCaptions"><code>closedCaptions</code> feature</a> for the specifics
+						of when it applies.</p>
+				</div>
 			</section>
 
 			<section id="identify-described-math">
 				<h3>Described math</h3>
 
-				<p>Checking if the <a href="#describedMath"><code>describedMath</code></a> feature applies is the same
-					process as checking for <a href="#identify-alt">alternative text</a> and <a
+				<p>Described math is expressed using <a href="#identify-alt">alternative text</a> and <a
 						href="#identify-extended-desc">extended descriptions</a>. The only difference is that the
-					content of the described images has to be checked to verify that it depicts mathematical formulas
-					and equations.</p>
+					content of the described images has to depict mathematical formulas and equations.</p>
+
+				<div class="note">
+					<p>Refer to the <a href="#describedMath"><code>describedMath</code> feature</a> for the specifics of
+						when it applies.</p>
+				</div>
 			</section>
 
 			<section id="identify-display-transformability">
 				<h3>Display transformability</h3>
 
-				<p>There is no simple check to determine if an <a data-cite="epub-3#dfn-epub-publication">EPUB
-						publication</a> [[epub-3]] can declare the <a href="#displayTransformability"
-							><code>displayTransformability</code></a> feature. It requires inspecting both the markup
-					and styling of the content, as described in <a href="#display-control"></a>.</p>
+				<p>There is no simple check for display transformability. It requires inspecting both the markup and
+					styling of the content, as described in <a href="#display-control"></a>.</p>
+
+				<div class="note">
+					<p>Refer to the <a href="#displayTransformability"><code>displayTransformability</code> feature</a>
+						for the specifics of when it applies.</p>
+				</div>
 			</section>
 
 			<section id="identify-extended-desc">
 				<h3>Extended descriptions</h3>
 
 				<p>There are many ways to associate extended descriptions with visual content, so it typically requires
-					checking images manually to determine if the <a href="#longDescription"
-						><code>longDescription</code></a> feature applies.</p>
+					checking images manually.</p>
 
-				<p>Some common patterns to search for include the presence of an <code>aria-describedby</code> of
+				<p>Some common patterns include the presence of an <code>aria-describedby</code> or
 						<code>aria-details</code> attribute on an <code>img</code> tag, but these attributes may not
 					always be set even when a description is available. As descriptions are often stored in a separate
 					file, it is also common to find a hyperlink after an image to its description. The description could
@@ -4806,40 +4835,46 @@
 &lt;/figure></pre>
 				</aside>
 
-				<p>When checking for the presence of extended descriptions, also check that they have not been omitted
-					from visual content that requires them. If a publisher does not provide complete coverage, the
-					applicability of the feature has to be assessed.</p>
+				<div class="note">
+					<p>Refer to the <a href="#longDescription"><code>longDescription</code> feature</a> for the
+						specifics of when it applies.</p>
+				</div>
 			</section>
 
 			<section id="identify-high-contrast-audio">
 				<h3>High contrast audio</h3>
 
-				<p>The applicability of the <a href="#highContrastAudio"><code>highContrastAudio</code></a> feature
-					cannot be determined from markup alone. The presence of audio and video can be checked by searching
-					for the [[html]] [^audio^] and [^video^] elements, but testing for audio contrast typically requires
-					an audio analysis tool (unless there is no background noise).</p>
+				<p>The use of high contrast audio is not a markup feature. The presence of audio and video can be
+					checked by searching for the [[html]] [^audio^] and [^video^] elements, but their audio tracks will
+					require testing.</p>
+
+				<div class="note">
+					<p>Refer to the <a href="#highContrastAudio"><code>highContrastAudio</code> feature</a> for the
+						specifics of when it applies.</p>
+				</div>
 			</section>
 
 			<section id="identify-high-contrast-display">
 				<h3>High contrast display</h3>
 
-				<p>The applicability of the <a href="#highContrastDisplay"><code>highContrastDisplay</code></a> feature
-					cannot be determined from markup alone. Testing foreground and background contrast requires a
-					validator with color analysis, such as <a href="https://daisy.org/activities/software/ace/">Ace by
-						DAISY</a>.</p>
+				<p>The use of high contrast display cannot be determined from markup alone. Testing foreground and
+					background contrast requires a validator with color analysis, such as <a
+						href="https://daisy.org/activities/software/ace/">Ace by DAISY</a>.</p>
+
+				<div class="note">
+					<p>Refer to the <a href="#highContrastDisplay"><code>highContrastDisplay</code> feature</a> for the
+						specifics of when it applies.</p>
+				</div>
 			</section>
 
 			<section id="identify-index">
 				<h3>Indexes</h3>
 
-				<p>For the <a href="#feature-index"><code>index</code></a> feature, the fastest way to check for indexes
-					is to look in the table of contents.</p>
+				<p>The fastest way to check for an index is to look in the table of contents.</p>
 
-				<p>Alternatively, they could be discovered by searching for [[html]] [^nav^] or [^section^] tags with a
-					[^/role^] attribute value of <a data-cite="dpub-aria#doc-index"><code>doc-index</code></a>
+				<p>Alternatively, an index could be discovered by searching for [[html]] [^nav^] or [^section^] tags
+					with a [^/role^] attribute value of <a data-cite="dpub-aria#doc-index"><code>doc-index</code></a>
 					[[dpub-aria]].</p>
-
-				<p>Beyond just being present, they also need to be inspected to see if they are hyperlinked.</p>
 
 				<aside class="example" title="Index">
 					<pre>&lt;nav role="doc-index" aria-labelledby="index">
@@ -4857,18 +4892,18 @@
    &lt;/div>
 &lt;/nav></pre>
 				</aside>
+
+				<div class="note">
+					<p>Refer to the <a href="#index"><code>index</code> feature</a> for the specifics of when it
+						applies.</p>
+				</div>
 			</section>
 
 			<section id="identify-latex">
 				<h3>LaTeX formatting</h3>
 
-				<p>As LaTeX is a text-based formatting language, the only way to identify if the <a href="#latex"
-							><code>latex</code></a> feature applies is to search each <a
-						data-cite="epub-3#dfn-epub-content-document">EPUB content document</a> [[epub-3]].</p>
-
-				<p>Unfortunately, latex formatting does not always begin with a consistent sequence of characters.
-					Equations can be wrapped in any of the following depending on whether they are to be rendered inline
-					or as block equations:</p>
+				<p>LaTeX is a text-based formatting language. Equations can be wrapped in any of the following depending
+					on whether they are to be rendered inline or as block equations:</p>
 
 				<ul>
 					<li>
@@ -4895,9 +4930,10 @@
 					<pre>$x = \frac{-b \pm \sqrt{b^2-4ac}}{2a}$</pre>
 				</aside>
 
-				<p>Regardless of how the LaTeX syntax is formatted, whether it is being used for <a href="#math">math
-						equations</a> or <a href="#chemistry">chemical equations</a> needs to be determined so that the
-					appropriate accessibility feature is flagged.</p>
+				<div class="note">
+					<p>Refer to the <a href="#latex"><code>latex</code></a> and <a href="#latex-chemistry"
+								><code>latex-chemistry</code></a> features for the specifics of when they apply.</p>
+				</div>
 			</section>
 
 			<section id="identify-large-print">
@@ -4912,6 +4948,11 @@
 					and using the browser's markup inspection tools to review the calculated styles is the most reliable
 					way to figure out font sizes. Reading systems do not typically provide this kind of information and
 					may reformat the font size from what the author specified.</p>
+
+				<div class="note">
+					<p>Refer to the <a href="#largePrint"><code>largePrint</code> feature</a> for the specifics of when
+						it applies.</p>
+				</div>
 			</section>
 
 			<section id="identify-mathml">
@@ -4946,27 +4987,38 @@
 				<p>Regardless of how the MathML markup is tagged, whether it is being used for <a href="#math">math
 						equations</a> or <a href="#chemistry">chemical equations</a> needs to be determined so that the
 					appropriate accessibility feature is flagged.</p>
+
+				<div class="note">
+					<p>Refer to the <a href="#MathML"><code>MathML</code></a> and <a href="#MathML-chemistry"
+								><code>MathML-chemistry</code></a> features for the specifics of when they apply.</p>
+				</div>
 			</section>
 
 			<section id="identify-open-captions">
 				<h3>Open captions</h3>
 
-				<p>The only way to determine if the <a href="#openCaptions"><code>openCaptions</code></a> feature
-					applies, is to watch each video and see if captions appear on screen. There will be no option in the
-					video for the user to toggle the captions on or off.</p>
+				<p>Open captions are part of the video stream. Unlike <a href="#identify-closed-captions">closed
+						captions</a>, the user cannot change their appearance or even turn them off.</p>
+
+				<p>The only way to determine if there are open captions is to watch each video and see if captions
+					appear on screen. There will be no option in the video for the user to toggle the captions on or
+					off.</p>
 
 				<p>To verify that open captions are being used, the [[html]] [^video^] element for the clip can be
-					checked to ensure it does not have a child [^track^] element that references a caption file. (Refer
-					to the section on <a href="#identify-closed-captions">identifying closed captions</a> for more
-					information.)</p>
+					checked to ensure it does not have a child [^track^] element that references a caption file.</p>
+
+				<div class="note">
+					<p>Refer to the <a href="#openCaptions"><code>openCaptions</code> feature</a> for the specifics of
+						when it applies.</p>
+				</div>
 			</section>
 
 			<section id="identify-page-breaks">
 				<h3>Page break markers</h3>
 
-				<p>To check if the <a href="#pageBreakMarkers"><code>pageBreakMarkers</code></a> feature applies, search
-					for the <a data-cite="dpub-aria#doc-pagebreak"><code>doc-pagebreak</code> role</a>
-					[[dpub-aria]].</p>
+				<p>Page break markers are elements in the text that identify the location of a static page break. They
+					are identifiable by having a <a data-cite="dpub-aria#doc-pagebreak"><code>doc-pagebreak</code>
+						role</a> [[dpub-aria]].</p>
 
 				<aside class="example" title="Markup for a hidden and visible page break marker">
 					<pre>&lt;span id="page_5"
@@ -4975,18 +5027,25 @@
 
 &lt;div id="page_6" role="doc-pagebreak">6&lt;/div></pre>
 				</aside>
+
+				<div class="note">
+					<p>Refer to the <a href="#pageBreakMarkers"><code>pageBreakMarkers</code> feature</a> for the
+						specifics of when it applies.</p>
+				</div>
 			</section>
 
 			<section id="identify-page-nav">
 				<h3>Page list</h3>
 
-				<p>To check if the <a href="#pageNavigation"><code>pageNavigation</code></a> feature applies depends on
-					the version of EPUB.</p>
+				<p>The page list is a list of links to static page break locations.</p>
 
-				<p>For an EPUB 3 publication, check the <a data-cite="epub-3#dfn-epub-navigation-document">EPUB
-						navigation document</a> [[epub-3]] for a [[html]] [^nav^] element with the <a
-						data-cite="epub-3#sec-epub-type-attribute"><code>epub:type</code> attribute</a> [[epub-3]] value
-						"<a data-cite="epub-ssv#page-list"><code>page-list</code></a>" [[epub-ssv]].</p>
+				<p>The version of EPUB determines how the page list is expressed.</p>
+
+				<p>In an EPUB 3 publication, the page list is found in the <a
+						data-cite="epub-3#dfn-epub-navigation-document">EPUB navigation document</a> [[epub-3]]. It will
+					be contained an [[html]] [^nav^] element with its <a data-cite="epub-3#sec-epub-type-attribute"
+							><code>epub:type</code> attribute</a> [[epub-3]] value "<a data-cite="epub-ssv#page-list"
+							><code>page-list</code></a>" [[epub-ssv]].</p>
 
 				<aside class="example" title="EPUB 3 page list">
 					<pre>&lt;nav epub:type="page-list">
@@ -4999,9 +5058,9 @@
 &lt;/nav></pre>
 				</aside>
 
-				<p>For EPUB 2 publications, check the <a
+				<p>In an EPUB 2 publication, the page list is expressed in the <a
 						href="https://idpf.org/epub/20/spec/OPF_2.0_final_spec.html#Section2.4.1">NCX document</a>
-					[[opf-201]] for a <code>pageList</code> element.</p>
+					[[opf-201]]. It will be contained in a <code>pageList</code> element.</p>
 
 				<aside class="example" title="EPUB 2 page list">
 					<pre>&lt;ncx …>
@@ -5026,40 +5085,59 @@
     &lt;/pageList>
 &lt;/ncx></pre>
 				</aside>
+
+				<div class="note">
+					<p>Refer to the <a href="#pageList"><code>pageList</code> feature</a> for the specifics of when it
+						applies.</p>
+				</div>
 			</section>
 
 			<section id="identify-reading-order">
 				<h3>Reading order</h3>
 
-				<p>The applicability of the <a href="#readingOrder"><code>readingOrder</code></a> feature can only be
-					determined by checking how the content is ordered between the [[html]] [^body^] tags of each <a
+				<p>The reading order establishes the narrative flow of the content. It is determined by checking how the
+					content is ordered between the [[html]] [^body^] tags of each <a
 						data-cite="epub-3#dfn-xhtml-content-document">XHTML content document</a> [[epub-3]], as well as
-					across documents. This also involves ensuring that CSS is not being used to reposition the elements
-					in a different order.</p>
+					across documents.</p>
+
+				<div class="note">
+					<p>Refer to the <a href="#readingOrder"><code>readingOrder</code> feature</a> for the specifics of
+						when it applies.</p>
+				</div>
 			</section>
 
 			<section id="identify-ruby">
 				<h3>Ruby annotations</h3>
 
-				<p>To check for ruby annotations in an <a data-cite="epub-3#dfn-epub-publication">EPUB publication</a>,
-					search the <a data-cite="epub-3#dfn-xhtml-content-document">XHTML content documents</a> [[epub-3]]
-					for instances of the [[html]] [^ruby^] tag.</p>
+				<p>Ruby annotations are pronunciation guides for Chinese, Japanese, and Korean characters. They are
+					expressed in the [[html]] [^ruby^] tag.</p>
 
 				<aside class="example" title="Ruby markup">
 					<pre>&lt;ruby>東&lt;rt>とう&lt;/rt>&lt;/ruby>&lt;ruby>京&lt;rt>きょう&lt;/rt>&lt;/ruby>に&lt;ruby>行&lt;rt>い&lt;/rt>&lt;/ruby>きます。</pre>
 				</aside>
 
-				<p>If every kanji character is annotated, then the publication would declare the <a
-						href="#fullRubyAnnotations">fullRubyAnnotations</a> feature. Otherwise, it would declare <a
-						href="#rubyAnnotations">rubyAnnotations</a>.</p>
+				<div class="note">
+					<p>Refer to the <a href="#rubyAnnotations"><code>rubyAnnotations</code></a> and <a
+							href="#fullRubyAnnotations"><code>fullRubyAnnotations</code></a> features for the specifics
+						of when they applies.</p>
+				</div>
 			</section>
 
 			<section id="identify-sign-language">
 				<h3>Sign language</h3>
 
-				<p>The only way to determine if sign language interpretation is provided is to play each video in the <a
-						data-cite="epub-3#dfn-epub-publication">EPUB publication</a> [[epub-3]] to see if an interpreter
-					is present (usually overlaying the video in a corner).</p>
+				<p>Sign language interpretation makes spoken language accessible to individuals who are deaf or hard of
+					hearing.</p>
+
+				<p>Sign language interpretation is mostly commonly part of a video when it is provided (e.g., the
+					interpreter is overlaid in a corner). Less common is that sign language interpretation is provided
+					as a separate synchronized video. Consequently, it can only be located by watching the video
+					content.</p>
+
+				<div class="note">
+					<p>Refer to the <a href="#signLanguage"><code>signLanguage</code> feature</a> for the specifics when
+						it applies.</p>
+				</div>
 			</section>
 
 			<section id="identify-structural-navigation">
