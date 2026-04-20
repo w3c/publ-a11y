@@ -13,7 +13,7 @@
 				noRecTrack: true,
                 edDraftURI: "https://w3c.github.io/publ-a11y/package-metadata-authoring-guide/",
 				latestVersion: "https://www.w3.org/2026/publ-a11y/latest/package-metadata-authoring-guide/",
-				// thisVersion: "https://www.w3.org/community/reports/a11y-discov-vocab/CG-FINAL-vocabulary-20260326/",
+				// thisVersion: "https://www.w3.org/community/reports/publ-a11y/CG-FINAL-package-metadata-authoring-guide-20260101/",
                 copyrightStart: "2025",
                 editors:[ {
 					name: "Matt Garrish",
@@ -4666,12 +4666,12 @@
 				</dl>
 			</section>
 		</section>
-		<section id="features-identifying" class="appendix">
-			<h2>Identifying accessibility features</h2>
+		<section id="features-intro" class="appendix">
+			<h2>Introduction to accessibility features</h2>
 
-			<p>This appendix provides guidance on how to determine if an <a data-cite="epub-3#dfn-epub-publication">EPUB
-					publication</a> [[epub-3]] contains accessibility features for anyone unfamiliar with their markup
-				or styling.</p>
+			<p>This appendix provides introductory information on what accessibility features are and how to determine
+				if an <a data-cite="epub-3#dfn-epub-publication">EPUB publication</a> [[epub-3]] contains them. It is
+				only for intended for individuals unfamiliar with their markup or styling.</p>
 
 			<div class="caution">
 				<p>Finding features in the markup does not always mean the corresponding metadata applies to a
@@ -4680,13 +4680,13 @@
 						href="#accessibilityFeature">usage requirements</a> for a property before declaring it.</p>
 			</div>
 
-			<section id="identify-alt">
+			<section id="intro-alt">
 				<h3>Alternative text</h3>
 
-				<p>Alternative text provides a brief description of an image.</p>
+				<p><a href="#alternativeText">Alternative text</a> provides a brief description of an image.</p>
 
-				<p>For <a data-cite="epub-3#dfn-xhtml-content-document">XHTML content documents</a> [[epub-3]]
-					this text is found in [[html]] [^img/alt^] attributes on non-decorative [^img^] tag.</p>
+				<p>For <a data-cite="epub-3#dfn-xhtml-content-document">XHTML content documents</a> [[epub-3]] this text
+					is found in [[html]] [^img/alt^] attributes on non-decorative [^img^] tag.</p>
 
 				<aside class="example" title="HTML img tag with alternative text">
 					<pre>&lt;img src="images/hawk.jpg" 
@@ -4705,15 +4705,13 @@
    …
 &lt;/svg></pre>
 				</aside>
-
-				<div class="note">
-					<p>Refer to the <a href="#alternativeText"><code>alternativeText</code> feature</a> for the
-						specifics of when it applies.</p>
-				</div>
 			</section>
 
-			<section id="identify-aria">
+			<section id="intro-aria">
 				<h3>ARIA structural roles</h3>
+
+				<p><a href="#ARIA">ARIA structural roles</a> provide additional context for assistive technologies about
+					the type of content the user is reading.</p>
 
 				<p>ARIA roles are expressed in <a data-cite="epub-3#dfn-xhtml-content-document">XHTML content
 						documents</a> [[epub-3]] using the [[html]] [^/role^] attribute:</p>
@@ -4724,17 +4722,17 @@
    …
 &lt;/section></pre>
 				</aside>
-
-				<div class="note">
-					<p>Refer to the <a href="#ARIA"><code>ARIA</code> feature</a> for the specifics of when it applies.</p>
-				</div>
 			</section>
 
-			<section id="identify-audio-desc">
+			<section id="intro-audio-desc">
 				<h3>Audio descriptions</h3>
 
-				<p>Audio descriptions are found in [[html]] [^track^] elements with their [^track/kind^] attribute set
-					to the value "<code>descriptions</code>".</p>
+				<p><a href="#audioDescription">Audio descriptions</a> provide additional information about what is going
+					on in a scene beyond the dialogue. For example, the movements of actors.</p>
+
+				<p>Audio descriptions are provided using technologies like WebVTT [[webvtt]]. The description files are
+					then linked to their corresponding videos via [[html]] [^track^] elements with their [^track/kind^]
+					attribute set to the value "<code>descriptions</code>".</p>
 
 				<aside class="example" title="Audio description provided via an HTML track tag">
 					<pre>&lt;video controls="">
@@ -4748,18 +4746,17 @@
   &lt;p>Your browser does not support the video tag.&lt;/p>
 &lt;/video></pre>
 				</aside>
-
-				<div class="note">
-					<p>Refer to the <a href="#audioDescription"><code>audioDescription</code> feature</a> for the
-						specifics of when it applies.</p>
-				</div>
 			</section>
 
-			<section id="identify-closed-captions">
+			<section id="intro-closed-captions">
 				<h3>Closed captions</h3>
 
-				<p>Closed captions are found in [[html]] [^track^] elements with their [^track/kind^] attribute set to
-						<code>captions</code>.</p>
+				<p><a href="#closedCaptions">Closed captions</a> capture character dialogue in text form for display on
+					screen during video playback. The captions can be turned on or off.</p>
+
+				<p>Closed captions are provided using technologies like WebVTT [[webvtt]]. The caption files are then
+					linked to their corresponding videos using [[html]] [^track^] elements with their [^track/kind^]
+					attribute set to <code>captions</code>.</p>
 
 				<aside class="example" title="Closed captions for English and Spanish">
 					<pre>&lt;video controls width="480" height="360">
@@ -4779,49 +4776,55 @@
   &lt;p>Your reading system does not support the video element.&lt;/p>
 &lt;/video></pre>
 				</aside>
-
-				<div class="note">
-					<p>Refer to the <a href="#closedCaptions"><code>closedCaptions</code> feature</a> for the specifics
-						of when it applies.</p>
-				</div>
 			</section>
 
-			<section id="identify-described-math">
+			<section id="intro-described-math">
 				<h3>Described math</h3>
 
-				<p>Described math is expressed using <a href="#identify-alt">alternative text</a> and <a
-						href="#identify-extended-desc">extended descriptions</a>. The only difference is that the
-					content of the described images has to depict mathematical formulas and equations.</p>
+				<p><a href="#describedMath">Described math</a> refers to images of math content that have been made
+					accessible through a combination of <a href="#intro-alt">alternative text</a> and/or <a
+						href="#intro-extended-desc">extended descriptions</a>.</p>
 
-				<div class="note">
-					<p>Refer to the <a href="#describedMath"><code>describedMath</code> feature</a> for the specifics of
-						when it applies.</p>
-				</div>
+				<aside class="example" title="Math image with descriptions">
+					<pre>&lt;img src="images/quadratic.jpg" 
+     alt="Quadratic equation" aria-details="quad-desc"/>
+&lt;details id="quad-desc">
+   &lt;summary>Description&lt;/summary>
+   &lt;p>In the quadratic equation, the variable x is equal 
+      to &#8230;&lt;/p>
+&lt;/details>
+</pre>
+				</aside>
 			</section>
 
-			<section id="identify-display-transformability">
+			<section id="intro-display-transformability">
 				<h3>Display transformability</h3>
 
-				<p>There is no simple check for display transformability. It requires inspecting both the markup and
-					styling of the content, as described in <a href="#display-control"></a>.</p>
+				<p><a href="#displayTransformability">Display transformability</a> is an assertion that the content does
+					not include any impediments that would prevent a user from being able to adjust the content display
+					to their preferences. For example, to change the font family or enlarge the font size.</p>
 
-				<div class="note">
-					<p>Refer to the <a href="#displayTransformability"><code>displayTransformability</code> feature</a>
-						for the specifics of when it applies.</p>
-				</div>
+				<p>There is no simple check for display transformability as it is not a feature added to the content but
+					an indication that no problematic styling is present. Inline [[html]] [^style^] elements are often
+					an indicator that the content may interfere with user restyling, for example, but not always &#8212;
+					it also depends on what kind of styling is applied inline.</p>
 			</section>
 
-			<section id="identify-extended-desc">
+			<section id="intro-extended-desc">
 				<h3>Extended descriptions</h3>
+
+				<p><a href="#longDescription">Extended descriptions</a> provide additional context for an image that
+					cannot be expressed in shorter <a href="#intro-alt">alternative text</a> runs.</p>
 
 				<p>There are many ways to associate extended descriptions with visual content, so it typically requires
 					checking images manually.</p>
 
-				<p>Some common patterns include the presence of an <code>aria-describedby</code> or
-						<code>aria-details</code> attribute on an <code>img</code> tag, but these attributes may not
-					always be set even when a description is available. As descriptions are often stored in a separate
-					file, it is also common to find a hyperlink after an image to its description. The description could
-					also be contained in a <code>figcaption</code> element if the image is in a <code>figure</code>.</p>
+				<p>Some common patterns include the presence of <code>aria-describedby</code> or
+						<code>aria-details</code> attributes [[wai-aria]] on an [[html]] [^img^] tags, but these
+					attributes may not always be set even when a description is available. As descriptions are often
+					stored in a separate file, it is also common to find a hyperlink after an image to its description.
+					The description could also be contained in a <code>figcaption</code> element if the image is in a
+						<code>figure</code>.</p>
 
 				<aside class="example" title="Extended description using aria-details">
 					<pre>&lt;figure>
@@ -4836,43 +4839,40 @@
   &lt;/details>
 &lt;/figure></pre>
 				</aside>
-
-				<div class="note">
-					<p>Refer to the <a href="#longDescription"><code>longDescription</code> feature</a> for the
-						specifics of when it applies.</p>
-				</div>
 			</section>
 
-			<section id="identify-high-contrast-audio">
+			<section id="intro-high-contrast-audio">
 				<h3>High contrast audio</h3>
 
-				<p>The use of high contrast audio is not a markup feature. The presence of audio and video can be
-					checked by searching for the [[html]] [^audio^] and [^video^] elements, but their audio tracks will
-					require testing.</p>
+				<p><a href="#highContrastAudio">High contrast audio</a> refers to audio content &#8212; whether in a
+					standalone audio file or as part of a video &#8212; that meets the audio contrast requirements of
+					[[wcag2]] <a data-cite="wcag2#low-or-no-background-audio">success criterion 1.4.7</a>.</p>
 
-				<div class="note">
-					<p>Refer to the <a href="#highContrastAudio"><code>highContrastAudio</code> feature</a> for the
-						specifics of when it applies.</p>
-				</div>
+				<p>The use of high contrast audio is not a markup feature so it cannot be found simply by searching the
+					content. The presence of audio and video content can be checked by searching for the [[html]]
+					[^audio^] and [^video^] elements, but their audio tracks will require testing for contrast.</p>
 			</section>
 
-			<section id="identify-high-contrast-display">
+			<section id="intro-high-contrast-display">
 				<h3>High contrast display</h3>
 
-				<p>The use of high contrast display cannot be determined from markup alone. Testing foreground and
-					background contrast requires a validator with color analysis, such as <a
-						href="https://daisy.org/activities/software/ace/">Ace by DAISY</a>.</p>
+				<p><a href="#highContrastDisplay">High contrast display</a> refers to content that meets the visual
+					contrast requirements of [[wcag2]] <a data-cite="wcag2#contrast-enhanced">success criterion
+						1.4.6</a>.</p>
 
-				<div class="note">
-					<p>Refer to the <a href="#highContrastDisplay"><code>highContrastDisplay</code> feature</a> for the
-						specifics of when it applies.</p>
-				</div>
+				<p>The use of high contrast display is not a markup feature that can be searched for. It requires
+					testing the contrast of all text &#8212; represented as character data or in images &#8212; and its
+					background.</p>
 			</section>
 
-			<section id="identify-index">
+			<section id="intro-index">
 				<h3>Indexes</h3>
 
-				<p>The fastest way to check for an index is to look in the table of contents.</p>
+				<p>Indexes make it easier for users to locate content of interest in a work. Common types of indexes in
+					books include general subject indexes, name indexes, geographic indexes, and recipe indexes.</p>
+
+				<p>The fastest way to check for the presence of an index is to look at the back matter of the book in
+					the table of contents.</p>
 
 				<p>Alternatively, an index could be discovered by searching for [[html]] [^nav^] or [^section^] tags
 					with a [^/role^] attribute value of <a data-cite="dpub-aria#doc-index"><code>doc-index</code></a>
@@ -4894,18 +4894,17 @@
    &lt;/div>
 &lt;/nav></pre>
 				</aside>
-
-				<div class="note">
-					<p>Refer to the <a href="#index"><code>index</code> feature</a> for the specifics of when it
-						applies.</p>
-				</div>
 			</section>
 
-			<section id="identify-latex">
+			<section id="intro-latex">
 				<h3>LaTeX formatting</h3>
 
-				<p>LaTeX is a text-based formatting language. Equations can be wrapped in any of the following depending
-					on whether they are to be rendered inline or as block equations:</p>
+				<p>LaTeX is a text-based formatting language that allows both <a href="#latex">mathematical</a> and <a
+						href="#latex-chemistry">chemical</a> equations to be expressed. It is not human readable in its
+					raw form but is meant to be transformed &#8212; into images or MathML &#8212; for presentation.</p>
+
+				<p>Equations can be wrapped in any of the following depending on whether they are to be rendered inline
+					or as block equations:</p>
 
 				<ul>
 					<li>
@@ -4931,76 +4930,65 @@
 					<pre>\[x = \frac{-b \pm \sqrt{b^2-4ac}}{2a}\]</pre>
 					<pre>$x = \frac{-b \pm \sqrt{b^2-4ac}}{2a}$</pre>
 				</aside>
-
-				<div class="note">
-					<p>Refer to the <a href="#latex"><code>latex</code></a> and <a href="#latex-chemistry"
-								><code>latex-chemistry</code></a> features for the specifics of when they apply.</p>
-				</div>
 			</section>
 
-			<section id="identify-large-print">
+			<section id="intro-large-print">
 				<h3>Large print</h3>
 
-				<p>The best way to determine if the <a href="#largePrint"><code>largePrint</code></a> feature applies is
-					to rely on the publisher's description. Large print books are usually labeled as such.</p>
+				<p>Although <a href="#largePrint">large print</a> is not commonly found in EPUB publications, it is
+					possible to set the default font size to a large print standard such as 18pt (point).</p>
+
+				<p>The fastest way to determine if a book is formatted in large print is to check for the name in the
+					publisher's description or metadata. Large print books are usually labeled as such.</p>
 
 				<p>It may be possible to read the default styles applied to the content to determine the overall font
-					size, but this is often non-trivial to do. Opening the individual <a
-						data-cite="epub-3#dfn-xhtml-content-document">XHTML content document</a> [[epub-3]] in a browser
-					and using the browser's markup inspection tools to review the calculated styles is the most reliable
-					way to figure out font sizes. Reading systems do not typically provide this kind of information and
-					may reformat the font size from what the author specified.</p>
+					size, but this is often non-trivial to do. For example, it may require converting a relative unit
+					size like <code>em</code> or <code>rem</code> (root em) to <code>pt</code>.</p>
 
-				<div class="note">
-					<p>Refer to the <a href="#largePrint"><code>largePrint</code> feature</a> for the specifics of when
-						it applies.</p>
-				</div>
+				<p>Opening <a data-cite="epub-3#dfn-xhtml-content-document">XHTML content document</a> [[epub-3]] in a
+					browser and using the browser's markup inspection tools to review the calculated styles is the most
+					reliable way to figure out font sizes. Reading systems do not typically provide this kind of
+					information and may reformat the font size from what the author specified.</p>
 			</section>
 
-			<section id="identify-mathml">
+			<section id="intro-mathml">
 				<h3>MathML markup</h3>
 
-				<p>To check the <a href="#MathML"><code>MathML</code></a> feature for an EPUB 3 publication, open up the
-						<a data-cite="epub-3#dfn-package-document">package document</a> and review the <a
-						data-cite="epub-3#dfn-epub-manifest">manifest</a> [[epub-3]]. Any <a
-						data-cite="epub-3#dfn-epub-content-document">EPUB content document</a> [[epub-3]] that includes
-					MathML [[mathml3]] markup has to have a <a data-cite="epub-3#attrdef-properties"
-							><code>properties</code> attribute</a> [[epub-3]] that declares this is the case.</p>
-
-				<aside class="example" title="MathML declaration in a properties attribute">
-					<pre>&lt;item id="c01" src="xhtml/chapter01.xhtml" … properties="mathml" /></pre>
-				</aside>
-
-				<p>If MathML is present but not declared, running EPUBCheck will cause an error to be reported.</p>
-
-				<p>To manually check for MathML, every content document would have to be searched. MathML is typically
-					enclosed in <code>math</code> tags.</p>
+				<p>MathML is a markup language used to encode <a href="#MathML">mathematical</a> and <a
+						href="#MathML-chemistry">chemical</a> equations for display. The markup can be embedded directly
+					in <a data-cite="epub-3#dfn-epub-content-document">EPUB content document</a> [[epub-3]].</p>
 
 				<aside class="example" title="MathML start and end tags">
 					<pre>&lt;math xmlns="http://www.w3.org/2001/mathml">…&lt;/math></pre>
 				</aside>
 
-				<p>But because EPUB is XML-based, the <code>math</code> tag could also have a prefix, so could be tagged
-					as <code>m:math</code> or <code>mml:math</code>. This kind of tagging is more common in legacy
-					content as <a data-cite="epub-3#dfn-epub-reading-system">reading systems</a> [[epub-3]] used to rely
-					on the MathJAX application to render equations. Modern reading systems, like browsers, expect
-					unprefixed elements as part of their support for HTML.</p>
+				<p>The fastest way to check if there is MathML markup in an EPUB 3 publication is to open up the <a
+						data-cite="epub-3#dfn-package-document">package document</a> and review the <a
+						data-cite="epub-3#dfn-epub-manifest">manifest</a> [[epub-3]]. Any EPUB content document
+					[[epub-3]] that includes MathML [[mathml3]] markup has to have a <a
+						data-cite="epub-3#attrdef-properties"><code>properties</code> attribute</a> [[epub-3]] that
+					declares this is the case.</p>
 
-				<p>Regardless of how the MathML markup is tagged, whether it is being used for <a href="#math">math
-						equations</a> or <a href="#chemistry">chemical equations</a> needs to be determined so that the
-					appropriate accessibility feature is flagged.</p>
+				<aside class="example" title="MathML declaration in a properties attribute">
+					<pre>&lt;item id="c01" src="xhtml/chapter01.xhtml" … properties="mathml" /></pre>
+				</aside>
 
-				<div class="note">
-					<p>Refer to the <a href="#MathML"><code>MathML</code></a> and <a href="#MathML-chemistry"
-								><code>MathML-chemistry</code></a> features for the specifics of when they apply.</p>
-				</div>
+				<p>If MathML is present but not declared, running EPUBCheck will also cause an error to be reported.</p>
+
+				<p>To manually check for MathML, every content document would have to be searched. MathML is typically
+					enclosed in <code>math</code> tags, but because EPUB is XML-based the <code>math</code> tag could
+					also have a prefix (e.g., <code>m:math</code> or <code>mml:math</code>). This kind of tagging is
+					more common in legacy content as <a data-cite="epub-3#dfn-epub-reading-system">reading systems</a>
+					[[epub-3]] used to rely on the MathJAX application to render equations. Modern reading systems, like
+					browsers, expect unprefixed elements as part of their support for HTML.</p>
 			</section>
 
-			<section id="identify-open-captions">
+			<section id="intro-open-captions">
 				<h3>Open captions</h3>
 
-				<p>Open captions are part of the video stream. Unlike <a href="#identify-closed-captions">closed
-						captions</a>, the user cannot change their appearance or even turn them off.</p>
+				<p><a href="#openCaptions">Open captions</a> serve the save function as <a href="">closed captions</a>
+					but part of the video stream instead of stored in a separate captioning file. Consequently, with
+					open captions the user cannot change their appearance or even turn them off.</p>
 
 				<p>The only way to determine if there are open captions is to watch each video and see if captions
 					appear on screen. There will be no option in the video for the user to toggle the captions on or
@@ -5008,19 +4996,18 @@
 
 				<p>To verify that open captions are being used, the [[html]] [^video^] element for the clip can be
 					checked to ensure it does not have a child [^track^] element that references a caption file.</p>
-
-				<div class="note">
-					<p>Refer to the <a href="#openCaptions"><code>openCaptions</code> feature</a> for the specifics of
-						when it applies.</p>
-				</div>
 			</section>
 
-			<section id="identify-page-breaks">
+			<section id="intro-page-breaks">
 				<h3>Page break markers</h3>
 
-				<p>Page break markers are elements in the text that identify the location of a static page break. They
-					are identifiable by having a <a data-cite="dpub-aria#doc-pagebreak"><code>doc-pagebreak</code>
-						role</a> [[dpub-aria]].</p>
+				<p><a href="#pageBreakMarkers">Page break markers</a> provide users the ability to locate their position
+					relative to a pre-paginted equivalent edition, such as a hard or soft cover version of a book. They
+					also provide link destinations for a <a href="intro-page-nav">page list</a>.</p>
+
+				<p>Page break markers can either be visible or invisible elements in the content. They are identifiable
+					in the markup by having a <a data-cite="dpub-aria#doc-pagebreak"><code>doc-pagebreak</code> role</a>
+					[[dpub-aria]].</p>
 
 				<aside class="example" title="Markup for a hidden and visible page break marker">
 					<pre>&lt;span id="page_5"
@@ -5029,17 +5016,14 @@
 
 &lt;div id="page_6" role="doc-pagebreak">6&lt;/div></pre>
 				</aside>
-
-				<div class="note">
-					<p>Refer to the <a href="#pageBreakMarkers"><code>pageBreakMarkers</code> feature</a> for the
-						specifics of when it applies.</p>
-				</div>
 			</section>
 
-			<section id="identify-page-nav">
+			<section id="intro-page-nav">
 				<h3>Page list</h3>
 
-				<p>The page list is a list of links to static page break locations.</p>
+				<p>A <a href="#pageNavigation">page list</a> is a list of links to static page break locations. It
+					allows users, for example, to coordinate their reading with others using a print edition of the
+					work.</p>
 
 				<p>The version of EPUB determines how the page list is expressed.</p>
 
@@ -5087,67 +5071,60 @@
     &lt;/pageList>
 &lt;/ncx></pre>
 				</aside>
-
-				<div class="note">
-					<p>Refer to the <a href="#pageList"><code>pageList</code> feature</a> for the specifics of when it
-						applies.</p>
-				</div>
 			</section>
 
-			<section id="identify-reading-order">
+			<section id="intro-reading-order">
 				<h3>Reading order</h3>
 
-				<p>The reading order establishes the narrative flow of the content. It is determined by checking how the
-					content is ordered between the [[html]] [^body^] tags of each <a
-						data-cite="epub-3#dfn-xhtml-content-document">XHTML content document</a> [[epub-3]], as well as
-					across documents.</p>
+				<p>The <a href="#readingOrder">reading order</a> establishes the narrative flow of the content. It must
+					be represented logically in the markup, not just in how the content gets displayed. Fixed layout
+					publications, for example, allow authors to position content visually differently from how it is
+					ordered in the markup, which leads to an inaccessible reading experience for those using assistive
+					technologies.</p>
 
-				<div class="note">
-					<p>Refer to the <a href="#readingOrder"><code>readingOrder</code> feature</a> for the specifics of
-						when it applies.</p>
-				</div>
+				<p>Determing if the reading order is logical is not a unique feature that can be searched for. It can
+					only be established by checking how the content is ordered between the [[html]] [^body^] tags of
+					each <a data-cite="epub-3#dfn-xhtml-content-document">XHTML content document</a> [[epub-3]], as well
+					as across documents.</p>
 			</section>
 
-			<section id="identify-ruby">
+			<section id="intro-ruby">
 				<h3>Ruby annotations</h3>
 
 				<p>Ruby annotations are pronunciation guides for Chinese, Japanese, and Korean characters. They are
-					expressed in the [[html]] [^ruby^] tag.</p>
+					either provided for <a href="#fullRubyAnnotations">all characters</a> or <a href="#rubyAnnotations"
+						>only difficult or obscure ones</a>.</p>
+
+				<p>The presence of ruby annotation in the markup can be established by searching for the [[html]]
+					[^ruby^] tag.</p>
 
 				<aside class="example" title="Ruby markup">
 					<pre>&lt;ruby>東&lt;rt>とう&lt;/rt>&lt;/ruby>&lt;ruby>京&lt;rt>きょう&lt;/rt>&lt;/ruby>に&lt;ruby>行&lt;rt>い&lt;/rt>&lt;/ruby>きます。</pre>
 				</aside>
-
-				<div class="note">
-					<p>Refer to the <a href="#rubyAnnotations"><code>rubyAnnotations</code></a> and <a
-							href="#fullRubyAnnotations"><code>fullRubyAnnotations</code></a> features for the specifics
-						of when they applies.</p>
-				</div>
 			</section>
 
-			<section id="identify-sign-language">
+			<section id="intro-sign-language">
 				<h3>Sign language</h3>
 
-				<p>Sign language interpretation makes spoken language accessible to individuals who are deaf or hard of
-					hearing.</p>
+				<p><a href="#signLanguage">Sign language interpretation</a> makes spoken language accessible to
+					individuals who are deaf or hard of hearing.</p>
 
-				<p>Sign language interpretation is mostly commonly part of a video when it is provided (e.g., the
+				<p>Sign language interpretation is most commonly part of the video stream when it is provided (e.g., the
 					interpreter is overlaid in a corner). Less common is that sign language interpretation is provided
-					as a separate synchronized video. Consequently, it can only be located by watching the video
-					content.</p>
-
-				<div class="note">
-					<p>Refer to the <a href="#signLanguage"><code>signLanguage</code> feature</a> for the specifics when
-						it applies.</p>
-				</div>
+					as a separate synchronized video. In both cases, it can only be located by watching the video
+					content. Like with <a href="intro-open-captions">open captions</a>, there is nothing at the markup
+					level that indicates the presence of interpretation.</p>
 			</section>
 
-			<section id="identify-structural-navigation">
+			<section id="intro-structural-navigation">
 				<h3>Structural navigation</h3>
 
-				<p>Checking for structural navigation requires inspecting each heading to ensure that it is represented
-					using one of the [[html]] <a data-cite="html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements"
-							><code>h1</code> through <code>h6</code> elements</a>.</p>
+				<p><a href="#structuralNavigation">Structural navigation</a> is the ability for users of assistive
+					technologies to skip from one heading to the next without having to go through the table of contents
+					every time. It is enabled by having all the headings marked up at their correct level.</p>
+
+				<p>HTML includes the <a data-cite="html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements"><code>h1</code> through
+							<code>h6</code> elements</a> for marking up headings.</p>
 
 				<aside class="example" title="Native HTML markup for a heading">
 					<pre>&lt;h2>The reckoning&lt;/h2></pre>
@@ -5158,27 +5135,21 @@
 				<aside class="example" title="ARIA markup for a heading">
 					<pre>&lt;p role="heading" aria-level="2">The reckoning&lt;/p></pre>
 				</aside>
-
-				<p>Both cases are valid heading markup although ARIA is generally discouraged when native elements
-					exist.</p>
 			</section>
 
-			<section id="identify-sync-audio-text">
+			<section id="intro-sync-audio-text">
 				<h3>Synchronized audio and text</h3>
 
-				<p>To determine if an EPUB 3 publication should declare the <a href="#synchronizedAudioText"
-							><code>synchronizedAudioText</code></a> feature, check if the <a
-						data-cite="epub-3#attrdef-item-media-overlay"><code>media-overlay</code> attribute</a> has been
-					set on any items in the <a data-cite="epub-3#dfn-package-document">package document</a>
+				<p>Synchronized audio and text is better known as read-aloud functionality in EPUB reading systems. It
+					is when the user can opt to have an aural rendering of the content played back as the corresponding
+					text is highlighted. Some reading systems, especially those designed for readers who are blind, use
+					this functionality to provide an audiobook-like experience.</p>
+
+				<p>Text and audio synchronization is provided in EPUB 3 using the media overlays feature. To see if
+					media overlays are included, check if the <a data-cite="epub-3#attrdef-item-media-overlay"
+							><code>media-overlay</code> attribute</a> has been set on any items in the <a
+						data-cite="epub-3#dfn-package-document">package document</a>
 					<a data-cite="epub-3#dfn-epub-manifest">manifest</a> [[epub-3]].</p>
-
-				<p>It is also possible to search the package document manifest for the resources with the media type
-						<code>application/smil+xml</code>.</p>
-
-				<div class="note">
-					<p>The <code>synchronizedAudioText</code> feature is not set for structured audio even though media
-						overlays are present. Refer to <a href="#accessMode-sync"></a> for more information.</p>
-				</div>
 
 				<aside class="example" title="Linked media overlays">
 					<pre>&lt;?xml version="1.0" encoding="UTF-8"?>
@@ -5192,18 +5163,24 @@
    &#8230;
 &lt;/package></pre>
 				</aside>
+
+				<div class="note">
+					<p>An EPUB with structured audio (i.e., full audio but minimal text) is not considered to have text
+						and audio synchronization even though media overlays are present. Refer to <a
+							href="#accessMode-sync"></a> for more information.</p>
+				</div>
 			</section>
 
-			<section id="identify-toc">
+			<section id="intro-toc">
 				<h3>Table of contents</h3>
 
-				<p>A table of contents is a required part of EPUB 2 and 3 so the <a href="#tableOfContents"
-							><code>tableOfContents</code></a> feature can usually be declared (so long as it allows all
-					the major sections to be reached).</p>
+				<p>All EPUB publications require a <a href="#tableOfContents">table of contents</a> with links into the
+					major headings of the work.</p>
 
-				<p>To check EPUB 3 publications, locate a <a data-cite="epub-3#dfn-epub-manifest">manifest</a>
-					[[epub-3]] item with its <code>properties</code> attribute set to "<code>nav</code>". Inside this
-					file will be a [[html]] [^nav^] element with the <a data-cite="epub-3#sec-epub-type-attribute"
+				<p>In EPUB 3 publications, the table of contents can be located by searching the <a
+						data-cite="epub-3#dfn-epub-manifest">package document manifest</a> [[epub-3]] for an
+						<code>item</code> with its <code>properties</code> attribute set to "<code>nav</code>". Inside
+					this file will be a [[html]] [^nav^] element with the <a data-cite="epub-3#sec-epub-type-attribute"
 							><code>epub:type</code> attribute</a> [[epub-3]] value "<a data-cite="epub-ssv#toc"
 							><code>toc</code></a>" [[epub-ssv]].</p>
 
@@ -5226,8 +5203,9 @@
 &lt;/nav></pre>
 				</aside>
 
-				<p>For EPUB 2, check the <a href="https://idpf.org/epub/20/spec/OPF_2.0_final_spec.html#Section2.4.1"
-						>NCX document</a> [[opf-201]] for a <code>navMap</code> element.</p>
+				<p>For EPUB 2, the table of contents is found in the <a
+						href="https://idpf.org/epub/20/spec/OPF_2.0_final_spec.html#Section2.4.1">NCX document</a>
+					[[opf-201]]. It is contained in the <code>navMap</code> element.</p>
 
 				<aside class="example" title="EPUB 2 NCX">
 					<pre>&lt;ncx &#8230;>
@@ -5244,12 +5222,20 @@
    &#8230;
 &lt;/ncx></pre>
 				</aside>
+
+				<p>These are the table of contents used by reading systems but it is also possible for EPUB 2 and 3
+					publications to contain tables of contents within the body of the publication. These tables of
+					contents usually have to be located manually by searching through the body.</p>
 			</section>
 
-			<section id="identify-tactile-content">
+			<section id="intro-tactile-content">
 				<h3>Tactile content</h3>
 
-				<p>None of the <a href="#tactile-content">tactile content features</a> is easy to locate.</p>
+				<p>Tactile content includes <a href="#braille">braille text</a>, <a href="#tactileGraphic">tactile
+						graphics</a>, and <a href="#tactileObject">tactile objects</a> included in an EPUB publication
+					to aid reading for users who are blind or have low vision.</p>
+
+				<p>None of these is easy to locate from the markup alone.</p>
 
 				<p>Braille Unicode characters can be searched for, but without knowing what text is encoded as braille
 					it might take a few character searches to be sure.</p>
@@ -5258,32 +5244,40 @@
 					<pre>&lt;img &#8230; alt="⠠⠉⠕⠇⠇⠁⠛⠑ ⠷ ⠊⠍⠁⠛⠑⠎ ⠷ ⠡⠝"/></pre>
 				</aside>
 
-				<p>There are no reliable checks for tactile images and objects. Tactile images are only likely to be
-					discovered by inspecting each image. Tactile objects are typically only hyperlinked to, so their
-					presence requires a search of the outbound hyperlinks. Searching for common 3D file format
+				<p>There are similarly no reliable checks for tactile images and objects. Tactile images are only likely
+					to be discovered by inspecting each image. Tactile objects are typically only hyperlinked to, so
+					their presence requires a search of the outbound hyperlinks. Searching for common 3D file format
 					extensions like <code>.obj</code> and <code>.stl</code> file extensions could help speed up the
 					process.</p>
 			</section>
 
-			<section id="identify-timing-control">
+			<section id="intro-timing-control">
 				<h3>Timing control</h3>
 
-				<p>Checking if the <a href="#timingControl"><code>timingControl</code></a> feature applies is complex.
-					Searching for [[html]] <a data-cite="html/forms.html#categories">form elements</a> can help narrow
-					down whether an EPUB 3 publication has interactive content, but whether that content involves timed
-					interactions, and whether additional time can be added, will likely only be determinable by live
-					testing the content.</p>
+				<p><a href="#timingControl">Timing control</a> is the ability for users to extend the time needed to
+					complete timed tasks such as completing embedded quizzes or playing interactive games.</p>
+
+				<p>Timing control mechanisms are typically encoded into the JavaScript code, so there is no reliable way
+					to search a publication to locate the feature. Searching for [[html]] <a
+						data-cite="html/forms.html#categories">form elements</a> can help narrow down whether an EPUB 3
+					publication has interactive content, but whether that content involves timed interactions, and
+					whether additional time can be added, will likely only be determinable by live testing the
+					content.</p>
 			</section>
 
-			<section id="identify-tts-markup">
+			<section id="intro-tts-markup">
 				<h3>Text-to-speech enhancements</h3>
 
-				<p>To determine if the <a href="ttsMarkup"><code>ttsMarkup</code></a> feature applies, the three
-					different text-to-speech enhancement technologies need to be search for.</p>
+				<p><a href="ttsMarkup">Text-to-speech enhancements</a> are used to improve the quality of synthetically
+					generated audio in reading systems. There are three technologies that can be used: SSML,
+					pronunciation lexicons, and CSS Speech. Support for these technologies is extremely limited,
+					however, so finding them in EPUB publications is rare.</p>
 
-				<p>For SSML, an EPUB 3 publication can be searched for the <a data-cite="epub-tts#ssml-ph-attribute"
-							><code>ssml:ph</code></a> or <a data-cite="epub-tts#ssml-alphabet-attribute"
-							><code>ssml:alphabet</code></a> attributes [[epub-tts]].</p>
+				<p>SSML is markup that can be used inline in <a data-cite="epub-3#dfn-xhtml-content-document">XHTML
+						content document</a> [[epub-3]] to provide a pronunciation along with the phonetic alphabet
+					used. Searching for the <a data-cite="epub-tts#ssml-ph-attribute"><code>ssml:ph</code></a> or <a
+						data-cite="epub-tts#ssml-alphabet-attribute"><code>ssml:alphabet</code></a> attributes
+					[[epub-tts]] will reveal if it is present.</p>
 
 				<aside class="example" title="EPUB 3's SSML attributes">
 					<pre>&lt;p ssml:alphabet="ipa"> &#8230; situated between &lt;span ssml:ph="ˈθɜrti dɪˈgriz">30°&lt;/span>
@@ -5292,10 +5286,10 @@
     &#8230; &lt;/p></pre>
 				</aside>
 
-				<p>For PLS lexicons, the <a data-cite="epub-3#dfn-package-document">package document</a> [[epub-3]] can
-					be searched for the media type <code>application/pls+xml</code>. The <a
-						data-cite="epub-3#dfn-xhtml-content-document">XHTML content documents</a> [[epub-3]] can also be
-					checked for a <code>link</code> element declaring the lexicon.</p>
+				<p>PLS lexicons contain dictionaries of terms and their pronunciations. These files can be located in <a
+						data-cite="epub-3#dfn-package-document">package document</a> [[epub-3]] by searching for the
+					media type <code>application/pls+xml</code>. XHTML content documents can also be checked for a
+						<code>link</code> element declaring the lexicon.</p>
 
 				<aside class="example" title="PLS lexicon declarations">
 					<p>Package document manifest declaration:</p>
@@ -5316,9 +5310,9 @@
 				</aside>
 
 				<p>Checking if <a href="https://www.w3.org/TR/css-speech-1/">CSS Speech properties</a> have been used
-					will require searching for them individually. They could appear in separate CSS style sheet files,
-					in <code>style</code> elements within XHTML content documents, or even in inline <code>style</code>
-					attributes (although this practice is generally discouraged).</p>
+					will require searching for them in any style declarations. They will typically appear in separate
+					CSS style sheet files, but could appear in <code>style</code> elements or even in inline
+						<code>style</code> attributes (although this latter practice is generally discouraged).</p>
 
 				<aside class="example" title="Speech property declarations">
 					<pre>body {
@@ -5332,10 +5326,13 @@ section {
 				</aside>
 			</section>
 
-			<section id="identify-transcript">
+			<section id="intro-transcript">
 				<h3>Transcripts</h3>
 
-				<p>A transcript may be found by searching an EPUB 3 publication for an <a
+				<p><a href="#transcript">Transcripts</a> provide a text account of audio content for users who cannot
+					hear the content.</p>
+
+				<p>A transcript might be found by searching an EPUB 3 publication for an <a
 						data-cite="wai-aria#aria-details"><code>aria-details</code></a> [[wai-aria]] attribute on an
 					[[html]] [^audio^] or [^video^] element, although the use of the attribute for transcripts is not
 					widespread.</p>
@@ -5359,26 +5356,32 @@ section {
 				</aside>
 
 				<p>A general text search for the word "transcript" (or the local language equivalent) could also help to
-					locate transcripts, but the results would need to be checked to ensure that they are indeed
-					transcripts for auditory content and not unrelated uses of the word.</p>
+					locate transcripts.</p>
 			</section>
 
-			<section id="identify-unlocked">
+			<section id="intro-unlocked">
 				<h3>Unlocked content</h3>
+
+				<p><a href="#unlocked">Unlocked content</a> refers to an EPUB publication that does not make use of
+					digital rights management schemes.</p>
 
 				<p>If an <a data-cite="epub-3#dfn-epub-publication">EPUB publication</a> [[epub-3]] has digital rights
 					management applied to it, the <code>rights.xml</code> and/or <code>encryption.xml</code> files will
 					be included under the <code>META-INF</code> directory.</p>
 
-				<p>These files are typically added by the distributor/vendor, so declaring that a publication is <a
-						href="#unlocked"><code>unlocked</code></a> more typically requires knowing how it will be
-					distributed.</p>
+				<p>But these files are typically added by the distributor/vendor, so it may not be possible to determine
+					if a publication is unlocked or not without knowing how it will be distributed.</p>
 			</section>
 
-			<section id="identify-writing-mode">
+			<section id="intro-writing-mode">
 				<h3>Writing mode</h3>
 
-				<p>The fastest way to determine the writing mode of an <a data-cite="epub-3#dfn-epub-publication">EPUB
+				<p>The writing mode refers to whether the text content is presented <a href="#horizontalWriting"
+						>horizontally</a> or <a href="#verticalWriting">vertically</a>. For accessibility purposes, the
+					distinction only matters for languages that can be written both ways (e.g., the Chinese, Japanese
+					and Korean languages).</p>
+
+				<p>The fastest way to view the writing mode of an <a data-cite="epub-3#dfn-epub-publication">EPUB
 						publication</a> [[epub-3]] is to open it in a <a data-cite="epub-3#dfn-epub-reading-system"
 						>reading system</a> [[epub-3]] that supports both horizontal and vertical writing to see which
 					way the text gets laid out.</p>
@@ -5389,20 +5392,18 @@ section {
 					indicates that horizontal writing is present (this is also the default when the property is not
 					set). This method is not reliable, however, as the raw CSS declarations may get overridden or not
 					used during the cascade process.</p>
-
-				<p>Knowing the default direction is not enough on its own. Whether to set the <a href="#verticalWriting"
-							><code>verticalWriting</code></a> or <a href="#horizontalWriting"
-							><code>horizontalWriting</code></a> features also depends on whether the language supports
-					both types of writing (e.g., the Chinese, Japanese, and Korean languages support both).</p>
 			</section>
 
-			<section id="identify-word-segmentation">
+			<section id="intro-word-segmentation">
 				<h3>Word segmentation</h3>
 
-				<p>For languages that do not have word segmentation by default, the fastest way to determine if an <a
-						data-cite="epub-3#dfn-epub-publication">EPUB publication</a> does or does not include
-					segmentation is to open it in a <a data-cite="epub-3#dfn-epub-reading-system">reading system</a>
-					[[epub-3]] and visually inspect the content.</p>
+				<p>Word segmentation refers to the use of space to separate written words. Not all languages use space
+					to separate words, as is the case with Chinese, Japanese, Lao, Khmer, Burmese, and Tibetan
+					languages, among others.</p>
+
+				<p>This method of writing makes it difficult for some readers to process the text, so publishers will
+					sometimes provide <a href="#withAdditionalWordSegmentation">additional spacing</a> that can be
+					toggled on or off.</p>
 
 				<p>Checking the markup may indicate if additional word segmentation is provided (e.g., if there are
 						<code>span</code> elements around each group of characters to separate), but this kind of check
@@ -5419,6 +5420,9 @@ section {
   margin-right: 0.5em;
 }</pre>
 				</aside>
+				
+				<p>A more reliable way to check for word segmentation is to open a publication in a reading system
+					and see if there is spacing between words.</p>
 			</section>
 		</section>
 		<section id="obsolete" class="appendix">
